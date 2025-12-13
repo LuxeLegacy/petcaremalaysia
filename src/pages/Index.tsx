@@ -1,13 +1,39 @@
-// Update this page (the content is just a fallback if you fail to update the page)
+import { Header } from '@/components/Header';
+import { Footer } from '@/components/Footer';
+import { SEOHead } from '@/components/SEOHead';
+import { 
+  HeroSection, 
+  ServicesSection, 
+  LocationsSection, 
+  EmergencyBanner 
+} from '@/components/home/HomeSections';
+import { useLanguage } from '@/contexts/LanguageContext';
 
 const Index = () => {
+  const { language } = useLanguage();
+
   return (
-    <div className="flex min-h-screen items-center justify-center bg-background">
-      <div className="text-center">
-        <h1 className="mb-4 text-4xl font-bold">Welcome to Your Blank App</h1>
-        <p className="text-xl text-muted-foreground">Start building your amazing project here!</p>
+    <>
+      <SEOHead
+        title="PetCare Malaysia — Emergency Vets, Clinics, Grooming & Pet Services"
+        description="Find trusted pet care services across Malaysia. 24/7 emergency vets, clinics, grooming, boarding, pet food, and adoption services in 100+ locations."
+        canonicalUrl="https://petcaremalaysia.com"
+        language={language}
+      />
+      
+      <div className="min-h-screen flex flex-col">
+        <Header />
+        
+        <main className="flex-1">
+          <HeroSection />
+          <EmergencyBanner />
+          <ServicesSection />
+          <LocationsSection />
+        </main>
+        
+        <Footer />
       </div>
-    </div>
+    </>
   );
 };
 

@@ -1,0 +1,124 @@
+Kuala Lumpur,Kuala Lumpur Hub,W.P. Kuala Lumpur,EN|BM|CN
+Bangsar,Kuala Lumpur Hub,W.P. Kuala Lumpur,EN|BM|CN
+Cheras,Kuala Lumpur Hub,W.P. Kuala Lumpur,BM|CN|EN
+Kepong,Kuala Lumpur Hub,W.P. Kuala Lumpur,CN|BM|EN
+Setapak,Kuala Lumpur Hub,W.P. Kuala Lumpur,BM|EN
+Mont Kiara,Kuala Lumpur Hub,W.P. Kuala Lumpur,EN
+Brickfields,Kuala Lumpur Hub,W.P. Kuala Lumpur,EN|BM
+KLCC,Kuala Lumpur Hub,W.P. Kuala Lumpur,EN|BM
+Wangsa Maju,Kuala Lumpur Hub,W.P. Kuala Lumpur,BM|EN
+Taman Melawati,Kuala Lumpur Hub,W.P. Kuala Lumpur,BM|EN
+
+Petaling Jaya,Petaling Jaya Hub,Selangor,EN|CN|BM
+Bandar Utama,Petaling Jaya Hub,Selangor,EN|CN
+Kota Damansara,Petaling Jaya Hub,Selangor,EN|BM
+Ara Damansara,Petaling Jaya Hub,Selangor,EN|BM
+SS2,Petaling Jaya Hub,Selangor,CN|EN
+Kelana Jaya,Petaling Jaya Hub,Selangor,BM|EN
+Tropicana,Petaling Jaya Hub,Selangor,EN
+Taman Megah,Petaling Jaya Hub,Selangor,CN|EN
+
+Shah Alam,Shah Alam Hub,Selangor,BM|EN
+Setia Alam,Shah Alam Hub,Selangor,BM|EN
+Bukit Jelutong,Shah Alam Hub,Selangor,EN|BM
+Seksyen 7,Shah Alam Hub,Selangor,BM
+Seksyen 13,Shah Alam Hub,Selangor,BM|EN
+
+Subang Jaya,Subang Jaya Hub,Selangor,EN|CN|BM
+USJ,Subang Jaya Hub,Selangor,EN|CN
+Taipan,Subang Jaya Hub,Selangor,EN
+Putra Heights,Subang Jaya Hub,Selangor,BM|EN
+
+Klang,Klang Hub,Selangor,BM|CN
+Bandar Bukit Tinggi,Klang Hub,Selangor,CN|BM
+Kota Kemuning,Klang Hub,Selangor,EN|BM
+Meru,Klang Hub,Selangor,BM
+Port Klang,Klang Hub,Selangor,BM
+
+Johor Bahru,Johor Bahru Hub,Johor,BM|EN|CN
+Tampoi,Johor Bahru Hub,Johor,BM|EN
+Skudai,Johor Bahru Hub,Johor,EN|CN
+Permas Jaya,Johor Bahru Hub,Johor,CN|EN
+Taman Molek,Johor Bahru Hub,Johor,CN|EN
+
+Iskandar Puteri,Iskandar Hub,Johor,EN|BM
+Gelang Patah,Iskandar Hub,Johor,BM|EN
+Nusajaya,Iskandar Hub,Johor,EN|BM
+Bukit Indah,Iskandar Hub,Johor,EN|CN
+
+George Town,Penang Hub,Penang,CN|EN
+Tanjung Tokong,Penang Hub,Penang,CN|EN
+Tanjung Bungah,Penang Hub,Penang,CN|EN
+Gelugor,Penang Hub,Penang,CN|BM
+Bayan Lepas,Penang Hub,Penang,CN|EN
+Air Itam,Penang Hub,Penang,CN|BM
+
+Butterworth,Seberang Perai Hub,Penang,CN|BM
+Bukit Mertajam,Seberang Perai Hub,Penang,CN|BM
+Perai,Seberang Perai Hub,Penang,CN|BM
+Kepala Batas,Seberang Perai Hub,Penang,BM
+Nibong Tebal,Seberang Perai Hub,Penang,BM
+
+Ipoh,Ipoh Hub,Perak,CN|BM|EN
+Menglembu,Ipoh Hub,Perak,CN
+Tambun,Ipoh Hub,Perak,CN|EN
+Bercham,Ipoh Hub,Perak,CN
+Simpang Pulai,Ipoh Hub,Perak,BM
+
+Kuching,Kuching Hub,Sarawak,BM|EN
+Petra Jaya,Kuching Hub,Sarawak,BM
+Kota Samarahan,Kuching Hub,Sarawak,BM
+Pending,Kuching Hub,Sarawak,BM
+Batu Kawa,Kuching Hub,Sarawak,BM
+
+Kota Kinabalu,Kota Kinabalu Hub,Sabah,BM|EN
+Penampang,Kota Kinabalu Hub,Sabah,BM
+Likas,Kota Kinabalu Hub,Sabah,BM|EN
+Inanam,Kota Kinabalu Hub,Sabah,BM
+Tuaran,Kota Kinabalu Hub,Sabah,BM
+
+Melaka,Melaka Hub,Melaka,BM|EN
+Ayer Keroh,Melaka Hub,Melaka,BM|EN
+Batu Berendam,Melaka Hub,Melaka,BM
+Bukit Baru,Melaka Hub,Melaka,BM
+Alor Gajah,Melaka Hub,Melaka,BM
+
+Seremban,Seremban Hub,N. Sembilan,BM|EN
+Nilai,Seremban Hub,N. Sembilan,BM|EN
+Port Dickson,Seremban Hub,N. Sembilan,EN|BM
+Mantin,Seremban Hub,N. Sembilan,BM
+
+Kuantan,Kuantan Hub,Pahang,BM|EN
+Indera Mahkota,Kuantan Hub,Pahang,BM|EN
+Gambang,Kuantan Hub,Pahang,BM
+Beserah,Kuantan Hub,Pahang,BM
+
+Batu Pahat,Batu Pahat Hub,Johor,BM|CN
+Yong Peng,Batu Pahat Hub,Johor,CN
+Parit Raja,Batu Pahat Hub,Johor,BM
+
+Muar,Muar Hub,Johor,BM|CN
+Tangkak,Muar Hub,Johor,BM
+
+Kulai,Kulai Hub,Johor,BM
+Senai,Kulai Hub,Johor,BM|EN
+
+Kangar,Kangar Hub,Perlis,BM
+Arau,Kangar Hub,Perlis,BM
+
+Taiping,Taiping Hub,Perak,BM|CN
+Kamunting,Taiping Hub,Perak,BM
+
+Sungai Petani,Sungai Petani Hub,Kedah,BM|CN
+Kuala Ketil,Sungai Petani Hub,Kedah,BM
+
+Alor Setar,Alor Setar Hub,Kedah,BM
+Jitra,Alor Setar Hub,Kedah,BM
+
+Sandakan,Sandakan Hub,Sabah,BM
+Batu Sapi,Sandakan Hub,Sabah,BM
+
+Sibu,Sibu Hub,Sarawak,BM|EN
+Mukah,Sibu Hub,Sarawak,BM
+
+Miri,Miri Hub,Sarawak,BM|EN
