@@ -1,9 +1,11 @@
+import { useState, useEffect } from 'react';
 import { useLanguage } from '@/contexts/LanguageContext';
 import { CityData, getNearbyCities } from '@/lib/cityData';
 import { Link } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
-import { useVetClinics } from '@/hooks/useVetClinics';
+import { useVetClinics, VetClinic } from '@/hooks/useVetClinics';
 import { Skeleton } from '@/components/ui/skeleton';
+import { ClinicFilters } from './ClinicFilters';
 import { 
   Phone, 
   MapPin, 
@@ -52,9 +54,14 @@ const generateFAQs = (cityName: string, t: ReturnType<typeof useLanguage>['t']) 
 export const CityPageContent: React.FC<CityPageContentProps> = ({ city }) => {
   const { t, language } = useLanguage();
   const { data: clinics = [], isLoading: clinicsLoading } = useVetClinics(city.name, city.state);
+  const [filteredClinics, setFilteredClinics] = useState<VetClinic[]>([]);
   const faqs = generateFAQs(city.name, t);
   const nearbyCities = getNearbyCities(city, 5);
   const lastUpdated = new Date().toISOString().split('T')[0];
+
+  useEffect(() => {
+    setFilteredClinics(clinics);
+  }, [clinics]);
 
   return (
     <div className="min-h-screen">
@@ -256,8 +263,18 @@ export const CityPageContent: React.FC<CityPageContentProps> = ({ city }) => {
               <p className="text-sm text-muted-foreground mt-1">Check back soon or try nearby areas.</p>
             </div>
           ) : (
-            <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
-              {clinics.map((clinic) => (
+            <>
+              <ClinicFilters clinics={clinics} onFilteredClinics={setFilteredClinics} />
+              
+              {filteredClinics.length === 0 ? (
+                <div className="text-center py-12 bg-card rounded-xl">
+                  <MapPin className="h-12 w-12 text-muted-foreground mx-auto mb-4" />
+                  <p className="text-muted-foreground">No clinics match your filters.</p>
+                  <p className="text-sm text-muted-foreground mt-1">Try adjusting your search criteria.</p>
+                </div>
+              ) : (
+                <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
+                  {filteredClinics.map((clinic) => (
                 <div key={clinic.id} className="bg-card rounded-xl p-5 shadow-card hover:shadow-elevated transition-shadow">
                   <div className="flex justify-between items-start mb-3">
                     <h3 className="font-semibold text-lg">{clinic.name}</h3>
@@ -303,8 +320,10 @@ export const CityPageContent: React.FC<CityPageContentProps> = ({ city }) => {
                     </Button>
                   )}
                 </div>
-              ))}
-            </div>
+                  ))}
+                </div>
+              )}
+            </>
           )}
         </div>
       </section>
