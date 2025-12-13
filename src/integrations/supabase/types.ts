@@ -14,7 +14,60 @@ export type Database = {
   }
   public: {
     Tables: {
-      [_ in never]: never
+      vet_clinics: {
+        Row: {
+          address: string
+          city: string
+          created_at: string
+          id: string
+          image_url: string | null
+          is_24_hours: boolean | null
+          is_emergency: boolean | null
+          name: string
+          phone: string | null
+          rating: number | null
+          review_count: number | null
+          services: string[] | null
+          state: string
+          updated_at: string
+          website: string | null
+        }
+        Insert: {
+          address: string
+          city: string
+          created_at?: string
+          id?: string
+          image_url?: string | null
+          is_24_hours?: boolean | null
+          is_emergency?: boolean | null
+          name: string
+          phone?: string | null
+          rating?: number | null
+          review_count?: number | null
+          services?: string[] | null
+          state: string
+          updated_at?: string
+          website?: string | null
+        }
+        Update: {
+          address?: string
+          city?: string
+          created_at?: string
+          id?: string
+          image_url?: string | null
+          is_24_hours?: boolean | null
+          is_emergency?: boolean | null
+          name?: string
+          phone?: string | null
+          rating?: number | null
+          review_count?: number | null
+          services?: string[] | null
+          state?: string
+          updated_at?: string
+          website?: string | null
+        }
+        Relationships: []
+      }
     }
     Views: {
       [_ in never]: never
