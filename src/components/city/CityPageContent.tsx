@@ -2,6 +2,8 @@ import { useLanguage } from '@/contexts/LanguageContext';
 import { CityData, getNearbyCities } from '@/lib/cityData';
 import { Link } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
+import { useVetClinics } from '@/hooks/useVetClinics';
+import { Skeleton } from '@/components/ui/skeleton';
 import { 
   Phone, 
   MapPin, 
@@ -19,33 +21,6 @@ interface CityPageContentProps {
   city: CityData;
 }
 
-// Sample clinic data generator (would be replaced with real data)
-const generateClinics = (cityName: string) => [
-  {
-    name: `${cityName} Veterinary Hospital`,
-    address: `123 Jalan Utama, ${cityName}`,
-    phone: '+60 3-1234 5678',
-    rating: 4.8,
-    reviews: 127,
-    is24h: true,
-  },
-  {
-    name: `Pet Wellness Clinic ${cityName}`,
-    address: `45 Jalan Mawar, ${cityName}`,
-    phone: '+60 3-2345 6789',
-    rating: 4.6,
-    reviews: 89,
-    is24h: false,
-  },
-  {
-    name: `Caring Paws ${cityName}`,
-    address: `78 Persiaran Hijau, ${cityName}`,
-    phone: '+60 3-3456 7890',
-    rating: 4.7,
-    reviews: 156,
-    is24h: false,
-  },
-];
 
 const generateFAQs = (cityName: string, t: ReturnType<typeof useLanguage>['t']) => [
   {
@@ -76,7 +51,7 @@ const generateFAQs = (cityName: string, t: ReturnType<typeof useLanguage>['t']) 
 
 export const CityPageContent: React.FC<CityPageContentProps> = ({ city }) => {
   const { t, language } = useLanguage();
-  const clinics = generateClinics(city.name);
+  const { data: clinics = [], isLoading: clinicsLoading } = useVetClinics(city.name, city.state);
   const faqs = generateFAQs(city.name, t);
   const nearbyCities = getNearbyCities(city, 5);
   const lastUpdated = new Date().toISOString().split('T')[0];
@@ -263,35 +238,74 @@ export const CityPageContent: React.FC<CityPageContentProps> = ({ city }) => {
         <div className="container">
           <h2 className="text-2xl md:text-3xl font-bold mb-8">{t.cityPage.vetClinics} in {city.name}</h2>
           
-          <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
-            {clinics.map((clinic, i) => (
-              <div key={i} className="bg-card rounded-xl p-5 shadow-card hover:shadow-elevated transition-shadow">
-                <div className="flex justify-between items-start mb-3">
-                  <h3 className="font-semibold text-lg">{clinic.name}</h3>
-                  {clinic.is24h && (
-                    <span className="text-xs bg-destructive/10 text-destructive px-2 py-1 rounded-full font-medium">
-                      24/7
-                    </span>
+          {clinicsLoading ? (
+            <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
+              {[1, 2, 3].map((i) => (
+                <div key={i} className="bg-card rounded-xl p-5 shadow-card">
+                  <Skeleton className="h-6 w-3/4 mb-3" />
+                  <Skeleton className="h-4 w-full mb-3" />
+                  <Skeleton className="h-4 w-1/2 mb-4" />
+                  <Skeleton className="h-9 w-full" />
+                </div>
+              ))}
+            </div>
+          ) : clinics.length === 0 ? (
+            <div className="text-center py-12 bg-card rounded-xl">
+              <MapPin className="h-12 w-12 text-muted-foreground mx-auto mb-4" />
+              <p className="text-muted-foreground">No vet clinics listed for {city.name} yet.</p>
+              <p className="text-sm text-muted-foreground mt-1">Check back soon or try nearby areas.</p>
+            </div>
+          ) : (
+            <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
+              {clinics.map((clinic) => (
+                <div key={clinic.id} className="bg-card rounded-xl p-5 shadow-card hover:shadow-elevated transition-shadow">
+                  <div className="flex justify-between items-start mb-3">
+                    <h3 className="font-semibold text-lg">{clinic.name}</h3>
+                    <div className="flex gap-1">
+                      {clinic.is_emergency && (
+                        <span className="text-xs bg-destructive/10 text-destructive px-2 py-1 rounded-full font-medium">
+                          Emergency
+                        </span>
+                      )}
+                      {clinic.is_24_hours && (
+                        <span className="text-xs bg-primary/10 text-primary px-2 py-1 rounded-full font-medium">
+                          24/7
+                        </span>
+                      )}
+                    </div>
+                  </div>
+                  <p className="text-sm text-muted-foreground mb-3 flex items-start gap-2">
+                    <MapPin className="h-4 w-4 mt-0.5 shrink-0" />
+                    {clinic.address}
+                  </p>
+                  <div className="flex items-center gap-4 mb-4">
+                    {clinic.rating && (
+                      <div className="flex items-center gap-1 text-sm">
+                        <Star className="h-4 w-4 text-gold fill-gold" />
+                        <span className="font-medium">{clinic.rating}</span>
+                        {clinic.review_count && (
+                          <span className="text-muted-foreground">({clinic.review_count})</span>
+                        )}
+                      </div>
+                    )}
+                    {clinic.services && clinic.services.length > 0 && (
+                      <span className="text-xs text-muted-foreground">
+                        {clinic.services.slice(0, 2).join(', ')}
+                      </span>
+                    )}
+                  </div>
+                  {clinic.phone && (
+                    <Button variant="outline" size="sm" className="w-full gap-2" asChild>
+                      <a href={`tel:${clinic.phone}`}>
+                        <Phone className="h-4 w-4" />
+                        {clinic.phone}
+                      </a>
+                    </Button>
                   )}
                 </div>
-                <p className="text-sm text-muted-foreground mb-3 flex items-start gap-2">
-                  <MapPin className="h-4 w-4 mt-0.5 shrink-0" />
-                  {clinic.address}
-                </p>
-                <div className="flex items-center gap-4 mb-4">
-                  <div className="flex items-center gap-1 text-sm">
-                    <Star className="h-4 w-4 text-gold fill-gold" />
-                    <span className="font-medium">{clinic.rating}</span>
-                    <span className="text-muted-foreground">({clinic.reviews})</span>
-                  </div>
-                </div>
-                <Button variant="outline" size="sm" className="w-full gap-2">
-                  <Phone className="h-4 w-4" />
-                  {clinic.phone}
-                </Button>
-              </div>
-            ))}
-          </div>
+              ))}
+            </div>
+          )}
         </div>
       </section>
 
