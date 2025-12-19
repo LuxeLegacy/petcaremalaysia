@@ -13,6 +13,7 @@ import SitemapPage from "./pages/SitemapPage";
 import TermsPage from "./pages/TermsPage";
 import PrivacyPage from "./pages/PrivacyPage";
 import DisclaimerPage from "./pages/DisclaimerPage";
+import BlogPage from "./pages/BlogPage";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -42,6 +43,10 @@ const App = () => (
               {/* Services */}
               <Route path="/services" element={<ServicesPage />} />
               <Route path="/:lang/services" element={<ServicesPage />} />
+              
+              {/* Blog */}
+              <Route path="/blog" element={<BlogPage />} />
+              <Route path="/:lang/blog" element={<BlogPage />} />
               
               {/* Legal pages */}
               <Route path="/terms" element={<TermsPage />} />
