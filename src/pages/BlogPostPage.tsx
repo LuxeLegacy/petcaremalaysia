@@ -6,10 +6,10 @@ import { Header } from '@/components/Header';
 import { Footer } from '@/components/Footer';
 import { SEOHead } from '@/components/SEOHead';
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion';
-
 const EmergencyPetCareGuide = () => {
-  const { language } = useLanguage();
-
+  const {
+    language
+  } = useLanguage();
   const structuredData = {
     "@context": "https://schema.org",
     "@type": "Article",
@@ -31,48 +31,40 @@ const EmergencyPetCareGuide = () => {
     "datePublished": "2024-12-15",
     "dateModified": "2024-12-15"
   };
-
   const faqStructuredData = {
     "@context": "https://schema.org",
     "@type": "FAQPage",
-    "mainEntity": [
-      {
-        "@type": "Question",
-        "name": "What are the signs of a pet emergency?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "Signs of a pet emergency include difficulty breathing, severe bleeding, loss of consciousness, seizures, inability to urinate, suspected poisoning, severe vomiting or diarrhea, trauma from accidents, and sudden collapse or weakness."
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "How much does emergency vet care cost in Malaysia?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "Emergency vet care in Malaysia typically costs between RM500 to RM5,000 or more depending on the severity. Consultation fees range from RM80-200, while surgeries can cost RM1,500-10,000+. Pet insurance can cover 70-80% of these costs."
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "Should I give my pet first aid before going to the vet?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "Basic first aid can be helpful but should not delay veterinary care. For bleeding, apply gentle pressure with a clean cloth. For suspected poisoning, do not induce vomiting unless instructed by a vet. Keep your pet calm and transport them safely."
-        }
+    "mainEntity": [{
+      "@type": "Question",
+      "name": "What are the signs of a pet emergency?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Signs of a pet emergency include difficulty breathing, severe bleeding, loss of consciousness, seizures, inability to urinate, suspected poisoning, severe vomiting or diarrhea, trauma from accidents, and sudden collapse or weakness."
       }
-    ]
+    }, {
+      "@type": "Question",
+      "name": "How much does emergency vet care cost in Malaysia?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Emergency vet care in Malaysia typically costs between RM500 to RM5,000 or more depending on the severity. Consultation fees range from RM80-200, while surgeries can cost RM1,500-10,000+. Pet insurance can cover 70-80% of these costs."
+      }
+    }, {
+      "@type": "Question",
+      "name": "Should I give my pet first aid before going to the vet?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Basic first aid can be helpful but should not delay veterinary care. For bleeding, apply gentle pressure with a clean cloth. For suspected poisoning, do not induce vomiting unless instructed by a vet. Keep your pet calm and transport them safely."
+      }
+    }]
   };
-
-  return (
-    <>
-      <SEOHead
-        title="What to Do in a Pet Emergency: A Complete Guide | PetCare Malaysia"
-        description="Learn critical steps to take during pet emergencies in Malaysia. Covers first aid, 24-hour vet clinics, pet insurance coverage, and expert veterinary advice. Updated for 2024."
-        canonicalUrl={`https://petcaremalaysia.com${language !== 'en' ? `/${language}` : ''}/blog/emergency-pet-care-guide`}
-        language={language}
-      />
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }} />
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqStructuredData) }} />
+  return <>
+      <SEOHead title="What to Do in a Pet Emergency: A Complete Guide | PetCare Malaysia" description="Learn critical steps to take during pet emergencies in Malaysia. Covers first aid, 24-hour vet clinics, pet insurance coverage, and expert veterinary advice. Updated for 2024." canonicalUrl={`https://petcaremalaysia.com${language !== 'en' ? `/${language}` : ''}/blog/emergency-pet-care-guide`} language={language} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{
+      __html: JSON.stringify(structuredData)
+    }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{
+      __html: JSON.stringify(faqStructuredData)
+    }} />
       
       <Header />
       
@@ -123,11 +115,7 @@ const EmergencyPetCareGuide = () => {
 
           {/* Featured Image */}
           <figure className="mb-10">
-            <img
-              src="https://images.unsplash.com/photo-1587300003388-59208cc962cb?w=1200&h=600&fit=crop"
-              alt="Veterinarian examining a dog during an emergency visit"
-              className="w-full h-auto rounded-2xl shadow-lg"
-            />
+            <img src="https://images.unsplash.com/photo-1587300003388-59208cc962cb?w=1200&h=600&fit=crop" alt="Veterinarian examining a dog during an emergency visit" className="w-full h-auto rounded-2xl shadow-lg" />
             <figcaption className="text-sm text-muted-foreground mt-2 text-center">
               A veterinarian provides emergency care to a pet. Photo: Unsplash
             </figcaption>
@@ -1155,14 +1143,14 @@ const EmergencyPetCareGuide = () => {
       </main>
       
       <Footer />
-    </>
-  );
+    </>;
 };
 
 // Pet Food Brands Guide Component
 const PetFoodBrandsGuide = () => {
-  const { language } = useLanguage();
-
+  const {
+    language
+  } = useLanguage();
   const structuredData = {
     "@context": "https://schema.org",
     "@type": "Article",
@@ -1184,48 +1172,40 @@ const PetFoodBrandsGuide = () => {
     "datePublished": "2024-12-10",
     "dateModified": "2024-12-10"
   };
-
   const faqStructuredData = {
     "@context": "https://schema.org",
     "@type": "FAQPage",
-    "mainEntity": [
-      {
-        "@type": "Question",
-        "name": "What is the best dog food brand in Malaysia?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "The best dog food brands in Malaysia include Royal Canin, Hill's Science Diet, Orijen, and Acana. The best choice depends on your dog's age, size, breed, and specific health needs. Premium brands typically offer better nutrition but local alternatives like SmartHeart and Pedigree are also viable options for budget-conscious owners."
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "How much should I spend on pet food in Malaysia?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "In Malaysia, quality pet food costs between RM80-400 per month depending on pet size and brand. Premium brands like Orijen cost RM350-500 for a 5kg bag, while mid-range options like Royal Canin range from RM180-350. Budget options like SmartHeart cost RM50-100 for similar quantities."
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "Is grain-free food better for pets in Malaysia?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "Grain-free food is not necessarily better for all pets. While some pets with grain allergies benefit from grain-free diets, most pets tolerate grains well. Recent studies have linked some grain-free diets to heart conditions in dogs. Consult your veterinarian before switching to grain-free food."
-        }
+    "mainEntity": [{
+      "@type": "Question",
+      "name": "What is the best dog food brand in Malaysia?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "The best dog food brands in Malaysia include Royal Canin, Hill's Science Diet, Orijen, and Acana. The best choice depends on your dog's age, size, breed, and specific health needs. Premium brands typically offer better nutrition but local alternatives like SmartHeart and Pedigree are also viable options for budget-conscious owners."
       }
-    ]
+    }, {
+      "@type": "Question",
+      "name": "How much should I spend on pet food in Malaysia?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "In Malaysia, quality pet food costs between RM80-400 per month depending on pet size and brand. Premium brands like Orijen cost RM350-500 for a 5kg bag, while mid-range options like Royal Canin range from RM180-350. Budget options like SmartHeart cost RM50-100 for similar quantities."
+      }
+    }, {
+      "@type": "Question",
+      "name": "Is grain-free food better for pets in Malaysia?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Grain-free food is not necessarily better for all pets. While some pets with grain allergies benefit from grain-free diets, most pets tolerate grains well. Recent studies have linked some grain-free diets to heart conditions in dogs. Consult your veterinarian before switching to grain-free food."
+      }
+    }]
   };
-
-  return (
-    <>
-      <SEOHead
-        title="Best Pet Food Brands in Malaysia 2024: Complete Guide | PetCare Malaysia"
-        description="Expert guide to choosing the best pet food brands in Malaysia. Compare Royal Canin, Hill's, Orijen & local brands. Includes prices, nutritional analysis, and vet recommendations."
-        canonicalUrl={`https://petcaremalaysia.com${language !== 'en' ? `/${language}` : ''}/blog/pet-nutrition-guide-malaysia`}
-        language={language}
-      />
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }} />
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqStructuredData) }} />
+  return <>
+      <SEOHead title="Best Pet Food Brands in Malaysia 2024: Complete Guide | PetCare Malaysia" description="Expert guide to choosing the best pet food brands in Malaysia. Compare Royal Canin, Hill's, Orijen & local brands. Includes prices, nutritional analysis, and vet recommendations." canonicalUrl={`https://petcaremalaysia.com${language !== 'en' ? `/${language}` : ''}/blog/pet-nutrition-guide-malaysia`} language={language} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{
+      __html: JSON.stringify(structuredData)
+    }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{
+      __html: JSON.stringify(faqStructuredData)
+    }} />
       
       <Header />
       
@@ -1244,9 +1224,7 @@ const PetFoodBrandsGuide = () => {
             <span className="px-3 py-1 text-xs font-semibold bg-primary text-primary-foreground rounded-full">
               Nutrition
             </span>
-            <h1 className="text-3xl md:text-5xl font-bold mt-4 mb-6 leading-tight">
-              Best Pet Food Brands Available in Malaysia: A Complete Guide for 2024
-            </h1>
+            <h1 className="text-3xl md:text-5xl font-bold mt-4 mb-6 leading-tight">Best Pet Food Brands Available in Malaysia: A Complete Guide for 2026</h1>
             
             <div className="flex flex-wrap items-center gap-4 text-muted-foreground mb-6">
               <span className="flex items-center gap-1">
@@ -1275,11 +1253,7 @@ const PetFoodBrandsGuide = () => {
 
           {/* Featured Image */}
           <figure className="mb-10">
-            <img
-              src="https://images.unsplash.com/photo-1548199973-03cce0bbc87b?w=1200&h=600&fit=crop"
-              alt="Happy dogs representing healthy pet nutrition in Malaysia"
-              className="w-full h-auto rounded-2xl shadow-lg"
-            />
+            <img src="https://images.unsplash.com/photo-1548199973-03cce0bbc87b?w=1200&h=600&fit=crop" alt="Happy dogs representing healthy pet nutrition in Malaysia" className="w-full h-auto rounded-2xl shadow-lg" />
             <figcaption className="text-sm text-muted-foreground mt-2 text-center">
               Proper nutrition is the foundation of your pet's health and happiness. Photo: Unsplash
             </figcaption>
@@ -2130,25 +2104,23 @@ const PetFoodBrandsGuide = () => {
       </main>
       
       <Footer />
-    </>
-  );
+    </>;
 };
-
 const BlogPostPage = () => {
-  const { slug } = useParams();
+  const {
+    slug
+  } = useParams();
 
   // Route to the appropriate blog post component
   if (slug === 'emergency-pet-care-guide') {
     return <EmergencyPetCareGuide />;
   }
-  
   if (slug === 'pet-nutrition-guide-malaysia') {
     return <PetFoodBrandsGuide />;
   }
 
   // Placeholder for other blog posts
-  return (
-    <>
+  return <>
       <Header />
       <main className="min-h-screen bg-background pt-20">
         <div className="container py-20 text-center">
@@ -2160,8 +2132,6 @@ const BlogPostPage = () => {
         </div>
       </main>
       <Footer />
-    </>
-  );
+    </>;
 };
-
 export default BlogPostPage;
