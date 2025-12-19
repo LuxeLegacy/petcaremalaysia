@@ -9,6 +9,7 @@ import Index from "./pages/Index";
 import CityPage from "./pages/CityPage";
 import LocationsPage from "./pages/LocationsPage";
 import ServicesPage from "./pages/ServicesPage";
+import SitemapPage from "./pages/SitemapPage";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -22,6 +23,10 @@ const App = () => (
           <Sonner />
           <BrowserRouter>
             <Routes>
+              {/* Sitemap - must be before /:lang to avoid matching */}
+              <Route path="/sitemap" element={<SitemapPage />} />
+              <Route path="/sitemap.xml" element={<SitemapPage />} />
+              
               {/* Home */}
               <Route path="/" element={<Index />} />
               
