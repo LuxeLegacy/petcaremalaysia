@@ -3,7 +3,9 @@ import { Header } from '@/components/Header';
 import { Footer } from '@/components/Footer';
 import { SEOHead } from '@/components/SEOHead';
 import { CityPageContent } from '@/components/city/CityPageContent';
+import { CitySchemaMarkup } from '@/components/city/CitySchemaMarkup';
 import { getCityBySlug } from '@/lib/cityData';
+import { getCityMetadata } from '@/lib/cityContent';
 import { useLanguage } from '@/contexts/LanguageContext';
 import { Link } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
@@ -39,8 +41,9 @@ const CityPage = () => {
     );
   }
 
-  const title = `Pet Care ${city.name} — Vets, Grooming, Emergency & Prices | PetCare Malaysia`;
-  const description = `Find vets, emergency care, grooming, and pet services in ${city.name}, ${city.state}. Compare clinics and call 24/7 help. Updated: ${new Date().toISOString().split('T')[0]}`;
+  const metadata = getCityMetadata(city.slug);
+  const title = `Pet Care ${city.name} — 24/7 Vets, Grooming, Emergency RM${metadata.avgEmergencyVetCost.min}+ | PetCare Malaysia`;
+  const description = `Find vets in ${city.name}, ${city.state}. Emergency care RM${metadata.avgEmergencyVetCost.min}-${metadata.avgEmergencyVetCost.max}, consultations RM${metadata.avgConsultationCost.min}+. ${metadata.petRisks[0]} is common here. ${metadata.nearestMajorCity ? `${metadata.distanceToHub} to 24/7 vet.` : 'Multiple 24/7 clinics available.'}`;
 
   return (
     <>
@@ -51,6 +54,9 @@ const CityPage = () => {
         city={city}
         language={language}
       />
+      
+      {/* JSON-LD Schema Markup */}
+      <CitySchemaMarkup city={city} />
       
       <div className="min-h-screen flex flex-col">
         <Header />
