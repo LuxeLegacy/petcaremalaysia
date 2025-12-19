@@ -1,5 +1,4 @@
 # Serve static files directly
-/sitemap.xml    /sitemap.xml    200
 /robots.txt     /robots.txt     200
 /favicon.ico    /favicon.ico    200
 /google*.html   /google:splat.html   200
