@@ -14,6 +14,7 @@ import { CityInsuranceSection } from './CityInsuranceSection';
 import { CityGovernmentSection } from './CityGovernmentSection';
 import { CityFAQSection } from './CityFAQSection';
 import { CityFinalCtaSection } from './CityFinalCtaSection';
+import { CityPAASection } from './CityPAASection';
 import { 
   Phone, 
   MapPin, 
@@ -258,6 +259,9 @@ export const CityPageContent: React.FC<CityPageContentProps> = ({ city }) => {
 
       {/* FAQ Section with unique city-specific questions */}
       <CityFAQSection city={city} />
+
+      {/* People Also Ask Section */}
+      <CityPAASection city={city} />
 
       {/* Nearby Areas */}
       {nearbyCities.length > 0 && (
