@@ -63,6 +63,15 @@ export const CityHeroSection = ({ city }: CityHeroSectionProps) => {
             {description}
           </p>
           
+          {/* City-Specific Risk Alert */}
+          {metadata.petRisks.length > 0 && (
+            <div className="bg-destructive/10 border border-destructive/20 rounded-lg p-4 mb-8 max-w-2xl mx-auto">
+              <p className="text-sm text-destructive font-medium">
+                ⚠️ {language === 'en' ? 'Local risks in' : language === 'ms' ? 'Risiko tempatan di' : '当地风险'} {city.name}: {metadata.petRisks.slice(0, 3).join(', ')}
+              </p>
+            </div>
+          )}
+          
           {/* Quick Stats */}
           <div className="flex flex-wrap justify-center gap-6 mb-10">
             <div className="flex items-center gap-2 text-muted-foreground">
