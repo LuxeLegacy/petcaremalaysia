@@ -14,7 +14,7 @@ User-agent: *
 Allow: /
 
 # Sitemaps
-Sitemap: https://petcaremalaysia.com/sitemap.xml
+Sitemap: https://xdincsheohvgxewpfwlg.supabase.co/functions/v1/sitemap
 
 # Crawl-delay for polite crawling
 Crawl-delay: 1
