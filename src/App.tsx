@@ -10,6 +10,9 @@ import CityPage from "./pages/CityPage";
 import LocationsPage from "./pages/LocationsPage";
 import ServicesPage from "./pages/ServicesPage";
 import SitemapPage from "./pages/SitemapPage";
+import TermsPage from "./pages/TermsPage";
+import PrivacyPage from "./pages/PrivacyPage";
+import DisclaimerPage from "./pages/DisclaimerPage";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -39,6 +42,11 @@ const App = () => (
               {/* Services */}
               <Route path="/services" element={<ServicesPage />} />
               <Route path="/:lang/services" element={<ServicesPage />} />
+              
+              {/* Legal pages */}
+              <Route path="/terms" element={<TermsPage />} />
+              <Route path="/privacy" element={<PrivacyPage />} />
+              <Route path="/disclaimer" element={<DisclaimerPage />} />
               
               {/* City pages */}
               <Route path="/:state/:city" element={<CityPage />} />
