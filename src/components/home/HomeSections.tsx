@@ -3,17 +3,21 @@ import { useLanguage } from '@/contexts/LanguageContext';
 import { Button } from '@/components/ui/button';
 import { hubsData } from '@/lib/cityData';
 import { MapPin, Phone, Search, ChevronRight, Clock, Heart, Shield, Scissors, CheckCircle } from 'lucide-react';
+import heroPets from '@/assets/hero-pets.jpg';
+
 export const HeroSection = () => {
   const {
     t
   } = useLanguage();
   return <section className="relative overflow-hidden gradient-hero lg:py-32 py-[50px]">
-      {/* Background pattern */}
-      <div className="absolute inset-0 opacity-10">
-        <div className="absolute top-10 left-10 text-8xl">🐕</div>
-        <div className="absolute top-40 right-20 text-6xl">🐈</div>
-        <div className="absolute bottom-20 left-1/4 text-7xl">🐾</div>
-        <div className="absolute bottom-10 right-10 text-5xl">🦜</div>
+      {/* Background pet image */}
+      <div className="absolute inset-0 opacity-20">
+        <img 
+          src={heroPets} 
+          alt="Happy dog and cat together" 
+          className="w-full h-full object-cover object-center"
+        />
+        <div className="absolute inset-0 bg-gradient-to-b from-primary/80 to-primary/60" />
       </div>
 
       <div className="container relative z-10">
