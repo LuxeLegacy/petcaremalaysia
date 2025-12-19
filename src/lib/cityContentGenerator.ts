@@ -283,13 +283,40 @@ export interface GeneratedScenario {
 
 export const generateEmergencyScenarios = (city: CityData, language: Language): GeneratedScenario[] => {
   const metadata = getCityMetadata(city.slug);
-  const scenarios = emergencyScenariosByClimate[language][metadata.climate] || emergencyScenariosByClimate[language]['urban'];
+  const climateScenarios = emergencyScenariosByClimate[language][metadata.climate] || emergencyScenariosByClimate[language]['urban'];
   
-  return scenarios.map((scenario, index) => ({
-    scenario: scenario.scenario,
-    urgency: scenario.urgency,
-    location: metadata.landmarks[index % metadata.landmarks.length]
-  }));
+  // Mix climate scenarios with city-specific risk scenarios for uniqueness
+  const citySpecificScenarios: GeneratedScenario[] = metadata.petRisks.slice(0, 2).map((risk, index) => {
+    const landmark = metadata.landmarks[index % metadata.landmarks.length];
+    const templates: Record<Language, GeneratedScenario> = {
+      en: {
+        scenario: `Your pet encountered ${risk} near ${landmark}`,
+        urgency: `This is common in ${city.name}'s ${metadata.areaType} environment — act quickly`,
+        location: landmark
+      },
+      ms: {
+        scenario: `Haiwan anda menghadapi ${risk} berhampiran ${landmark}`,
+        urgency: `Ini biasa di persekitaran ${metadata.areaType} ${city.name} — bertindak cepat`,
+        location: landmark
+      },
+      zh: {
+        scenario: `您的宠物在${landmark}附近遇到${risk}`,
+        urgency: `这在${city.name}的${metadata.areaType}环境中很常见 — 迅速行动`,
+        location: landmark
+      }
+    };
+    return templates[language] || templates['en'];
+  });
+  
+  // Return city-specific scenarios first, then 1 climate scenario
+  return [
+    ...citySpecificScenarios,
+    {
+      scenario: climateScenarios[0].scenario,
+      urgency: climateScenarios[0].urgency,
+      location: metadata.landmarks[2 % metadata.landmarks.length]
+    }
+  ];
 };
 
 export const generateVetAdvice = (city: CityData, language: Language): VetAdvice => {
@@ -427,76 +454,33 @@ interface HeadlineContent {
 
 export const generateCityHeadlines = (city: CityData, language: Language): HeadlineContent => {
   const metadata = getCityMetadata(city.slug);
-  const risk = metadata.petRisks[0];
+  // Use city-specific pet risks for unique content
+  const topRisks = metadata.petRisks.slice(0, 3);
+  const primaryRisk = metadata.petRisks[0];
+  const landmark = metadata.landmarks[0];
+  const population = (metadata.population / 1000).toFixed(0);
   
-  const headlines: Record<Language, Record<ClimateType, HeadlineContent>> = {
+  // Create truly unique subheadlines using city-specific data
+  const headlines: Record<Language, HeadlineContent> = {
     en: {
-      coastal: {
-        headline: `In ${city.name}, A Pet Emergency Can Strike Anytime...`,
-        subheadline: `From beach hazards to monsoon flooding — when your pet needs help at 2 AM near ${metadata.landmarks[0]}, will you know where to go?`
-      },
-      inland: {
-        headline: `${city.name} Pet Owners: Are You Ready for the Unexpected?`,
-        subheadline: `${risk.charAt(0).toUpperCase() + risk.slice(1)} is a real threat here. When your pet needs emergency care near ${metadata.landmarks[0]}, every second counts.`
-      },
-      highland: {
-        headline: `The Cold Nights of ${city.name} Can Be Deadly for Pets...`,
-        subheadline: `Hypothermia, tick infestations, and wildlife encounters — ${city.name} pet owners face unique challenges. Are you prepared?`
-      },
-      island: {
-        headline: `${city.name}: Paradise for Vacationers, Dangerous for Unprepared Pet Owners`,
-        subheadline: `Limited vet access and tropical hazards make preparation essential. Know your emergency contacts before you need them.`
-      },
-      urban: {
-        headline: `Your Pet Could Need a Vet Tonight in ${city.name}...`,
-        subheadline: `High-rise falls, traffic accidents, toxic exposures — in a city of ${(metadata.population / 1000).toFixed(0)}k people, emergencies happen daily. Be ready.`
-      }
+      headline: metadata.nearestMajorCity 
+        ? `${city.name} Pet Emergencies: Help Is Just ${metadata.distanceToHub} Away`
+        : `Your Pet Could Need a Vet Tonight in ${city.name}...`,
+      subheadline: `${topRisks.map(r => r.charAt(0).toUpperCase() + r.slice(1)).join(', ')} — with ${population}k residents near ${landmark}, ${primaryRisk} is a daily reality. Be ready.`
     },
     ms: {
-      coastal: {
-        headline: `Di ${city.name}, Kecemasan Haiwan Boleh Berlaku Bila-Bila Masa...`,
-        subheadline: `Dari bahaya pantai ke banjir monsun — apabila haiwan anda perlukan bantuan jam 2 pagi berhampiran ${metadata.landmarks[0]}, adakah anda tahu ke mana?`
-      },
-      inland: {
-        headline: `Pemilik Haiwan ${city.name}: Adakah Anda Bersedia untuk Yang Tidak Dijangka?`,
-        subheadline: `${risk.charAt(0).toUpperCase() + risk.slice(1)} adalah ancaman sebenar di sini. Apabila haiwan anda perlukan rawatan kecemasan, setiap saat penting.`
-      },
-      highland: {
-        headline: `Malam Sejuk ${city.name} Boleh Membahayakan Haiwan Peliharaan...`,
-        subheadline: `Hipotermia, serangan kutu, dan pertemuan hidupan liar — pemilik haiwan ${city.name} menghadapi cabaran unik. Adakah anda bersedia?`
-      },
-      island: {
-        headline: `${city.name}: Syurga untuk Pelancong, Berbahaya untuk Pemilik Haiwan yang Tidak Bersedia`,
-        subheadline: `Akses doktor haiwan terhad dan bahaya tropika menjadikan persediaan penting. Ketahui kenalan kecemasan anda sebelum diperlukan.`
-      },
-      urban: {
-        headline: `Haiwan Anda Mungkin Perlukan Doktor Haiwan Malam Ini di ${city.name}...`,
-        subheadline: `Jatuh dari tingkat tinggi, kemalangan jalan raya, pendedahan toksik — dalam bandar ${(metadata.population / 1000).toFixed(0)}k orang, kecemasan berlaku setiap hari.`
-      }
+      headline: metadata.nearestMajorCity 
+        ? `Kecemasan Haiwan ${city.name}: Bantuan Hanya ${metadata.distanceToHub} Sahaja`
+        : `Haiwan Anda Mungkin Perlukan Doktor Haiwan Malam Ini di ${city.name}...`,
+      subheadline: `${topRisks.map(r => r.charAt(0).toUpperCase() + r.slice(1)).join(', ')} — dengan ${population}k penduduk berhampiran ${landmark}, ${primaryRisk} adalah realiti harian. Bersedia.`
     },
     zh: {
-      coastal: {
-        headline: `在${city.name}，宠物紧急情况随时可能发生...`,
-        subheadline: `从海滩危险到季风洪水——当您的宠物在凌晨2点需要帮助时，您知道去哪里吗？`
-      },
-      inland: {
-        headline: `${city.name}宠物主人：您准备好应对意外了吗？`,
-        subheadline: `${risk}在这里是真正的威胁。当您的宠物需要紧急护理时，每一秒都很重要。`
-      },
-      highland: {
-        headline: `${city.name}的寒冷夜晚对宠物可能是致命的...`,
-        subheadline: `低体温症、蜱虫侵扰和野生动物遭遇——${city.name}的宠物主人面临独特挑战。您准备好了吗？`
-      },
-      island: {
-        headline: `${city.name}：度假者的天堂，未做准备的宠物主人的危险地带`,
-        subheadline: `有限的兽医服务和热带危险使准备工作至关重要。在需要之前了解您的紧急联系方式。`
-      },
-      urban: {
-        headline: `您的宠物今晚可能需要${city.name}的兽医...`,
-        subheadline: `高层坠落、交通事故、中毒——在一个${(metadata.population / 1000).toFixed(0)}万人的城市，紧急情况每天都在发生。做好准备。`
-      }
+      headline: metadata.nearestMajorCity 
+        ? `${city.name}宠物紧急情况：帮助仅需${metadata.distanceToHub}`
+        : `您的宠物今晚可能需要${city.name}的兽医...`,
+      subheadline: `${topRisks.join('、')} — ${population}k居民在${landmark}附近，${primaryRisk}是日常现实。做好准备。`
     }
   };
   
-  return headlines[language][metadata.climate] || headlines[language]['urban'];
+  return headlines[language] || headlines['en'];
 };
