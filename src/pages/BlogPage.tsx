@@ -157,10 +157,10 @@ const BlogPage = () => {
             </div>
 
             <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
-              {filteredPosts.map((post) => (
+            {filteredPosts.map((post) => (
+              <Link to={`/blog/${post.slug}`} key={post.id}>
                 <article
-                  key={post.id}
-                  className="group bg-card rounded-2xl overflow-hidden shadow-card hover:shadow-elevated transition-all duration-300 hover:-translate-y-1"
+                  className="group bg-card rounded-2xl overflow-hidden shadow-card hover:shadow-elevated transition-all duration-300 hover:-translate-y-1 h-full"
                 >
                   <div className="relative overflow-hidden aspect-[16/10]">
                     <img
@@ -205,7 +205,7 @@ const BlogPage = () => {
                     </span>
                   </div>
                 </article>
-              ))}
+              </Link>
             </div>
 
             {filteredPosts.length === 0 && (
