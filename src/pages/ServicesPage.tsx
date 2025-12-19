@@ -2,6 +2,7 @@ import { Link } from 'react-router-dom';
 import { Header } from '@/components/Header';
 import { Footer } from '@/components/Footer';
 import { SEOHead } from '@/components/SEOHead';
+import { PeopleAlsoAskSection } from '@/components/home/PeopleAlsoAskSection';
 import { useLanguage } from '@/contexts/LanguageContext';
 import { Phone, Heart, Scissors, Clock, Shield, ShoppingBag, ChevronRight } from 'lucide-react';
 
@@ -123,6 +124,9 @@ const ServicesPage = () => {
               </div>
             </div>
           </section>
+
+          {/* People Also Ask Section */}
+          <PeopleAlsoAskSection />
         </main>
         
         <Footer />
