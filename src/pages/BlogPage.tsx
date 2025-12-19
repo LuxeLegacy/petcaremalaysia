@@ -206,15 +206,16 @@ const BlogPage = () => {
                   </div>
                 </article>
               </Link>
-            </div>
+            ))}
+          </div>
 
-            {filteredPosts.length === 0 && (
-              <div className="text-center py-12">
-                <p className="text-muted-foreground">
-                  {t.blog?.noArticles || 'No articles found in this category.'}
-                </p>
-              </div>
-            )}
+          {filteredPosts.length === 0 && (
+            <div className="text-center py-12">
+              <p className="text-muted-foreground">
+                {t.blog?.noArticles || 'No articles found in this category.'}
+              </p>
+            </div>
+          )}
           </div>
         </section>
       </main>
