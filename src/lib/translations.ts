@@ -311,7 +311,7 @@ export const translations: Record<Language, Translations> = {
       open24h: 'Open 24 Hours',
     },
     footer: {
-      copyright: '© 2024 PetCare Malaysia. All rights reserved.',
+      copyright: '© 2026 PetCare Malaysia. All rights reserved.',
       privacy: 'Privacy Policy',
       terms: 'Terms of Service',
     },
@@ -481,7 +481,7 @@ export const translations: Record<Language, Translations> = {
       open24h: 'Buka 24 Jam',
     },
     footer: {
-      copyright: '© 2024 PetCare Malaysia. Hak cipta terpelihara.',
+      copyright: '© 2026 PetCare Malaysia. Hak cipta terpelihara.',
       privacy: 'Polisi Privasi',
       terms: 'Terma Perkhidmatan',
     },
@@ -651,7 +651,7 @@ export const translations: Record<Language, Translations> = {
       open24h: '24小时营业',
     },
     footer: {
-      copyright: '© 2024 PetCare Malaysia. 版权所有。',
+      copyright: '© 2026 PetCare Malaysia. 版权所有。',
       privacy: '隐私政策',
       terms: '服务条款',
     },
