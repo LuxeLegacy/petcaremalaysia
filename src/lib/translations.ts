@@ -125,6 +125,20 @@ export interface Translations {
     post2Excerpt: string;
     post3Title: string;
     post3Excerpt: string;
+    post4Title: string;
+    post4Excerpt: string;
+    post5Title: string;
+    post5Excerpt: string;
+    post6Title: string;
+    post6Excerpt: string;
+    pageTitle: string;
+    pageDescription: string;
+    pageHeading: string;
+    filterBy: string;
+    allCategories: string;
+    showingResults: string;
+    articles: string;
+    noArticles: string;
   };
   finalCta: {
     title: string;
@@ -310,6 +324,20 @@ export const translations: Record<Language, Translations> = {
       post2Excerpt: 'A comprehensive guide to choosing the right nutrition for your dog or cat in Malaysia.',
       post3Title: 'Pet Insurance in Malaysia: Oyen vs MSIG Compared',
       post3Excerpt: 'We break down the costs, coverage, and benefits of the top pet insurance providers.',
+      post4Title: 'Common Pet Illnesses in Malaysia and How to Prevent Them',
+      post4Excerpt: 'Understanding the most common health issues affecting pets in our tropical climate.',
+      post5Title: 'Essential Pet Grooming Tips for Malaysian Pet Owners',
+      post5Excerpt: 'Keep your furry friend looking and feeling their best with these grooming essentials.',
+      post6Title: 'Complete Vaccination Schedule for Dogs and Cats',
+      post6Excerpt: 'A comprehensive guide to keeping your pets protected with timely vaccinations.',
+      pageTitle: 'Pet Care Blog | PetCare Malaysia',
+      pageDescription: 'Expert pet care tips, guides, and advice for Malaysian pet owners. Learn about pet health, nutrition, grooming, and more.',
+      pageHeading: 'Pet Care Blog',
+      filterBy: 'Filter by category',
+      allCategories: 'All',
+      showingResults: 'Showing',
+      articles: 'articles',
+      noArticles: 'No articles found in this category.',
     },
     finalCta: {
       title: "Don't Wait Until It's Too Late",
@@ -493,6 +521,20 @@ export const translations: Record<Language, Translations> = {
       post2Excerpt: 'Panduan lengkap untuk memilih nutrisi yang tepat untuk anjing atau kucing anda di Malaysia.',
       post3Title: 'Insurans Haiwan di Malaysia: Perbandingan Oyen vs MSIG',
       post3Excerpt: 'Kami menganalisis kos, perlindungan, dan manfaat pembekal insurans haiwan terbaik.',
+      post4Title: 'Penyakit Haiwan Biasa di Malaysia dan Cara Mencegahnya',
+      post4Excerpt: 'Memahami masalah kesihatan paling biasa yang menjejaskan haiwan di iklim tropika kita.',
+      post5Title: 'Tips Dandanan Haiwan Penting untuk Pemilik Haiwan Malaysia',
+      post5Excerpt: 'Pastikan haiwan kesayangan anda sentiasa kelihatan dan berasa terbaik dengan keperluan dandanan ini.',
+      post6Title: 'Jadual Vaksinasi Lengkap untuk Anjing dan Kucing',
+      post6Excerpt: 'Panduan lengkap untuk memastikan haiwan anda dilindungi dengan vaksinasi yang tepat pada masanya.',
+      pageTitle: 'Blog Penjagaan Haiwan | PetCare Malaysia',
+      pageDescription: 'Tips penjagaan haiwan pakar, panduan, dan nasihat untuk pemilik haiwan Malaysia. Ketahui tentang kesihatan, nutrisi, dandanan haiwan dan banyak lagi.',
+      pageHeading: 'Blog Penjagaan Haiwan',
+      filterBy: 'Tapis mengikut kategori',
+      allCategories: 'Semua',
+      showingResults: 'Menunjukkan',
+      articles: 'artikel',
+      noArticles: 'Tiada artikel ditemui dalam kategori ini.',
     },
     finalCta: {
       title: 'Jangan Tunggu Sehingga Terlambat',
@@ -676,6 +718,20 @@ export const translations: Record<Language, Translations> = {
       post2Excerpt: '为您的狗或猫选择正确营养的全面指南。',
       post3Title: '马来西亚宠物保险：Oyen vs MSIG对比',
       post3Excerpt: '我们详细分析顶级宠物保险提供商的成本、保障和福利。',
+      post4Title: '马来西亚常见宠物疾病及预防方法',
+      post4Excerpt: '了解热带气候下影响宠物的最常见健康问题。',
+      post5Title: '马来西亚宠物主人必备美容技巧',
+      post5Excerpt: '用这些美容必备知识让您的毛茸茸朋友保持最佳状态。',
+      post6Title: '狗和猫的完整疫苗接种时间表',
+      post6Excerpt: '及时接种疫苗保护宠物的全面指南。',
+      pageTitle: '宠物护理博客 | PetCare Malaysia',
+      pageDescription: '为马来西亚宠物主人提供的专家宠物护理技巧、指南和建议。了解宠物健康、营养、美容等。',
+      pageHeading: '宠物护理博客',
+      filterBy: '按类别筛选',
+      allCategories: '全部',
+      showingResults: '显示',
+      articles: '篇文章',
+      noArticles: '该类别中没有找到文章。',
     },
     finalCta: {
       title: '不要等到为时已晚',
