@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { Input } from '@/components/ui/input';
-import { Search } from 'lucide-react';
+import { Button } from '@/components/ui/button';
+import { Search, ChevronLeft, ChevronRight } from 'lucide-react';
 import { SEOHead } from '@/components/SEOHead';
 
 interface SitemapEntry {
@@ -99,12 +100,24 @@ const sitemapData: SitemapEntry[] = [
   { url: 'https://petcaremalaysia.com/terengganu/gong-badak', lastmod: '2025-01-01', changefreq: 'weekly', priority: '0.6' },
 ];
 
+const ITEMS_PER_PAGE = 20;
+
 const SitemapPage = () => {
   const [searchQuery, setSearchQuery] = useState('');
+  const [currentPage, setCurrentPage] = useState(1);
 
   const filteredData = sitemapData.filter(entry =>
     entry.url.toLowerCase().includes(searchQuery.toLowerCase())
   );
+
+  const totalPages = Math.ceil(filteredData.length / ITEMS_PER_PAGE);
+  const startIndex = (currentPage - 1) * ITEMS_PER_PAGE;
+  const paginatedData = filteredData.slice(startIndex, startIndex + ITEMS_PER_PAGE);
+
+  const handleSearch = (value: string) => {
+    setSearchQuery(value);
+    setCurrentPage(1);
+  };
 
   return (
     <>
@@ -155,9 +168,17 @@ const SitemapPage = () => {
               type="text"
               placeholder="Search URLs..."
               value={searchQuery}
-              onChange={(e) => setSearchQuery(e.target.value)}
+              onChange={(e) => handleSearch(e.target.value)}
               className="pl-12 bg-white/10 border-white/20 text-white placeholder:text-white/50 h-12 rounded-xl"
             />
+          </div>
+
+          {/* Pagination Info */}
+          <div className="flex items-center justify-between mb-4 text-white/80 text-sm">
+            <span>
+              Showing {startIndex + 1}-{Math.min(startIndex + ITEMS_PER_PAGE, filteredData.length)} of {filteredData.length} URLs
+            </span>
+            <span>Page {currentPage} of {totalPages}</span>
           </div>
 
           {/* Table */}
@@ -173,7 +194,7 @@ const SitemapPage = () => {
                   </tr>
                 </thead>
                 <tbody>
-                  {filteredData.map((entry, index) => (
+                  {paginatedData.map((entry, index) => (
                     <tr 
                       key={entry.url} 
                       className={`border-t border-gray-100 hover:bg-blue-50 transition-colors ${
@@ -217,6 +238,60 @@ const SitemapPage = () => {
               </table>
             </div>
           </div>
+
+          {/* Pagination Controls */}
+          {totalPages > 1 && (
+            <div className="flex items-center justify-center gap-2 mt-6">
+              <Button
+                variant="outline"
+                size="sm"
+                onClick={() => setCurrentPage(p => Math.max(1, p - 1))}
+                disabled={currentPage === 1}
+                className="bg-white/10 border-white/20 text-white hover:bg-white/20 disabled:opacity-50"
+              >
+                <ChevronLeft className="h-4 w-4" />
+                Previous
+              </Button>
+              
+              <div className="flex gap-1">
+                {Array.from({ length: totalPages }, (_, i) => i + 1)
+                  .filter(page => 
+                    page === 1 || 
+                    page === totalPages || 
+                    Math.abs(page - currentPage) <= 1
+                  )
+                  .map((page, idx, arr) => (
+                    <span key={page} className="flex items-center">
+                      {idx > 0 && arr[idx - 1] !== page - 1 && (
+                        <span className="text-white/60 px-2">...</span>
+                      )}
+                      <Button
+                        variant={currentPage === page ? "default" : "outline"}
+                        size="sm"
+                        onClick={() => setCurrentPage(page)}
+                        className={currentPage === page 
+                          ? "bg-white text-blue-600" 
+                          : "bg-white/10 border-white/20 text-white hover:bg-white/20"
+                        }
+                      >
+                        {page}
+                      </Button>
+                    </span>
+                  ))}
+              </div>
+
+              <Button
+                variant="outline"
+                size="sm"
+                onClick={() => setCurrentPage(p => Math.min(totalPages, p + 1))}
+                disabled={currentPage === totalPages}
+                className="bg-white/10 border-white/20 text-white hover:bg-white/20 disabled:opacity-50"
+              >
+                Next
+                <ChevronRight className="h-4 w-4" />
+              </Button>
+            </div>
+          )}
 
           {/* Footer */}
           <div className="text-center mt-8 text-white/60 text-sm">
