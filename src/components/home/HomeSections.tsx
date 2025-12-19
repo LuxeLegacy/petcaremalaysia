@@ -7,7 +7,7 @@ export const HeroSection = () => {
   const {
     t
   } = useLanguage();
-  return <section className="relative overflow-hidden gradient-hero lg:py-32 py-[40px]">
+  return <section className="relative overflow-hidden gradient-hero lg:py-32 py-[50px]">
       {/* Background pattern */}
       <div className="absolute inset-0 opacity-10">
         <div className="absolute top-10 left-10 text-8xl">🐕</div>
