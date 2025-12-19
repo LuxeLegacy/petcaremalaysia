@@ -16,6 +16,7 @@ import { TestimonialsSection } from '@/components/home/TestimonialsSection';
 import { FAQSection } from '@/components/home/FAQSection';
 import { FinalCtaSection } from '@/components/home/FinalCtaSection';
 import { PeopleAlsoAskSection } from '@/components/home/PeopleAlsoAskSection';
+import { BlogSection } from '@/components/home/BlogSection';
 import { useLanguage } from '@/contexts/LanguageContext';
 
 const Index = () => {
@@ -64,10 +65,13 @@ const Index = () => {
           {/* Section 9: Location Coverage (GEO optimized) */}
           <LocationsSection />
           
-          {/* Section 10: People Also Ask (SEO) */}
+          {/* Section 10: Blog Section */}
+          <BlogSection />
+          
+          {/* Section 11: People Also Ask (SEO) */}
           <PeopleAlsoAskSection />
           
-          {/* Section 11: Comprehensive FAQ (20 AEO Questions) */}
+          {/* Section 12: Comprehensive FAQ (20 AEO Questions) */}
           <FAQSection />
           
           {/* Section 12: Final CTA with Urgency */}

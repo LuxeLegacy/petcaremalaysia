@@ -113,6 +113,19 @@ export interface Translations {
     subtitle: string;
     questions: Array<{ q: string; a: string }>;
   };
+  blog: {
+    badge: string;
+    title: string;
+    subtitle: string;
+    readMore: string;
+    viewAll: string;
+    post1Title: string;
+    post1Excerpt: string;
+    post2Title: string;
+    post2Excerpt: string;
+    post3Title: string;
+    post3Excerpt: string;
+  };
   finalCta: {
     title: string;
     subtitle: string;
@@ -285,6 +298,19 @@ export const translations: Record<Language, Translations> = {
         { q: 'What are basic pet first aid tips?', a: 'Pet first aid basics: for bleeding, apply pressure with clean cloth; for heatstroke, move to shade and apply cool (not cold) water; for choking, check mouth carefully. Always seek veterinary care immediately after first aid.' },
       ],
     },
+    blog: {
+      badge: 'Pet Care Tips',
+      title: 'Latest from Our Blog',
+      subtitle: 'Expert advice, tips, and guides to help you take better care of your furry friends',
+      readMore: 'Read More',
+      viewAll: 'View All Articles',
+      post1Title: 'What to Do in a Pet Emergency: A Complete Guide',
+      post1Excerpt: 'Learn the critical steps to take when your pet faces a medical emergency. Every second counts.',
+      post2Title: 'Best Pet Food Brands Available in Malaysia',
+      post2Excerpt: 'A comprehensive guide to choosing the right nutrition for your dog or cat in Malaysia.',
+      post3Title: 'Pet Insurance in Malaysia: Oyen vs MSIG Compared',
+      post3Excerpt: 'We break down the costs, coverage, and benefits of the top pet insurance providers.',
+    },
     finalCta: {
       title: "Don't Wait Until It's Too Late",
       subtitle: "Every 8 minutes, a pet in Malaysia needs emergency care. Be prepared before crisis strikes.",
@@ -455,6 +481,19 @@ export const translations: Record<Language, Translations> = {
         { q: 'Apakah tips pertolongan cemas haiwan asas?', a: 'Asas pertolongan cemas haiwan: untuk pendarahan, tekan dengan kain bersih; untuk strok haba, alihkan ke tempat teduh dan sapukan air sejuk (bukan sejuk beku); untuk tercekik, periksa mulut dengan berhati-hati. Sentiasa dapatkan rawatan veterinar segera selepas pertolongan cemas.' },
       ],
     },
+    blog: {
+      badge: 'Tips Penjagaan Haiwan',
+      title: 'Terkini dari Blog Kami',
+      subtitle: 'Nasihat pakar, tips, dan panduan untuk membantu anda menjaga haiwan kesayangan dengan lebih baik',
+      readMore: 'Baca Lagi',
+      viewAll: 'Lihat Semua Artikel',
+      post1Title: 'Apa Yang Perlu Dilakukan Dalam Kecemasan Haiwan: Panduan Lengkap',
+      post1Excerpt: 'Pelajari langkah-langkah kritikal yang perlu diambil apabila haiwan anda menghadapi kecemasan perubatan.',
+      post2Title: 'Jenama Makanan Haiwan Terbaik di Malaysia',
+      post2Excerpt: 'Panduan lengkap untuk memilih nutrisi yang tepat untuk anjing atau kucing anda di Malaysia.',
+      post3Title: 'Insurans Haiwan di Malaysia: Perbandingan Oyen vs MSIG',
+      post3Excerpt: 'Kami menganalisis kos, perlindungan, dan manfaat pembekal insurans haiwan terbaik.',
+    },
     finalCta: {
       title: 'Jangan Tunggu Sehingga Terlambat',
       subtitle: 'Setiap 8 minit, seekor haiwan di Malaysia memerlukan rawatan kecemasan. Bersedia sebelum krisis melanda.',
@@ -624,6 +663,19 @@ export const translations: Record<Language, Translations> = {
         { q: '哪些狗品种最适合马来西亚气候？', a: '适合马来西亚的耐热品种：当地混种犬（Telomian）、比格犬、拉布拉多、金毛寻回犬和短毛品种。除非您有良好的空调，否则避免厚毛品种如哈士奇和马拉穆特。' },
         { q: '基本的宠物急救技巧是什么？', a: '宠物急救基础：出血时用干净的布按压；中暑时移到阴凉处并涂抹凉水（不是冰水）；窒息时小心检查嘴巴。急救后务必立即寻求兽医护理。' },
       ],
+    },
+    blog: {
+      badge: '宠物护理贴士',
+      title: '博客最新文章',
+      subtitle: '专家建议、技巧和指南，帮助您更好地照顾毛茸茸的朋友',
+      readMore: '阅读更多',
+      viewAll: '查看所有文章',
+      post1Title: '宠物紧急情况该怎么办：完整指南',
+      post1Excerpt: '了解当您的宠物面临医疗紧急情况时应采取的关键步骤。分秒必争。',
+      post2Title: '马来西亚最佳宠物食品品牌',
+      post2Excerpt: '为您的狗或猫选择正确营养的全面指南。',
+      post3Title: '马来西亚宠物保险：Oyen vs MSIG对比',
+      post3Excerpt: '我们详细分析顶级宠物保险提供商的成本、保障和福利。',
     },
     finalCta: {
       title: '不要等到为时已晚',
