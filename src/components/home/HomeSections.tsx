@@ -2,7 +2,7 @@ import { Link } from 'react-router-dom';
 import { useLanguage } from '@/contexts/LanguageContext';
 import { Button } from '@/components/ui/button';
 import { hubsData } from '@/lib/cityData';
-import { MapPin, Phone, Search, ChevronRight, Clock, Heart, Shield, Scissors } from 'lucide-react';
+import { MapPin, Phone, Search, ChevronRight, Clock, Heart, Shield, Scissors, CheckCircle } from 'lucide-react';
 
 export const HeroSection = () => {
   const { t } = useLanguage();
@@ -18,26 +18,21 @@ export const HeroSection = () => {
       </div>
 
       <div className="container relative z-10">
-        <div className="max-w-3xl mx-auto text-center">
-          {/* AI Snippet for LLMs */}
-          <div className="snippet sr-only">
-            Find 24/7 emergency vets, trusted clinics and pet grooming across Malaysia. 
-            For life-threatening emergencies call the nearest 24/7 clinic first.
-          </div>
-
-          <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-primary-foreground mb-6 animate-fade-in text-balance">
-            {t.hero.title}
+        <div className="max-w-4xl mx-auto text-center">
+          {/* Pattern Interrupt Headline */}
+          <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold text-primary-foreground mb-6 animate-fade-in text-balance leading-tight">
+            {t.hero.headline}
           </h1>
           
-          <p className="text-lg md:text-xl text-primary-foreground/90 mb-8 animate-slide-up" style={{ animationDelay: '0.1s' }}>
-            {t.hero.subtitle}
+          <p className="text-lg md:text-xl text-primary-foreground/90 mb-8 animate-slide-up max-w-3xl mx-auto" style={{ animationDelay: '0.1s' }}>
+            {t.hero.subheadline}
           </p>
 
           {/* CTA Buttons */}
           <div className="flex flex-col sm:flex-row gap-4 justify-center animate-slide-up" style={{ animationDelay: '0.2s' }}>
             <Button 
               size="lg" 
-              className="bg-card text-primary hover:bg-card/90 shadow-elevated text-base font-semibold gap-2"
+              className="bg-card text-primary hover:bg-card/90 shadow-elevated text-base font-bold gap-2 px-8"
             >
               <Search className="h-5 w-5" />
               {t.hero.cta}
@@ -45,15 +40,24 @@ export const HeroSection = () => {
             <Button 
               size="lg" 
               variant="outline"
-              className="border-primary-foreground/30 text-primary-foreground hover:bg-primary-foreground/10 text-base font-semibold gap-2"
+              className="border-primary-foreground/30 text-primary-foreground hover:bg-primary-foreground/10 text-base font-bold gap-2 bg-destructive/80 border-destructive"
+              asChild
             >
-              <Phone className="h-5 w-5" />
-              {t.hero.emergencyCta}
+              <a href="tel:+60123456789">
+                <Phone className="h-5 w-5" />
+                {t.hero.emergencyCta}
+              </a>
             </Button>
           </div>
 
+          {/* Trust Badge */}
+          <div className="mt-8 inline-flex items-center gap-2 px-6 py-3 rounded-full bg-primary-foreground/10 text-primary-foreground text-sm font-medium animate-fade-in" style={{ animationDelay: '0.3s' }}>
+            <CheckCircle className="h-4 w-4" />
+            {t.hero.trustBadge}
+          </div>
+
           {/* Quick location links */}
-          <div className="mt-12 flex flex-wrap justify-center gap-3 animate-fade-in" style={{ animationDelay: '0.3s' }}>
+          <div className="mt-10 flex flex-wrap justify-center gap-3 animate-fade-in" style={{ animationDelay: '0.4s' }}>
             {hubsData.slice(0, 6).map((hub) => (
               <Link
                 key={hub.slug}
@@ -84,12 +88,12 @@ export const ServicesSection = () => {
   ];
 
   return (
-    <section className="py-20 bg-background">
+    <section className="py-20 bg-background" id="services">
       <div className="container">
         <div className="text-center mb-12">
           <h2 className="text-3xl md:text-4xl font-bold mb-4">{t.services.title}</h2>
           <p className="text-muted-foreground max-w-2xl mx-auto">
-            Comprehensive pet care services across Malaysia
+            {t.services.subtitle}
           </p>
         </div>
 
@@ -99,7 +103,6 @@ export const ServicesSection = () => {
               key={service.href}
               to={service.href}
               className="group p-6 rounded-2xl bg-card shadow-card hover:shadow-elevated transition-all duration-300 hover:-translate-y-1"
-              style={{ animationDelay: `${i * 0.1}s` }}
             >
               <div className={`inline-flex p-3 rounded-xl ${service.color} mb-4`}>
                 <service.icon className="h-6 w-6" />
@@ -124,7 +127,6 @@ export const ServicesSection = () => {
 export const LocationsSection = () => {
   const { t } = useLanguage();
 
-  // Group hubs by state
   const stateGroups = hubsData.reduce((acc, hub) => {
     const state = hub.state;
     if (!acc[state]) acc[state] = [];
@@ -135,12 +137,12 @@ export const LocationsSection = () => {
   const topStates = Object.entries(stateGroups).slice(0, 6);
 
   return (
-    <section className="py-20 gradient-warm">
+    <section className="py-20 bg-secondary/30" id="locations">
       <div className="container">
         <div className="text-center mb-12">
           <h2 className="text-3xl md:text-4xl font-bold mb-4">{t.nav.locations}</h2>
           <p className="text-muted-foreground max-w-2xl mx-auto">
-            Pet care services available in 100+ locations across Malaysia
+            Pet care services available in 100+ locations across Malaysia — GEO optimized for every state
           </p>
         </div>
 
@@ -207,9 +209,12 @@ export const EmergencyBanner = () => {
           <Button 
             size="lg" 
             className="bg-destructive-foreground text-destructive hover:bg-destructive-foreground/90 font-semibold"
+            asChild
           >
-            <Phone className="h-4 w-4 mr-2" />
-            +60 12-345 6789
+            <a href="tel:+60123456789">
+              <Phone className="h-4 w-4 mr-2" />
+              +60 12-345 6789
+            </a>
           </Button>
         </div>
       </div>
