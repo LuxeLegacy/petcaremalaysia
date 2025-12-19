@@ -25,7 +25,6 @@ const App = () => (
             <Routes>
               {/* Sitemap - must be before /:lang to avoid matching */}
               <Route path="/sitemap" element={<SitemapPage />} />
-              <Route path="/sitemap.xml" element={<SitemapPage />} />
               
               {/* Home */}
               <Route path="/" element={<Index />} />
