@@ -1227,8 +1227,7 @@ const PetFoodBrandsGuide = () => {
             <h1 className="text-3xl md:text-5xl font-bold mt-4 mb-6 leading-tight">Best Pet Food Brands Available in Malaysia: A Complete Guide for 2026</h1>
             
             <div className="flex flex-wrap items-center gap-4 text-muted-foreground mb-6">
-              <span className="flex items-center gap-1">
-                <Calendar className="h-4 w-4" />
+              <span className="flex items-center gap-1">December 10, 2025<Calendar className="h-4 w-4" />
                 December 10, 2024
               </span>
               <span className="flex items-center gap-1">
