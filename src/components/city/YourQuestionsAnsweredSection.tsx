@@ -2,6 +2,7 @@ import { useState, useMemo } from 'react';
 import { useLanguage } from '@/contexts/LanguageContext';
 import { CityData } from '@/lib/cityData';
 import { yqaLabels, yqaItems, YQAItem } from '@/lib/yqaContent';
+import { getDVSOffice, getLocalCouncil } from '@/lib/cityContent';
 import { Input } from '@/components/ui/input';
 import { Button } from '@/components/ui/button';
 import { Search, ChevronDown, ChevronUp, ChevronLeft, ChevronRight, Cat, Dog, AlertTriangle, Heart } from 'lucide-react';
@@ -16,11 +17,23 @@ type IssueFilter = 'all' | 'emergency' | 'maintenance';
 
 const ITEMS_PER_PAGE = 10;
 
-// Helper function to replace city placeholders in text
+// Helper function to replace city and DVS placeholders in text
 const replacePlaceholders = (text: string, city: CityData): string => {
+  const dvsOffice = getDVSOffice(city.state);
+  const localCouncil = getLocalCouncil(city.slug, city.state);
+  
   return text
     .replace(/{city}/g, city.name)
-    .replace(/{state}/g, city.state);
+    .replace(/{state}/g, city.state)
+    .replace(/{dvs_name}/g, dvsOffice.name)
+    .replace(/{dvs_phone}/g, dvsOffice.phone)
+    .replace(/{dvs_email}/g, dvsOffice.email)
+    .replace(/{dvs_address}/g, dvsOffice.address)
+    .replace(/{council_name}/g, localCouncil.name)
+    .replace(/{council_short}/g, localCouncil.shortName)
+    .replace(/{council_website}/g, localCouncil.website)
+    .replace(/{dog_license_fee}/g, localCouncil.dogLicenseFee)
+    .replace(/{spayed_fee}/g, localCouncil.spayedFee);
 };
 
 export const YourQuestionsAnsweredSection: React.FC<YourQuestionsAnsweredSectionProps> = ({ city }) => {

@@ -778,5 +778,146 @@ export const yqaItems: YQAItem[] = [
       zh: '适当的营养对{city}({state})的狗健康至关重要。狗是杂食动物,但在富含蛋白质的饮食上茁壮成长。{city}狗的关键营养需求:高质量动物蛋白作为第一成分。平衡的脂肪提供能量和毛发健康。有限的优质碳水化合物。必需的维生素和矿物质。新鲜、干净的水(在{city}的热带气候中尤其重要)。{city}的喂养指南:幼犬(1岁以下):每天3-4餐,适合体型的幼犬配方。成年(1-7岁):每天2餐,根据体重和活动量定量。{city}气候的特殊考虑:确保在高温中持续获得新鲜水。考虑湿粮增加水分。正确储存干粮以防止在湿度中变质。要避免的食物:巧克力、葡萄和葡萄干、洋葱和大蒜、木糖醇(人工甜味剂)。咨询{city}({state})兽医获取个性化营养建议。'
     },
     keywords: ['nutrition', 'food', 'diet', 'feeding', 'protein', 'water', 'health']
+  },
+  // DVS and Government-related Q&As
+  {
+    id: 'dvs-contact-1',
+    category: 'dog-maintenance',
+    question: {
+      en: 'How do I contact the DVS office in {state} for pet licensing?',
+      ms: 'Bagaimana saya menghubungi pejabat DVS di {state} untuk pelesenan haiwan peliharaan?',
+      zh: '我如何联系{state}的DVS办公室办理宠物许可证?'
+    },
+    shortAnswer: {
+      en: 'Pet owners in {city}, {state} can contact {dvs_name} at {dvs_phone} for all pet licensing inquiries. The office handles dog licenses, rabies vaccinations, and pet import/export permits for {state} residents.',
+      ms: 'Pemilik haiwan peliharaan di {city}, {state} boleh menghubungi {dvs_name} di {dvs_phone} untuk semua pertanyaan pelesenan haiwan. Pejabat ini mengendalikan lesen anjing, vaksinasi rabies, dan permit import/eksport haiwan untuk penduduk {state}.',
+      zh: '{city}({state})的宠物主人可以拨打{dvs_phone}联系{dvs_name}咨询所有宠物许可事宜。该办公室为{state}居民办理狗证、狂犬病疫苗接种和宠物进出口许可证。'
+    },
+    fullAnswer: {
+      en: 'For pet owners in {city}, {state}, the Department of Veterinary Services (DVS) is your go-to authority for all official pet matters. Contact Details for {state} DVS Office: Name: {dvs_name}. Phone: {dvs_phone}. Email: {dvs_email}. Address: {dvs_address}. Services provided by the DVS office include: Dog licensing and registration. Rabies vaccination certificates. Pet import and export permits. Animal health certificates. Reporting of animal disease outbreaks. Advice on pet ownership regulations. For {city} residents, the DVS office can also provide information about local pet regulations, required vaccinations, and proper documentation for traveling with pets within Malaysia or internationally. Office hours are typically Monday to Friday, 8:00 AM to 5:00 PM. It is recommended to call ahead for appointments for licensing services.',
+      ms: 'Untuk pemilik haiwan peliharaan di {city}, {state}, Jabatan Perkhidmatan Veterinar (DVS) adalah pihak berkuasa utama untuk semua urusan haiwan peliharaan rasmi. Butiran Hubungan Pejabat DVS {state}: Nama: {dvs_name}. Telefon: {dvs_phone}. Emel: {dvs_email}. Alamat: {dvs_address}. Perkhidmatan yang disediakan oleh pejabat DVS termasuk: Pelesenan dan pendaftaran anjing. Sijil vaksinasi rabies. Permit import dan eksport haiwan peliharaan. Sijil kesihatan haiwan. Waktu pejabat biasanya Isnin hingga Jumaat, 8:00 pagi hingga 5:00 petang.',
+      zh: '对于{city}({state})的宠物主人,兽医服务部门(DVS)是处理所有官方宠物事务的权威机构。{state}DVS办公室联系方式:名称:{dvs_name}。电话:{dvs_phone}。邮箱:{dvs_email}。地址:{dvs_address}。DVS办公室提供的服务包括:狗证办理和登记。狂犬病疫苗接种证明。宠物进出口许可证。动物健康证明。办公时间通常为周一至周五,上午8:00至下午5:00。'
+    },
+    keywords: ['DVS', 'license', 'government', 'contact', 'registration', 'veterinary services', 'permit']
+  },
+  {
+    id: 'dog-license-1',
+    category: 'dog-maintenance',
+    question: {
+      en: 'How much does a dog license cost in {city}?',
+      ms: 'Berapakah kos lesen anjing di {city}?',
+      zh: '在{city}办理狗证要多少钱?'
+    },
+    shortAnswer: {
+      en: 'In {city}, {state}, dog licensing is managed by {council_name} ({council_short}). The standard dog license fee is {dog_license_fee}, with a reduced rate of {spayed_fee} for spayed/neutered dogs. Licenses must be renewed annually.',
+      ms: 'Di {city}, {state}, pelesenan anjing diuruskan oleh {council_name} ({council_short}). Yuran lesen anjing standard adalah {dog_license_fee}, dengan kadar dikurangkan {spayed_fee} untuk anjing yang telah dimandulkan. Lesen mesti diperbaharui setiap tahun.',
+      zh: '在{city}({state}),狗证由{council_name}({council_short})管理。标准狗证费用为{dog_license_fee},绝育狗的优惠费用为{spayed_fee}。许可证必须每年更新。'
+    },
+    fullAnswer: {
+      en: 'Dog licensing in {city}, {state} is regulated by the local council to ensure public safety and responsible pet ownership. Licensing Authority: {council_name} ({council_short}). Website: {council_website}. Fee Structure: Standard dog license: {dog_license_fee}. Spayed/neutered dog license: {spayed_fee}. Why the difference? Spaying and neutering helps control the stray population and reduces aggressive behavior, so councils offer incentives for responsible pet owners. Requirements for dog licensing in {city}: Proof of rabies vaccination (valid certificate from a registered veterinarian). Proof of spaying/neutering (if applying for reduced fee). Identification documents of the owner. Recent photograph of the dog. Completed application form. Benefits of licensing your dog: Legal compliance with local regulations. Easier identification if your dog gets lost. Access to certain public areas. Proof of vaccination status. Renewal: Dog licenses in {city} must be renewed annually. Some councils offer online renewal through their website. Late renewal may incur additional penalties. For more information, visit {council_website} or contact {dvs_name} at {dvs_phone}.',
+      ms: 'Pelesenan anjing di {city}, {state} dikawal oleh majlis tempatan untuk memastikan keselamatan awam dan pemilikan haiwan peliharaan yang bertanggungjawab. Pihak Berkuasa Pelesenan: {council_name} ({council_short}). Laman web: {council_website}. Struktur Yuran: Lesen anjing standard: {dog_license_fee}. Lesen anjing yang dimandulkan: {spayed_fee}. Keperluan untuk pelesenan anjing di {city}: Bukti vaksinasi rabies. Bukti pemandian (jika memohon yuran dikurangkan). Dokumen pengenalan pemilik. Gambar anjing terkini. Borang permohonan lengkap. Pembaharuan: Lesen anjing di {city} mesti diperbaharui setiap tahun.',
+      zh: '{city}({state})的狗证由当地议会监管,以确保公共安全和负责任的宠物饲养。许可机构:{council_name}({council_short})。网站:{council_website}。费用结构:标准狗证:{dog_license_fee}。绝育狗证:{spayed_fee}。{city}狗证要求:狂犬病疫苗接种证明。绝育证明(如申请优惠费用)。宠物主人身份证明。狗的近照。填写完整的申请表。更新:狗证必须每年更新。更多信息请访问{council_website}或致电{dvs_phone}联系{dvs_name}。'
+    },
+    keywords: ['license', 'fee', 'cost', 'council', 'registration', 'spayed', 'neutered', 'annual']
+  },
+  {
+    id: 'emergency-hotline-1',
+    category: 'dog-emergency',
+    question: {
+      en: 'What is the emergency pet hotline in {state}?',
+      ms: 'Apakah talian kecemasan haiwan peliharaan di {state}?',
+      zh: '{state}的宠物紧急热线是什么?'
+    },
+    shortAnswer: {
+      en: 'For pet emergencies in {city}, {state}, contact the DVS emergency line at {dvs_phone} during office hours. For after-hours emergencies, locate your nearest 24-hour veterinary clinic. Keep the Malaysia emergency number 999 for life-threatening situations.',
+      ms: 'Untuk kecemasan haiwan peliharaan di {city}, {state}, hubungi talian kecemasan DVS di {dvs_phone} pada waktu pejabat. Untuk kecemasan selepas waktu pejabat, cari klinik veterinar 24 jam terdekat. Simpan nombor kecemasan Malaysia 999 untuk situasi yang mengancam nyawa.',
+      zh: '如遇{city}({state})宠物紧急情况,请在办公时间拨打DVS紧急热线{dvs_phone}。下班后的紧急情况,请寻找最近的24小时兽医诊所。危及生命的情况请拨打马来西亚紧急电话999。'
+    },
+    fullAnswer: {
+      en: 'Pet emergencies in {city}, {state} require quick action. Here are the essential contacts you should save: DVS Emergency Contact: {dvs_name}. Phone: {dvs_phone}. Email: {dvs_email}. Address: {dvs_address}. General Emergency Numbers: Malaysia Emergency Services: 999. SPCA Malaysia: 03-4256 5312. PAWS Animal Welfare Society: 03-7846 1087. What constitutes a pet emergency: Difficulty breathing or choking. Severe bleeding or wounds. Suspected poisoning. Inability to stand or walk. Seizures or unconsciousness. Prolonged labor in pregnant animals. Severe vomiting or diarrhea. Heat stroke (common in {city}\'s tropical climate). What to do in an emergency: Stay calm and assess the situation. Call the emergency number or nearest 24-hour vet in {city}. Safely transport your pet (use a carrier for small animals). Bring any relevant information (medications, what they may have eaten). Prevention tips for {city} pet owners: Save emergency contacts in your phone now. Know the location of 24-hour vet clinics near you in {city}. Keep a pet first aid kit at home. Learn basic pet CPR. Be aware of {city}\'s specific risks (tropical heat, certain plants, wildlife).',
+      ms: 'Kecemasan haiwan peliharaan di {city}, {state} memerlukan tindakan segera. Berikut adalah kenalan penting yang perlu anda simpan: Hubungan Kecemasan DVS: {dvs_name}. Telefon: {dvs_phone}. Emel: {dvs_email}. Alamat: {dvs_address}. Nombor Kecemasan Am: Perkhidmatan Kecemasan Malaysia: 999. SPCA Malaysia: 03-4256 5312. PAWS Animal Welfare Society: 03-7846 1087. Apa yang merupakan kecemasan haiwan peliharaan: Kesukaran bernafas. Pendarahan atau luka teruk. Disyaki keracunan. Tidak boleh berdiri atau berjalan. Sawan atau tidak sedarkan diri. Apa yang perlu dilakukan dalam kecemasan: Bertenang dan menilai situasi. Hubungi nombor kecemasan atau klinik veterinar 24 jam terdekat di {city}. Angkut haiwan peliharaan anda dengan selamat.',
+      zh: '{city}({state})的宠物紧急情况需要快速行动。以下是您应该保存的重要联系方式:DVS紧急联系:{dvs_name}。电话:{dvs_phone}。邮箱:{dvs_email}。地址:{dvs_address}。一般紧急号码:马来西亚紧急服务:999。马来西亚SPCA:03-4256 5312。PAWS动物福利协会:03-7846 1087。什么构成宠物紧急情况:呼吸困难或窒息。严重出血或伤口。疑似中毒。无法站立或行走。癫痫发作或失去意识。紧急情况下该怎么做:保持冷静并评估情况。拨打紧急号码或{city}最近的24小时兽医诊所。安全运送您的宠物。'
+    },
+    keywords: ['emergency', 'hotline', 'urgent', '24-hour', 'crisis', 'poison', 'accident', 'DVS']
+  },
+  {
+    id: 'cat-emergency-hotline-1',
+    category: 'cat-emergency',
+    question: {
+      en: 'Where can I get emergency help for my cat in {city}?',
+      ms: 'Di mana saya boleh mendapatkan bantuan kecemasan untuk kucing saya di {city}?',
+      zh: '在{city}我在哪里可以为我的猫获得紧急帮助?'
+    },
+    shortAnswer: {
+      en: 'Cat owners in {city}, {state} can contact {dvs_name} at {dvs_phone} for guidance on emergency veterinary services. For immediate emergencies, search for 24-hour vet clinics in {city} or call Malaysia\'s emergency services at 999 for animal rescue assistance.',
+      ms: 'Pemilik kucing di {city}, {state} boleh menghubungi {dvs_name} di {dvs_phone} untuk panduan mengenai perkhidmatan veterinar kecemasan. Untuk kecemasan segera, cari klinik veterinar 24 jam di {city} atau hubungi perkhidmatan kecemasan Malaysia di 999.',
+      zh: '{city}({state})的猫主人可以拨打{dvs_phone}联系{dvs_name}获取紧急兽医服务指导。如遇紧急情况,请在{city}搜索24小时兽医诊所或拨打马来西亚紧急服务电话999寻求动物救援帮助。'
+    },
+    fullAnswer: {
+      en: 'Emergency care for cats in {city}, {state} is available through several channels. Primary Contact: {dvs_name}. Phone: {dvs_phone}. Email: {dvs_email}. Common cat emergencies that require immediate attention: Difficulty breathing or open-mouth breathing. Inability to urinate (especially in male cats - this is life-threatening). Severe trauma or bleeding. Unconsciousness or collapse. Seizures lasting more than 2 minutes. Suspected poisoning (household chemicals, plants, medications). Prolonged vomiting or diarrhea. Signs of heat stroke (common in {city}\'s climate). What to do: Keep emergency contacts saved in your phone. Know the location of 24-hour emergency vets in {city}. Have a cat carrier ready for safe transport. Keep basic first aid supplies (gauze, saline solution). Stay calm - cats can sense your stress. For general advice on cat health regulations in {state}, contact the DVS office at {dvs_phone} or email {dvs_email}.',
+      ms: 'Penjagaan kecemasan untuk kucing di {city}, {state} tersedia melalui beberapa saluran. Hubungan Utama: {dvs_name}. Telefon: {dvs_phone}. Emel: {dvs_email}. Kecemasan kucing biasa yang memerlukan perhatian segera: Kesukaran bernafas. Ketidakupayaan untuk kencing (terutamanya pada kucing jantan - ini mengancam nyawa). Trauma atau pendarahan teruk. Tidak sedarkan diri. Sawan yang berlangsung lebih dari 2 minit. Disyaki keracunan. Apa yang perlu dilakukan: Simpan kenalan kecemasan dalam telefon anda. Ketahui lokasi klinik veterinar 24 jam kecemasan di {city}.',
+      zh: '{city}({state})的猫紧急护理可通过多种渠道获得。主要联系方式:{dvs_name}。电话:{dvs_phone}。邮箱:{dvs_email}。需要立即关注的常见猫紧急情况:呼吸困难或张嘴呼吸。无法排尿(尤其是公猫 - 这是危及生命的)。严重外伤或出血。失去意识或昏倒。持续超过2分钟的癫痫发作。疑似中毒。该怎么做:将紧急联系人保存在手机中。了解{city}24小时紧急兽医的位置。准备好猫笼以便安全运输。有关{state}猫健康法规的一般建议,请拨打{dvs_phone}或发送邮件至{dvs_email}联系DVS办公室。'
+    },
+    keywords: ['emergency', 'cat', 'urgent', 'help', 'rescue', '24-hour', 'crisis', 'vet']
+  },
+  {
+    id: 'rabies-vaccination-1',
+    category: 'dog-maintenance',
+    question: {
+      en: 'Is rabies vaccination mandatory for dogs in {state}?',
+      ms: 'Adakah vaksinasi rabies wajib untuk anjing di {state}?',
+      zh: '在{state}狗必须接种狂犬病疫苗吗?'
+    },
+    shortAnswer: {
+      en: 'Yes, rabies vaccination is mandatory for all dogs in {city}, {state} under Malaysian law. Contact {dvs_name} at {dvs_phone} for approved vaccination centers. Dogs must be vaccinated annually, and proof of vaccination is required for licensing.',
+      ms: 'Ya, vaksinasi rabies adalah wajib untuk semua anjing di {city}, {state} di bawah undang-undang Malaysia. Hubungi {dvs_name} di {dvs_phone} untuk pusat vaksinasi yang diluluskan. Anjing mesti divaksin setiap tahun.',
+      zh: '是的,根据马来西亚法律,{city}({state})所有狗都必须接种狂犬病疫苗。请拨打{dvs_phone}联系{dvs_name}了解认可的疫苗接种中心。狗必须每年接种疫苗,办理许可证需要疫苗接种证明。'
+    },
+    fullAnswer: {
+      en: 'Rabies vaccination is a legal requirement for dogs in {city}, {state}, and throughout Malaysia. This is regulated by the Department of Veterinary Services. Authority: {dvs_name}. Contact: {dvs_phone}. Email: {dvs_email}. Legal Requirements: All dogs must be vaccinated against rabies. Vaccination must be administered by a registered veterinarian. Annual boosters are required to maintain immunity. Vaccination certificate must be kept and presented when required. Failure to vaccinate can result in fines or seizure of the animal. Vaccination Schedule: First vaccination: 3 months of age. Booster: Every 12 months. Where to get vaccinated in {city}: Registered private veterinary clinics. DVS-organized vaccination campaigns. Government veterinary clinics. Cost: Private clinics: RM30-80 depending on the clinic. Government campaigns: Often free or subsidized. Documentation: After vaccination, you will receive: Official rabies vaccination certificate. Microchip registration (if not already done). This documentation is required for: Dog licensing with {council_name}. Interstate travel within Malaysia. International pet travel. For a list of approved vaccination centers in {city}, {state}, contact {dvs_name} at {dvs_phone} or visit a registered veterinary clinic.',
+      ms: 'Vaksinasi rabies adalah keperluan undang-undang untuk anjing di {city}, {state}, dan seluruh Malaysia. Ini dikawal oleh Jabatan Perkhidmatan Veterinar. Pihak Berkuasa: {dvs_name}. Hubungi: {dvs_phone}. Emel: {dvs_email}. Keperluan Undang-undang: Semua anjing mesti divaksin terhadap rabies. Vaksinasi mesti diberikan oleh veterinar berdaftar. Penggalak tahunan diperlukan. Jadual Vaksinasi: Vaksinasi pertama: 3 bulan. Penggalak: Setiap 12 bulan. Di mana untuk mendapatkan vaksinasi di {city}: Klinik veterinar swasta berdaftar. Kempen vaksinasi anjuran DVS. Untuk senarai pusat vaksinasi yang diluluskan di {city}, {state}, hubungi {dvs_name} di {dvs_phone}.',
+      zh: '狂犬病疫苗接种是{city}({state})乃至整个马来西亚对狗的法律要求。这由兽医服务部门监管。机构:{dvs_name}。联系方式:{dvs_phone}。邮箱:{dvs_email}。法律要求:所有狗必须接种狂犬病疫苗。疫苗必须由注册兽医接种。需要每年加强免疫。疫苗接种时间表:首次接种:3个月大。加强:每12个月。在{city}哪里接种:注册私人兽医诊所。DVS组织的疫苗接种活动。文件:接种后,您将收到:官方狂犬病疫苗接种证书。此文件用于:在{council_name}办理狗证。如需{city}({state})认可疫苗接种中心的名单,请拨打{dvs_phone}联系{dvs_name}。'
+    },
+    keywords: ['rabies', 'vaccination', 'mandatory', 'law', 'DVS', 'certificate', 'annual']
+  },
+  {
+    id: 'pet-import-1',
+    category: 'dog-maintenance',
+    question: {
+      en: 'How do I import a pet to {city} from another country?',
+      ms: 'Bagaimana saya mengimport haiwan peliharaan ke {city} dari negara lain?',
+      zh: '我如何从其他国家进口宠物到{city}?'
+    },
+    shortAnswer: {
+      en: 'To import a pet to {city}, {state}, you need an import permit from {dvs_name}. Contact them at {dvs_phone} at least 2 months before travel. Requirements include rabies vaccination, health certificate, microchip, and quarantine may be required.',
+      ms: 'Untuk mengimport haiwan peliharaan ke {city}, {state}, anda memerlukan permit import daripada {dvs_name}. Hubungi mereka di {dvs_phone} sekurang-kurangnya 2 bulan sebelum perjalanan. Keperluan termasuk vaksinasi rabies, sijil kesihatan, dan mikrocip.',
+      zh: '要将宠物进口到{city}({state}),您需要{dvs_name}的进口许可证。请在旅行前至少2个月拨打{dvs_phone}与他们联系。要求包括狂犬病疫苗接种、健康证明、微芯片,可能需要隔离。'
+    },
+    fullAnswer: {
+      en: 'Importing a pet to {city}, {state} requires careful planning and documentation through the Department of Veterinary Services. Contact: {dvs_name}. Phone: {dvs_phone}. Email: {dvs_email}. Address: {dvs_address}. Timeline: Start the process at least 2-3 months before travel. General Requirements: Valid import permit from DVS. Rabies vaccination (at least 30 days before travel, not more than 12 months). Microchip (ISO 11784/11785 compliant). Health certificate from origin country (issued within 10 days of travel). Blood titer test may be required depending on origin country. Import Permit Application: Submit application to {dvs_name}. Include: Pet details, vaccination records, origin country, intended arrival date. Fee: Approximately RM50-100. Processing time: 1-2 weeks. Quarantine: Pets from rabies-free countries: May be exempt. Pets from rabies-endemic countries: Up to 30 days quarantine. Quarantine facilities are available in major entry points. Upon Arrival in {city}: Present all documents at point of entry. Pet will be inspected by veterinary officers. Microchip will be scanned and verified. For specific requirements based on your origin country, contact {dvs_name} at {dvs_phone} or email {dvs_email}.',
+      ms: 'Mengimport haiwan peliharaan ke {city}, {state} memerlukan perancangan dan dokumentasi yang teliti melalui Jabatan Perkhidmatan Veterinar. Hubungi: {dvs_name}. Telefon: {dvs_phone}. Emel: {dvs_email}. Alamat: {dvs_address}. Garis masa: Mulakan proses sekurang-kurangnya 2-3 bulan sebelum perjalanan. Keperluan Am: Permit import yang sah dari DVS. Vaksinasi rabies. Mikrocip. Sijil kesihatan dari negara asal. Permohonan Permit Import: Hantar permohonan kepada {dvs_name}. Yuran: Kira-kira RM50-100. Masa pemprosesan: 1-2 minggu. Untuk keperluan khusus berdasarkan negara asal anda, hubungi {dvs_name} di {dvs_phone}.',
+      zh: '将宠物进口到{city}({state})需要通过兽医服务部门进行周密的计划和文件准备。联系方式:{dvs_name}。电话:{dvs_phone}。邮箱:{dvs_email}。地址:{dvs_address}。时间线:在旅行前至少2-3个月开始准备。一般要求:DVS的有效进口许可证。狂犬病疫苗接种。微芯片。原产国健康证明。进口许可证申请:向{dvs_name}提交申请。费用:约RM50-100。处理时间:1-2周。有关基于您原产国的具体要求,请拨打{dvs_phone}或发送邮件至{dvs_email}联系{dvs_name}。'
+    },
+    keywords: ['import', 'travel', 'permit', 'quarantine', 'international', 'documents', 'DVS']
+  },
+  {
+    id: 'stray-report-1',
+    category: 'dog-emergency',
+    question: {
+      en: 'How do I report a stray or injured animal in {city}?',
+      ms: 'Bagaimana saya melaporkan haiwan terbiar atau cedera di {city}?',
+      zh: '我如何在{city}报告流浪或受伤的动物?'
+    },
+    shortAnswer: {
+      en: 'To report stray or injured animals in {city}, {state}, contact {council_name} or {dvs_name} at {dvs_phone}. For emergencies, call Malaysia\'s emergency services at 999. SPCA Malaysia (03-4256 5312) and PAWS (03-7846 1087) also respond to animal rescue calls.',
+      ms: 'Untuk melaporkan haiwan terbiar atau cedera di {city}, {state}, hubungi {council_name} atau {dvs_name} di {dvs_phone}. Untuk kecemasan, hubungi perkhidmatan kecemasan Malaysia di 999. SPCA Malaysia (03-4256 5312) dan PAWS (03-7846 1087) juga bertindak balas terhadap panggilan penyelamatan haiwan.',
+      zh: '要在{city}({state})报告流浪或受伤的动物,请联系{council_name}或拨打{dvs_phone}联系{dvs_name}。如遇紧急情况,请拨打马来西亚紧急服务电话999。马来西亚SPCA(03-4256 5312)和PAWS(03-7846 1087)也会响应动物救援电话。'
+    },
+    fullAnswer: {
+      en: 'If you encounter a stray or injured animal in {city}, {state}, there are several organizations you can contact for help. Primary Contacts: Local Council: {council_name} ({council_short}). Website: {council_website}. DVS Office: {dvs_name}. Phone: {dvs_phone}. Email: {dvs_email}. National Animal Welfare Organizations: SPCA Malaysia: 03-4256 5312. PAWS Animal Welfare Society: 03-7846 1087. Malaysia Emergency Services: 999 (for dangerous animal situations). What to report: Location of the animal. Type of animal (dog, cat, etc.). Condition (injured, aggressive, appears sick). Any immediate dangers to public. When reporting injured animals: Keep a safe distance. Do not attempt to handle aggressive animals. If safe, provide water and shade. Take photos to help rescuers identify the animal. Wait for professional help to arrive. What happens after reporting: The local council or animal welfare organization will dispatch a team. Injured animals may be taken to veterinary facilities for treatment. Healthy strays may be taken to shelters. Owners of lost pets will be contacted if microchipped. {city} residents can also volunteer with local animal welfare groups to help with rescue and rehabilitation efforts. Contact {council_name} for information about local volunteer opportunities.',
+      ms: 'Jika anda menemui haiwan terbiar atau cedera di {city}, {state}, terdapat beberapa organisasi yang boleh anda hubungi untuk bantuan. Hubungan Utama: Majlis Tempatan: {council_name} ({council_short}). Laman web: {council_website}. Pejabat DVS: {dvs_name}. Telefon: {dvs_phone}. Emel: {dvs_email}. Organisasi Kebajikan Haiwan Kebangsaan: SPCA Malaysia: 03-4256 5312. PAWS Animal Welfare Society: 03-7846 1087. Perkhidmatan Kecemasan Malaysia: 999. Apa yang perlu dilaporkan: Lokasi haiwan. Jenis haiwan. Keadaan (cedera, agresif, kelihatan sakit). Bila melaporkan haiwan cedera: Kekalkan jarak yang selamat. Jangan cuba mengendalikan haiwan agresif. Penduduk {city} juga boleh menjadi sukarelawan dengan kumpulan kebajikan haiwan tempatan.',
+      zh: '如果您在{city}({state})遇到流浪或受伤的动物,有几个组织可以联系寻求帮助。主要联系方式:地方议会:{council_name}({council_short})。网站:{council_website}。DVS办公室:{dvs_name}。电话:{dvs_phone}。邮箱:{dvs_email}。全国动物福利组织:马来西亚SPCA:03-4256 5312。PAWS动物福利协会:03-7846 1087。马来西亚紧急服务:999。需要报告什么:动物的位置。动物类型。状况(受伤、攻击性、看起来生病)。报告受伤动物时:保持安全距离。不要尝试处理攻击性动物。{city}居民也可以与当地动物福利团体一起做志愿者。'
+    },
+    keywords: ['stray', 'injured', 'report', 'rescue', 'SPCA', 'PAWS', 'council', 'emergency']
   }
 ];
