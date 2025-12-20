@@ -492,6 +492,387 @@ export const yqaItems: YQAItem[] = [
       zh: '不幸的是,癌症在猫中很常见,特别是随着年龄增长。早期发现显著改善治疗选择和结果。需要注意的警告信号包括:持续存在或生长的肿块或肿胀 - 并非所有都是癌性的,但都应该检查、不明原因的进行性体重下降、不愈合的溃疡或伤口、进食或吞咽困难或明显的口腔肿块、任何身体开口的异常分泌物或出血、持续跛行或僵硬、慢性呕吐或腹泻、进行性嗜睡和虚弱、呼吸困难或咳嗽、如厕习惯改变、食欲不振。猫常见的癌症包括淋巴瘤(最常见)、鳞状细胞癌、乳腺肿瘤和纤维肉瘤。如果您注意到任何警告信号,请不要拖延 - 安排兽医预约。许多猫对治疗反应良好。'
     },
     keywords: ['cancer', 'tumor', 'lump', 'weight loss', 'lymphoma', 'mass', 'oncology', 'growth']
+  },
+  // Cat Maintenance Q&As (20 items)
+  {
+    id: 'cat-vaccination-1',
+    category: 'cat-maintenance',
+    question: {
+      en: 'What vaccinations does my cat need and when?',
+      ms: 'Apakah vaksin yang diperlukan kucing saya dan bila?',
+      zh: '我的猫需要什么疫苗,什么时候接种?'
+    },
+    shortAnswer: {
+      en: 'Core vaccines include FVRCP (feline viral rhinotracheitis, calicivirus, panleukopenia) starting at 6-8 weeks with boosters every 3-4 weeks until 16 weeks, then annually or every 3 years. Rabies vaccine is required by law in many areas. Non-core vaccines depend on lifestyle.',
+      ms: 'Vaksin teras termasuk FVRCP bermula pada 6-8 minggu dengan penggalak setiap 3-4 minggu sehingga 16 minggu, kemudian setiap tahun atau 3 tahun. Vaksin rabies diperlukan oleh undang-undang di banyak kawasan.',
+      zh: '核心疫苗包括FVRCP(猫病毒性鼻气管炎、杯状病毒、泛白细胞减少症),从6-8周开始接种,每3-4周加强一次直到16周,然后每年或每3年接种一次。狂犬病疫苗在许多地区是法律要求的。'
+    },
+    fullAnswer: {
+      en: 'Cat vaccinations are essential for preventing serious diseases. Core vaccines (recommended for all cats) include: FVRCP - protects against feline viral rhinotracheitis (herpesvirus), calicivirus, and panleukopenia (feline distemper). Kittens need a series starting at 6-8 weeks, with boosters every 3-4 weeks until 16 weeks old, then a booster at 1 year, followed by every 1-3 years depending on vaccine type. Rabies vaccine is required by law in Malaysia and most countries. First dose at 12-16 weeks, then as required by local regulations (usually annually or every 3 years). Non-core vaccines depend on your cat\'s lifestyle and risk factors: FeLV (feline leukemia) for outdoor cats or those living with FeLV-positive cats, FIV vaccine (where available), and Chlamydia vaccine for multi-cat environments. Your veterinarian will create a personalized vaccination schedule. Keep records of all vaccinations and set reminders for boosters.',
+      ms: 'Vaksinasi kucing adalah penting untuk mencegah penyakit serius. Vaksin teras (disyorkan untuk semua kucing) termasuk: FVRCP - melindungi daripada rhinotracheitis virus kucing, calicivirus, dan panleukopenia. Anak kucing memerlukan siri bermula pada 6-8 minggu, dengan penggalak setiap 3-4 minggu sehingga 16 minggu, kemudian penggalak pada 1 tahun, diikuti setiap 1-3 tahun. Vaksin rabies diperlukan oleh undang-undang di Malaysia. Dos pertama pada 12-16 minggu. Vaksin bukan teras bergantung kepada gaya hidup kucing anda: FeLV untuk kucing luar rumah, vaksin FIV, dan vaksin Chlamydia untuk persekitaran berbilang kucing. Veterinar anda akan membuat jadual vaksinasi yang diperibadikan.',
+      zh: '猫疫苗对预防严重疾病至关重要。核心疫苗(建议所有猫接种)包括:FVRCP - 预防猫病毒性鼻气管炎(疱疹病毒)、杯状病毒和泛白细胞减少症(猫瘟)。幼猫需要从6-8周开始接种系列疫苗,每3-4周加强一次直到16周,然后在1岁时加强,之后根据疫苗类型每1-3年接种一次。狂犬病疫苗在马来西亚和大多数国家是法律要求的。首次接种在12-16周。非核心疫苗取决于您的猫的生活方式和风险因素:FeLV(猫白血病)用于户外猫,FIV疫苗,以及用于多猫环境的衣原体疫苗。您的兽医将制定个性化的疫苗接种计划。'
+    },
+    keywords: ['vaccination', 'vaccine', 'FVRCP', 'rabies', 'shots', 'immunization', 'booster', 'kitten']
+  },
+  {
+    id: 'cat-deworming-1',
+    category: 'cat-maintenance',
+    question: {
+      en: 'How often should I deworm my cat?',
+      ms: 'Berapa kerap saya perlu memberi ubat cacing kepada kucing saya?',
+      zh: '我应该多久给猫驱虫一次?'
+    },
+    shortAnswer: {
+      en: 'Kittens should be dewormed every 2 weeks from 2-8 weeks old, then monthly until 6 months. Adult indoor cats need deworming every 3-6 months, while outdoor cats may need monthly treatment. Your vet can recommend the best schedule based on lifestyle.',
+      ms: 'Anak kucing perlu diberi ubat cacing setiap 2 minggu dari 2-8 minggu, kemudian setiap bulan sehingga 6 bulan. Kucing dewasa dalam rumah perlu setiap 3-6 bulan, manakala kucing luar mungkin perlu rawatan bulanan.',
+      zh: '幼猫应该从2-8周开始每2周驱虫一次,然后每月一次直到6个月。成年室内猫需要每3-6个月驱虫,而户外猫可能需要每月治疗。您的兽医可以根据生活方式推荐最佳时间表。'
+    },
+    fullAnswer: {
+      en: 'Regular deworming is crucial for your cat\'s health and prevents transmission to humans. Deworming schedule depends on age and lifestyle: Kittens: Start at 2 weeks old, repeat every 2 weeks until 8 weeks old, then monthly until 6 months old. This aggressive schedule is necessary because kittens often get worms from their mother. Adult indoor cats: Every 3-6 months is typically sufficient for cats that stay indoors and don\'t hunt. Adult outdoor cats: Monthly deworming may be necessary due to higher exposure to parasites from hunting and environmental contact. Pregnant and nursing cats: Deworm before mating and again in late pregnancy under veterinary guidance. Common worms in cats include roundworms, hookworms, and tapeworms. Signs of worm infestation include visible worms in stool, pot-bellied appearance, weight loss despite good appetite, dull coat, diarrhea, and scooting. Your vet can perform fecal tests to identify specific parasites and recommend appropriate medications. Never use dog dewormers on cats as some are toxic to felines.',
+      ms: 'Pemberian ubat cacing secara tetap adalah penting untuk kesihatan kucing anda dan mencegah penularan kepada manusia. Jadual pemberian ubat cacing bergantung kepada umur dan gaya hidup: Anak kucing: Mula pada 2 minggu, ulang setiap 2 minggu sehingga 8 minggu, kemudian setiap bulan sehingga 6 bulan. Kucing dewasa dalam rumah: Setiap 3-6 bulan biasanya mencukupi. Kucing dewasa luar rumah: Pemberian ubat cacing bulanan mungkin diperlukan. Tanda-tanda serangan cacing termasuk cacing yang kelihatan dalam najis, perut buncit, penurunan berat badan, bulu kusam, dan cirit-birit. Jangan sekali-kali menggunakan ubat cacing anjing pada kucing kerana sesetengahnya toksik kepada kucing.',
+      zh: '定期驱虫对您的猫的健康至关重要,并可防止传播给人类。驱虫时间表取决于年龄和生活方式:幼猫:从2周开始,每2周重复一次直到8周,然后每月一次直到6个月。这种积极的时间表是必要的,因为幼猫经常从母亲那里感染蠕虫。成年室内猫:对于待在室内不狩猎的猫,每3-6个月通常就足够了。成年户外猫:由于狩猎和环境接触导致寄生虫暴露更高,可能需要每月驱虫。猫常见的蠕虫包括蛔虫、钩虫和绦虫。蠕虫感染的迹象包括粪便中可见的蠕虫、腹部膨胀、尽管食欲良好但体重下降、毛发暗淡和腹泻。切勿在猫身上使用狗驱虫药,因为有些对猫有毒。'
+    },
+    keywords: ['deworming', 'worms', 'parasites', 'roundworm', 'tapeworm', 'hookworm', 'intestinal']
+  },
+  {
+    id: 'cat-flea-prevention-1',
+    category: 'cat-maintenance',
+    question: {
+      en: 'What is the best flea prevention for cats?',
+      ms: 'Apakah pencegahan kutu terbaik untuk kucing?',
+      zh: '什么是猫最好的跳蚤预防方法?'
+    },
+    shortAnswer: {
+      en: 'Effective flea prevention includes monthly topical treatments (spot-on), oral medications, or flea collars. Popular options include Frontline, Revolution, Advantage, and Seresto collars. Choose products specifically for cats - dog flea products can be fatal to cats.',
+      ms: 'Pencegahan kutu yang berkesan termasuk rawatan topikal bulanan (spot-on), ubat oral, atau kolar kutu. Pilihan popular termasuk Frontline, Revolution, Advantage, dan kolar Seresto. Pilih produk khusus untuk kucing.',
+      zh: '有效的跳蚤预防包括每月局部治疗(滴剂)、口服药物或跳蚤项圈。流行的选择包括Frontline、Revolution、Advantage和Seresto项圈。选择专门为猫设计的产品 - 狗跳蚤产品对猫可能致命。'
+    },
+    fullAnswer: {
+      en: 'Flea prevention is essential year-round in tropical climates like Malaysia. Options include: Topical spot-on treatments: Applied monthly to the back of the neck. Popular brands include Frontline Plus, Revolution (also prevents heartworm and ear mites), and Advantage II. Oral medications: Given monthly, these kill fleas when they bite. Examples include Comfortis and Capstar (for immediate relief). Flea collars: Seresto collars provide 8-month protection and are convenient for cats that resist monthly treatments. CRITICAL WARNING: Never use dog flea products on cats! Permethrin, found in many dog products, is highly toxic to cats and can be fatal. Always read labels carefully. When choosing a product, consider: your cat\'s age and weight, whether they go outdoors, other pets in the household (especially dogs with permethrin products), and ease of application. If you find fleas, treat all pets in the home and the environment. Wash bedding in hot water, vacuum thoroughly, and consider environmental flea sprays. Prevention is much easier than treating an infestation.',
+      ms: 'Pencegahan kutu adalah penting sepanjang tahun di iklim tropika seperti Malaysia. Pilihan termasuk: Rawatan topikal spot-on: Digunakan setiap bulan di belakang leher. Jenama popular termasuk Frontline Plus, Revolution, dan Advantage II. Ubat oral: Diberikan setiap bulan. Kolar kutu: Kolar Seresto memberikan perlindungan 8 bulan. AMARAN KRITIKAL: Jangan sekali-kali menggunakan produk kutu anjing pada kucing! Permethrin sangat toksik kepada kucing dan boleh membawa maut. Jika anda menemui kutu, rawat semua haiwan peliharaan di rumah dan persekitaran. Basuh tempat tidur dalam air panas dan sedut habuk dengan teliti.',
+      zh: '在马来西亚等热带气候中,全年跳蚤预防至关重要。选择包括:局部滴剂治疗:每月涂抹在颈后。流行品牌包括Frontline Plus、Revolution(还可预防心丝虫和耳螨)和Advantage II。口服药物:每月服用,跳蚤叮咬时杀死它们。例如Comfortis和Capstar(用于即时缓解)。跳蚤项圈:Seresto项圈提供8个月的保护。严重警告:切勿在猫身上使用狗跳蚤产品!许多狗产品中的氯菊酯对猫有剧毒,可能致命。选择产品时,请考虑您的猫的年龄和体重、是否外出、家中其他宠物以及使用方便性。如果发现跳蚤,请治疗家中所有宠物和环境。用热水清洗床上用品,彻底吸尘。'
+    },
+    keywords: ['flea', 'prevention', 'Frontline', 'Revolution', 'Advantage', 'Seresto', 'spot-on', 'collar']
+  },
+  {
+    id: 'cat-dental-cleaning-1',
+    category: 'cat-maintenance',
+    question: {
+      en: 'How do I maintain my cat\'s dental health?',
+      ms: 'Bagaimana saya menjaga kesihatan gigi kucing saya?',
+      zh: '如何保持我的猫的牙齿健康?'
+    },
+    shortAnswer: {
+      en: 'Brush your cat\'s teeth daily with cat-specific toothpaste, provide dental treats and toys, feed dental diet kibble, and schedule professional cleanings. Signs of dental problems include bad breath, drooling, difficulty eating, and red gums.',
+      ms: 'Gosok gigi kucing anda setiap hari dengan ubat gigi khusus kucing, berikan snek dan mainan pergigian, beri makanan kibble pergigian, dan jadualkan pembersihan profesional.',
+      zh: '每天用猫专用牙膏刷牙,提供洁牙零食和玩具,喂食洁牙干粮,并安排专业清洁。牙齿问题的迹象包括口臭、流口水、进食困难和牙龈发红。'
+    },
+    fullAnswer: {
+      en: 'Dental disease affects over 70% of cats by age 3, making dental care essential. Home care routine: Daily brushing is ideal - use a cat-specific toothbrush (finger brushes work well) and enzymatic toothpaste made for cats (never use human toothpaste). Start slowly, first letting your cat taste the toothpaste, then gradually introducing brushing. Dental treats and toys can help reduce plaque - look for VOHC (Veterinary Oral Health Council) approved products. Dental diets with larger kibble sizes help mechanically clean teeth. Water additives can reduce bacteria but shouldn\'t replace brushing. Professional care: Annual dental checkups are recommended. Professional cleaning under anesthesia may be needed every 1-2 years, depending on your cat\'s dental health. Warning signs to watch for: persistent bad breath (halitosis), red, swollen, or bleeding gums, visible tartar (yellow/brown buildup), difficulty eating or dropping food, pawing at mouth, drooling, and loose or missing teeth. Early intervention prevents painful infections and tooth loss.',
+      ms: 'Penyakit pergigian menjejaskan lebih 70% kucing menjelang usia 3 tahun. Rutin penjagaan di rumah: Penggosok gigi setiap hari adalah ideal - gunakan berus gigi khusus kucing dan ubat gigi enzimatik untuk kucing. Snek dan mainan pergigian boleh membantu mengurangkan plak. Diet pergigian dengan saiz kibble yang lebih besar membantu membersihkan gigi secara mekanikal. Penjagaan profesional: Pemeriksaan pergigian tahunan disyorkan. Pembersihan profesional di bawah bius mungkin diperlukan setiap 1-2 tahun. Tanda-tanda amaran: nafas busuk yang berterusan, gusi merah atau bengkak, tar yang kelihatan, kesukaran makan, dan gigi longgar.',
+      zh: '牙科疾病在3岁时影响超过70%的猫,使牙齿护理变得至关重要。家庭护理程序:每天刷牙是理想的 - 使用猫专用牙刷(指套刷效果很好)和猫用酶牙膏(切勿使用人用牙膏)。慢慢开始,首先让您的猫品尝牙膏,然后逐渐引入刷牙。洁牙零食和玩具可以帮助减少牙菌斑 - 寻找VOHC(兽医口腔健康委员会)认可的产品。较大颗粒的洁牙干粮有助于机械清洁牙齿。专业护理:建议每年进行牙科检查。根据您的猫的牙齿健康状况,可能每1-2年需要在麻醉下进行专业清洁。需要注意的警告信号:持续口臭、牙龈红肿或出血、可见牙垢(黄色/棕色堆积)、进食困难、用爪子抓嘴和流口水。'
+    },
+    keywords: ['dental', 'teeth', 'brushing', 'tartar', 'plaque', 'gums', 'oral', 'cleaning']
+  },
+  {
+    id: 'cat-nail-trimming-1',
+    category: 'cat-maintenance',
+    question: {
+      en: 'How often should I trim my cat\'s nails?',
+      ms: 'Berapa kerap saya perlu memotong kuku kucing saya?',
+      zh: '我应该多久给猫剪一次指甲?'
+    },
+    shortAnswer: {
+      en: 'Trim your cat\'s nails every 2-4 weeks. Indoor cats need more frequent trims as their nails don\'t wear down naturally. Use cat nail clippers, trim only the clear tip, and avoid the pink quick. Scratching posts help maintain nail health.',
+      ms: 'Potong kuku kucing anda setiap 2-4 minggu. Kucing dalam rumah memerlukan potongan lebih kerap. Gunakan pemotong kuku kucing, potong hanya hujung jernih, dan elakkan bahagian merah jambu.',
+      zh: '每2-4周修剪一次猫的指甲。室内猫需要更频繁修剪,因为它们的指甲不会自然磨损。使用猫指甲剪,只剪透明的尖端,避开粉红色的血线。猫抓板有助于保持指甲健康。'
+    },
+    fullAnswer: {
+      en: 'Regular nail trimming prevents painful overgrown nails and protects your furniture and skin. Trimming frequency: Most cats need nail trims every 2-4 weeks. Indoor cats need more frequent trims since their nails don\'t wear down from outdoor activity. Senior cats may need more frequent trims as they become less active. Check front and back paws - front claws often grow faster. How to trim safely: Use proper cat nail clippers (scissor-type or guillotine-style). Have styptic powder nearby in case you cut too short. Gently press the paw pad to extend the claws. Locate the pink quick (blood vessel) - only trim the clear/white tip. Trim at a 45-degree angle. Start with just one or two nails if your cat is nervous. If your cat is extremely resistant, consider professional grooming or ask your vet for help. Never declaw - it\'s a painful amputation that\'s illegal in many countries. Provide scratching posts and pads to help naturally maintain claws and satisfy your cat\'s instinct to scratch.',
+      ms: 'Pemotongan kuku secara tetap mencegah kuku yang terlalu panjang dan melindungi perabot dan kulit anda. Kekerapan pemotongan: Kebanyakan kucing memerlukan pemotongan kuku setiap 2-4 minggu. Kucing dalam rumah memerlukan pemotongan lebih kerap. Bagaimana memotong dengan selamat: Gunakan pemotong kuku kucing yang betul. Sediakan serbuk styptik berdekatan. Tekan pad kaki dengan lembut untuk memanjangkan kuku. Cari bahagian merah jambu (salur darah) - hanya potong hujung jernih. Jangan sekali-kali buang kuku - ia adalah amputasi yang menyakitkan. Sediakan tiang menggaruk untuk membantu mengekalkan kuku secara semula jadi.',
+      zh: '定期修剪指甲可防止指甲过度生长疼痛,并保护您的家具和皮肤。修剪频率:大多数猫需要每2-4周修剪一次指甲。室内猫需要更频繁修剪,因为它们的指甲不会因户外活动而磨损。老年猫可能需要更频繁修剪。如何安全修剪:使用适当的猫指甲剪(剪刀式或铡刀式)。准备止血粉以防剪得太短。轻轻按压爪垫以伸出爪子。找到粉红色的血线(血管) - 只剪透明/白色的尖端。以45度角修剪。如果您的猫非常抗拒,请考虑专业美容或请兽医帮助。永远不要去爪 - 这是一种痛苦的截肢手术,在许多国家是非法的。提供猫抓板和垫子来帮助自然保持爪子。'
+    },
+    keywords: ['nail', 'claw', 'trimming', 'clipping', 'scratching', 'grooming', 'paw']
+  },
+  {
+    id: 'cat-ear-cleaning-1',
+    category: 'cat-maintenance',
+    question: {
+      en: 'How do I clean my cat\'s ears safely?',
+      ms: 'Bagaimana saya membersihkan telinga kucing dengan selamat?',
+      zh: '如何安全地清洁我的猫的耳朵?'
+    },
+    shortAnswer: {
+      en: 'Clean your cat\'s ears monthly with vet-approved ear cleaner. Apply solution to a cotton ball, gently wipe the outer ear, and never insert anything into the ear canal. Healthy ears are pink with minimal wax. See a vet if you notice discharge or odor.',
+      ms: 'Bersihkan telinga kucing anda setiap bulan dengan pembersih telinga yang diluluskan veterinar. Sapukan larutan pada bebola kapas, lap telinga luar dengan lembut, dan jangan masukkan apa-apa ke dalam saluran telinga.',
+      zh: '每月用兽医认可的耳朵清洁剂清洁猫的耳朵。将溶液涂在棉球上,轻轻擦拭外耳,切勿将任何东西插入耳道。健康的耳朵是粉红色的,耳垢很少。如果发现分泌物或异味,请看兽医。'
+    },
+    fullAnswer: {
+      en: 'Regular ear cleaning helps prevent infections but should be done carefully. When to clean: Most cats only need ear cleaning once a month or when visibly dirty. Over-cleaning can cause irritation. How to clean safely: Use a vet-approved ear cleaning solution - never use water, alcohol, or hydrogen peroxide. Apply the solution to a cotton ball or gauze (never cotton swabs). Gently lift the ear flap and wipe the visible part of the outer ear. Never insert anything into the ear canal - this can cause damage. Let your cat shake their head to remove excess cleaner. Reward with treats to create positive associations. What healthy ears look like: Pink inner ear with minimal light brown wax, no odor, no redness or swelling. Warning signs requiring vet attention: Dark brown or black discharge (may indicate mites), yellow or green discharge (infection), strong odor, excessive scratching or head shaking, redness, swelling, or pain, and hair loss around ears. Cats prone to ear problems may need more frequent cleaning - follow your vet\'s recommendations.',
+      ms: 'Pembersihan telinga secara tetap membantu mencegah jangkitan tetapi perlu dilakukan dengan berhati-hati. Bila untuk membersihkan: Kebanyakan kucing hanya memerlukan pembersihan telinga sekali sebulan. Bagaimana membersihkan dengan selamat: Gunakan larutan pembersihan telinga yang diluluskan veterinar - jangan gunakan air, alkohol, atau hidrogen peroksida. Sapukan larutan pada bebola kapas. Angkat penutup telinga dengan lembut dan lap bahagian luar telinga yang kelihatan. Jangan masukkan apa-apa ke dalam saluran telinga. Tanda-tanda amaran: Lelehan coklat gelap atau hitam, lelehan kuning atau hijau, bau kuat, dan garu berlebihan.',
+      zh: '定期清洁耳朵有助于预防感染,但应谨慎进行。何时清洁:大多数猫每月只需清洁一次耳朵。过度清洁可能导致刺激。如何安全清洁:使用兽医认可的耳朵清洁溶液 - 切勿使用水、酒精或过氧化氢。将溶液涂在棉球或纱布上(切勿使用棉签)。轻轻抬起耳瓣,擦拭外耳的可见部分。切勿将任何东西插入耳道 - 这可能造成损伤。健康耳朵的样子:粉红色内耳,浅棕色耳垢很少,无异味,无发红或肿胀。需要看兽医的警告信号:深棕色或黑色分泌物(可能是螨虫)、黄色或绿色分泌物(感染)、强烈异味、过度抓挠或摇头、发红肿胀或疼痛。'
+    },
+    keywords: ['ear', 'cleaning', 'wax', 'discharge', 'mites', 'infection', 'hygiene']
+  },
+  {
+    id: 'cat-grooming-1',
+    category: 'cat-maintenance',
+    question: {
+      en: 'How often should I groom my cat?',
+      ms: 'Berapa kerap saya perlu menjaga bulu kucing saya?',
+      zh: '我应该多久给猫梳理一次毛发?'
+    },
+    shortAnswer: {
+      en: 'Short-haired cats need brushing 1-2 times per week, while long-haired cats need daily brushing to prevent mats. Regular grooming reduces shedding, prevents hairballs, and helps you spot skin issues early. Most cats don\'t need baths unless medically necessary.',
+      ms: 'Kucing berbulu pendek perlu disikat 1-2 kali seminggu, manakala kucing berbulu panjang perlu disikat setiap hari untuk mencegah kusut. Penjagaan bulu yang tetap mengurangkan keguguran bulu dan mencegah hairball.',
+      zh: '短毛猫需要每周刷毛1-2次,而长毛猫需要每天刷毛以防止毛发打结。定期梳理可减少脱毛,预防毛球,并帮助您及早发现皮肤问题。大多数猫除非医学上必要,否则不需要洗澡。'
+    },
+    fullAnswer: {
+      en: 'Regular grooming keeps your cat healthy and strengthens your bond. Brushing frequency by coat type: Short-haired cats: 1-2 times per week with a rubber brush or bristle brush. Medium-haired cats: 2-3 times per week with a slicker brush. Long-haired cats (Persian, Maine Coon): Daily brushing with a wide-toothed comb and slicker brush to prevent painful mats. Grooming benefits: Reduces shedding and hairballs, distributes natural oils for a healthy coat, allows you to check for parasites, lumps, or skin issues, provides bonding time, and keeps your home cleaner. Bathing: Most cats don\'t need regular baths as they groom themselves. Bathe only when necessary (very dirty, medical reasons, or flea treatment). Use cat-specific shampoo and lukewarm water. Other grooming tasks: Eye cleaning - gently wipe discharge with a damp cloth. Anal gland check - some cats may need manual expression by a vet. If your cat suddenly stops grooming, it may indicate illness or pain - consult your vet.',
+      ms: 'Penjagaan bulu secara tetap memastikan kucing anda sihat dan mengukuhkan ikatan anda. Kekerapan menyikat mengikut jenis bulu: Kucing berbulu pendek: 1-2 kali seminggu. Kucing berbulu sederhana: 2-3 kali seminggu. Kucing berbulu panjang: Menyikat setiap hari untuk mencegah kusut yang menyakitkan. Faedah penjagaan bulu: Mengurangkan keguguran bulu dan hairball, mengedarkan minyak semula jadi, membolehkan anda memeriksa parasit atau masalah kulit, dan menyediakan masa ikatan. Mandian: Kebanyakan kucing tidak memerlukan mandian tetap. Mandi hanya apabila perlu. Jika kucing anda tiba-tiba berhenti menjilat bulu, ia mungkin menunjukkan penyakit - rujuk veterinar anda.',
+      zh: '定期梳理可保持您的猫健康并加强您们之间的联系。按毛发类型刷毛频率:短毛猫:每周1-2次,使用橡胶刷或猪鬃刷。中毛猫:每周2-3次,使用针梳。长毛猫(波斯猫、缅因猫):每天刷毛,使用宽齿梳和针梳以防止痛苦的毛结。梳理的好处:减少脱毛和毛球,分布天然油脂使毛发健康,让您检查寄生虫、肿块或皮肤问题,提供亲密时间,保持家居清洁。洗澡:大多数猫不需要定期洗澡,因为它们会自我清洁。只在必要时洗澡。如果您的猫突然停止自我清洁,可能表示生病或疼痛 - 请咨询您的兽医。'
+    },
+    keywords: ['grooming', 'brushing', 'coat', 'fur', 'shedding', 'mats', 'bathing', 'hairball']
+  },
+  {
+    id: 'cat-weight-management-1',
+    category: 'cat-maintenance',
+    question: {
+      en: 'How do I know if my cat is overweight and how can I help them lose weight?',
+      ms: 'Bagaimana saya tahu jika kucing saya berlebihan berat badan dan bagaimana saya boleh membantu mereka menurunkan berat badan?',
+      zh: '如何判断我的猫是否超重,如何帮助它们减肥?'
+    },
+    shortAnswer: {
+      en: 'Check if you can feel ribs without pressing hard and if there\'s a visible waist when viewed from above. Overweight cats need portion control, scheduled feeding instead of free-feeding, increased play, and possibly prescription weight loss food. Aim for 1-2% weight loss per week.',
+      ms: 'Periksa sama ada anda boleh merasa tulang rusuk tanpa menekan kuat dan sama ada ada pinggang yang kelihatan dari atas. Kucing yang berlebihan berat badan memerlukan kawalan bahagian dan bermain lebih banyak.',
+      zh: '检查是否可以不用力按压就能摸到肋骨,从上方看是否有可见的腰部。超重的猫需要控制分量、定时喂食而不是自由采食、增加玩耍,可能需要处方减肥食品。目标是每周减重1-2%。'
+    },
+    fullAnswer: {
+      en: 'Obesity affects over 50% of cats and leads to diabetes, joint problems, and shorter lifespan. Body condition assessment: You should be able to feel ribs without pressing hard (but not see them prominently). There should be a visible waist when viewed from above. The belly shouldn\'t hang low or swing when walking. Weight loss strategies: Consult your vet first - underlying health issues may need addressing. Calculate proper calorie intake - most indoor cats need 20-25 calories per pound of ideal body weight. Switch from free-feeding to scheduled meals (2-3 times daily). Use a measuring cup for accurate portions. Consider prescription weight loss diets (higher protein, lower calorie). Increase activity with interactive toys, puzzle feeders, and play sessions (15-20 minutes twice daily). Use treats sparingly - break them into smaller pieces or use low-calorie options. Safe weight loss rate: Aim for 1-2% body weight loss per week. Rapid weight loss can cause fatty liver disease (hepatic lipidosis), which is life-threatening in cats. Monitor progress with monthly weigh-ins.',
+      ms: 'Obesiti menjejaskan lebih 50% kucing dan membawa kepada diabetes, masalah sendi, dan jangka hayat yang lebih pendek. Penilaian keadaan badan: Anda sepatutnya boleh merasa tulang rusuk tanpa menekan kuat. Sepatutnya ada pinggang yang kelihatan dari atas. Perut tidak sepatutnya tergantung rendah. Strategi penurunan berat badan: Rujuk veterinar anda terlebih dahulu. Kira pengambilan kalori yang betul. Tukar dari makan bebas kepada makan berjadual. Pertimbangkan diet penurunan berat badan preskripsi. Tingkatkan aktiviti dengan mainan interaktif. Kadar penurunan berat badan yang selamat: Sasarkan 1-2% penurunan berat badan seminggu. Penurunan berat badan yang cepat boleh menyebabkan penyakit hati berlemak.',
+      zh: '肥胖影响超过50%的猫,导致糖尿病、关节问题和寿命缩短。体况评估:您应该能够不用力按压就能摸到肋骨(但不会明显看到)。从上方看应该有可见的腰部。腹部走路时不应下垂或摆动。减肥策略:首先咨询您的兽医 - 潜在的健康问题可能需要解决。计算适当的卡路里摄入量 - 大多数室内猫每磅理想体重需要20-25卡路里。从自由采食改为定时喂食(每天2-3次)。使用量杯准确分量。考虑处方减肥饮食(高蛋白、低卡路里)。用互动玩具、益智喂食器和玩耍时间增加活动量。安全的减肥速度:目标是每周减少体重的1-2%。快速减肥可能导致脂肪肝病,这对猫来说是致命的。'
+    },
+    keywords: ['weight', 'overweight', 'obese', 'diet', 'calories', 'portion', 'exercise', 'fat']
+  },
+  {
+    id: 'cat-senior-screening-1',
+    category: 'cat-maintenance',
+    question: {
+      en: 'What health screenings does my senior cat need?',
+      ms: 'Apakah pemeriksaan kesihatan yang diperlukan kucing tua saya?',
+      zh: '我的老年猫需要什么健康检查?'
+    },
+    shortAnswer: {
+      en: 'Senior cats (7+ years) need twice-yearly vet visits with blood work, urinalysis, blood pressure checks, and thyroid testing. These detect common age-related issues like kidney disease, diabetes, hyperthyroidism, and cancer early when treatment is most effective.',
+      ms: 'Kucing tua (7+ tahun) memerlukan lawatan veterinar dua kali setahun dengan ujian darah, urinalisis, pemeriksaan tekanan darah, dan ujian tiroid untuk mengesan masalah berkaitan usia seperti penyakit buah pinggang.',
+      zh: '老年猫(7岁以上)需要每年两次兽医检查,包括血液检查、尿液分析、血压检查和甲状腺测试。这些检查可以及早发现常见的年龄相关问题,如肾脏疾病、糖尿病、甲状腺功能亢进和癌症。'
+    },
+    fullAnswer: {
+      en: 'Cats are considered senior at 7 years and geriatric at 11+ years. Regular screenings are crucial because cats hide illness well. Recommended senior cat screenings: Bi-annual vet visits (every 6 months) vs annual for younger cats. Complete blood count (CBC) to detect anemia, infection, and blood disorders. Blood chemistry panel to assess kidney and liver function, blood sugar, and electrolytes. Urinalysis to detect kidney disease, diabetes, and urinary tract infections early. Thyroid hormone test (T4) - hyperthyroidism is very common in senior cats. Blood pressure measurement - hypertension can damage organs. Dental examination - dental disease is painful and affects overall health. Weight monitoring - unexplained weight loss is often the first sign of illness. Physical examination including joint mobility assessment. Common conditions in senior cats: Chronic kidney disease (affects 30% of cats over 10), hyperthyroidism, diabetes, arthritis, heart disease, cancer, cognitive dysfunction, and dental disease. Early detection through regular screening allows for early intervention and better quality of life.',
+      ms: 'Kucing dianggap tua pada usia 7 tahun dan geriatrik pada 11+ tahun. Pemeriksaan tetap adalah penting kerana kucing pandai menyembunyikan penyakit. Pemeriksaan kucing tua yang disyorkan: Lawatan veterinar dua kali setahun. Kiraan darah lengkap untuk mengesan anemia dan jangkitan. Panel kimia darah untuk menilai fungsi buah pinggang dan hati. Urinalisis untuk mengesan penyakit buah pinggang dan diabetes awal. Ujian hormon tiroid. Pengukuran tekanan darah. Pemeriksaan pergigian. Pemantauan berat badan. Keadaan biasa pada kucing tua: Penyakit buah pinggang kronik, hipertiroidisme, diabetes, artritis, penyakit jantung, dan kanser.',
+      zh: '猫在7岁时被视为老年,11岁以上为高龄。定期检查至关重要,因为猫善于隐藏疾病。推荐的老年猫检查:每年两次兽医检查(每6个月)。全血细胞计数(CBC)检测贫血、感染和血液疾病。血液化学检查评估肾脏和肝脏功能、血糖和电解质。尿液分析及早发现肾脏疾病、糖尿病和尿路感染。甲状腺激素测试(T4) - 甲状腺功能亢进在老年猫中非常常见。血压测量 - 高血压会损害器官。牙科检查 - 牙科疾病很痛苦并影响整体健康。体重监测 - 不明原因的体重下降通常是疾病的第一个迹象。通过定期检查及早发现可以进行早期干预,提高生活质量。'
+    },
+    keywords: ['senior', 'elderly', 'screening', 'checkup', 'blood test', 'kidney', 'thyroid', 'geriatric']
+  },
+  {
+    id: 'cat-microchipping-1',
+    category: 'cat-maintenance',
+    question: {
+      en: 'Should I microchip my cat?',
+      ms: 'Patutkah saya memasang cip mikro pada kucing saya?',
+      zh: '我应该给我的猫植入微芯片吗?'
+    },
+    shortAnswer: {
+      en: 'Yes, microchipping is highly recommended. It\'s a permanent ID that can\'t be lost like collars. The rice-sized chip is injected under the skin quickly and painlessly. Register your contact details and keep them updated for the best chance of reunion if your cat gets lost.',
+      ms: 'Ya, cip mikro sangat disyorkan. Ia adalah ID kekal yang tidak boleh hilang seperti kolar. Cip bersaiz beras disuntik di bawah kulit dengan cepat dan tanpa rasa sakit.',
+      zh: '是的,强烈建议植入微芯片。这是一种永久性身份证明,不会像项圈那样丢失。米粒大小的芯片快速无痛地注射在皮肤下。注册您的联系方式并保持更新,以便在猫走失时有最好的重聚机会。'
+    },
+    fullAnswer: {
+      en: 'Microchipping is one of the most important things you can do to protect your cat. What is a microchip? A tiny electronic chip (about the size of a grain of rice) containing a unique ID number. Injected under the skin between the shoulder blades. Quick procedure that can be done during a regular vet visit - no anesthesia needed. Lasts the lifetime of your cat with no batteries or maintenance. Why microchip? Collars and tags can fall off or be removed. Indoor cats can escape through open doors or windows. Microchipping greatly increases the chance of reunion - studies show microchipped cats are over 20 times more likely to be returned home. Many shelters and vets scan all found animals for chips. How it works: When scanned, the chip transmits the ID number. This number is linked to your contact information in a database. Important: Registration is essential - the chip is useless without your updated contact details. Keep your information current if you move or change phone numbers. Cost is typically RM50-100 and is a one-time expense. Some countries require microchipping by law.',
+      ms: 'Memasang cip mikro adalah salah satu perkara paling penting yang boleh anda lakukan untuk melindungi kucing anda. Apa itu cip mikro? Cip elektronik kecil (kira-kira saiz sebiji beras) yang mengandungi nombor ID unik. Disuntik di bawah kulit antara bilah bahu. Prosedur cepat yang boleh dilakukan semasa lawatan veterinar biasa - tidak perlu bius. Bertahan sepanjang hayat kucing anda. Mengapa cip mikro? Kolar boleh jatuh atau ditanggalkan. Kucing dalam rumah boleh melarikan diri. Kucing bercip mikro lebih berkemungkinan dipulangkan ke rumah. Penting: Pendaftaran adalah penting - cip tidak berguna tanpa maklumat hubungan anda yang dikemas kini.',
+      zh: '植入微芯片是保护您的猫可以做的最重要的事情之一。什么是微芯片?一个包含唯一ID号码的微小电子芯片(大约米粒大小)。注射在肩胛骨之间的皮肤下。快速程序,可以在常规兽医检查期间完成 - 不需要麻醉。持续猫的一生,无需电池或维护。为什么要植入微芯片?项圈可能脱落或被取下。室内猫可能通过开着的门窗逃跑。植入微芯片大大增加了重聚的机会 - 研究表明植入微芯片的猫被送回家的可能性高出20倍以上。重要提示:注册至关重要 - 没有您更新的联系方式,芯片就毫无用处。如果您搬家或更换电话号码,请保持信息更新。'
+    },
+    keywords: ['microchip', 'ID', 'identification', 'lost', 'found', 'registration', 'permanent']
+  },
+  {
+    id: 'cat-spay-neuter-1',
+    category: 'cat-maintenance',
+    question: {
+      en: 'When should I spay or neuter my cat?',
+      ms: 'Bila saya patut memandulkan kucing saya?',
+      zh: '我应该什么时候给猫做绝育手术?'
+    },
+    shortAnswer: {
+      en: 'Cats can be spayed/neutered as early as 8 weeks old or 2 pounds weight. Most vets recommend 4-6 months of age, before the first heat cycle. Benefits include preventing unwanted litters, reducing roaming behavior, eliminating heat cycles, and lowering cancer risks.',
+      ms: 'Kucing boleh dimandulkan seawal 8 minggu atau 2 paun berat badan. Kebanyakan veterinar mengesyorkan usia 4-6 bulan, sebelum kitaran birahi pertama.',
+      zh: '猫可以在8周大或2磅重时进行绝育。大多数兽医建议在4-6个月大时进行,在第一次发情周期之前。好处包括防止意外怀孕、减少漫游行为、消除发情周期和降低癌症风险。'
+    },
+    fullAnswer: {
+      en: 'Spaying (females) and neutering (males) is one of the most responsible decisions you can make as a cat owner. Recommended timing: As early as 8 weeks old and 2 pounds body weight (common practice at shelters). Most vets recommend 4-6 months of age. Ideally before the first heat cycle (around 5-6 months) for maximum health benefits. Benefits for female cats: Eliminates heat cycles (yowling, restlessness). Prevents uterine infections (pyometra) - potentially fatal. Greatly reduces risk of mammary cancer (especially if done before first heat). Prevents unwanted pregnancies. Benefits for male cats: Reduces or eliminates spraying/marking behavior. Decreases roaming and fighting (which can lead to injuries and disease transmission). Eliminates risk of testicular cancer. Reduces aggressive behavior. The procedure: Same-day surgery with quick recovery (most cats are back to normal in 24-48 hours). Modern anesthesia and pain management make it very safe. Cost varies but many low-cost spay/neuter programs exist. Some misconceptions: Cats don\'t need to have one litter first. Neutering doesn\'t cause weight gain directly - it may slightly decrease metabolism, so adjust food portions accordingly.',
+      ms: 'Memandulkan adalah salah satu keputusan paling bertanggungjawab yang boleh anda buat sebagai pemilik kucing. Masa yang disyorkan: Seawal 8 minggu dan 2 paun berat badan. Kebanyakan veterinar mengesyorkan usia 4-6 bulan. Faedah untuk kucing betina: Menghapuskan kitaran birahi. Mencegah jangkitan rahim. Mengurangkan risiko kanser mamari. Mencegah kehamilan yang tidak diingini. Faedah untuk kucing jantan: Mengurangkan tingkah laku menyembur. Mengurangkan merayau dan bergaduh. Menghapuskan risiko kanser testis. Prosedur: Pembedahan hari yang sama dengan pemulihan cepat. Mitos: Kucing tidak perlu melahirkan satu kali dahulu.',
+      zh: '绝育是作为猫主人可以做出的最负责任的决定之一。建议时间:早至8周大和2磅体重。大多数兽医建议4-6个月大。理想情况下在第一次发情周期之前(约5-6个月)以获得最大健康益处。对母猫的好处:消除发情周期(嚎叫、不安)。预防子宫感染(子宫蓄脓) - 可能致命。大大降低乳腺癌风险。防止意外怀孕。对公猫的好处:减少或消除喷尿/标记行为。减少漫游和打架。消除睾丸癌风险。减少攻击性行为。程序:当天手术,恢复快(大多数猫在24-48小时内恢复正常)。一些误解:猫不需要先生一窝。绝育不会直接导致体重增加 - 它可能会略微降低新陈代谢,因此相应调整食物分量。'
+    },
+    keywords: ['spay', 'neuter', 'sterilization', 'surgery', 'heat', 'breeding', 'fixed']
+  },
+  {
+    id: 'cat-hairball-prevention-1',
+    category: 'cat-maintenance',
+    question: {
+      en: 'How can I prevent hairballs in my cat?',
+      ms: 'Bagaimana saya boleh mencegah hairball pada kucing saya?',
+      zh: '如何预防我的猫出现毛球?'
+    },
+    shortAnswer: {
+      en: 'Prevent hairballs by brushing regularly to remove loose fur, feeding hairball control food or adding fiber to diet, using hairball remedy pastes, ensuring adequate hydration, and keeping your cat active. Frequent vomiting of hairballs may indicate underlying issues.',
+      ms: 'Cegah hairball dengan menyikat secara tetap, memberi makanan kawalan hairball, menggunakan pes hairball, memastikan penghidratan yang mencukupi, dan memastikan kucing anda aktif.',
+      zh: '通过定期刷毛去除松散的毛发、喂食控制毛球的食物或在饮食中添加纤维、使用毛球护理膏、确保充足的水分摄入和保持猫活跃来预防毛球。频繁呕吐毛球可能表明潜在问题。'
+    },
+    fullAnswer: {
+      en: 'Hairballs form when cats ingest fur during grooming, and the fur accumulates in the stomach. While occasional hairballs are normal, frequent ones need attention. Prevention strategies: Regular brushing is the most effective prevention - daily for long-haired cats, 2-3 times weekly for short-haired cats. Use appropriate brushes for your cat\'s coat type. Hairball control diet contains added fiber to help move fur through the digestive system. Hairball remedy pastes (like Laxatone) can be given 2-3 times weekly to help pass fur. Increase water intake - provide fresh water daily, consider a cat water fountain, or add water to food. Dietary fiber from pumpkin puree (1 teaspoon) or psyllium husk can help. Keep your cat active - exercise promotes healthy digestion. When to see a vet: Hairball vomiting more than 1-2 times per month. Retching without producing a hairball. Constipation or diarrhea. Loss of appetite or lethargy. These could indicate intestinal blockage (emergency), inflammatory bowel disease, or other gastrointestinal issues requiring veterinary attention.',
+      ms: 'Hairball terbentuk apabila kucing menelan bulu semasa menjilat, dan bulu terkumpul dalam perut. Walaupun hairball sekali-sekala adalah normal, yang kerap memerlukan perhatian. Strategi pencegahan: Menyikat secara tetap adalah pencegahan paling berkesan. Diet kawalan hairball mengandungi serat tambahan. Pes hairball boleh diberikan 2-3 kali seminggu. Tingkatkan pengambilan air. Serat diet dari labu tulen boleh membantu. Bila berjumpa veterinar: Muntah hairball lebih dari 1-2 kali sebulan. Rasa loya tanpa menghasilkan hairball. Sembelit atau cirit-birit.',
+      zh: '当猫在梳理毛发时吞入毛发,毛发在胃中积累时就会形成毛球。虽然偶尔出现毛球是正常的,但频繁出现需要注意。预防策略:定期刷毛是最有效的预防方法 - 长毛猫每天刷,短毛猫每周2-3次。控制毛球的饮食含有额外的纤维,帮助毛发通过消化系统。毛球护理膏可以每周给予2-3次以帮助排出毛发。增加水分摄入 - 每天提供新鲜水,考虑使用猫饮水机。南瓜泥(1茶匙)或车前子壳的膳食纤维可以帮助。保持猫活跃 - 运动促进健康消化。何时看兽医:每月呕吐毛球超过1-2次。干呕但不产生毛球。便秘或腹泻。食欲不振或嗜睡。'
+    },
+    keywords: ['hairball', 'vomiting', 'grooming', 'fiber', 'brushing', 'fur', 'prevention']
+  },
+  {
+    id: 'cat-joint-supplements-1',
+    category: 'cat-maintenance',
+    question: {
+      en: 'Does my cat need joint supplements?',
+      ms: 'Adakah kucing saya memerlukan suplemen sendi?',
+      zh: '我的猫需要关节补充剂吗?'
+    },
+    shortAnswer: {
+      en: 'Joint supplements containing glucosamine and chondroitin may benefit senior cats (7+ years), overweight cats, and those showing signs of stiffness or reduced mobility. Start early for prevention rather than waiting for visible symptoms. Consult your vet for appropriate products.',
+      ms: 'Suplemen sendi yang mengandungi glukosamin dan kondroitin mungkin bermanfaat untuk kucing tua (7+ tahun), kucing berlebihan berat badan, dan yang menunjukkan tanda kekakuan.',
+      zh: '含有氨基葡萄糖和软骨素的关节补充剂可能对老年猫(7岁以上)、超重猫和表现出僵硬或活动能力下降迹象的猫有益。为了预防而不是等待明显症状,应该尽早开始。请咨询您的兽医以获取适当的产品。'
+    },
+    fullAnswer: {
+      en: 'Arthritis affects up to 90% of cats over 12 years old, but many show subtle signs that owners miss. Who benefits from joint supplements? Senior cats (7+ years) - start before obvious symptoms appear. Overweight cats - extra weight stresses joints. Cats with previous joint injuries. Large breed cats. Cats showing mobility changes (see signs below). Signs your cat may have joint issues: Reluctance to jump or jumping to lower heights. Difficulty climbing stairs. Stiffness, especially after rest. Reduced grooming (can\'t reach certain areas). Sleeping more, playing less. Irritability when touched. Common joint supplements: Glucosamine and chondroitin - support cartilage health. Omega-3 fatty acids (fish oil) - reduce inflammation. MSM (methylsulfonylmethane) - supports joint flexibility. Green-lipped mussel extract - natural anti-inflammatory. Hyaluronic acid - lubricates joints. How to give: Available as treats, powders, liquids, or capsules. Cat-specific formulations are recommended. Start low and gradually increase to full dose. Results may take 4-6 weeks to become noticeable. Always consult your vet before starting supplements, especially if your cat takes other medications.',
+      ms: 'Artritis menjejaskan sehingga 90% kucing berusia lebih 12 tahun, tetapi ramai menunjukkan tanda-tanda halus yang terlepas pandang pemilik. Siapa yang mendapat manfaat daripada suplemen sendi? Kucing tua (7+ tahun). Kucing berlebihan berat badan. Kucing dengan kecederaan sendi sebelumnya. Tanda kucing anda mungkin mempunyai masalah sendi: Keengganan untuk melompat. Kesukaran menaiki tangga. Kekakuan, terutamanya selepas berehat. Kurang menjilat bulu. Lebih banyak tidur, kurang bermain. Suplemen sendi biasa: Glukosamin dan kondroitin. Asid lemak omega-3. MSM. Ekstrak kupang bibir hijau. Rujuk veterinar anda sebelum memulakan suplemen.',
+      zh: '关节炎影响高达90%的12岁以上猫,但许多猫显示出主人容易忽视的微妙迹象。谁从关节补充剂中受益?老年猫(7岁以上) - 在明显症状出现之前开始。超重猫 - 额外的体重会给关节带来压力。以前有关节损伤的猫。您的猫可能有关节问题的迹象:不愿跳跃或跳到较低的高度。上楼困难。僵硬,特别是休息后。梳理减少(无法触及某些区域)。睡眠更多,玩耍更少。常见的关节补充剂:氨基葡萄糖和软骨素 - 支持软骨健康。Omega-3脂肪酸(鱼油) - 减少炎症。MSM - 支持关节灵活性。在开始补充剂之前,请咨询您的兽医。'
+    },
+    keywords: ['joint', 'arthritis', 'glucosamine', 'chondroitin', 'mobility', 'stiffness', 'supplement', 'senior']
+  },
+  {
+    id: 'cat-nutrition-1',
+    category: 'cat-maintenance',
+    question: {
+      en: 'What should I feed my cat for optimal health?',
+      ms: 'Apa yang patut saya beri makan kucing saya untuk kesihatan optimum?',
+      zh: '我应该给猫喂什么食物以保持最佳健康?'
+    },
+    shortAnswer: {
+      en: 'Cats need high-quality protein as obligate carnivores. Feed age-appropriate food (kitten, adult, senior) with meat as the first ingredient. Wet food provides hydration benefits. Avoid feeding only dry food, and never give toxic foods like onion, garlic, grapes, or chocolate.',
+      ms: 'Kucing memerlukan protein berkualiti tinggi sebagai karnivor wajib. Beri makanan yang sesuai dengan usia dengan daging sebagai bahan pertama. Makanan basah memberikan manfaat penghidratan.',
+      zh: '作为严格的肉食动物,猫需要高质量的蛋白质。喂食适合年龄的食物(幼猫、成年、老年),肉类作为第一成分。湿粮提供水分补充的好处。避免只喂干粮,永远不要给洋葱、大蒜、葡萄或巧克力等有毒食物。'
+    },
+    fullAnswer: {
+      en: 'Cats are obligate carnivores and have unique nutritional requirements. Essential nutrition guidelines: High-quality animal protein should be the primary ingredient - look for specific meats (chicken, fish, beef) as the first ingredient, not \"meat by-products.\" Taurine is essential - cats cannot produce this amino acid and need it from food. Wet food is beneficial - provides hydration (cats have low thirst drive), often higher in protein and lower in carbs. Dry food is convenient but shouldn\'t be the only food source. Age-appropriate formulas: Kitten food (higher calories, protein, and nutrients for growth). Adult maintenance (balanced for typical needs). Senior formulas (adjusted for aging metabolism and health concerns). Feeding guidelines: Follow package recommendations based on weight, but adjust based on body condition. Don\'t free-feed (leave food out all day) - scheduled meals are healthier. Fresh water should always be available. Toxic foods to avoid: Onions and garlic (damage red blood cells). Grapes and raisins (kidney failure). Chocolate and caffeine (heart and nervous system toxicity). Alcohol, xylitol, and raw eggs. Some cats have food sensitivities - consult your vet if you notice digestive issues or skin problems.',
+      ms: 'Kucing adalah karnivor wajib dan mempunyai keperluan pemakanan yang unik. Garis panduan pemakanan penting: Protein haiwan berkualiti tinggi harus menjadi bahan utama. Taurin adalah penting - kucing tidak boleh menghasilkan asid amino ini. Makanan basah bermanfaat - memberikan penghidratan. Makanan kering adalah mudah tetapi tidak sepatutnya satu-satunya sumber makanan. Formula mengikut usia: Makanan anak kucing, penyelenggaraan dewasa, formula senior. Makanan toksik yang perlu dielakkan: Bawang dan bawang putih, anggur, coklat, dan alkohol. Sesetengah kucing mempunyai sensitiviti makanan - rujuk veterinar anda.',
+      zh: '猫是严格的肉食动物,有独特的营养需求。基本营养指南:高质量的动物蛋白应该是主要成分 - 寻找特定肉类(鸡肉、鱼、牛肉)作为第一成分,而不是"肉类副产品"。牛磺酸是必需的 - 猫不能产生这种氨基酸,需要从食物中获取。湿粮是有益的 - 提供水分(猫的口渴驱动力低),通常蛋白质更高,碳水化合物更低。干粮方便但不应该是唯一的食物来源。适龄配方:幼猫食品、成年维护、老年配方。需要避免的有毒食物:洋葱和大蒜(损害红细胞)、葡萄和葡萄干(肾衰竭)、巧克力和咖啡因(心脏和神经系统毒性)、酒精、木糖醇和生鸡蛋。一些猫有食物敏感性 - 如果您注意到消化问题或皮肤问题,请咨询您的兽医。'
+    },
+    keywords: ['food', 'nutrition', 'diet', 'protein', 'wet food', 'dry food', 'taurine', 'feeding']
+  },
+  {
+    id: 'cat-behavior-changes-1',
+    category: 'cat-maintenance',
+    question: {
+      en: 'When should I be concerned about changes in my cat\'s behavior?',
+      ms: 'Bila saya perlu bimbang tentang perubahan tingkah laku kucing saya?',
+      zh: '我应该什么时候担心我的猫的行为变化?'
+    },
+    shortAnswer: {
+      en: 'Be concerned about sudden changes like hiding more, aggression, excessive vocalization, changes in eating/drinking habits, litter box avoidance, or reduced grooming. These often indicate pain or illness. Gradual personality changes in senior cats may signal cognitive dysfunction.',
+      ms: 'Bimbang tentang perubahan mendadak seperti lebih banyak bersembunyi, agresif, vokalisasi berlebihan, perubahan tabiat makan/minum, mengelak kotak pasir, atau kurang menjilat bulu.',
+      zh: '注意突然的变化,如更多躲藏、攻击性、过度叫唤、饮食习惯改变、避开猫砂盆或减少梳理。这些通常表明疼痛或疾病。老年猫的渐进性格变化可能表明认知功能障碍。'
+    },
+    fullAnswer: {
+      en: 'Cats are masters at hiding illness, so behavior changes often signal health problems. Red flag behaviors requiring vet attention: Sudden hiding or withdrawal - cats in pain often hide. Aggression or irritability - especially if previously friendly. Excessive vocalization - particularly in senior cats (may indicate hyperthyroidism, cognitive dysfunction, or pain). Changes in appetite - eating more or less than usual. Increased thirst and urination - may indicate diabetes, kidney disease, or hyperthyroidism. Litter box changes - avoiding the box, going outside it, or changes in frequency. Reduced grooming - may indicate pain, arthritis, or illness. Over-grooming - can signal stress, allergies, or pain. Sleep pattern changes - sleeping much more or restlessness. Mobility changes - reluctance to jump, stiffness, limping. Context matters: Consider recent changes (new pet, move, schedule change) that might cause stress-related behaviors. Senior cat changes: Cognitive Dysfunction Syndrome (cat dementia) affects 28% of cats aged 11-14 and 50% of cats over 15. Signs include disorientation, changes in sleep cycles, forgetting learned behaviors, and increased vocalization. When in doubt, consult your vet - early detection of health issues improves outcomes.',
+      ms: 'Kucing mahir menyembunyikan penyakit, jadi perubahan tingkah laku sering menandakan masalah kesihatan. Tingkah laku bendera merah: Bersembunyi atau menarik diri secara tiba-tiba. Agresif atau mudah marah. Vokalisasi berlebihan - terutamanya pada kucing tua. Perubahan selera makan. Dahaga dan kencing yang meningkat. Perubahan kotak pasir. Kurang menjilat bulu. Menjilat bulu berlebihan. Perubahan corak tidur. Perubahan mobiliti. Sindrom Disfungsi Kognitif menjejaskan 28% kucing berusia 11-14 tahun. Apabila ragu-ragu, rujuk veterinar anda.',
+      zh: '猫是隐藏疾病的高手,所以行为变化通常预示健康问题。需要兽医关注的危险信号行为:突然躲藏或退缩 - 疼痛的猫经常躲藏。攻击性或易怒 - 特别是以前友好的猫。过度叫唤 - 特别是老年猫(可能表明甲状腺功能亢进、认知功能障碍或疼痛)。食欲变化。口渴和排尿增加 - 可能表明糖尿病、肾脏疾病或甲状腺功能亢进。猫砂盆变化。梳理减少。过度梳理 - 可能表示压力、过敏或疼痛。睡眠模式变化。认知功能障碍综合征(猫痴呆)影响28%的11-14岁猫和50%的15岁以上猫。如有疑问,请咨询您的兽医。'
+    },
+    keywords: ['behavior', 'change', 'hiding', 'aggression', 'vocalization', 'grooming', 'cognitive', 'dementia']
+  },
+  {
+    id: 'cat-parasite-prevention-1',
+    category: 'cat-maintenance',
+    question: {
+      en: 'What parasites should I protect my cat from?',
+      ms: 'Apakah parasit yang perlu saya lindungi kucing saya daripadanya?',
+      zh: '我应该保护我的猫免受哪些寄生虫的侵害?'
+    },
+    shortAnswer: {
+      en: 'Protect against fleas, ticks, ear mites, intestinal worms (roundworms, hookworms, tapeworms), heartworms, and external parasites like lice. Year-round prevention is essential in tropical climates. Use vet-recommended products and maintain regular deworming schedules.',
+      ms: 'Lindungi daripada kutu, sengkenit, hama telinga, cacing usus, cacing jantung, dan parasit luaran. Pencegahan sepanjang tahun adalah penting di iklim tropika.',
+      zh: '防护跳蚤、蜱虫、耳螨、肠道蠕虫(蛔虫、钩虫、绦虫)、心丝虫和虱子等外部寄生虫。在热带气候中,全年预防至关重要。使用兽医推荐的产品并保持定期驱虫计划。'
+    },
+    fullAnswer: {
+      en: 'Parasite prevention is a crucial part of cat health care. Common parasites in Malaysia: External parasites: Fleas - cause itching, allergies, transmit tapeworms. Ticks - transmit blood parasites and diseases. Ear mites - cause intense itching and dark discharge. Lice - less common but can cause skin irritation. Internal parasites: Roundworms - common in kittens, can transmit to humans. Hookworms - cause anemia and intestinal problems. Tapeworms - transmitted through fleas or hunting prey. Heartworms - transmitted by mosquitoes, less common in cats than dogs but can be fatal. Coccidia and Giardia - intestinal parasites causing diarrhea. Prevention strategies: Monthly flea and tick prevention (topical or oral). Regular deworming (see deworming schedule). Heartworm prevention if recommended in your area. Keep your cat\'s environment clean. Regular fecal testing at vet visits. Products like Revolution and Advocate provide multi-parasite protection. Some parasites can transmit to humans (zoonotic) - especially important in households with children, elderly, or immunocompromised individuals. Always wash hands after handling cat litter.',
+      ms: 'Pencegahan parasit adalah bahagian penting dalam penjagaan kesihatan kucing. Parasit biasa di Malaysia: Parasit luaran: Kutu, sengkenit, hama telinga, dan kutu. Parasit dalaman: Cacing gelang, cacing kait, cacing pita, dan cacing jantung. Strategi pencegahan: Pencegahan kutu dan sengkenit bulanan. Pemberian ubat cacing secara tetap. Pencegahan cacing jantung jika disyorkan. Jaga kebersihan persekitaran kucing anda. Ujian najis tetap semasa lawatan veterinar. Sesetengah parasit boleh menular kepada manusia - terutamanya penting dalam isi rumah dengan kanak-kanak.',
+      zh: '寄生虫预防是猫健康护理的重要组成部分。马来西亚常见的寄生虫:外部寄生虫:跳蚤 - 引起瘙痒、过敏,传播绦虫。蜱虫 - 传播血液寄生虫和疾病。耳螨 - 引起强烈瘙痒和深色分泌物。虱子 - 不太常见但可能引起皮肤刺激。内部寄生虫:蛔虫 - 幼猫中常见,可传播给人类。钩虫 - 引起贫血和肠道问题。绦虫 - 通过跳蚤或捕食猎物传播。心丝虫 - 通过蚊子传播。预防策略:每月跳蚤和蜱虫预防(局部或口服)。定期驱虫。如果在您所在地区建议,进行心丝虫预防。保持猫的环境清洁。一些寄生虫可以传播给人类(人畜共患) - 在有儿童、老人或免疫功能低下个体的家庭中特别重要。'
+    },
+    keywords: ['parasite', 'flea', 'tick', 'worm', 'mite', 'prevention', 'heartworm', 'deworming']
+  },
+  {
+    id: 'cat-heart-health-1',
+    category: 'cat-maintenance',
+    question: {
+      en: 'How do I monitor my cat\'s heart health?',
+      ms: 'Bagaimana saya memantau kesihatan jantung kucing saya?',
+      zh: '如何监测我的猫的心脏健康?'
+    },
+    shortAnswer: {
+      en: 'Monitor for signs like rapid or labored breathing, lethargy, weakness, loss of appetite, and fainting. Regular vet checkups include heart auscultation. Cats at higher risk (Maine Coons, Ragdolls) may need echocardiograms. Heart disease in cats is often silent until advanced.',
+      ms: 'Pantau tanda-tanda seperti pernafasan yang cepat atau susah, lesu, lemah, hilang selera makan, dan pengsan. Pemeriksaan veterinar termasuk auskultasi jantung.',
+      zh: '监测呼吸急促或困难、嗜睡、虚弱、食欲下降和晕厥等迹象。定期兽医检查包括心脏听诊。高风险的猫(缅因猫、布偶猫)可能需要超声心动图。猫的心脏病通常在晚期才表现出来。'
+    },
+    fullAnswer: {
+      en: 'Heart disease affects about 15% of cats, often without obvious symptoms until it\'s advanced. Understanding feline heart disease: Hypertrophic Cardiomyopathy (HCM) is the most common form - the heart muscle thickens abnormally. Some breeds are predisposed: Maine Coon, Ragdoll, British Shorthair, Bengal, and Sphynx. Can develop at any age but often appears in middle-aged cats. Warning signs to watch for: Rapid breathing or panting (normal is 20-30 breaths per minute at rest). Open-mouth breathing (always abnormal in cats). Lethargy and weakness. Decreased appetite. Sudden hind leg paralysis (blood clot - emergency!). Collapse or fainting. Monitoring at home: Count resting respiratory rate monthly - consistently above 30-40 requires vet attention. Note any changes in activity level or breathing patterns. Watch for open-mouth breathing or panting. Veterinary monitoring: Annual checkups include heart auscultation (listening for murmurs). High-risk breeds should have echocardiograms (ultrasound). Blood tests (proBNP) can help detect heart disease. Treatment can significantly extend and improve quality of life if caught early.',
+      ms: 'Penyakit jantung menjejaskan kira-kira 15% kucing, selalunya tanpa gejala yang jelas sehingga ia menjadi teruk. Kardiomiopati Hipertrofik (HCM) adalah bentuk yang paling biasa. Sesetengah baka terdedah: Maine Coon, Ragdoll, British Shorthair. Tanda-tanda amaran: Pernafasan cepat atau mengah-ngah. Pernafasan mulut terbuka. Lesu dan lemah. Selera makan berkurangan. Lumpuh kaki belakang secara tiba-tiba (bekuan darah - kecemasan!). Pemantauan di rumah: Kira kadar pernafasan semasa rehat setiap bulan. Rawatan boleh memanjangkan dan meningkatkan kualiti hidup dengan ketara jika dikesan awal.',
+      zh: '心脏病影响约15%的猫,通常在晚期才出现明显症状。了解猫心脏病:肥厚型心肌病(HCM)是最常见的形式 - 心肌异常增厚。某些品种易感:缅因猫、布偶猫、英国短毛猫、孟加拉猫和斯芬克斯猫。可能在任何年龄发展,但通常出现在中年猫身上。需要注意的警告信号:呼吸急促或喘气(休息时正常为每分钟20-30次呼吸)。张口呼吸(猫总是异常的)。嗜睡和虚弱。食欲下降。突然后腿瘫痪(血栓 - 紧急情况!)。在家监测:每月计算休息呼吸频率 - 持续高于30-40需要就医。注意活动水平或呼吸模式的任何变化。如果及早发现,治疗可以显著延长和改善生活质量。'
+    },
+    keywords: ['heart', 'cardiac', 'HCM', 'cardiomyopathy', 'breathing', 'murmur', 'echocardiogram']
+  },
+  {
+    id: 'cat-kidney-monitoring-1',
+    category: 'cat-maintenance',
+    question: {
+      en: 'How can I help prevent kidney disease in my cat?',
+      ms: 'Bagaimana saya boleh membantu mencegah penyakit buah pinggang pada kucing saya?',
+      zh: '如何帮助预防我的猫的肾脏疾病?'
+    },
+    shortAnswer: {
+      en: 'Encourage water intake with fountains and wet food, feed high-quality protein with appropriate phosphorus levels, maintain healthy weight, schedule regular vet checkups with blood and urine tests, and avoid toxic substances. Early detection through screening is key.',
+      ms: 'Galakkan pengambilan air dengan air pancut dan makanan basah, beri protein berkualiti tinggi, kekalkan berat badan yang sihat, jadualkan pemeriksaan veterinar tetap, dan elakkan bahan toksik.',
+      zh: '用饮水机和湿粮鼓励饮水,喂食适当磷含量的高质量蛋白质,保持健康体重,安排定期兽医检查包括血液和尿液测试,避免有毒物质。通过筛查早期发现是关键。'
+    },
+    fullAnswer: {
+      en: 'Chronic kidney disease (CKD) affects 30-40% of cats over 10 years old. While not always preventable, you can reduce risk and catch it early. Prevention and monitoring strategies: Hydration is crucial - provide multiple water sources, consider a cat water fountain (cats prefer moving water), feed wet food to increase moisture intake, and add water to dry food if your cat won\'t eat wet food. Nutrition matters - feed high-quality, age-appropriate food, avoid excessive phosphorus in senior cat diets, and consult your vet about kidney-supportive diets for at-risk cats. Maintain healthy weight - obesity increases kidney disease risk. Avoid toxins - keep lilies away from cats (highly toxic to kidneys), store medications safely, and use pet-safe cleaning products. Regular veterinary monitoring - annual blood work for cats 7+ years, bi-annual for cats 10+ years, urinalysis to detect protein loss and concentration issues, blood pressure checks, and SDMA testing can detect kidney changes earlier than traditional tests. Watch for early signs - increased thirst and urination, weight loss, poor appetite, vomiting, bad breath, and lethargy. If caught early (IRIS Stage 1-2), dietary management and supportive care can significantly slow progression and maintain quality of life.',
+      ms: 'Penyakit buah pinggang kronik (CKD) menjejaskan 30-40% kucing berusia lebih 10 tahun. Walaupun tidak selalu boleh dicegah, anda boleh mengurangkan risiko dan mengesannya awal. Strategi pencegahan dan pemantauan: Penghidratan adalah penting - sediakan pelbagai sumber air, pertimbangkan air pancut kucing, beri makanan basah. Pemakanan penting - beri makanan berkualiti tinggi yang sesuai dengan usia, elakkan fosforus berlebihan. Kekalkan berat badan yang sihat. Elakkan toksin - jauhkan lili dari kucing. Pemantauan veterinar tetap - kerja darah tahunan untuk kucing 7+ tahun. Perhatikan tanda-tanda awal - dahaga dan kencing yang meningkat, penurunan berat badan.',
+      zh: '慢性肾脏病(CKD)影响30-40%的10岁以上猫。虽然并非总能预防,但您可以降低风险并及早发现。预防和监测策略:水分至关重要 - 提供多个水源,考虑使用猫饮水机(猫喜欢流动的水),喂湿粮以增加水分摄入。营养很重要 - 喂食高质量、适龄的食物,避免老年猫饮食中过多的磷。保持健康体重 - 肥胖会增加肾脏疾病风险。避免毒素 - 让百合远离猫(对肾脏有剧毒),安全存放药物。定期兽医监测 - 7岁以上猫每年血液检查,10岁以上猫每半年检查。注意早期迹象 - 口渴和排尿增加、体重下降、食欲不振、呕吐、口臭和嗜睡。如果及早发现,饮食管理和支持性护理可以显著减缓进展并保持生活质量。'
+    },
+    keywords: ['kidney', 'renal', 'CKD', 'hydration', 'water', 'urination', 'phosphorus', 'prevention']
+  },
+  {
+    id: 'cat-annual-checkup-1',
+    category: 'cat-maintenance',
+    question: {
+      en: 'What happens during a cat\'s annual wellness exam?',
+      ms: 'Apa yang berlaku semasa pemeriksaan kesihatan tahunan kucing?',
+      zh: '猫的年度健康检查期间会发生什么?'
+    },
+    shortAnswer: {
+      en: 'Annual exams include weight check, physical examination (eyes, ears, teeth, heart, lungs, abdomen), parasite screening, vaccination updates, blood work for seniors, and discussion of diet, behavior, and preventive care. Early detection of problems saves lives.',
+      ms: 'Pemeriksaan tahunan termasuk pemeriksaan berat badan, pemeriksaan fizikal, saringan parasit, kemas kini vaksin, kerja darah untuk kucing tua, dan perbincangan tentang diet dan penjagaan pencegahan.',
+      zh: '年度检查包括体重检查、身体检查(眼睛、耳朵、牙齿、心脏、肺、腹部)、寄生虫筛查、疫苗更新、老年猫血液检查,以及讨论饮食、行为和预防护理。及早发现问题可以挽救生命。'
+    },
+    fullAnswer: {
+      en: 'Annual wellness exams are essential for maintaining your cat\'s health and detecting problems early. What to expect: Weight and body condition assessment - tracking changes over time helps identify issues early. Vital signs - temperature, heart rate, respiratory rate. Complete physical examination: Eyes - checking for cataracts, infections, retinal issues. Ears - looking for mites, infections, polyps. Mouth and teeth - assessing dental health, checking for tumors. Heart and lungs - listening for murmurs, abnormal sounds. Abdomen - palpating for masses, organ enlargement, pain. Skin and coat - checking for parasites, allergies, lumps. Joints and mobility - assessing for arthritis or pain. Lymph nodes - checking for enlargement. Additional tests may include: Fecal exam for parasites. Urinalysis for kidney function and UTIs. Blood work (especially for cats 7+ years) - complete blood count, chemistry panel, thyroid levels. Vaccination updates as needed. Discussion topics: Diet and nutrition recommendations. Behavior changes you\'ve noticed. Parasite prevention plan. Dental care recommendations. Questions about your cat\'s health. Prepare for your visit by noting any changes in eating, drinking, litter box habits, behavior, or activity level.',
+      ms: 'Pemeriksaan kesihatan tahunan adalah penting untuk mengekalkan kesihatan kucing anda dan mengesan masalah awal. Apa yang dijangkakan: Penilaian berat badan dan keadaan badan. Tanda-tanda vital. Pemeriksaan fizikal lengkap: Mata, telinga, mulut dan gigi, jantung dan paru-paru, perut, kulit dan bulu, sendi dan mobiliti, nodus limfa. Ujian tambahan mungkin termasuk: Ujian najis, urinalisis, kerja darah, kemas kini vaksin. Topik perbincangan: Cadangan diet, perubahan tingkah laku, pelan pencegahan parasit. Sediakan untuk lawatan anda dengan mencatat sebarang perubahan.',
+      zh: '年度健康检查对于维护您的猫的健康和及早发现问题至关重要。预期内容:体重和体况评估 - 跟踪变化有助于及早发现问题。生命体征 - 体温、心率、呼吸频率。完整的身体检查:眼睛 - 检查白内障、感染、视网膜问题。耳朵 - 寻找螨虫、感染、息肉。口腔和牙齿 - 评估牙齿健康,检查肿瘤。心脏和肺 - 听诊杂音、异常声音。腹部 - 触诊肿块、器官肿大、疼痛。皮肤和毛发 - 检查寄生虫、过敏、肿块。关节和活动能力 - 评估关节炎或疼痛。额外测试可能包括:粪便寄生虫检查、尿液分析、血液检查、疫苗更新。讨论主题:饮食和营养建议、您注意到的行为变化、寄生虫预防计划。通过记录饮食、饮水、猫砂盆习惯、行为或活动水平的任何变化来准备您的就诊。'
+    },
+    keywords: ['checkup', 'exam', 'wellness', 'annual', 'vet visit', 'physical', 'screening', 'prevention']
   }
 ];
 
