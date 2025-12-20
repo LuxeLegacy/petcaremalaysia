@@ -16,6 +16,13 @@ type IssueFilter = 'all' | 'emergency' | 'maintenance';
 
 const ITEMS_PER_PAGE = 10;
 
+// Helper function to replace city placeholders in text
+const replacePlaceholders = (text: string, city: CityData): string => {
+  return text
+    .replace(/{city}/g, city.name)
+    .replace(/{state}/g, city.state);
+};
+
 export const YourQuestionsAnsweredSection: React.FC<YourQuestionsAnsweredSectionProps> = ({ city }) => {
   const { language } = useLanguage();
   const [searchQuery, setSearchQuery] = useState('');
@@ -28,12 +35,12 @@ export const YourQuestionsAnsweredSection: React.FC<YourQuestionsAnsweredSection
   const filteredItems = useMemo(() => {
     let items = [...yqaItems];
     
-    // Apply search filter
+    // Apply search filter - replace placeholders for searching
     if (searchQuery.trim()) {
       const searchTerms = searchQuery.toLowerCase().split(' ').filter(term => term.length > 0);
       items = items.filter(item => {
-        const questionText = item.question[language].toLowerCase();
-        const shortAnswerText = item.shortAnswer[language].toLowerCase();
+        const questionText = replacePlaceholders(item.question[language], city).toLowerCase();
+        const shortAnswerText = replacePlaceholders(item.shortAnswer[language], city).toLowerCase();
         const keywordsText = item.keywords.join(' ').toLowerCase();
         const searchableText = `${questionText} ${shortAnswerText} ${keywordsText}`;
         return searchTerms.some(term => searchableText.includes(term));
@@ -51,7 +58,7 @@ export const YourQuestionsAnsweredSection: React.FC<YourQuestionsAnsweredSection
     }
     
     return items;
-  }, [searchQuery, petFilter, issueFilter, language]);
+  }, [searchQuery, petFilter, issueFilter, language, city]);
 
   // Pagination
   const totalPages = Math.ceil(filteredItems.length / ITEMS_PER_PAGE);
@@ -100,16 +107,16 @@ export const YourQuestionsAnsweredSection: React.FC<YourQuestionsAnsweredSection
     maintenance: { en: 'Care & Prevention', ms: 'Penjagaan', zh: '护理预防' }
   };
 
-  // Generate FAQ Schema for SEO
+  // Generate FAQ Schema for SEO - with city-specific content
   const faqSchema = {
     "@context": "https://schema.org",
     "@type": "FAQPage",
     "mainEntity": paginatedItems.slice(0, 10).map(item => ({
       "@type": "Question",
-      "name": item.question[language],
+      "name": replacePlaceholders(item.question[language], city),
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": item.fullAnswer[language]
+        "text": replacePlaceholders(item.fullAnswer[language], city)
       }
     }))
   };
@@ -231,6 +238,7 @@ export const YourQuestionsAnsweredSection: React.FC<YourQuestionsAnsweredSection
                 <QACard
                   key={item.id}
                   item={item}
+                  city={city}
                   language={language}
                   isExpanded={expandedItems.has(item.id)}
                   onToggle={() => toggleExpand(item.id)}
@@ -318,13 +326,14 @@ function generatePageNumbers(current: number, total: number): (number | string)[
 
 interface QACardProps {
   item: YQAItem;
+  city: CityData;
   language: 'en' | 'ms' | 'zh';
   isExpanded: boolean;
   onToggle: () => void;
   index: number;
 }
 
-const QACard: React.FC<QACardProps> = ({ item, language, isExpanded, onToggle, index }) => {
+const QACard: React.FC<QACardProps> = ({ item, city, language, isExpanded, onToggle, index }) => {
   const getCategoryStyles = (category: string) => {
     switch (category) {
       case 'cat-emergency':
@@ -377,6 +386,11 @@ const QACard: React.FC<QACardProps> = ({ item, language, isExpanded, onToggle, i
 
   const styles = getCategoryStyles(item.category);
 
+  // Replace placeholders with city-specific data
+  const question = replacePlaceholders(item.question[language], city);
+  const shortAnswer = replacePlaceholders(item.shortAnswer[language], city);
+  const fullAnswer = replacePlaceholders(item.fullAnswer[language], city);
+
   return (
     <article 
       className={`bg-card rounded-xl p-4 md:p-5 shadow-sm border-l-4 transition-all duration-300 hover:shadow-md ${styles.border} ${styles.bg}`}
@@ -397,7 +411,7 @@ const QACard: React.FC<QACardProps> = ({ item, language, isExpanded, onToggle, i
         className="font-semibold text-base md:text-lg mb-3 leading-snug text-foreground"
         itemProp="name"
       >
-        {item.question[language]}
+        {question}
       </h3>
 
       {/* Answer */}
@@ -408,7 +422,7 @@ const QACard: React.FC<QACardProps> = ({ item, language, isExpanded, onToggle, i
           }`}
           itemProp="text"
         >
-          {isExpanded ? item.fullAnswer[language] : item.shortAnswer[language]}
+          {isExpanded ? fullAnswer : shortAnswer}
         </p>
       </div>
 
