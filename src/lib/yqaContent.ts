@@ -1254,6 +1254,408 @@ export const yqaItems: YQAItem[] = [
       zh: '中毒是狗的常见急症。快速行动可以挽救您的狗的生命。即时步骤：将狗从来源处移开。保持冷静并评估情况。确定吃了什么 - 如果可能保存包装/样品。记下大概吃了多少和时间。立即致电您的兽医或急诊诊所 - 他们会建议下一步行动。不要催吐，除非特别指示 - 某些物质在吐出时会造成更大伤害。需要注意的常见毒素：食物 - 巧克力（尤其是黑巧克力）、木糖醇（在无糖产品中）、葡萄/葡萄干、洋葱/大蒜、夏威夷果、酒精、咖啡因。药物 - 人类止痛药（布洛芬、对乙酰氨基酚）、抗抑郁药、ADHD药物、心脏药物。家用品 - 清洁产品、防冻液（非常危险 - 味道甜）、老鼠药、杀虫剂、肥料。植物 - 百合、铁树、杜鹃花、夹竹桃、郁金香。中毒症状各异但可能包括：呕吐、腹泻、流口水、嗜睡、癫痫发作、呼吸困难、心率异常、虚脱和出血障碍。治疗取决于毒素，可能包括：催吐（仅在安全且短时间内）、活性炭吸收毒素、静脉输液、保护器官的药物、某些毒物的输血、住院监测。预防：将毒素锁好，注意院子里有什么，在户外监督狗，并使您的家对宠物安全。'
     },
     keywords: ['poison', 'toxic', 'chocolate', 'xylitol', 'grapes', 'emergency', 'vomiting', 'medication']
+  },
+
+  // Dog Maintenance Q&As (20 items)
+  {
+    id: 'dog-maintenance-vaccination-1',
+    category: 'dog-maintenance',
+    question: {
+      en: 'What vaccinations does my dog need in Malaysia?',
+      ms: 'Apakah vaksinasi yang diperlukan anjing saya di Malaysia?',
+      zh: '我的狗在马来西亚需要什么疫苗？'
+    },
+    shortAnswer: {
+      en: 'Core vaccines in Malaysia include rabies (mandatory by law), distemper, parvovirus, and hepatitis. Puppies start at 6-8 weeks with boosters every 3-4 weeks until 16 weeks. Annual boosters are required for rabies, while other core vaccines may be given every 1-3 years depending on your vet\'s protocol.',
+      ms: 'Vaksin teras di Malaysia termasuk rabies (wajib oleh undang-undang), distemper, parvovirus, dan hepatitis. Anak anjing bermula pada 6-8 minggu dengan penggalak setiap 3-4 minggu sehingga 16 minggu. Penggalak tahunan diperlukan untuk rabies, manakala vaksin teras lain mungkin diberikan setiap 1-3 tahun.',
+      zh: '马来西亚的核心疫苗包括狂犬病（法律强制）、犬瘟热、细小病毒和肝炎。幼犬从6-8周开始接种，每3-4周加强一次直到16周。狂犬病需要年度加强，其他核心疫苗可能每1-3年接种一次。'
+    },
+    fullAnswer: {
+      en: 'Vaccination is essential for protecting your dog from serious diseases. In Malaysia, the vaccination schedule includes both core and non-core vaccines. Core vaccines (essential for all dogs): Rabies - legally required in Malaysia, given at 3 months, then annually. Distemper - highly contagious viral disease affecting multiple organs. Parvovirus - deadly intestinal virus, especially dangerous for puppies. Hepatitis (Adenovirus) - affects liver and other organs. Parainfluenza - respiratory virus. Puppy vaccination schedule: 6-8 weeks - first combination vaccine (DHPP). 10-12 weeks - second DHPP + optional leptospirosis. 14-16 weeks - third DHPP + rabies. Non-core vaccines (based on lifestyle and risk): Leptospirosis - bacterial disease spread through water/soil, recommended in Malaysia. Bordetella (kennel cough) - if your dog goes to boarding, grooming, or dog parks. Canine influenza - for high-risk dogs. Adult dog boosters: Rabies - annually (legally required). DHPP - every 1-3 years depending on vet recommendation. Leptospirosis - annually if at risk. Important considerations: Keep vaccination records safe, some housing requires proof. Don\'t take puppies to public areas until fully vaccinated. Pregnant or sick dogs should not be vaccinated. Some dogs may have mild reactions (lethargy, slight fever) - this is normal. Report any severe reactions to your vet immediately.',
+      ms: 'Vaksinasi adalah penting untuk melindungi anjing anda daripada penyakit serius. Di Malaysia, jadual vaksinasi termasuk vaksin teras dan bukan teras. Vaksin teras (penting untuk semua anjing): Rabies - diperlukan oleh undang-undang Malaysia, diberikan pada 3 bulan, kemudian setiap tahun. Distemper - penyakit virus yang sangat menular. Parvovirus - virus usus maut, terutamanya berbahaya untuk anak anjing. Hepatitis (Adenovirus) - menjejaskan hati dan organ lain. Parainfluenza - virus pernafasan. Jadual vaksinasi anak anjing: 6-8 minggu - vaksin gabungan pertama (DHPP). 10-12 minggu - DHPP kedua + leptospirosis pilihan. 14-16 minggu - DHPP ketiga + rabies. Vaksin bukan teras (berdasarkan gaya hidup dan risiko): Leptospirosis - penyakit bakteria, disyorkan di Malaysia. Bordetella (batuk kennel) - jika anjing anda pergi ke penginapan atau taman anjing. Penggalak anjing dewasa: Rabies - setiap tahun (diperlukan oleh undang-undang). DHPP - setiap 1-3 tahun. Leptospirosis - setiap tahun jika berisiko.',
+      zh: '疫苗接种对保护您的狗免受严重疾病至关重要。在马来西亚，疫苗接种计划包括核心和非核心疫苗。核心疫苗（所有狗必需）：狂犬病 - 马来西亚法律要求，3个月时接种，然后每年接种。犬瘟热 - 高度传染性病毒疾病。细小病毒 - 致命的肠道病毒，对幼犬特别危险。肝炎（腺病毒）- 影响肝脏和其他器官。副流感 - 呼吸道病毒。幼犬疫苗接种计划：6-8周 - 第一针联合疫苗（DHPP）。10-12周 - 第二针DHPP + 可选钩端螺旋体病。14-16周 - 第三针DHPP + 狂犬病。非核心疫苗（基于生活方式和风险）：钩端螺旋体病 - 通过水/土壤传播的细菌性疾病，在马来西亚建议接种。博德特氏菌（犬舍咳）- 如果您的狗去寄宿、美容或狗公园。成年犬加强针：狂犬病 - 每年（法律要求）。DHPP - 每1-3年，取决于兽医建议。钩端螺旋体病 - 如有风险则每年接种。重要注意事项：妥善保管疫苗接种记录。在完全接种疫苗之前，不要带幼犬去公共场所。怀孕或生病的狗不应接种疫苗。'
+    },
+    keywords: ['vaccination', 'vaccine', 'rabies', 'distemper', 'parvovirus', 'puppy', 'booster', 'DHPP']
+  },
+  {
+    id: 'dog-maintenance-rabies-2',
+    category: 'dog-maintenance',
+    question: {
+      en: 'Why is rabies vaccination mandatory in Malaysia?',
+      ms: 'Mengapa vaksinasi rabies wajib di Malaysia?',
+      zh: '为什么狂犬病疫苗在马来西亚是强制性的？'
+    },
+    shortAnswer: {
+      en: 'Rabies is a fatal viral disease that can spread to humans through bites. Malaysia has laws requiring all dogs to be vaccinated. Unvaccinated dogs may be seized and owners fined. Rabies has no cure once symptoms appear, making prevention through vaccination critical for public health and your pet\'s safety.',
+      ms: 'Rabies adalah penyakit virus maut yang boleh merebak kepada manusia melalui gigitan. Malaysia mempunyai undang-undang yang memerlukan semua anjing divaksin. Anjing yang tidak divaksin boleh dirampas dan pemilik didenda. Rabies tiada penawar setelah gejala muncul, menjadikan pencegahan melalui vaksinasi kritikal.',
+      zh: '狂犬病是一种致命的病毒性疾病，可通过咬伤传播给人类。马来西亚法律要求所有狗接种疫苗。未接种疫苗的狗可能被没收，主人被罚款。一旦出现症状，狂犬病无法治愈，因此通过疫苗接种预防对公共健康和宠物安全至关重要。'
+    },
+    fullAnswer: {
+      en: 'Rabies is one of the most dangerous diseases that can affect both animals and humans. Understanding why vaccination is mandatory helps protect everyone. What is rabies? A viral disease affecting the nervous system. 100% fatal once symptoms appear - there is NO cure. Transmitted through saliva, usually via bites. Can infect any mammal, including humans. Malaysian law requirements: All dogs must be vaccinated at 3 months of age. Annual booster vaccinations are required. Dogs must wear a valid vaccination tag. Owners must keep vaccination certificates. Penalties for non-compliance: Fines up to RM10,000. Unvaccinated dogs may be seized. Legal liability if your dog bites someone. Rabies situation in Malaysia: Malaysia has had rabies outbreaks, particularly in Sarawak and Perlis. Stray dog population increases risk. Wildlife can also carry rabies. Cross-border movement of dogs can introduce the virus. How rabies spreads: Primarily through bites from infected animals. Saliva contact with open wounds or mucous membranes. Not through touching or casual contact. Vaccination protects: Your dog from a fatal disease. Your family and community. Allows for travel with your pet. Provides legal protection. Where to get vaccinated: Government veterinary clinics (often cheaper). Private veterinary practices. Mobile vaccination campaigns. Keep your vaccination records safe - you\'ll need them for housing, travel, and in case of any bite incidents.',
+      ms: 'Rabies adalah salah satu penyakit paling berbahaya yang boleh menjejaskan haiwan dan manusia. Memahami mengapa vaksinasi wajib membantu melindungi semua orang. Apa itu rabies? Penyakit virus yang menjejaskan sistem saraf. 100% maut setelah gejala muncul - TIADA penawar. Ditularkan melalui air liur, biasanya melalui gigitan. Boleh menjangkiti mana-mana mamalia, termasuk manusia. Keperluan undang-undang Malaysia: Semua anjing mesti divaksin pada usia 3 bulan. Vaksinasi penggalak tahunan diperlukan. Anjing mesti memakai tag vaksinasi yang sah. Pemilik mesti menyimpan sijil vaksinasi. Penalti untuk ketidakpatuhan: Denda sehingga RM10,000. Anjing yang tidak divaksin boleh dirampas. Liabiliti undang-undang jika anjing anda menggigit seseorang. Situasi rabies di Malaysia: Malaysia pernah mengalami wabak rabies, terutamanya di Sarawak dan Perlis. Populasi anjing liar meningkatkan risiko. Vaksinasi melindungi: Anjing anda daripada penyakit maut. Keluarga dan komuniti anda. Membolehkan perjalanan dengan haiwan peliharaan anda.',
+      zh: '狂犬病是影响动物和人类的最危险疾病之一。了解为什么疫苗接种是强制性的有助于保护每个人。什么是狂犬病？一种影响神经系统的病毒性疾病。一旦出现症状，100%致命 - 没有治愈方法。通过唾液传播，通常通过咬伤。可以感染任何哺乳动物，包括人类。马来西亚法律要求：所有狗必须在3个月大时接种疫苗。需要年度加强疫苗接种。狗必须佩戴有效的疫苗接种标签。主人必须保留疫苗接种证书。不遵守的处罚：罚款高达RM10,000。未接种疫苗的狗可能被没收。如果您的狗咬伤他人，需承担法律责任。马来西亚狂犬病情况：马来西亚曾发生狂犬病疫情，特别是在砂拉越和玻璃市。流浪狗数量增加了风险。野生动物也可能携带狂犬病。狗的跨境移动可能引入病毒。狂犬病如何传播：主要通过被感染动物咬伤。唾液接触开放性伤口或粘膜。不通过触摸或随意接触。疫苗接种保护：您的狗免受致命疾病。您的家人和社区。允许与您的宠物一起旅行。提供法律保护。'
+    },
+    keywords: ['rabies', 'mandatory', 'vaccination', 'law', 'Malaysia', 'fatal', 'public health', 'certificate']
+  },
+  {
+    id: 'dog-maintenance-deworming-3',
+    category: 'dog-maintenance',
+    question: {
+      en: 'How often should I deworm my dog?',
+      ms: 'Berapa kerap saya perlu menyahcacing anjing saya?',
+      zh: '我应该多久给我的狗驱虫一次？'
+    },
+    shortAnswer: {
+      en: 'Puppies should be dewormed every 2 weeks from 2-12 weeks of age, then monthly until 6 months. Adult dogs need deworming every 3-6 months depending on lifestyle and risk factors. Dogs that spend time outdoors, hunt, or eat raw food may need more frequent treatment.',
+      ms: 'Anak anjing harus disahcacing setiap 2 minggu dari usia 2-12 minggu, kemudian setiap bulan sehingga 6 bulan. Anjing dewasa memerlukan penyahcacingan setiap 3-6 bulan bergantung pada gaya hidup dan faktor risiko.',
+      zh: '幼犬应在2-12周龄时每2周驱虫一次，然后每月驱虫直到6个月。成年犬根据生活方式和风险因素需要每3-6个月驱虫一次。经常在户外活动、打猎或吃生食的狗可能需要更频繁的治疗。'
+    },
+    fullAnswer: {
+      en: 'Regular deworming is essential for your dog\'s health and to prevent transmission to humans. Here\'s a comprehensive guide. Types of intestinal worms in Malaysia: Roundworms - most common, can be transmitted to puppies before birth. Hookworms - cause anemia, enter through skin or ingestion. Whipworms - live in large intestine, cause chronic problems. Tapeworms - transmitted through fleas or eating infected prey. Deworming schedule: Puppies: Every 2 weeks from 2-12 weeks old. Monthly from 3-6 months old. Adult dogs: Every 3 months for average risk dogs. Monthly for high-risk dogs (hunting, raw diet, lots of outdoor exposure). Pregnant dogs: Before breeding, then at specific times during pregnancy. Signs your dog may have worms: Visible worms in stool or vomit. Scooting (dragging bottom on ground). Pot-bellied appearance (especially puppies). Weight loss despite good appetite. Dull coat. Diarrhea or bloody stool. Vomiting. Lethargy. Choosing dewormers: Broad-spectrum products cover multiple worm types. Your vet can recommend appropriate products. Some heartworm preventatives also cover intestinal worms. Important notes: Deworm all dogs in the household together. Clean up feces promptly to prevent reinfection. Some worms can infect humans (especially children) - practice good hygiene. Fecal tests can identify specific worm types if treatment isn\'t working. Malaysia\'s tropical climate means year-round worm prevention is important.',
+      ms: 'Penyahcacingan berkala adalah penting untuk kesihatan anjing anda dan untuk mencegah penularan kepada manusia. Berikut adalah panduan komprehensif. Jenis cacing usus di Malaysia: Cacing gelang - paling biasa, boleh ditularkan kepada anak anjing sebelum lahir. Cacing kait - menyebabkan anemia. Cacing cambuk - hidup di usus besar. Cacing pita - ditularkan melalui kutu atau memakan mangsa yang dijangkiti. Jadual penyahcacingan: Anak anjing: Setiap 2 minggu dari usia 2-12 minggu. Setiap bulan dari 3-6 bulan. Anjing dewasa: Setiap 3 bulan untuk anjing risiko purata. Setiap bulan untuk anjing berisiko tinggi. Tanda-tanda anjing anda mungkin ada cacing: Cacing kelihatan dalam najis atau muntah. Menyeret punggung di tanah. Penampilan perut buncit. Penurunan berat badan. Bulu kusam. Cirit-birit atau najis berdarah.',
+      zh: '定期驱虫对您的狗的健康至关重要，并可防止传播给人类。以下是全面指南。马来西亚肠道寄生虫的类型：蛔虫 - 最常见，可在出生前传给幼犬。钩虫 - 导致贫血，通过皮肤或摄入进入体内。鞭虫 - 生活在大肠中，引起慢性问题。绦虫 - 通过跳蚤或吃受感染的猎物传播。驱虫时间表：幼犬：2-12周龄时每2周一次。3-6个月时每月一次。成年犬：普通风险犬每3个月一次。高风险犬（打猎、生食、大量户外接触）每月一次。怀孕犬：繁殖前，然后在怀孕期间特定时间。您的狗可能有寄生虫的迹象：粪便或呕吐物中可见蠕虫。蹭屁股（在地上拖着屁股）。肚子鼓起（尤其是幼犬）。尽管食欲好但体重下降。毛发暗淡。腹泻或血便。呕吐。嗜睡。选择驱虫药：广谱产品覆盖多种蠕虫类型。您的兽医可以推荐适当的产品。马来西亚的热带气候意味着全年驱虫预防很重要。'
+    },
+    keywords: ['deworming', 'worms', 'roundworms', 'hookworms', 'tapeworms', 'intestinal', 'parasites', 'prevention']
+  },
+  {
+    id: 'dog-maintenance-flea-tick-4',
+    category: 'dog-maintenance',
+    question: {
+      en: 'How do I prevent fleas and ticks on my dog in Malaysia?',
+      ms: 'Bagaimana saya mencegah kutu dan pinjal pada anjing saya di Malaysia?',
+      zh: '如何预防我的狗在马来西亚感染跳蚤和蜱虫？'
+    },
+    shortAnswer: {
+      en: 'Use monthly preventatives like spot-on treatments (Frontline, Revolution), oral tablets (NexGard, Simparica), or collars (Seresto). Malaysia\'s tropical climate means year-round protection is essential. Regular grooming, washing bedding, and treating your home and yard also help prevent infestations.',
+      ms: 'Gunakan pencegahan bulanan seperti rawatan titik-on (Frontline, Revolution), tablet oral (NexGard, Simparica), atau kolar (Seresto). Iklim tropika Malaysia bermakna perlindungan sepanjang tahun adalah penting. Dandanan berkala dan membasuh tempat tidur juga membantu.',
+      zh: '使用每月预防措施，如滴剂（Frontline、Revolution）、口服片剂（NexGard、Simparica）或项圈（Seresto）。马来西亚的热带气候意味着全年保护至关重要。定期美容、清洗床上用品，以及处理家庭和院子也有助于防止感染。'
+    },
+    fullAnswer: {
+      en: 'Flea and tick prevention is crucial in Malaysia\'s warm, humid climate where these parasites thrive year-round. Prevention methods: Spot-on treatments (applied to skin): Frontline Plus, Revolution, Advocate. Applied monthly to back of neck. Waterproof after 24-48 hours. Effective for 30 days. Oral preventatives: NexGard, Simparica, Bravecto. Given monthly or every 3 months (Bravecto). Start working within hours. Not affected by bathing. Collars: Seresto collar lasts 8 months. Convenient but may irritate some dogs. Good for dogs who swim frequently. Why prevention matters: Fleas cause intense itching and allergic dermatitis. Ticks transmit deadly diseases like tick fever (Ehrlichiosis) and babesiosis. Fleas carry tapeworms. One flea can lay 50 eggs per day. Environmental control: Vacuum frequently, especially carpets and furniture. Wash dog bedding weekly in hot water. Treat your yard with pet-safe products. Keep grass trimmed short. Consider professional pest control for severe infestations. Signs of infestation: Excessive scratching, biting, or licking. Visible fleas or "flea dirt" (black specks). Red, irritated skin. Hair loss, especially at tail base. Ticks visible on skin (check ears, neck, between toes). Tips for Malaysian conditions: Use prevention year-round - there\'s no "off season". Check your dog after walks in grassy areas. Be extra vigilant during monsoon season. Treat all pets in the household.',
+      ms: 'Pencegahan kutu dan pinjal adalah penting dalam iklim Malaysia yang panas dan lembap di mana parasit ini berkembang sepanjang tahun. Kaedah pencegahan: Rawatan titik-on (digunakan pada kulit): Frontline Plus, Revolution, Advocate. Digunakan setiap bulan di belakang leher. Kalis air selepas 24-48 jam. Pencegahan oral: NexGard, Simparica, Bravecto. Diberikan setiap bulan atau setiap 3 bulan. Mula bekerja dalam beberapa jam. Tidak terjejas oleh mandian. Kolar: Kolar Seresto tahan 8 bulan. Mudah tetapi mungkin merengsakan sesetengah anjing. Mengapa pencegahan penting: Kutu menyebabkan gatal yang teruk dan dermatitis alahan. Pinjal menularkan penyakit maut seperti demam pinjal dan babesiosis. Kawalan persekitaran: Vakum dengan kerap. Basuh tempat tidur anjing setiap minggu dalam air panas. Rawat halaman anda dengan produk selamat haiwan.',
+      zh: '在马来西亚温暖潮湿的气候中，跳蚤和蜱虫预防至关重要，这些寄生虫全年繁殖。预防方法：滴剂（涂抹在皮肤上）：Frontline Plus、Revolution、Advocate。每月涂抹在脖子后面。24-48小时后防水。有效期30天。口服预防药：NexGard、Simparica、Bravecto。每月或每3个月（Bravecto）服用一次。几小时内开始起效。不受洗澡影响。项圈：Seresto项圈可持续8个月。方便但可能刺激某些狗。适合经常游泳的狗。为什么预防很重要：跳蚤引起剧烈瘙痒和过敏性皮炎。蜱虫传播致命疾病，如蜱热和巴贝虫病。跳蚤携带绦虫。一只跳蚤每天可产50个卵。环境控制：经常吸尘，尤其是地毯和家具。每周用热水清洗狗床上用品。用宠物安全产品处理您的院子。保持草坪修剪短。马来西亚条件的建议：全年使用预防措施 - 没有"淡季"。在草地区域散步后检查您的狗。在季风季节要格外警惕。治疗家中所有宠物。'
+    },
+    keywords: ['flea', 'tick', 'prevention', 'Frontline', 'NexGard', 'Seresto', 'parasites', 'tropical']
+  },
+  {
+    id: 'dog-maintenance-heartworm-prevention-5',
+    category: 'dog-maintenance',
+    question: {
+      en: 'Does my dog need heartworm prevention in Malaysia?',
+      ms: 'Adakah anjing saya memerlukan pencegahan cacing jantung di Malaysia?',
+      zh: '我的狗在马来西亚需要心丝虫预防吗？'
+    },
+    shortAnswer: {
+      en: 'Yes, absolutely. Malaysia\'s tropical climate with year-round mosquitoes makes heartworm prevention essential. Monthly preventatives like Heartgard, Revolution, or Advocate protect against this deadly disease. Dogs should be tested before starting prevention and continue protection lifelong.',
+      ms: 'Ya, sudah tentu. Iklim tropika Malaysia dengan nyamuk sepanjang tahun menjadikan pencegahan cacing jantung penting. Pencegahan bulanan seperti Heartgard, Revolution, atau Advocate melindungi daripada penyakit maut ini. Anjing harus diuji sebelum memulakan pencegahan.',
+      zh: '是的，绝对需要。马来西亚热带气候全年都有蚊子，使心丝虫预防至关重要。每月预防药如Heartgard、Revolution或Advocate可预防这种致命疾病。狗在开始预防之前应进行检测，并终身继续保护。'
+    },
+    fullAnswer: {
+      en: 'Heartworm disease is a serious and potentially fatal condition spread by mosquitoes, making prevention critical in tropical Malaysia. What is heartworm? Parasitic worms that live in the heart and blood vessels. Transmitted through mosquito bites. Takes 6-7 months to develop after infection. Can cause heart failure and death. Why Malaysia is high risk: Year-round mosquito season. Tropical humidity supports mosquito breeding. Urban and rural areas both affected. Many stray dogs carry the disease. Prevention options: Monthly tablets: Heartgard, Interceptor - chewable, also covers intestinal worms. Monthly spot-ons: Revolution, Advocate - also covers fleas and other parasites. Monthly injections: ProHeart 6 - given by vet, lasts 6 months. Important prevention guidelines: Test your dog before starting prevention (giving prevention to infected dogs can be dangerous). Start puppies at 8 weeks old. Give prevention every month, same day each month. Don\'t miss doses - gaps in protection allow infection. Continue year-round (there\'s no "off season" in Malaysia). Symptoms of heartworm disease: Mild persistent cough. Reluctance to exercise. Fatigue after moderate activity. Decreased appetite. Weight loss. Swollen belly (from fluid). Treatment challenges: Treatment for established infection is expensive (RM2,000-5,000+). Treatment is risky and requires strict rest. Prevention is much safer and cheaper. Some dogs die despite treatment. The bottom line: Prevention costs about RM50-100/month. Treatment costs thousands and may not succeed. This is one condition where prevention is absolutely the best approach.',
+      ms: 'Penyakit cacing jantung adalah keadaan serius dan berpotensi maut yang disebarkan oleh nyamuk, menjadikan pencegahan kritikal di Malaysia tropika. Apa itu cacing jantung? Cacing parasit yang hidup di jantung dan saluran darah. Ditularkan melalui gigitan nyamuk. Mengambil masa 6-7 bulan untuk berkembang selepas jangkitan. Boleh menyebabkan kegagalan jantung dan kematian. Mengapa Malaysia berisiko tinggi: Musim nyamuk sepanjang tahun. Kelembapan tropika menyokong pembiakan nyamuk. Pilihan pencegahan: Tablet bulanan: Heartgard, Interceptor. Titik-on bulanan: Revolution, Advocate. Suntikan bulanan: ProHeart 6. Garis panduan pencegahan penting: Uji anjing anda sebelum memulakan pencegahan. Mulakan anak anjing pada usia 8 minggu. Berikan pencegahan setiap bulan. Jangan terlepas dos. Gejala penyakit cacing jantung: Batuk ringan berterusan. Keengganan untuk bersenam. Keletihan. Penurunan selera makan.',
+      zh: '心丝虫病是一种严重且可能致命的疾病，通过蚊子传播，使预防在热带马来西亚至关重要。什么是心丝虫？生活在心脏和血管中的寄生虫。通过蚊虫叮咬传播。感染后需要6-7个月才能发展。可导致心力衰竭和死亡。为什么马来西亚是高风险地区：全年蚊虫季节。热带湿度支持蚊虫繁殖。城市和农村地区都受影响。许多流浪狗携带该疾病。预防选择：每月片剂：Heartgard、Interceptor - 咀嚼型，还覆盖肠道寄生虫。每月滴剂：Revolution、Advocate - 还覆盖跳蚤和其他寄生虫。每月注射：ProHeart 6 - 由兽医注射，持续6个月。重要预防指南：在开始预防之前测试您的狗（给感染的狗预防药可能很危险）。8周大的幼犬开始。每月同一天给予预防。不要错过剂量。全年继续（马来西亚没有"淡季"）。心丝虫病的症状：轻微持续咳嗽。不愿运动。中等活动后疲劳。食欲下降。体重减轻。'
+    },
+    keywords: ['heartworm', 'prevention', 'mosquito', 'Heartgard', 'Revolution', 'monthly', 'tropical', 'Malaysia']
+  },
+  {
+    id: 'dog-maintenance-dental-cleaning-6',
+    category: 'dog-maintenance',
+    question: {
+      en: 'How do I keep my dog\'s teeth clean and healthy?',
+      ms: 'Bagaimana saya menjaga gigi anjing saya bersih dan sihat?',
+      zh: '如何保持我的狗的牙齿清洁健康？'
+    },
+    shortAnswer: {
+      en: 'Brush your dog\'s teeth daily or at least 3 times weekly using dog-specific toothpaste. Provide dental chews, toys, and a dental-friendly diet. Professional dental cleaning by a vet is recommended annually. Start dental care early - 80% of dogs show dental disease signs by age 3.',
+      ms: 'Berus gigi anjing anda setiap hari atau sekurang-kurangnya 3 kali seminggu menggunakan ubat gigi khusus anjing. Sediakan gula-gula gigi, mainan, dan diet mesra gigi. Pembersihan gigi profesional oleh veterinar disyorkan setiap tahun.',
+      zh: '每天或每周至少3次使用狗专用牙膏刷狗的牙齿。提供洁牙零食、玩具和有益牙齿的饮食。建议每年由兽医进行专业牙齿清洁。尽早开始牙齿护理 - 80%的狗在3岁时就显示出牙齿疾病的迹象。'
+    },
+    fullAnswer: {
+      en: 'Dental health is crucial for your dog\'s overall wellbeing. Poor dental hygiene can lead to pain, infection, and systemic disease affecting the heart, liver, and kidneys. Why dental care matters: 80% of dogs show signs of dental disease by age 3. Bacteria from dental disease can spread to organs. Painful teeth affect eating and quality of life. Dental disease can shorten your dog\'s lifespan. Daily dental care routine: Brushing: Use dog-specific toothpaste (human toothpaste is toxic). Start slow - let them taste the toothpaste first. Use a dog toothbrush or finger brush. Focus on the outer surfaces of teeth. Aim for daily, minimum 3 times per week. Dental products that help: Dental chews (VOHC approved products are best). Dental toys and rope toys. Dental water additives. Dental diets (larger kibble promotes chewing). Raw bones (supervised, appropriate size). Signs of dental problems: Bad breath. Yellow/brown buildup on teeth. Red, swollen, or bleeding gums. Difficulty eating or dropping food. Pawing at mouth. Loose or missing teeth. Drooling excessively. Professional dental care: Annual dental checkups with your vet. Professional cleaning under anesthesia when needed. X-rays to check for hidden problems. Extractions if teeth are damaged. Cost of professional cleaning: RM300-800+ depending on severity. Includes anesthesia, scaling, polishing. Additional costs for extractions. Much cheaper than treating advanced disease. Breeds prone to dental issues: Small breeds (Yorkies, Chihuahuas, Poodles). Brachycephalic breeds (Bulldogs, Pugs). Dogs with crowded teeth.',
+      ms: 'Kesihatan gigi adalah penting untuk kesejahteraan keseluruhan anjing anda. Kebersihan gigi yang buruk boleh menyebabkan kesakitan, jangkitan, dan penyakit sistemik yang menjejaskan jantung, hati, dan buah pinggang. Mengapa penjagaan gigi penting: 80% anjing menunjukkan tanda-tanda penyakit gigi pada usia 3 tahun. Bakteria dari penyakit gigi boleh merebak ke organ. Gigi yang sakit menjejaskan pemakanan dan kualiti hidup. Rutin penjagaan gigi harian: Memberus: Gunakan ubat gigi khusus anjing. Mulakan perlahan. Gunakan berus gigi anjing. Fokus pada permukaan luar gigi. Sasaran harian, minimum 3 kali seminggu. Produk gigi yang membantu: Gula-gula gigi. Mainan gigi. Tanda-tanda masalah gigi: Nafas berbau. Penumpukan kuning/coklat pada gigi. Gusi merah, bengkak, atau berdarah. Kesukaran makan.',
+      zh: '牙齿健康对您的狗的整体健康至关重要。不良的牙齿卫生会导致疼痛、感染和影响心脏、肝脏和肾脏的全身性疾病。为什么牙齿护理很重要：80%的狗在3岁时显示出牙齿疾病的迹象。牙齿疾病的细菌可以扩散到器官。疼痛的牙齿影响进食和生活质量。牙齿疾病可以缩短您的狗的寿命。每日牙齿护理程序：刷牙：使用狗专用牙膏（人类牙膏有毒）。慢慢开始 - 让它们先尝尝牙膏。使用狗牙刷或指套刷。专注于牙齿的外表面。目标是每天，最少每周3次。有帮助的牙齿产品：洁牙零食。牙齿玩具和绳索玩具。牙齿水添加剂。牙齿饮食。生骨头（监督下，适当大小）。牙齿问题的迹象：口臭。牙齿上有黄色/棕色堆积物。牙龈红、肿或出血。进食困难或掉落食物。用爪子抓嘴。牙齿松动或缺失。过度流口水。专业牙齿护理：每年与您的兽医进行牙齿检查。需要时在麻醉下进行专业清洁。'
+    },
+    keywords: ['dental', 'teeth', 'brushing', 'cleaning', 'tartar', 'plaque', 'gum disease', 'oral health']
+  },
+  {
+    id: 'dog-maintenance-grooming-7',
+    category: 'dog-maintenance',
+    question: {
+      en: 'How often should I groom my dog?',
+      ms: 'Berapa kerap saya perlu mendandan anjing saya?',
+      zh: '我应该多久给我的狗美容一次？'
+    },
+    shortAnswer: {
+      en: 'Grooming frequency depends on breed and coat type. Long-haired dogs need daily brushing and professional grooming every 4-6 weeks. Short-haired breeds need weekly brushing and bathing every 6-8 weeks. All dogs need regular nail trims (every 2-4 weeks), ear cleaning, and dental care.',
+      ms: 'Kekerapan dandanan bergantung pada baka dan jenis bulu. Anjing berbulu panjang memerlukan penyikatan harian dan dandanan profesional setiap 4-6 minggu. Baka berbulu pendek memerlukan penyikatan mingguan dan mandian setiap 6-8 minggu.',
+      zh: '美容频率取决于品种和毛发类型。长毛狗需要每天梳理，每4-6周进行专业美容。短毛品种需要每周梳理，每6-8周洗澡。所有狗都需要定期修剪指甲（每2-4周）、清洁耳朵和牙齿护理。'
+    },
+    fullAnswer: {
+      en: 'Regular grooming is essential for your dog\'s health and comfort, not just appearance. Proper grooming prevents skin problems, detects health issues early, and strengthens your bond. Grooming by coat type: Long-haired (Shih Tzu, Maltese, Golden Retriever): Daily brushing to prevent mats. Professional grooming every 4-6 weeks. Regular trimming around eyes, ears, and sanitary areas. Medium-haired (Beagle, Labrador): Brush 2-3 times weekly. Bathe every 6-8 weeks. More frequent during shedding seasons. Short-haired (Doberman, Boxer): Weekly brushing with rubber brush. Bathe every 6-8 weeks. Less maintenance but still need regular care. Double-coated (Husky, German Shepherd): Daily brushing during shedding season. Never shave double coats (damages coat regulation). Regular deshedding treatments. Essential grooming tasks: Brushing: Removes dead hair and distributes natural oils. Detects lumps, parasites, or skin issues. Prevents painful mats. Bathing: Use dog-specific shampoo (human products wrong pH). Not too frequent (strips natural oils). Dry thoroughly, especially in ears. Nail trimming: Every 2-4 weeks. If you hear clicking on floors, nails are too long. Be careful of the quick (blood vessel). Ear cleaning: Weekly check for odor, redness, discharge. Clean with vet-approved solution. Important for floppy-eared breeds. Anal glands: Some dogs need regular expression. Signs of issues: scooting, licking, odor. Professional groomer or vet can help. Malaysia-specific considerations: Tropical humidity increases skin issues. Air conditioning dries skin - may need moisturizing. Watch for heat stress during grooming. Keep sanitary areas trimmed for hygiene.',
+      ms: 'Dandanan berkala adalah penting untuk kesihatan dan keselesaan anjing anda, bukan hanya penampilan. Dandanan yang betul mencegah masalah kulit, mengesan isu kesihatan awal, dan mengukuhkan ikatan anda. Dandanan mengikut jenis bulu: Berbulu panjang: Penyikatan harian untuk mencegah kusut. Dandanan profesional setiap 4-6 minggu. Berbulu sederhana: Sikat 2-3 kali seminggu. Mandi setiap 6-8 minggu. Berbulu pendek: Penyikatan mingguan dengan berus getah. Mandi setiap 6-8 minggu. Tugas dandanan penting: Penyikatan: Membuang bulu mati dan mengagihkan minyak semula jadi. Mandian: Gunakan syampu khusus anjing. Pemangkasan kuku: Setiap 2-4 minggu. Pembersihan telinga: Semakan mingguan untuk bau, kemerahan. Pertimbangan khusus Malaysia: Kelembapan tropika meningkatkan isu kulit. Penghawa dingin mengeringkan kulit.',
+      zh: '定期美容对您的狗的健康和舒适至关重要，而不仅仅是外观。正确的美容可以预防皮肤问题，及早发现健康问题，并加强您与狗的联系。按毛发类型美容：长毛（西施、马尔济斯、金毛猎犬）：每天梳理以防止打结。每4-6周进行专业美容。定期修剪眼睛、耳朵和卫生区域周围的毛发。中等毛发（比格犬、拉布拉多）：每周梳理2-3次。每6-8周洗澡。脱毛季节更频繁。短毛（杜宾犬、拳师犬）：每周用橡胶刷梳理。每6-8周洗澡。双层毛（哈士奇、德国牧羊犬）：脱毛季节每天梳理。永远不要剃双层毛。基本美容任务：梳理、洗澡、修剪指甲（每2-4周）、清洁耳朵。马来西亚特定考虑：热带湿度增加皮肤问题。空调使皮肤干燥。注意美容时的热应激。'
+    },
+    keywords: ['grooming', 'brushing', 'bathing', 'nails', 'coat', 'fur', 'shedding', 'professional grooming']
+  },
+  {
+    id: 'dog-maintenance-nutrition-8',
+    category: 'dog-maintenance',
+    question: {
+      en: 'What should I feed my dog for optimal health?',
+      ms: 'Apa yang perlu saya berikan kepada anjing saya untuk kesihatan optimum?',
+      zh: '我应该喂我的狗什么才能达到最佳健康？'
+    },
+    shortAnswer: {
+      en: 'Feed a complete and balanced commercial dog food appropriate for your dog\'s age, size, and activity level. Look for foods meeting AAFCO standards. Adult dogs typically eat 2 meals daily. Avoid toxic foods like chocolate, grapes, onions, and xylitol. Fresh water should always be available.',
+      ms: 'Berikan makanan anjing komersial yang lengkap dan seimbang sesuai untuk umur, saiz, dan tahap aktiviti anjing anda. Cari makanan yang memenuhi piawaian AAFCO. Anjing dewasa biasanya makan 2 kali sehari. Elakkan makanan toksik seperti coklat, anggur, bawang.',
+      zh: '喂养适合您的狗的年龄、体型和活动水平的完整均衡商业狗粮。寻找符合AAFCO标准的食品。成年犬通常每天吃2顿饭。避免有毒食物如巧克力、葡萄、洋葱和木糖醇。应始终提供新鲜水。'
+    },
+    fullAnswer: {
+      en: 'Proper nutrition is fundamental to your dog\'s health, longevity, and quality of life. Understanding what to feed ensures your dog thrives. Choosing the right food: Look for "complete and balanced" on the label. AAFCO (Association of American Feed Control Officials) approval indicates nutritional adequacy. Choose appropriate life stage formula: Puppy (higher protein and calcium for growth). Adult (maintenance formula). Senior (often lower calories, joint support). Feeding by life stage: Puppies (up to 1 year): 3-4 meals daily until 4 months. 2-3 meals daily from 4-12 months. Higher calorie and protein needs. Adult dogs: 2 meals daily is ideal. Measure portions to prevent obesity. Adjust based on activity level. Senior dogs (7+ years): May need fewer calories. Consider joint-supporting formulas. Monitor weight closely. Portion control: Follow package guidelines as starting point. Adjust based on body condition. You should feel ribs easily but not see them. Watch for weight gain/loss and adjust. Foods to avoid (toxic): Chocolate (especially dark). Grapes and raisins. Onions and garlic. Xylitol (artificial sweetener). Alcohol and caffeine. Macadamia nuts. Cooked bones (can splinter). Avocado. Fresh water: Always available and clean. Change daily. Multiple water stations in hot weather. Special dietary needs: Large breeds may need large-breed formula. Working dogs need higher calories. Dogs with allergies may need limited ingredient diets. Discuss with your vet for health conditions. Treats: Should be less than 10% of daily calories. Use for training and bonding. Healthy options: carrots, apple slices, commercial training treats.',
+      ms: 'Pemakanan yang betul adalah asas kepada kesihatan, jangka hayat, dan kualiti hidup anjing anda. Memilih makanan yang betul: Cari "lengkap dan seimbang" pada label. Kelulusan AAFCO menunjukkan kecukupan pemakanan. Pilih formula peringkat kehidupan yang sesuai. Pemberian makan mengikut peringkat kehidupan: Anak anjing: 3-4 kali makan sehari sehingga 4 bulan. Anjing dewasa: 2 kali makan sehari adalah ideal. Anjing senior: Mungkin memerlukan lebih sedikit kalori. Makanan yang perlu dielakkan (toksik): Coklat. Anggur dan kismis. Bawang dan bawang putih. Xylitol. Air segar: Sentiasa tersedia dan bersih. Tukar setiap hari.',
+      zh: '适当的营养对您的狗的健康、寿命和生活质量至关重要。选择正确的食物：在标签上寻找"完整均衡"。AAFCO批准表明营养充足。选择适当的生命阶段配方：幼犬（更高的蛋白质和钙用于生长）。成年犬（维持配方）。老年犬（通常低卡路里，关节支持）。按生命阶段喂养：幼犬（最多1岁）：4个月前每天3-4餐。4-12个月每天2-3餐。成年犬：每天2餐是理想的。测量份量以防止肥胖。老年犬（7岁以上）：可能需要更少的卡路里。避免的食物（有毒）：巧克力（尤其是黑巧克力）。葡萄和葡萄干。洋葱和大蒜。木糖醇（人工甜味剂）。酒精和咖啡因。新鲜水：始终可用且干净。每天更换。'
+    },
+    keywords: ['nutrition', 'food', 'diet', 'feeding', 'kibble', 'toxic foods', 'AAFCO', 'balanced diet']
+  },
+  {
+    id: 'dog-maintenance-exercise-9',
+    category: 'dog-maintenance',
+    question: {
+      en: 'How much exercise does my dog need?',
+      ms: 'Berapa banyak senaman yang diperlukan anjing saya?',
+      zh: '我的狗需要多少运动？'
+    },
+    shortAnswer: {
+      en: 'Exercise needs vary by breed, age, and health. Most adult dogs need 30 minutes to 2 hours daily. High-energy breeds (Border Collies, Huskies) need more; low-energy breeds (Bulldogs, Basset Hounds) need less. In Malaysia\'s heat, exercise early morning or evening to prevent heatstroke.',
+      ms: 'Keperluan senaman berbeza mengikut baka, umur, dan kesihatan. Kebanyakan anjing dewasa memerlukan 30 minit hingga 2 jam setiap hari. Baka bertenaga tinggi memerlukan lebih; baka bertenaga rendah memerlukan kurang. Dalam kepanasan Malaysia, bersenam pagi awal atau petang.',
+      zh: '运动需求因品种、年龄和健康状况而异。大多数成年犬每天需要30分钟到2小时。高能量品种（边境牧羊犬、哈士奇）需要更多；低能量品种（斗牛犬、巴吉度猎犬）需要更少。在马来西亚的炎热中，清晨或傍晚运动以防止中暑。'
+    },
+    fullAnswer: {
+      en: 'Regular exercise is essential for your dog\'s physical health, mental wellbeing, and behavior. The right amount depends on several factors. Exercise by breed type: High-energy breeds (1-2+ hours daily): Border Collies, Australian Shepherds, Huskies. German Shepherds, Labrador Retrievers. Jack Russell Terriers, Dalmatians. Medium-energy breeds (30-60 minutes daily): Beagles, Cocker Spaniels. Standard Poodles, Boxers. Most mixed breeds. Low-energy breeds (20-30 minutes daily): Bulldogs (English and French), Pugs. Basset Hounds, Shih Tzus. Cavalier King Charles Spaniels. Exercise by age: Puppies: Multiple short play sessions. Avoid over-exercising growing joints. 5 minutes of exercise per month of age, twice daily. Adult dogs: Peak exercise needs. Can handle longer, more intense activities. Senior dogs: Shorter, gentler walks. Swimming is excellent (low impact). Watch for signs of fatigue. Types of exercise: Walking and jogging. Fetch and ball games. Swimming (great in Malaysia\'s heat). Puzzle toys and mental stimulation. Dog sports (agility, flyball). Playdates with other dogs. Malaysia-specific considerations: NEVER exercise in midday heat. Best times: before 8am or after 5pm. Watch for signs of heatstroke: excessive panting, drooling, weakness. Carry water on walks. Hot pavement can burn paw pads - test with your hand. Consider indoor activities during hottest months. Signs your dog needs more exercise: Destructive behavior. Excessive barking. Weight gain. Hyperactivity. Attention-seeking behaviors. Signs of over-exercise: Excessive panting that doesn\'t resolve. Limping or reluctance to walk. Sleeping more than usual. Worn paw pads.',
+      ms: 'Senaman berkala adalah penting untuk kesihatan fizikal, kesejahteraan mental, dan tingkah laku anjing anda. Senaman mengikut jenis baka: Baka bertenaga tinggi (1-2+ jam sehari): Border Collies, Huskies, German Shepherds. Baka bertenaga sederhana (30-60 minit sehari): Beagles, Boxers. Baka bertenaga rendah (20-30 minit sehari): Bulldogs, Pugs, Shih Tzus. Senaman mengikut umur: Anak anjing: Sesi bermain pendek berganda. Elakkan senaman berlebihan pada sendi yang sedang membesar. Anjing dewasa: Keperluan senaman puncak. Anjing senior: Jalan-jalan yang lebih pendek dan lembut. Pertimbangan khusus Malaysia: JANGAN bersenam pada waktu tengah hari panas. Masa terbaik: sebelum 8 pagi atau selepas 5 petang. Perhatikan tanda-tanda strok haba. Bawa air semasa berjalan.',
+      zh: '定期运动对您的狗的身体健康、心理健康和行为至关重要。按品种类型运动：高能量品种（每天1-2+小时）：边境牧羊犬、澳大利亚牧羊犬、哈士奇。德国牧羊犬、拉布拉多猎犬。杰克罗素梗、达尔马提亚。中等能量品种（每天30-60分钟）：比格犬、可卡犬。标准贵宾犬、拳师犬。低能量品种（每天20-30分钟）：斗牛犬、巴哥犬。巴吉度猎犬、西施犬。按年龄运动：幼犬：多次短暂的玩耍。避免过度运动生长中的关节。成年犬：高峰运动需求。老年犬：更短、更温和的散步。马来西亚特定考虑：永远不要在中午炎热时运动。最佳时间：早上8点前或下午5点后。注意中暑迹象。散步时携带水。炎热的人行道会灼伤爪垫。'
+    },
+    keywords: ['exercise', 'walking', 'activity', 'energy', 'fitness', 'heatstroke', 'outdoor', 'playtime']
+  },
+  {
+    id: 'dog-maintenance-spay-neuter-10',
+    category: 'dog-maintenance',
+    question: {
+      en: 'Should I spay or neuter my dog?',
+      ms: 'Patutkah saya memandulkan anjing saya?',
+      zh: '我应该给我的狗绝育吗？'
+    },
+    shortAnswer: {
+      en: 'Spaying/neutering offers health benefits including reduced cancer risk, prevents unwanted litters, and can improve behavior. The best timing depends on breed and size - small dogs at 6 months, larger breeds may wait until 12-18 months for proper development. Discuss with your vet.',
+      ms: 'Pemanduan menawarkan manfaat kesihatan termasuk pengurangan risiko kanser, mencegah anak yang tidak diingini, dan boleh memperbaiki tingkah laku. Masa terbaik bergantung pada baka dan saiz - anjing kecil pada 6 bulan, baka lebih besar mungkin menunggu sehingga 12-18 bulan.',
+      zh: '绝育提供健康益处，包括降低癌症风险、防止意外怀孕，并可以改善行为。最佳时机取决于品种和体型 - 小型犬6个月，大型犬可能等到12-18个月以确保正常发育。请与您的兽医讨论。'
+    },
+    fullAnswer: {
+      en: 'The decision to spay or neuter is important for your dog\'s health and for responsible pet ownership. Here\'s comprehensive information to help you decide. Benefits of spaying (females): Eliminates risk of ovarian and uterine cancer. Greatly reduces mammary cancer risk (especially if done before first heat). Prevents pyometra (life-threatening uterine infection). No heat cycles (bleeding, behavior changes, attracting males). Prevents unwanted pregnancies. Benefits of neutering (males): Eliminates testicular cancer risk. Reduces prostate problems. Decreases roaming behavior and escape attempts. May reduce aggression and marking behavior. Prevents unwanted litters. Timing recommendations: Small breeds (under 20kg): 6 months old is typically appropriate. Medium breeds (20-40kg): 9-12 months often recommended. Large/giant breeds (over 40kg): May benefit from waiting until 12-18 months for proper bone and joint development. Discuss individual factors with your vet. Considerations for waiting (large breeds): Growth plate closure and joint development. Some studies suggest delayed neutering reduces joint problems. Balance against unwanted breeding risk. The procedure: Routine surgery performed under general anesthesia. Spaying: removal of ovaries and usually uterus. Neutering: removal of testicles. Most dogs go home same day. Recovery: 7-14 days of restricted activity. E-collar to prevent licking incision. Pain medication provided. Most dogs recover quickly. Cost in Malaysia: RM200-800 depending on size, clinic, and location. Female spaying typically costs more than male neutering. Low-cost options available through animal welfare organizations.',
+      ms: 'Keputusan untuk memandulkan adalah penting untuk kesihatan anjing anda dan untuk pemilikan haiwan peliharaan yang bertanggungjawab. Faedah pemanduan (betina): Menghapuskan risiko kanser ovari dan rahim. Sangat mengurangkan risiko kanser susu. Mencegah pyometra (jangkitan rahim yang mengancam nyawa). Tiada kitaran estrus. Mencegah kehamilan yang tidak diingini. Faedah pemanduan (jantan): Menghapuskan risiko kanser testis. Mengurangkan masalah prostat. Mengurangkan tingkah laku merayau. Cadangan masa: Baka kecil: 6 bulan. Baka sederhana: 9-12 bulan. Baka besar/gergasi: 12-18 bulan. Prosedur: Pembedahan rutin di bawah bius am. Kebanyakan anjing pulang pada hari yang sama. Pemulihan: 7-14 hari aktiviti terhad.',
+      zh: '绝育的决定对您的狗的健康和负责任的宠物饲养很重要。绝育（雌性）的好处：消除卵巢和子宫癌的风险。大大降低乳腺癌风险。预防子宫蓄脓（危及生命的子宫感染）。没有发情周期。防止意外怀孕。绝育（雄性）的好处：消除睾丸癌风险。减少前列腺问题。减少游荡行为和逃跑尝试。可能减少攻击性和标记行为。时机建议：小型品种（20公斤以下）：通常6个月大是合适的。中型品种（20-40公斤）：通常建议9-12个月。大型/巨型品种（40公斤以上）：可能受益于等到12-18个月以确保骨骼和关节正常发育。手术：在全身麻醉下进行的常规手术。大多数狗当天回家。恢复：7-14天限制活动。马来西亚费用：RM200-800，取决于体型、诊所和地点。'
+    },
+    keywords: ['spay', 'neuter', 'sterilization', 'surgery', 'cancer prevention', 'behavior', 'responsible ownership']
+  },
+  {
+    id: 'dog-maintenance-microchip-11',
+    category: 'dog-maintenance',
+    question: {
+      en: 'Should I microchip my dog?',
+      ms: 'Patutkah saya memasang microchip anjing saya?',
+      zh: '我应该给我的狗植入芯片吗？'
+    },
+    shortAnswer: {
+      en: 'Yes, microchipping is highly recommended and may be legally required in some areas. A microchip is a permanent form of identification that significantly increases the chances of being reunited if your dog is lost. It\'s a quick, minimally invasive procedure that lasts your dog\'s lifetime.',
+      ms: 'Ya, pemasangan microchip sangat disyorkan dan mungkin diperlukan oleh undang-undang di sesetengah kawasan. Microchip adalah bentuk pengenalan kekal yang meningkatkan peluang untuk bersatu semula jika anjing anda hilang.',
+      zh: '是的，强烈建议植入芯片，某些地区可能在法律上要求。芯片是一种永久性的身份识别形式，如果您的狗丢失，可以大大增加找回的机会。这是一个快速、微创的程序，可以持续您的狗的一生。'
+    },
+    fullAnswer: {
+      en: 'Microchipping is one of the most important things you can do to protect your dog. Here\'s everything you need to know. What is a microchip? A tiny electronic chip (about the size of a grain of rice). Implanted under the skin between shoulder blades. Contains a unique identification number. Lasts the lifetime of your dog. Does not have GPS tracking capability. How it works: Vet or shelter scans the chip with a special reader. Unique ID number appears. Database is searched to find owner contact information. Owner is contacted to reunite with their pet. Why microchipping matters: Collars and tags can fall off or be removed. Microchip is permanent identification. Greatly increases chances of reunion (studies show microchipped dogs are returned at much higher rates). Proof of ownership in disputes. Required for international travel. Some housing requires it. The procedure: Quick injection, similar to a vaccination. No anesthesia needed. Mild discomfort for a moment. Can be done during any vet visit. Often done at time of spaying/neutering. Cost: RM50-150 in Malaysia. One-time cost for lifetime identification. Absolutely worth the investment. Important steps after microchipping: Register your chip with a database immediately. Keep contact information updated (crucial!). Note your microchip number and database name. Have your vet scan the chip annually to ensure it\'s working. Microchip databases in Malaysia: Malaysian Veterinary database. International databases (if planning to travel). Ask your vet which database they use. Remember: A microchip only works if your contact information is current. Update it whenever you move or change phone numbers.',
+      ms: 'Pemasangan microchip adalah salah satu perkara paling penting yang boleh anda lakukan untuk melindungi anjing anda. Apa itu microchip? Cip elektronik kecil (kira-kira saiz sebutir beras). Ditanam di bawah kulit antara bilah bahu. Mengandungi nombor pengenalan unik. Bertahan seumur hidup anjing anda. Bagaimana ia berfungsi: Veterinar mengimbas cip. Nombor ID unik muncul. Pangkalan data dicari untuk mencari maklumat hubungan pemilik. Mengapa pemasangan microchip penting: Kolar dan tag boleh jatuh. Microchip adalah pengenalan kekal. Meningkatkan peluang reunion. Bukti pemilikan. Diperlukan untuk perjalanan antarabangsa. Prosedur: Suntikan cepat, serupa dengan vaksinasi. Kos: RM50-150 di Malaysia. Langkah penting selepas pemasangan microchip: Daftarkan cip anda dengan pangkalan data segera. Pastikan maklumat hubungan dikemas kini!',
+      zh: '植入芯片是保护您的狗最重要的事情之一。什么是芯片？一个微小的电子芯片（大约一粒米的大小）。植入在肩胛骨之间的皮肤下。包含唯一的识别号码。持续您的狗的一生。没有GPS跟踪功能。它是如何工作的：兽医或收容所用特殊阅读器扫描芯片。唯一的ID号码出现。搜索数据库以查找主人联系信息。为什么植入芯片很重要：项圈和标签可能脱落或被移除。芯片是永久性识别。大大增加团聚的机会。所有权证明。国际旅行需要。程序：快速注射，类似于疫苗接种。不需要麻醉。费用：马来西亚RM50-150。植入芯片后的重要步骤：立即在数据库中注册您的芯片。保持联系信息更新（至关重要！）。记下您的芯片号码和数据库名称。'
+    },
+    keywords: ['microchip', 'identification', 'lost dog', 'registration', 'permanent ID', 'reunion', 'database']
+  },
+  {
+    id: 'dog-maintenance-weight-12',
+    category: 'dog-maintenance',
+    question: {
+      en: 'How do I know if my dog is overweight?',
+      ms: 'Bagaimana saya tahu jika anjing saya terlebih berat badan?',
+      zh: '我怎么知道我的狗是否超重？'
+    },
+    shortAnswer: {
+      en: 'Check your dog\'s body condition: you should be able to feel (but not see) their ribs easily. They should have a visible waist when viewed from above and a tucked abdomen from the side. If ribs are hard to feel or there\'s no waist, your dog may be overweight.',
+      ms: 'Periksa keadaan badan anjing anda: anda sepatutnya boleh merasa (tetapi tidak melihat) tulang rusuk mereka dengan mudah. Mereka sepatutnya mempunyai pinggang yang kelihatan apabila dilihat dari atas. Jika tulang rusuk sukar dirasa, anjing anda mungkin terlebih berat badan.',
+      zh: '检查您的狗的身体状况：您应该能够轻松感觉到（但看不到）它们的肋骨。从上方看应该有可见的腰部，从侧面看腹部应该收紧。如果肋骨难以感觉到或没有腰部，您的狗可能超重了。'
+    },
+    fullAnswer: {
+      en: 'Obesity is a serious health problem affecting over 50% of dogs. It leads to diabetes, joint problems, heart disease, and shorter lifespan. Recognizing and managing weight is crucial. Body Condition Scoring (BCS): Ideal weight (BCS 4-5 out of 9): Ribs easily felt with slight fat covering. Waist visible when viewed from above. Abdomen tucks up when viewed from side. Overweight (BCS 6-7): Ribs difficult to feel under fat. Waist barely visible or absent. Little to no abdominal tuck. Rounded appearance. Obese (BCS 8-9): Ribs very difficult or impossible to feel. No waist visible. Abdomen may hang down. Fat deposits on neck, limbs, and base of tail. Difficulty walking or breathing. Health risks of obesity: Arthritis and joint problems. Diabetes. Heart and respiratory disease. Decreased immune function. Increased anesthesia risk. Heat intolerance. Shortened lifespan (up to 2 years less!). Weight loss strategies: Consult your vet for target weight and plan. Reduce food portions (typically 10-20% less). Switch to weight management food. Measure food precisely - no guessing. Limit treats to less than 10% of calories. Use healthy treats (carrots, green beans). Increase exercise gradually. Regular weigh-ins to track progress. Common causes of weight gain: Overfeeding (most common). Too many treats. Lack of exercise. Spaying/neutering (metabolism decreases). Age-related metabolism changes. Medical conditions (hypothyroidism, Cushing\'s). When to see the vet: Before starting any weight loss program. If your dog gains weight suddenly. If you\'re feeding appropriately but dog is still gaining. To rule out medical causes. Remember: Even small amounts of excess weight impact your dog\'s health and comfort.',
+      ms: 'Obesiti adalah masalah kesihatan serius yang menjejaskan lebih 50% anjing. Ia membawa kepada diabetes, masalah sendi, penyakit jantung, dan jangka hayat yang lebih pendek. Penilaian Keadaan Badan: Berat ideal: Tulang rusuk mudah dirasa dengan sedikit lapisan lemak. Pinggang kelihatan apabila dilihat dari atas. Perut naik apabila dilihat dari sisi. Terlebih berat badan: Tulang rusuk sukar dirasa. Pinggang hampir tidak kelihatan. Sedikit atau tiada pengangkatan perut. Obes: Tulang rusuk sangat sukar atau mustahil untuk dirasa. Tiada pinggang kelihatan. Risiko kesihatan obesiti: Artritis dan masalah sendi. Diabetes. Penyakit jantung. Jangka hayat yang dipendekkan. Strategi penurunan berat badan: Rujuk veterinar anda. Kurangkan bahagian makanan. Bertukar kepada makanan pengurusan berat badan. Hadkan snek.',
+      zh: '肥胖是影响超过50%狗的严重健康问题。它会导致糖尿病、关节问题、心脏病和寿命缩短。身体状况评分：理想体重：肋骨容易感觉到，有轻微的脂肪覆盖。从上方看腰部可见。从侧面看腹部收紧。超重：肋骨在脂肪下难以感觉到。腰部几乎不可见或没有。腹部几乎不收紧。肥胖：肋骨非常难或不可能感觉到。没有可见的腰部。腹部可能下垂。肥胖的健康风险：关节炎和关节问题。糖尿病。心脏和呼吸系统疾病。寿命缩短（最多减少2年！）。减肥策略：咨询您的兽医获取目标体重和计划。减少食物份量（通常减少10-20%）。换成体重管理食品。精确测量食物。限制零食少于10%的卡路里。使用健康零食（胡萝卜、青豆）。逐渐增加运动。'
+    },
+    keywords: ['weight', 'obesity', 'overweight', 'body condition', 'diet', 'portion control', 'exercise', 'health']
+  },
+  {
+    id: 'dog-maintenance-senior-care-13',
+    category: 'dog-maintenance',
+    question: {
+      en: 'How should I care for my senior dog?',
+      ms: 'Bagaimana saya perlu menjaga anjing tua saya?',
+      zh: '我应该如何照顾我的老年狗？'
+    },
+    shortAnswer: {
+      en: 'Senior dogs (typically 7+ years) need twice-yearly vet checkups, age-appropriate diet, gentle exercise, joint support, and comfortable bedding. Watch for signs of arthritis, cognitive decline, vision/hearing loss, and organ dysfunction. Early detection of age-related conditions allows better management.',
+      ms: 'Anjing senior (biasanya 7+ tahun) memerlukan pemeriksaan veterinar dua kali setahun, diet sesuai umur, senaman lembut, sokongan sendi, dan tempat tidur yang selesa. Perhatikan tanda-tanda artritis, penurunan kognitif, kehilangan penglihatan/pendengaran.',
+      zh: '老年犬（通常7岁以上）需要每年两次兽医检查、适龄饮食、温和运动、关节支持和舒适的床铺。注意关节炎、认知能力下降、视力/听力丧失和器官功能障碍的迹象。早期发现与年龄相关的疾病可以更好地管理。'
+    },
+    fullAnswer: {
+      en: 'Senior dogs have special needs as their bodies change with age. Proper care can help them live comfortable, happy lives in their golden years. When is a dog "senior"? Small breeds (under 10kg): 10-12 years. Medium breeds (10-25kg): 8-10 years. Large breeds (25-40kg): 6-8 years. Giant breeds (over 40kg): 5-6 years. Essential senior dog care: Veterinary visits: Twice-yearly checkups instead of annual. Blood work and urinalysis to catch early problems. Dental exams. Discuss any behavioral changes. Nutrition: Senior-specific formulas (lower calories, joint support). Easily digestible protein. Added omega fatty acids for coat and joints. Monitor water intake. Exercise: Shorter, more frequent walks. Swimming is excellent (low impact). Avoid overexertion. Maintain muscle mass through gentle activity. Comfort: Orthopedic bed for joint support. Ramps or steps for furniture/cars. Non-slip mats on slippery floors. Accessible food and water bowls. Common senior dog health issues: Arthritis - stiffness, difficulty rising, reluctance to jump. Cognitive dysfunction - confusion, pacing, house training regression. Dental disease - bad breath, difficulty eating. Vision and hearing loss. Kidney and liver disease. Cancer (lumps should always be checked). Heart disease. Signs to watch for: Increased thirst or urination. Unexplained weight changes. Decreased appetite. Difficulty getting up or climbing stairs. Confusion or disorientation. Lumps or bumps. Coughing or labored breathing. Changes in behavior or sleep patterns. Making life easier: Keep routine consistent. Provide mental stimulation (puzzle toys). Extra patience with house training accidents. More frequent potty breaks. Temperature regulation (seniors are more sensitive). Quality time and gentle affection.',
+      ms: 'Anjing senior mempunyai keperluan khas apabila badan mereka berubah dengan usia. Penjagaan yang betul boleh membantu mereka hidup dengan selesa. Bila anjing menjadi "senior"? Baka kecil: 10-12 tahun. Baka sederhana: 8-10 tahun. Baka besar: 6-8 tahun. Baka gergasi: 5-6 tahun. Penjagaan anjing senior yang penting: Lawatan veterinar: Pemeriksaan dua kali setahun. Kerja darah dan urinalisis. Pemakanan: Formula khusus senior. Senaman: Jalan-jalan yang lebih pendek dan kerap. Berenang adalah sangat baik. Keselesaan: Katil ortopedik untuk sokongan sendi. Tanjakan atau tangga. Tikar tidak licin. Isu kesihatan anjing senior yang biasa: Artritis. Disfungsi kognitif. Penyakit gigi. Kehilangan penglihatan dan pendengaran.',
+      zh: '老年犬随着年龄增长身体会发生变化，有特殊需求。适当的护理可以帮助它们在晚年过上舒适、快乐的生活。狗什么时候算"老年"？小型品种（10公斤以下）：10-12岁。中型品种（10-25公斤）：8-10岁。大型品种（25-40公斤）：6-8岁。巨型品种（40公斤以上）：5-6岁。老年犬护理要点：兽医就诊：每年两次检查而不是每年一次。血液检查和尿液分析以及早发现问题。营养：老年专用配方（低卡路里，关节支持）。易消化的蛋白质。运动：更短、更频繁的散步。游泳非常好（低冲击）。舒适：矫形床以支撑关节。家具/汽车的坡道或台阶。常见老年犬健康问题：关节炎。认知功能障碍。牙齿疾病。视力和听力丧失。需要注意的迹象：口渴或排尿增加。体重不明原因变化。食欲下降。起床或爬楼梯困难。'
+    },
+    keywords: ['senior', 'elderly', 'aging', 'arthritis', 'cognitive', 'geriatric', 'comfort', 'checkup']
+  },
+  {
+    id: 'dog-maintenance-puppy-care-14',
+    category: 'dog-maintenance',
+    question: {
+      en: 'What are the essential care needs for a new puppy?',
+      ms: 'Apakah keperluan penjagaan penting untuk anak anjing baru?',
+      zh: '新幼犬的基本护理需求是什么？'
+    },
+    shortAnswer: {
+      en: 'New puppies need vaccinations (starting at 6-8 weeks), deworming, quality puppy food, socialization, house training, crate training, and puppy-proofing your home. Schedule a vet visit within 48 hours of getting your puppy. Start training early using positive reinforcement.',
+      ms: 'Anak anjing baru memerlukan vaksinasi (bermula pada 6-8 minggu), penyahcacingan, makanan anak anjing berkualiti, sosialisasi, latihan rumah, latihan sangkar, dan menjadikan rumah anda selamat untuk anak anjing.',
+      zh: '新幼犬需要疫苗接种（从6-8周开始）、驱虫、优质幼犬食品、社会化、如厕训练、笼子训练，以及让您的家对幼犬安全。在获得幼犬后48小时内安排兽医就诊。使用正强化早期开始训练。'
+    },
+    fullAnswer: {
+      en: 'Bringing home a new puppy is exciting but requires preparation and commitment. Here\'s a comprehensive guide to puppy care. Before bringing puppy home: Puppy-proof your space (remove hazards, secure cables, hide toxic plants). Get supplies: crate, bed, food/water bowls, collar, leash, ID tag, food, toys. Find a veterinarian. Plan where puppy will sleep. First vet visit (within 48 hours): Health examination. Vaccination schedule discussion. Deworming. Microchipping. Nutrition advice. Vaccination schedule: 6-8 weeks: First DHPP vaccine. 10-12 weeks: Second DHPP + Leptospirosis. 14-16 weeks: Third DHPP + Rabies. Annual boosters thereafter. Deworming schedule: Every 2 weeks from 2-12 weeks old. Monthly until 6 months old. Every 3 months as an adult. Feeding: High-quality puppy food (small breed or large breed specific). 3-4 meals daily until 4 months. 2-3 meals daily from 4-12 months. Fresh water always available. Training priorities: House training - take out frequently, reward success. Crate training - safe space, helps with house training. Basic commands - sit, stay, come. Bite inhibition - redirect to toys. Leash walking. Socialization (critical period: 3-16 weeks): Expose to various people, dogs, sounds, environments. Positive experiences are key. Puppy classes are excellent. Don\'t overwhelm - go at puppy\'s pace. Exercise: 5 minutes per month of age, twice daily. Avoid over-exercising growing joints. Mental stimulation is equally important. Health monitoring: Weight gain (should be steady). Eating and drinking normally. Energy levels. Stool quality. Any signs of illness. Common puppy issues: Teething (provide appropriate chew toys). Parasites (follow prevention schedule). Digestive upset (transition food slowly).',
+      ms: 'Membawa pulang anak anjing baru adalah menarik tetapi memerlukan persediaan dan komitmen. Sebelum membawa anak anjing pulang: Jadikan ruang anda selamat untuk anak anjing. Dapatkan bekalan: sangkar, katil, mangkuk makanan/air, kolar, tali, tag ID. Cari veterinar. Lawatan veterinar pertama (dalam 48 jam): Pemeriksaan kesihatan. Jadual vaksinasi. Penyahcacingan. Microchip. Jadual vaksinasi: 6-8 minggu: Vaksin DHPP pertama. 10-12 minggu: DHPP kedua + Leptospirosis. 14-16 minggu: DHPP ketiga + Rabies. Pemberian makan: Makanan anak anjing berkualiti tinggi. 3-4 kali makan setiap hari sehingga 4 bulan. Keutamaan latihan: Latihan rumah. Latihan sangkar. Arahan asas. Sosialisasi (tempoh kritikal: 3-16 minggu): Dedahkan kepada pelbagai orang, anjing, bunyi, persekitaran.',
+      zh: '带新幼犬回家令人兴奋，但需要准备和承诺。带幼犬回家前：让您的空间对幼犬安全（移除危险物品，固定电缆，隐藏有毒植物）。获取用品：笼子、床、食物/水碗、项圈、牵引绳、ID标签、食物、玩具。找一位兽医。首次兽医就诊（48小时内）：健康检查。疫苗接种计划讨论。驱虫。芯片植入。疫苗接种计划：6-8周：第一针DHPP疫苗。10-12周：第二针DHPP + 钩端螺旋体病。14-16周：第三针DHPP + 狂犬病。喂养：高质量幼犬食品。4个月前每天3-4餐。4-12个月每天2-3餐。训练重点：如厕训练。笼子训练。基本命令。社会化（关键期：3-16周）：接触各种人、狗、声音、环境。积极的体验是关键。幼犬课程非常好。运动：每月龄5分钟，每天两次。避免过度运动生长中的关节。'
+    },
+    keywords: ['puppy', 'new dog', 'vaccination', 'socialization', 'training', 'house training', 'deworming', 'care']
+  },
+  {
+    id: 'dog-maintenance-anxiety-15',
+    category: 'dog-maintenance',
+    question: {
+      en: 'How do I help my dog with anxiety or stress?',
+      ms: 'Bagaimana saya membantu anjing saya dengan kebimbangan atau tekanan?',
+      zh: '我如何帮助我的狗应对焦虑或压力？'
+    },
+    shortAnswer: {
+      en: 'Identify anxiety triggers and create a safe space for your dog. Use desensitization training, calming aids (Adaptil diffusers, anxiety wraps), regular exercise, and consistent routines. Severe cases may need behavioral therapy or anti-anxiety medication from your vet.',
+      ms: 'Kenal pasti pencetus kebimbangan dan cipta ruang selamat untuk anjing anda. Gunakan latihan desensitisasi, bantuan menenangkan (penyebar Adaptil, pembalut kebimbangan), senaman berkala, dan rutin yang konsisten. Kes teruk mungkin memerlukan terapi tingkah laku atau ubat anti-kebimbangan.',
+      zh: '识别焦虑触发因素并为您的狗创造一个安全的空间。使用脱敏训练、镇静辅助工具（Adaptil扩散器、焦虑包裹）、定期运动和一致的日常安排。严重情况可能需要行为治疗或兽医开的抗焦虑药物。'
+    },
+    fullAnswer: {
+      en: 'Anxiety in dogs is common and can significantly impact their quality of life. Understanding and addressing anxiety is important for your dog\'s wellbeing. Types of anxiety: Separation anxiety - distress when left alone. Noise anxiety - fear of thunder, fireworks, loud sounds. Social anxiety - fear of people or other dogs. Situational anxiety - vet visits, car rides. Generalized anxiety - constant state of worry. Signs of anxiety: Excessive panting or drooling. Pacing or restlessness. Trembling or shaking. Destructive behavior. Excessive barking or whining. Trying to escape. House training accidents. Aggression. Loss of appetite. Hiding or clinginess. Management strategies: Create a safe space: Quiet area where dog can retreat. Comfortable bed or crate. White noise machine to mask sounds. Covered crate can feel more secure. Exercise and mental stimulation: Regular physical activity reduces anxiety. Puzzle toys and training sessions. Tired dogs are calmer dogs. Routine and consistency: Predictable schedule reduces stress. Consistent commands and expectations. Gradual changes when needed. Desensitization training: Gradual exposure to triggers at low intensity. Pair with positive experiences. Slowly increase exposure over time. Patience is essential. Calming aids: Adaptil (synthetic pheromone) diffusers and collars. Anxiety wraps (Thundershirt). Calming supplements (consult vet). Soothing music designed for dogs. When to seek professional help: Anxiety is severe or getting worse. Self-harm or destructive behavior. Aggression related to anxiety. Quality of life is affected. Professional options: Veterinary behaviorist consultation. Prescription anti-anxiety medication. Behavior modification programs. Specific help for separation anxiety: Practice short departures. Don\'t make arrivals/departures dramatic. Leave comforting items. Consider doggy daycare or pet sitter.',
+      ms: 'Kebimbangan pada anjing adalah biasa dan boleh memberi kesan ketara kepada kualiti hidup mereka. Jenis kebimbangan: Kebimbangan perpisahan. Kebimbangan bunyi. Kebimbangan sosial. Kebimbangan situasi. Tanda-tanda kebimbangan: Terengah-engah atau air liur berlebihan. Mondar-mandir atau gelisah. Menggigil atau menggeletar. Tingkah laku merosakkan. Salakan berlebihan. Strategi pengurusan: Cipta ruang selamat. Senaman dan rangsangan mental. Rutin dan konsistensi. Latihan desensitisasi. Bantuan menenangkan: Penyebar dan kolar Adaptil. Pembalut kebimbangan. Suplemen menenangkan. Bila untuk mendapatkan bantuan profesional: Kebimbangan teruk atau semakin teruk. Kualiti hidup terjejas. Pilihan profesional: Konsultasi pakar tingkah laku veterinar. Ubat anti-kebimbangan preskripsi.',
+      zh: '狗的焦虑很常见，会严重影响它们的生活质量。焦虑类型：分离焦虑 - 独处时痛苦。噪音焦虑 - 害怕雷声、烟花、大声音。社交焦虑 - 害怕人或其他狗。情境焦虑 - 兽医就诊、乘车。焦虑迹象：过度喘气或流口水。踱步或不安。颤抖或发抖。破坏性行为。过度吠叫或呜咽。试图逃跑。如厕训练事故。管理策略：创造安全空间：狗可以撤退的安静区域。运动和心理刺激：定期身体活动减少焦虑。日常和一致性：可预测的时间表减少压力。脱敏训练：在低强度下逐渐接触触发因素。与积极体验配对。镇静辅助工具：Adaptil（合成信息素）扩散器和项圈。焦虑包裹（Thundershirt）。何时寻求专业帮助：焦虑严重或恶化。生活质量受到影响。专业选择：兽医行为专家咨询。处方抗焦虑药物。'
+    },
+    keywords: ['anxiety', 'stress', 'separation anxiety', 'fear', 'thunderstorm', 'calming', 'behavior', 'nervous']
+  },
+  {
+    id: 'dog-maintenance-skin-coat-16',
+    category: 'dog-maintenance',
+    question: {
+      en: 'How do I maintain my dog\'s healthy skin and coat?',
+      ms: 'Bagaimana saya mengekalkan kulit dan bulu anjing saya yang sihat?',
+      zh: '我如何保持我的狗的皮肤和毛发健康？'
+    },
+    shortAnswer: {
+      en: 'Feed a balanced diet with omega fatty acids, brush regularly based on coat type, bathe with dog-specific shampoo only when needed, use flea/tick prevention, and ensure adequate hydration. In Malaysia\'s climate, watch for humidity-related skin issues and fungal infections.',
+      ms: 'Berikan diet seimbang dengan asid lemak omega, sikat secara berkala berdasarkan jenis bulu, mandi dengan syampu khusus anjing hanya apabila perlu, gunakan pencegahan kutu/pinjal, dan pastikan penghidratan yang mencukupi.',
+      zh: '喂养含有omega脂肪酸的均衡饮食，根据毛发类型定期梳理，仅在需要时使用狗专用洗发水洗澡，使用跳蚤/蜱虫预防，并确保充足的水分。在马来西亚的气候中，注意与湿度相关的皮肤问题和真菌感染。'
+    },
+    fullAnswer: {
+      en: 'A healthy coat reflects overall health. Proper skin and coat care is essential, especially in Malaysia\'s tropical climate. Nutrition for healthy skin and coat: High-quality protein for strong hair. Omega-3 and omega-6 fatty acids (fish oil, flaxseed). Zinc and biotin supplements if needed. Adequate hydration. Avoid food allergies that cause skin issues. Grooming routine: Brushing: Removes dead hair and distributes oils. Frequency depends on coat type. Helps detect lumps, parasites, skin issues. Bathing: Use dog-specific shampoo (correct pH). Not too frequent (strips natural oils). Every 4-8 weeks for most dogs. Thoroughly dry after bathing. Malaysia-specific coat care: High humidity issues: Fungal and bacterial skin infections. Hot spots (moist dermatitis). Yeast overgrowth in ears and skin folds. Tips for tropical climate: Ensure thorough drying after baths/swimming. Keep skin folds clean and dry. Air conditioning helps but can dry skin. Watch for excessive scratching. Common skin and coat problems: Allergies (food or environmental). Parasites (fleas, mites, ticks). Infections (bacterial, fungal, yeast). Dry skin. Hot spots. Hormonal imbalances. Signs of skin problems: Excessive scratching or licking. Red, irritated skin. Hair loss or bald patches. Flaky or crusty skin. Odor from skin. Lumps or bumps. Changes in coat texture. Maintaining healthy skin: Regular parasite prevention. Prompt treatment of any skin issues. Regular vet checkups. Clean, dry bedding. Proper nutrition. Appropriate grooming schedule. When to see the vet: Persistent scratching despite no visible fleas. Hair loss or changes in coat. Skin infections or hot spots. Unusual odor. Any lumps or growths.',
+      ms: 'Bulu yang sihat mencerminkan kesihatan keseluruhan. Penjagaan kulit dan bulu yang betul adalah penting, terutamanya dalam iklim tropika Malaysia. Pemakanan untuk kulit dan bulu yang sihat: Protein berkualiti tinggi. Asid lemak omega-3 dan omega-6. Suplemen zink dan biotin jika perlu. Penghidratan yang mencukupi. Rutin dandanan: Penyikatan: Membuang bulu mati dan mengagihkan minyak. Kekerapan bergantung pada jenis bulu. Mandian: Gunakan syampu khusus anjing. Tidak terlalu kerap. Penjagaan bulu khusus Malaysia: Isu kelembapan tinggi: Jangkitan kulit kulat dan bakteria. Hot spots. Pertumbuhan yis berlebihan. Petua untuk iklim tropika: Pastikan pengeringan yang menyeluruh selepas mandian. Tanda-tanda masalah kulit: Garu atau jilat berlebihan. Kulit merah, teriritasi. Rambut gugur.',
+      zh: '健康的毛发反映整体健康。适当的皮肤和毛发护理至关重要，尤其是在马来西亚的热带气候中。健康皮肤和毛发的营养：高质量蛋白质。Omega-3和omega-6脂肪酸（鱼油、亚麻籽）。如需要补充锌和生物素。充足的水分。美容程序：梳理：去除死毛并分布油脂。频率取决于毛发类型。洗澡：使用狗专用洗发水（正确的pH值）。不要太频繁。马来西亚特定毛发护理：高湿度问题：真菌和细菌性皮肤感染。热斑（湿疹）。耳朵和皮肤褶皱中的酵母过度生长。热带气候的提示：确保洗澡/游泳后彻底干燥。保持皮肤褶皱清洁干燥。常见皮肤和毛发问题：过敏。寄生虫。感染。皮肤问题的迹象：过度抓挠或舔舐。皮肤红肿、发炎。脱毛或秃斑。'
+    },
+    keywords: ['skin', 'coat', 'fur', 'shedding', 'grooming', 'omega', 'allergies', 'healthy coat']
+  },
+  {
+    id: 'dog-maintenance-heat-safety-17',
+    category: 'dog-maintenance',
+    question: {
+      en: 'How do I protect my dog from heat in Malaysia?',
+      ms: 'Bagaimana saya melindungi anjing saya dari kepanasan di Malaysia?',
+      zh: '我如何在马来西亚保护我的狗免受炎热？'
+    },
+    shortAnswer: {
+      en: 'Never leave dogs in cars, exercise only in early morning or evening, provide constant access to fresh water and shade, use cooling mats, and watch for heatstroke signs. Brachycephalic breeds (Bulldogs, Pugs) are at highest risk. Heatstroke is a life-threatening emergency.',
+      ms: 'Jangan tinggalkan anjing dalam kereta, bersenam hanya pada awal pagi atau petang, sediakan akses berterusan kepada air segar dan teduhan, gunakan tikar penyejuk, dan perhatikan tanda-tanda strok haba. Baka brakisefalik (Bulldogs, Pugs) berisiko paling tinggi.',
+      zh: '永远不要把狗留在车里，只在清晨或傍晚运动，提供持续获取新鲜水和阴凉处的机会，使用冷却垫，注意中暑迹象。短头颅品种（斗牛犬、巴哥犬）风险最高。中暑是危及生命的紧急情况。'
+    },
+    fullAnswer: {
+      en: 'Malaysia\'s tropical climate poses significant heat risks for dogs year-round. Understanding how to prevent overheating can save your dog\'s life. Dogs and heat regulation: Dogs cool primarily through panting (not sweating). Less efficient cooling than humans. Cannot tell you when they\'re too hot. Some breeds struggle more than others. High-risk dogs: Brachycephalic breeds (Bulldogs, Pugs, Boxers, Shih Tzus). Thick or dark-coated breeds. Senior dogs and puppies. Overweight dogs. Dogs with heart or respiratory conditions. Heat safety guidelines: Timing: Exercise only before 8am or after 5pm. Avoid midday sun entirely. Check pavement temperature with your hand - if too hot for you, it\'s too hot for paws. Water: Fresh water available at all times. Bring water on all walks. Add ice cubes to water bowl. Consider pet water fountains. Shade and cooling: Access to shaded areas at all times. Cooling mats or wet towels. Fans or air conditioning. Kiddie pool for splashing. Never, ever in cars: Temperature rises rapidly (20°C increase in 10 minutes). Even with windows cracked, it\'s dangerous. Even for "just a minute". If you see a dog in a hot car, alert authorities immediately. Signs of heatstroke: Excessive panting that doesn\'t stop. Drooling thick saliva. Bright red tongue and gums. Weakness or collapse. Vomiting or diarrhea. Confusion or disorientation. Seizures. Emergency response to heatstroke: Move to shade/cool area immediately. Apply cool (not cold) water to body. Focus on neck, armpits, groin. Offer small amounts of cool water. Get to emergency vet immediately. Heatstroke can cause organ damage even after cooling.',
+      ms: 'Iklim tropika Malaysia menimbulkan risiko haba yang ketara untuk anjing sepanjang tahun. Anjing dan pengaturan haba: Anjing menyejukkan terutamanya melalui terengah-engah. Kurang cekap berbanding manusia. Anjing berisiko tinggi: Baka brakisefalik (Bulldogs, Pugs, Boxers, Shih Tzus). Baka berbulu tebal atau gelap. Anjing senior dan anak anjing. Anjing terlebih berat badan. Garis panduan keselamatan haba: Masa: Bersenam hanya sebelum 8 pagi atau selepas 5 petang. Air: Air segar tersedia sepanjang masa. Bawa air semasa berjalan. Teduhan dan penyejukan: Akses ke kawasan berteduh sepanjang masa. Tikar penyejuk. Jangan sekali-kali dalam kereta. Tanda-tanda strok haba: Terengah-engah berlebihan. Air liur pekat. Lidah dan gusi merah terang. Lemah atau rebah. Tindak balas kecemasan kepada strok haba: Pindah ke kawasan teduh segera. Gunakan air sejuk (bukan sejuk beku) ke badan. Pergi ke veterinar kecemasan segera.',
+      zh: '马来西亚的热带气候全年对狗构成重大热风险。狗和体温调节：狗主要通过喘气（而不是出汗）降温。冷却效率低于人类。高风险狗：短头颅品种（斗牛犬、巴哥犬、拳师犬、西施犬）。厚毛或深色毛发的品种。老年犬和幼犬。超重的狗。热安全指南：时间：只在早上8点前或下午5点后运动。完全避免中午的阳光。水：随时提供新鲜水。所有散步时带水。阴凉和冷却：随时可进入阴凉区域。冷却垫或湿毛巾。永远不要留在车里：温度迅速上升（10分钟内升高20°C）。即使开着窗户也很危险。中暑迹象：过度喘气不停。流浓稠唾液。舌头和牙龈鲜红。虚弱或虚脱。中暑的紧急应对：立即移到阴凉/凉爽的地方。用凉水（不是冷水）涂抹身体。立即去急诊兽医处。'
+    },
+    keywords: ['heat', 'heatstroke', 'summer', 'cooling', 'hot weather', 'Malaysia', 'tropical', 'safety']
+  },
+  {
+    id: 'dog-maintenance-socialization-18',
+    category: 'dog-maintenance',
+    question: {
+      en: 'How important is socialization for my dog?',
+      ms: 'Betapa pentingnya sosialisasi untuk anjing saya?',
+      zh: '社会化对我的狗有多重要？'
+    },
+    shortAnswer: {
+      en: 'Socialization is critical, especially during the puppy period (3-16 weeks). Well-socialized dogs are more confident, less fearful, and better behaved. Expose your dog to various people, animals, sounds, and environments with positive experiences. Adult dogs can still learn but may need more patience.',
+      ms: 'Sosialisasi adalah kritikal, terutamanya semasa tempoh anak anjing (3-16 minggu). Anjing yang disosialisasikan dengan baik lebih yakin, kurang takut, dan berkelakuan lebih baik. Dedahkan anjing anda kepada pelbagai orang, haiwan, bunyi, dan persekitaran dengan pengalaman positif.',
+      zh: '社会化至关重要，尤其是在幼犬期（3-16周）。良好社会化的狗更自信、更少恐惧、行为更好。让您的狗接触各种人、动物、声音和环境，并有积极的体验。成年犬仍然可以学习，但可能需要更多耐心。'
+    },
+    fullAnswer: {
+      en: 'Socialization is one of the most important things you can do for your dog\'s long-term wellbeing and behavior. What is socialization? Positive exposure to various stimuli. Building confidence and reducing fear. Creating a well-adjusted, calm dog. Preparing for real-world situations. Critical socialization period: 3-16 weeks of age is the prime window. Brain is most receptive to new experiences. Positive experiences during this time shape lifelong behavior. Negative experiences can also have lasting impact. What to socialize your dog to: People: Different ages (children, elderly). Various appearances (uniforms, hats, beards). Different ethnicities. People with mobility aids. Animals: Other dogs of various sizes and breeds. Cats (if safe). Other animals they may encounter. Environments: Car rides. Vet clinics. Pet stores. Outdoor markets. Different flooring surfaces. Urban and rural areas. Sounds: Thunder recordings (start quiet). Fireworks. Traffic. Household appliances. Doorbell. Construction sounds. Handling: Touching paws, ears, mouth. Brushing and grooming. Nail trimming preparation. Being held and examined. How to socialize properly: Always keep experiences positive. Use treats and praise. Never force interactions. Watch for signs of fear or stress. Go at your dog\'s pace. Short, frequent sessions are best. Socializing adult dogs: Still possible but takes more time. Focus on positive associations. May need professional help for fearful dogs. Gradual exposure is key. Benefits of good socialization: Less fear and anxiety. Fewer behavior problems. Easier vet visits. Better with visitors. More enjoyable outings. Reduced risk of aggression. Risks of poor socialization: Fearfulness and anxiety. Reactivity to other dogs or people. Difficulty in new situations. Potential aggression from fear.',
+      ms: 'Sosialisasi adalah salah satu perkara paling penting yang boleh anda lakukan untuk kesejahteraan dan tingkah laku jangka panjang anjing anda. Apa itu sosialisasi? Pendedahan positif kepada pelbagai rangsangan. Membina keyakinan dan mengurangkan ketakutan. Tempoh sosialisasi kritikal: 3-16 minggu umur adalah tetingkap utama. Otak paling menerima pengalaman baru. Apa yang perlu disosialisasikan: Orang: Umur berbeza, penampilan pelbagai. Haiwan: Anjing lain pelbagai saiz. Persekitaran: Perjalanan kereta, klinik veterinar. Bunyi: Rakaman guruh, bunga api. Pengendalian: Menyentuh kaki, telinga, mulut. Cara mensosialisasikan dengan betul: Sentiasa pastikan pengalaman positif. Gunakan snek dan pujian. Jangan paksa interaksi. Faedah sosialisasi yang baik: Kurang ketakutan dan kebimbangan. Masalah tingkah laku yang lebih sedikit.',
+      zh: '社会化是您能为狗的长期健康和行为做的最重要的事情之一。什么是社会化？对各种刺激的积极接触。建立信心和减少恐惧。创造一只适应良好、平静的狗。关键社会化期：3-16周龄是黄金窗口期。大脑最容易接受新体验。需要社会化的内容：人：不同年龄（儿童、老人）。各种外貌（制服、帽子、胡须）。动物：各种体型和品种的其他狗。猫（如果安全）。环境：乘车。兽医诊所。宠物店。声音：雷声录音（开始时安静）。烟花。交通。家用电器。处理：触摸爪子、耳朵、嘴巴。如何正确社会化：始终保持积极的体验。使用零食和表扬。永远不要强迫互动。注意恐惧或压力的迹象。按照您的狗的节奏进行。社会化成年犬：仍然可能但需要更多时间。专注于积极的联想。良好社会化的好处：更少的恐惧和焦虑。更少的行为问题。更容易的兽医就诊。'
+    },
+    keywords: ['socialization', 'puppy', 'behavior', 'training', 'fear', 'confidence', 'exposure', 'positive']
+  },
+  {
+    id: 'dog-maintenance-annual-checkup-19',
+    category: 'dog-maintenance',
+    question: {
+      en: 'What happens during an annual vet checkup?',
+      ms: 'Apa yang berlaku semasa pemeriksaan veterinar tahunan?',
+      zh: '年度兽医检查期间会发生什么？'
+    },
+    shortAnswer: {
+      en: 'Annual checkups include physical examination (eyes, ears, teeth, heart, abdomen), weight check, vaccination updates, parasite prevention review, and discussion of any concerns. Blood tests and urinalysis may be recommended especially for senior dogs. These visits help catch problems early.',
+      ms: 'Pemeriksaan tahunan termasuk pemeriksaan fizikal (mata, telinga, gigi, jantung, perut), semakan berat, kemas kini vaksinasi, semakan pencegahan parasit, dan perbincangan sebarang kebimbangan. Ujian darah dan urinalisis mungkin disyorkan terutamanya untuk anjing senior.',
+      zh: '年度检查包括身体检查（眼睛、耳朵、牙齿、心脏、腹部）、体重检查、疫苗更新、寄生虫预防回顾以及讨论任何担忧。可能会建议进行血液检查和尿液分析，特别是对老年犬。这些就诊有助于及早发现问题。'
+    },
+    fullAnswer: {
+      en: 'Regular veterinary checkups are essential for maintaining your dog\'s health and catching problems before they become serious. Even healthy-seeming dogs should have annual exams. Why annual checkups matter: Dogs age faster than humans (1 dog year ≈ 7 human years). Early detection of health issues. Update preventive care. Establish baseline health records. Build relationship with your vet. What to expect during the visit: Check-in and history: Weight measurement and comparison to previous visits. Discussion of any concerns you\'ve noticed. Review of diet, exercise, and behavior. Medication and supplement review. Physical examination: Eyes - checking for cataracts, infections, tear production. Ears - signs of infection, mites, or debris. Mouth - dental health, gum disease, tooth problems. Heart and lungs - listening for murmurs, abnormal rhythms, breathing issues. Abdomen - feeling for organ abnormalities, masses, pain. Skin and coat - parasites, allergies, lumps. Joints and mobility - especially important for large and senior dogs. Lymph nodes - checking for swelling. Temperature - normal is 38-39°C. Vaccinations: Rabies booster (required annually in Malaysia). DHPP as recommended (every 1-3 years). Other vaccines based on lifestyle and risk. Parasite prevention: Review of flea, tick, and heartworm prevention. Stool sample for intestinal parasites may be collected. Adjust prevention plan if needed. Recommended additional tests: Young adults: May just need physical exam. Middle-aged dogs (4-7 years): Consider baseline blood work. Senior dogs (7+ years): Annual blood panel and urinalysis recommended. Blood pressure check. Thyroid testing. Preparing for your visit: Write down any questions or concerns. Note any changes in behavior, appetite, or habits. Bring stool sample if requested. Have vaccination records if visiting a new vet. Know what food and medications your dog takes. After the visit: Follow up on any recommended tests or treatments. Schedule any needed follow-up appointments. Update home care routines as advised.',
+      ms: 'Pemeriksaan veterinar berkala adalah penting untuk mengekalkan kesihatan anjing anda dan mengesan masalah sebelum menjadi serius. Mengapa pemeriksaan tahunan penting: Anjing berumur lebih cepat daripada manusia. Pengesanan awal isu kesihatan. Kemas kini penjagaan pencegahan. Apa yang dijangkakan semasa lawatan: Daftar masuk dan sejarah: Pengukuran berat badan. Perbincangan sebarang kebimbangan. Pemeriksaan fizikal: Mata, telinga, mulut, jantung dan paru-paru, perut, kulit dan bulu, sendi dan mobiliti. Vaksinasi: Penggalak rabies (diperlukan setiap tahun di Malaysia). Pencegahan parasit: Semakan pencegahan kutu, pinjal, dan cacing jantung. Ujian tambahan yang disyorkan: Anjing dewasa muda: Mungkin hanya perlu pemeriksaan fizikal. Anjing pertengahan umur: Pertimbangkan kerja darah asas. Anjing senior: Panel darah tahunan dan urinalisis disyorkan.',
+      zh: '定期兽医检查对于维持您的狗的健康和在问题变得严重之前发现问题至关重要。为什么年度检查很重要：狗比人类老化得更快。及早发现健康问题。更新预防护理。就诊时的预期：登记和病史：体重测量并与之前的就诊比较。讨论您注意到的任何担忧。身体检查：眼睛 - 检查白内障、感染、泪液分泌。耳朵 - 感染、螨虫或碎屑的迹象。嘴巴 - 牙齿健康、牙龈疾病、牙齿问题。心脏和肺部 - 听心杂音、异常节律、呼吸问题。腹部 - 感觉器官异常、肿块、疼痛。皮肤和毛发 - 寄生虫、过敏、肿块。关节和活动能力 - 对大型犬和老年犬尤其重要。疫苗接种：狂犬病加强针（马来西亚每年要求）。建议的额外检测：年轻成年犬：可能只需要身体检查。中年犬（4-7岁）：考虑基线血液检查。老年犬（7岁以上）：建议年度血液检查和尿液分析。'
+    },
+    keywords: ['checkup', 'vet visit', 'annual exam', 'health check', 'blood test', 'vaccination', 'preventive care']
+  },
+  {
+    id: 'dog-maintenance-travel-20',
+    category: 'dog-maintenance',
+    question: {
+      en: 'How do I safely travel with my dog in Malaysia?',
+      ms: 'Bagaimana saya boleh melakukan perjalanan dengan selamat bersama anjing saya di Malaysia?',
+      zh: '我如何在马来西亚与我的狗安全旅行？'
+    },
+    shortAnswer: {
+      en: 'Secure your dog with a car harness or crate. Never leave dogs in parked cars. For long trips, stop every 2 hours for water and bathroom breaks. When flying within Malaysia, check airline pet policies. Ensure vaccinations are current and bring documentation, especially for interstate travel.',
+      ms: 'Ikat anjing anda dengan harnes kereta atau sangkar. Jangan tinggalkan anjing dalam kereta yang diparkir. Untuk perjalanan jauh, berhenti setiap 2 jam untuk air dan rehat tandas. Pastikan vaksinasi terkini dan bawa dokumentasi.',
+      zh: '用汽车安全带或笼子固定您的狗。永远不要把狗留在停放的车里。对于长途旅行，每2小时停下来喝水和上厕所。在马来西亚国内飞行时，检查航空公司的宠物政策。确保疫苗接种是最新的，并携带文件，特别是跨州旅行。'
+    },
+    fullAnswer: {
+      en: 'Traveling with your dog in Malaysia requires planning and safety precautions to ensure a comfortable journey for everyone. Car travel safety: Secure your dog: Use a crash-tested car harness attached to seatbelt. Travel crate secured in the back is safest option. Never let dogs ride with head out window (debris, accidents). Never in front seat (airbag danger). Temperature control: NEVER leave dogs in parked cars - temperature rises rapidly and can be fatal. Run air conditioning before putting dog in car. Use sun shades on windows. Travel during cooler parts of day when possible. During the journey: Stop every 2 hours for water and bathroom breaks. Bring water and portable bowl. Never let dog off leash at rest stops unless in secure area. Bring poop bags for cleanup. Motion sickness: Some dogs experience car sickness. Don\'t feed large meals before travel. Consult vet for medication if severe. Short practice trips can help acclimate. Interstate travel within Malaysia: Carry vaccination records (especially rabies certificate). Some states may have additional requirements. Research pet-friendly accommodations in advance. Know location of emergency vets along your route. Air travel within Malaysia: Check airline pet policies (each differs). Most require: Health certificate from vet (usually within 10 days of travel). Current vaccination records. Appropriate travel crate meeting airline specifications. Book early - limited pet spaces on flights. Consider if travel is necessary (flying is stressful for pets). Accommodation tips: Book pet-friendly hotels/homestays in advance. Ask about pet fees and restrictions. Never leave dog unattended in unfamiliar accommodation. Bring familiar items (bed, toys) for comfort. What to pack: Food and treats. Water and portable bowl. Leash and collar with ID tags. Vaccination records. Medications. Waste bags. First aid kit. Familiar blanket or toy. Recent photo of your dog (in case of separation).',
+      ms: 'Melakukan perjalanan dengan anjing anda di Malaysia memerlukan perancangan dan langkah berjaga-jaga keselamatan untuk memastikan perjalanan yang selesa untuk semua orang. Keselamatan perjalanan kereta: Ikat anjing anda: Gunakan harnes kereta yang diuji kemalangan. Sangkar perjalanan yang diikat di belakang adalah pilihan paling selamat. Kawalan suhu: JANGAN tinggalkan anjing dalam kereta yang diparkir - suhu naik dengan cepat dan boleh membawa maut. Semasa perjalanan: Berhenti setiap 2 jam untuk air dan rehat tandas. Bawa air dan mangkuk mudah alih. Mabuk perjalanan: Sesetengah anjing mengalami mabuk kereta. Perjalanan antara negeri dalam Malaysia: Bawa rekod vaksinasi. Perjalanan udara dalam Malaysia: Semak polisi haiwan peliharaan syarikat penerbangan. Kebanyakan memerlukan sijil kesihatan dari veterinar dan rekod vaksinasi semasa. Apa yang perlu dibawa: Makanan dan snek. Air dan mangkuk mudah alih. Tali dan kolar dengan tag ID. Rekod vaksinasi. Ubat-ubatan.',
+      zh: '在马来西亚带狗旅行需要计划和安全预防措施，以确保每个人都有舒适的旅程。汽车旅行安全：固定您的狗：使用经过碰撞测试的汽车安全带。固定在后面的旅行笼是最安全的选择。温度控制：永远不要把狗留在停放的车里 - 温度迅速上升可能致命。在把狗放进车里之前开空调。旅途中：每2小时停下来喝水和上厕所。带水和便携式碗。晕车：有些狗会晕车。旅行前不要喂大餐。马来西亚国内跨州旅行：携带疫苗接种记录（特别是狂犬病证书）。提前研究宠物友好的住宿。了解沿途急诊兽医的位置。马来西亚国内航空旅行：检查航空公司的宠物政策。大多数需要：兽医的健康证明、当前的疫苗接种记录、符合航空公司规格的适当旅行笼。携带物品清单：食物和零食。水和便携式碗。牵引绳和带有ID标签的项圈。疫苗接种记录。药物。急救箱。您的狗的最近照片（以防分离）。'
+    },
+    keywords: ['travel', 'car safety', 'road trip', 'flying', 'airline', 'vacation', 'interstate', 'accommodation']
   }
 ];
 
