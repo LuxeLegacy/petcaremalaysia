@@ -873,6 +873,387 @@ export const yqaItems: YQAItem[] = [
       zh: '年度健康检查对于维护您的猫的健康和及早发现问题至关重要。预期内容:体重和体况评估 - 跟踪变化有助于及早发现问题。生命体征 - 体温、心率、呼吸频率。完整的身体检查:眼睛 - 检查白内障、感染、视网膜问题。耳朵 - 寻找螨虫、感染、息肉。口腔和牙齿 - 评估牙齿健康,检查肿瘤。心脏和肺 - 听诊杂音、异常声音。腹部 - 触诊肿块、器官肿大、疼痛。皮肤和毛发 - 检查寄生虫、过敏、肿块。关节和活动能力 - 评估关节炎或疼痛。额外测试可能包括:粪便寄生虫检查、尿液分析、血液检查、疫苗更新。讨论主题:饮食和营养建议、您注意到的行为变化、寄生虫预防计划。通过记录饮食、饮水、猫砂盆习惯、行为或活动水平的任何变化来准备您的就诊。'
     },
     keywords: ['checkup', 'exam', 'wellness', 'annual', 'vet visit', 'physical', 'screening', 'prevention']
+  },
+  // Dog Emergency Q&As (20 items)
+  {
+    id: 'dog-skin-allergy-1',
+    category: 'dog-emergency',
+    question: {
+      en: 'What are the signs of skin allergies in dogs?',
+      ms: 'Apakah tanda-tanda alahan kulit pada anjing?',
+      zh: '狗狗皮肤过敏有哪些症状？'
+    },
+    shortAnswer: {
+      en: 'Signs include excessive scratching, licking paws, red/inflamed skin, hot spots, hair loss, ear infections, and recurring skin infections. Common triggers are fleas, food ingredients, and environmental allergens like pollen and dust mites.',
+      ms: 'Tanda-tanda termasuk menggaru berlebihan, menjilat kaki, kulit merah/meradang, hot spots, keguguran bulu, jangkitan telinga, dan jangkitan kulit berulang. Pencetus biasa adalah kutu, bahan makanan, dan alergen persekitaran.',
+      zh: '症状包括过度抓挠、舔爪子、皮肤红肿/发炎、热点、脱毛、耳朵感染和反复皮肤感染。常见触发因素是跳蚤、食物成分和环境过敏原如花粉和尘螨。'
+    },
+    fullAnswer: {
+      en: 'Skin allergies (allergic dermatitis) are one of the most common health issues in dogs. There are three main types: Flea Allergy Dermatitis - dogs react to flea saliva, causing intense itching especially at the tail base; Food Allergies - reactions to proteins like beef, chicken, dairy, or grains, causing year-round symptoms; Environmental Allergies (Atopy) - reactions to pollen, mold, dust mites, causing seasonal or year-round issues. Symptoms to watch for include: constant scratching, biting, or licking, red, irritated skin, hot spots (acute moist dermatitis), chronic ear infections, hair loss, darkened or thickened skin, and recurring skin infections. Treatment depends on the cause: strict flea prevention for flea allergies, elimination diet trials for food allergies, and medications like antihistamines, steroids, Apoquel, or Cytopoint for environmental allergies. Omega fatty acid supplements, medicated baths, and reducing allergen exposure can help. Seek immediate care if your dog develops facial swelling, hives, or difficulty breathing - these could indicate anaphylaxis.',
+      ms: 'Alahan kulit (dermatitis alergik) adalah salah satu masalah kesihatan yang paling biasa pada anjing. Terdapat tiga jenis utama: Dermatitis Alahan Kutu - anjing bertindak balas terhadap air liur kutu; Alahan Makanan - tindak balas terhadap protein seperti daging lembu, ayam, tenusu, atau bijirin; Alahan Persekitaran (Atopi) - tindak balas terhadap debunga, acuan, hama habuk. Gejala termasuk: menggaru, menggigit, atau menjilat berterusan, kulit merah dan meradang, hot spots, jangkitan telinga kronik, keguguran bulu, dan jangkitan kulit berulang. Rawatan bergantung kepada punca: pencegahan kutu yang ketat, percubaan diet penghapusan, dan ubat-ubatan seperti antihistamin, steroid, atau Apoquel. Dapatkan rawatan segera jika anjing anda mengalami bengkak muka, gatal-gatal, atau kesukaran bernafas.',
+      zh: '皮肤过敏（过敏性皮炎）是狗狗最常见的健康问题之一。主要有三种类型：跳蚤过敏性皮炎 - 狗对跳蚤唾液产生反应，尤其在尾根处引起剧烈瘙痒；食物过敏 - 对牛肉、鸡肉、乳制品或谷物等蛋白质的反应，引起全年症状；环境过敏（特应性皮炎）- 对花粉、霉菌、尘螨的反应。需要注意的症状包括：持续抓挠、咬或舔、皮肤红肿、热点、慢性耳朵感染、脱毛、皮肤变黑或增厚、反复皮肤感染。治疗取决于病因：跳蚤过敏需要严格预防跳蚤，食物过敏需要排除饮食试验，环境过敏可用抗组胺药、类固醇或Apoquel等药物。如果您的狗出现面部肿胀、荨麻疹或呼吸困难，请立即就医。'
+    },
+    keywords: ['skin', 'allergy', 'itching', 'scratching', 'hot spots', 'dermatitis', 'flea', 'atopy']
+  },
+  {
+    id: 'dog-ear-infection-1',
+    category: 'dog-emergency',
+    question: {
+      en: 'How do I know if my dog has an ear infection?',
+      ms: 'Bagaimana saya tahu jika anjing saya mempunyai jangkitan telinga?',
+      zh: '如何判断我的狗是否有耳朵感染？'
+    },
+    shortAnswer: {
+      en: 'Signs include head shaking, ear scratching, odor, discharge (brown/yellow/bloody), redness, swelling, pain when touched, and tilting head. Dogs with floppy ears and those who swim frequently are more prone. Untreated infections can cause permanent damage.',
+      ms: 'Tanda-tanda termasuk menggelengkan kepala, menggaru telinga, bau, lelehan (coklat/kuning/berdarah), kemerahan, bengkak, sakit apabila disentuh, dan mencondongkan kepala. Anjing dengan telinga terkulai lebih terdedah.',
+      zh: '症状包括摇头、抓耳朵、异味、分泌物（棕色/黄色/血性）、发红、肿胀、触摸时疼痛和歪头。垂耳犬和经常游泳的狗更容易患病。未经治疗的感染可能造成永久性损伤。'
+    },
+    fullAnswer: {
+      en: 'Ear infections (otitis) are extremely common in dogs, especially breeds with floppy ears (Cocker Spaniels, Basset Hounds), hairy ear canals (Poodles), or those who swim often. Types include: Otitis Externa - outer ear canal infection (most common); Otitis Media - middle ear infection; Otitis Interna - inner ear infection (can affect balance). Warning signs include: frequent head shaking or tilting, scratching at ears, unpleasant odor from ears, discharge (brown, yellow, or bloody), redness and swelling in the ear canal, pain when ears are touched, loss of balance or walking in circles, and hearing loss. Common causes include bacteria, yeast, ear mites, allergies, foreign objects, and moisture trapped in ears. Your vet will examine the ear canal with an otoscope and may take a sample to identify the cause. Treatment typically includes ear cleaning, topical medications (antibiotics, antifungals), oral medications for severe cases, and addressing underlying allergies. Prevention tips: dry ears after swimming, regular cleaning with vet-approved solution, and treating allergies promptly. Seek immediate care if your dog shows signs of vestibular disease or severe pain.',
+      ms: 'Jangkitan telinga (otitis) sangat biasa pada anjing, terutamanya baka dengan telinga terkulai (Cocker Spaniel, Basset Hound), saluran telinga berbulu (Poodle), atau yang kerap berenang. Jenis termasuk: Otitis Eksterna - jangkitan saluran telinga luar; Otitis Media - jangkitan telinga tengah; Otitis Interna - jangkitan telinga dalam. Tanda-tanda amaran termasuk: kerap menggelengkan atau mencondongkan kepala, menggaru telinga, bau tidak menyenangkan, lelehan, kemerahan dan bengkak, sakit apabila telinga disentuh, kehilangan keseimbangan. Punca biasa termasuk bakteria, yis, hama telinga, alahan, objek asing, dan kelembapan terperangkap. Rawatan biasanya termasuk pembersihan telinga, ubat topikal, ubat oral untuk kes teruk, dan menangani alahan yang mendasari. Tips pencegahan: keringkan telinga selepas berenang, pembersihan tetap dengan larutan yang diluluskan veterinar.',
+      zh: '耳朵感染（中耳炎）在狗狗中极为常见，尤其是垂耳犬种（可卡犬、巴吉度猎犬）、耳道多毛的品种（贵宾犬）或经常游泳的狗。类型包括：外耳炎 - 外耳道感染（最常见）；中耳炎 - 中耳感染；内耳炎 - 内耳感染（可能影响平衡）。警告信号包括：频繁摇头或歪头、抓耳朵、耳朵有异味、分泌物（棕色、黄色或血性）、耳道发红肿胀、触摸耳朵时疼痛、失去平衡或转圈走、听力下降。常见原因包括细菌、酵母菌、耳螨、过敏、异物和耳朵中滞留的水分。兽医会用耳镜检查耳道并可能取样以确定原因。治疗通常包括耳朵清洁、局部用药、严重病例口服药物以及解决潜在过敏问题。预防提示：游泳后擦干耳朵、定期使用兽医批准的溶液清洁。'
+    },
+    keywords: ['ear', 'infection', 'otitis', 'scratching', 'discharge', 'odor', 'head shaking', 'floppy ears']
+  },
+  {
+    id: 'dog-hot-spots-1',
+    category: 'dog-emergency',
+    question: {
+      en: 'What causes hot spots in dogs and how are they treated?',
+      ms: 'Apa yang menyebabkan hot spots pada anjing dan bagaimana ia dirawat?',
+      zh: '什么导致狗狗的热点以及如何治疗？'
+    },
+    shortAnswer: {
+      en: 'Hot spots are moist, red, painful skin lesions that develop rapidly from scratching, licking, or moisture. Causes include allergies, insect bites, poor grooming, and underlying skin infections. Treatment involves clipping fur, cleaning, medications, and preventing licking.',
+      ms: 'Hot spots adalah lesi kulit lembap, merah, dan menyakitkan yang berkembang dengan cepat akibat menggaru, menjilat, atau kelembapan. Punca termasuk alahan, gigitan serangga, dandanan yang lemah, dan jangkitan kulit.',
+      zh: '热点是潮湿、红色、疼痛的皮肤病变，由抓挠、舔舐或潮湿引起并迅速发展。原因包括过敏、昆虫叮咬、梳理不当和潜在皮肤感染。治疗包括剪毛、清洁、药物和防止舔舐。'
+    },
+    fullAnswer: {
+      en: 'Hot spots (acute moist dermatitis) are painful, red, oozing skin lesions that can develop within hours. They occur when dogs damage their skin through scratching, licking, or chewing due to an underlying itch or irritation. Common causes include: flea allergies, environmental allergies, food allergies, insect bites, poor grooming (matted fur trapping moisture), swimming or bathing without proper drying, ear infections causing head scratching, and anal gland issues causing rear-end chewing. Breeds with thick coats (Golden Retrievers, German Shepherds) are more prone. Hot spots appear as: red, inflamed, moist areas, often with pus or discharge, hair loss in the affected area, intense pain when touched, and a foul smell. Treatment includes: clipping fur around the lesion for air exposure, gentle cleaning with antiseptic solution, topical medications (antibiotics, steroids), oral antibiotics for severe cases, pain medication, an E-collar to prevent licking, and addressing the underlying cause. Prevention involves regular grooming, flea prevention, thorough drying after swimming, and treating allergies. Seek veterinary care for large lesions, those that spread rapidly, or if your dog is in significant pain.',
+      ms: 'Hot spots (dermatitis lembap akut) adalah lesi kulit yang menyakitkan, merah, dan bernanah yang boleh berkembang dalam beberapa jam. Ia berlaku apabila anjing merosakkan kulit mereka melalui menggaru, menjilat, atau mengunyah akibat gatal atau iritasi. Punca biasa termasuk: alahan kutu, alahan persekitaran, alahan makanan, gigitan serangga, dandanan yang lemah, berenang tanpa pengeringan yang betul, jangkitan telinga, dan masalah kelenjar dubur. Baka dengan bulu tebal lebih terdedah. Rawatan termasuk: memotong bulu di sekitar lesi, pembersihan lembut dengan larutan antiseptik, ubat topikal, antibiotik oral untuk kes teruk, ubat sakit, kolar E untuk mencegah menjilat, dan menangani punca yang mendasari. Pencegahan melibatkan dandanan tetap, pencegahan kutu, pengeringan menyeluruh selepas berenang.',
+      zh: '热点（急性湿性皮炎）是疼痛的、红色的、渗出的皮肤病变，可在数小时内发展。当狗因潜在的瘙痒或刺激而通过抓挠、舔舐或咀嚼损伤皮肤时就会发生。常见原因包括：跳蚤过敏、环境过敏、食物过敏、昆虫叮咬、梳理不当（毛发打结滞留水分）、游泳或洗澡后未充分干燥、耳朵感染导致抓头、肛门腺问题导致咬臀部。厚毛犬种（金毛寻回犬、德国牧羊犬）更容易患病。热点表现为：红色、发炎、潮湿的区域，通常有脓或分泌物，受影响区域脱毛，触摸时剧烈疼痛，有恶臭。治疗包括：剪掉病变周围的毛发以便空气接触、用消毒液轻柔清洁、局部用药、严重病例口服抗生素、止痛药、伊丽莎白圈防止舔舐、解决潜在原因。预防包括定期梳理、预防跳蚤、游泳后彻底干燥、治疗过敏。'
+    },
+    keywords: ['hot spots', 'moist dermatitis', 'skin lesion', 'licking', 'scratching', 'oozing', 'red skin']
+  },
+  {
+    id: 'dog-parvovirus-1',
+    category: 'dog-emergency',
+    question: {
+      en: 'What is parvovirus and why is it so dangerous for puppies?',
+      ms: 'Apakah parvovirus dan mengapa ia sangat berbahaya untuk anak anjing?',
+      zh: '什么是细小病毒，为什么它对幼犬如此危险？'
+    },
+    shortAnswer: {
+      en: 'Parvovirus is a highly contagious viral disease causing severe bloody diarrhea, vomiting, and dehydration. It attacks rapidly dividing cells in intestines and bone marrow. Without treatment, mortality is 90%+. Puppies under 6 months are most vulnerable. Vaccination prevents this disease.',
+      ms: 'Parvovirus adalah penyakit virus yang sangat berjangkit menyebabkan cirit-birit berdarah yang teruk, muntah, dan dehidrasi. Ia menyerang sel-sel yang membahagi dengan cepat. Tanpa rawatan, kematian adalah 90%+. Vaksinasi mencegah penyakit ini.',
+      zh: '细小病毒是一种高度传染性的病毒疾病，引起严重的血性腹泻、呕吐和脱水。它攻击肠道和骨髓中快速分裂的细胞。不治疗的死亡率超过90%。6个月以下的幼犬最易感染。疫苗可以预防这种疾病。'
+    },
+    fullAnswer: {
+      en: 'Canine parvovirus (CPV or "parvo") is one of the most serious and contagious diseases affecting dogs, particularly puppies. The virus attacks rapidly dividing cells, primarily in the intestinal lining and bone marrow. This causes: severe damage to the intestinal wall, bloody diarrhea and vomiting, dangerous dehydration and electrolyte imbalances, weakened immune system, and in young puppies, heart damage (myocarditis). Symptoms typically appear 3-7 days after exposure: severe lethargy and depression, loss of appetite, high fever, severe bloody diarrhea with distinctive foul smell, persistent vomiting, and rapid dehydration. The virus is extremely hardy, surviving in the environment for months to years. It spreads through contact with infected feces, contaminated objects, or environments. Without treatment, mortality exceeds 90%. With aggressive veterinary care (IV fluids, anti-nausea medications, antibiotics for secondary infections), survival rates improve to 70-90%. Prevention is critical: puppies need a series of vaccinations starting at 6-8 weeks, with boosters every 3-4 weeks until 16 weeks old. Until fully vaccinated, avoid dog parks, pet stores, and areas where unvaccinated dogs may have been. If you suspect parvo, seek emergency veterinary care immediately.',
+      ms: 'Parvovirus anjing (CPV atau "parvo") adalah salah satu penyakit paling serius dan berjangkit yang menjejaskan anjing, terutamanya anak anjing. Virus menyerang sel-sel yang membahagi dengan cepat, terutamanya dalam lapisan usus dan sumsum tulang. Ini menyebabkan: kerosakan teruk pada dinding usus, cirit-birit berdarah dan muntah, dehidrasi berbahaya, sistem imun yang lemah, dan pada anak anjing muda, kerosakan jantung. Gejala biasanya muncul 3-7 hari selepas pendedahan: lesu teruk, hilang selera makan, demam tinggi, cirit-birit berdarah dengan bau busuk yang khas, muntah berterusan, dan dehidrasi cepat. Virus ini sangat tahan, bertahan dalam persekitaran selama berbulan-bulan hingga bertahun-tahun. Tanpa rawatan, kematian melebihi 90%. Dengan rawatan veterinar yang agresif, kadar kelangsungan hidup meningkat kepada 70-90%. Pencegahan adalah kritikal: anak anjing memerlukan siri vaksinasi bermula pada 6-8 minggu.',
+      zh: '犬细小病毒（CPV或"细小"）是影响狗狗最严重和最具传染性的疾病之一，尤其是幼犬。病毒攻击快速分裂的细胞，主要在肠道内壁和骨髓中。这会导致：肠壁严重损伤、血性腹泻和呕吐、危险的脱水和电解质失衡、免疫系统减弱，以及在幼小的幼犬中导致心脏损伤（心肌炎）。症状通常在接触后3-7天出现：严重嗜睡和抑郁、食欲不振、高烧、带有特殊恶臭的严重血性腹泻、持续呕吐和快速脱水。病毒极其顽强，可在环境中存活数月至数年。它通过接触受感染的粪便、污染的物品或环境传播。不治疗的死亡率超过90%。通过积极的兽医护理（静脉输液、止吐药、治疗继发感染的抗生素），存活率提高到70-90%。预防至关重要：幼犬需要从6-8周龄开始接种一系列疫苗，每3-4周加强一次，直到16周龄。在完全接种之前，避免去狗公园、宠物店和未接种疫苗的狗可能去过的地方。'
+    },
+    keywords: ['parvovirus', 'parvo', 'puppy', 'bloody diarrhea', 'vomiting', 'vaccination', 'contagious', 'emergency']
+  },
+  {
+    id: 'dog-kennel-cough-1',
+    category: 'dog-emergency',
+    question: {
+      en: 'What is kennel cough and when should I be worried?',
+      ms: 'Apakah kennel cough dan bilakah saya perlu bimbang?',
+      zh: '什么是犬窝咳，什么时候应该担心？'
+    },
+    shortAnswer: {
+      en: 'Kennel cough is a contagious respiratory infection causing a distinctive honking cough. Most cases are mild and resolve in 1-3 weeks. Seek veterinary care if your dog has trouble breathing, stops eating, becomes lethargic, or develops fever. Puppies and senior dogs are at higher risk.',
+      ms: 'Kennel cough adalah jangkitan pernafasan berjangkit yang menyebabkan batuk khas seperti bunyi honk. Kebanyakan kes adalah ringan. Dapatkan rawatan veterinar jika anjing anda mengalami kesukaran bernafas, berhenti makan, atau menjadi lesu.',
+      zh: '犬窝咳是一种传染性呼吸道感染，引起特征性的鹅叫样咳嗽。大多数病例较轻，1-3周内痊愈。如果您的狗呼吸困难、停止进食、变得嗜睡或发烧，请就医。幼犬和老年犬风险更高。'
+    },
+    fullAnswer: {
+      en: 'Kennel cough (infectious tracheobronchitis) is a highly contagious respiratory disease caused by various bacteria and viruses, most commonly Bordetella bronchiseptica and canine parainfluenza virus. It spreads through airborne droplets, direct contact, or contaminated surfaces. The name comes from its common spread in kennels, shelters, and dog parks. Symptoms typically appear 2-14 days after exposure: distinctive dry, honking cough (sounds like a goose honk), coughing fits that may end with gagging or retching, mild runny nose, sneezing, and usually normal energy and appetite in mild cases. Most healthy adult dogs recover within 1-3 weeks without treatment. However, seek veterinary care if: coughing is severe or persistent, your dog has difficulty breathing, appetite loss or lethargy develops, fever is present (normal dog temp is 101-102.5°F), the dog is a puppy, senior, or has other health conditions, or symptoms worsen rather than improve. Treatment may include: cough suppressants (if no secondary infection), antibiotics if bacterial infection is present, anti-inflammatory medications, and rest and isolation from other dogs. Prevention includes the Bordetella vaccine (especially important for dogs who board, visit dog parks, or attend grooming), avoiding sick dogs, and good ventilation in multi-dog environments.',
+      ms: 'Kennel cough (trakeobronkitis berjangkit) adalah penyakit pernafasan yang sangat berjangkit disebabkan oleh pelbagai bakteria dan virus, paling biasa Bordetella bronchiseptica dan virus parainfluenza anjing. Ia merebak melalui titisan udara, sentuhan langsung, atau permukaan yang tercemar. Gejala biasanya muncul 2-14 hari selepas pendedahan: batuk kering yang khas seperti bunyi angsa, serangan batuk yang mungkin berakhir dengan tersedak, hidung berair ringan, bersin, dan biasanya tenaga dan selera makan normal dalam kes ringan. Kebanyakan anjing dewasa yang sihat pulih dalam 1-3 minggu. Walau bagaimanapun, dapatkan rawatan veterinar jika: batuk teruk atau berterusan, anjing anda mengalami kesukaran bernafas, hilang selera makan atau lesu, demam hadir, atau gejala bertambah buruk. Rawatan mungkin termasuk: ubat batuk, antibiotik jika jangkitan bakteria, ubat anti-radang, dan rehat.',
+      zh: '犬窝咳（传染性气管支气管炎）是一种高度传染性的呼吸道疾病，由多种细菌和病毒引起，最常见的是支气管败血博德特氏菌和犬副流感病毒。它通过空气飞沫、直接接触或污染的表面传播。症状通常在接触后2-14天出现：特征性的干燥鹅叫样咳嗽、可能以干呕或作呕结束的咳嗽发作、轻微流鼻涕、打喷嚏，轻度病例通常精力和食欲正常。大多数健康成年犬在1-3周内无需治疗即可康复。但是，如果出现以下情况请就医：咳嗽严重或持续、呼吸困难、食欲下降或嗜睡、发烧（正常狗体温是38.3-39.2°C）、幼犬、老年犬或有其他健康问题、症状恶化而非改善。治疗可能包括：止咳药（如果没有继发感染）、细菌感染时使用抗生素、消炎药、休息和与其他狗隔离。预防包括博德特氏菌疫苗（对于寄宿、去狗公园或美容的狗尤其重要）。'
+    },
+    keywords: ['kennel cough', 'coughing', 'respiratory', 'bordetella', 'contagious', 'honking', 'tracheobronchitis']
+  },
+  {
+    id: 'dog-tick-fever-1',
+    category: 'dog-emergency',
+    question: {
+      en: 'What is tick fever (Ehrlichiosis) in dogs and what are the symptoms?',
+      ms: 'Apakah demam kutu (Ehrlichiosis) pada anjing dan apakah gejalanya?',
+      zh: '什么是狗的蜱虫热（埃里希体病），有什么症状？'
+    },
+    shortAnswer: {
+      en: 'Tick fever is caused by bacteria transmitted through tick bites. Symptoms include fever, lethargy, loss of appetite, weight loss, bleeding (nosebleeds, bruising), swollen lymph nodes, and joint pain. Early detection and antibiotic treatment are crucial. Tick prevention is essential.',
+      ms: 'Demam kutu disebabkan oleh bakteria yang dihantar melalui gigitan kutu. Gejala termasuk demam, lesu, hilang selera makan, penurunan berat badan, pendarahan, nodus limfa bengkak, dan sakit sendi. Pengesanan awal dan rawatan antibiotik adalah penting.',
+      zh: '蜱虫热是由蜱虫叮咬传播的细菌引起的。症状包括发烧、嗜睡、食欲不振、体重下降、出血（鼻血、瘀伤）、淋巴结肿大和关节疼痛。早期发现和抗生素治疗至关重要。预防蜱虫是必要的。'
+    },
+    fullAnswer: {
+      en: 'Tick fever, primarily Ehrlichiosis, is a serious bacterial infection transmitted by ticks (especially brown dog ticks). It occurs in three phases: Acute Phase (1-3 weeks after infection) - fever, lethargy, loss of appetite, weight loss, swollen lymph nodes, respiratory distress, bleeding disorders (nosebleeds, bruising), and joint pain/swelling. Subclinical Phase - the dog may appear healthy but the bacteria persists; this can last months to years. Chronic Phase - if not treated, severe symptoms develop: profound weight loss, eye inflammation, neurological problems, severe bleeding due to low platelets, kidney failure, and bone marrow suppression. Diagnosis involves blood tests looking for antibodies, low platelet counts, and anemia. PCR testing can confirm active infection. Treatment includes: Doxycycline antibiotic (typically 4-6 weeks), supportive care for severe cases (blood transfusions, IV fluids), and treating secondary complications. Prognosis is good with early treatment but poor in chronic phase. Prevention is critical: use year-round tick prevention products, check your dog for ticks daily (especially after outdoor activities), remove ticks promptly and properly, and keep grass trimmed in your yard. In Malaysia, tick fever is common due to the tropical climate, making prevention even more important.',
+      ms: 'Demam kutu, terutamanya Ehrlichiosis, adalah jangkitan bakteria serius yang dihantar oleh kutu (terutamanya kutu anjing coklat). Ia berlaku dalam tiga fasa: Fasa Akut (1-3 minggu selepas jangkitan) - demam, lesu, hilang selera makan, penurunan berat badan, nodus limfa bengkak, masalah pernafasan, gangguan pendarahan (hidung berdarah, lebam), dan sakit/bengkak sendi. Fasa Subklinikal - anjing mungkin kelihatan sihat tetapi bakteria berterusan; ini boleh bertahan berbulan-bulan hingga bertahun-tahun. Fasa Kronik - jika tidak dirawat, gejala teruk berkembang. Diagnosis melibatkan ujian darah. Rawatan termasuk: antibiotik Doxycycline (biasanya 4-6 minggu), penjagaan sokongan untuk kes teruk. Pencegahan adalah kritikal: gunakan produk pencegahan kutu sepanjang tahun, periksa anjing anda untuk kutu setiap hari, keluarkan kutu dengan segera dan betul. Di Malaysia, demam kutu adalah biasa kerana iklim tropika.',
+      zh: '蜱虫热，主要是埃里希体病，是由蜱虫（尤其是棕色犬蜱）传播的严重细菌感染。它分为三个阶段：急性期（感染后1-3周）- 发烧、嗜睡、食欲不振、体重下降、淋巴结肿大、呼吸困难、出血障碍（鼻血、瘀伤）和关节疼痛/肿胀。亚临床期 - 狗可能看起来健康但细菌持续存在；这可能持续数月至数年。慢性期 - 如果不治疗，会出现严重症状：严重消瘦、眼睛炎症、神经问题、由于血小板低导致严重出血、肾衰竭和骨髓抑制。诊断包括寻找抗体、低血小板计数和贫血的血液检查。PCR检测可以确认活动性感染。治疗包括：多西环素抗生素（通常4-6周）、严重病例的支持性护理（输血、静脉输液）。早期治疗预后良好，但慢性期预后差。预防至关重要：全年使用蜱虫预防产品，每天检查狗身上的蜱虫，及时正确地清除蜱虫。在马来西亚，由于热带气候，蜱虫热很常见。'
+    },
+    keywords: ['tick fever', 'ehrlichiosis', 'tick', 'fever', 'bleeding', 'platelets', 'doxycycline', 'lethargy']
+  },
+  {
+    id: 'dog-heartworm-1',
+    category: 'dog-emergency',
+    question: {
+      en: 'What is heartworm disease and how does it affect dogs?',
+      ms: 'Apakah penyakit cacing jantung dan bagaimana ia menjejaskan anjing?',
+      zh: '什么是心丝虫病，它如何影响狗？'
+    },
+    shortAnswer: {
+      en: 'Heartworm is caused by parasitic worms living in the heart and lungs, transmitted by mosquitoes. Symptoms include coughing, exercise intolerance, fatigue, weight loss, and heart failure. Treatment is expensive and risky. Monthly prevention is much safer and more affordable.',
+      ms: 'Cacing jantung disebabkan oleh cacing parasit yang hidup di dalam jantung dan paru-paru, dihantar oleh nyamuk. Gejala termasuk batuk, tidak tahan bersenam, keletihan, dan kegagalan jantung. Pencegahan bulanan adalah lebih selamat dan berpatutan.',
+      zh: '心丝虫病是由寄生在心脏和肺部的蠕虫引起的，通过蚊子传播。症状包括咳嗽、运动不耐受、疲劳、体重下降和心力衰竭。治疗昂贵且有风险。每月预防更安全、更经济。'
+    },
+    fullAnswer: {
+      en: 'Heartworm disease is a serious, potentially fatal condition caused by foot-long worms (Dirofilaria immitis) that live in the heart, lungs, and blood vessels. It is transmitted by mosquitoes carrying heartworm larvae. Disease progression: Mosquito bites transmit larvae, which migrate through tissue for about 6 months before reaching the heart. Adult worms can live 5-7 years, growing up to 12 inches long. A dog can harbor 30+ worms. Symptoms progress through stages: Class 1 - no symptoms or mild cough; Class 2 - moderate symptoms including cough, exercise intolerance, abnormal lung sounds; Class 3 - severe symptoms including weight loss, difficulty breathing, heart enlargement, right-sided heart failure; Class 4 (Caval Syndrome) - life-threatening blockage requiring emergency surgery. Diagnosis involves blood tests for heartworm proteins. X-rays and ultrasound assess severity. Treatment is expensive, risky, and requires strict rest: monthly prevention medication to prevent new infections, Melarsomine injections to kill adult worms (requires strict cage rest for weeks), treatment for complications. Prevention is essential: monthly preventatives (ivermectin-based products, or topical/injectable options), year-round prevention in mosquito-prone areas like Malaysia, and annual testing. Prevention costs a fraction of treatment and is much safer.',
+      ms: 'Penyakit cacing jantung adalah keadaan serius yang berpotensi membawa maut, disebabkan oleh cacing sepanjang satu kaki (Dirofilaria immitis) yang hidup di dalam jantung, paru-paru, dan saluran darah. Ia dihantar oleh nyamuk yang membawa larva cacing jantung. Perkembangan penyakit: Gigitan nyamuk menghantar larva, yang berhijrah melalui tisu selama kira-kira 6 bulan sebelum sampai ke jantung. Cacing dewasa boleh hidup 5-7 tahun, tumbuh sehingga 12 inci panjang. Gejala maju melalui peringkat: Kelas 1 - tiada gejala atau batuk ringan; Kelas 2 - gejala sederhana; Kelas 3 - gejala teruk; Kelas 4 - penyumbatan yang mengancam nyawa. Diagnosis melibatkan ujian darah. Rawatan adalah mahal dan berisiko: pencegahan bulanan, suntikan Melarsomine untuk membunuh cacing dewasa (memerlukan rehat sangkar yang ketat). Pencegahan adalah penting: pencegahan bulanan, pencegahan sepanjang tahun di kawasan yang banyak nyamuk seperti Malaysia, dan ujian tahunan.',
+      zh: '心丝虫病是一种严重的、可能致命的疾病，由生活在心脏、肺和血管中的一英尺长的蠕虫（犬恶丝虫）引起。它通过携带心丝虫幼虫的蚊子传播。疾病进展：蚊子叮咬传播幼虫，幼虫在组织中迁移约6个月后到达心脏。成虫可以存活5-7年，长达12英寸。一只狗可以携带30多条虫。症状分阶段进展：1级 - 无症状或轻微咳嗽；2级 - 中度症状，包括咳嗽、运动不耐受、异常肺音；3级 - 严重症状，包括体重下降、呼吸困难、心脏扩大、右心衰竭；4级（腔静脉综合征）- 需要紧急手术的危及生命的阻塞。诊断包括心丝虫蛋白血液检测。X光和超声波评估严重程度。治疗昂贵、有风险，需要严格休息：每月预防药物防止新感染、美拉索明注射杀死成虫（需要严格笼养休息数周）。预防至关重要：每月预防药（伊维菌素类产品或局部/注射选择）、在马来西亚等蚊子多的地区全年预防、年度检测。预防费用只是治疗的一小部分，而且更安全。'
+    },
+    keywords: ['heartworm', 'mosquito', 'heart', 'lung', 'coughing', 'prevention', 'Dirofilaria', 'worms']
+  },
+  {
+    id: 'dog-intestinal-worms-1',
+    category: 'dog-emergency',
+    question: {
+      en: 'What types of intestinal worms affect dogs and how are they treated?',
+      ms: 'Apakah jenis cacing usus yang menjejaskan anjing dan bagaimana ia dirawat?',
+      zh: '哪些类型的肠道蠕虫会影响狗，如何治疗？'
+    },
+    shortAnswer: {
+      en: 'Common worms include roundworms, hookworms, whipworms, and tapeworms. Signs include diarrhea, vomiting, weight loss, pot-bellied appearance, and visible worms in stool. Treatment involves deworming medication. Regular prevention is important as some worms can spread to humans.',
+      ms: 'Cacing biasa termasuk cacing gelang, cacing kait, cacing cambuk, dan cacing pita. Tanda-tanda termasuk cirit-birit, muntah, penurunan berat badan, dan cacing yang kelihatan dalam najis. Rawatan melibatkan ubat cacing.',
+      zh: '常见蠕虫包括蛔虫、钩虫、鞭虫和绦虫。症状包括腹泻、呕吐、体重下降、大肚子外观和粪便中可见的虫子。治疗包括驱虫药。定期预防很重要，因为某些蠕虫可以传播给人类。'
+    },
+    fullAnswer: {
+      en: 'Intestinal parasites are common in dogs, especially puppies. Main types include: Roundworms - most common; puppies often get them from mother; can cause pot-bellied appearance, vomiting, diarrhea, and poor growth; visible as spaghetti-like worms in stool or vomit. Hookworms - attach to intestinal wall and feed on blood; cause anemia, weight loss, bloody diarrhea; can be fatal in puppies; larvae can penetrate human skin. Whipworms - cause chronic large bowel diarrhea, often with mucus and blood; difficult to detect; require longer treatment. Tapeworms - usually from eating fleas or infected animals; segments look like rice grains near the anus or in stool; cause weight loss despite good appetite. Symptoms vary by worm type and burden: diarrhea (may be bloody), vomiting, weight loss, poor coat condition, pot-bellied appearance (puppies), visible worms in stool, scooting (tapeworms), anemia, and lethargy. Diagnosis involves fecal testing. Treatment: specific dewormers for different worms, often multiple treatments needed, treating all pets in household. Prevention includes: regular deworming schedule, year-round heartworm preventatives (many also prevent intestinal worms), flea control (prevents tapeworms), picking up feces promptly, and regular fecal testing. Some worms are zoonotic (can infect humans), making prevention especially important for families with children.',
+      ms: 'Parasit usus adalah biasa pada anjing, terutamanya anak anjing. Jenis utama termasuk: Cacing gelang - paling biasa; anak anjing sering mendapatnya dari ibu; boleh menyebabkan penampilan perut buncit, muntah, cirit-birit, dan pertumbuhan yang lemah. Cacing kait - melekat pada dinding usus dan makan darah; menyebabkan anemia, penurunan berat badan, cirit-birit berdarah; boleh membawa maut pada anak anjing. Cacing cambuk - menyebabkan cirit-birit kronik. Cacing pita - biasanya dari makan kutu atau haiwan yang dijangkiti; segmen kelihatan seperti butiran beras. Gejala berbeza mengikut jenis cacing: cirit-birit, muntah, penurunan berat badan, keadaan bulu yang lemah, penampilan perut buncit, cacing yang kelihatan dalam najis, scooting. Diagnosis melibatkan ujian najis. Rawatan: ubat cacing khusus, sering memerlukan pelbagai rawatan. Pencegahan termasuk: jadual cacing tetap, pencegahan kutu, mengutip najis dengan segera.',
+      zh: '肠道寄生虫在狗中很常见，尤其是幼犬。主要类型包括：蛔虫 - 最常见；幼犬通常从母亲那里感染；可导致大肚子外观、呕吐、腹泻和生长不良；在粪便或呕吐物中可见意大利面状的虫子。钩虫 - 附着在肠壁上吸血；导致贫血、体重下降、血性腹泻；对幼犬可能致命；幼虫可穿透人类皮肤。鞭虫 - 引起慢性大肠腹泻，通常带有粘液和血液；难以检测；需要较长时间治疗。绦虫 - 通常来自吃跳蚤或感染的动物；节片在肛门附近或粪便中看起来像米粒；尽管食欲良好仍导致体重下降。症状因虫类型和负担而异：腹泻（可能带血）、呕吐、体重下降、毛发状况差、大肚子外观（幼犬）、粪便中可见的虫子、拖屁股（绦虫）、贫血和嗜睡。诊断包括粪便检测。治疗：针对不同蠕虫的特定驱虫药，通常需要多次治疗。预防包括：定期驱虫计划、全年心丝虫预防药（许多也可预防肠道蠕虫）、跳蚤控制（预防绦虫）、及时清理粪便、定期粪便检测。一些蠕虫是人畜共患的（可感染人类），使预防对有孩子的家庭尤为重要。'
+    },
+    keywords: ['worms', 'roundworms', 'hookworms', 'tapeworms', 'whipworms', 'deworming', 'parasites', 'diarrhea']
+  },
+  {
+    id: 'dog-uti-1',
+    category: 'dog-emergency',
+    question: {
+      en: 'What are the signs of urinary tract infection (UTI) in dogs?',
+      ms: 'Apakah tanda-tanda jangkitan saluran kencing (UTI) pada anjing?',
+      zh: '狗狗尿路感染（UTI）有哪些症状？'
+    },
+    shortAnswer: {
+      en: 'Signs include frequent urination, straining, blood in urine, accidents in the house, excessive licking of genitals, cloudy or smelly urine, and crying when urinating. Female dogs are more prone. Prompt treatment prevents kidney infection.',
+      ms: 'Tanda-tanda termasuk kerap membuang air kecil, mengejan, darah dalam air kencing, kemalangan di dalam rumah, menjilat alat kelamin secara berlebihan, air kencing keruh atau berbau, dan menangis semasa membuang air kecil. Anjing betina lebih terdedah.',
+      zh: '症状包括频繁排尿、排尿困难、尿血、在屋内排尿事故、过度舔舐生殖器、尿液混浊或有异味、排尿时哭叫。母犬更容易患病。及时治疗可预防肾脏感染。'
+    },
+    fullAnswer: {
+      en: 'Urinary tract infections are common in dogs, particularly females due to their shorter urethra. Signs to watch for include: frequent urination attempts with small amounts, straining to urinate, blood in urine (pink or red tinge), accidents in house-trained dogs, excessive licking of genital area, cloudy or strong-smelling urine, crying or whimpering when urinating, fever and lethargy in severe cases, and drinking more water than usual. Common causes include: bacteria entering the urethra, bladder stones, weakened immune system, diabetes, Cushing\'s disease, and anatomical abnormalities. Diagnosis involves: urinalysis (checking for bacteria, blood, crystals), urine culture to identify specific bacteria, X-rays or ultrasound if stones suspected. Treatment includes: antibiotics (typically 10-14 days), pain medication if needed, increased water intake, and treating underlying conditions. Prevention tips: ensure access to fresh water, frequent potty breaks, proper hygiene, cranberry supplements may help, prompt treatment of underlying conditions. Seek immediate care if: your dog cannot urinate at all (emergency - possible blockage), there is significant blood in urine, your dog has fever or seems very ill, or symptoms don\'t improve with treatment. Recurrent UTIs may indicate underlying issues requiring further investigation.',
+      ms: 'Jangkitan saluran kencing adalah biasa pada anjing, terutamanya betina kerana uretra mereka yang lebih pendek. Tanda-tanda yang perlu diperhatikan termasuk: percubaan membuang air kecil yang kerap dengan jumlah yang sedikit, mengejan untuk membuang air kecil, darah dalam air kencing, kemalangan pada anjing yang terlatih di rumah, menjilat kawasan kemaluan secara berlebihan, air kencing keruh atau berbau kuat, menangis semasa membuang air kecil, demam dan lesu dalam kes teruk. Diagnosis melibatkan: urinalisis, kultur air kencing, X-ray atau ultrasound. Rawatan termasuk: antibiotik (biasanya 10-14 hari), ubat sakit jika perlu, pengambilan air yang lebih banyak. Tips pencegahan: pastikan akses kepada air bersih, waktu tandas yang kerap, kebersihan yang betul. Dapatkan rawatan segera jika: anjing anda tidak boleh membuang air kecil langsung (kecemasan), terdapat darah yang ketara dalam air kencing, anjing anda demam atau kelihatan sangat sakit.',
+      zh: '尿路感染在狗中很常见，尤其是母犬，因为它们的尿道较短。需要注意的症状包括：频繁尝试排尿但量少、排尿困难、尿血（粉红色或红色）、已训练的狗在屋内排尿事故、过度舔舐生殖器区域、尿液混浊或气味强烈、排尿时哭叫或呜咽、严重病例发烧和嗜睡、比平时喝更多水。常见原因包括：细菌进入尿道、膀胱结石、免疫系统减弱、糖尿病、库欣病和解剖异常。诊断包括：尿液分析（检查细菌、血液、结晶）、尿液培养以识别特定细菌、如怀疑结石则进行X光或超声波检查。治疗包括：抗生素（通常10-14天）、必要时止痛药、增加水分摄入、治疗潜在疾病。预防提示：确保获得新鲜水、频繁如厕、适当卫生、蔓越莓补充剂可能有帮助。如果出现以下情况请立即就医：您的狗根本无法排尿（紧急情况 - 可能阻塞）、尿中有大量血液、发烧或看起来病得很重。复发性UTI可能表明需要进一步调查的潜在问题。'
+    },
+    keywords: ['UTI', 'urinary', 'infection', 'blood urine', 'straining', 'frequent urination', 'bladder']
+  },
+  {
+    id: 'dog-eye-infection-1',
+    category: 'dog-emergency',
+    question: {
+      en: 'What are the signs of eye problems in dogs?',
+      ms: 'Apakah tanda-tanda masalah mata pada anjing?',
+      zh: '狗狗眼睛问题有哪些症状？'
+    },
+    shortAnswer: {
+      en: 'Signs include redness, swelling, discharge (clear, yellow, or green), squinting, pawing at eyes, cloudiness, visible third eyelid, sensitivity to light, and behavior changes. Some conditions like glaucoma are emergencies requiring immediate care to prevent blindness.',
+      ms: 'Tanda-tanda termasuk kemerahan, bengkak, lelehan (jernih, kuning, atau hijau), memicingkan mata, menggaru mata, kekeruhan, kelopak mata ketiga yang kelihatan, dan perubahan tingkah laku. Sesetengah keadaan seperti glaukoma adalah kecemasan.',
+      zh: '症状包括发红、肿胀、分泌物（透明、黄色或绿色）、眯眼、用爪子抓眼睛、混浊、可见第三眼睑、对光敏感和行为变化。某些情况如青光眼是需要立即护理以防止失明的紧急情况。'
+    },
+    fullAnswer: {
+      en: 'Dogs can develop various eye conditions, some minor and others requiring emergency care. Warning signs include: redness or bloodshot eyes, swelling of the eye or eyelids, discharge (clear, yellow, green, or bloody), squinting or keeping eye closed, pawing or rubbing at eye, cloudiness or change in eye color, visible third eyelid, sensitivity to light, visible injury or foreign object, and changes in pupil size. Common conditions include: Conjunctivitis (pink eye) - redness, discharge, usually responds to medication; Corneal ulcers - painful, may follow injury or infection, requires prompt treatment; Dry eye (KCS) - insufficient tear production, causes mucus discharge; Glaucoma - EMERGENCY, increased eye pressure, causes rapid vision loss, signs include enlarged eye, severe pain, cloudiness; Cherry eye - prolapsed third eyelid gland, requires surgery; Cataracts - cloudy lens, common in diabetic and older dogs; and Entropion/ectropion - eyelid abnormalities causing irritation. Seek IMMEDIATE veterinary care if: sudden vision loss, severe pain, significantly enlarged or bulging eye, injury to eye, blue/cloudy appearance with pain (possible glaucoma), or eye appears to be coming out of socket. Prevention includes: keeping face clean, trimming hair around eyes, protecting eyes during grooming, and regular vet checks for breeds prone to eye issues.',
+      ms: 'Anjing boleh mengalami pelbagai keadaan mata, ada yang ringan dan ada yang memerlukan rawatan kecemasan. Tanda-tanda amaran termasuk: kemerahan atau mata berdarah, bengkak mata atau kelopak mata, lelehan (jernih, kuning, hijau, atau berdarah), memicingkan mata atau menjaga mata tertutup, menggaru atau menggosok mata, kekeruhan atau perubahan warna mata, kelopak mata ketiga yang kelihatan, sensitif kepada cahaya, kecederaan atau objek asing yang kelihatan. Keadaan biasa termasuk: Konjunktivitis - kemerahan, lelehan; Ulser kornea - menyakitkan, memerlukan rawatan segera; Mata kering (KCS); Glaukoma - KECEMASAN, tekanan mata meningkat; Cherry eye - memerlukan pembedahan; Katarak - kanta keruh. Dapatkan rawatan veterinar SEGERA jika: kehilangan penglihatan secara tiba-tiba, sakit yang teruk, mata membesar dengan ketara, kecederaan pada mata.',
+      zh: '狗可能出现各种眼部问题，有些是轻微的，有些需要紧急护理。警告信号包括：眼睛发红或充血、眼睛或眼睑肿胀、分泌物（透明、黄色、绿色或血性）、眯眼或闭眼、用爪子抓或揉眼睛、混浊或眼睛颜色变化、可见第三眼睑、对光敏感、可见损伤或异物、瞳孔大小变化。常见情况包括：结膜炎（红眼病）- 发红、分泌物；角膜溃疡 - 疼痛，需要及时治疗；干眼症（KCS）- 泪液分泌不足；青光眼 - 紧急情况，眼压升高，导致快速视力丧失；樱桃眼 - 需要手术；白内障 - 晶状体混浊；眼睑内翻/外翻 - 眼睑异常导致刺激。如果出现以下情况请立即就医：突然视力丧失、剧烈疼痛、眼睛明显增大或突出、眼睛受伤、蓝色/混浊外观伴疼痛（可能是青光眼）。预防包括：保持面部清洁、修剪眼睛周围的毛发、美容时保护眼睛、定期检查易患眼疾的品种。'
+    },
+    keywords: ['eye', 'infection', 'redness', 'discharge', 'squinting', 'glaucoma', 'conjunctivitis', 'cloudiness']
+  },
+  {
+    id: 'dog-dental-disease-1',
+    category: 'dog-emergency',
+    question: {
+      en: 'What are the signs of dental disease in dogs?',
+      ms: 'Apakah tanda-tanda penyakit gigi pada anjing?',
+      zh: '狗狗牙齿疾病有哪些症状？'
+    },
+    shortAnswer: {
+      en: 'Signs include bad breath, yellow/brown tartar, red/bleeding gums, difficulty eating, dropping food, facial swelling, pawing at mouth, loose teeth, and drooling. Dental disease affects 80% of dogs by age 3 and can lead to serious health problems.',
+      ms: 'Tanda-tanda termasuk nafas berbau, tartar kuning/coklat, gusi merah/berdarah, kesukaran makan, menjatuhkan makanan, bengkak muka, menggaru mulut, gigi longgar, dan air liur berlebihan. Penyakit gigi menjejaskan 80% anjing menjelang usia 3 tahun.',
+      zh: '症状包括口臭、黄色/棕色牙垢、牙龈红肿/出血、进食困难、掉落食物、面部肿胀、用爪子抓嘴、牙齿松动和流口水。到3岁时，80%的狗会患牙齿疾病，可能导致严重的健康问题。'
+    },
+    fullAnswer: {
+      en: 'Dental disease (periodontal disease) is extremely common, affecting over 80% of dogs by age 3. It can lead to serious systemic health issues if untreated. Warning signs include: persistent bad breath (halitosis), visible tartar buildup (yellow/brown), red, swollen, or bleeding gums, difficulty eating or chewing on one side, dropping food while eating, reluctance to eat hard food, facial swelling (dental abscess), pawing at mouth, loose or missing teeth, excessive drooling, behavioral changes (irritability from pain), and weight loss. Stages of dental disease: Stage 1 (Gingivitis) - inflammation of gums, reversible with treatment; Stage 2-3 (Periodontitis) - bone loss begins, may need extractions; Stage 4 - severe bone and tissue loss, significant extractions needed. Health impacts beyond the mouth: bacteria from dental disease can spread to heart, liver, and kidneys, potentially causing organ damage. Dental disease has been linked to heart disease in dogs. Treatment includes professional dental cleaning under anesthesia, tooth extractions if needed, antibiotics for infections, and pain management. Prevention is key: daily tooth brushing with dog-safe toothpaste, dental chews and toys, dental diet foods, regular professional cleanings, and starting dental care when young.',
+      ms: 'Penyakit gigi (penyakit periodontal) sangat biasa, menjejaskan lebih 80% anjing menjelang usia 3 tahun. Ia boleh membawa kepada masalah kesihatan sistemik yang serius jika tidak dirawat. Tanda-tanda amaran termasuk: nafas berbau yang berterusan, pengumpulan tartar yang kelihatan, gusi merah, bengkak, atau berdarah, kesukaran makan, menjatuhkan makanan semasa makan, keengganan makan makanan keras, bengkak muka, menggaru mulut, gigi longgar atau hilang, air liur berlebihan, dan penurunan berat badan. Rawatan termasuk pembersihan gigi profesional di bawah bius, pencabutan gigi jika perlu, antibiotik untuk jangkitan, dan pengurusan kesakitan. Pencegahan adalah kunci: memberus gigi setiap hari dengan ubat gigi yang selamat untuk anjing, kunyahan gigi, makanan diet gigi, pembersihan profesional tetap, dan memulakan penjagaan gigi ketika muda.',
+      zh: '牙齿疾病（牙周病）极为常见，到3岁时影响超过80%的狗。如果不治疗，可能导致严重的全身健康问题。警告信号包括：持续口臭、可见牙垢堆积（黄色/棕色）、牙龈红肿或出血、进食困难或只用一侧咀嚼、进食时掉落食物、不愿吃硬食物、面部肿胀（牙脓肿）、用爪子抓嘴、牙齿松动或缺失、过度流口水、行为变化（因疼痛而易怒）、体重下降。牙齿疾病阶段：1期（牙龈炎）- 牙龈炎症，可通过治疗逆转；2-3期（牙周炎）- 开始骨质流失，可能需要拔牙；4期 - 严重骨和组织流失，需要大量拔牙。口腔以外的健康影响：牙齿疾病的细菌可扩散到心脏、肝脏和肾脏，可能造成器官损伤。牙齿疾病与狗的心脏病有关。治疗包括麻醉下专业牙齿清洁、必要时拔牙、感染抗生素治疗和疼痛管理。预防是关键：每天用狗安全的牙膏刷牙、洁牙咀嚼物和玩具、洁牙饮食食品、定期专业清洁、从小开始牙齿护理。'
+    },
+    keywords: ['dental', 'teeth', 'gums', 'bad breath', 'tartar', 'periodontal', 'extraction', 'cleaning']
+  },
+  {
+    id: 'dog-arthritis-1',
+    category: 'dog-emergency',
+    question: {
+      en: 'What are the signs of arthritis in dogs and how is it managed?',
+      ms: 'Apakah tanda-tanda arthritis pada anjing dan bagaimana ia diurus?',
+      zh: '狗狗关节炎有哪些症状，如何管理？'
+    },
+    shortAnswer: {
+      en: 'Signs include limping, stiffness (especially after rest), reluctance to jump or climb stairs, decreased activity, difficulty rising, behavioral changes, and muscle loss. Management includes weight control, exercise modification, joint supplements, pain medication, and physical therapy.',
+      ms: 'Tanda-tanda termasuk tempang, kekakuan, keengganan melompat atau memanjat tangga, aktiviti berkurang, kesukaran bangun, perubahan tingkah laku, dan kehilangan otot. Pengurusan termasuk kawalan berat badan, pengubahsuaian senaman, suplemen sendi, dan ubat sakit.',
+      zh: '症状包括跛行、僵硬（尤其是休息后）、不愿跳跃或爬楼梯、活动减少、起身困难、行为变化和肌肉流失。管理包括体重控制、运动调整、关节补充剂、止痛药和物理治疗。'
+    },
+    fullAnswer: {
+      en: 'Arthritis (osteoarthritis or degenerative joint disease) is common in dogs, especially seniors and larger breeds. It causes progressive joint deterioration and chronic pain. Signs to watch for include: limping or favoring certain limbs, stiffness (especially after rest or in cold weather), reluctance to jump, climb stairs, or play, difficulty getting up or lying down, decreased activity or enthusiasm for walks, irritability or behavioral changes, licking or chewing at joints, muscle loss in affected limbs, and swollen joints. Risk factors include: age (common in senior dogs), breed (large breeds, some small breeds like Dachshunds), previous joint injuries, obesity, and genetic factors. Diagnosis involves physical examination, observing gait, X-rays, and sometimes joint fluid analysis. Multi-modal management approach: Weight management is crucial - extra weight increases joint stress; Exercise modification - regular, low-impact exercise (swimming is excellent), avoid high-impact activities; Joint supplements - glucosamine, chondroitin, omega-3 fatty acids; Medications - NSAIDs, Galliprant, Adequan injections; Alternative therapies - acupuncture, laser therapy, physical therapy, hydrotherapy; Environmental modifications - orthopedic beds, ramps instead of stairs, raised food bowls, non-slip surfaces; and in severe cases, surgery may be considered. Regular vet checkups help monitor progression and adjust treatment.',
+      ms: 'Arthritis (osteoarthritis atau penyakit sendi degeneratif) adalah biasa pada anjing, terutamanya senior dan baka besar. Ia menyebabkan kemerosotan sendi progresif dan kesakitan kronik. Tanda-tanda yang perlu diperhatikan termasuk: tempang atau memihak anggota tertentu, kekakuan (terutamanya selepas rehat atau cuaca sejuk), keengganan melompat atau memanjat tangga, kesukaran bangun atau berbaring, aktiviti berkurang, perubahan tingkah laku, menjilat atau mengunyah sendi, kehilangan otot pada anggota yang terjejas, dan sendi bengkak. Pengurusan pendekatan pelbagai modal: Pengurusan berat badan adalah penting; Pengubahsuaian senaman - senaman biasa dengan impak rendah; Suplemen sendi - glukosamin, kondroitin, asid lemak omega-3; Ubat-ubatan - NSAID, Galliprant, suntikan Adequan; Terapi alternatif - akupunktur, terapi laser, fisioterapi, hidroterapi; Pengubahsuaian persekitaran - katil ortopedik, tanjakan bukannya tangga.',
+      zh: '关节炎（骨关节炎或退行性关节病）在狗中很常见，尤其是老年犬和大型犬种。它会导致进行性关节退化和慢性疼痛。需要注意的症状包括：跛行或偏爱某些肢体、僵硬（尤其是休息后或寒冷天气）、不愿跳跃或爬楼梯、起身或躺下困难、活动减少或对散步缺乏热情、易怒或行为变化、舔或咬关节、受影响肢体肌肉流失、关节肿胀。风险因素包括：年龄（老年犬常见）、品种（大型犬、一些小型犬如腊肠犬）、以前的关节损伤、肥胖和遗传因素。诊断包括体检、观察步态、X光，有时进行关节液分析。多模式管理方法：体重管理至关重要；运动调整 - 定期低冲击运动（游泳很好）；关节补充剂 - 氨基葡萄糖、软骨素、omega-3脂肪酸；药物 - NSAIDs、Galliprant、Adequan注射；替代疗法 - 针灸、激光治疗、物理治疗、水疗；环境调整 - 骨科床、坡道代替楼梯、升高的食物碗、防滑表面。定期兽医检查有助于监测进展并调整治疗。'
+    },
+    keywords: ['arthritis', 'joint', 'stiffness', 'limping', 'pain', 'mobility', 'senior', 'glucosamine']
+  },
+  {
+    id: 'dog-diabetes-1',
+    category: 'dog-emergency',
+    question: {
+      en: 'What are the signs of diabetes in dogs?',
+      ms: 'Apakah tanda-tanda diabetes pada anjing?',
+      zh: '狗狗糖尿病有哪些症状？'
+    },
+    shortAnswer: {
+      en: 'Signs include increased thirst and urination, weight loss despite good appetite, increased hunger, lethargy, cloudy eyes (cataracts), recurring infections, and sweet-smelling breath. Without treatment, dogs can develop life-threatening diabetic ketoacidosis (DKA).',
+      ms: 'Tanda-tanda termasuk dahaga dan kencing yang meningkat, penurunan berat badan walaupun selera makan baik, kelaparan yang meningkat, lesu, mata keruh (katarak), jangkitan berulang, dan nafas berbau manis.',
+      zh: '症状包括口渴和排尿增加、食欲良好但体重下降、饥饿感增加、嗜睡、眼睛混浊（白内障）、反复感染和呼吸有甜味。不治疗的话，狗可能发展为危及生命的糖尿病酮症酸中毒（DKA）。'
+    },
+    fullAnswer: {
+      en: 'Diabetes mellitus in dogs occurs when the body cannot produce or properly use insulin, leading to high blood sugar. It most commonly affects middle-aged to older dogs, females, and certain breeds. Early signs (the "4 Ps"): Polyuria - increased urination, Polydipsia - increased thirst, Polyphagia - increased appetite, and weight loss despite eating well. Additional signs include: lethargy or decreased energy, recurring infections (skin, urinary), cloudy eyes (cataracts develop quickly in diabetic dogs), sweet or fruity-smelling breath, vomiting, and weakness in back legs. Emergency signs (Diabetic Ketoacidosis - DKA): severe vomiting, complete loss of appetite, extreme weakness or collapse, rapid breathing, and sweet/acetone breath - SEEK IMMEDIATE CARE. Risk factors include: obesity, pancreatitis, Cushing\'s disease, long-term steroid use, and genetics. Diagnosis involves blood tests showing high glucose levels and urine tests showing glucose. Management requires lifelong commitment: twice-daily insulin injections, consistent feeding schedule, regular glucose monitoring, moderate regular exercise, weight management, and frequent vet checkups. Prognosis: Well-managed diabetic dogs can live normal, happy lives. Early detection and consistent management are key. Complications like cataracts may still develop but don\'t affect overall health.',
+      ms: 'Diabetes mellitus pada anjing berlaku apabila badan tidak dapat menghasilkan atau menggunakan insulin dengan betul, menyebabkan gula darah tinggi. Ia paling biasa menjejaskan anjing berusia pertengahan hingga tua, betina, dan baka tertentu. Tanda-tanda awal (4 P): Poliuria - peningkatan kencing, Polidipsia - peningkatan dahaga, Polifagia - peningkatan selera makan, dan penurunan berat badan. Tanda-tanda tambahan termasuk: lesu, jangkitan berulang, mata keruh (katarak berkembang dengan cepat), nafas berbau manis, muntah, dan kelemahan pada kaki belakang. Tanda-tanda kecemasan (DKA): muntah teruk, hilang selera makan sepenuhnya, kelemahan melampau - DAPATKAN RAWATAN SEGERA. Pengurusan memerlukan komitmen seumur hidup: suntikan insulin dua kali sehari, jadual makan yang konsisten, pemantauan glukosa tetap, senaman sederhana tetap, pengurusan berat badan, dan pemeriksaan veterinar kerap. Prognosis: Anjing diabetes yang diurus dengan baik boleh menjalani kehidupan yang normal dan bahagia.',
+      zh: '狗的糖尿病发生在身体无法产生或正确使用胰岛素时，导致高血糖。它最常影响中老年犬、母犬和某些品种。早期症状（4个P）：多尿 - 排尿增加，多饮 - 口渴增加，多食 - 食欲增加，体重下降尽管吃得好。其他症状包括：嗜睡或精力下降、反复感染（皮肤、泌尿）、眼睛混浊（糖尿病犬白内障发展迅速）、呼吸有甜味或水果味、呕吐、后腿无力。紧急症状（糖尿病酮症酸中毒 - DKA）：严重呕吐、完全食欲丧失、极度虚弱或崩溃、呼吸急促、甜味/丙酮味呼吸 - 立即就医。风险因素包括：肥胖、胰腺炎、库欣病、长期使用类固醇和遗传。诊断包括显示高血糖水平的血液检查和显示葡萄糖的尿液检查。管理需要终身承诺：每天两次胰岛素注射、一致的喂食时间表、定期血糖监测、适度定期运动、体重管理和频繁的兽医检查。预后：管理良好的糖尿病犬可以过正常、快乐的生活。早期发现和一致的管理是关键。'
+    },
+    keywords: ['diabetes', 'thirst', 'urination', 'weight loss', 'insulin', 'glucose', 'cataracts', 'ketoacidosis']
+  },
+  {
+    id: 'dog-cushings-1',
+    category: 'dog-emergency',
+    question: {
+      en: 'What is Cushing\'s disease in dogs and what are the symptoms?',
+      ms: 'Apakah penyakit Cushing pada anjing dan apakah gejalanya?',
+      zh: '什么是狗的库欣病，有什么症状？'
+    },
+    shortAnswer: {
+      en: 'Cushing\'s disease causes excessive cortisol production. Symptoms include increased thirst/urination, pot-bellied appearance, hair loss, thin skin, panting, muscle weakness, and recurring infections. It usually affects middle-aged to older dogs. Treatment depends on the type and severity.',
+      ms: 'Penyakit Cushing menyebabkan pengeluaran kortisol yang berlebihan. Gejala termasuk dahaga/kencing yang meningkat, penampilan perut buncit, keguguran bulu, kulit nipis, terengah-engah, kelemahan otot, dan jangkitan berulang.',
+      zh: '库欣病导致皮质醇分泌过多。症状包括口渴/排尿增加、大肚子外观、脱毛、皮肤薄、喘气、肌肉无力和反复感染。它通常影响中老年犬。治疗取决于类型和严重程度。'
+    },
+    fullAnswer: {
+      en: 'Cushing\'s disease (hyperadrenocorticism) occurs when the body produces too much cortisol, a stress hormone. It\'s one of the most common endocrine disorders in middle-aged to older dogs. Types include: Pituitary-dependent (80-85% of cases) - tumor on pituitary gland stimulates excess cortisol; Adrenal-dependent (15-20%) - tumor on adrenal gland produces excess cortisol; Iatrogenic - caused by long-term steroid medication use. Symptoms develop gradually: increased thirst and urination (often the first sign), increased appetite, pot-bellied appearance (liver enlargement and fat redistribution), hair loss (typically symmetrical on both sides), thin, fragile skin that bruises easily, recurring skin or urinary infections, panting and heat intolerance, muscle weakness and lethargy, and skin calcification (hard patches). Diagnosis involves multiple tests: blood chemistry showing elevated liver enzymes, urine cortisol:creatinine ratio, ACTH stimulation test, low-dose dexamethasone suppression test, and ultrasound to check for adrenal tumors. Treatment options: for pituitary-dependent - oral medication (Trilostane/Vetoryl or Lysodren) to suppress cortisol production, requires lifelong treatment and monitoring; for adrenal tumors - surgery may be an option; for iatrogenic - gradually reduce steroid dosage under vet supervision. Prognosis: with proper treatment, most dogs live comfortably for years. Untreated Cushing\'s increases risk of diabetes, infections, blood clots, and hypertension.',
+      ms: 'Penyakit Cushing (hiperadrenokortisisme) berlaku apabila badan menghasilkan terlalu banyak kortisol, hormon tekanan. Ia adalah salah satu gangguan endokrin yang paling biasa pada anjing berusia pertengahan hingga tua. Jenis termasuk: Bergantung kepada pituitari (80-85% kes); Bergantung kepada adrenal (15-20%); Iatrogenik - disebabkan oleh penggunaan ubat steroid jangka panjang. Gejala berkembang secara beransur-ansur: dahaga dan kencing yang meningkat, selera makan yang meningkat, penampilan perut buncit, keguguran bulu, kulit nipis dan rapuh, jangkitan berulang, terengah-engah, kelemahan otot dan lesu. Diagnosis melibatkan pelbagai ujian. Pilihan rawatan: untuk bergantung kepada pituitari - ubat oral untuk menekan pengeluaran kortisol; untuk tumor adrenal - pembedahan mungkin pilihan. Prognosis: dengan rawatan yang betul, kebanyakan anjing hidup dengan selesa selama bertahun-tahun.',
+      zh: '库欣病（肾上腺皮质功能亢进症）发生在身体产生过多皮质醇（一种应激激素）时。它是中老年犬最常见的内分泌疾病之一。类型包括：垂体依赖性（80-85%的病例）- 垂体上的肿瘤刺激过多皮质醇；肾上腺依赖性（15-20%）- 肾上腺上的肿瘤产生过多皮质醇；医源性 - 长期使用类固醇药物引起。症状逐渐发展：口渴和排尿增加（通常是第一个迹象）、食欲增加、大肚子外观（肝脏肿大和脂肪重新分布）、脱毛（通常两侧对称）、皮肤薄而脆弱容易瘀伤、反复皮肤或泌尿感染、喘气和不耐热、肌肉无力和嗜睡、皮肤钙化（硬块）。诊断包括多项测试。治疗选择：垂体依赖性 - 口服药物抑制皮质醇产生，需要终身治疗和监测；肾上腺肿瘤 - 手术可能是一个选择；医源性 - 在兽医监督下逐渐减少类固醇剂量。预后：通过适当治疗，大多数狗可以舒适地生活多年。未经治疗的库欣病会增加糖尿病、感染、血栓和高血压的风险。'
+    },
+    keywords: ['Cushing', 'cortisol', 'pot belly', 'hair loss', 'thirst', 'adrenal', 'pituitary', 'Trilostane']
+  },
+  {
+    id: 'dog-bloat-gdv-1',
+    category: 'dog-emergency',
+    question: {
+      en: 'What is bloat (GDV) in dogs and why is it a life-threatening emergency?',
+      ms: 'Apakah bloat (GDV) pada anjing dan mengapa ia kecemasan yang mengancam nyawa?',
+      zh: '什么是狗的胃扩张扭转（GDV），为什么它是危及生命的紧急情况？'
+    },
+    shortAnswer: {
+      en: 'Bloat/GDV occurs when the stomach fills with gas and twists. Signs include distended abdomen, unproductive retching, restlessness, drooling, rapid breathing, and collapse. Without emergency surgery within hours, it is fatal. Large, deep-chested breeds are most at risk.',
+      ms: 'Bloat/GDV berlaku apabila perut dipenuhi gas dan berpusing. Tanda-tanda termasuk perut kembung, cuba muntah tanpa hasil, gelisah, air liur berlebihan, dan rebah. Tanpa pembedahan kecemasan dalam beberapa jam, ia membawa maut.',
+      zh: 'GDV/胃扭转发生在胃充满气体并扭转时。症状包括腹部膨胀、干呕无物、烦躁不安、流口水、呼吸急促和虚脱。如果不在数小时内进行紧急手术，将是致命的。大型深胸犬种风险最高。'
+    },
+    fullAnswer: {
+      en: 'Gastric Dilatation-Volvulus (GDV), commonly called bloat, is one of the most serious emergencies in dogs, with mortality rates of 20-45% even with treatment. The condition has two components: Gastric Dilatation - stomach fills with gas and fluid; Volvulus - stomach rotates, cutting off blood supply. What happens: the twisted stomach traps gas and fluids, compresses major blood vessels (reducing blood flow to vital organs), the spleen may also twist, tissue begins dying within hours, and toxins release as tissue dies. Warning signs - EMERGENCY: distended, hard abdomen, unproductive retching (trying to vomit but nothing comes up), restlessness and pacing, excessive drooling, rapid shallow breathing, pale gums, weakness or collapse, and rapid heart rate. High-risk breeds: Great Danes (highest risk), German Shepherds, Standard Poodles, Weimaraners, and other large, deep-chested breeds. Risk factors: eating one large meal daily, eating rapidly, elevated food bowls (controversial), exercise right after eating, stress, and family history. THIS IS AN EMERGENCY: If you suspect GDV, go to an emergency vet IMMEDIATELY - do not wait. Treatment requires emergency surgery to untwist the stomach, remove dead tissue, and perform gastropexy (stitching stomach to body wall to prevent recurrence). Prevention for high-risk dogs: feed smaller, more frequent meals, slow feeder bowls, no exercise 1 hour before/after meals, and consider preventive gastropexy during spay/neuter.',
+      ms: 'Gastric Dilatation-Volvulus (GDV), biasanya dipanggil bloat, adalah salah satu kecemasan paling serius pada anjing, dengan kadar kematian 20-45% walaupun dengan rawatan. Keadaan ini mempunyai dua komponen: Pelebaran Gastrik - perut dipenuhi gas dan cecair; Volvulus - perut berpusing, memotong bekalan darah. Apa yang berlaku: perut yang berpusing memerangkap gas dan cecair, memampatkan saluran darah utama, tisu mula mati dalam beberapa jam, toksin dilepaskan apabila tisu mati. Tanda-tanda amaran - KECEMASAN: perut kembung dan keras, cuba muntah tanpa hasil, gelisah dan berjalan ke sana sini, air liur berlebihan, pernafasan cetek yang cepat, gusi pucat, kelemahan atau rebah. Baka berisiko tinggi: Great Danes, German Shepherd, Poodle Standard, dan baka besar dengan dada dalam yang lain. INI ADALAH KECEMASAN: Jika anda mengesyaki GDV, pergi ke veterinar kecemasan SEGERA. Rawatan memerlukan pembedahan kecemasan. Pencegahan untuk anjing berisiko tinggi: beri makan yang lebih kecil dan lebih kerap, mangkuk makan perlahan, tiada senaman 1 jam sebelum/selepas makan.',
+      zh: '胃扩张扭转（GDV），通常称为胃扭转，是狗最严重的急症之一，即使经过治疗，死亡率也高达20-45%。这种情况有两个组成部分：胃扩张 - 胃充满气体和液体；扭转 - 胃旋转，切断血液供应。发生的情况：扭转的胃困住气体和液体，压迫主要血管（减少对重要器官的血流），脾脏也可能扭转，组织在数小时内开始死亡，组织死亡时释放毒素。警告信号 - 紧急情况：腹部膨胀、坚硬，干呕（试图呕吐但什么都吐不出来），烦躁不安和踱步，过度流口水，快速浅呼吸，牙龈苍白，虚弱或虚脱，心率加快。高风险品种：大丹犬（风险最高）、德国牧羊犬、标准贵宾犬、威玛猎犬和其他大型深胸品种。风险因素：每天只吃一顿大餐、吃得快、进食后立即运动、压力和家族史。这是紧急情况：如果您怀疑是GDV，立即去急诊兽医 - 不要等待。治疗需要紧急手术来解开胃扭转、移除死亡组织并进行胃固定术（将胃缝合到腹壁以防止复发）。高风险狗的预防：喂食更小更频繁的餐食、使用慢食碗、进食前后1小时内不运动。'
+    },
+    keywords: ['bloat', 'GDV', 'gastric', 'volvulus', 'emergency', 'distended', 'retching', 'twisted stomach']
+  },
+  {
+    id: 'dog-seizures-1',
+    category: 'dog-emergency',
+    question: {
+      en: 'What should I do if my dog has a seizure?',
+      ms: 'Apa yang perlu saya lakukan jika anjing saya mengalami sawan?',
+      zh: '如果我的狗癫痫发作，我该怎么办？'
+    },
+    shortAnswer: {
+      en: 'Stay calm and keep your dog safe by moving furniture away. Do NOT put anything in their mouth. Time the seizure. Keep them cool and calm afterward. Seek emergency care if seizure lasts more than 5 minutes, multiple seizures occur, or it\'s their first seizure.',
+      ms: 'Kekal tenang dan pastikan anjing anda selamat dengan mengalihkan perabot. JANGAN masukkan apa-apa ke dalam mulut mereka. Masa sawan. Pastikan mereka sejuk dan tenang selepas itu. Dapatkan rawatan kecemasan jika sawan berlangsung lebih dari 5 minit.',
+      zh: '保持冷静，通过移开家具确保狗的安全。不要把任何东西放进它们的嘴里。计时癫痫发作。事后保持凉爽和平静。如果癫痫发作超过5分钟、多次发作或是首次发作，请寻求紧急护理。'
+    },
+    fullAnswer: {
+      en: 'Seizures in dogs can be frightening, but knowing how to respond can help keep your pet safe. During a seizure: Stay calm - your dog is not in pain during the seizure. Keep them safe - gently move them away from stairs, furniture, or water; place cushions around if possible. Do NOT put anything in their mouth - dogs cannot swallow their tongue, and you risk being bitten. Do NOT restrain them - let the seizure run its course. Time the seizure - duration is important information for your vet. Keep the area quiet and dim if possible. After the seizure (postictal phase): your dog may be confused, disoriented, or temporarily blind, they may pace, drink excessively, or seem hungry, stay with them and speak calmly, keep them in a safe, quiet area, offer water but don\'t force eating, and this phase can last minutes to hours. When to seek EMERGENCY care: seizure lasts more than 5 minutes (status epilepticus - life threatening), multiple seizures in 24 hours (cluster seizures), it\'s their first seizure ever, difficulty recovering, or high body temperature. Common causes include: Epilepsy (idiopathic), Toxin ingestion, Liver or kidney disease, Brain tumors, Low blood sugar, and Infections. Treatment depends on the cause. Epilepsy is often managed with daily anticonvulsant medications like phenobarbital or potassium bromide. Keep a seizure diary recording date, time, duration, and description to help your vet manage the condition.',
+      ms: 'Sawan pada anjing boleh menakutkan, tetapi mengetahui cara untuk bertindak balas boleh membantu memastikan haiwan peliharaan anda selamat. Semasa sawan: Kekal tenang - anjing anda tidak kesakitan semasa sawan. Pastikan mereka selamat - alihkan mereka dari tangga, perabot, atau air dengan lembut. JANGAN masukkan apa-apa ke dalam mulut mereka - anjing tidak boleh menelan lidah mereka dan anda berisiko digigit. JANGAN mengekang mereka. Masa sawan - tempoh adalah maklumat penting untuk veterinar anda. Selepas sawan (fasa postictal): anjing anda mungkin keliru atau disorientasi. Bila untuk mendapatkan rawatan KECEMASAN: sawan berlangsung lebih dari 5 minit, pelbagai sawan dalam 24 jam, sawan pertama mereka, kesukaran pulih, atau suhu badan tinggi. Punca biasa termasuk: Epilepsi, Pengambilan toksin, Penyakit hati atau buah pinggang, Tumor otak, Gula darah rendah, Jangkitan. Rawatan bergantung kepada punca. Epilepsi sering diurus dengan ubat antikonvulsan harian.',
+      zh: '狗的癫痫发作可能令人恐惧，但知道如何应对可以帮助保护您的宠物安全。癫痫发作期间：保持冷静 - 您的狗在发作期间没有疼痛。确保它们安全 - 轻轻地将它们移离楼梯、家具或水；如果可能的话在周围放置垫子。不要把任何东西放进它们的嘴里 - 狗不会吞下舌头，您有被咬的风险。不要约束它们 - 让癫痫自然结束。计时癫痫发作 - 持续时间是给兽医的重要信息。如果可能，保持环境安静昏暗。癫痫发作后（发作后期）：您的狗可能会困惑、迷失方向或暂时失明，它们可能会踱步、过度饮水或看起来饥饿，陪伴它们并平静地说话，让它们待在安全、安静的区域，提供水但不要强迫进食。何时寻求紧急护理：癫痫发作超过5分钟（癫痫持续状态 - 危及生命）、24小时内多次发作（丛集性发作）、首次发作、恢复困难或体温过高。常见原因包括：癫痫（特发性）、毒素摄入、肝脏或肾脏疾病、脑肿瘤、低血糖、感染。治疗取决于病因。癫痫通常通过每日抗惊厥药物如苯巴比妥或溴化钾来管理。保持癫痫日记记录日期、时间、持续时间和描述，以帮助兽医管理病情。'
+    },
+    keywords: ['seizure', 'epilepsy', 'convulsion', 'fitting', 'emergency', 'phenobarbital', 'neurological']
+  },
+  {
+    id: 'dog-bite-wounds-1',
+    category: 'dog-emergency',
+    question: {
+      en: 'How should I treat bite wounds or injuries on my dog?',
+      ms: 'Bagaimana saya harus merawat luka gigitan atau kecederaan pada anjing saya?',
+      zh: '我应该如何治疗我的狗的咬伤或受伤？'
+    },
+    shortAnswer: {
+      en: 'Apply gentle pressure to stop bleeding, clean the wound with saline or clean water, and see a vet immediately. Bite wounds often look minor but have deep tissue damage and high infection risk. Do NOT use hydrogen peroxide or alcohol. Most bites need professional treatment.',
+      ms: 'Tekan lembut untuk menghentikan pendarahan, bersihkan luka dengan salin atau air bersih, dan jumpa veterinar segera. Luka gigitan sering kelihatan kecil tetapi mempunyai kerosakan tisu dalam dan risiko jangkitan tinggi.',
+      zh: '轻轻按压止血，用生理盐水或清水清洗伤口，立即就医。咬伤看起来可能很轻微，但通常有深层组织损伤和高感染风险。不要使用过氧化氢或酒精。大多数咬伤需要专业治疗。'
+    },
+    fullAnswer: {
+      en: 'Bite wounds are serious injuries that require prompt veterinary attention, even if they appear minor on the surface. Why bite wounds are dangerous: Puncture wounds may be small on the surface but deep underneath (iceberg effect). Dog teeth carry bacteria that can cause serious infections. Crushing injuries damage tissue beneath the skin. Infection can develop rapidly, sometimes leading to abscesses. Immediate first aid: Stay safe - a hurt dog may bite. Muzzle if needed. Control bleeding - apply gentle pressure with clean cloth. Do NOT use a tourniquet. Clean the wound - use sterile saline or clean water to gently flush. Do NOT use hydrogen peroxide, alcohol, or other harsh antiseptics (they damage tissue). Cover loosely - with clean gauze or cloth. Prevent licking - use an E-collar if available. Seek veterinary care - even if wound seems minor. Veterinary treatment typically includes: thorough wound cleaning and flushing, exploration of wound depth, removal of dead tissue, drainage placement for deep wounds, antibiotics (oral and/or injectable), pain medication, sometimes surgical closure (often delayed to ensure infection control), and rabies evaluation if the biting animal\'s status is unknown. Watch for infection signs: increasing redness, swelling, heat, discharge (especially if yellow/green or foul-smelling), fever, and lethargy. Deep wounds, wounds from unknown animals, wounds near eyes/joints/abdomen, and any wound causing significant pain should be seen immediately.',
+      ms: 'Luka gigitan adalah kecederaan serius yang memerlukan perhatian veterinar segera, walaupun ia kelihatan kecil di permukaan. Mengapa luka gigitan berbahaya: Luka tusukan mungkin kecil di permukaan tetapi dalam di bawah (kesan aisberg). Gigi anjing membawa bakteria yang boleh menyebabkan jangkitan serius. Kecederaan menghancur merosakkan tisu di bawah kulit. Jangkitan boleh berkembang dengan cepat, kadang-kadang menyebabkan abses. Pertolongan cemas segera: Kekal selamat - anjing yang cedera mungkin menggigit. Kawal pendarahan. Bersihkan luka - gunakan salin steril atau air bersih. JANGAN gunakan hidrogen peroksida atau alkohol. Tutup dengan longgar. Cegah menjilat - gunakan kolar E jika ada. Dapatkan rawatan veterinar - walaupun luka kelihatan kecil. Rawatan veterinar biasanya termasuk: pembersihan luka yang teliti, penerokaan kedalaman luka, penyingkiran tisu mati, antibiotik, ubat sakit, dan kadang-kadang penutupan pembedahan. Perhatikan tanda-tanda jangkitan: kemerahan yang meningkat, bengkak, panas, lelehan, demam, dan lesu.',
+      zh: '咬伤是需要及时兽医处理的严重伤害，即使表面看起来很轻微。为什么咬伤危险：穿刺伤表面可能很小但下面很深（冰山效应）。狗的牙齿携带可能导致严重感染的细菌。挤压伤会损伤皮下组织。感染可能迅速发展，有时导致脓肿。即时急救：保持安全 - 受伤的狗可能会咬人。如果需要，使用口套。控制出血 - 用干净的布轻轻按压。不要使用止血带。清洁伤口 - 用无菌生理盐水或清水轻轻冲洗。不要使用过氧化氢、酒精或其他刺激性消毒剂（它们会损伤组织）。松散覆盖 - 用干净的纱布或布。防止舔舐 - 如果有的话使用伊丽莎白圈。寻求兽医护理 - 即使伤口看起来很轻微。兽医治疗通常包括：彻底的伤口清洁和冲洗、探查伤口深度、清除死亡组织、深伤口放置引流、抗生素（口服和/或注射）、止痛药、有时手术缝合（通常延迟以确保感染控制）、如果咬人动物的狂犬病状态未知则进行狂犬病评估。注意感染迹象：发红加重、肿胀、发热、分泌物（尤其是黄色/绿色或有恶臭）、发烧和嗜睡。深伤口、来自未知动物的伤口、眼睛/关节/腹部附近的伤口以及任何引起明显疼痛的伤口应立即就医。'
+    },
+    keywords: ['bite', 'wound', 'injury', 'bleeding', 'infection', 'abscess', 'puncture', 'first aid']
+  },
+  {
+    id: 'dog-cancer-signs-1',
+    category: 'dog-emergency',
+    question: {
+      en: 'What are the warning signs of cancer in dogs?',
+      ms: 'Apakah tanda-tanda amaran kanser pada anjing?',
+      zh: '狗狗癌症有哪些警告信号？'
+    },
+    shortAnswer: {
+      en: 'Warning signs include lumps that grow or change, sores that don\'t heal, unexplained weight loss, loss of appetite, difficulty breathing, persistent lameness, abnormal swelling, bleeding or discharge, difficulty eating/swallowing, and loss of energy. Early detection improves outcomes.',
+      ms: 'Tanda-tanda amaran termasuk benjolan yang tumbuh atau berubah, luka yang tidak sembuh, penurunan berat badan yang tidak dapat dijelaskan, hilang selera makan, kesukaran bernafas, tempang berterusan, bengkak yang tidak normal.',
+      zh: '警告信号包括生长或变化的肿块、不愈合的溃疡、不明原因的体重下降、食欲不振、呼吸困难、持续跛行、异常肿胀、出血或分泌物、进食/吞咽困难和精力下降。早期发现可改善预后。'
+    },
+    fullAnswer: {
+      en: 'Cancer is common in dogs, especially seniors, but early detection significantly improves treatment outcomes. The "10 Warning Signs of Cancer" (per the Veterinary Cancer Society): Abnormal swellings that persist or continue to grow, Sores that don\'t heal, Weight loss (unexplained), Loss of appetite, Bleeding or discharge from any body opening, Offensive odor, Difficulty eating or swallowing, Hesitation to exercise or loss of stamina, Persistent lameness or stiffness, and Difficulty breathing, urinating, or defecating. Common types in dogs include: Lymphoma - swollen lymph nodes, often treatable; Mast Cell Tumors - skin lumps that may change size; Osteosarcoma - bone cancer, often in legs of large breeds; Hemangiosarcoma - affects blood vessels, often in spleen/heart; Melanoma - often in mouth; Mammary Cancer - common in unspayed females. What to do: Regular vet checkups are crucial for early detection. Check your dog monthly for lumps, bumps, or changes. Don\'t assume a lump is benign - get it checked. A fine needle aspirate or biopsy can help determine if a mass is concerning. Treatment options may include: surgery, chemotherapy (dogs tolerate this much better than humans), radiation therapy, immunotherapy, and palliative care for quality of life. Prognosis varies greatly depending on cancer type, stage at diagnosis, and treatment. Many dogs with cancer can live good quality lives with treatment.',
+      ms: 'Kanser adalah biasa pada anjing, terutamanya senior, tetapi pengesanan awal meningkatkan hasil rawatan dengan ketara. "10 Tanda Amaran Kanser" termasuk: Bengkak yang tidak normal yang berterusan atau terus membesar, Luka yang tidak sembuh, Penurunan berat badan (tidak dapat dijelaskan), Hilang selera makan, Pendarahan atau lelehan dari mana-mana bukaan badan, Bau yang tidak menyenangkan, Kesukaran makan atau menelan, Keraguan untuk bersenam atau kehilangan stamina, Tempang atau kekakuan yang berterusan, dan Kesukaran bernafas, membuang air kecil, atau membuang air besar. Jenis biasa pada anjing termasuk: Limfoma, Tumor Sel Mast, Osteosarkoma, Hemangiosarkoma, Melanoma, Kanser Mammari. Apa yang perlu dilakukan: Pemeriksaan veterinar tetap adalah penting. Periksa anjing anda setiap bulan untuk benjolan atau perubahan. Jangan anggap benjolan adalah jinak - periksa. Pilihan rawatan mungkin termasuk: pembedahan, kemoterapi (anjing menangani ini lebih baik daripada manusia), terapi radiasi, imunoterapi, dan penjagaan paliatif.',
+      zh: '癌症在狗中很常见，尤其是老年犬，但早期发现可显著改善治疗效果。"10个癌症警告信号"（根据兽医癌症学会）：持续存在或继续生长的异常肿胀、不愈合的溃疡、体重下降（不明原因）、食欲不振、任何身体开口出血或分泌物、难闻的气味、进食或吞咽困难、不愿运动或耐力下降、持续跛行或僵硬、呼吸、排尿或排便困难。狗的常见类型包括：淋巴瘤 - 淋巴结肿大，通常可治疗；肥大细胞瘤 - 可能改变大小的皮肤肿块；骨肉瘤 - 骨癌，常见于大型犬的腿部；血管肉瘤 - 影响血管，常见于脾脏/心脏；黑色素瘤 - 常见于口腔；乳腺癌 - 常见于未绝育的母犬。该怎么做：定期兽医检查对早期发现至关重要。每月检查您的狗是否有肿块或变化。不要假设肿块是良性的 - 去检查。细针穿刺或活检可以帮助确定肿块是否令人担忧。治疗选择可能包括：手术、化疗（狗对此的耐受性比人类好得多）、放射治疗、免疫治疗和姑息治疗以保持生活质量。预后因癌症类型、诊断阶段和治疗而异。许多患癌的狗经过治疗可以过上高质量的生活。'
+    },
+    keywords: ['cancer', 'tumor', 'lump', 'mass', 'weight loss', 'swelling', 'bleeding', 'warning signs']
+  },
+  {
+    id: 'dog-poisoning-1',
+    category: 'dog-emergency',
+    question: {
+      en: 'What should I do if my dog eats something poisonous?',
+      ms: 'Apa yang perlu saya lakukan jika anjing saya makan sesuatu yang beracun?',
+      zh: '如果我的狗吃了有毒的东西，我该怎么办？'
+    },
+    shortAnswer: {
+      en: 'Call your vet or emergency clinic immediately. Note what was eaten and how much. Do NOT induce vomiting unless specifically instructed by a vet. Common toxins include chocolate, xylitol, grapes/raisins, medications, rodent poison, and certain plants. Time is critical.',
+      ms: 'Hubungi veterinar atau klinik kecemasan anda dengan segera. Catat apa yang dimakan dan berapa banyak. JANGAN induksi muntah melainkan diarahkan oleh veterinar. Toksin biasa termasuk coklat, xylitol, anggur/kismis, ubat-ubatan, racun tikus.',
+      zh: '立即致电您的兽医或急诊诊所。记下吃了什么和多少。不要催吐，除非兽医特别指示。常见毒素包括巧克力、木糖醇、葡萄/葡萄干、药物、老鼠药和某些植物。时间至关重要。'
+    },
+    fullAnswer: {
+      en: 'Poisoning is a common emergency in dogs. Quick action can save your dog\'s life. Immediate steps: Remove your dog from the source. Stay calm and assess the situation. Identify what was eaten - save packaging/sample if possible. Note approximate amount consumed and time. Call your vet or emergency clinic immediately - they will advise on next steps. Do NOT induce vomiting unless specifically instructed - some substances cause more damage coming back up. Common toxins to be aware of: Foods - chocolate (especially dark), xylitol (in sugar-free products), grapes/raisins, onions/garlic, macadamia nuts, alcohol, caffeine. Medications - human painkillers (ibuprofen, acetaminophen), antidepressants, ADHD medications, heart medications. Household - cleaning products, antifreeze (very dangerous - tastes sweet), rodent poison, insecticides, fertilizers. Plants - lilies, sago palm, azalea, oleander, tulips. Symptoms of poisoning vary but may include: vomiting, diarrhea, drooling, lethargy, seizures, difficulty breathing, abnormal heart rate, collapse, and bleeding disorders. Treatment depends on the toxin and may include: induced vomiting (only if safe and within short time frame), activated charcoal to absorb toxins, IV fluids, medications to protect organs, blood transfusions for certain poisons, and hospitalization for monitoring. Prevention: keep toxins locked away, be aware of what\'s in your yard, supervise dogs outdoors, and pet-proof your home.',
+      ms: 'Keracunan adalah kecemasan biasa pada anjing. Tindakan cepat boleh menyelamatkan nyawa anjing anda. Langkah-langkah segera: Keluarkan anjing anda dari sumber. Kekal tenang dan nilai keadaan. Kenal pasti apa yang dimakan - simpan pembungkusan/sampel jika boleh. Catat anggaran jumlah yang dimakan dan masa. Hubungi veterinar atau klinik kecemasan anda dengan segera. JANGAN induksi muntah melainkan diarahkan secara khusus - sesetengah bahan menyebabkan lebih banyak kerosakan apabila naik semula. Toksin biasa yang perlu diketahui: Makanan - coklat (terutamanya gelap), xylitol, anggur/kismis, bawang/bawang putih. Ubat-ubatan - ubat sakit manusia (ibuprofen, acetaminophen). Isi rumah - produk pembersihan, anti-beku, racun tikus, racun serangga. Tumbuhan - lili, palma sago, azalea. Gejala keracunan termasuk: muntah, cirit-birit, air liur berlebihan, lesu, sawan, kesukaran bernafas. Rawatan bergantung kepada toksin. Pencegahan: simpan toksin di tempat berkunci, ketahui apa yang ada di halaman anda.',
+      zh: '中毒是狗的常见急症。快速行动可以挽救您的狗的生命。即时步骤：将狗从来源处移开。保持冷静并评估情况。确定吃了什么 - 如果可能保存包装/样品。记下大概吃了多少和时间。立即致电您的兽医或急诊诊所 - 他们会建议下一步行动。不要催吐，除非特别指示 - 某些物质在吐出时会造成更大伤害。需要注意的常见毒素：食物 - 巧克力（尤其是黑巧克力）、木糖醇（在无糖产品中）、葡萄/葡萄干、洋葱/大蒜、夏威夷果、酒精、咖啡因。药物 - 人类止痛药（布洛芬、对乙酰氨基酚）、抗抑郁药、ADHD药物、心脏药物。家用品 - 清洁产品、防冻液（非常危险 - 味道甜）、老鼠药、杀虫剂、肥料。植物 - 百合、铁树、杜鹃花、夹竹桃、郁金香。中毒症状各异但可能包括：呕吐、腹泻、流口水、嗜睡、癫痫发作、呼吸困难、心率异常、虚脱和出血障碍。治疗取决于毒素，可能包括：催吐（仅在安全且短时间内）、活性炭吸收毒素、静脉输液、保护器官的药物、某些毒物的输血、住院监测。预防：将毒素锁好，注意院子里有什么，在户外监督狗，并使您的家对宠物安全。'
+    },
+    keywords: ['poison', 'toxic', 'chocolate', 'xylitol', 'grapes', 'emergency', 'vomiting', 'medication']
   }
 ];
 
