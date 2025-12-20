@@ -7,6 +7,7 @@ import { Footer } from '@/components/Footer';
 import { SEOHead } from '@/components/SEOHead';
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion';
 import { getEmergencyGuideContent, getNutritionGuideContent } from '@/lib/blogTranslations';
+import { LanguageSwitcher } from '@/components/LanguageSwitcher';
 
 const EmergencyPetCareGuide = () => {
   const { language } = useLanguage();
@@ -94,13 +95,16 @@ const EmergencyPetCareGuide = () => {
               </span>
             </div>
 
-            <div className="flex gap-2">
-              <Button variant="outline" size="sm">
-                <Share2 className="h-4 w-4 mr-2" /> {content.share}
-              </Button>
-              <Button variant="outline" size="sm">
-                <Bookmark className="h-4 w-4 mr-2" /> {content.save}
-              </Button>
+            <div className="flex flex-wrap items-center justify-between gap-4">
+              <div className="flex gap-2">
+                <Button variant="outline" size="sm">
+                  <Share2 className="h-4 w-4 mr-2" /> {content.share}
+                </Button>
+                <Button variant="outline" size="sm">
+                  <Bookmark className="h-4 w-4 mr-2" /> {content.save}
+                </Button>
+              </div>
+              <LanguageSwitcher />
             </div>
           </header>
 
@@ -771,13 +775,16 @@ const PetFoodBrandsGuide = () => {
               </span>
             </div>
 
-            <div className="flex gap-2">
-              <Button variant="outline" size="sm">
-                <Share2 className="h-4 w-4 mr-2" /> {content.share}
-              </Button>
-              <Button variant="outline" size="sm">
-                <Bookmark className="h-4 w-4 mr-2" /> {content.save}
-              </Button>
+            <div className="flex flex-wrap items-center justify-between gap-4">
+              <div className="flex gap-2">
+                <Button variant="outline" size="sm">
+                  <Share2 className="h-4 w-4 mr-2" /> {content.share}
+                </Button>
+                <Button variant="outline" size="sm">
+                  <Bookmark className="h-4 w-4 mr-2" /> {content.save}
+                </Button>
+              </div>
+              <LanguageSwitcher />
             </div>
           </header>
 
