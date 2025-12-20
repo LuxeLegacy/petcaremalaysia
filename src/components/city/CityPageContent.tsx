@@ -15,6 +15,7 @@ import { CityGovernmentSection } from './CityGovernmentSection';
 import { CityFAQSection } from './CityFAQSection';
 import { CityFinalCtaSection } from './CityFinalCtaSection';
 import { CityPAASection } from './CityPAASection';
+import { YourQuestionsAnsweredSection } from './YourQuestionsAnsweredSection';
 import { 
   Phone, 
   MapPin, 
@@ -244,6 +245,9 @@ export const CityPageContent: React.FC<CityPageContentProps> = ({ city }) => {
           )}
         </div>
       </section>
+
+      {/* Your Questions Answered Section */}
+      <YourQuestionsAnsweredSection city={city} />
 
       {/* Statistics Section */}
       <CityStatisticsSection city={city} />
