@@ -5,8 +5,10 @@ import { Input } from '@/components/ui/input';
 import { Button } from '@/components/ui/button';
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion';
 import { Skeleton } from '@/components/ui/skeleton';
-import { Search, ChevronDown, ChevronUp } from 'lucide-react';
+import { Search, ChevronDown, ChevronUp, MapPin } from 'lucide-react';
 import { QACostCTA } from './QACostCTA';
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
+import { getCitiesByState } from '@/lib/cityData';
 
 interface QAKeyword {
   id: string;
@@ -15,6 +17,13 @@ interface QAKeyword {
   answer: string;
   category: string;
   priority: number | null;
+  city_slug: string | null;
+}
+
+interface CityCount {
+  city_slug: string;
+  count: number;
+  name: string;
 }
 
 interface StateQASectionProps {
@@ -39,33 +48,38 @@ export const StateQASection = ({ stateSlug, stateName }: StateQASectionProps) =>
   const [loading, setLoading] = useState(true);
   const [searchQuery, setSearchQuery] = useState('');
   const [selectedCategory, setSelectedCategory] = useState<string | null>(null);
+  const [selectedCity, setSelectedCity] = useState<string>('all');
   const [visibleItems, setVisibleItems] = useState(ITEMS_PER_PAGE);
+  const [cityCounts, setCityCounts] = useState<CityCount[]>([]);
+
+  // Get cities for this state from static data
+  const stateCities = useMemo(() => getCitiesByState(stateSlug), [stateSlug]);
+
+  // State name mapping
+  const stateNameMap: Record<string, string> = useMemo(() => ({
+    'selangor': 'Selangor',
+    'kuala-lumpur': 'W.P. Kuala Lumpur',
+    'johor': 'Johor',
+    'penang': 'Penang',
+    'perak': 'Perak',
+    'sarawak': 'Sarawak',
+    'sabah': 'Sabah',
+    'melaka': 'Melaka',
+    'kedah': 'Kedah',
+    'pahang': 'Pahang',
+    'kelantan': 'Kelantan',
+    'terengganu': 'Terengganu',
+  }), []);
 
   useEffect(() => {
     const fetchQAs = async () => {
       setLoading(true);
-      
-      // Map state slug to state name for query
-      const stateNameMap: Record<string, string> = {
-        'selangor': 'Selangor',
-        'kuala-lumpur': 'W.P. Kuala Lumpur',
-        'johor': 'Johor',
-        'penang': 'Penang',
-        'perak': 'Perak',
-        'sarawak': 'Sarawak',
-        'sabah': 'Sabah',
-        'melaka': 'Melaka',
-        'kedah': 'Kedah',
-        'pahang': 'Pahang',
-        'kelantan': 'Kelantan',
-        'terengganu': 'Terengganu',
-      };
-      
       const stateValue = stateNameMap[stateSlug] || stateName;
       
+      // Fetch all Q&As for the state
       const { data, error } = await supabase
         .from('pet_qa_keywords')
-        .select('id, keyword, question, answer, category, priority')
+        .select('id, keyword, question, answer, category, priority, city_slug')
         .eq('state', stateValue)
         .eq('language', language)
         .order('priority', { ascending: false });
@@ -75,12 +89,29 @@ export const StateQASection = ({ stateSlug, stateName }: StateQASectionProps) =>
         setQaData([]);
       } else {
         setQaData(data || []);
+        
+        // Calculate city counts from fetched data
+        const counts: Record<string, number> = {};
+        (data || []).forEach(q => {
+          if (q.city_slug) {
+            counts[q.city_slug] = (counts[q.city_slug] || 0) + 1;
+          }
+        });
+        
+        // Map to city count objects with names from static data
+        const cityCountList: CityCount[] = stateCities.map(city => ({
+          city_slug: city.slug,
+          name: city.name,
+          count: counts[city.slug] || 0
+        })).sort((a, b) => b.count - a.count);
+        
+        setCityCounts(cityCountList);
       }
       setLoading(false);
     };
 
     fetchQAs();
-  }, [stateSlug, stateName, language]);
+  }, [stateSlug, stateName, language, stateNameMap, stateCities]);
 
   const categories = useMemo(() => {
     const cats = new Set(qaData.map(q => q.category));
@@ -89,6 +120,11 @@ export const StateQASection = ({ stateSlug, stateName }: StateQASectionProps) =>
 
   const filteredQAs = useMemo(() => {
     let filtered = qaData;
+
+    // Filter by city first
+    if (selectedCity !== 'all') {
+      filtered = filtered.filter(q => q.city_slug === selectedCity);
+    }
 
     if (searchQuery) {
       const query = searchQuery.toLowerCase();
@@ -105,7 +141,7 @@ export const StateQASection = ({ stateSlug, stateName }: StateQASectionProps) =>
     }
 
     return filtered;
-  }, [qaData, searchQuery, selectedCategory]);
+  }, [qaData, searchQuery, selectedCategory, selectedCity]);
 
   const visibleQAs = filteredQAs.slice(0, visibleItems);
   const hasMore = visibleItems < filteredQAs.length;
@@ -132,49 +168,78 @@ export const StateQASection = ({ stateSlug, stateName }: StateQASectionProps) =>
 
   return (
     <div className="space-y-6">
-      {/* Search and Filters */}
-      <div className="flex flex-col sm:flex-row gap-4">
-        <div className="relative flex-1">
-          <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-muted-foreground" />
-          <Input
-            placeholder="Search questions..."
-            value={searchQuery}
-            onChange={(e) => {
-              setSearchQuery(e.target.value);
-              setVisibleItems(ITEMS_PER_PAGE);
-            }}
-            className="pl-10"
-          />
-        </div>
-        
-        <div className="flex flex-wrap gap-2">
-          <Button
-            variant={selectedCategory === null ? "default" : "outline"}
-            size="sm"
-            onClick={() => {
-              setSelectedCategory(null);
-              setVisibleItems(ITEMS_PER_PAGE);
-            }}
-          >
-            All ({qaData.length})
-          </Button>
-          {categories.map((cat) => {
-            const catInfo = CATEGORY_LABELS[cat] || { label: cat, color: 'bg-gray-500/10 text-gray-600' };
-            const count = qaData.filter(q => q.category === cat).length;
-            return (
-              <Button
-                key={cat}
-                variant={selectedCategory === cat ? "default" : "outline"}
-                size="sm"
-                onClick={() => {
-                  setSelectedCategory(cat);
-                  setVisibleItems(ITEMS_PER_PAGE);
-                }}
-              >
-                {catInfo.label} ({count})
-              </Button>
-            );
-          })}
+      {/* City Filter and Search */}
+      <div className="flex flex-col gap-4">
+        {/* City Dropdown */}
+        {cityCounts.length > 0 && (
+          <div className="flex items-center gap-2">
+            <MapPin className="h-4 w-4 text-muted-foreground" />
+            <Select
+              value={selectedCity}
+              onValueChange={(value) => {
+                setSelectedCity(value);
+                setVisibleItems(ITEMS_PER_PAGE);
+              }}
+            >
+              <SelectTrigger className="w-full sm:w-[280px] bg-background">
+                <SelectValue placeholder="Select city/town" />
+              </SelectTrigger>
+              <SelectContent className="bg-background z-50">
+                <SelectItem value="all">All Cities in {stateName} ({qaData.length})</SelectItem>
+                {cityCounts.map((city) => (
+                  <SelectItem key={city.city_slug} value={city.city_slug}>
+                    {city.name} {city.count > 0 ? `(${city.count})` : '(Coming Soon)'}
+                  </SelectItem>
+                ))}
+              </SelectContent>
+            </Select>
+          </div>
+        )}
+
+        {/* Search */}
+        <div className="flex flex-col sm:flex-row gap-4">
+          <div className="relative flex-1">
+            <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-muted-foreground" />
+            <Input
+              placeholder="Search questions..."
+              value={searchQuery}
+              onChange={(e) => {
+                setSearchQuery(e.target.value);
+                setVisibleItems(ITEMS_PER_PAGE);
+              }}
+              className="pl-10"
+            />
+          </div>
+          
+          <div className="flex flex-wrap gap-2">
+            <Button
+              variant={selectedCategory === null ? "default" : "outline"}
+              size="sm"
+              onClick={() => {
+                setSelectedCategory(null);
+                setVisibleItems(ITEMS_PER_PAGE);
+              }}
+            >
+              All ({filteredQAs.length})
+            </Button>
+            {categories.map((cat) => {
+              const catInfo = CATEGORY_LABELS[cat] || { label: cat, color: 'bg-gray-500/10 text-gray-600' };
+              const count = filteredQAs.filter(q => q.category === cat).length;
+              return (
+                <Button
+                  key={cat}
+                  variant={selectedCategory === cat ? "default" : "outline"}
+                  size="sm"
+                  onClick={() => {
+                    setSelectedCategory(cat);
+                    setVisibleItems(ITEMS_PER_PAGE);
+                  }}
+                >
+                  {catInfo.label} ({count})
+                </Button>
+              );
+            })}
+          </div>
         </div>
       </div>
 
