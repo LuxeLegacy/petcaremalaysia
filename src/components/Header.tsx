@@ -7,7 +7,7 @@ import {
   DropdownMenuItem, 
   DropdownMenuTrigger 
 } from '@/components/ui/dropdown-menu';
-import { Menu, X, Globe, Phone } from 'lucide-react';
+import { Menu, X, Globe, Phone, MessageCircleQuestion } from 'lucide-react';
 import { useState } from 'react';
 import { Language } from '@/lib/translations';
 
@@ -25,6 +25,7 @@ export const Header = () => {
     { href: '/', label: t.nav.home },
     { href: '/services', label: t.nav.services },
     { href: '/locations', label: t.nav.locations },
+    { href: '/selangor/petaling-jaya#pet-qa', label: 'Pet Q&A', icon: MessageCircleQuestion },
     { href: '/about', label: t.nav.about },
   ];
 
