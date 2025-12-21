@@ -6,6 +6,7 @@ import { Button } from '@/components/ui/button';
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion';
 import { Skeleton } from '@/components/ui/skeleton';
 import { Search, ChevronDown, ChevronUp } from 'lucide-react';
+import { QACostCTA } from './QACostCTA';
 
 interface QAKeyword {
   id: string;
@@ -190,31 +191,37 @@ export const StateQASection = ({ stateSlug, stateName }: StateQASectionProps) =>
       ) : (
         <>
           <Accordion type="single" collapsible className="space-y-3">
-            {visibleQAs.map((qa) => {
+            {visibleQAs.map((qa, index) => {
               const catInfo = CATEGORY_LABELS[qa.category] || { label: qa.category, color: 'bg-gray-500/10 text-gray-600' };
+              const showCTA = (index + 1) % 5 === 0 && index < visibleQAs.length - 1;
               return (
-                <AccordionItem
-                  key={qa.id}
-                  value={qa.id}
-                  className="bg-card rounded-xl border border-border/50 px-4 data-[state=open]:shadow-card"
-                >
-                  <AccordionTrigger className="hover:no-underline py-4">
-                    <div className="flex items-start gap-3 text-left">
-                      <span className={`px-2 py-0.5 rounded-full text-xs font-medium whitespace-nowrap ${catInfo.color}`}>
-                        {catInfo.label}
-                      </span>
-                      <span className="font-medium text-foreground">{qa.question}</span>
-                    </div>
-                  </AccordionTrigger>
-                  <AccordionContent className="pb-4 pt-0">
-                    <div className="prose prose-sm max-w-none text-muted-foreground pl-[70px]">
-                      {qa.answer}
-                    </div>
-                  </AccordionContent>
-                </AccordionItem>
+                <div key={qa.id}>
+                  <AccordionItem
+                    value={qa.id}
+                    className="bg-card rounded-xl border border-border/50 px-4 data-[state=open]:shadow-card"
+                  >
+                    <AccordionTrigger className="hover:no-underline py-4">
+                      <div className="flex items-start gap-3 text-left">
+                        <span className={`px-2 py-0.5 rounded-full text-xs font-medium whitespace-nowrap ${catInfo.color}`}>
+                          {catInfo.label}
+                        </span>
+                        <span className="font-medium text-foreground">{qa.question}</span>
+                      </div>
+                    </AccordionTrigger>
+                    <AccordionContent className="pb-4 pt-0">
+                      <div className="prose prose-sm max-w-none text-muted-foreground pl-[70px]">
+                        {qa.answer}
+                      </div>
+                    </AccordionContent>
+                  </AccordionItem>
+                  {showCTA && <QACostCTA variant={Math.floor(index / 5)} />}
+                </div>
               );
             })}
           </Accordion>
+          
+          {/* Bottom CTA */}
+          <QACostCTA variant={visibleQAs.length % 10} />
 
           {/* Show More/Less */}
           <div className="flex justify-center gap-4 pt-4">
