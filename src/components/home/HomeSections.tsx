@@ -2,7 +2,7 @@ import { Link } from 'react-router-dom';
 import { useLanguage } from '@/contexts/LanguageContext';
 import { Button } from '@/components/ui/button';
 import { hubsData } from '@/lib/cityData';
-import { MapPin, Phone, Search, ChevronRight, Clock, Heart, Shield, Scissors, CheckCircle } from 'lucide-react';
+import { MapPin, Phone, Search, ChevronRight, Clock, Heart, Shield, Scissors, CheckCircle, MessageCircleQuestion, HelpCircle } from 'lucide-react';
 import heroPets from '@/assets/hero-pets.jpg';
 
 export const HeroSection = () => {
@@ -34,7 +34,7 @@ export const HeroSection = () => {
           </p>
 
           {/* CTA Buttons */}
-          <div className="flex flex-col sm:flex-row gap-4 justify-center animate-slide-up" style={{
+          <div className="flex flex-col sm:flex-row gap-4 justify-center animate-slide-up flex-wrap" style={{
           animationDelay: '0.2s'
         }}>
             <Button size="lg" className="bg-card text-primary hover:bg-card/90 shadow-elevated text-base font-bold gap-2 px-8">
@@ -46,6 +46,12 @@ export const HeroSection = () => {
                 <Phone className="h-5 w-5" />
                 {t.hero.emergencyCta}
               </a>
+            </Button>
+            <Button size="lg" variant="outline" className="border-primary-foreground/30 text-primary-foreground hover:bg-primary-foreground/10 text-base font-bold gap-2" asChild>
+              <Link to="/selangor/petaling-jaya#pet-qa">
+                <HelpCircle className="h-5 w-5" />
+                Ask Pet Questions
+              </Link>
             </Button>
           </div>
 
@@ -110,6 +116,12 @@ export const ServicesSection = () => {
     desc: t.services.insurance.desc,
     href: '/services/insurance',
     color: 'text-primary bg-primary/10'
+  }, {
+    icon: MessageCircleQuestion,
+    title: 'Pet Care Q&A',
+    desc: 'Get instant answers to 150+ pet emergency and care questions from our database',
+    href: '/selangor/petaling-jaya#pet-qa',
+    color: 'text-blue-600 bg-blue-500/10'
   }];
   return <section className="py-20 bg-background" id="services">
       <div className="container">
