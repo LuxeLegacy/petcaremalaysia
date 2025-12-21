@@ -15,6 +15,8 @@ import PrivacyPage from "./pages/PrivacyPage";
 import DisclaimerPage from "./pages/DisclaimerPage";
 import BlogPage from "./pages/BlogPage";
 import BlogPostPage from "./pages/BlogPostPage";
+import QAPage from "./pages/QAPage";
+import StateQAPage from "./pages/StateQAPage";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -50,6 +52,12 @@ const App = () => (
               <Route path="/:lang/blog" element={<BlogPage />} />
               <Route path="/blog/:slug" element={<BlogPostPage />} />
               <Route path="/:lang/blog/:slug" element={<BlogPostPage />} />
+              
+              {/* Q&A */}
+              <Route path="/qa" element={<QAPage />} />
+              <Route path="/:lang/qa" element={<QAPage />} />
+              <Route path="/qa/:state" element={<StateQAPage />} />
+              <Route path="/:lang/qa/:state" element={<StateQAPage />} />
               
               {/* Legal pages */}
               <Route path="/terms" element={<TermsPage />} />
