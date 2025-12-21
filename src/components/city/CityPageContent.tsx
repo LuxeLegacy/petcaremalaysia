@@ -17,6 +17,7 @@ import { CityFinalCtaSection } from './CityFinalCtaSection';
 import { CityPAASection } from './CityPAASection';
 import { YourQuestionsAnsweredSection } from './YourQuestionsAnsweredSection';
 import { AskPetQuestion } from './AskPetQuestion';
+import { DatabaseQASection } from './DatabaseQASection';
 import { 
   Phone, 
   MapPin, 
@@ -249,6 +250,9 @@ export const CityPageContent: React.FC<CityPageContentProps> = ({ city }) => {
 
       {/* AI-Powered Ask Pet Question */}
       <AskPetQuestion city={city} />
+
+      {/* Database Q&A Section with FAQPage Schema */}
+      <DatabaseQASection city={city} />
 
       {/* Your Questions Answered Section */}
       <YourQuestionsAnsweredSection city={city} />
