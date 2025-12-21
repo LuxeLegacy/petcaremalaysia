@@ -77,7 +77,7 @@ export const Footer = () => {
             <ul className="space-y-2 text-sm">
               <li>
                 <Link 
-                  to="/selangor/petaling-jaya#pet-qa" 
+                  to="/qa" 
                   className="text-muted-foreground hover:text-primary transition-colors flex items-center gap-2"
                 >
                   <MessageCircleQuestion className="h-4 w-4" />

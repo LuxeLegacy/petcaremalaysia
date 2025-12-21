@@ -48,7 +48,7 @@ export const HeroSection = () => {
               </a>
             </Button>
             <Button size="lg" variant="outline" className="border-primary-foreground/30 text-primary-foreground hover:bg-primary-foreground/10 text-base font-bold gap-2" asChild>
-              <Link to="/selangor/petaling-jaya#pet-qa">
+              <Link to="/qa">
                 <HelpCircle className="h-5 w-5" />
                 Ask Pet Questions
               </Link>
@@ -120,7 +120,7 @@ export const ServicesSection = () => {
     icon: MessageCircleQuestion,
     title: 'Pet Care Q&A',
     desc: 'Get instant answers to 150+ pet emergency and care questions from our database',
-    href: '/selangor/petaling-jaya#pet-qa',
+    href: '/qa',
     color: 'text-blue-600 bg-blue-500/10'
   }];
   return <section className="py-20 bg-background" id="services">

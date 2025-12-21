@@ -25,7 +25,7 @@ export const Header = () => {
     { href: '/', label: t.nav.home },
     { href: '/services', label: t.nav.services },
     { href: '/locations', label: t.nav.locations },
-    { href: '/selangor/petaling-jaya#pet-qa', label: 'Pet Q&A', icon: MessageCircleQuestion },
+    { href: '/qa', label: 'Pet Q&A', icon: MessageCircleQuestion },
     { href: '/about', label: t.nav.about },
   ];
 
