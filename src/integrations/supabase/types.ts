@@ -14,6 +14,51 @@ export type Database = {
   }
   public: {
     Tables: {
+      pet_qa_keywords: {
+        Row: {
+          answer: string
+          category: string
+          city_slug: string | null
+          created_at: string | null
+          id: string
+          keyword: string
+          language: string | null
+          priority: number | null
+          question: string
+          state: string | null
+          updated_at: string | null
+          view_count: number | null
+        }
+        Insert: {
+          answer: string
+          category: string
+          city_slug?: string | null
+          created_at?: string | null
+          id?: string
+          keyword: string
+          language?: string | null
+          priority?: number | null
+          question: string
+          state?: string | null
+          updated_at?: string | null
+          view_count?: number | null
+        }
+        Update: {
+          answer?: string
+          category?: string
+          city_slug?: string | null
+          created_at?: string | null
+          id?: string
+          keyword?: string
+          language?: string | null
+          priority?: number | null
+          question?: string
+          state?: string | null
+          updated_at?: string | null
+          view_count?: number | null
+        }
+        Relationships: []
+      }
       vet_clinics: {
         Row: {
           address: string

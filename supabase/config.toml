@@ -2,3 +2,6 @@ project_id = "xdincsheohvgxewpfwlg"
 
 [functions.sitemap]
 verify_jwt = false
+
+[functions.ask-pet-question]
+verify_jwt = false

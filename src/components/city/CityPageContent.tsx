@@ -16,6 +16,7 @@ import { CityFAQSection } from './CityFAQSection';
 import { CityFinalCtaSection } from './CityFinalCtaSection';
 import { CityPAASection } from './CityPAASection';
 import { YourQuestionsAnsweredSection } from './YourQuestionsAnsweredSection';
+import { AskPetQuestion } from './AskPetQuestion';
 import { 
   Phone, 
   MapPin, 
@@ -245,6 +246,9 @@ export const CityPageContent: React.FC<CityPageContentProps> = ({ city }) => {
           )}
         </div>
       </section>
+
+      {/* AI-Powered Ask Pet Question */}
+      <AskPetQuestion city={city} />
 
       {/* Your Questions Answered Section */}
       <YourQuestionsAnsweredSection city={city} />
