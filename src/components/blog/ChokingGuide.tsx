@@ -6,6 +6,7 @@ import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/
 import { ArticleLayout, TableOfContents, TLDRBox, EmergencyAlertBox } from './ArticleLayout';
 import { RelatedArticles, InternalLink } from './ArticleLink';
 import { CostCTA } from '@/components/common/CostCTA';
+import chokingHero from '@/assets/choking-hero.jpg';
 
 export const ChokingGuide = () => {
   const { language } = useLanguage();
@@ -112,8 +113,8 @@ export const ChokingGuide = () => {
       date="December 24, 2024"
       readTime="10 min read"
       reviewedBy="Reviewed by Licensed Malaysian Veterinarians"
-      heroImage="https://images.unsplash.com/photo-1587300003388-59208cc962cb?w=1200&h=600&fit=crop"
-      heroImageAlt="Dog playing with toy - choking hazard awareness"
+      heroImage={chokingHero}
+      heroImageAlt="Pet owner performing first aid on choking dog at home"
       heroImageCaption="Know how to save your pet's life if they choke"
       structuredData={structuredData}
       faqStructuredData={faqStructuredData}

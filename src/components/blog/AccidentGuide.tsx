@@ -6,6 +6,7 @@ import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/
 import { ArticleLayout, TableOfContents, TLDRBox, EmergencyAlertBox } from './ArticleLayout';
 import { RelatedArticles, InternalLink } from './ArticleLink';
 import { CostCTA } from '@/components/common/CostCTA';
+import accidentHero from '@/assets/accident-hero.jpg';
 
 export const AccidentGuide = () => {
   const { language } = useLanguage();
@@ -113,8 +114,8 @@ export const AccidentGuide = () => {
       date="December 24, 2024"
       readTime="14 min read"
       reviewedBy="Reviewed by Licensed Malaysian Veterinarians"
-      heroImage="https://images.unsplash.com/photo-1587300003388-59208cc962cb?w=1200&h=600&fit=crop"
-      heroImageAlt="Pet emergency care after accident"
+      heroImage={accidentHero}
+      heroImageAlt="Injured pet dog receiving emergency first aid after accident on street"
       heroImageCaption="Know what to do when your pet has an accident - it could save their life"
       structuredData={structuredData}
       faqStructuredData={faqStructuredData}

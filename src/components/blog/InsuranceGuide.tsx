@@ -6,6 +6,7 @@ import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/
 import { ArticleLayout, TableOfContents, TLDRBox, EmergencyAlertBox } from './ArticleLayout';
 import { RelatedArticles, InternalLink } from './ArticleLink';
 import { CostCTA } from '@/components/common/CostCTA';
+import insuranceHero from '@/assets/insurance-hero.jpg';
 
 export const InsuranceGuide = () => {
   const { language } = useLanguage();
@@ -113,8 +114,8 @@ export const InsuranceGuide = () => {
       date="December 24, 2024"
       readTime="15 min read"
       reviewedBy="Reviewed by Licensed Malaysian Veterinarians"
-      heroImage="https://images.unsplash.com/photo-1587300003388-59208cc962cb?w=1200&h=600&fit=crop"
-      heroImageAlt="Happy pet protected by insurance"
+      heroImage={insuranceHero}
+      heroImageAlt="Happy dog and cat with protective shield icon representing pet insurance coverage"
       heroImageCaption="Pet insurance can save you thousands in emergency vet bills"
       structuredData={structuredData}
       faqStructuredData={faqStructuredData}
