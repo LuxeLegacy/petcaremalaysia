@@ -519,77 +519,120 @@
   <!-- Blog Articles -->
   <url>
     <loc>https://petcaremalaysia.com/blog</loc>
-    <lastmod>2024-12-20</lastmod>
+    <lastmod>2025-01-01</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   <!-- Pillar Page: Pet Emergency Guide -->
   <url>
     <loc>https://petcaremalaysia.com/blog/pet-emergency-guide-malaysia</loc>
-    <lastmod>2024-12-20</lastmod>
+    <lastmod>2025-01-01</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.95</priority>
   </url>
   <!-- Cluster 1: Emergency Symptoms -->
   <url>
     <loc>https://petcaremalaysia.com/blog/pet-emergency-symptoms-malaysia</loc>
-    <lastmod>2024-12-20</lastmod>
+    <lastmod>2025-01-01</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
   <!-- Cluster 2: 24-Hour Vet Directory -->
   <url>
     <loc>https://petcaremalaysia.com/blog/24-hour-vet-directory-malaysia</loc>
-    <lastmod>2024-12-20</lastmod>
+    <lastmod>2025-01-01</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
   <!-- Cluster 3: Pet Emergency First Aid -->
   <url>
     <loc>https://petcaremalaysia.com/blog/pet-emergency-first-aid-guide-malaysia</loc>
-    <lastmod>2024-12-20</lastmod>
+    <lastmod>2025-01-01</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
   <!-- Cluster 4: Emergency Costs -->
   <url>
     <loc>https://petcaremalaysia.com/blog/pet-emergency-costs-malaysia</loc>
-    <lastmod>2024-12-20</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.9</priority>
-  </url>
-  <!-- Cluster 7: Common Pet Poisons -->
-  <url>
-    <loc>https://petcaremalaysia.com/blog/common-pet-poisons-malaysia</loc>
-    <lastmod>2024-12-20</lastmod>
+    <lastmod>2025-01-01</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
   <!-- Cluster 5: Dog Emergency Guide -->
   <url>
     <loc>https://petcaremalaysia.com/blog/dog-emergency-guide-malaysia</loc>
-    <lastmod>2024-12-24</lastmod>
+    <lastmod>2025-01-01</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
   <!-- Cluster 6: Cat Emergency Guide -->
   <url>
     <loc>https://petcaremalaysia.com/blog/cat-emergency-guide-malaysia</loc>
-    <lastmod>2024-12-24</lastmod>
+    <lastmod>2025-01-01</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
-  <!-- Existing Blog Articles -->
+  <!-- Cluster 7: Common Pet Poisons -->
   <url>
-    <loc>https://petcaremalaysia.com/blog/emergency-pet-care-guide</loc>
-    <lastmod>2024-12-15</lastmod>
+    <loc>https://petcaremalaysia.com/blog/common-pet-poisons-malaysia</loc>
+    <lastmod>2025-01-01</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
+    <priority>0.9</priority>
   </url>
+  <!-- Cluster 8: Pet Heatstroke -->
   <url>
-    <loc>https://petcaremalaysia.com/blog/pet-nutrition-guide-malaysia</loc>
-    <lastmod>2024-12-15</lastmod>
+    <loc>https://petcaremalaysia.com/blog/pet-heatstroke-malaysia</loc>
+    <lastmod>2025-01-01</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
+    <priority>0.9</priority>
+  </url>
+  <!-- Cluster 9: Pet Choking -->
+  <url>
+    <loc>https://petcaremalaysia.com/blog/pet-choking-first-aid-malaysia</loc>
+    <lastmod>2025-01-01</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <!-- Cluster 10: Pet Accidents -->
+  <url>
+    <loc>https://petcaremalaysia.com/blog/pet-accidents-malaysia</loc>
+    <lastmod>2025-01-01</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <!-- Cluster 11: Pet Insurance -->
+  <url>
+    <loc>https://petcaremalaysia.com/blog/pet-insurance-malaysia</loc>
+    <lastmod>2025-01-01</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <!-- Cluster 12: Poisoning Treatment -->
+  <url>
+    <loc>https://petcaremalaysia.com/blog/pet-poisoning-treatment-malaysia</loc>
+    <lastmod>2025-01-01</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <!-- Cluster 13: Emergency Transport -->
+  <url>
+    <loc>https://petcaremalaysia.com/blog/pet-emergency-transport-malaysia</loc>
+    <lastmod>2025-01-01</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <!-- Cluster 14: Post-Emergency Care -->
+  <url>
+    <loc>https://petcaremalaysia.com/blog/post-emergency-pet-care-malaysia</loc>
+    <lastmod>2025-01-01</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <!-- Cluster 15: Emergency Prevention -->
+  <url>
+    <loc>https://petcaremalaysia.com/blog/pet-emergency-prevention-malaysia</loc>
+    <lastmod>2025-01-01</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
   </url>
 </urlset>
