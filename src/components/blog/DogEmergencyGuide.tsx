@@ -3,6 +3,7 @@ import { AlertTriangle, Heart, Shield, DollarSign, Clock, CheckCircle2, Phone, T
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion';
 import { ArticleLayout, TableOfContents, TLDRBox, EmergencyAlertBox } from './ArticleLayout';
 import { RelatedArticles, InternalLink } from './ArticleLink';
+import { CostCTA } from '@/components/common/CostCTA';
 
 export const DogEmergencyGuide = () => {
   const { language } = useLanguage();
@@ -120,6 +121,9 @@ export const DogEmergencyGuide = () => {
         "Emergency costs: RM 500-8,000 depending on treatment (bloat surgery most expensive)",
         "Action plan: Save 3+ 24-hour vet contacts NOW, know symptoms, act within 1-2 hours"
       ]} />
+
+      {/* Cost CTA after TL;DR */}
+      <CostCTA variant={7} />
 
       <TableOfContents items={tocItems} />
 
@@ -696,6 +700,9 @@ export const DogEmergencyGuide = () => {
           Remember: Emergency vets would rather see your dog and find nothing serious than have you wait and miss a critical window for treatment.
         </p>
       </section>
+
+      {/* Cost CTA before related articles */}
+      <CostCTA variant={8} />
 
       <RelatedArticles articles={[
         { to: "/blog/pet-emergency-guide-malaysia", title: "Complete Pet Emergency Guide Malaysia", description: "Comprehensive guide covering all pet emergencies" },

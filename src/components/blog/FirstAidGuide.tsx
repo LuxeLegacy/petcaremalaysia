@@ -3,6 +3,7 @@ import { Heart, Wind, Droplets, Flame, AlertTriangle, CheckCircle2, XCircle, The
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion';
 import { ArticleLayout, TableOfContents, TLDRBox, EmergencyAlertBox } from './ArticleLayout';
 import { RelatedArticles, InternalLink } from './ArticleLink';
+import { CostCTA } from '@/components/common/CostCTA';
 
 interface FirstAidStep {
   step: number;
@@ -573,6 +574,9 @@ export const FirstAidGuide = () => {
           </ul>
         </div>
       </section>
+
+      {/* Cost CTA before related articles */}
+      <CostCTA variant={3} />
 
       <RelatedArticles articles={[
         { to: "/blog/pet-emergency-guide-malaysia", title: "Complete Guide to Pet Emergency Treatment in Malaysia", description: "Comprehensive pillar guide covering all aspects of pet emergencies" },

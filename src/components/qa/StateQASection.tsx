@@ -6,7 +6,7 @@ import { Button } from '@/components/ui/button';
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion';
 import { Skeleton } from '@/components/ui/skeleton';
 import { Search, ChevronDown, ChevronUp, MapPin } from 'lucide-react';
-import { QACostCTA } from './QACostCTA';
+import { CostCTA } from '@/components/common/CostCTA';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 import { getCitiesByState } from '@/lib/cityData';
 
