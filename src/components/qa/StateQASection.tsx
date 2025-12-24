@@ -42,6 +42,11 @@ const CATEGORY_LABELS: Record<string, { label: string; color: string }> = {
 
 const ITEMS_PER_PAGE = 10;
 
+const POPULAR_SEARCHES = [
+  'poisoning', 'seizures', 'bleeding', 'breathing', 'heatstroke', 
+  'snake bite', 'vomiting', 'diarrhea', 'choking', 'burns'
+];
+
 export const StateQASection = ({ stateSlug, stateName }: StateQASectionProps) => {
   const { language } = useLanguage();
   const [qaData, setQaData] = useState<QAKeyword[]>([]);
@@ -168,8 +173,58 @@ export const StateQASection = ({ stateSlug, stateName }: StateQASectionProps) =>
 
   return (
     <div className="space-y-6">
-      {/* City Filter and Search */}
-      <div className="flex flex-col gap-4">
+      {/* Search Bar - Full Width & Prominent */}
+      <div className="bg-card border border-border/50 rounded-2xl p-4 sm:p-6 shadow-sm">
+        <div className="relative">
+          <Search className="absolute left-4 top-1/2 -translate-y-1/2 h-5 w-5 text-primary" />
+          <Input
+            placeholder="Search by keyword, symptom, or treatment (e.g., poisoning, seizures, bleeding...)"
+            value={searchQuery}
+            onChange={(e) => {
+              setSearchQuery(e.target.value);
+              setVisibleItems(ITEMS_PER_PAGE);
+            }}
+            className="pl-12 pr-4 py-6 text-base sm:text-lg bg-background border-2 border-border focus:border-primary rounded-xl"
+          />
+          {searchQuery && (
+            <button
+              onClick={() => {
+                setSearchQuery('');
+                setVisibleItems(ITEMS_PER_PAGE);
+              }}
+              className="absolute right-4 top-1/2 -translate-y-1/2 text-muted-foreground hover:text-foreground"
+            >
+              ✕
+            </button>
+          )}
+        </div>
+        
+        {/* Popular Searches */}
+        <div className="mt-4">
+          <p className="text-sm text-muted-foreground mb-2">Popular searches:</p>
+          <div className="flex flex-wrap gap-2">
+            {POPULAR_SEARCHES.map((term) => (
+              <button
+                key={term}
+                onClick={() => {
+                  setSearchQuery(term);
+                  setVisibleItems(ITEMS_PER_PAGE);
+                }}
+                className={`px-3 py-1.5 text-sm rounded-full border transition-colors ${
+                  searchQuery.toLowerCase() === term.toLowerCase()
+                    ? 'bg-primary text-primary-foreground border-primary'
+                    : 'bg-muted/50 text-muted-foreground border-border hover:bg-primary/10 hover:text-primary hover:border-primary/30'
+                }`}
+              >
+                {term}
+              </button>
+            ))}
+          </div>
+        </div>
+      </div>
+
+      {/* Filters Row */}
+      <div className="flex flex-col sm:flex-row gap-4">
         {/* City Dropdown */}
         {cityCounts.length > 0 && (
           <div className="flex items-center gap-2">
@@ -181,14 +236,14 @@ export const StateQASection = ({ stateSlug, stateName }: StateQASectionProps) =>
                 setVisibleItems(ITEMS_PER_PAGE);
               }}
             >
-              <SelectTrigger className="w-full sm:w-[280px] bg-background">
+              <SelectTrigger className="w-full sm:w-[240px] bg-background">
                 <SelectValue placeholder="Select city/town" />
               </SelectTrigger>
               <SelectContent className="bg-background z-50">
-                <SelectItem value="all">All Cities in {stateName} ({qaData.length})</SelectItem>
+                <SelectItem value="all">All Cities ({qaData.length})</SelectItem>
                 {cityCounts.map((city) => (
                   <SelectItem key={city.city_slug} value={city.city_slug}>
-                    {city.name} {city.count > 0 ? `(${city.count})` : '(Coming Soon)'}
+                    {city.name} {city.count > 0 ? `(${city.count})` : ''}
                   </SelectItem>
                 ))}
               </SelectContent>
@@ -196,50 +251,35 @@ export const StateQASection = ({ stateSlug, stateName }: StateQASectionProps) =>
           </div>
         )}
 
-        {/* Search */}
-        <div className="flex flex-col sm:flex-row gap-4">
-          <div className="relative flex-1">
-            <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-muted-foreground" />
-            <Input
-              placeholder="Search questions..."
-              value={searchQuery}
-              onChange={(e) => {
-                setSearchQuery(e.target.value);
-                setVisibleItems(ITEMS_PER_PAGE);
-              }}
-              className="pl-10"
-            />
-          </div>
-          
-          <div className="flex flex-wrap gap-2">
-            <Button
-              variant={selectedCategory === null ? "default" : "outline"}
-              size="sm"
-              onClick={() => {
-                setSelectedCategory(null);
-                setVisibleItems(ITEMS_PER_PAGE);
-              }}
-            >
-              All ({filteredQAs.length})
-            </Button>
-            {categories.map((cat) => {
-              const catInfo = CATEGORY_LABELS[cat] || { label: cat, color: 'bg-gray-500/10 text-gray-600' };
-              const count = filteredQAs.filter(q => q.category === cat).length;
-              return (
-                <Button
-                  key={cat}
-                  variant={selectedCategory === cat ? "default" : "outline"}
-                  size="sm"
-                  onClick={() => {
-                    setSelectedCategory(cat);
-                    setVisibleItems(ITEMS_PER_PAGE);
-                  }}
-                >
-                  {catInfo.label} ({count})
-                </Button>
-              );
-            })}
-          </div>
+        {/* Category Filter */}
+        <div className="flex flex-wrap gap-2 flex-1">
+          <Button
+            variant={selectedCategory === null ? "default" : "outline"}
+            size="sm"
+            onClick={() => {
+              setSelectedCategory(null);
+              setVisibleItems(ITEMS_PER_PAGE);
+            }}
+          >
+            All ({filteredQAs.length})
+          </Button>
+          {categories.map((cat) => {
+            const catInfo = CATEGORY_LABELS[cat] || { label: cat, color: 'bg-gray-500/10 text-gray-600' };
+            const count = filteredQAs.filter(q => q.category === cat).length;
+            return (
+              <Button
+                key={cat}
+                variant={selectedCategory === cat ? "default" : "outline"}
+                size="sm"
+                onClick={() => {
+                  setSelectedCategory(cat);
+                  setVisibleItems(ITEMS_PER_PAGE);
+                }}
+              >
+                {catInfo.label} ({count})
+              </Button>
+            );
+          })}
         </div>
       </div>
 
