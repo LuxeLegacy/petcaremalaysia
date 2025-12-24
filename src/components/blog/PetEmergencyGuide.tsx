@@ -5,6 +5,7 @@ import { Link } from 'react-router-dom';
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion';
 import { ArticleLayout, TableOfContents, TLDRBox, EmergencyAlertBox } from './ArticleLayout';
 import { RelatedArticles, InternalLink } from './ArticleLink';
+import { CostCTA } from '@/components/common/CostCTA';
 
 export const PetEmergencyGuide = () => {
   const { language } = useLanguage();
@@ -162,6 +163,9 @@ export const PetEmergencyGuide = () => {
         "Pet insurance (Oyen, MSIG) covers 70-90% of emergency costs when purchased before emergency",
         "Time is critical: Some emergencies need treatment within 30-60 minutes"
       ]} />
+
+      {/* Cost CTA after TL;DR */}
+      <CostCTA variant={0} />
 
       {/* Quick Navigation to Cluster Articles */}
       <div className="bg-gradient-to-r from-primary/10 to-destructive/10 p-6 rounded-xl mb-10">
@@ -628,6 +632,9 @@ export const PetEmergencyGuide = () => {
           </p>
         </div>
       </section>
+
+      {/* Cost CTA before related articles */}
+      <CostCTA variant={1} />
 
       <RelatedArticles articles={[
         { to: "/blog/pet-emergency-symptoms-malaysia", title: "Pet Emergency Symptoms Every Owner Must Know", description: "9 critical symptoms requiring immediate vet attention" },

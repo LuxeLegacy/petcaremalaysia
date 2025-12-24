@@ -6,6 +6,7 @@ import { Helmet } from 'react-helmet-async';
 import { StateQASection } from '@/components/qa/StateQASection';
 import { Button } from '@/components/ui/button';
 import { MessageCircleQuestion, ChevronLeft, MapPin } from 'lucide-react';
+import { CostCTA } from '@/components/common/CostCTA';
 
 // Malaysian states configuration
 const STATES_CONFIG: Record<string, { name: string; hasData: boolean }> = {
@@ -109,6 +110,11 @@ const StateQAPage = () => {
                   </Button>
                 </div>
               )}
+            </div>
+
+            {/* Cost CTA */}
+            <div className="mt-8">
+              <CostCTA variant={12} />
             </div>
           </div>
         </section>

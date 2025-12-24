@@ -17,6 +17,7 @@ import { FAQSection } from '@/components/home/FAQSection';
 import { FinalCtaSection } from '@/components/home/FinalCtaSection';
 import { PeopleAlsoAskSection } from '@/components/home/PeopleAlsoAskSection';
 import { BlogSection } from '@/components/home/BlogSection';
+import { CostCTA } from '@/components/common/CostCTA';
 import { useLanguage } from '@/contexts/LanguageContext';
 
 const Index = () => {
@@ -58,6 +59,13 @@ const Index = () => {
           
           {/* Section 7: Pet Insurance Breakdown (AEO) */}
           <InsuranceSection />
+          
+          {/* Pet Surgery Cost CTA */}
+          <section className="py-8 bg-background">
+            <div className="container max-w-4xl">
+              <CostCTA variant={0} />
+            </div>
+          </section>
           
           {/* Section 8: Social Proof Gallery */}
           <TestimonialsSection />

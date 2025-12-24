@@ -18,6 +18,7 @@ import { CityPAASection } from './CityPAASection';
 import { YourQuestionsAnsweredSection } from './YourQuestionsAnsweredSection';
 import { AskPetQuestion } from './AskPetQuestion';
 import { DatabaseQASection } from './DatabaseQASection';
+import { CostCTA } from '@/components/common/CostCTA';
 import { 
   Phone, 
   MapPin, 
@@ -28,6 +29,7 @@ import {
   ShoppingBag,
   AlertTriangle
 } from 'lucide-react';
+
 
 interface CityPageContentProps {
   city: CityData;
@@ -265,6 +267,13 @@ export const CityPageContent: React.FC<CityPageContentProps> = ({ city }) => {
 
       {/* Insurance Section */}
       <CityInsuranceSection city={city} />
+
+      {/* Pet Surgery Cost CTA */}
+      <section className="py-8 bg-background">
+        <div className="container max-w-4xl">
+          <CostCTA variant={1} />
+        </div>
+      </section>
 
       {/* Government Resources Section */}
       <CityGovernmentSection city={city} />

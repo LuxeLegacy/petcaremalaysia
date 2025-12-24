@@ -3,6 +3,7 @@ import { DollarSign, CreditCard, Shield, Building2, PiggyBank, AlertTriangle } f
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion';
 import { ArticleLayout, TableOfContents, TLDRBox, EmergencyAlertBox } from './ArticleLayout';
 import { RelatedArticles, InternalLink } from './ArticleLink';
+import { CostCTA } from '@/components/common/CostCTA';
 
 const PriceTable = ({ title, headers, rows }: { title: string; headers: string[]; rows: string[][] }) => (
   <div className="mb-6">
@@ -139,6 +140,9 @@ export const TreatmentCostsGuide = () => {
         "Most vets require RM500-3,000 deposit upfront",
         "Pet insurance (if purchased before emergency) can cover 70-90% of costs"
       ]} />
+
+      {/* Cost CTA after TL;DR */}
+      <CostCTA variant={13} />
 
       <TableOfContents items={tocItems} />
 
@@ -622,6 +626,9 @@ export const TreatmentCostsGuide = () => {
           </ul>
         </div>
       </section>
+
+      {/* Cost CTA before related articles */}
+      <CostCTA variant={14} />
 
       <RelatedArticles articles={[
         { to: "/blog/pet-emergency-guide-malaysia", title: "Complete Guide to Pet Emergency Treatment in Malaysia", description: "Comprehensive pillar guide covering all aspects of pet emergencies" },

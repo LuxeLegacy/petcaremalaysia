@@ -3,6 +3,7 @@ import { MapPin, Phone, Clock, Globe, Star, AlertTriangle, CreditCard } from 'lu
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion';
 import { ArticleLayout, TableOfContents, TLDRBox, EmergencyAlertBox } from './ArticleLayout';
 import { RelatedArticles, InternalLink } from './ArticleLink';
+import { CostCTA } from '@/components/common/CostCTA';
 
 interface VetClinic {
   name: string;
@@ -547,6 +548,9 @@ export const VetDirectoryGuide = () => {
           </ul>
         </div>
       </section>
+
+      {/* Cost CTA before related articles */}
+      <CostCTA variant={2} />
 
       <RelatedArticles articles={[
         { to: "/blog/pet-emergency-guide-malaysia", title: "Complete Guide to Pet Emergency Treatment in Malaysia", description: "Comprehensive pillar guide covering all aspects of pet emergencies" },

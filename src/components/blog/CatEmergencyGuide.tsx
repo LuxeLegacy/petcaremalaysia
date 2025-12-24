@@ -3,6 +3,7 @@ import { AlertTriangle, Heart, Shield, DollarSign, Clock, CheckCircle2, Phone, C
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion';
 import { ArticleLayout, TableOfContents, TLDRBox, EmergencyAlertBox } from './ArticleLayout';
 import { RelatedArticles, InternalLink } from './ArticleLink';
+import { CostCTA } from '@/components/common/CostCTA';
 
 export const CatEmergencyGuide = () => {
   const { language } = useLanguage();
@@ -129,6 +130,9 @@ export const CatEmergencyGuide = () => {
         "High-rise syndrome: Cats falling from apartments—common in Malaysian cities",
         "Emergency costs: RM 400-5,000 (urinary blockage RM 800-3,500)"
       ]} />
+
+      {/* Cost CTA after TL;DR */}
+      <CostCTA variant={9} />
 
       <TableOfContents items={tocItems} />
 
@@ -743,6 +747,9 @@ export const CatEmergencyGuide = () => {
           Remember: By the time cats show obvious symptoms, the condition is often advanced. Early recognition and immediate action save lives.
         </p>
       </section>
+
+      {/* Cost CTA before related articles */}
+      <CostCTA variant={10} />
 
       <RelatedArticles articles={[
         { to: "/blog/pet-emergency-guide-malaysia", title: "Complete Pet Emergency Guide Malaysia", description: "Comprehensive guide covering all pet emergencies" },

@@ -4,6 +4,7 @@ import { Header } from '@/components/Header';
 import { Footer } from '@/components/Footer';
 import { Helmet } from 'react-helmet-async';
 import { MessageCircleQuestion, MapPin, ChevronRight } from 'lucide-react';
+import { CostCTA } from '@/components/common/CostCTA';
 
 // Malaysian states with their data
 const MALAYSIAN_STATES = [
@@ -64,6 +65,11 @@ const QAPage = () => {
                 <StateQACard key={state.slug} state={state} />
               ))}
             </div>
+          </div>
+
+          {/* Cost CTA */}
+          <div className="max-w-4xl mx-auto mt-8">
+            <CostCTA variant={11} />
           </div>
         </section>
 

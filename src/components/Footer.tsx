@@ -93,6 +93,16 @@ export const Footer = () => {
                   Blog
                 </Link>
               </li>
+              <li>
+                <a 
+                  href="https://petsurgerycost.com/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-amber-600 dark:text-amber-400 hover:text-amber-700 dark:hover:text-amber-300 transition-colors flex items-center gap-2 font-medium"
+                >
+                  💰 Pet Surgery Costs
+                </a>
+              </li>
             </ul>
             <div className="mt-6 space-y-3">
               <h4 className="font-medium text-sm">{t.nav.emergency}</h4>
