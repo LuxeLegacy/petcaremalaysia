@@ -580,9 +580,9 @@ export const FirstAidGuide = () => {
 
       <RelatedArticles articles={[
         { to: "/blog/pet-emergency-guide-malaysia", title: "Complete Guide to Pet Emergency Treatment in Malaysia", description: "Comprehensive pillar guide covering all aspects of pet emergencies" },
-        { to: "/blog/pet-emergency-symptoms-malaysia", title: "Pet Emergency Symptoms Every Owner Must Know", description: "Recognize the 9 critical symptoms requiring immediate vet attention" },
-        { to: "/blog/24-hour-vet-directory-malaysia", title: "24-Hour Vet Directory Malaysia 2025", description: "Find emergency vet care near you" },
-        { to: "/blog/common-pet-poisons-malaysia", title: "Common Pet Poisons in Malaysia", description: "Prevention and emergency response guide" }
+        { to: "/blog/pet-heatstroke-malaysia", title: "Heatstroke Emergency Guide", description: "Critical cooling techniques for Malaysia's climate" },
+        { to: "/blog/pet-choking-emergency-malaysia", title: "Pet Choking First Aid", description: "Step-by-step Heimlich maneuver for pets" },
+        { to: "/blog/pet-accident-emergency-malaysia", title: "Pet Accident Emergency Protocol", description: "First aid for trauma, falls, and accidents" },
       ]} />
     </ArticleLayout>
   );

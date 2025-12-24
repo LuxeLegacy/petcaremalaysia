@@ -632,9 +632,9 @@ export const TreatmentCostsGuide = () => {
 
       <RelatedArticles articles={[
         { to: "/blog/pet-emergency-guide-malaysia", title: "Complete Guide to Pet Emergency Treatment in Malaysia", description: "Comprehensive pillar guide covering all aspects of pet emergencies" },
+        { to: "/blog/pet-insurance-malaysia", title: "Pet Insurance Guide Malaysia 2024", description: "Cover 70-90% of emergency costs with the right policy" },
+        { to: "/blog/pet-accident-emergency-malaysia", title: "Pet Accident Emergency Protocol", description: "Trauma treatment costs and what to expect" },
         { to: "/blog/24-hour-vet-directory-malaysia", title: "24-Hour Vet Directory Malaysia 2025", description: "Find emergency vet care near you with pricing info" },
-        { to: "/blog/pet-emergency-symptoms-malaysia", title: "Pet Emergency Symptoms Every Owner Must Know", description: "Know when emergency care is truly needed" },
-        { to: "/blog/pet-emergency-first-aid-guide-malaysia", title: "Pet Emergency First Aid Guide", description: "Stabilize your pet while reducing potential costs" }
       ]} />
     </ArticleLayout>
   );

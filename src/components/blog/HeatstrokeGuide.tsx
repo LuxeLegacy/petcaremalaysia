@@ -79,17 +79,17 @@ export const HeatstrokeGuide = () => {
 
   const relatedArticles = [
     {
-      to: "/blog/pet-emergency-symptoms-malaysia",
-      title: "Pet Emergency Symptoms Guide",
-      description: "Recognize all 9 critical symptoms requiring immediate vet attention",
-      icon: AlertTriangle,
-      color: "text-destructive"
+      to: "/blog/dog-emergency-guide-malaysia",
+      title: "Dog Emergency Guide",
+      description: "Heatstroke, bloat, poisoning - dog-specific emergencies",
+      icon: Dog,
+      color: "text-primary"
     },
     {
-      to: "/blog/24-hour-vet-directory-malaysia",
-      title: "24-Hour Vet Directory Malaysia",
-      description: "Find emergency vets open now in your area",
-      icon: Phone,
+      to: "/blog/cat-emergency-guide-malaysia",
+      title: "Cat Emergency Guide",
+      description: "Cat-specific emergencies including overheating",
+      icon: Cat,
       color: "text-primary"
     },
     {
@@ -98,6 +98,13 @@ export const HeatstrokeGuide = () => {
       description: "Life-saving techniques for pet emergencies",
       icon: Heart,
       color: "text-destructive"
+    },
+    {
+      to: "/blog/pet-insurance-malaysia",
+      title: "Pet Insurance Guide",
+      description: "Cover emergency treatment costs",
+      icon: Shield,
+      color: "text-primary"
     },
   ];
 

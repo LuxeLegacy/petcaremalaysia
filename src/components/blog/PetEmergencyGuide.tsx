@@ -128,6 +128,27 @@ export const PetEmergencyGuide = () => {
       icon: Heart,
       color: "text-primary"
     },
+    {
+      to: "/blog/pet-heatstroke-malaysia",
+      title: "Heatstroke Emergency Guide",
+      description: "Critical for Malaysia's tropical climate - prevent and treat heatstroke",
+      icon: Clock,
+      color: "text-destructive"
+    },
+    {
+      to: "/blog/pet-choking-emergency-malaysia",
+      title: "Choking & Heimlich Guide",
+      description: "Step-by-step Heimlich maneuver for dogs and cats",
+      icon: Heart,
+      color: "text-primary"
+    },
+    {
+      to: "/blog/pet-insurance-malaysia",
+      title: "Pet Insurance Guide",
+      description: "Cover 70-90% of emergency costs with the right policy",
+      icon: Shield,
+      color: "text-primary"
+    },
   ];
 
   return (
@@ -639,9 +660,10 @@ export const PetEmergencyGuide = () => {
       <RelatedArticles articles={[
         { to: "/blog/pet-emergency-symptoms-malaysia", title: "Pet Emergency Symptoms Every Owner Must Know", description: "9 critical symptoms requiring immediate vet attention" },
         { to: "/blog/24-hour-vet-directory-malaysia", title: "24-Hour Vet Directory Malaysia 2025", description: "Complete verified directory by region" },
-        { to: "/blog/pet-emergency-first-aid-guide-malaysia", title: "Pet Emergency First Aid Guide", description: "Life-saving techniques for Malaysian pet owners" },
-        { to: "/blog/pet-emergency-costs-malaysia", title: "Emergency Treatment Costs Guide", description: "Detailed price breakdown and payment options" },
-        { to: "/blog/common-pet-poisons-malaysia", title: "Common Pet Poisons in Malaysia", description: "Prevention and emergency response guide" },
+        { to: "/blog/pet-heatstroke-malaysia", title: "Heatstroke Emergency Guide", description: "Critical for Malaysia's tropical climate" },
+        { to: "/blog/pet-choking-emergency-malaysia", title: "Pet Choking First Aid", description: "Heimlich maneuver for dogs and cats" },
+        { to: "/blog/pet-accident-emergency-malaysia", title: "Pet Accident Emergency Protocol", description: "Road accidents, falls, trauma response" },
+        { to: "/blog/pet-insurance-malaysia", title: "Pet Insurance Guide", description: "Cover 70-90% of emergency costs" },
       ]} />
     </ArticleLayout>
   );
