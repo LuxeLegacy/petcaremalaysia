@@ -516,4 +516,66 @@
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
   </url>
+  <!-- Blog Articles -->
+  <url>
+    <loc>https://petcaremalaysia.com/blog</loc>
+    <lastmod>2024-12-20</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <!-- Pillar Page: Pet Emergency Guide -->
+  <url>
+    <loc>https://petcaremalaysia.com/blog/pet-emergency-guide-malaysia</loc>
+    <lastmod>2024-12-20</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.95</priority>
+  </url>
+  <!-- Cluster 1: Emergency Symptoms -->
+  <url>
+    <loc>https://petcaremalaysia.com/blog/pet-emergency-symptoms-malaysia</loc>
+    <lastmod>2024-12-20</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <!-- Cluster 2: 24-Hour Vet Directory -->
+  <url>
+    <loc>https://petcaremalaysia.com/blog/24-hour-vet-directory-malaysia</loc>
+    <lastmod>2024-12-20</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <!-- Cluster 3: Pet Emergency First Aid -->
+  <url>
+    <loc>https://petcaremalaysia.com/blog/pet-emergency-first-aid-guide-malaysia</loc>
+    <lastmod>2024-12-20</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <!-- Cluster 4: Emergency Costs -->
+  <url>
+    <loc>https://petcaremalaysia.com/blog/pet-emergency-costs-malaysia</loc>
+    <lastmod>2024-12-20</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <!-- Cluster 7: Common Pet Poisons -->
+  <url>
+    <loc>https://petcaremalaysia.com/blog/common-pet-poisons-malaysia</loc>
+    <lastmod>2024-12-20</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <!-- Existing Blog Articles -->
+  <url>
+    <loc>https://petcaremalaysia.com/blog/emergency-pet-care-guide</loc>
+    <lastmod>2024-12-15</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://petcaremalaysia.com/blog/pet-nutrition-guide-malaysia</loc>
+    <lastmod>2024-12-15</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
 </urlset>
