@@ -109,7 +109,7 @@ export const EmergencyTransportGuide = () => {
       category="First Aid"
       categoryColor="primary"
       title="Emergency Pet Transport Guide: How to Safely Get Your Pet to the Vet"
-      date="December 24, 2024"
+      date="January 1, 2025"
       readTime="10 min read"
       reviewedBy="Reviewed by Emergency Veterinary Specialists"
       heroImage={emergencyTransportHero}

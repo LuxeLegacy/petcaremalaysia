@@ -110,7 +110,7 @@ export const ChokingGuide = () => {
       category="Emergency"
       categoryColor="destructive"
       title="Pet Choking Emergency: Complete First Aid Guide for Malaysian Pet Owners"
-      date="December 24, 2024"
+      date="January 1, 2025"
       readTime="10 min read"
       reviewedBy="Reviewed by Licensed Malaysian Veterinarians"
       heroImage={chokingHero}

@@ -17,8 +17,8 @@ export const PoisoningTreatmentGuide = () => {
     "image": "https://images.unsplash.com/photo-1584820927498-cfe5211fd8bf?w=1200&h=630&fit=crop",
     "author": { "@type": "Organization", "name": "PetCare Malaysia" },
     "publisher": { "@type": "Organization", "name": "PetCare Malaysia" },
-    "datePublished": "2024-12-24",
-    "dateModified": "2024-12-24",
+    "datePublished": "2025-01-01",
+    "dateModified": "2025-01-01",
     "mainEntityOfPage": {
       "@type": "WebPage",
       "@id": "https://petcaremalaysia.com/blog/pet-poisoning-treatment-malaysia"
@@ -109,7 +109,7 @@ export const PoisoningTreatmentGuide = () => {
       category="Treatment"
       categoryColor="destructive"
       title="Pet Poisoning Treatment: Complete Antidote & Emergency Care Guide for Malaysia"
-      date="December 24, 2024"
+      date="January 1, 2025"
       readTime="12 min read"
       reviewedBy="Reviewed by Veterinary Toxicology Specialists"
       heroImage={poisoningTreatmentHero}

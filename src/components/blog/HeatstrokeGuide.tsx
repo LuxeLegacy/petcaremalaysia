@@ -19,8 +19,8 @@ export const HeatstrokeGuide = () => {
     "image": "https://images.unsplash.com/photo-1587300003388-59208cc962cb?w=1200&h=630&fit=crop",
     "author": { "@type": "Organization", "name": "PetCare Malaysia" },
     "publisher": { "@type": "Organization", "name": "PetCare Malaysia" },
-    "datePublished": "2024-12-24",
-    "dateModified": "2024-12-24",
+    "datePublished": "2025-01-01",
+    "dateModified": "2025-01-01",
     "mainEntityOfPage": {
       "@type": "WebPage",
       "@id": "https://petcaremalaysia.com/blog/pet-heatstroke-malaysia"
@@ -118,7 +118,7 @@ export const HeatstrokeGuide = () => {
       category="Emergency"
       categoryColor="destructive"
       title="Heatstroke in Pets: Complete Guide for Malaysia's Tropical Climate"
-      date="December 24, 2024"
+      date="January 1, 2025"
       readTime="12 min read"
       reviewedBy="Reviewed by Licensed Malaysian Veterinarians"
       heroImage={heatstrokeHero}
