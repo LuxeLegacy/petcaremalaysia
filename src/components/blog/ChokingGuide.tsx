@@ -78,23 +78,23 @@ export const ChokingGuide = () => {
       color: "text-destructive"
     },
     {
-      to: "/blog/pet-heatstroke-malaysia",
-      title: "Heatstroke Emergency Guide",
-      description: "Another critical emergency in Malaysia",
+      to: "/blog/pet-emergency-transport-malaysia",
+      title: "Emergency Transport Guide",
+      description: "Safely transport choking pets to the vet",
       icon: AlertTriangle,
-      color: "text-destructive"
+      color: "text-primary"
     },
     {
-      to: "/blog/pet-accident-emergency-malaysia",
-      title: "Pet Accident Protocol",
-      description: "Trauma and injury first aid",
+      to: "/blog/post-emergency-pet-care-malaysia",
+      title: "Post-Emergency Care",
+      description: "Recovery after choking incidents",
       icon: Shield,
       color: "text-primary"
     },
     {
-      to: "/blog/dog-emergency-guide-malaysia",
-      title: "Dog Emergency Guide",
-      description: "Dog-specific choking hazards and emergencies",
+      to: "/blog/pet-emergency-prevention-malaysia",
+      title: "Prevention Guide",
+      description: "Eliminate choking hazards from your home",
       icon: Dog,
       color: "text-primary"
     },

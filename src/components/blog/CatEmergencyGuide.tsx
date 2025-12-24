@@ -753,9 +753,10 @@ export const CatEmergencyGuide = () => {
 
       <RelatedArticles articles={[
         { to: "/blog/pet-emergency-guide-malaysia", title: "Complete Pet Emergency Guide Malaysia", description: "Comprehensive guide covering all pet emergencies" },
-        { to: "/blog/pet-heatstroke-malaysia", title: "Heatstroke Emergency Guide", description: "Critical cooling techniques for cats" },
-        { to: "/blog/pet-choking-emergency-malaysia", title: "Pet Choking First Aid", description: "Heimlich maneuver for cats - step by step" },
-        { to: "/blog/pet-accident-emergency-malaysia", title: "Pet Accident Emergency Protocol", description: "High-rise falls, trauma first aid" },
+        { to: "/blog/pet-poisoning-treatment-malaysia", title: "Poisoning Treatment Guide", description: "Vet protocols for poisoned cats" },
+        { to: "/blog/pet-emergency-transport-malaysia", title: "Emergency Transport Guide", description: "Safely transport injured cats to the vet" },
+        { to: "/blog/post-emergency-pet-care-malaysia", title: "Post-Emergency Care Guide", description: "Recovery and follow-up after cat emergencies" },
+        { to: "/blog/pet-emergency-prevention-malaysia", title: "Emergency Prevention Guide", description: "Cat-proof your home against common hazards" },
       ]} />
     </ArticleLayout>
   );

@@ -33,8 +33,9 @@ export const PostEmergencyCareGuide = () => {
 
   const relatedArticles = [
     { to: "/blog/pet-emergency-guide-malaysia", title: "Complete Emergency Guide", description: "Full emergency preparedness", icon: AlertTriangle, color: "text-destructive" },
-    { to: "/blog/emergency-pet-transport-malaysia", title: "Emergency Transport Guide", description: "Safe transport techniques", icon: Heart, color: "text-primary" },
+    { to: "/blog/pet-emergency-transport-malaysia", title: "Emergency Transport Guide", description: "Safe transport techniques", icon: Heart, color: "text-primary" },
     { to: "/blog/pet-insurance-malaysia", title: "Pet Insurance Guide", description: "Cover treatment costs", icon: Shield, color: "text-primary" },
+    { to: "/blog/pet-emergency-prevention-malaysia", title: "Prevention Guide", description: "Prevent future emergencies", icon: Shield, color: "text-primary" },
   ];
 
   return (

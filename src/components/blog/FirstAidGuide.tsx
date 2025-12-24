@@ -582,7 +582,8 @@ export const FirstAidGuide = () => {
         { to: "/blog/pet-emergency-guide-malaysia", title: "Complete Guide to Pet Emergency Treatment in Malaysia", description: "Comprehensive pillar guide covering all aspects of pet emergencies" },
         { to: "/blog/pet-heatstroke-malaysia", title: "Heatstroke Emergency Guide", description: "Critical cooling techniques for Malaysia's climate" },
         { to: "/blog/pet-choking-emergency-malaysia", title: "Pet Choking First Aid", description: "Step-by-step Heimlich maneuver for pets" },
-        { to: "/blog/pet-accident-emergency-malaysia", title: "Pet Accident Emergency Protocol", description: "First aid for trauma, falls, and accidents" },
+        { to: "/blog/pet-poisoning-treatment-malaysia", title: "Poisoning Treatment Guide", description: "What vets do for poisoned pets - vet protocols" },
+        { to: "/blog/pet-emergency-transport-malaysia", title: "Emergency Transport Guide", description: "Safely move injured pets to the vet" },
       ]} />
     </ArticleLayout>
   );

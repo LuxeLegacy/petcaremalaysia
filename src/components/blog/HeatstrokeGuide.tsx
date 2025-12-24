@@ -93,16 +93,16 @@ export const HeatstrokeGuide = () => {
       color: "text-primary"
     },
     {
-      to: "/blog/pet-emergency-first-aid-guide-malaysia",
-      title: "Pet First Aid Guide",
-      description: "Life-saving techniques for pet emergencies",
+      to: "/blog/pet-emergency-transport-malaysia",
+      title: "Emergency Transport Guide",
+      description: "Safely transport overheated pets to the vet",
       icon: Heart,
-      color: "text-destructive"
+      color: "text-primary"
     },
     {
-      to: "/blog/pet-insurance-malaysia",
-      title: "Pet Insurance Guide",
-      description: "Cover emergency treatment costs",
+      to: "/blog/pet-emergency-prevention-malaysia",
+      title: "Prevention Guide",
+      description: "Prevent heatstroke and other emergencies",
       icon: Shield,
       color: "text-primary"
     },
