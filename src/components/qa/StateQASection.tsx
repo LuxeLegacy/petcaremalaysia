@@ -319,14 +319,14 @@ export const StateQASection = ({ stateSlug, stateName }: StateQASectionProps) =>
                       </div>
                     </AccordionContent>
                   </AccordionItem>
-                  {showCTA && <QACostCTA variant={Math.floor(index / 5)} />}
+                  {showCTA && <CostCTA variant={Math.floor(index / 5)} />}
                 </div>
               );
             })}
           </Accordion>
           
           {/* Bottom CTA */}
-          <QACostCTA variant={visibleQAs.length % 10} />
+          <CostCTA variant={visibleQAs.length % 10} />
 
           {/* Show More/Less */}
           <div className="flex justify-center gap-4 pt-4">
