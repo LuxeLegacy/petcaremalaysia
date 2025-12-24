@@ -1206,6 +1206,10 @@ const PetFoodBrandsGuide = () => {
 // Cluster article imports
 import { EmergencySymptomsGuide } from '@/components/blog/EmergencySymptomsGuide';
 import { PetEmergencyGuide } from '@/components/blog/PetEmergencyGuide';
+import { VetDirectoryGuide } from '@/components/blog/VetDirectoryGuide';
+import { FirstAidGuide } from '@/components/blog/FirstAidGuide';
+import { TreatmentCostsGuide } from '@/components/blog/TreatmentCostsGuide';
+import { PetPoisonsGuide } from '@/components/blog/PetPoisonsGuide';
 
 const BlogPostPage = () => {
   const { slug } = useParams();
