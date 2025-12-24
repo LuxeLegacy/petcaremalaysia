@@ -1227,6 +1227,18 @@ const BlogPostPage = () => {
   if (slug === 'pet-emergency-guide-malaysia') {
     return <PetEmergencyGuide />;
   }
+  if (slug === '24-hour-vet-directory-malaysia') {
+    return <VetDirectoryGuide />;
+  }
+  if (slug === 'pet-emergency-first-aid-guide-malaysia') {
+    return <FirstAidGuide />;
+  }
+  if (slug === 'pet-emergency-costs-malaysia') {
+    return <TreatmentCostsGuide />;
+  }
+  if (slug === 'common-pet-poisons-malaysia') {
+    return <PetPoisonsGuide />;
+  }
 
   // Placeholder for other blog posts
   return (
