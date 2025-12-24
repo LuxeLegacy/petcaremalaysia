@@ -6,6 +6,7 @@ import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/
 import { ArticleLayout, TableOfContents, TLDRBox, EmergencyAlertBox } from './ArticleLayout';
 import { RelatedArticles, InternalLink } from './ArticleLink';
 import { CostCTA } from '@/components/common/CostCTA';
+import heatstrokeHero from '@/assets/heatstroke-hero.jpg';
 
 export const HeatstrokeGuide = () => {
   const { language } = useLanguage();
@@ -120,8 +121,8 @@ export const HeatstrokeGuide = () => {
       date="December 24, 2024"
       readTime="12 min read"
       reviewedBy="Reviewed by Licensed Malaysian Veterinarians"
-      heroImage="https://images.unsplash.com/photo-1587300003388-59208cc962cb?w=1200&h=600&fit=crop"
-      heroImageAlt="Dog panting in hot weather - heatstroke risk in Malaysia"
+      heroImage={heatstrokeHero}
+      heroImageAlt="Overheated dog panting in tropical Malaysian heat with owner offering water"
       heroImageCaption="Malaysia's tropical climate poses serious heatstroke risks for pets"
       structuredData={structuredData}
       faqStructuredData={faqStructuredData}
