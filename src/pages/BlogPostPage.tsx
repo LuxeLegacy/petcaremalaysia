@@ -1216,6 +1216,10 @@ import { HeatstrokeGuide } from '@/components/blog/HeatstrokeGuide';
 import { ChokingGuide } from '@/components/blog/ChokingGuide';
 import { AccidentGuide } from '@/components/blog/AccidentGuide';
 import { InsuranceGuide } from '@/components/blog/InsuranceGuide';
+import { PoisoningTreatmentGuide } from '@/components/blog/PoisoningTreatmentGuide';
+import { EmergencyTransportGuide } from '@/components/blog/EmergencyTransportGuide';
+import { PostEmergencyCareGuide } from '@/components/blog/PostEmergencyCareGuide';
+import { EmergencyPreventionGuide } from '@/components/blog/EmergencyPreventionGuide';
 
 const BlogPostPage = () => {
   const { slug } = useParams();
@@ -1262,6 +1266,18 @@ const BlogPostPage = () => {
   }
   if (slug === 'pet-insurance-malaysia') {
     return <InsuranceGuide />;
+  }
+  if (slug === 'pet-poisoning-treatment-malaysia') {
+    return <PoisoningTreatmentGuide />;
+  }
+  if (slug === 'pet-emergency-transport-malaysia') {
+    return <EmergencyTransportGuide />;
+  }
+  if (slug === 'post-emergency-pet-care-malaysia') {
+    return <PostEmergencyCareGuide />;
+  }
+  if (slug === 'pet-emergency-prevention-malaysia') {
+    return <EmergencyPreventionGuide />;
   }
 
   // Placeholder for other blog posts
