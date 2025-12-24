@@ -9,6 +9,17 @@ import { SEOHead } from '@/components/SEOHead';
 
 const blogPosts = [
   {
+    id: 0,
+    slug: 'pet-emergency-guide-malaysia',
+    image: 'https://images.unsplash.com/photo-1587300003388-59208cc962cb?w=400&h=250&fit=crop',
+    category: 'Emergency',
+    readTime: '20 min',
+    date: '2024-12-20',
+    titleKey: 'postPillarTitle',
+    excerptKey: 'postPillarExcerpt',
+    featured: true,
+  },
+  {
     id: 1,
     slug: 'emergency-pet-care-guide',
     image: 'https://images.unsplash.com/photo-1587300003388-59208cc962cb?w=400&h=250&fit=crop',
@@ -139,7 +150,10 @@ const BlogPage = () => {
     post5Excerpt: t.blog?.post5Excerpt || 'Keep your furry friend looking and feeling their best with these grooming essentials.',
     post6Title: t.blog?.post6Title || 'Complete Vaccination Schedule for Dogs and Cats',
     post6Excerpt: t.blog?.post6Excerpt || 'A comprehensive guide to keeping your pets protected with timely vaccinations.',
-    // New cluster articles
+    // Pillar page
+    postPillarTitle: 'Complete Guide to Pet Emergency Treatment in Malaysia (2025)',
+    postPillarExcerpt: 'Comprehensive guide: 24-hour vets, emergency symptoms, first aid, treatment costs, and insurance coverage. Everything you need to know.',
+    // Cluster articles
     postSymptomsTitle: 'Pet Emergency Symptoms Every Malaysian Owner Must Know (2025)',
     postSymptomsExcerpt: 'Learn the 9 critical pet emergency symptoms that require immediate vet attention. Know when to rush to 24-hour care.',
     postDirectoryTitle: '24-Hour Veterinary Hospital Directory Malaysia 2025',
