@@ -18,8 +18,8 @@ export const PetEmergencyGuide = () => {
     "image": "https://images.unsplash.com/photo-1587300003388-59208cc962cb?w=1200&h=630&fit=crop",
     "author": { "@type": "Organization", "name": "PetCare Malaysia" },
     "publisher": { "@type": "Organization", "name": "PetCare Malaysia" },
-    "datePublished": "2024-12-20",
-    "dateModified": "2024-12-20",
+    "datePublished": "2025-01-01",
+    "dateModified": "2025-01-01",
     "mainEntityOfPage": {
       "@type": "WebPage",
       "@id": "https://petcaremalaysia.com/blog/pet-emergency-guide-malaysia"
@@ -188,7 +188,7 @@ export const PetEmergencyGuide = () => {
       category="Emergency Guide"
       categoryColor="destructive"
       title="The Complete Guide to Pet Emergency Treatment in Malaysia (2025)"
-      date="December 20, 2024"
+      date="January 1, 2025"
       readTime="20 min read"
       reviewedBy="Reviewed by Licensed Malaysian Veterinarians"
       heroImage="https://images.unsplash.com/photo-1587300003388-59208cc962cb?w=1200&h=600&fit=crop"

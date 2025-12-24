@@ -96,8 +96,8 @@ export const PetPoisonsGuide = () => {
     "image": "https://images.unsplash.com/photo-1584820927498-cfe5211fd8bf?w=1200&h=630&fit=crop",
     "author": { "@type": "Organization", "name": "PetCare Malaysia" },
     "publisher": { "@type": "Organization", "name": "PetCare Malaysia" },
-    "datePublished": "2024-12-20",
-    "dateModified": "2024-12-20"
+    "datePublished": "2025-01-01",
+    "dateModified": "2025-01-01"
   };
 
   const faqStructuredData = {
@@ -402,7 +402,7 @@ export const PetPoisonsGuide = () => {
       category="Safety"
       categoryColor="destructive"
       title="Common Pet Poisons in Malaysia: Prevention and Emergency Response"
-      date="December 20, 2024"
+      date="January 1, 2025"
       readTime="12 min read"
       reviewedBy="Reviewed by Veterinary Toxicology Specialist"
       heroImage="https://images.unsplash.com/photo-1584820927498-cfe5211fd8bf?w=1200&h=600&fit=crop"

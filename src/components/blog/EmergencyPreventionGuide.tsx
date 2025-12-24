@@ -17,8 +17,8 @@ export const EmergencyPreventionGuide = () => {
     "image": "https://images.unsplash.com/photo-1587300003388-59208cc962cb?w=1200&h=630&fit=crop",
     "author": { "@type": "Organization", "name": "PetCare Malaysia" },
     "publisher": { "@type": "Organization", "name": "PetCare Malaysia" },
-    "datePublished": "2024-12-24",
-    "dateModified": "2024-12-24"
+    "datePublished": "2025-01-01",
+    "dateModified": "2025-01-01"
   };
 
   const tocItems = [
@@ -46,7 +46,7 @@ export const EmergencyPreventionGuide = () => {
       category="Prevention"
       categoryColor="primary"
       title="Pet Emergency Prevention: 15 Ways to Avoid Costly Vet Emergencies in Malaysia"
-      date="December 24, 2024"
+      date="January 1, 2025"
       readTime="12 min read"
       reviewedBy="Reviewed by Licensed Malaysian Veterinarians"
       heroImage={emergencyPreventionHero}

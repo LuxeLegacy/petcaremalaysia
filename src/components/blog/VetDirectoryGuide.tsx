@@ -105,8 +105,8 @@ export const VetDirectoryGuide = () => {
     "image": "https://images.unsplash.com/photo-1628009368231-7bb7cfcb0def?w=1200&h=630&fit=crop",
     "author": { "@type": "Organization", "name": "PetCare Malaysia" },
     "publisher": { "@type": "Organization", "name": "PetCare Malaysia" },
-    "datePublished": "2024-12-20",
-    "dateModified": "2024-12-20"
+    "datePublished": "2025-01-01",
+    "dateModified": "2025-01-01"
   };
 
   const faqStructuredData = {
@@ -229,9 +229,9 @@ export const VetDirectoryGuide = () => {
       category="Directory"
       categoryColor="secondary"
       title="Complete 24-Hour Veterinary Hospital Directory Malaysia 2025"
-      date="December 20, 2024"
+      date="January 1, 2025"
       readTime="10 min read"
-      reviewedBy="Verified listings as of December 2024"
+      reviewedBy="Verified listings as of January 2025"
       heroImage="https://images.unsplash.com/photo-1628009368231-7bb7cfcb0def?w=1200&h=600&fit=crop"
       heroImageAlt="Veterinary hospital emergency entrance at night"
       heroImageCaption="Find verified 24-hour emergency vet care across Malaysia"

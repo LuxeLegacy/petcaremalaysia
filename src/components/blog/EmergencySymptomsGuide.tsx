@@ -18,8 +18,8 @@ export const EmergencySymptomsGuide = () => {
     "image": "https://images.unsplash.com/photo-1548199973-03cce0bbc87b?w=1200&h=630&fit=crop",
     "author": { "@type": "Organization", "name": "PetCare Malaysia" },
     "publisher": { "@type": "Organization", "name": "PetCare Malaysia" },
-    "datePublished": "2024-12-20",
-    "dateModified": "2024-12-20"
+    "datePublished": "2025-01-01",
+    "dateModified": "2025-01-01"
   };
 
   const faqStructuredData = {
@@ -128,7 +128,7 @@ export const EmergencySymptomsGuide = () => {
       category="Emergency"
       categoryColor="destructive"
       title="Pet Emergency Symptoms Every Malaysian Owner Must Know (2025 Guide)"
-      date="December 20, 2024"
+      date="January 1, 2025"
       readTime="8 min read"
       reviewedBy="Reviewed by Licensed Malaysian Veterinarians"
       heroImage="https://images.unsplash.com/photo-1548199973-03cce0bbc87b?w=1200&h=600&fit=crop"

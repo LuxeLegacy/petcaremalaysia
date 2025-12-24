@@ -60,8 +60,8 @@ export const TreatmentCostsGuide = () => {
     "image": "https://images.unsplash.com/photo-1554224155-6726b3ff858f?w=1200&h=630&fit=crop",
     "author": { "@type": "Organization", "name": "PetCare Malaysia" },
     "publisher": { "@type": "Organization", "name": "PetCare Malaysia" },
-    "datePublished": "2024-12-20",
-    "dateModified": "2024-12-20"
+    "datePublished": "2025-01-01",
+    "dateModified": "2025-01-01"
   };
 
   const faqStructuredData = {
@@ -117,9 +117,9 @@ export const TreatmentCostsGuide = () => {
       category="Costs"
       categoryColor="secondary"
       title="Pet Emergency Treatment Costs in Malaysia: Complete Price Guide 2025"
-      date="December 20, 2024"
+      date="January 1, 2025"
       readTime="10 min read"
-      reviewedBy="Pricing verified December 2024"
+      reviewedBy="Pricing verified January 2025"
       heroImage="https://images.unsplash.com/photo-1554224155-6726b3ff858f?w=1200&h=600&fit=crop"
       heroImageAlt="Calculator and money representing pet emergency costs"
       heroImageCaption="Complete breakdown of emergency vet costs in Malaysia"
@@ -632,7 +632,7 @@ export const TreatmentCostsGuide = () => {
 
       <RelatedArticles articles={[
         { to: "/blog/pet-emergency-guide-malaysia", title: "Complete Guide to Pet Emergency Treatment in Malaysia", description: "Comprehensive pillar guide covering all aspects of pet emergencies" },
-        { to: "/blog/pet-insurance-malaysia", title: "Pet Insurance Guide Malaysia 2024", description: "Cover 70-90% of emergency costs with the right policy" },
+        { to: "/blog/pet-insurance-malaysia", title: "Pet Insurance Guide Malaysia 2025", description: "Cover 70-90% of emergency costs with the right policy" },
         { to: "/blog/post-emergency-pet-care-malaysia", title: "Post-Emergency Care Guide", description: "Recovery costs, medications, and follow-up visits" },
         { to: "/blog/pet-emergency-prevention-malaysia", title: "Emergency Prevention Guide", description: "Prevent emergencies and save on vet bills" },
       ]} />

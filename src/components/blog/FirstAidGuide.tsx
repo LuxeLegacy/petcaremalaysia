@@ -147,7 +147,7 @@ export const FirstAidGuide = () => {
       category="First Aid"
       categoryColor="primary"
       title="Pet Emergency First Aid Guide for Malaysian Pet Owners"
-      date="December 20, 2024"
+      date="January 1, 2025"
       readTime="12 min read"
       reviewedBy="Reviewed by Licensed Emergency Veterinarians"
       heroImage="https://images.unsplash.com/photo-1516734212186-a967f81ad0d7?w=1200&h=600&fit=crop"

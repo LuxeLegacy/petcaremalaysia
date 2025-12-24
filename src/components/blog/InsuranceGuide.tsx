@@ -14,13 +14,13 @@ export const InsuranceGuide = () => {
   const structuredData = {
     "@context": "https://schema.org",
     "@type": "Article",
-    "headline": "Pet Insurance Malaysia: Complete Guide to Emergency Coverage 2024",
+    "headline": "Pet Insurance Malaysia: Complete Guide to Emergency Coverage 2025",
     "description": "Complete pet insurance guide for Malaysia. Compare plans, understand emergency coverage, costs RM 30-150/month. Accident, illness, surgery protection.",
     "image": "https://images.unsplash.com/photo-1587300003388-59208cc962cb?w=1200&h=630&fit=crop",
     "author": { "@type": "Organization", "name": "PetCare Malaysia" },
     "publisher": { "@type": "Organization", "name": "PetCare Malaysia" },
-    "datePublished": "2024-12-24",
-    "dateModified": "2024-12-24",
+    "datePublished": "2025-01-01",
+    "dateModified": "2025-01-01",
     "mainEntityOfPage": {
       "@type": "WebPage",
       "@id": "https://petcaremalaysia.com/blog/pet-insurance-malaysia"
@@ -104,14 +104,14 @@ export const InsuranceGuide = () => {
 
   return (
     <ArticleLayout
-      metaTitle="Pet Insurance Malaysia 2024: Best Coverage for Emergencies"
+      metaTitle="Pet Insurance Malaysia 2025: Best Coverage for Emergencies"
       metaDescription="Complete pet insurance guide for Malaysia. Compare plans, understand emergency coverage, costs RM 30-150/month. Accident, illness, surgery protection. Save thousands on vet bills."
       canonicalUrl={`https://petcaremalaysia.com${language !== 'en' ? `/${language}` : ''}/blog/pet-insurance-malaysia`}
       language={language}
       category="Insurance"
       categoryColor="primary"
-      title="Pet Insurance Malaysia: Complete Guide to Emergency Coverage 2024"
-      date="December 24, 2024"
+      title="Pet Insurance Malaysia: Complete Guide to Emergency Coverage 2025"
+      date="January 1, 2025"
       readTime="15 min read"
       reviewedBy="Reviewed by Licensed Malaysian Veterinarians"
       heroImage={insuranceHero}
@@ -267,7 +267,7 @@ export const InsuranceGuide = () => {
 
       {/* Providers */}
       <section id="providers" className="mb-12">
-        <h2 className="text-2xl font-bold mb-4">Pet Insurance Providers in Malaysia (2024)</h2>
+        <h2 className="text-2xl font-bold mb-4">Pet Insurance Providers in Malaysia (2025)</h2>
 
         <div className="grid md:grid-cols-2 gap-6">
           {[
