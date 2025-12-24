@@ -4,6 +4,7 @@ import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/
 import { ArticleLayout, TableOfContents, TLDRBox, EmergencyAlertBox } from './ArticleLayout';
 import { RelatedArticles, InternalLink } from './ArticleLink';
 import { CostCTA } from '@/components/common/CostCTA';
+import postEmergencyCareHero from '@/assets/post-emergency-care-hero.jpg';
 
 export const PostEmergencyCareGuide = () => {
   const { language } = useLanguage();
@@ -50,8 +51,8 @@ export const PostEmergencyCareGuide = () => {
       date="December 24, 2024"
       readTime="10 min read"
       reviewedBy="Reviewed by Licensed Malaysian Veterinarians"
-      heroImage="https://images.unsplash.com/photo-1587300003388-59208cc962cb?w=1200&h=600&fit=crop"
-      heroImageAlt="Pet recovering after emergency veterinary treatment"
+      heroImage={postEmergencyCareHero}
+      heroImageAlt="Happy dog recovering at home with cone collar and bandaged paw"
       heroImageCaption="Proper at-home care is crucial for complete recovery after emergency treatment"
       structuredData={structuredData}
     >

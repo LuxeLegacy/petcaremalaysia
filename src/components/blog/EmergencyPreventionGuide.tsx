@@ -4,6 +4,7 @@ import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/
 import { ArticleLayout, TableOfContents, TLDRBox, EmergencyAlertBox } from './ArticleLayout';
 import { RelatedArticles, InternalLink } from './ArticleLink';
 import { CostCTA } from '@/components/common/CostCTA';
+import emergencyPreventionHero from '@/assets/emergency-prevention-hero.jpg';
 
 export const EmergencyPreventionGuide = () => {
   const { language } = useLanguage();
@@ -48,8 +49,8 @@ export const EmergencyPreventionGuide = () => {
       date="December 24, 2024"
       readTime="12 min read"
       reviewedBy="Reviewed by Licensed Malaysian Veterinarians"
-      heroImage="https://images.unsplash.com/photo-1587300003388-59208cc962cb?w=1200&h=600&fit=crop"
-      heroImageAlt="Happy healthy pet in Malaysia - prevention is the best medicine"
+      heroImage={emergencyPreventionHero}
+      heroImageAlt="Happy healthy dog and cat in safe pet-proofed Malaysian home"
       heroImageCaption="60-70% of pet emergencies are preventable with proper precautions"
       structuredData={structuredData}
     >

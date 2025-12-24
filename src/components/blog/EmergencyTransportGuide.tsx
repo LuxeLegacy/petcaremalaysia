@@ -4,6 +4,7 @@ import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/
 import { ArticleLayout, TableOfContents, TLDRBox, EmergencyAlertBox } from './ArticleLayout';
 import { RelatedArticles, InternalLink } from './ArticleLink';
 import { CostCTA } from '@/components/common/CostCTA';
+import emergencyTransportHero from '@/assets/emergency-transport-hero.jpg';
 
 export const EmergencyTransportGuide = () => {
   const { language } = useLanguage();
@@ -111,8 +112,8 @@ export const EmergencyTransportGuide = () => {
       date="December 24, 2024"
       readTime="10 min read"
       reviewedBy="Reviewed by Emergency Veterinary Specialists"
-      heroImage="https://images.unsplash.com/photo-1587300003388-59208cc962cb?w=1200&h=600&fit=crop"
-      heroImageAlt="Safe pet transport to emergency vet"
+      heroImage={emergencyTransportHero}
+      heroImageAlt="Pet owner safely transporting dog in carrier to emergency vet"
       heroImageCaption="Proper transport technique can prevent additional injuries and improve survival rates"
       structuredData={structuredData}
       faqStructuredData={faqStructuredData}

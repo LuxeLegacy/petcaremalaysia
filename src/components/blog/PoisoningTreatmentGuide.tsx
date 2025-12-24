@@ -4,6 +4,7 @@ import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/
 import { ArticleLayout, TableOfContents, TLDRBox, EmergencyAlertBox } from './ArticleLayout';
 import { RelatedArticles, InternalLink } from './ArticleLink';
 import { CostCTA } from '@/components/common/CostCTA';
+import poisoningTreatmentHero from '@/assets/poisoning-treatment-hero.jpg';
 
 export const PoisoningTreatmentGuide = () => {
   const { language } = useLanguage();
@@ -111,8 +112,8 @@ export const PoisoningTreatmentGuide = () => {
       date="December 24, 2024"
       readTime="12 min read"
       reviewedBy="Reviewed by Veterinary Toxicology Specialists"
-      heroImage="https://images.unsplash.com/photo-1584820927498-cfe5211fd8bf?w=1200&h=600&fit=crop"
-      heroImageAlt="Emergency veterinary treatment for pet poisoning"
+      heroImage={poisoningTreatmentHero}
+      heroImageAlt="Veterinarian treating a poisoned pet with IV drip in emergency clinic"
       heroImageCaption="Time is critical - know the antidotes and treatment protocols for common pet poisons"
       structuredData={structuredData}
       faqStructuredData={faqStructuredData}
