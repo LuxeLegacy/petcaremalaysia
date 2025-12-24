@@ -706,9 +706,9 @@ export const DogEmergencyGuide = () => {
 
       <RelatedArticles articles={[
         { to: "/blog/pet-emergency-guide-malaysia", title: "Complete Pet Emergency Guide Malaysia", description: "Comprehensive guide covering all pet emergencies" },
-        { to: "/blog/pet-emergency-symptoms-malaysia", title: "Pet Emergency Symptoms Guide", description: "Learn the 9 critical symptoms requiring immediate vet attention" },
-        { to: "/blog/pet-emergency-first-aid-guide-malaysia", title: "Pet Emergency First Aid Guide", description: "Life-saving techniques: CPR, bleeding control, heatstroke response" },
-        { to: "/blog/cat-emergency-guide-malaysia", title: "Cat Emergency Guide Malaysia", description: "Essential guide for cat-specific emergencies" },
+        { to: "/blog/pet-heatstroke-malaysia", title: "Heatstroke Emergency Guide", description: "#1 killer in Malaysia's tropical climate" },
+        { to: "/blog/pet-choking-emergency-malaysia", title: "Pet Choking First Aid", description: "Heimlich maneuver for dogs - step by step" },
+        { to: "/blog/pet-accident-emergency-malaysia", title: "Pet Accident Emergency Protocol", description: "Road accidents, dog fights, trauma first aid" },
       ]} />
     </ArticleLayout>
   );

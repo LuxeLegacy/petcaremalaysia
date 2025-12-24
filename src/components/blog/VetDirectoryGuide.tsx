@@ -554,9 +554,9 @@ export const VetDirectoryGuide = () => {
 
       <RelatedArticles articles={[
         { to: "/blog/pet-emergency-guide-malaysia", title: "Complete Guide to Pet Emergency Treatment in Malaysia", description: "Comprehensive pillar guide covering all aspects of pet emergencies" },
-        { to: "/blog/pet-emergency-symptoms-malaysia", title: "Pet Emergency Symptoms Every Owner Must Know", description: "Recognize the 9 critical symptoms requiring immediate vet attention" },
-        { to: "/blog/pet-emergency-costs-malaysia", title: "Pet Emergency Treatment Costs Malaysia 2025", description: "Complete breakdown of emergency vet costs and payment options" },
-        { to: "/blog/pet-emergency-first-aid-guide-malaysia", title: "Pet Emergency First Aid Guide", description: "Life-saving techniques every owner should know" }
+        { to: "/blog/pet-emergency-costs-malaysia", title: "Pet Emergency Treatment Costs Malaysia 2025", description: "Complete breakdown of emergency vet costs" },
+        { to: "/blog/pet-heatstroke-malaysia", title: "Heatstroke Emergency Guide", description: "Critical in Malaysia's tropical climate" },
+        { to: "/blog/pet-insurance-malaysia", title: "Pet Insurance Guide Malaysia", description: "Cover emergency costs with the right policy" },
       ]} />
     </ArticleLayout>
   );

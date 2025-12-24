@@ -79,16 +79,23 @@ export const InsuranceGuide = () => {
       color: "text-primary"
     },
     {
-      to: "/blog/pet-emergency-guide-malaysia",
-      title: "Complete Emergency Guide",
-      description: "Everything about pet emergencies in Malaysia",
+      to: "/blog/pet-heatstroke-malaysia",
+      title: "Heatstroke Emergency Guide",
+      description: "Common emergency - know the treatment costs",
       icon: AlertTriangle,
       color: "text-destructive"
     },
     {
-      to: "/blog/24-hour-vet-directory-malaysia",
-      title: "24-Hour Vet Directory",
-      description: "Find emergency vets open now",
+      to: "/blog/pet-accident-emergency-malaysia",
+      title: "Pet Accident Protocol",
+      description: "Trauma treatment costs and what to expect",
+      icon: Shield,
+      color: "text-primary"
+    },
+    {
+      to: "/blog/pet-emergency-guide-malaysia",
+      title: "Complete Emergency Guide",
+      description: "Everything about pet emergencies in Malaysia",
       icon: Phone,
       color: "text-primary"
     },

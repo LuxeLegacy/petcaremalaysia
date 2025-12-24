@@ -79,18 +79,25 @@ export const AccidentGuide = () => {
       color: "text-destructive"
     },
     {
-      to: "/blog/24-hour-vet-directory-malaysia",
-      title: "24-Hour Vet Directory Malaysia",
-      description: "Find emergency vets open now in your area",
-      icon: Phone,
+      to: "/blog/pet-heatstroke-malaysia",
+      title: "Heatstroke Emergency Guide",
+      description: "Another common emergency in Malaysia",
+      icon: AlertTriangle,
+      color: "text-destructive"
+    },
+    {
+      to: "/blog/pet-insurance-malaysia",
+      title: "Pet Insurance Guide",
+      description: "Cover accident treatment costs",
+      icon: Shield,
       color: "text-primary"
     },
     {
-      to: "/blog/pet-emergency-symptoms-malaysia",
-      title: "Pet Emergency Symptoms Guide",
-      description: "Recognize all 9 critical emergency symptoms",
-      icon: AlertTriangle,
-      color: "text-destructive"
+      to: "/blog/pet-emergency-costs-malaysia",
+      title: "Emergency Vet Costs Guide",
+      description: "Detailed breakdown of trauma treatment costs",
+      icon: DollarSign,
+      color: "text-primary"
     },
   ];
 

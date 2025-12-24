@@ -674,9 +674,9 @@ export const PetPoisonsGuide = () => {
 
       <RelatedArticles articles={[
         { to: "/blog/pet-emergency-guide-malaysia", title: "Complete Guide to Pet Emergency Treatment in Malaysia", description: "Comprehensive pillar guide covering all aspects of pet emergencies" },
-        { to: "/blog/pet-emergency-symptoms-malaysia", title: "Pet Emergency Symptoms Every Owner Must Know", description: "Recognize the 9 critical symptoms requiring immediate vet attention" },
-        { to: "/blog/24-hour-vet-directory-malaysia", title: "24-Hour Vet Directory Malaysia 2025", description: "Find emergency vet care near you" },
-        { to: "/blog/pet-emergency-first-aid-guide-malaysia", title: "Pet Emergency First Aid Guide", description: "Life-saving techniques including poisoning first aid" }
+        { to: "/blog/pet-emergency-first-aid-guide-malaysia", title: "Pet Emergency First Aid Guide", description: "Life-saving techniques including poisoning first aid" },
+        { to: "/blog/pet-heatstroke-malaysia", title: "Heatstroke Emergency Guide", description: "Another common emergency in Malaysia" },
+        { to: "/blog/pet-insurance-malaysia", title: "Pet Insurance Guide", description: "Cover poisoning treatment costs" },
       ]} />
     </ArticleLayout>
   );
