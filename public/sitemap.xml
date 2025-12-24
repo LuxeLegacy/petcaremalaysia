@@ -565,6 +565,20 @@
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
+  <!-- Cluster 5: Dog Emergency Guide -->
+  <url>
+    <loc>https://petcaremalaysia.com/blog/dog-emergency-guide-malaysia</loc>
+    <lastmod>2024-12-24</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <!-- Cluster 6: Cat Emergency Guide -->
+  <url>
+    <loc>https://petcaremalaysia.com/blog/cat-emergency-guide-malaysia</loc>
+    <lastmod>2024-12-24</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
   <!-- Existing Blog Articles -->
   <url>
     <loc>https://petcaremalaysia.com/blog/emergency-pet-care-guide</loc>

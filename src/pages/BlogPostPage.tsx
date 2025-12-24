@@ -1210,6 +1210,8 @@ import { VetDirectoryGuide } from '@/components/blog/VetDirectoryGuide';
 import { FirstAidGuide } from '@/components/blog/FirstAidGuide';
 import { TreatmentCostsGuide } from '@/components/blog/TreatmentCostsGuide';
 import { PetPoisonsGuide } from '@/components/blog/PetPoisonsGuide';
+import { DogEmergencyGuide } from '@/components/blog/DogEmergencyGuide';
+import { CatEmergencyGuide } from '@/components/blog/CatEmergencyGuide';
 
 const BlogPostPage = () => {
   const { slug } = useParams();
@@ -1238,6 +1240,12 @@ const BlogPostPage = () => {
   }
   if (slug === 'common-pet-poisons-malaysia') {
     return <PetPoisonsGuide />;
+  }
+  if (slug === 'dog-emergency-guide-malaysia') {
+    return <DogEmergencyGuide />;
+  }
+  if (slug === 'cat-emergency-guide-malaysia') {
+    return <CatEmergencyGuide />;
   }
 
   // Placeholder for other blog posts

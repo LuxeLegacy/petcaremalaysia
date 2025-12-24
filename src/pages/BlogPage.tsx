@@ -80,6 +80,26 @@ const blogPosts = [
     excerptKey: 'postPoisonsExcerpt',
   },
   {
+    id: 12,
+    slug: 'dog-emergency-guide-malaysia',
+    image: 'https://images.unsplash.com/photo-1587300003388-59208cc962cb?w=400&h=250&fit=crop',
+    category: 'Emergency',
+    readTime: '12 min',
+    date: '2024-12-24',
+    titleKey: 'postDogEmergencyTitle',
+    excerptKey: 'postDogEmergencyExcerpt',
+  },
+  {
+    id: 13,
+    slug: 'cat-emergency-guide-malaysia',
+    image: 'https://images.unsplash.com/photo-1514888286974-6c03e2ca1dba?w=400&h=250&fit=crop',
+    category: 'Emergency',
+    readTime: '12 min',
+    date: '2024-12-24',
+    titleKey: 'postCatEmergencyTitle',
+    excerptKey: 'postCatEmergencyExcerpt',
+  },
+  {
     id: 2,
     slug: 'pet-nutrition-guide-malaysia',
     image: 'https://images.unsplash.com/photo-1548199973-03cce0bbc87b?w=400&h=250&fit=crop',
@@ -164,6 +184,11 @@ const BlogPage = () => {
     postCostsExcerpt: 'Detailed breakdown of emergency vet costs. Consultation fees, surgery prices, hospitalization, payment options.',
     postPoisonsTitle: 'Common Pet Poisons in Malaysia: Prevention and Emergency Response',
     postPoisonsExcerpt: 'Complete guide to toxic substances dangerous to Malaysian pets. Rat poison, toxic plants, foods, and emergency treatment.',
+    // Dog & Cat Emergency Guides
+    postDogEmergencyTitle: 'Complete Dog Emergency Guide Malaysia: What Every Owner Must Know',
+    postDogEmergencyExcerpt: 'Essential dog emergency guide. Recognize heatstroke, bloat, poisoning, and trauma. Find 24/7 vets, learn first aid.',
+    postCatEmergencyTitle: 'Complete Cat Emergency Guide Malaysia: Critical Care for Cat Owners',
+    postCatEmergencyExcerpt: 'Essential cat emergency guide. Recognize urinary blockage, poisoning, breathing issues. Find 24/7 vets, save your cat.',
   };
 
   const filteredPosts = selectedCategory === 'All' 

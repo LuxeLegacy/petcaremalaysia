@@ -113,6 +113,20 @@ export const PetEmergencyGuide = () => {
       icon: Skull,
       color: "text-destructive"
     },
+    {
+      to: "/blog/dog-emergency-guide-malaysia",
+      title: "Dog Emergency Guide",
+      description: "Heatstroke, bloat, poisoning - dog-specific emergencies",
+      icon: Heart,
+      color: "text-primary"
+    },
+    {
+      to: "/blog/cat-emergency-guide-malaysia",
+      title: "Cat Emergency Guide",
+      description: "Urinary blockage, poisoning, breathing - cat-specific emergencies",
+      icon: Heart,
+      color: "text-primary"
+    },
   ];
 
   return (
