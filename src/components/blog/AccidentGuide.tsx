@@ -72,18 +72,18 @@ export const AccidentGuide = () => {
 
   const relatedArticles = [
     {
-      to: "/blog/pet-emergency-first-aid-guide-malaysia",
-      title: "Pet First Aid Complete Guide",
-      description: "All emergency first aid techniques for pets",
+      to: "/blog/pet-emergency-transport-malaysia",
+      title: "Emergency Transport Guide",
+      description: "Safely transport injured pets to the vet",
       icon: Heart,
-      color: "text-destructive"
+      color: "text-primary"
     },
     {
-      to: "/blog/pet-heatstroke-malaysia",
-      title: "Heatstroke Emergency Guide",
-      description: "Another common emergency in Malaysia",
+      to: "/blog/post-emergency-pet-care-malaysia",
+      title: "Post-Emergency Care",
+      description: "Recovery after accidents and trauma",
       icon: AlertTriangle,
-      color: "text-destructive"
+      color: "text-primary"
     },
     {
       to: "/blog/pet-insurance-malaysia",
@@ -93,9 +93,9 @@ export const AccidentGuide = () => {
       color: "text-primary"
     },
     {
-      to: "/blog/pet-emergency-costs-malaysia",
-      title: "Emergency Vet Costs Guide",
-      description: "Detailed breakdown of trauma treatment costs",
+      to: "/blog/pet-emergency-prevention-malaysia",
+      title: "Prevention Guide",
+      description: "Reduce accident risk for your pet",
       icon: DollarSign,
       color: "text-primary"
     },

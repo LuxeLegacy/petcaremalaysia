@@ -673,10 +673,10 @@ export const PetPoisonsGuide = () => {
       <CostCTA variant={5} />
 
       <RelatedArticles articles={[
+        { to: "/blog/pet-poisoning-treatment-malaysia", title: "Pet Poisoning Treatment Guide", description: "What vets do for poisoned pets - decontamination, antidotes, care" },
         { to: "/blog/pet-emergency-guide-malaysia", title: "Complete Guide to Pet Emergency Treatment in Malaysia", description: "Comprehensive pillar guide covering all aspects of pet emergencies" },
         { to: "/blog/pet-emergency-first-aid-guide-malaysia", title: "Pet Emergency First Aid Guide", description: "Life-saving techniques including poisoning first aid" },
-        { to: "/blog/pet-heatstroke-malaysia", title: "Heatstroke Emergency Guide", description: "Another common emergency in Malaysia" },
-        { to: "/blog/pet-insurance-malaysia", title: "Pet Insurance Guide", description: "Cover poisoning treatment costs" },
+        { to: "/blog/pet-emergency-prevention-malaysia", title: "Emergency Prevention Guide", description: "Pet-proof your home against common poisons" },
       ]} />
     </ArticleLayout>
   );

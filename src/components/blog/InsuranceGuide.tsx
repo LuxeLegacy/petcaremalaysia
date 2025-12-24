@@ -79,16 +79,16 @@ export const InsuranceGuide = () => {
       color: "text-primary"
     },
     {
-      to: "/blog/pet-heatstroke-malaysia",
-      title: "Heatstroke Emergency Guide",
-      description: "Common emergency - know the treatment costs",
+      to: "/blog/post-emergency-pet-care-malaysia",
+      title: "Post-Emergency Care",
+      description: "Recovery costs and follow-up visits",
       icon: AlertTriangle,
-      color: "text-destructive"
+      color: "text-primary"
     },
     {
-      to: "/blog/pet-accident-emergency-malaysia",
-      title: "Pet Accident Protocol",
-      description: "Trauma treatment costs and what to expect",
+      to: "/blog/pet-poisoning-treatment-malaysia",
+      title: "Poisoning Treatment Guide",
+      description: "Treatment costs covered by insurance",
       icon: Shield,
       color: "text-primary"
     },

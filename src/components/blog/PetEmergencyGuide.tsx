@@ -149,6 +149,34 @@ export const PetEmergencyGuide = () => {
       icon: Shield,
       color: "text-primary"
     },
+    {
+      to: "/blog/pet-poisoning-treatment-malaysia",
+      title: "Poisoning Treatment Guide",
+      description: "What vets do for poisoned pets - decontamination & antidotes",
+      icon: Skull,
+      color: "text-destructive"
+    },
+    {
+      to: "/blog/pet-emergency-transport-malaysia",
+      title: "Emergency Transport Guide",
+      description: "Safely move injured pets without worsening injuries",
+      icon: Heart,
+      color: "text-primary"
+    },
+    {
+      to: "/blog/post-emergency-pet-care-malaysia",
+      title: "Post-Emergency Care Guide",
+      description: "Recovery, medications, and follow-up after emergencies",
+      icon: Heart,
+      color: "text-primary"
+    },
+    {
+      to: "/blog/pet-emergency-prevention-malaysia",
+      title: "Emergency Prevention Guide",
+      description: "Pet-proof your home and prevent common emergencies",
+      icon: Shield,
+      color: "text-primary"
+    },
   ];
 
   return (
