@@ -1203,6 +1203,9 @@ const PetFoodBrandsGuide = () => {
   );
 };
 
+// Lazy import for new cluster articles
+import { EmergencySymptomsGuide } from '@/components/blog/EmergencySymptomsGuide';
+
 const BlogPostPage = () => {
   const { slug } = useParams();
 
@@ -1212,6 +1215,9 @@ const BlogPostPage = () => {
   }
   if (slug === 'pet-nutrition-guide-malaysia') {
     return <PetFoodBrandsGuide />;
+  }
+  if (slug === 'pet-emergency-symptoms-malaysia') {
+    return <EmergencySymptomsGuide />;
   }
 
   // Placeholder for other blog posts
