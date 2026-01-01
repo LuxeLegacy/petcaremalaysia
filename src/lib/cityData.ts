@@ -72,6 +72,19 @@ export const citiesData: CityData[] = [
   { name: "Nusajaya", hub: "Iskandar Hub", state: "Johor", languages: ["EN", "BM"], slug: "nusajaya", stateSlug: "johor" },
   { name: "Bukit Indah", hub: "Iskandar Hub", state: "Johor", languages: ["EN", "CN"], slug: "bukit-indah", stateSlug: "johor" },
   
+  // Batu Pahat Hub
+  { name: "Batu Pahat", hub: "Batu Pahat Hub", state: "Johor", languages: ["BM", "CN"], slug: "batu-pahat", stateSlug: "johor" },
+  { name: "Yong Peng", hub: "Batu Pahat Hub", state: "Johor", languages: ["CN"], slug: "yong-peng", stateSlug: "johor" },
+  { name: "Parit Raja", hub: "Batu Pahat Hub", state: "Johor", languages: ["BM"], slug: "parit-raja", stateSlug: "johor" },
+  
+  // Muar Hub
+  { name: "Muar", hub: "Muar Hub", state: "Johor", languages: ["BM", "CN"], slug: "muar", stateSlug: "johor" },
+  { name: "Tangkak", hub: "Muar Hub", state: "Johor", languages: ["BM"], slug: "tangkak", stateSlug: "johor" },
+  
+  // Kulai Hub
+  { name: "Kulai", hub: "Kulai Hub", state: "Johor", languages: ["BM"], slug: "kulai", stateSlug: "johor" },
+  { name: "Senai", hub: "Kulai Hub", state: "Johor", languages: ["BM", "EN"], slug: "senai", stateSlug: "johor" },
+  
   // Penang Hub
   { name: "George Town", hub: "Penang Hub", state: "Penang", languages: ["CN", "EN"], slug: "george-town", stateSlug: "penang" },
   { name: "Tanjung Tokong", hub: "Penang Hub", state: "Penang", languages: ["CN", "EN"], slug: "tanjung-tokong", stateSlug: "penang" },
@@ -94,6 +107,10 @@ export const citiesData: CityData[] = [
   { name: "Bercham", hub: "Ipoh Hub", state: "Perak", languages: ["CN"], slug: "bercham", stateSlug: "perak" },
   { name: "Simpang Pulai", hub: "Ipoh Hub", state: "Perak", languages: ["BM"], slug: "simpang-pulai", stateSlug: "perak" },
   
+  // Taiping Hub
+  { name: "Taiping", hub: "Taiping Hub", state: "Perak", languages: ["BM", "CN"], slug: "taiping", stateSlug: "perak" },
+  { name: "Kamunting", hub: "Taiping Hub", state: "Perak", languages: ["BM"], slug: "kamunting", stateSlug: "perak" },
+  
   // Kuching Hub
   { name: "Kuching", hub: "Kuching Hub", state: "Sarawak", languages: ["BM", "EN"], slug: "kuching", stateSlug: "sarawak" },
   { name: "Petra Jaya", hub: "Kuching Hub", state: "Sarawak", languages: ["BM"], slug: "petra-jaya", stateSlug: "sarawak" },
@@ -101,29 +118,54 @@ export const citiesData: CityData[] = [
   { name: "Pending", hub: "Kuching Hub", state: "Sarawak", languages: ["BM"], slug: "pending", stateSlug: "sarawak" },
   { name: "Batu Kawa", hub: "Kuching Hub", state: "Sarawak", languages: ["BM"], slug: "batu-kawa", stateSlug: "sarawak" },
   
+  // Sibu Hub
+  { name: "Sibu", hub: "Sibu Hub", state: "Sarawak", languages: ["BM", "EN"], slug: "sibu", stateSlug: "sarawak" },
+  { name: "Mukah", hub: "Sibu Hub", state: "Sarawak", languages: ["BM"], slug: "mukah", stateSlug: "sarawak" },
+  
+  // Miri Hub
+  { name: "Miri", hub: "Miri Hub", state: "Sarawak", languages: ["BM", "EN"], slug: "miri", stateSlug: "sarawak" },
+  
   // Kota Kinabalu Hub
   { name: "Kota Kinabalu", hub: "Kota Kinabalu Hub", state: "Sabah", languages: ["BM", "EN"], slug: "kota-kinabalu", stateSlug: "sabah" },
+  { name: "Penampang", hub: "Kota Kinabalu Hub", state: "Sabah", languages: ["BM"], slug: "penampang", stateSlug: "sabah" },
   { name: "Likas", hub: "Kota Kinabalu Hub", state: "Sabah", languages: ["BM", "EN"], slug: "likas", stateSlug: "sabah" },
   { name: "Inanam", hub: "Kota Kinabalu Hub", state: "Sabah", languages: ["BM"], slug: "inanam", stateSlug: "sabah" },
-  { name: "Penampang", hub: "Kota Kinabalu Hub", state: "Sabah", languages: ["BM"], slug: "penampang", stateSlug: "sabah" },
-  { name: "Putatan", hub: "Kota Kinabalu Hub", state: "Sabah", languages: ["BM"], slug: "putatan", stateSlug: "sabah" },
+  { name: "Tuaran", hub: "Kota Kinabalu Hub", state: "Sabah", languages: ["BM"], slug: "tuaran", stateSlug: "sabah" },
+  
+  // Sandakan Hub
+  { name: "Sandakan", hub: "Sandakan Hub", state: "Sabah", languages: ["BM"], slug: "sandakan", stateSlug: "sabah" },
+  { name: "Batu Sapi", hub: "Sandakan Hub", state: "Sabah", languages: ["BM"], slug: "batu-sapi", stateSlug: "sabah" },
   
   // Melaka Hub
-  { name: "Melaka City", hub: "Melaka Hub", state: "Melaka", languages: ["BM", "EN", "CN"], slug: "melaka-city", stateSlug: "melaka" },
+  { name: "Melaka", hub: "Melaka Hub", state: "Melaka", languages: ["BM", "EN"], slug: "melaka", stateSlug: "melaka" },
   { name: "Ayer Keroh", hub: "Melaka Hub", state: "Melaka", languages: ["BM", "EN"], slug: "ayer-keroh", stateSlug: "melaka" },
-  { name: "Klebang", hub: "Melaka Hub", state: "Melaka", languages: ["CN", "BM"], slug: "klebang", stateSlug: "melaka" },
-  { name: "Bukit Beruang", hub: "Melaka Hub", state: "Melaka", languages: ["BM"], slug: "bukit-beruang", stateSlug: "melaka" },
+  { name: "Batu Berendam", hub: "Melaka Hub", state: "Melaka", languages: ["BM"], slug: "batu-berendam", stateSlug: "melaka" },
+  { name: "Bukit Baru", hub: "Melaka Hub", state: "Melaka", languages: ["BM"], slug: "bukit-baru", stateSlug: "melaka" },
+  { name: "Alor Gajah", hub: "Melaka Hub", state: "Melaka", languages: ["BM"], slug: "alor-gajah", stateSlug: "melaka" },
+  
+  // Seremban Hub
+  { name: "Seremban", hub: "Seremban Hub", state: "Negeri Sembilan", languages: ["BM", "EN"], slug: "seremban", stateSlug: "negeri-sembilan" },
+  { name: "Nilai", hub: "Seremban Hub", state: "Negeri Sembilan", languages: ["BM", "EN"], slug: "nilai", stateSlug: "negeri-sembilan" },
+  { name: "Port Dickson", hub: "Seremban Hub", state: "Negeri Sembilan", languages: ["EN", "BM"], slug: "port-dickson", stateSlug: "negeri-sembilan" },
+  { name: "Mantin", hub: "Seremban Hub", state: "Negeri Sembilan", languages: ["BM"], slug: "mantin", stateSlug: "negeri-sembilan" },
   
   // Alor Setar Hub
-  { name: "Alor Setar", hub: "Alor Setar Hub", state: "Kedah", languages: ["BM", "EN"], slug: "alor-setar", stateSlug: "kedah" },
+  { name: "Alor Setar", hub: "Alor Setar Hub", state: "Kedah", languages: ["BM"], slug: "alor-setar", stateSlug: "kedah" },
   { name: "Jitra", hub: "Alor Setar Hub", state: "Kedah", languages: ["BM"], slug: "jitra", stateSlug: "kedah" },
-  { name: "Sungai Petani", hub: "Alor Setar Hub", state: "Kedah", languages: ["BM", "CN"], slug: "sungai-petani", stateSlug: "kedah" },
-  { name: "Kulim", hub: "Alor Setar Hub", state: "Kedah", languages: ["BM", "CN"], slug: "kulim", stateSlug: "kedah" },
+  
+  // Sungai Petani Hub
+  { name: "Sungai Petani", hub: "Sungai Petani Hub", state: "Kedah", languages: ["BM", "CN"], slug: "sungai-petani", stateSlug: "kedah" },
+  { name: "Kuala Ketil", hub: "Sungai Petani Hub", state: "Kedah", languages: ["BM"], slug: "kuala-ketil", stateSlug: "kedah" },
+  
+  // Kangar Hub
+  { name: "Kangar", hub: "Kangar Hub", state: "Perlis", languages: ["BM"], slug: "kangar", stateSlug: "perlis" },
+  { name: "Arau", hub: "Kangar Hub", state: "Perlis", languages: ["BM"], slug: "arau", stateSlug: "perlis" },
   
   // Kuantan Hub
   { name: "Kuantan", hub: "Kuantan Hub", state: "Pahang", languages: ["BM", "EN"], slug: "kuantan", stateSlug: "pahang" },
-  { name: "Indera Mahkota", hub: "Kuantan Hub", state: "Pahang", languages: ["BM"], slug: "indera-mahkota", stateSlug: "pahang" },
-  { name: "Gebeng", hub: "Kuantan Hub", state: "Pahang", languages: ["BM"], slug: "gebeng", stateSlug: "pahang" },
+  { name: "Indera Mahkota", hub: "Kuantan Hub", state: "Pahang", languages: ["BM", "EN"], slug: "indera-mahkota", stateSlug: "pahang" },
+  { name: "Gambang", hub: "Kuantan Hub", state: "Pahang", languages: ["BM"], slug: "gambang", stateSlug: "pahang" },
+  { name: "Beserah", hub: "Kuantan Hub", state: "Pahang", languages: ["BM"], slug: "beserah", stateSlug: "pahang" },
   
   // Kota Bharu Hub
   { name: "Kota Bharu", hub: "Kota Bharu Hub", state: "Kelantan", languages: ["BM"], slug: "kota-bharu", stateSlug: "kelantan" },
