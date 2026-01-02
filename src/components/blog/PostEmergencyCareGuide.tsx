@@ -21,6 +21,37 @@ export const PostEmergencyCareGuide = () => {
     "dateModified": "2025-01-01"
   };
 
+  const faqStructuredData = {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "My dog seems normal 3 days after surgery. Can I let him play?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "NO. 'Seems normal' doesn't mean healed. Internal stitches take 10-14 days. Premature activity causes incisions to open. Follow restrictions for FULL prescribed duration."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Can I give half the pain medication dose if my pet seems sleepy?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "No—don't adjust without vet approval. Sleepiness is expected. If excessive, call vet. Under-dosing causes unnecessary suffering."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "My cat won't eat after 2 days home. Should I worry?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Yes—call vet immediately. Cats that don't eat for 24-48 hours risk hepatic lipidosis (fatty liver disease). Don't wait."
+        }
+      }
+    ]
+  };
+
   const tocItems = [
     { id: "discharge", title: "Understanding Discharge Instructions" },
     { id: "medications", title: "Medication Management" },
@@ -55,6 +86,7 @@ export const PostEmergencyCareGuide = () => {
       heroImageAlt="Happy dog recovering at home with cone collar and bandaged paw"
       heroImageCaption="Proper at-home care is crucial for complete recovery after emergency treatment"
       structuredData={structuredData}
+      faqStructuredData={faqStructuredData}
     >
       <TLDRBox items={[
         "Medication compliance is critical: Stopping antibiotics early = infection returns",
