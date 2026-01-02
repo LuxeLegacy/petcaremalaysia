@@ -105,27 +105,6 @@ export const DatabaseQASection: React.FC<DatabaseQASectionProps> = ({ city }) =>
     setVisibleCount(ITEMS_PER_PAGE);
   };
 
-  // Generate FAQPage schema for LLMs
-  const faqSchema = useMemo(() => {
-    if (filteredQAs.length === 0) return null;
-
-    return {
-      '@context': 'https://schema.org',
-      '@type': 'FAQPage',
-      mainEntity: filteredQAs.slice(0, 50).map(qa => ({
-        '@type': 'Question',
-        name: qa.question,
-        acceptedAnswer: {
-          '@type': 'Answer',
-          text: qa.answer,
-        },
-      })),
-      speakable: {
-        '@type': 'SpeakableSpecification',
-        cssSelector: ['.qa-question', '.qa-answer'],
-      },
-    };
-  }, [filteredQAs]);
 
   if (isLoading) {
     return (
@@ -149,14 +128,6 @@ export const DatabaseQASection: React.FC<DatabaseQASectionProps> = ({ city }) =>
 
   return (
     <section className="py-16 bg-muted/30" id="pet-qa">
-      {/* FAQPage Schema for LLMs */}
-      {faqSchema && (
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
-        />
-      )}
-
       <div className="container">
         <div className="flex items-center gap-3 mb-6">
           <div className="p-2 bg-primary/10 rounded-lg">

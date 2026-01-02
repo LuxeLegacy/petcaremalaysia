@@ -120,29 +120,8 @@ export const YourQuestionsAnsweredSection: React.FC<YourQuestionsAnsweredSection
     maintenance: { en: 'Care & Prevention', ms: 'Penjagaan', zh: '护理预防' }
   };
 
-  // Generate FAQ Schema for SEO - with city-specific content
-  const faqSchema = {
-    "@context": "https://schema.org",
-    "@type": "FAQPage",
-    "mainEntity": paginatedItems.slice(0, 10).map(item => ({
-      "@type": "Question",
-      "name": replacePlaceholders(item.question[language], city),
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": replacePlaceholders(item.fullAnswer[language], city)
-      }
-    }))
-  };
-
   return (
-    <>
-      <Helmet>
-        <script type="application/ld+json">
-          {JSON.stringify(faqSchema)}
-        </script>
-      </Helmet>
-
-      <section className="py-12 md:py-16 bg-gradient-to-b from-muted/20 to-muted/40" id="your-questions-answered">
+    <section className="py-12 md:py-16 bg-gradient-to-b from-muted/20 to-muted/40" id="your-questions-answered">
         <div className="container px-4 md:px-6">
           {/* Section Header */}
           <div className="text-center mb-8 md:mb-10">
@@ -314,7 +293,6 @@ export const YourQuestionsAnsweredSection: React.FC<YourQuestionsAnsweredSection
           )}
         </div>
       </section>
-    </>
   );
 };
 

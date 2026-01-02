@@ -125,29 +125,9 @@ export const CityPAASection = ({ city }: CityPAASectionProps) => {
     setExpandedIndex(expandedIndex === index ? null : index);
   };
 
-  // Generate FAQ schema for SEO
-  const faqSchema = {
-    "@context": "https://schema.org",
-    "@type": "FAQPage",
-    "mainEntity": questions.map(q => ({
-      "@type": "Question",
-      "name": q.question,
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": q.answer
-      }
-    }))
-  };
-
   return (
     <section className="py-16 bg-muted/30">
       <div className="container">
-        {/* Schema markup */}
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
-        />
-        
         {/* Header */}
         <div className="flex items-center gap-3 mb-2">
           <Search className="h-5 w-5 text-muted-foreground" />
