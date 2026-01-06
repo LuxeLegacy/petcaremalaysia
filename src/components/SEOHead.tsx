@@ -31,58 +31,6 @@ export const SEOHead: React.FC<SEOHeadProps> = ({
     zh: `${baseUrl}/zh`,
   };
 
-  const structuredData = city ? {
-    "@context": "https://schema.org",
-    "@type": "LocalBusiness",
-    "@id": canonicalUrl,
-    "name": `Pet Care ${city.name}`,
-    "description": description,
-    "url": canonicalUrl,
-    "address": {
-      "@type": "PostalAddress",
-      "addressLocality": city.name,
-      "addressRegion": city.state,
-      "addressCountry": "MY"
-    },
-    "geo": {
-      "@type": "GeoCoordinates",
-      "latitude": "3.1390",
-      "longitude": "101.6869"
-    },
-    "openingHoursSpecification": {
-      "@type": "OpeningHoursSpecification",
-      "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"],
-      "opens": "00:00",
-      "closes": "23:59"
-    },
-    "priceRange": "$-$$"
-  } : null;
-
-  const breadcrumbData = city ? {
-    "@context": "https://schema.org",
-    "@type": "BreadcrumbList",
-    "itemListElement": [
-      {
-        "@type": "ListItem",
-        "position": 1,
-        "name": "Home",
-        "item": baseUrl
-      },
-      {
-        "@type": "ListItem",
-        "position": 2,
-        "name": city.state,
-        "item": `${baseUrl}/${city.stateSlug}`
-      },
-      {
-        "@type": "ListItem",
-        "position": 3,
-        "name": city.name,
-        "item": canonicalUrl
-      }
-    ]
-  } : null;
-
   return (
     <Helmet>
       <html lang={language} />
@@ -113,17 +61,6 @@ export const SEOHead: React.FC<SEOHeadProps> = ({
       {/* Last modified */}
       <meta name="last-modified" content={lastUpdated} />
       
-      {/* Structured Data */}
-      {structuredData && (
-        <script type="application/ld+json">
-          {JSON.stringify(structuredData)}
-        </script>
-      )}
-      {breadcrumbData && (
-        <script type="application/ld+json">
-          {JSON.stringify(breadcrumbData)}
-        </script>
-      )}
     </Helmet>
   );
 };
