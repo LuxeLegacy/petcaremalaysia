@@ -252,25 +252,6 @@ export const AskPetQuestion: React.FC<AskPetQuestionProps> = ({ city }) => {
             </div>
           </div>
         )}
-
-        {/* Schema Markup for SEO */}
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{
-            __html: JSON.stringify({
-              "@context": "https://schema.org",
-              "@type": "FAQPage",
-              "mainEntity": suggestedQuestions.map(q => ({
-                "@type": "Question",
-                "name": q,
-                "acceptedAnswer": {
-                  "@type": "Answer",
-                  "text": `Ask our AI assistant for personalized pet care advice in ${city.name}.`
-                }
-              }))
-            })
-          }}
-        />
       </div>
     </section>
   );
