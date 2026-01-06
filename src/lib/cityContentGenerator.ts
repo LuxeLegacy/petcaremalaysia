@@ -452,35 +452,95 @@ interface HeadlineContent {
   subheadline: string;
 }
 
+// Generate a hash-based index from city slug for consistent variation
+const getCityHashIndex = (slug: string, modulo: number): number => {
+  const hash = slug.split('').reduce((acc, char) => acc + char.charCodeAt(0), 0);
+  return hash % modulo;
+};
+
 export const generateCityHeadlines = (city: CityData, language: Language): HeadlineContent => {
   const metadata = getCityMetadata(city.slug);
-  // Use city-specific pet risks for unique content
   const topRisks = metadata.petRisks.slice(0, 3);
   const primaryRisk = metadata.petRisks[0];
   const landmark = metadata.landmarks[0];
   const population = (metadata.population / 1000).toFixed(0);
   
-  // Create truly unique subheadlines using city-specific data
-  const headlines: Record<Language, HeadlineContent> = {
-    en: {
-      headline: metadata.nearestMajorCity 
-        ? `${city.name} Pet Emergencies: Help Is Just ${metadata.distanceToHub} Away`
-        : `Your Pet Could Need a Vet Tonight in ${city.name}...`,
-      subheadline: `${topRisks.map(r => r.charAt(0).toUpperCase() + r.slice(1)).join(', ')} — with ${population}k residents near ${landmark}, ${primaryRisk} is a daily reality. Be ready.`
-    },
-    ms: {
-      headline: metadata.nearestMajorCity 
-        ? `Kecemasan Haiwan ${city.name}: Bantuan Hanya ${metadata.distanceToHub} Sahaja`
-        : `Haiwan Anda Mungkin Perlukan Doktor Haiwan Malam Ini di ${city.name}...`,
-      subheadline: `${topRisks.map(r => r.charAt(0).toUpperCase() + r.slice(1)).join(', ')} — dengan ${population}k penduduk berhampiran ${landmark}, ${primaryRisk} adalah realiti harian. Bersedia.`
-    },
-    zh: {
-      headline: metadata.nearestMajorCity 
-        ? `${city.name}宠物紧急情况：帮助仅需${metadata.distanceToHub}`
-        : `您的宠物今晚可能需要${city.name}的兽医...`,
-      subheadline: `${topRisks.join('、')} — ${population}k居民在${landmark}附近，${primaryRisk}是日常现实。做好准备。`
-    }
+  // 8 headline variations for hub cities or cities without nearestMajorCity
+  const headlineVariant = getCityHashIndex(city.slug, 8);
+  
+  const hubHeadlinePatterns: Record<Language, string[]> = {
+    en: [
+      `Emergency Vet Care in ${city.name}: 24/7 When Your Pet Needs Help`,
+      `${city.name} Pet Owners: Find Trusted Veterinary Care Near You`,
+      `Quick Vet Access for ${city.name} Pets — Day or Night`,
+      `${city.name} Pet Emergency? Help Is Closer Than You Think`,
+      `Protect Your Pet in ${city.name}: Expert Vet Care Available Now`,
+      `${city.name}'s Complete Guide to Pet Emergency Care`,
+      `When Seconds Count: ${city.name} Pet Emergency Resources`,
+      `${city.name} Pet Care Hub: Vets, Costs & Emergency Services`
+    ],
+    ms: [
+      `Penjagaan Kecemasan Veterinar di ${city.name}: 24/7`,
+      `Pemilik Haiwan ${city.name}: Cari Penjagaan Veterinar Dipercayai`,
+      `Akses Pantas ke Veterinar untuk Haiwan ${city.name}`,
+      `Kecemasan Haiwan ${city.name}? Bantuan Lebih Dekat`,
+      `Lindungi Haiwan Anda di ${city.name}: Penjagaan Pakar`,
+      `Panduan Lengkap Kecemasan Haiwan ${city.name}`,
+      `Bila Saat Mendesak: Sumber Kecemasan Haiwan ${city.name}`,
+      `Pusat Penjagaan Haiwan ${city.name}: Veterinar & Perkhidmatan`
+    ],
+    zh: [
+      `${city.name}紧急兽医护理：全天候服务`,
+      `${city.name}宠物主人：寻找可信赖的兽医护理`,
+      `${city.name}宠物快速兽医服务`,
+      `${city.name}宠物紧急情况？帮助就在附近`,
+      `保护您在${city.name}的宠物：专业护理`,
+      `${city.name}宠物紧急护理完整指南`,
+      `争分夺秒：${city.name}宠物紧急资源`,
+      `${city.name}宠物护理中心：兽医与服务`
+    ]
   };
   
-  return headlines[language] || headlines['en'];
+  // Satellite city headlines emphasize proximity to hub
+  const satelliteHeadlinePatterns: Record<Language, string[]> = {
+    en: [
+      `${city.name} Pet Emergencies: Help Is Just ${metadata.distanceToHub} Away`,
+      `${city.name} Pet Care: ${metadata.distanceToHub} to Emergency Vet in ${metadata.nearestMajorCity}`,
+      `Pet Emergency in ${city.name}? ${metadata.nearestMajorCity} Vets Are ${metadata.distanceToHub} Away`,
+      `${city.name} Pet Owners: 24/7 Care Just ${metadata.distanceToHub} to ${metadata.nearestMajorCity}`
+    ],
+    ms: [
+      `Kecemasan Haiwan ${city.name}: Bantuan Hanya ${metadata.distanceToHub} Sahaja`,
+      `Penjagaan Haiwan ${city.name}: ${metadata.distanceToHub} ke Veterinar Kecemasan`,
+      `Kecemasan Haiwan di ${city.name}? Veterinar ${metadata.nearestMajorCity} ${metadata.distanceToHub} Sahaja`,
+      `Pemilik Haiwan ${city.name}: Penjagaan 24/7 Hanya ${metadata.distanceToHub}`
+    ],
+    zh: [
+      `${city.name}宠物紧急情况：帮助仅需${metadata.distanceToHub}`,
+      `${city.name}宠物护理：${metadata.distanceToHub}到${metadata.nearestMajorCity}急诊`,
+      `${city.name}宠物紧急情况？${metadata.nearestMajorCity}兽医仅需${metadata.distanceToHub}`,
+      `${city.name}宠物主人：24/7护理仅需${metadata.distanceToHub}`
+    ]
+  };
+  
+  // Choose headline based on whether city is satellite or hub
+  let headline: string;
+  if (metadata.nearestMajorCity && metadata.distanceToHub) {
+    const satelliteVariant = getCityHashIndex(city.slug, 4);
+    headline = satelliteHeadlinePatterns[language]?.[satelliteVariant] || satelliteHeadlinePatterns['en'][satelliteVariant];
+  } else {
+    headline = hubHeadlinePatterns[language]?.[headlineVariant] || hubHeadlinePatterns['en'][headlineVariant];
+  }
+  
+  // Create unique subheadlines using city-specific data
+  const subheadlines: Record<Language, string> = {
+    en: `${topRisks.map(r => r.charAt(0).toUpperCase() + r.slice(1)).join(', ')} — with ${population}k residents near ${landmark}, ${primaryRisk} is a daily reality. Be ready.`,
+    ms: `${topRisks.map(r => r.charAt(0).toUpperCase() + r.slice(1)).join(', ')} — dengan ${population}k penduduk berhampiran ${landmark}, ${primaryRisk} adalah realiti harian. Bersedia.`,
+    zh: `${topRisks.join('、')} — ${population}k居民在${landmark}附近，${primaryRisk}是日常现实。做好准备。`
+  };
+  
+  return {
+    headline,
+    subheadline: subheadlines[language] || subheadlines['en']
+  };
 };
