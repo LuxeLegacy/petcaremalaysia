@@ -6,7 +6,6 @@ import { getDVSOffice, getLocalCouncil } from '@/lib/cityContent';
 import { Input } from '@/components/ui/input';
 import { Button } from '@/components/ui/button';
 import { Search, ChevronDown, ChevronUp, ChevronLeft, ChevronRight, Cat, Dog, AlertTriangle, Heart } from 'lucide-react';
-import { Helmet } from 'react-helmet-async';
 
 interface YourQuestionsAnsweredSectionProps {
   city: CityData;
@@ -385,8 +384,6 @@ const QACard: React.FC<QACardProps> = ({ item, city, language, isExpanded, onTog
   return (
     <article 
       className={`bg-card rounded-xl p-4 md:p-5 shadow-sm border-l-4 transition-all duration-300 hover:shadow-md ${styles.border} ${styles.bg}`}
-      itemScope
-      itemType="https://schema.org/Question"
       style={{ animationDelay: `${index * 50}ms` }}
     >
       {/* Category Badge */}
@@ -398,20 +395,16 @@ const QACard: React.FC<QACardProps> = ({ item, city, language, isExpanded, onTog
       </div>
 
       {/* Question */}
-      <h3 
-        className="font-semibold text-base md:text-lg mb-3 leading-snug text-foreground"
-        itemProp="name"
-      >
+      <h3 className="font-semibold text-base md:text-lg mb-3 leading-snug text-foreground">
         {question}
       </h3>
 
       {/* Answer */}
-      <div itemScope itemType="https://schema.org/Answer" itemProp="acceptedAnswer">
+      <div>
         <p 
           className={`text-muted-foreground text-sm leading-relaxed transition-all duration-300 ${
             isExpanded ? 'line-clamp-none' : 'line-clamp-3'
           }`}
-          itemProp="text"
         >
           {isExpanded ? fullAnswer : shortAnswer}
         </p>
