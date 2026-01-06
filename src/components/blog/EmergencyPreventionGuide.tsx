@@ -21,6 +21,37 @@ export const EmergencyPreventionGuide = () => {
     "dateModified": "2025-01-01"
   };
 
+  const faqStructuredData = {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Isn't prevention expensive? I can't afford all these measures.",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Start with high-impact, low-cost prevention: 1) Walk only during cool hours (free), 2) Remove toxic foods/plants (RM 50), 3) Secure gates (RM 200-500), 4) Supervise outdoor time (free). One prevented emergency (RM 2,000-5,000) pays for ALL prevention measures."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "My pet has never had an emergency. Do I really need to prevention-proof?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Yes. 'It's never happened' doesn't mean it won't. 70% of emergencies are first-time incidents. Prevention is implemented BEFORE you need it."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Are window screens really necessary for cats? Mine has never fallen.",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "High-rise syndrome typically happens to cats with NO prior history. Cats miscalculate jumps after birds/insects. Window screens (RM 300-800 one-time) = life-saving prevention."
+        }
+      }
+    ]
+  };
+
   const tocItems = [
     { id: "climate", title: "1. Climate Management (Heatstroke)" },
     { id: "poison-proof", title: "2. Poison-Proof Your Home" },
@@ -53,6 +84,7 @@ export const EmergencyPreventionGuide = () => {
       heroImageAlt="Happy healthy dog and cat in safe pet-proofed Malaysian home"
       heroImageCaption="60-70% of pet emergencies are preventable with proper precautions"
       structuredData={structuredData}
+      faqStructuredData={faqStructuredData}
     >
       <TLDRBox items={[
         "60-70% of emergencies are preventable with proper precautions",
