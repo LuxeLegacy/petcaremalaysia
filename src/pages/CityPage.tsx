@@ -50,8 +50,7 @@ const CityPage = () => {
       <SEOHead
         title={title}
         description={description}
-        canonicalUrl={`https://petcaremalaysia.com/${city.stateSlug}/${city.slug}`}
-        city={city}
+        path={`/${city.stateSlug}/${city.slug}`}
         language={language}
       />
       

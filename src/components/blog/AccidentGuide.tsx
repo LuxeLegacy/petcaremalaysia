@@ -106,7 +106,7 @@ export const AccidentGuide = () => {
     <ArticleLayout
       metaTitle="Pet Accident Protocol Malaysia: First Aid, Vet Care & Transport"
       metaDescription="Complete guide for pet accidents in Malaysia: road traffic, falls, dog fights, trauma. Learn emergency first aid, safe transport, when to rush to vet. Step-by-step protocol."
-      canonicalUrl={`https://petcaremalaysia.com${language !== 'en' ? `/${language}` : ''}/blog/pet-accident-emergency-malaysia`}
+      path="/blog/pet-accident-emergency-malaysia"
       language={language}
       category="Emergency"
       categoryColor="destructive"

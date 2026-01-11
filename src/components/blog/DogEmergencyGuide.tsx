@@ -93,7 +93,7 @@ export const DogEmergencyGuide = () => {
     <ArticleLayout
       metaTitle="Complete Dog Emergency Guide Malaysia 2025 | PetCare Malaysia"
       metaDescription="Essential dog emergency guide for Malaysian owners. Recognize heatstroke, bloat, poisoning, and trauma. Find 24/7 vets, learn first aid, save your dog's life."
-      canonicalUrl={`https://petcaremalaysia.com${language !== 'en' ? `/${language}` : ''}/blog/dog-emergency-guide-malaysia`}
+      path="/blog/dog-emergency-guide-malaysia"
       language={language}
       category="Emergency Guide"
       categoryColor="destructive"

@@ -113,7 +113,7 @@ export const HeatstrokeGuide = () => {
     <ArticleLayout
       metaTitle="Heatstroke in Pets Malaysia: Symptoms, Treatment & Prevention"
       metaDescription="Protect your pet from Malaysia's deadly heat. Recognize heatstroke symptoms in dogs & cats, perform emergency cooling, find 24/7 vets. Complete tropical climate guide."
-      canonicalUrl={`https://petcaremalaysia.com${language !== 'en' ? `/${language}` : ''}/blog/pet-heatstroke-malaysia`}
+      path="/blog/pet-heatstroke-malaysia"
       language={language}
       category="Emergency"
       categoryColor="destructive"

@@ -112,7 +112,7 @@ export const TreatmentCostsGuide = () => {
     <ArticleLayout
       metaTitle="Pet Emergency Vet Costs Malaysia 2025 | Complete Price Guide & Payment Options"
       metaDescription="Detailed breakdown of emergency vet costs in Malaysia. Consultation fees, surgery prices, hospitalization costs. Payment plans & insurance options. Budget for pet emergencies."
-      canonicalUrl={`https://petcaremalaysia.com${language !== 'en' ? `/${language}` : ''}/blog/pet-emergency-costs-malaysia`}
+      path="/blog/pet-emergency-costs-malaysia"
       language={language}
       category="Costs"
       categoryColor="secondary"

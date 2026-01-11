@@ -106,7 +106,7 @@ export const InsuranceGuide = () => {
     <ArticleLayout
       metaTitle="Pet Insurance Malaysia 2025: Best Coverage for Emergencies"
       metaDescription="Complete pet insurance guide for Malaysia. Compare plans, understand emergency coverage, costs RM 30-150/month. Accident, illness, surgery protection. Save thousands on vet bills."
-      canonicalUrl={`https://petcaremalaysia.com${language !== 'en' ? `/${language}` : ''}/blog/pet-insurance-malaysia`}
+      path="/blog/pet-insurance-malaysia"
       language={language}
       category="Insurance"
       categoryColor="primary"

@@ -224,7 +224,7 @@ export const VetDirectoryGuide = () => {
     <ArticleLayout
       metaTitle="24-Hour Veterinary Hospital Malaysia: Complete Emergency Vet Directory 2025"
       metaDescription="Find 24-hour emergency vet care in Malaysia. Comprehensive directory of 24/7 veterinary hospitals in KL, Selangor, Penang, JB with contact numbers, services & costs."
-      canonicalUrl={`https://petcaremalaysia.com${language !== 'en' ? `/${language}` : ''}/blog/24-hour-vet-directory-malaysia`}
+      path="/blog/24-hour-vet-directory-malaysia"
       language={language}
       category="Directory"
       categoryColor="secondary"

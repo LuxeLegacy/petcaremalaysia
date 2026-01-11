@@ -104,7 +104,7 @@ export const PoisoningTreatmentGuide = () => {
     <ArticleLayout
       metaTitle="Pet Poisoning Treatment Malaysia: Antidotes, First Aid & Vet Care"
       metaDescription="Complete pet poisoning treatment guide for Malaysia. Learn antidotes for rat poison, chocolate, human meds. Emergency decontamination, activated charcoal, vet protocols."
-      canonicalUrl={`https://petcaremalaysia.com${language !== 'en' ? `/${language}` : ''}/blog/pet-poisoning-treatment-malaysia`}
+      path="/blog/pet-poisoning-treatment-malaysia"
       language={language}
       category="Treatment"
       categoryColor="destructive"

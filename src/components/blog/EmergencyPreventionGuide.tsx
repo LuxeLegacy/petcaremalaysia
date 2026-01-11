@@ -72,7 +72,7 @@ export const EmergencyPreventionGuide = () => {
     <ArticleLayout
       metaTitle="Pet Emergency Prevention Malaysia: 15 Tips to Avoid Vet Emergencies"
       metaDescription="Prevent pet emergencies in Malaysia. 15 proven strategies: pet-proof home, prevent heatstroke, avoid poisons, secure fencing. Save money & protect your pet."
-      canonicalUrl={`https://petcaremalaysia.com${language !== 'en' ? `/${language}` : ''}/blog/pet-emergency-prevention-malaysia`}
+      path="/blog/pet-emergency-prevention-malaysia"
       language={language}
       category="Prevention"
       categoryColor="primary"

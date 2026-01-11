@@ -123,7 +123,7 @@ export const EmergencySymptomsGuide = () => {
     <ArticleLayout
       metaTitle="Pet Emergency Symptoms Every Malaysian Owner Must Know | 2025 Guide"
       metaDescription="Learn the 9 critical pet emergency symptoms that require immediate vet attention in Malaysia. Know when to rush to 24-hour emergency care. Expert-verified guide."
-      canonicalUrl={`https://petcaremalaysia.com${language !== 'en' ? `/${language}` : ''}/blog/pet-emergency-symptoms-malaysia`}
+      path="/blog/pet-emergency-symptoms-malaysia"
       language={language}
       category="Emergency"
       categoryColor="destructive"

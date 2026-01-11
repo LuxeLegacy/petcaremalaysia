@@ -2,7 +2,7 @@ import { Link } from 'react-router-dom';
 import { useLanguage } from '@/contexts/LanguageContext';
 import { Header } from '@/components/Header';
 import { Footer } from '@/components/Footer';
-import { Helmet } from 'react-helmet-async';
+import { SEOHead } from '@/components/SEOHead';
 import { MessageCircleQuestion, MapPin, ChevronRight } from 'lucide-react';
 import { CostCTA } from '@/components/common/CostCTA';
 
@@ -27,12 +27,12 @@ const QAPage = () => {
 
   return (
     <>
-      <Helmet>
-        <html lang={language} />
-        <title>Pet Emergency Q&A - Malaysia | PetCareMY</title>
-        <meta name="description" content="Get instant answers to 150+ pet emergency and care questions across Malaysia. Find expert advice for Selangor, Kuala Lumpur, Penang, Johor and more." />
-        <link rel="canonical" href="https://petcaremalaysia.com/qa" />
-      </Helmet>
+      <SEOHead
+        title="Pet Emergency Q&A - Malaysia | PetCareMY"
+        description="Get instant answers to 150+ pet emergency and care questions across Malaysia. Find expert advice for Selangor, Kuala Lumpur, Penang, Johor and more."
+        path="/qa"
+        language={language}
+      />
       <Header />
       
       <main className="min-h-screen bg-background">

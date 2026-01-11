@@ -102,7 +102,7 @@ export const CatEmergencyGuide = () => {
     <ArticleLayout
       metaTitle="Complete Cat Emergency Guide Malaysia 2025 | PetCare Malaysia"
       metaDescription="Essential cat emergency guide for Malaysian owners. Recognize urinary blockage, poisoning, breathing issues, trauma. Find 24/7 vets, learn first aid, save your cat's life."
-      canonicalUrl={`https://petcaremalaysia.com${language !== 'en' ? `/${language}` : ''}/blog/cat-emergency-guide-malaysia`}
+      path="/blog/cat-emergency-guide-malaysia"
       language={language}
       category="Emergency Guide"
       categoryColor="destructive"

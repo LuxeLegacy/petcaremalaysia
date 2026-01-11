@@ -42,7 +42,7 @@ const LocationsPage = () => {
       <SEOHead
         title="Pet Care Locations in Malaysia — All Cities & Regions | PetCare Malaysia"
         description="Find pet care services in 100+ locations across Malaysia. Browse by state to find vets, grooming, and emergency services near you."
-        canonicalUrl="https://petcaremalaysia.com/locations"
+        path="/locations"
         language={language}
       />
       

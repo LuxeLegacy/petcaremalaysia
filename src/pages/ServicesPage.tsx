@@ -73,7 +73,7 @@ const ServicesPage = () => {
       <SEOHead
         title="Pet Care Services in Malaysia — Vets, Grooming, Emergency & More | PetCare Malaysia"
         description="Explore all pet care services available across Malaysia. From 24/7 emergency vets to grooming, boarding, adoption, and pet insurance."
-        canonicalUrl="https://petcaremalaysia.com/services"
+        path="/services"
         language={language}
       />
       

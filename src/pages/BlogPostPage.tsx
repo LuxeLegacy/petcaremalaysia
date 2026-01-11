@@ -53,7 +53,7 @@ const EmergencyPetCareGuide = () => {
       <SEOHead 
         title={content.metaTitle}
         description={content.metaDescription}
-        canonicalUrl={`https://petcaremalaysia.com${language !== 'en' ? `/${language}` : ''}/blog/emergency-pet-care-guide`}
+        path="/blog/emergency-pet-care-guide"
         language={language}
       />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }} />
@@ -733,7 +733,7 @@ const PetFoodBrandsGuide = () => {
       <SEOHead 
         title={content.metaTitle}
         description={content.metaDescription}
-        canonicalUrl={`https://petcaremalaysia.com${language !== 'en' ? `/${language}` : ''}/blog/pet-nutrition-guide-malaysia`}
+        path="/blog/pet-nutrition-guide-malaysia"
         language={language}
       />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }} />

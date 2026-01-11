@@ -105,7 +105,7 @@ export const ChokingGuide = () => {
     <ArticleLayout
       metaTitle="Pet Choking First Aid Malaysia: Save Your Dog or Cat's Life"
       metaDescription="Complete pet choking emergency guide for Malaysia. Learn Heimlich maneuver for dogs & cats, recognize choking signs, prevent common hazards. Step-by-step first aid."
-      canonicalUrl={`https://petcaremalaysia.com${language !== 'en' ? `/${language}` : ''}/blog/pet-choking-emergency-malaysia`}
+      path="/blog/pet-choking-emergency-malaysia"
       language={language}
       category="Emergency"
       categoryColor="destructive"

@@ -142,7 +142,7 @@ export const FirstAidGuide = () => {
     <ArticleLayout
       metaTitle="Pet Emergency First Aid Guide Malaysia | Life-Saving Techniques 2025"
       metaDescription="Learn essential pet emergency first aid for Malaysian owners. CPR, bleeding control, poisoning, heatstroke treatment. Step-by-step guide with photos. Save your pet's life."
-      canonicalUrl={`https://petcaremalaysia.com${language !== 'en' ? `/${language}` : ''}/blog/pet-emergency-first-aid-guide-malaysia`}
+      path="/blog/pet-emergency-first-aid-guide-malaysia"
       language={language}
       category="First Aid"
       categoryColor="primary"

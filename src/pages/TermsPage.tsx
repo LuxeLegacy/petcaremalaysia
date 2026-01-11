@@ -1,6 +1,6 @@
-import { Helmet } from 'react-helmet-async';
 import { Header } from '@/components/Header';
 import { Footer } from '@/components/Footer';
+import { SEOHead } from '@/components/SEOHead';
 import { useLanguage } from '@/contexts/LanguageContext';
 
 const TermsPage = () => {
@@ -8,11 +8,12 @@ const TermsPage = () => {
 
   return (
     <>
-      <Helmet>
-        <title>Terms and Conditions | PetCare Malaysia</title>
-        <meta name="description" content="Terms and Conditions for using PetCare Malaysia services and website." />
-        <link rel="canonical" href="https://petcaremalaysia.com/terms" />
-      </Helmet>
+      <SEOHead
+        title="Terms and Conditions | PetCare Malaysia"
+        description="Terms and Conditions for using PetCare Malaysia services and website."
+        path="/terms"
+        language={language}
+      />
       
       <Header />
       
