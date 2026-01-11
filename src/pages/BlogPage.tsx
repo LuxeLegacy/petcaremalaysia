@@ -298,7 +298,7 @@ const BlogPage = () => {
       <SEOHead
         title={t.blog?.pageTitle || 'Pet Care Blog | PetCare Malaysia'}
         description={t.blog?.pageDescription || 'Expert pet care tips, guides, and advice for Malaysian pet owners. Learn about pet health, nutrition, grooming, and more.'}
-        canonicalUrl={`https://petcaremalaysia.com${language !== 'en' ? `/${language}` : ''}/blog`}
+        path="/blog"
         language={language}
       />
       <Header />

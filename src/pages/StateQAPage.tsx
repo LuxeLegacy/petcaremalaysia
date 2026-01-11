@@ -2,7 +2,7 @@ import { useParams, Link } from 'react-router-dom';
 import { useLanguage } from '@/contexts/LanguageContext';
 import { Header } from '@/components/Header';
 import { Footer } from '@/components/Footer';
-import { Helmet } from 'react-helmet-async';
+import { SEOHead } from '@/components/SEOHead';
 import { StateQASection } from '@/components/qa/StateQASection';
 import { Button } from '@/components/ui/button';
 import { MessageCircleQuestion, ChevronLeft, MapPin } from 'lucide-react';
@@ -49,12 +49,12 @@ const StateQAPage = () => {
 
   return (
     <>
-      <Helmet>
-        <html lang={language} />
-        <title>{`Pet Emergency Q&A for ${stateConfig.name} | PetCareMY`}</title>
-        <meta name="description" content={`Get instant answers to pet emergency and care questions in ${stateConfig.name}, Malaysia. Expert advice on symptoms, first aid, toxins, and more.`} />
-        <link rel="canonical" href={`https://petcaremalaysia.com/qa/${stateSlug}`} />
-      </Helmet>
+      <SEOHead
+        title={`Pet Emergency Q&A for ${stateConfig.name} | PetCareMY`}
+        description={`Get instant answers to pet emergency and care questions in ${stateConfig.name}, Malaysia. Expert advice on symptoms, first aid, toxins, and more.`}
+        path={`/qa/${stateSlug}`}
+        language={language}
+      />
       <Header />
       
       <main className="min-h-screen bg-background">

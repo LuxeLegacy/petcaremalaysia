@@ -397,7 +397,7 @@ export const PetPoisonsGuide = () => {
     <ArticleLayout
       metaTitle="Common Pet Poisons in Malaysia: Prevention and Emergency Response Guide"
       metaDescription="Learn about the top 10 pet poisons in Malaysia including rat bait, toxic plants, and common household items. Prevention tips and emergency response guide."
-      canonicalUrl={`https://petcaremalaysia.com${language !== 'en' ? `/${language}` : ''}/blog/common-pet-poisons-malaysia`}
+      path="/blog/common-pet-poisons-malaysia"
       language={language}
       category="Safety"
       categoryColor="destructive"

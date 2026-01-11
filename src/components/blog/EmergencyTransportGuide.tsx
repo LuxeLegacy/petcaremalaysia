@@ -104,7 +104,7 @@ export const EmergencyTransportGuide = () => {
     <ArticleLayout
       metaTitle="Emergency Pet Transport Malaysia: Safe Transport to Vet Guide"
       metaDescription="Learn safe emergency pet transport in Malaysia. Handle injured pets, prevent shock, secure in vehicle, minimize stress. Step-by-step guide for dogs & cats."
-      canonicalUrl={`https://petcaremalaysia.com${language !== 'en' ? `/${language}` : ''}/blog/emergency-pet-transport-malaysia`}
+      path="/blog/emergency-pet-transport-malaysia"
       language={language}
       category="First Aid"
       categoryColor="primary"

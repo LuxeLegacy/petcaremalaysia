@@ -28,7 +28,7 @@ const Index = () => {
       <SEOHead
         title="PetCare Malaysia — 24/7 Emergency Vets, Clinics & Pet Services | Find Help Now"
         description="Your pet could die tonight without emergency care. Find verified 24/7 vets in KL, PJ, Shah Alam & 100+ locations. 23,000+ pet owners trust us. Pet insurance from RM25/month."
-        canonicalUrl="https://petcaremalaysia.com"
+        path="/"
         language={language}
       />
       

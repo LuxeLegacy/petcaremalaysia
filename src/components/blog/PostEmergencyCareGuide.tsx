@@ -74,7 +74,7 @@ export const PostEmergencyCareGuide = () => {
     <ArticleLayout
       metaTitle="Post-Emergency Pet Care Malaysia: Recovery, Medications & Follow-Up"
       metaDescription="Complete post-emergency pet care guide for Malaysia. Medication schedules, wound care, activity restriction, warning signs, follow-up visits. Ensure full recovery."
-      canonicalUrl={`https://petcaremalaysia.com${language !== 'en' ? `/${language}` : ''}/blog/post-emergency-pet-care-malaysia`}
+      path="/blog/post-emergency-pet-care-malaysia"
       language={language}
       category="Recovery"
       categoryColor="primary"

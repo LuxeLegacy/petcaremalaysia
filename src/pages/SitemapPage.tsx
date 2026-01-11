@@ -124,7 +124,7 @@ const SitemapPage = () => {
       <SEOHead
         title="XML Sitemap - Pet Care Malaysia"
         description="Browse all pages on Pet Care Malaysia. Find veterinary clinics and pet care services across Malaysian cities."
-        canonicalUrl="https://petcaremalaysia.com/sitemap.xml"
+        path="/sitemap"
         language="en"
       />
       <div className="min-h-screen bg-gradient-to-br from-blue-600 via-purple-600 to-blue-800">

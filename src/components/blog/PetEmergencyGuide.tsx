@@ -183,7 +183,7 @@ export const PetEmergencyGuide = () => {
     <ArticleLayout
       metaTitle="Complete Guide to Pet Emergency Treatment in Malaysia 2025 | PetCare Malaysia"
       metaDescription="Comprehensive guide to pet emergency care in Malaysia. Find 24-hour vets, recognize emergency symptoms, learn first aid, understand costs, and get insurance coverage."
-      canonicalUrl={`https://petcaremalaysia.com${language !== 'en' ? `/${language}` : ''}/blog/pet-emergency-guide-malaysia`}
+      path="/blog/pet-emergency-guide-malaysia"
       language={language}
       category="Emergency Guide"
       categoryColor="destructive"

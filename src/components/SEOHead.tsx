@@ -1,34 +1,39 @@
 import { Helmet } from 'react-helmet-async';
-import { CityData } from '@/lib/cityData';
 import { Language } from '@/lib/translations';
 
 interface SEOHeadProps {
   title: string;
   description: string;
-  canonicalUrl: string;
-  city?: CityData;
+  path: string; // e.g., "/selangor/kajang", "/blog", "/"
   language: Language;
   lastUpdated?: string;
+  noIndex?: boolean;
 }
 
 export const SEOHead: React.FC<SEOHeadProps> = ({
   title,
   description,
-  canonicalUrl,
-  city,
+  path,
   language,
   lastUpdated = new Date().toISOString().split('T')[0],
+  noIndex = false,
 }) => {
   const baseUrl = 'https://petcaremalaysia.com';
   
-  const hreflangUrls = city ? {
-    en: `${baseUrl}/en/${city.stateSlug}/${city.slug}`,
-    ms: `${baseUrl}/ms/${city.stateSlug}/${city.slug}`,
-    zh: `${baseUrl}/zh/${city.stateSlug}/${city.slug}`,
-  } : {
-    en: `${baseUrl}/en`,
-    ms: `${baseUrl}/ms`,
-    zh: `${baseUrl}/zh`,
+  // Normalize path (handle root and trailing slashes)
+  const normalizedPath = path === '/' ? '' : path.replace(/\/$/, '');
+  
+  // Generate canonical URL based on current language
+  // English = no prefix, other languages = with prefix
+  const canonicalUrl = language === 'en' 
+    ? `${baseUrl}${normalizedPath}`
+    : `${baseUrl}/${language}${normalizedPath}`;
+  
+  // hreflang URLs are always consistent
+  const hreflangUrls = {
+    en: `${baseUrl}${normalizedPath}`,
+    ms: `${baseUrl}/ms${normalizedPath}`,
+    zh: `${baseUrl}/zh${normalizedPath}`,
   };
 
   return (
@@ -36,7 +41,7 @@ export const SEOHead: React.FC<SEOHeadProps> = ({
       <html lang={language} />
       <title>{title}</title>
       <meta name="description" content={description} />
-      <meta name="robots" content="index, follow" />
+      <meta name="robots" content={noIndex ? "noindex, nofollow" : "index, follow"} />
       <link rel="canonical" href={canonicalUrl} />
       
       {/* Open Graph */}

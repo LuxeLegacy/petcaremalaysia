@@ -1,6 +1,6 @@
-import { Helmet } from 'react-helmet-async';
 import { Header } from '@/components/Header';
 import { Footer } from '@/components/Footer';
+import { SEOHead } from '@/components/SEOHead';
 import { useLanguage } from '@/contexts/LanguageContext';
 
 const DisclaimerPage = () => {
@@ -8,11 +8,12 @@ const DisclaimerPage = () => {
 
   return (
     <>
-      <Helmet>
-        <title>Disclaimer | PetCare Malaysia</title>
-        <meta name="description" content="Disclaimer for PetCare Malaysia - Important information about our website content and services." />
-        <link rel="canonical" href="https://petcaremalaysia.com/disclaimer" />
-      </Helmet>
+      <SEOHead
+        title="Disclaimer | PetCare Malaysia"
+        description="Disclaimer for PetCare Malaysia - Important information about our website content and services."
+        path="/disclaimer"
+        language={language}
+      />
       
       <Header />
       

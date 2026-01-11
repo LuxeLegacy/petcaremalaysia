@@ -11,7 +11,7 @@ interface ArticleLayoutProps {
   children: React.ReactNode;
   metaTitle: string;
   metaDescription: string;
-  canonicalUrl: string;
+  path: string; // e.g., "/blog/my-article-slug"
   language: Language;
   category: string;
   categoryColor?: 'destructive' | 'primary' | 'secondary';
@@ -30,7 +30,7 @@ export const ArticleLayout = ({
   children,
   metaTitle,
   metaDescription,
-  canonicalUrl,
+  path,
   language,
   category,
   categoryColor = 'primary',
@@ -55,7 +55,7 @@ export const ArticleLayout = ({
       <SEOHead
         title={metaTitle}
         description={metaDescription}
-        canonicalUrl={canonicalUrl}
+        path={path}
         language={language}
       />
       {structuredData && (
