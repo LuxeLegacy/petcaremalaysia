@@ -1,11 +1,13 @@
 import { CityData } from '@/lib/cityData';
 import { getCityMetadata, getDVSOffice, getLocalCouncil } from '@/lib/cityContent';
+import { GeneratedFAQ } from '@/lib/cityContentGenerator';
 
 interface CitySchemaMarkupProps {
   city: CityData;
+  faqs: GeneratedFAQ[];
 }
 
-export const CitySchemaMarkup = ({ city }: CitySchemaMarkupProps) => {
+export const CitySchemaMarkup = ({ city, faqs }: CitySchemaMarkupProps) => {
   const metadata = getCityMetadata(city.slug);
   const dvsOffice = getDVSOffice(city.state);
   const council = getLocalCouncil(city.slug, city.state);
@@ -288,99 +290,20 @@ export const CitySchemaMarkup = ({ city }: CitySchemaMarkupProps) => {
     }
   };
 
-  // Consolidated FAQPage schema - combines all Q&A from different sections
-  const topRisks = metadata.petRisks.slice(0, 3);
+  // Consolidated FAQPage schema - uses FAQs passed from parent to match displayed content
+  // Limited to 10 FAQs (Google's recommendation) with unique @id to prevent duplication
   const faqPageSchema = {
     "@context": "https://schema.org",
     "@type": "FAQPage",
-    "mainEntity": [
-      // City-specific PAA questions
-      {
-        "@type": "Question",
-        "name": `How much does a vet cost in ${city.name}?`,
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": `Vet consultations in ${city.name} cost RM${metadata.avgConsultationCost.min}-RM${metadata.avgConsultationCost.max}. Emergency visits are higher at RM${metadata.avgEmergencyVetCost.min}-RM${metadata.avgEmergencyVetCost.max}. ${metadata.vetPriceTier === 'premium' ? 'As a premium area, prices here are above average.' : metadata.vetPriceTier === 'budget' ? 'Prices here are more affordable than city centers.' : 'Prices are comparable to similar areas.'} Pet grooming starts from RM${metadata.avgGroomingCost.min}.`
-        }
-      },
-      {
-        "@type": "Question",
-        "name": `How do I register my dog in ${city.name}?`,
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": `Dog registration in ${city.name} is handled by ${council.name} (${council.shortName}). License fee: ${council.dogLicenseFee} (or ${council.spayedFee} if spayed/neutered). Dogs must also be microchipped (RM50-RM100). Visit ${council.website} or their office with your dog's vaccination records.`
-        }
-      },
-      {
-        "@type": "Question",
-        "name": `What are the pet health risks in ${city.name}?`,
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": `Pet owners in ${city.name} should watch for: ${topRisks.join(', ')}. The ${metadata.areaType} environment also sees humidity-related skin issues and heatstroke risks. Regular vet check-ups every 6 months are recommended.`
-        }
-      },
-      {
-        "@type": "Question",
-        "name": `Where is the DVS office near ${city.name}?`,
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": `The nearest Department of Veterinary Services office for ${city.name} is ${dvsOffice.name} at ${dvsOffice.address}. Contact: ${dvsOffice.phone} or ${dvsOffice.email}. They handle pet microchipping, health certificates, and import/export permits.`
-        }
-      },
-      {
-        "@type": "Question",
-        "name": `Is there a 24-hour vet near ${city.name}?`,
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": `${metadata.nearestMajorCity ? `The nearest 24/7 emergency vet is ${metadata.distanceToHub} away in ${metadata.nearestMajorCity}.` : `Yes, ${city.name} has multiple 24/7 emergency veterinary clinics.`} Emergency vet costs in ${city.name} range from RM${metadata.avgEmergencyVetCost.min}-RM${metadata.avgEmergencyVetCost.max}. Save emergency contacts before you need them.`
-        }
-      },
-      {
-        "@type": "Question",
-        "name": `How much is pet grooming in ${city.name}?`,
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": `Pet grooming in ${city.name} costs RM${metadata.avgGroomingCost.min}-RM${metadata.avgGroomingCost.max} depending on pet size and services. Basic bath starts at RM${metadata.avgGroomingCost.min}. Full grooming with haircut, nail trim, and ear cleaning costs more.`
-        }
-      },
-      // Common pet emergency questions
-      {
-        "@type": "Question",
-        "name": `What should I do if my pet is having an emergency in ${city.name}?`,
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": `Stay calm and assess your pet's condition. For life-threatening emergencies like difficulty breathing, severe bleeding, or collapse, go to the nearest 24/7 emergency vet immediately. In ${city.name}, emergency vet visits cost RM${metadata.avgEmergencyVetCost.min}-RM${metadata.avgEmergencyVetCost.max}. Call ahead if possible so they can prepare for your arrival.`
-        }
-      },
-      {
-        "@type": "Question",
-        "name": `What are signs my pet needs emergency care?`,
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": `Seek emergency vet care if your pet shows: difficulty breathing, pale/blue gums, inability to stand, severe bleeding, bloated abdomen, seizures, loss of consciousness, suspected poisoning, trauma from accident, or inability to urinate. Don't wait - these conditions can be life-threatening.`
-        }
-      },
-      {
-        "@type": "Question",
-        "name": `My cat is not eating - is this an emergency?`,
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": `A cat not eating for more than 24-48 hours can be serious, especially for overweight cats at risk of hepatic lipidosis (fatty liver disease). If accompanied by lethargy, vomiting, or hiding, see a vet urgently. In ${city.name}, consultations start at RM${metadata.avgConsultationCost.min}.`
-        }
-      },
-      {
-        "@type": "Question",
-        "name": `My dog ate chocolate - what should I do?`,
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": `Chocolate is toxic to dogs. Dark chocolate and baking chocolate are most dangerous. Contact a vet immediately, especially if your dog ate a significant amount. Note what type, how much, and your dog's weight. Symptoms include vomiting, diarrhea, rapid breathing, and seizures. In ${city.name}, emergency visits cost RM${metadata.avgEmergencyVetCost.min}-RM${metadata.avgEmergencyVetCost.max}.`
-        }
+    "@id": `https://petcaremalaysia.com/${city.stateSlug}/${city.slug}#faq`,
+    "mainEntity": faqs.slice(0, 10).map(faq => ({
+      "@type": "Question",
+      "name": faq.question,
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": faq.answer
       }
-    ],
-    "speakable": {
-      "@type": "SpeakableSpecification",
-      "cssSelector": [".qa-question", ".qa-answer"]
-    }
+    }))
   };
 
   return (
