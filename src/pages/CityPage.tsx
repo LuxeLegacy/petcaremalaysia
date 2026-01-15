@@ -6,6 +6,7 @@ import { CityPageContent } from '@/components/city/CityPageContent';
 import { CitySchemaMarkup } from '@/components/city/CitySchemaMarkup';
 import { getCityBySlug } from '@/lib/cityData';
 import { getCityMetadata } from '@/lib/cityContent';
+import { generateCityFAQs } from '@/lib/cityContentGenerator';
 import { useLanguage } from '@/contexts/LanguageContext';
 import { Link } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
@@ -42,6 +43,7 @@ const CityPage = () => {
   }
 
   const metadata = getCityMetadata(city.slug);
+  const faqs = generateCityFAQs(city, language);
   const title = `Pet Care ${city.name} — 24/7 Vets, Grooming, Emergency RM${metadata.avgEmergencyVetCost.min}+ | PetCare Malaysia`;
   const description = `Find vets in ${city.name}, ${city.state}. Emergency care RM${metadata.avgEmergencyVetCost.min}-${metadata.avgEmergencyVetCost.max}, consultations RM${metadata.avgConsultationCost.min}+. ${metadata.petRisks[0]} is common here. ${metadata.nearestMajorCity ? `${metadata.distanceToHub} to 24/7 vet.` : 'Multiple 24/7 clinics available.'}`;
 
@@ -54,8 +56,8 @@ const CityPage = () => {
         language={language}
       />
       
-      {/* JSON-LD Schema Markup */}
-      <CitySchemaMarkup city={city} />
+      {/* JSON-LD Schema Markup - FAQs passed to ensure schema matches displayed content */}
+      <CitySchemaMarkup city={city} faqs={faqs} />
       
       <div className="min-h-screen flex flex-col">
         <Header />
