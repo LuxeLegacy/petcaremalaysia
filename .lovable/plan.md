@@ -1,48 +1,83 @@
 
 
-## Fix "Article Coming Soon" on Blog Pages
+## Diagnosis: Old URL Slugs Causing "Article Coming Soon" Errors
 
 ### Root Cause Identified
 
-The issue is **NOT with city pages or the sitemap slugs**. The problem is that **4 blog articles listed in BlogPage.tsx don't have corresponding content components** in BlogPostPage.tsx:
+The URLs you're visiting use **old/incorrect slugs** that don't match the registered routes in `BlogPostPage.tsx`:
 
-| Missing Article Slug | Category |
-|---------------------|----------|
-| `pet-insurance-comparison` | Insurance |
-| `common-pet-illnesses-malaysia` | Health |
-| `pet-grooming-tips` | Grooming |
-| `vaccinations-schedule-pets` | Health |
+| URL You're Visiting (WRONG) | Correct URL |
+|---|---|
+| `/zh/blog/poisoning-treatment-guide` | `/zh/blog/pet-poisoning-treatment-malaysia` |
+| `/zh/blog/post-emergency-care-guide` | `/zh/blog/post-emergency-pet-care-malaysia` |
+| `/ms/blog/emergency-transport-guide` | `/ms/blog/pet-emergency-transport-malaysia` |
+| `/ms/blog/heatstroke-guide` | `/ms/blog/pet-heatstroke-malaysia` |
+| etc. | |
 
-When users click on these articles (from English, Malay, or Chinese blog listing), they see "Article Coming Soon" because BlogPostPage.tsx falls through to the default fallback message.
+The code and sitemap are now correct - all internal links and the sitemap use proper slugs. However, the old incorrect URLs (possibly from Google's index, browser history, or external links) don't have route handlers and fall through to the "Coming Soon" placeholder.
 
-### Two Options to Fix
+### Solution: Add URL Redirects for Old Slugs
 
-**Option A: Remove Unfinished Articles from Blog Listing (Recommended)**
+I'll add redirect handling in `BlogPostPage.tsx` to automatically redirect old slug patterns to the correct ones. This ensures:
 
-1. **Update `src/pages/BlogPage.tsx`**: Remove the 4 blog posts that don't have content yet
-2. **Update `supabase/functions/sitemap/index.ts`**: Ensure these 4 slugs are NOT in the sitemap (they weren't added in the last update, so this should be fine)
+1. Users with old bookmarks get redirected to working pages
+2. Google's indexed old URLs redirect properly (SEO-friendly 301-style behavior)
+3. All language versions (EN/MS/ZH) work correctly
 
-**Option B: Create Content for Missing Articles**
+### Implementation Plan
 
-1. Create 4 new component files in `src/components/blog/`:
-   - `InsuranceComparisonGuide.tsx` for `pet-insurance-comparison`
-   - `CommonIllnessesGuide.tsx` for `common-pet-illnesses-malaysia`
-   - `GroomingTipsGuide.tsx` for `pet-grooming-tips`
-   - `VaccinationScheduleGuide.tsx` for `vaccinations-schedule-pets`
-2. Add trilingual content (EN/MS/ZH) to each component
-3. Register the new slugs in `BlogPostPage.tsx`
-4. Add the slugs to the sitemap edge function
+**File to modify:** `src/pages/BlogPostPage.tsx`
 
-### Recommended Approach: Option A (Remove Unfinished Articles)
+1. **Create a slug redirect map** at the top of the file:
+```typescript
+const slugRedirects: Record<string, string> = {
+  // Old shortened slugs → Correct full slugs
+  'poisoning-treatment-guide': 'pet-poisoning-treatment-malaysia',
+  'post-emergency-care-guide': 'post-emergency-pet-care-malaysia',
+  'emergency-transport-guide': 'pet-emergency-transport-malaysia',
+  'heatstroke-guide': 'pet-heatstroke-malaysia',
+  'choking-guide': 'pet-choking-emergency-malaysia',
+  'accident-guide': 'pet-accident-emergency-malaysia',
+  'insurance-guide': 'pet-insurance-malaysia',
+  'prevention-guide': 'pet-emergency-prevention-malaysia',
+  'emergency-symptoms-guide': 'pet-emergency-symptoms-malaysia',
+  'vet-directory': '24-hour-vet-directory-malaysia',
+  'first-aid-guide': 'pet-emergency-first-aid-guide-malaysia',
+  'treatment-costs': 'pet-emergency-costs-malaysia',
+  'pet-emergency-guide': 'pet-emergency-guide-malaysia',
+};
+```
 
-This is faster and prevents users from encountering "Coming Soon" pages. The removed articles can be added back when content is ready.
+2. **Add redirect logic** at the start of BlogPostPage component:
+```typescript
+const BlogPostPage = () => {
+  const { slug, lang } = useParams();
+  const navigate = useNavigate();
 
-**Files to modify:**
-- `src/pages/BlogPage.tsx` - Remove the 4 blogPost entries with unfinished slugs
+  // Redirect old slugs to correct ones
+  useEffect(() => {
+    if (slug && slugRedirects[slug]) {
+      const correctSlug = slugRedirects[slug];
+      const newPath = lang 
+        ? `/${lang}/blog/${correctSlug}` 
+        : `/blog/${correctSlug}`;
+      navigate(newPath, { replace: true });
+    }
+  }, [slug, lang, navigate]);
 
-**Current 22 articles → 18 articles** (matching what's actually implemented)
+  // If redirecting, show loading or null
+  if (slug && slugRedirects[slug]) {
+    return null; // Will redirect
+  }
 
-### Verification
+  // ... rest of component
+};
+```
 
-After the fix, all blog article links in all languages will lead to actual content pages, eliminating the "Article Coming Soon" errors.
+### Expected Outcome
+
+- `/zh/blog/poisoning-treatment-guide` → Redirects to `/zh/blog/pet-poisoning-treatment-malaysia` ✅
+- `/ms/blog/post-emergency-care-guide` → Redirects to `/ms/blog/post-emergency-pet-care-malaysia` ✅
+- All old slug variants in any language will work correctly
+- No more "Article Coming Soon" for URLs with old slugs
 
