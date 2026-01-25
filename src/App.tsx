@@ -21,6 +21,7 @@ import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
 
+// App component with LanguageProvider inside BrowserRouter for useLocation access
 const App = () => (
   <HelmetProvider>
     <QueryClientProvider client={queryClient}>
