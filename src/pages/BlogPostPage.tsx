@@ -1,4 +1,27 @@
-import { useParams, Link } from 'react-router-dom';
+import { useParams, Link, useNavigate } from 'react-router-dom';
+import { useEffect } from 'react';
+
+// Redirect map for old/shortened slugs to correct full slugs
+const slugRedirects: Record<string, string> = {
+  'poisoning-treatment-guide': 'pet-poisoning-treatment-malaysia',
+  'post-emergency-care-guide': 'post-emergency-pet-care-malaysia',
+  'emergency-transport-guide': 'pet-emergency-transport-malaysia',
+  'heatstroke-guide': 'pet-heatstroke-malaysia',
+  'choking-guide': 'pet-choking-emergency-malaysia',
+  'accident-guide': 'pet-accident-emergency-malaysia',
+  'insurance-guide': 'pet-insurance-malaysia',
+  'prevention-guide': 'pet-emergency-prevention-malaysia',
+  'emergency-symptoms-guide': 'pet-emergency-symptoms-malaysia',
+  'vet-directory': '24-hour-vet-directory-malaysia',
+  'first-aid-guide': 'pet-emergency-first-aid-guide-malaysia',
+  'treatment-costs': 'pet-emergency-costs-malaysia',
+  'pet-emergency-guide': 'pet-emergency-guide-malaysia',
+  'pet-poisons-guide': 'common-pet-poisons-malaysia',
+  'dog-emergency-guide': 'dog-emergency-guide-malaysia',
+  'cat-emergency-guide': 'cat-emergency-guide-malaysia',
+  'nutrition-guide': 'pet-nutrition-guide-malaysia',
+  'emergency-care-guide': 'emergency-pet-care-guide',
+};
 import { useLanguage } from '@/contexts/LanguageContext';
 import { Calendar, Clock, ChevronLeft, Share2, Bookmark, AlertTriangle, Phone, Heart, Shield, CheckCircle2, XCircle, Info, Stethoscope, Star, TrendingUp, DollarSign, ShoppingCart, Utensils, Award } from 'lucide-react';
 import { Button } from '@/components/ui/button';
@@ -1226,7 +1249,24 @@ import { GroomingTipsGuide } from '@/components/blog/GroomingTipsGuide';
 import { VaccinationScheduleGuide } from '@/components/blog/VaccinationScheduleGuide';
 
 const BlogPostPage = () => {
-  const { slug } = useParams();
+  const { slug, lang } = useParams();
+  const navigate = useNavigate();
+
+  // Redirect old slugs to correct ones
+  useEffect(() => {
+    if (slug && slugRedirects[slug]) {
+      const correctSlug = slugRedirects[slug];
+      const newPath = lang 
+        ? `/${lang}/blog/${correctSlug}` 
+        : `/blog/${correctSlug}`;
+      navigate(newPath, { replace: true });
+    }
+  }, [slug, lang, navigate]);
+
+  // If redirecting, show nothing while redirect happens
+  if (slug && slugRedirects[slug]) {
+    return null;
+  }
 
   // Route to the appropriate blog post component
   if (slug === 'emergency-pet-care-guide') {
