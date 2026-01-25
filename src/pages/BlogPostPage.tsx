@@ -1220,6 +1220,10 @@ import { PoisoningTreatmentGuide } from '@/components/blog/PoisoningTreatmentGui
 import { EmergencyTransportGuide } from '@/components/blog/EmergencyTransportGuide';
 import { PostEmergencyCareGuide } from '@/components/blog/PostEmergencyCareGuide';
 import { EmergencyPreventionGuide } from '@/components/blog/EmergencyPreventionGuide';
+import { InsuranceComparisonGuide } from '@/components/blog/InsuranceComparisonGuide';
+import { CommonIllnessesGuide } from '@/components/blog/CommonIllnessesGuide';
+import { GroomingTipsGuide } from '@/components/blog/GroomingTipsGuide';
+import { VaccinationScheduleGuide } from '@/components/blog/VaccinationScheduleGuide';
 
 const BlogPostPage = () => {
   const { slug } = useParams();
@@ -1278,6 +1282,18 @@ const BlogPostPage = () => {
   }
   if (slug === 'pet-emergency-prevention-malaysia') {
     return <EmergencyPreventionGuide />;
+  }
+  if (slug === 'pet-insurance-comparison') {
+    return <InsuranceComparisonGuide />;
+  }
+  if (slug === 'common-pet-illnesses-malaysia') {
+    return <CommonIllnessesGuide />;
+  }
+  if (slug === 'pet-grooming-tips') {
+    return <GroomingTipsGuide />;
+  }
+  if (slug === 'vaccinations-schedule-pets') {
+    return <VaccinationScheduleGuide />;
   }
 
   // Placeholder for other blog posts
