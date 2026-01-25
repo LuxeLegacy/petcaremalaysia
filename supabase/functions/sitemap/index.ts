@@ -5,568 +5,331 @@ const corsHeaders = {
   'Access-Control-Allow-Headers': 'authorization, x-client-info, apikey, content-type',
 };
 
-const sitemapXml = `<?xml version="1.0" encoding="UTF-8"?>
+const BASE_URL = 'https://petcaremalaysia.com';
+const LASTMOD = '2025-01-25';
+
+// Main pages
+const mainPages = [
+  { path: '/', priority: 1.0, changefreq: 'weekly' },
+  { path: '/locations', priority: 0.9, changefreq: 'monthly' },
+  { path: '/services', priority: 0.9, changefreq: 'monthly' },
+  { path: '/blog', priority: 0.8, changefreq: 'weekly' },
+  { path: '/qa', priority: 0.8, changefreq: 'weekly' },
+  { path: '/sitemap', priority: 0.3, changefreq: 'monthly' },
+];
+
+// Blog article slugs
+const blogSlugs = [
+  'pet-emergency-guide',
+  'emergency-symptoms-guide',
+  'vet-directory',
+  'first-aid-guide',
+  'treatment-costs',
+  'common-pet-poisons',
+  'dog-emergency-guide',
+  'cat-emergency-guide',
+  'heatstroke-guide',
+  'choking-guide',
+  'accident-guide',
+  'insurance-guide',
+  'poisoning-treatment-guide',
+  'emergency-transport-guide',
+  'post-emergency-care-guide',
+  'emergency-prevention-guide',
+];
+
+// Q&A state slugs
+const qaStates = [
+  'kuala-lumpur',
+  'selangor',
+  'johor',
+  'penang',
+  'perak',
+  'sarawak',
+  'sabah',
+  'melaka',
+  'kedah',
+  'pahang',
+  'kelantan',
+  'terengganu',
+  'negeri-sembilan',
+  'perlis',
+];
+
+// Legal pages (English only)
+const legalPages = [
+  { path: '/terms', priority: 0.3, changefreq: 'monthly' },
+  { path: '/privacy', priority: 0.3, changefreq: 'monthly' },
+  { path: '/disclaimer', priority: 0.3, changefreq: 'monthly' },
+];
+
+// City data organized by state
+const cityData: Record<string, { cities: { slug: string; isHub: boolean }[] }> = {
+  'kuala-lumpur': {
+    cities: [
+      { slug: 'kuala-lumpur', isHub: true },
+      { slug: 'bangsar', isHub: false },
+      { slug: 'cheras', isHub: false },
+      { slug: 'kepong', isHub: false },
+      { slug: 'setapak', isHub: false },
+      { slug: 'mont-kiara', isHub: false },
+      { slug: 'brickfields', isHub: false },
+      { slug: 'klcc', isHub: false },
+      { slug: 'wangsa-maju', isHub: false },
+      { slug: 'taman-melawati', isHub: false },
+    ]
+  },
+  'selangor': {
+    cities: [
+      // Petaling Jaya Hub
+      { slug: 'petaling-jaya', isHub: true },
+      { slug: 'bandar-utama', isHub: false },
+      { slug: 'kota-damansara', isHub: false },
+      { slug: 'ara-damansara', isHub: false },
+      { slug: 'ss2', isHub: false },
+      { slug: 'kelana-jaya', isHub: false },
+      { slug: 'tropicana', isHub: false },
+      { slug: 'taman-megah', isHub: false },
+      // Shah Alam Hub
+      { slug: 'shah-alam', isHub: true },
+      { slug: 'setia-alam', isHub: false },
+      { slug: 'bukit-jelutong', isHub: false },
+      { slug: 'seksyen-7', isHub: false },
+      { slug: 'seksyen-13', isHub: false },
+      // Subang Jaya Hub
+      { slug: 'subang-jaya', isHub: true },
+      { slug: 'usj', isHub: false },
+      { slug: 'taipan', isHub: false },
+      { slug: 'putra-heights', isHub: false },
+      // Klang Hub
+      { slug: 'klang', isHub: true },
+      { slug: 'bandar-bukit-tinggi', isHub: false },
+      { slug: 'kota-kemuning', isHub: false },
+      { slug: 'meru', isHub: false },
+      { slug: 'port-klang', isHub: false },
+    ]
+  },
+  'johor': {
+    cities: [
+      // Johor Bahru Hub
+      { slug: 'johor-bahru', isHub: true },
+      { slug: 'tampoi', isHub: false },
+      { slug: 'skudai', isHub: false },
+      { slug: 'permas-jaya', isHub: false },
+      { slug: 'taman-molek', isHub: false },
+      // Iskandar Hub
+      { slug: 'iskandar-puteri', isHub: true },
+      { slug: 'gelang-patah', isHub: false },
+      { slug: 'nusajaya', isHub: false },
+      { slug: 'bukit-indah', isHub: false },
+      // Other Johor cities
+      { slug: 'batu-pahat', isHub: true },
+      { slug: 'yong-peng', isHub: false },
+      { slug: 'parit-raja', isHub: false },
+      { slug: 'muar', isHub: true },
+      { slug: 'tangkak', isHub: false },
+      { slug: 'kulai', isHub: true },
+      { slug: 'senai', isHub: false },
+    ]
+  },
+  'penang': {
+    cities: [
+      // George Town Hub
+      { slug: 'george-town', isHub: true },
+      { slug: 'tanjung-tokong', isHub: false },
+      { slug: 'tanjung-bungah', isHub: false },
+      { slug: 'gelugor', isHub: false },
+      { slug: 'bayan-lepas', isHub: false },
+      { slug: 'air-itam', isHub: false },
+      // Seberang Perai Hub
+      { slug: 'butterworth', isHub: true },
+      { slug: 'bukit-mertajam', isHub: false },
+      { slug: 'perai', isHub: false },
+      { slug: 'kepala-batas', isHub: false },
+      { slug: 'nibong-tebal', isHub: false },
+    ]
+  },
+  'perak': {
+    cities: [
+      // Ipoh Hub
+      { slug: 'ipoh', isHub: true },
+      { slug: 'menglembu', isHub: false },
+      { slug: 'tambun', isHub: false },
+      { slug: 'bercham', isHub: false },
+      { slug: 'simpang-pulai', isHub: false },
+      // Taiping Hub
+      { slug: 'taiping', isHub: true },
+      { slug: 'kamunting', isHub: false },
+    ]
+  },
+  'sarawak': {
+    cities: [
+      // Kuching Hub
+      { slug: 'kuching', isHub: true },
+      { slug: 'petra-jaya', isHub: false },
+      { slug: 'kota-samarahan', isHub: false },
+      { slug: 'pending', isHub: false },
+      { slug: 'batu-kawa', isHub: false },
+      // Sibu Hub
+      { slug: 'sibu', isHub: true },
+      { slug: 'mukah', isHub: false },
+      // Miri Hub
+      { slug: 'miri', isHub: true },
+    ]
+  },
+  'sabah': {
+    cities: [
+      // Kota Kinabalu Hub
+      { slug: 'kota-kinabalu', isHub: true },
+      { slug: 'penampang', isHub: false },
+      { slug: 'likas', isHub: false },
+      { slug: 'inanam', isHub: false },
+      { slug: 'tuaran', isHub: false },
+      // Sandakan Hub
+      { slug: 'sandakan', isHub: true },
+      { slug: 'batu-sapi', isHub: false },
+    ]
+  },
+  'melaka': {
+    cities: [
+      { slug: 'melaka', isHub: true },
+      { slug: 'ayer-keroh', isHub: false },
+      { slug: 'batu-berendam', isHub: false },
+      { slug: 'bukit-baru', isHub: false },
+      { slug: 'alor-gajah', isHub: false },
+    ]
+  },
+  'negeri-sembilan': {
+    cities: [
+      { slug: 'seremban', isHub: true },
+      { slug: 'nilai', isHub: false },
+      { slug: 'port-dickson', isHub: false },
+      { slug: 'mantin', isHub: false },
+    ]
+  },
+  'pahang': {
+    cities: [
+      { slug: 'kuantan', isHub: true },
+      { slug: 'indera-mahkota', isHub: false },
+      { slug: 'gambang', isHub: false },
+      { slug: 'beserah', isHub: false },
+    ]
+  },
+  'kedah': {
+    cities: [
+      // Sungai Petani Hub
+      { slug: 'sungai-petani', isHub: true },
+      { slug: 'kuala-ketil', isHub: false },
+      // Alor Setar Hub
+      { slug: 'alor-setar', isHub: true },
+      { slug: 'jitra', isHub: false },
+    ]
+  },
+  'kelantan': {
+    cities: [
+      { slug: 'kota-bharu', isHub: true },
+    ]
+  },
+  'terengganu': {
+    cities: [
+      { slug: 'kuala-terengganu', isHub: true },
+    ]
+  },
+  'perlis': {
+    cities: [
+      { slug: 'kangar', isHub: true },
+      { slug: 'arau', isHub: false },
+    ]
+  },
+};
+
+// Helper function to generate URL with hreflang annotations for multilingual pages
+function generateMultilingualUrl(path: string, priority: number, changefreq: string): string {
+  const enUrl = path === '/' ? `${BASE_URL}/` : `${BASE_URL}${path}`;
+  const msUrl = path === '/' ? `${BASE_URL}/ms` : `${BASE_URL}/ms${path}`;
+  const zhUrl = path === '/' ? `${BASE_URL}/zh` : `${BASE_URL}/zh${path}`;
+  
+  return `
+  <url>
+    <loc>${enUrl}</loc>
+    <lastmod>${LASTMOD}</lastmod>
+    <changefreq>${changefreq}</changefreq>
+    <priority>${priority}</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="${enUrl}"/>
+    <xhtml:link rel="alternate" hreflang="ms" href="${msUrl}"/>
+    <xhtml:link rel="alternate" hreflang="zh" href="${zhUrl}"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="${enUrl}"/>
+  </url>
+  <url>
+    <loc>${msUrl}</loc>
+    <lastmod>${LASTMOD}</lastmod>
+    <changefreq>${changefreq}</changefreq>
+    <priority>${priority}</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="${enUrl}"/>
+    <xhtml:link rel="alternate" hreflang="ms" href="${msUrl}"/>
+    <xhtml:link rel="alternate" hreflang="zh" href="${zhUrl}"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="${enUrl}"/>
+  </url>
+  <url>
+    <loc>${zhUrl}</loc>
+    <lastmod>${LASTMOD}</lastmod>
+    <changefreq>${changefreq}</changefreq>
+    <priority>${priority}</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="${enUrl}"/>
+    <xhtml:link rel="alternate" hreflang="ms" href="${msUrl}"/>
+    <xhtml:link rel="alternate" hreflang="zh" href="${zhUrl}"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="${enUrl}"/>
+  </url>`;
+}
+
+// Helper function for English-only pages
+function generateEnglishOnlyUrl(path: string, priority: number, changefreq: string): string {
+  return `
+  <url>
+    <loc>${BASE_URL}${path}</loc>
+    <lastmod>${LASTMOD}</lastmod>
+    <changefreq>${changefreq}</changefreq>
+    <priority>${priority}</priority>
+  </url>`;
+}
+
+function generateSitemap(): string {
+  let urls = '';
+  
+  // Main pages (multilingual)
+  mainPages.forEach(page => {
+    urls += generateMultilingualUrl(page.path, page.priority, page.changefreq);
+  });
+  
+  // Blog articles (multilingual)
+  blogSlugs.forEach(slug => {
+    urls += generateMultilingualUrl(`/blog/${slug}`, 0.7, 'monthly');
+  });
+  
+  // Q&A state pages (multilingual)
+  qaStates.forEach(state => {
+    urls += generateMultilingualUrl(`/qa/${state}`, 0.7, 'weekly');
+  });
+  
+  // City pages (multilingual)
+  Object.entries(cityData).forEach(([state, data]) => {
+    data.cities.forEach(city => {
+      const priority = city.isHub ? 0.9 : 0.7;
+      urls += generateMultilingualUrl(`/${state}/${city.slug}`, priority, 'weekly');
+    });
+  });
+  
+  // Legal pages (English only)
+  legalPages.forEach(page => {
+    urls += generateEnglishOnlyUrl(page.path, page.priority, page.changefreq);
+  });
+  
+  return `<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
         xmlns:xhtml="http://www.w3.org/1999/xhtml">
-  
-  <!-- Main Pages -->
-  <url>
-    <loc>https://petcaremalaysia.com/</loc>
-    <lastmod>2025-01-01</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>1.0</priority>
-    <xhtml:link rel="alternate" hreflang="en" href="https://petcaremalaysia.com/?lang=en"/>
-    <xhtml:link rel="alternate" hreflang="ms" href="https://petcaremalaysia.com/?lang=ms"/>
-    <xhtml:link rel="alternate" hreflang="zh" href="https://petcaremalaysia.com/?lang=zh"/>
-  </url>
-  
-  <url>
-    <loc>https://petcaremalaysia.com/services</loc>
-    <lastmod>2025-01-01</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.9</priority>
-  </url>
-  
-  <url>
-    <loc>https://petcaremalaysia.com/locations</loc>
-    <lastmod>2025-01-01</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.9</priority>
-  </url>
-  
-  <!-- Kuala Lumpur Hub Cities -->
-  <url>
-    <loc>https://petcaremalaysia.com/kuala-lumpur/kuala-lumpur</loc>
-    <lastmod>2025-01-01</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.9</priority>
-  </url>
-  <url>
-    <loc>https://petcaremalaysia.com/kuala-lumpur/bangsar</loc>
-    <lastmod>2025-01-01</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://petcaremalaysia.com/kuala-lumpur/cheras</loc>
-    <lastmod>2025-01-01</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://petcaremalaysia.com/kuala-lumpur/kepong</loc>
-    <lastmod>2025-01-01</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://petcaremalaysia.com/kuala-lumpur/setapak</loc>
-    <lastmod>2025-01-01</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://petcaremalaysia.com/kuala-lumpur/mont-kiara</loc>
-    <lastmod>2025-01-01</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://petcaremalaysia.com/kuala-lumpur/brickfields</loc>
-    <lastmod>2025-01-01</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://petcaremalaysia.com/kuala-lumpur/klcc</loc>
-    <lastmod>2025-01-01</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://petcaremalaysia.com/kuala-lumpur/wangsa-maju</loc>
-    <lastmod>2025-01-01</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://petcaremalaysia.com/kuala-lumpur/taman-melawati</loc>
-    <lastmod>2025-01-01</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  
-  <!-- Selangor - Petaling Jaya Hub Cities -->
-  <url>
-    <loc>https://petcaremalaysia.com/selangor/petaling-jaya</loc>
-    <lastmod>2025-01-01</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.9</priority>
-  </url>
-  <url>
-    <loc>https://petcaremalaysia.com/selangor/bandar-utama</loc>
-    <lastmod>2025-01-01</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://petcaremalaysia.com/selangor/kota-damansara</loc>
-    <lastmod>2025-01-01</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://petcaremalaysia.com/selangor/ara-damansara</loc>
-    <lastmod>2025-01-01</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://petcaremalaysia.com/selangor/ss2</loc>
-    <lastmod>2025-01-01</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://petcaremalaysia.com/selangor/kelana-jaya</loc>
-    <lastmod>2025-01-01</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://petcaremalaysia.com/selangor/tropicana</loc>
-    <lastmod>2025-01-01</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://petcaremalaysia.com/selangor/taman-megah</loc>
-    <lastmod>2025-01-01</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  
-  <!-- Selangor - Shah Alam Hub Cities -->
-  <url>
-    <loc>https://petcaremalaysia.com/selangor/shah-alam</loc>
-    <lastmod>2025-01-01</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.9</priority>
-  </url>
-  <url>
-    <loc>https://petcaremalaysia.com/selangor/setia-alam</loc>
-    <lastmod>2025-01-01</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://petcaremalaysia.com/selangor/bukit-jelutong</loc>
-    <lastmod>2025-01-01</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://petcaremalaysia.com/selangor/seksyen-7</loc>
-    <lastmod>2025-01-01</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://petcaremalaysia.com/selangor/seksyen-13</loc>
-    <lastmod>2025-01-01</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <!-- Selangor - Subang Jaya Hub Cities -->
-  <url>
-    <loc>https://petcaremalaysia.com/selangor/subang-jaya</loc>
-    <lastmod>2025-01-01</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.9</priority>
-  </url>
-  <url>
-    <loc>https://petcaremalaysia.com/selangor/usj</loc>
-    <lastmod>2025-01-01</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://petcaremalaysia.com/selangor/taipan</loc>
-    <lastmod>2025-01-01</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://petcaremalaysia.com/selangor/putra-heights</loc>
-    <lastmod>2025-01-01</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  
-  <!-- Selangor - Klang Hub Cities -->
-  <url>
-    <loc>https://petcaremalaysia.com/selangor/klang</loc>
-    <lastmod>2025-01-01</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://petcaremalaysia.com/selangor/bandar-bukit-tinggi</loc>
-    <lastmod>2025-01-01</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://petcaremalaysia.com/selangor/kota-kemuning</loc>
-    <lastmod>2025-01-01</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://petcaremalaysia.com/selangor/meru</loc>
-    <lastmod>2025-01-01</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://petcaremalaysia.com/selangor/port-klang</loc>
-    <lastmod>2025-01-01</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <!-- Johor - Johor Bahru Hub Cities -->
-  <url>
-    <loc>https://petcaremalaysia.com/johor/johor-bahru</loc>
-    <lastmod>2025-01-01</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.9</priority>
-  </url>
-  <url>
-    <loc>https://petcaremalaysia.com/johor/tampoi</loc>
-    <lastmod>2025-01-01</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://petcaremalaysia.com/johor/skudai</loc>
-    <lastmod>2025-01-01</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://petcaremalaysia.com/johor/permas-jaya</loc>
-    <lastmod>2025-01-01</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://petcaremalaysia.com/johor/taman-molek</loc>
-    <lastmod>2025-01-01</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  
-  <!-- Johor - Iskandar Hub Cities -->
-  <url>
-    <loc>https://petcaremalaysia.com/johor/iskandar-puteri</loc>
-    <lastmod>2025-01-01</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://petcaremalaysia.com/johor/gelang-patah</loc>
-    <lastmod>2025-01-01</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://petcaremalaysia.com/johor/nusajaya</loc>
-    <lastmod>2025-01-01</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://petcaremalaysia.com/johor/bukit-indah</loc>
-    <lastmod>2025-01-01</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  
-  <!-- Penang Hub Cities -->
-  <url>
-    <loc>https://petcaremalaysia.com/penang/george-town</loc>
-    <lastmod>2025-01-01</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.9</priority>
-  </url>
-  <url>
-    <loc>https://petcaremalaysia.com/penang/tanjung-tokong</loc>
-    <lastmod>2025-01-01</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://petcaremalaysia.com/penang/tanjung-bungah</loc>
-    <lastmod>2025-01-01</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://petcaremalaysia.com/penang/gelugor</loc>
-    <lastmod>2025-01-01</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://petcaremalaysia.com/penang/bayan-lepas</loc>
-    <lastmod>2025-01-01</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://petcaremalaysia.com/penang/air-itam</loc>
-    <lastmod>2025-01-01</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  
-  <!-- Penang - Seberang Perai Hub Cities -->
-  <url>
-    <loc>https://petcaremalaysia.com/penang/butterworth</loc>
-    <lastmod>2025-01-01</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://petcaremalaysia.com/penang/bukit-mertajam</loc>
-    <lastmod>2025-01-01</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://petcaremalaysia.com/penang/perai</loc>
-    <lastmod>2025-01-01</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://petcaremalaysia.com/penang/kepala-batas</loc>
-    <lastmod>2025-01-01</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://petcaremalaysia.com/penang/nibong-tebal</loc>
-    <lastmod>2025-01-01</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <!-- Perak - Ipoh Hub Cities -->
-  <url>
-    <loc>https://petcaremalaysia.com/perak/ipoh</loc>
-    <lastmod>2025-01-01</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.9</priority>
-  </url>
-  <url>
-    <loc>https://petcaremalaysia.com/perak/menglembu</loc>
-    <lastmod>2025-01-01</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://petcaremalaysia.com/perak/tambun</loc>
-    <lastmod>2025-01-01</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://petcaremalaysia.com/perak/bercham</loc>
-    <lastmod>2025-01-01</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://petcaremalaysia.com/perak/simpang-pulai</loc>
-    <lastmod>2025-01-01</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <!-- Sarawak - Kuching Hub Cities -->
-  <url>
-    <loc>https://petcaremalaysia.com/sarawak/kuching</loc>
-    <lastmod>2025-01-01</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.9</priority>
-  </url>
-  <url>
-    <loc>https://petcaremalaysia.com/sarawak/petra-jaya</loc>
-    <lastmod>2025-01-01</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://petcaremalaysia.com/sarawak/kota-samarahan</loc>
-    <lastmod>2025-01-01</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://petcaremalaysia.com/sarawak/pending</loc>
-    <lastmod>2025-01-01</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://petcaremalaysia.com/sarawak/batu-kawa</loc>
-    <lastmod>2025-01-01</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <!-- Sabah - Kota Kinabalu Hub Cities -->
-  <url>
-    <loc>https://petcaremalaysia.com/sabah/kota-kinabalu</loc>
-    <lastmod>2025-01-01</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.9</priority>
-  </url>
-  <url>
-    <loc>https://petcaremalaysia.com/sabah/likas</loc>
-    <lastmod>2025-01-01</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://petcaremalaysia.com/sabah/inanam</loc>
-    <lastmod>2025-01-01</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://petcaremalaysia.com/sabah/penampang</loc>
-    <lastmod>2025-01-01</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://petcaremalaysia.com/sabah/putatan</loc>
-    <lastmod>2025-01-01</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <!-- Melaka Hub Cities -->
-  <url>
-    <loc>https://petcaremalaysia.com/melaka/melaka-city</loc>
-    <lastmod>2025-01-01</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.9</priority>
-  </url>
-  <url>
-    <loc>https://petcaremalaysia.com/melaka/ayer-keroh</loc>
-    <lastmod>2025-01-01</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://petcaremalaysia.com/melaka/klebang</loc>
-    <lastmod>2025-01-01</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://petcaremalaysia.com/melaka/bukit-beruang</loc>
-    <lastmod>2025-01-01</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <!-- Kedah - Alor Setar Hub Cities -->
-  <url>
-    <loc>https://petcaremalaysia.com/kedah/alor-setar</loc>
-    <lastmod>2025-01-01</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://petcaremalaysia.com/kedah/jitra</loc>
-    <lastmod>2025-01-01</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://petcaremalaysia.com/kedah/sungai-petani</loc>
-    <lastmod>2025-01-01</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://petcaremalaysia.com/kedah/kulim</loc>
-    <lastmod>2025-01-01</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  
-  <!-- Pahang - Kuantan Hub Cities -->
-  <url>
-    <loc>https://petcaremalaysia.com/pahang/kuantan</loc>
-    <lastmod>2025-01-01</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://petcaremalaysia.com/pahang/indera-mahkota</loc>
-    <lastmod>2025-01-01</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://petcaremalaysia.com/pahang/gebeng</loc>
-    <lastmod>2025-01-01</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <!-- Kelantan - Kota Bharu Hub Cities -->
-  <url>
-    <loc>https://petcaremalaysia.com/kelantan/kota-bharu</loc>
-    <lastmod>2025-01-01</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://petcaremalaysia.com/kelantan/kubang-kerian</loc>
-    <lastmod>2025-01-01</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://petcaremalaysia.com/kelantan/pengkalan-chepa</loc>
-    <lastmod>2025-01-01</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <!-- Terengganu - Kuala Terengganu Hub Cities -->
-  <url>
-    <loc>https://petcaremalaysia.com/terengganu/kuala-terengganu</loc>
-    <lastmod>2025-01-01</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://petcaremalaysia.com/terengganu/gong-badak</loc>
-    <lastmod>2025-01-01</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
+${urls}
 </urlset>`;
+}
 
 serve(async (req) => {
   // Handle CORS preflight requests
@@ -574,13 +337,24 @@ serve(async (req) => {
     return new Response(null, { headers: corsHeaders });
   }
 
-  console.log('Sitemap requested');
-
-  return new Response(sitemapXml, {
-    headers: {
-      ...corsHeaders,
-      'Content-Type': 'application/xml; charset=utf-8',
-      'Cache-Control': 'public, max-age=86400',
-    },
-  });
+  try {
+    const sitemap = generateSitemap();
+    
+    return new Response(sitemap, {
+      headers: {
+        ...corsHeaders,
+        'Content-Type': 'application/xml; charset=utf-8',
+        'Cache-Control': 'public, max-age=3600',
+      },
+    });
+  } catch (error) {
+    console.error('Error generating sitemap:', error);
+    return new Response(
+      JSON.stringify({ error: 'Failed to generate sitemap' }),
+      { 
+        status: 500, 
+        headers: { ...corsHeaders, 'Content-Type': 'application/json' } 
+      }
+    );
+  }
 });
