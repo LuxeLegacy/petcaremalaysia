@@ -1,69 +1,48 @@
 
 
-## Fix Blog Slug Mismatch in Sitemap Edge Function
+## Fix "Article Coming Soon" on Blog Pages
 
-### Problem Identified
+### Root Cause Identified
 
-The sitemap edge function (`supabase/functions/sitemap/index.ts`) uses **incorrect blog slugs** that don't match the actual slugs defined in `BlogPage.tsx` and `BlogPostPage.tsx`. This causes all Malay (`/ms/`) and Chinese (`/zh/`) blog article URLs to show "Article Coming Soon" because the slug doesn't match any route handler.
+The issue is **NOT with city pages or the sitemap slugs**. The problem is that **4 blog articles listed in BlogPage.tsx don't have corresponding content components** in BlogPostPage.tsx:
 
-### Slug Mapping (Incorrect → Correct)
+| Missing Article Slug | Category |
+|---------------------|----------|
+| `pet-insurance-comparison` | Insurance |
+| `common-pet-illnesses-malaysia` | Health |
+| `pet-grooming-tips` | Grooming |
+| `vaccinations-schedule-pets` | Health |
 
-| Current Sitemap Slug | Correct Slug (from BlogPage.tsx) |
-|---------------------|----------------------------------|
-| `pet-emergency-guide` | `pet-emergency-guide-malaysia` |
-| `emergency-symptoms-guide` | `pet-emergency-symptoms-malaysia` |
-| `vet-directory` | `24-hour-vet-directory-malaysia` |
-| `first-aid-guide` | `pet-emergency-first-aid-guide-malaysia` |
-| `treatment-costs` | `pet-emergency-costs-malaysia` |
-| `common-pet-poisons` | `common-pet-poisons-malaysia` |
-| `dog-emergency-guide` | `dog-emergency-guide-malaysia` |
-| `cat-emergency-guide` | `cat-emergency-guide-malaysia` |
-| `heatstroke-guide` | `pet-heatstroke-malaysia` |
-| `choking-guide` | `pet-choking-emergency-malaysia` |
-| `accident-guide` | `pet-accident-emergency-malaysia` |
-| `insurance-guide` | `pet-insurance-malaysia` |
-| `poisoning-treatment-guide` | `pet-poisoning-treatment-malaysia` |
-| `emergency-transport-guide` | `pet-emergency-transport-malaysia` |
-| `post-emergency-care-guide` | `post-emergency-pet-care-malaysia` |
-| `emergency-prevention-guide` | `pet-emergency-prevention-malaysia` |
+When users click on these articles (from English, Malay, or Chinese blog listing), they see "Article Coming Soon" because BlogPostPage.tsx falls through to the default fallback message.
 
-**Also missing:** `emergency-pet-care-guide` (the original emergency care guide)
+### Two Options to Fix
 
-### Solution
+**Option A: Remove Unfinished Articles from Blog Listing (Recommended)**
 
-Update `supabase/functions/sitemap/index.ts` lines 22-39 to use the correct slugs:
+1. **Update `src/pages/BlogPage.tsx`**: Remove the 4 blog posts that don't have content yet
+2. **Update `supabase/functions/sitemap/index.ts`**: Ensure these 4 slugs are NOT in the sitemap (they weren't added in the last update, so this should be fine)
 
-```typescript
-const blogSlugs = [
-  'pet-emergency-guide-malaysia',
-  'emergency-pet-care-guide',
-  'pet-emergency-symptoms-malaysia',
-  '24-hour-vet-directory-malaysia',
-  'pet-emergency-first-aid-guide-malaysia',
-  'pet-emergency-costs-malaysia',
-  'common-pet-poisons-malaysia',
-  'dog-emergency-guide-malaysia',
-  'cat-emergency-guide-malaysia',
-  'pet-heatstroke-malaysia',
-  'pet-choking-emergency-malaysia',
-  'pet-accident-emergency-malaysia',
-  'pet-insurance-malaysia',
-  'pet-poisoning-treatment-malaysia',
-  'pet-emergency-transport-malaysia',
-  'post-emergency-pet-care-malaysia',
-  'pet-emergency-prevention-malaysia',
-  'pet-nutrition-guide-malaysia',
-];
-```
+**Option B: Create Content for Missing Articles**
 
-### Files to Modify
+1. Create 4 new component files in `src/components/blog/`:
+   - `InsuranceComparisonGuide.tsx` for `pet-insurance-comparison`
+   - `CommonIllnessesGuide.tsx` for `common-pet-illnesses-malaysia`
+   - `GroomingTipsGuide.tsx` for `pet-grooming-tips`
+   - `VaccinationScheduleGuide.tsx` for `vaccinations-schedule-pets`
+2. Add trilingual content (EN/MS/ZH) to each component
+3. Register the new slugs in `BlogPostPage.tsx`
+4. Add the slugs to the sitemap edge function
 
-1. **`supabase/functions/sitemap/index.ts`** - Update the `blogSlugs` array (lines 22-39) with the correct slugs matching `BlogPage.tsx`
+### Recommended Approach: Option A (Remove Unfinished Articles)
 
-### Expected Outcome
+This is faster and prevents users from encountering "Coming Soon" pages. The removed articles can be added back when content is ready.
 
-- All 18 blog articles × 3 languages = **54 valid blog URLs** in sitemap
-- Malay URLs (e.g., `/ms/blog/pet-emergency-guide-malaysia`) will correctly render article content
-- Chinese URLs (e.g., `/zh/blog/pet-emergency-guide-malaysia`) will correctly render article content
-- No more "Article Coming Soon" errors for valid articles
+**Files to modify:**
+- `src/pages/BlogPage.tsx` - Remove the 4 blogPost entries with unfinished slugs
+
+**Current 22 articles → 18 articles** (matching what's actually implemented)
+
+### Verification
+
+After the fix, all blog article links in all languages will lead to actual content pages, eliminating the "Article Coming Soon" errors.
 
