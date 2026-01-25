@@ -38,6 +38,10 @@ const blogSlugs = [
   'post-emergency-pet-care-malaysia',
   'pet-emergency-prevention-malaysia',
   'pet-nutrition-guide-malaysia',
+  'pet-insurance-comparison',
+  'common-pet-illnesses-malaysia',
+  'pet-grooming-tips',
+  'vaccinations-schedule-pets',
 ];
 
 // Q&A state slugs
