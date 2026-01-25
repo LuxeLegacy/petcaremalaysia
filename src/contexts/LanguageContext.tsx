@@ -1,4 +1,5 @@
 import React, { createContext, useContext, useState, useEffect, ReactNode } from 'react';
+import { useLocation } from 'react-router-dom';
 import { Language, Translations, getTranslations } from '@/lib/translations';
 
 interface LanguageContextType {
@@ -9,22 +10,25 @@ interface LanguageContextType {
 
 const LanguageContext = createContext<LanguageContextType | undefined>(undefined);
 
-export const LanguageProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
-  const [language, setLanguage] = useState<Language>('en');
+// Helper function to detect language from URL path
+const getLanguageFromPath = (pathname: string): Language => {
+  if (pathname.startsWith('/ms')) return 'ms';
+  if (pathname.startsWith('/zh')) return 'zh';
+  return 'en';
+};
 
+// Inner component that uses useLocation (requires being inside Router)
+const LanguageProviderInner: React.FC<{ children: ReactNode }> = ({ children }) => {
+  const location = useLocation();
+  const [language, setLanguage] = useState<Language>(() => getLanguageFromPath(location.pathname));
+
+  // Sync language state with URL path on route changes
   useEffect(() => {
-    // Get language from URL or localStorage
-    const path = window.location.pathname;
-    const langMatch = path.match(/^\/(en|ms|zh)\//);
-    if (langMatch) {
-      setLanguage(langMatch[1] as Language);
-    } else {
-      const stored = localStorage.getItem('preferred-language') as Language;
-      if (stored && ['en', 'ms', 'zh'].includes(stored)) {
-        setLanguage(stored);
-      }
+    const detectedLang = getLanguageFromPath(location.pathname);
+    if (detectedLang !== language) {
+      setLanguage(detectedLang);
     }
-  }, []);
+  }, [location.pathname]);
 
   const handleSetLanguage = (lang: Language) => {
     setLanguage(lang);
@@ -42,6 +46,11 @@ export const LanguageProvider: React.FC<{ children: ReactNode }> = ({ children }
       {children}
     </LanguageContext.Provider>
   );
+};
+
+// Wrapper that can be used outside Router (for backward compatibility)
+export const LanguageProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
+  return <LanguageProviderInner>{children}</LanguageProviderInner>;
 };
 
 export const useLanguage = () => {
