@@ -1,112 +1,69 @@
 
 
-## Update Sitemap with Multilingual URLs and Proper hreflang Annotations
+## Fix Blog Slug Mismatch in Sitemap Edge Function
 
-### Current Issues
+### Problem Identified
 
-1. **Wrong hreflang format**: Homepage uses `?lang=en` query parameters instead of proper path prefixes (`/ms/`, `/zh/`)
-2. **Missing language URLs**: Only English URLs are listed for all city pages
-3. **Missing page types**: Blog articles, Q&A pages, legal pages are not in the sitemap
-4. **No hreflang on most pages**: City pages and other content lack language alternate links
+The sitemap edge function (`supabase/functions/sitemap/index.ts`) uses **incorrect blog slugs** that don't match the actual slugs defined in `BlogPage.tsx` and `BlogPostPage.tsx`. This causes all Malay (`/ms/`) and Chinese (`/zh/`) blog article URLs to show "Article Coming Soon" because the slug doesn't match any route handler.
 
-### Solution Overview
+### Slug Mapping (Incorrect → Correct)
 
-Completely rewrite the `supabase/functions/sitemap/index.ts` edge function to:
-1. Dynamically generate all URLs for all three languages
-2. Add proper `xhtml:link` hreflang annotations to every URL
-3. Include all page types (main pages, city pages, blog articles, Q&A pages)
-4. Use correct URL structure: EN = no prefix, MS = `/ms/`, ZH = `/zh/`
+| Current Sitemap Slug | Correct Slug (from BlogPage.tsx) |
+|---------------------|----------------------------------|
+| `pet-emergency-guide` | `pet-emergency-guide-malaysia` |
+| `emergency-symptoms-guide` | `pet-emergency-symptoms-malaysia` |
+| `vet-directory` | `24-hour-vet-directory-malaysia` |
+| `first-aid-guide` | `pet-emergency-first-aid-guide-malaysia` |
+| `treatment-costs` | `pet-emergency-costs-malaysia` |
+| `common-pet-poisons` | `common-pet-poisons-malaysia` |
+| `dog-emergency-guide` | `dog-emergency-guide-malaysia` |
+| `cat-emergency-guide` | `cat-emergency-guide-malaysia` |
+| `heatstroke-guide` | `pet-heatstroke-malaysia` |
+| `choking-guide` | `pet-choking-emergency-malaysia` |
+| `accident-guide` | `pet-accident-emergency-malaysia` |
+| `insurance-guide` | `pet-insurance-malaysia` |
+| `poisoning-treatment-guide` | `pet-poisoning-treatment-malaysia` |
+| `emergency-transport-guide` | `pet-emergency-transport-malaysia` |
+| `post-emergency-care-guide` | `post-emergency-pet-care-malaysia` |
+| `emergency-prevention-guide` | `pet-emergency-prevention-malaysia` |
+
+**Also missing:** `emergency-pet-care-guide` (the original emergency care guide)
+
+### Solution
+
+Update `supabase/functions/sitemap/index.ts` lines 22-39 to use the correct slugs:
+
+```typescript
+const blogSlugs = [
+  'pet-emergency-guide-malaysia',
+  'emergency-pet-care-guide',
+  'pet-emergency-symptoms-malaysia',
+  '24-hour-vet-directory-malaysia',
+  'pet-emergency-first-aid-guide-malaysia',
+  'pet-emergency-costs-malaysia',
+  'common-pet-poisons-malaysia',
+  'dog-emergency-guide-malaysia',
+  'cat-emergency-guide-malaysia',
+  'pet-heatstroke-malaysia',
+  'pet-choking-emergency-malaysia',
+  'pet-accident-emergency-malaysia',
+  'pet-insurance-malaysia',
+  'pet-poisoning-treatment-malaysia',
+  'pet-emergency-transport-malaysia',
+  'post-emergency-pet-care-malaysia',
+  'pet-emergency-prevention-malaysia',
+  'pet-nutrition-guide-malaysia',
+];
+```
 
 ### Files to Modify
 
-**`supabase/functions/sitemap/index.ts`** - Complete rewrite with:
-
-1. **Define all page data arrays**:
-   - Main pages: `/`, `/locations`, `/services`, `/blog`, `/qa`, `/sitemap`
-   - Blog articles: 16 articles at `/blog/{slug}`
-   - Q&A state pages: `/qa/{state}` for each state
-   - City pages: ~105 cities from the cities data
-   - Legal pages: `/terms`, `/privacy`, `/disclaimer`
-
-2. **Generate proper hreflang structure** for each URL:
-```xml
-<url>
-  <loc>https://petcaremalaysia.com/selangor/petaling-jaya</loc>
-  <lastmod>2025-01-25</lastmod>
-  <changefreq>weekly</changefreq>
-  <priority>0.9</priority>
-  <xhtml:link rel="alternate" hreflang="en" href="https://petcaremalaysia.com/selangor/petaling-jaya"/>
-  <xhtml:link rel="alternate" hreflang="ms" href="https://petcaremalaysia.com/ms/selangor/petaling-jaya"/>
-  <xhtml:link rel="alternate" hreflang="zh" href="https://petcaremalaysia.com/zh/selangor/petaling-jaya"/>
-  <xhtml:link rel="alternate" hreflang="x-default" href="https://petcaremalaysia.com/selangor/petaling-jaya"/>
-</url>
-```
-
-3. **Include ALL language versions as separate URL entries**:
-   - Each page gets 3 entries (EN, MS, ZH)
-   - Each entry has hreflang links pointing to all 3 versions
-   - `x-default` points to English version
-
-### URL Structure
-
-| Page Type | English | Malay | Chinese |
-|-----------|---------|-------|---------|
-| Homepage | `/` | `/ms` | `/zh` |
-| City page | `/selangor/petaling-jaya` | `/ms/selangor/petaling-jaya` | `/zh/selangor/petaling-jaya` |
-| Blog article | `/blog/first-aid-guide` | `/ms/blog/first-aid-guide` | `/zh/blog/first-aid-guide` |
-| Q&A page | `/qa` | `/ms/qa` | `/zh/qa` |
-
-### Data to Include
-
-**Main Pages (5 x 3 = 15 URLs)**:
-- `/`, `/locations`, `/services`, `/blog`, `/qa`
-
-**Blog Articles (16 x 3 = 48 URLs)**:
-- `pet-emergency-guide`, `emergency-symptoms-guide`, `vet-directory`, `first-aid-guide`, `treatment-costs`, `common-pet-poisons`, `dog-emergency-guide`, `cat-emergency-guide`, `heatstroke-guide`, `choking-guide`, `accident-guide`, `insurance-guide`, `poisoning-treatment-guide`, `emergency-transport-guide`, `post-emergency-care-guide`, `emergency-prevention-guide`
-
-**City Pages (~105 x 3 = ~315 URLs)**:
-- All cities from `src/data/cities.csv` organized by state
-
-**Q&A State Pages (13 x 3 = 39 URLs)**:
-- Kuala Lumpur, Selangor, Johor, Penang, Perak, Sarawak, Sabah, Melaka, Kedah, Pahang, Kelantan, Terengganu, Negeri Sembilan
-
-**Legal Pages (3 URLs - English only)**:
-- `/terms`, `/privacy`, `/disclaimer`
-
-### Total URLs: ~420 URLs
-
-### Key Implementation Details
-
-1. **Helper function** to generate URL entry with hreflang:
-```typescript
-function generateUrlEntry(path: string, priority: number, changefreq: string): string {
-  const base = 'https://petcaremalaysia.com';
-  const enUrl = path === '/' ? base + '/' : base + path;
-  const msUrl = base + '/ms' + (path === '/' ? '' : path);
-  const zhUrl = base + '/zh' + (path === '/' ? '' : path);
-  
-  return `
-  <url>
-    <loc>${enUrl}</loc>
-    <lastmod>2025-01-25</lastmod>
-    <changefreq>${changefreq}</changefreq>
-    <priority>${priority}</priority>
-    <xhtml:link rel="alternate" hreflang="en" href="${enUrl}"/>
-    <xhtml:link rel="alternate" hreflang="ms" href="${msUrl}"/>
-    <xhtml:link rel="alternate" hreflang="zh" href="${zhUrl}"/>
-    <xhtml:link rel="alternate" hreflang="x-default" href="${enUrl}"/>
-  </url>`;
-}
-```
-
-2. **Generate entries for all three languages** for each page
-3. **Include all city data** matching the cities.csv structure
+1. **`supabase/functions/sitemap/index.ts`** - Update the `blogSlugs` array (lines 22-39) with the correct slugs matching `BlogPage.tsx`
 
 ### Expected Outcome
 
-- **~420 total URLs** in sitemap (140 base pages x 3 languages)
-- Every URL has proper hreflang annotations
-- Google can properly discover and index all language versions
-- Eliminates duplicate content issues between language versions
-- Proper `x-default` fallback for unmatched languages
+- All 18 blog articles × 3 languages = **54 valid blog URLs** in sitemap
+- Malay URLs (e.g., `/ms/blog/pet-emergency-guide-malaysia`) will correctly render article content
+- Chinese URLs (e.g., `/zh/blog/pet-emergency-guide-malaysia`) will correctly render article content
+- No more "Article Coming Soon" errors for valid articles
 
