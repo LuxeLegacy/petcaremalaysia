@@ -18,24 +18,26 @@ const mainPages = [
   { path: '/sitemap', priority: 0.3, changefreq: 'monthly' },
 ];
 
-// Blog article slugs
+// Blog article slugs (must match BlogPage.tsx and BlogPostPage.tsx)
 const blogSlugs = [
-  'pet-emergency-guide',
-  'emergency-symptoms-guide',
-  'vet-directory',
-  'first-aid-guide',
-  'treatment-costs',
-  'common-pet-poisons',
-  'dog-emergency-guide',
-  'cat-emergency-guide',
-  'heatstroke-guide',
-  'choking-guide',
-  'accident-guide',
-  'insurance-guide',
-  'poisoning-treatment-guide',
-  'emergency-transport-guide',
-  'post-emergency-care-guide',
-  'emergency-prevention-guide',
+  'pet-emergency-guide-malaysia',
+  'emergency-pet-care-guide',
+  'pet-emergency-symptoms-malaysia',
+  '24-hour-vet-directory-malaysia',
+  'pet-emergency-first-aid-guide-malaysia',
+  'pet-emergency-costs-malaysia',
+  'common-pet-poisons-malaysia',
+  'dog-emergency-guide-malaysia',
+  'cat-emergency-guide-malaysia',
+  'pet-heatstroke-malaysia',
+  'pet-choking-emergency-malaysia',
+  'pet-accident-emergency-malaysia',
+  'pet-insurance-malaysia',
+  'pet-poisoning-treatment-malaysia',
+  'pet-emergency-transport-malaysia',
+  'post-emergency-pet-care-malaysia',
+  'pet-emergency-prevention-malaysia',
+  'pet-nutrition-guide-malaysia',
 ];
 
 // Q&A state slugs
