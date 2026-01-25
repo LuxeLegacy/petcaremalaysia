@@ -1,4 +1,4 @@
-import { Link } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { useLanguage } from '@/contexts/LanguageContext';
 import { Button } from '@/components/ui/button';
 import { 
@@ -20,6 +20,27 @@ const languageLabels: Record<Language, string> = {
 export const Header = () => {
   const { language, setLanguage, t } = useLanguage();
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const location = useLocation();
+  const navigate = useNavigate();
+
+  // Handle language switch by navigating to the equivalent URL in the new language
+  const handleLanguageSwitch = (newLang: Language) => {
+    const currentPath = location.pathname;
+    
+    // Remove current language prefix if present
+    let basePath = currentPath;
+    if (currentPath.startsWith('/ms')) {
+      basePath = currentPath.slice(3) || '/';
+    } else if (currentPath.startsWith('/zh')) {
+      basePath = currentPath.slice(3) || '/';
+    }
+    
+    // Add new language prefix
+    const newPath = newLang === 'en' ? basePath : `/${newLang}${basePath === '/' ? '' : basePath}`;
+    
+    setLanguage(newLang);
+    navigate(newPath);
+  };
 
   const navLinks = [
     { href: '/', label: t.nav.home },
@@ -80,7 +101,7 @@ export const Header = () => {
               {(Object.keys(languageLabels) as Language[]).map((lang) => (
                 <DropdownMenuItem 
                   key={lang}
-                  onClick={() => setLanguage(lang)}
+                  onClick={() => handleLanguageSwitch(lang)}
                   className={language === lang ? 'bg-accent' : ''}
                 >
                   {languageLabels[lang]}
