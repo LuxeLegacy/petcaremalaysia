@@ -1,83 +1,244 @@
 
 
-## Diagnosis: Old URL Slugs Causing "Article Coming Soon" Errors
+## Generate Complete 444-URL Paired CSV for PetCareMalaysia
 
-### Root Cause Identified
+### Deliverable
+A comprehensive paired CSV file containing ALL site URLs in three columns: `en_url`, `ms_url`, `zh_url`. This will provide complete visibility into every page across all three languages.
 
-The URLs you're visiting use **old/incorrect slugs** that don't match the registered routes in `BlogPostPage.tsx`:
+### Implementation Steps
 
-| URL You're Visiting (WRONG) | Correct URL |
-|---|---|
-| `/zh/blog/poisoning-treatment-guide` | `/zh/blog/pet-poisoning-treatment-malaysia` |
-| `/zh/blog/post-emergency-care-guide` | `/zh/blog/post-emergency-pet-care-malaysia` |
-| `/ms/blog/emergency-transport-guide` | `/ms/blog/pet-emergency-transport-malaysia` |
-| `/ms/blog/heatstroke-guide` | `/ms/blog/pet-heatstroke-malaysia` |
-| etc. | |
+#### 1. Create CSV Export File
+Generate a downloadable CSV file with these exact columns:
+- `en_url` - English version (default, no prefix)
+- `ms_url` - Malay version (/ms/ prefix)
+- `zh_url` - Chinese version (/zh/ prefix)
 
-The code and sitemap are now correct - all internal links and the sitemap use proper slugs. However, the old incorrect URLs (possibly from Google's index, browser history, or external links) don't have route handlers and fall through to the "Coming Soon" placeholder.
+#### 2. URL Categories Included
 
-### Solution: Add URL Redirects for Old Slugs
-
-I'll add redirect handling in `BlogPostPage.tsx` to automatically redirect old slug patterns to the correct ones. This ensures:
-
-1. Users with old bookmarks get redirected to working pages
-2. Google's indexed old URLs redirect properly (SEO-friendly 301-style behavior)
-3. All language versions (EN/MS/ZH) work correctly
-
-### Implementation Plan
-
-**File to modify:** `src/pages/BlogPostPage.tsx`
-
-1. **Create a slug redirect map** at the top of the file:
-```typescript
-const slugRedirects: Record<string, string> = {
-  // Old shortened slugs → Correct full slugs
-  'poisoning-treatment-guide': 'pet-poisoning-treatment-malaysia',
-  'post-emergency-care-guide': 'post-emergency-pet-care-malaysia',
-  'emergency-transport-guide': 'pet-emergency-transport-malaysia',
-  'heatstroke-guide': 'pet-heatstroke-malaysia',
-  'choking-guide': 'pet-choking-emergency-malaysia',
-  'accident-guide': 'pet-accident-emergency-malaysia',
-  'insurance-guide': 'pet-insurance-malaysia',
-  'prevention-guide': 'pet-emergency-prevention-malaysia',
-  'emergency-symptoms-guide': 'pet-emergency-symptoms-malaysia',
-  'vet-directory': '24-hour-vet-directory-malaysia',
-  'first-aid-guide': 'pet-emergency-first-aid-guide-malaysia',
-  'treatment-costs': 'pet-emergency-costs-malaysia',
-  'pet-emergency-guide': 'pet-emergency-guide-malaysia',
-};
+**Main Pages (6 pages × 3 languages = 18 URLs)**
+```csv
+en_url,ms_url,zh_url
+https://petcaremalaysia.com/,https://petcaremalaysia.com/ms,https://petcaremalaysia.com/zh
+https://petcaremalaysia.com/locations,https://petcaremalaysia.com/ms/locations,https://petcaremalaysia.com/zh/locations
+https://petcaremalaysia.com/services,https://petcaremalaysia.com/ms/services,https://petcaremalaysia.com/zh/services
+https://petcaremalaysia.com/blog,https://petcaremalaysia.com/ms/blog,https://petcaremalaysia.com/zh/blog
+https://petcaremalaysia.com/qa,https://petcaremalaysia.com/ms/qa,https://petcaremalaysia.com/zh/qa
+https://petcaremalaysia.com/sitemap,https://petcaremalaysia.com/ms/sitemap,https://petcaremalaysia.com/zh/sitemap
 ```
 
-2. **Add redirect logic** at the start of BlogPostPage component:
-```typescript
-const BlogPostPage = () => {
-  const { slug, lang } = useParams();
-  const navigate = useNavigate();
-
-  // Redirect old slugs to correct ones
-  useEffect(() => {
-    if (slug && slugRedirects[slug]) {
-      const correctSlug = slugRedirects[slug];
-      const newPath = lang 
-        ? `/${lang}/blog/${correctSlug}` 
-        : `/blog/${correctSlug}`;
-      navigate(newPath, { replace: true });
-    }
-  }, [slug, lang, navigate]);
-
-  // If redirecting, show loading or null
-  if (slug && slugRedirects[slug]) {
-    return null; // Will redirect
-  }
-
-  // ... rest of component
-};
+**Blog Articles (22 articles × 3 languages = 66 URLs)**
+```csv
+https://petcaremalaysia.com/blog/pet-emergency-guide-malaysia,https://petcaremalaysia.com/ms/blog/pet-emergency-guide-malaysia,https://petcaremalaysia.com/zh/blog/pet-emergency-guide-malaysia
+https://petcaremalaysia.com/blog/emergency-pet-care-guide,https://petcaremalaysia.com/ms/blog/emergency-pet-care-guide,https://petcaremalaysia.com/zh/blog/emergency-pet-care-guide
+https://petcaremalaysia.com/blog/pet-emergency-symptoms-malaysia,https://petcaremalaysia.com/ms/blog/pet-emergency-symptoms-malaysia,https://petcaremalaysia.com/zh/blog/pet-emergency-symptoms-malaysia
+https://petcaremalaysia.com/blog/24-hour-vet-directory-malaysia,https://petcaremalaysia.com/ms/blog/24-hour-vet-directory-malaysia,https://petcaremalaysia.com/zh/blog/24-hour-vet-directory-malaysia
+https://petcaremalaysia.com/blog/pet-emergency-first-aid-guide-malaysia,https://petcaremalaysia.com/ms/blog/pet-emergency-first-aid-guide-malaysia,https://petcaremalaysia.com/zh/blog/pet-emergency-first-aid-guide-malaysia
+https://petcaremalaysia.com/blog/pet-emergency-costs-malaysia,https://petcaremalaysia.com/ms/blog/pet-emergency-costs-malaysia,https://petcaremalaysia.com/zh/blog/pet-emergency-costs-malaysia
+https://petcaremalaysia.com/blog/common-pet-poisons-malaysia,https://petcaremalaysia.com/ms/blog/common-pet-poisons-malaysia,https://petcaremalaysia.com/zh/blog/common-pet-poisons-malaysia
+https://petcaremalaysia.com/blog/dog-emergency-guide-malaysia,https://petcaremalaysia.com/ms/blog/dog-emergency-guide-malaysia,https://petcaremalaysia.com/zh/blog/dog-emergency-guide-malaysia
+https://petcaremalaysia.com/blog/cat-emergency-guide-malaysia,https://petcaremalaysia.com/ms/blog/cat-emergency-guide-malaysia,https://petcaremalaysia.com/zh/blog/cat-emergency-guide-malaysia
+https://petcaremalaysia.com/blog/pet-heatstroke-malaysia,https://petcaremalaysia.com/ms/blog/pet-heatstroke-malaysia,https://petcaremalaysia.com/zh/blog/pet-heatstroke-malaysia
+https://petcaremalaysia.com/blog/pet-choking-emergency-malaysia,https://petcaremalaysia.com/ms/blog/pet-choking-emergency-malaysia,https://petcaremalaysia.com/zh/blog/pet-choking-emergency-malaysia
+https://petcaremalaysia.com/blog/pet-accident-emergency-malaysia,https://petcaremalaysia.com/ms/blog/pet-accident-emergency-malaysia,https://petcaremalaysia.com/zh/blog/pet-accident-emergency-malaysia
+https://petcaremalaysia.com/blog/pet-insurance-malaysia,https://petcaremalaysia.com/ms/blog/pet-insurance-malaysia,https://petcaremalaysia.com/zh/blog/pet-insurance-malaysia
+https://petcaremalaysia.com/blog/pet-poisoning-treatment-malaysia,https://petcaremalaysia.com/ms/blog/pet-poisoning-treatment-malaysia,https://petcaremalaysia.com/zh/blog/pet-poisoning-treatment-malaysia
+https://petcaremalaysia.com/blog/pet-emergency-transport-malaysia,https://petcaremalaysia.com/ms/blog/pet-emergency-transport-malaysia,https://petcaremalaysia.com/zh/blog/pet-emergency-transport-malaysia
+https://petcaremalaysia.com/blog/post-emergency-pet-care-malaysia,https://petcaremalaysia.com/ms/blog/post-emergency-pet-care-malaysia,https://petcaremalaysia.com/zh/blog/post-emergency-pet-care-malaysia
+https://petcaremalaysia.com/blog/pet-emergency-prevention-malaysia,https://petcaremalaysia.com/ms/blog/pet-emergency-prevention-malaysia,https://petcaremalaysia.com/zh/blog/pet-emergency-prevention-malaysia
+https://petcaremalaysia.com/blog/pet-nutrition-guide-malaysia,https://petcaremalaysia.com/ms/blog/pet-nutrition-guide-malaysia,https://petcaremalaysia.com/zh/blog/pet-nutrition-guide-malaysia
+https://petcaremalaysia.com/blog/pet-insurance-comparison,https://petcaremalaysia.com/ms/blog/pet-insurance-comparison,https://petcaremalaysia.com/zh/blog/pet-insurance-comparison
+https://petcaremalaysia.com/blog/common-pet-illnesses-malaysia,https://petcaremalaysia.com/ms/blog/common-pet-illnesses-malaysia,https://petcaremalaysia.com/zh/blog/common-pet-illnesses-malaysia
+https://petcaremalaysia.com/blog/pet-grooming-tips,https://petcaremalaysia.com/ms/blog/pet-grooming-tips,https://petcaremalaysia.com/zh/blog/pet-grooming-tips
+https://petcaremalaysia.com/blog/vaccinations-schedule-pets,https://petcaremalaysia.com/ms/blog/vaccinations-schedule-pets,https://petcaremalaysia.com/zh/blog/vaccinations-schedule-pets
 ```
 
-### Expected Outcome
+**Q&A State Pages (14 states × 3 languages = 42 URLs)**
+```csv
+https://petcaremalaysia.com/qa/kuala-lumpur,https://petcaremalaysia.com/ms/qa/kuala-lumpur,https://petcaremalaysia.com/zh/qa/kuala-lumpur
+https://petcaremalaysia.com/qa/selangor,https://petcaremalaysia.com/ms/qa/selangor,https://petcaremalaysia.com/zh/qa/selangor
+https://petcaremalaysia.com/qa/johor,https://petcaremalaysia.com/ms/qa/johor,https://petcaremalaysia.com/zh/qa/johor
+https://petcaremalaysia.com/qa/penang,https://petcaremalaysia.com/ms/qa/penang,https://petcaremalaysia.com/zh/qa/penang
+https://petcaremalaysia.com/qa/perak,https://petcaremalaysia.com/ms/qa/perak,https://petcaremalaysia.com/zh/qa/perak
+https://petcaremalaysia.com/qa/sarawak,https://petcaremalaysia.com/ms/qa/sarawak,https://petcaremalaysia.com/zh/qa/sarawak
+https://petcaremalaysia.com/qa/sabah,https://petcaremalaysia.com/ms/qa/sabah,https://petcaremalaysia.com/zh/qa/sabah
+https://petcaremalaysia.com/qa/melaka,https://petcaremalaysia.com/ms/qa/melaka,https://petcaremalaysia.com/zh/qa/melaka
+https://petcaremalaysia.com/qa/kedah,https://petcaremalaysia.com/ms/qa/kedah,https://petcaremalaysia.com/zh/qa/kedah
+https://petcaremalaysia.com/qa/pahang,https://petcaremalaysia.com/ms/qa/pahang,https://petcaremalaysia.com/zh/qa/pahang
+https://petcaremalaysia.com/qa/kelantan,https://petcaremalaysia.com/ms/qa/kelantan,https://petcaremalaysia.com/zh/qa/kelantan
+https://petcaremalaysia.com/qa/terengganu,https://petcaremalaysia.com/ms/qa/terengganu,https://petcaremalaysia.com/zh/qa/terengganu
+https://petcaremalaysia.com/qa/negeri-sembilan,https://petcaremalaysia.com/ms/qa/negeri-sembilan,https://petcaremalaysia.com/zh/qa/negeri-sembilan
+https://petcaremalaysia.com/qa/perlis,https://petcaremalaysia.com/ms/qa/perlis,https://petcaremalaysia.com/zh/qa/perlis
+```
 
-- `/zh/blog/poisoning-treatment-guide` → Redirects to `/zh/blog/pet-poisoning-treatment-malaysia` ✅
-- `/ms/blog/post-emergency-care-guide` → Redirects to `/ms/blog/post-emergency-pet-care-malaysia` ✅
-- All old slug variants in any language will work correctly
-- No more "Article Coming Soon" for URLs with old slugs
+**City Pages - Kuala Lumpur (10 cities × 3 languages = 30 URLs)**
+```csv
+https://petcaremalaysia.com/kuala-lumpur/kuala-lumpur,https://petcaremalaysia.com/ms/kuala-lumpur/kuala-lumpur,https://petcaremalaysia.com/zh/kuala-lumpur/kuala-lumpur
+https://petcaremalaysia.com/kuala-lumpur/bangsar,https://petcaremalaysia.com/ms/kuala-lumpur/bangsar,https://petcaremalaysia.com/zh/kuala-lumpur/bangsar
+https://petcaremalaysia.com/kuala-lumpur/cheras,https://petcaremalaysia.com/ms/kuala-lumpur/cheras,https://petcaremalaysia.com/zh/kuala-lumpur/cheras
+https://petcaremalaysia.com/kuala-lumpur/kepong,https://petcaremalaysia.com/ms/kuala-lumpur/kepong,https://petcaremalaysia.com/zh/kuala-lumpur/kepong
+https://petcaremalaysia.com/kuala-lumpur/setapak,https://petcaremalaysia.com/ms/kuala-lumpur/setapak,https://petcaremalaysia.com/zh/kuala-lumpur/setapak
+https://petcaremalaysia.com/kuala-lumpur/mont-kiara,https://petcaremalaysia.com/ms/kuala-lumpur/mont-kiara,https://petcaremalaysia.com/zh/kuala-lumpur/mont-kiara
+https://petcaremalaysia.com/kuala-lumpur/brickfields,https://petcaremalaysia.com/ms/kuala-lumpur/brickfields,https://petcaremalaysia.com/zh/kuala-lumpur/brickfields
+https://petcaremalaysia.com/kuala-lumpur/klcc,https://petcaremalaysia.com/ms/kuala-lumpur/klcc,https://petcaremalaysia.com/zh/kuala-lumpur/klcc
+https://petcaremalaysia.com/kuala-lumpur/wangsa-maju,https://petcaremalaysia.com/ms/kuala-lumpur/wangsa-maju,https://petcaremalaysia.com/zh/kuala-lumpur/wangsa-maju
+https://petcaremalaysia.com/kuala-lumpur/taman-melawati,https://petcaremalaysia.com/ms/kuala-lumpur/taman-melawati,https://petcaremalaysia.com/zh/kuala-lumpur/taman-melawati
+```
 
+**City Pages - Selangor (21 cities × 3 languages = 63 URLs)**
+```csv
+https://petcaremalaysia.com/selangor/petaling-jaya,https://petcaremalaysia.com/ms/selangor/petaling-jaya,https://petcaremalaysia.com/zh/selangor/petaling-jaya
+https://petcaremalaysia.com/selangor/bandar-utama,https://petcaremalaysia.com/ms/selangor/bandar-utama,https://petcaremalaysia.com/zh/selangor/bandar-utama
+https://petcaremalaysia.com/selangor/kota-damansara,https://petcaremalaysia.com/ms/selangor/kota-damansara,https://petcaremalaysia.com/zh/selangor/kota-damansara
+https://petcaremalaysia.com/selangor/ara-damansara,https://petcaremalaysia.com/ms/selangor/ara-damansara,https://petcaremalaysia.com/zh/selangor/ara-damansara
+https://petcaremalaysia.com/selangor/ss2,https://petcaremalaysia.com/ms/selangor/ss2,https://petcaremalaysia.com/zh/selangor/ss2
+https://petcaremalaysia.com/selangor/kelana-jaya,https://petcaremalaysia.com/ms/selangor/kelana-jaya,https://petcaremalaysia.com/zh/selangor/kelana-jaya
+https://petcaremalaysia.com/selangor/tropicana,https://petcaremalaysia.com/ms/selangor/tropicana,https://petcaremalaysia.com/zh/selangor/tropicana
+https://petcaremalaysia.com/selangor/taman-megah,https://petcaremalaysia.com/ms/selangor/taman-megah,https://petcaremalaysia.com/zh/selangor/taman-megah
+https://petcaremalaysia.com/selangor/shah-alam,https://petcaremalaysia.com/ms/selangor/shah-alam,https://petcaremalaysia.com/zh/selangor/shah-alam
+https://petcaremalaysia.com/selangor/setia-alam,https://petcaremalaysia.com/ms/selangor/setia-alam,https://petcaremalaysia.com/zh/selangor/setia-alam
+https://petcaremalaysia.com/selangor/bukit-jelutong,https://petcaremalaysia.com/ms/selangor/bukit-jelutong,https://petcaremalaysia.com/zh/selangor/bukit-jelutong
+https://petcaremalaysia.com/selangor/seksyen-7,https://petcaremalaysia.com/ms/selangor/seksyen-7,https://petcaremalaysia.com/zh/selangor/seksyen-7
+https://petcaremalaysia.com/selangor/seksyen-13,https://petcaremalaysia.com/ms/selangor/seksyen-13,https://petcaremalaysia.com/zh/selangor/seksyen-13
+https://petcaremalaysia.com/selangor/subang-jaya,https://petcaremalaysia.com/ms/selangor/subang-jaya,https://petcaremalaysia.com/zh/selangor/subang-jaya
+https://petcaremalaysia.com/selangor/usj,https://petcaremalaysia.com/ms/selangor/usj,https://petcaremalaysia.com/zh/selangor/usj
+https://petcaremalaysia.com/selangor/taipan,https://petcaremalaysia.com/ms/selangor/taipan,https://petcaremalaysia.com/zh/selangor/taipan
+https://petcaremalaysia.com/selangor/putra-heights,https://petcaremalaysia.com/ms/selangor/putra-heights,https://petcaremalaysia.com/zh/selangor/putra-heights
+https://petcaremalaysia.com/selangor/klang,https://petcaremalaysia.com/ms/selangor/klang,https://petcaremalaysia.com/zh/selangor/klang
+https://petcaremalaysia.com/selangor/bandar-bukit-tinggi,https://petcaremalaysia.com/ms/selangor/bandar-bukit-tinggi,https://petcaremalaysia.com/zh/selangor/bandar-bukit-tinggi
+https://petcaremalaysia.com/selangor/kota-kemuning,https://petcaremalaysia.com/ms/selangor/kota-kemuning,https://petcaremalaysia.com/zh/selangor/kota-kemuning
+https://petcaremalaysia.com/selangor/meru,https://petcaremalaysia.com/ms/selangor/meru,https://petcaremalaysia.com/zh/selangor/meru
+https://petcaremalaysia.com/selangor/port-klang,https://petcaremalaysia.com/ms/selangor/port-klang,https://petcaremalaysia.com/zh/selangor/port-klang
+```
+
+**City Pages - Johor (17 cities × 3 languages = 51 URLs)**
+```csv
+https://petcaremalaysia.com/johor/johor-bahru,https://petcaremalaysia.com/ms/johor/johor-bahru,https://petcaremalaysia.com/zh/johor/johor-bahru
+https://petcaremalaysia.com/johor/tampoi,https://petcaremalaysia.com/ms/johor/tampoi,https://petcaremalaysia.com/zh/johor/tampoi
+https://petcaremalaysia.com/johor/skudai,https://petcaremalaysia.com/ms/johor/skudai,https://petcaremalaysia.com/zh/johor/skudai
+https://petcaremalaysia.com/johor/permas-jaya,https://petcaremalaysia.com/ms/johor/permas-jaya,https://petcaremalaysia.com/zh/johor/permas-jaya
+https://petcaremalaysia.com/johor/taman-molek,https://petcaremalaysia.com/ms/johor/taman-molek,https://petcaremalaysia.com/zh/johor/taman-molek
+https://petcaremalaysia.com/johor/iskandar-puteri,https://petcaremalaysia.com/ms/johor/iskandar-puteri,https://petcaremalaysia.com/zh/johor/iskandar-puteri
+https://petcaremalaysia.com/johor/gelang-patah,https://petcaremalaysia.com/ms/johor/gelang-patah,https://petcaremalaysia.com/zh/johor/gelang-patah
+https://petcaremalaysia.com/johor/nusajaya,https://petcaremalaysia.com/ms/johor/nusajaya,https://petcaremalaysia.com/zh/johor/nusajaya
+https://petcaremalaysia.com/johor/bukit-indah,https://petcaremalaysia.com/ms/johor/bukit-indah,https://petcaremalaysia.com/zh/johor/bukit-indah
+https://petcaremalaysia.com/johor/batu-pahat,https://petcaremalaysia.com/ms/johor/batu-pahat,https://petcaremalaysia.com/zh/johor/batu-pahat
+https://petcaremalaysia.com/johor/yong-peng,https://petcaremalaysia.com/ms/johor/yong-peng,https://petcaremalaysia.com/zh/johor/yong-peng
+https://petcaremalaysia.com/johor/parit-raja,https://petcaremalaysia.com/ms/johor/parit-raja,https://petcaremalaysia.com/zh/johor/parit-raja
+https://petcaremalaysia.com/johor/muar,https://petcaremalaysia.com/ms/johor/muar,https://petcaremalaysia.com/zh/johor/muar
+https://petcaremalaysia.com/johor/tangkak,https://petcaremalaysia.com/ms/johor/tangkak,https://petcaremalaysia.com/zh/johor/tangkak
+https://petcaremalaysia.com/johor/kulai,https://petcaremalaysia.com/ms/johor/kulai,https://petcaremalaysia.com/zh/johor/kulai
+https://petcaremalaysia.com/johor/senai,https://petcaremalaysia.com/ms/johor/senai,https://petcaremalaysia.com/zh/johor/senai
+```
+
+**City Pages - Penang (11 cities × 3 languages = 33 URLs)**
+```csv
+https://petcaremalaysia.com/penang/george-town,https://petcaremalaysia.com/ms/penang/george-town,https://petcaremalaysia.com/zh/penang/george-town
+https://petcaremalaysia.com/penang/tanjung-tokong,https://petcaremalaysia.com/ms/penang/tanjung-tokong,https://petcaremalaysia.com/zh/penang/tanjung-tokong
+https://petcaremalaysia.com/penang/tanjung-bungah,https://petcaremalaysia.com/ms/penang/tanjung-bungah,https://petcaremalaysia.com/zh/penang/tanjung-bungah
+https://petcaremalaysia.com/penang/gelugor,https://petcaremalaysia.com/ms/penang/gelugor,https://petcaremalaysia.com/zh/penang/gelugor
+https://petcaremalaysia.com/penang/bayan-lepas,https://petcaremalaysia.com/ms/penang/bayan-lepas,https://petcaremalaysia.com/zh/penang/bayan-lepas
+https://petcaremalaysia.com/penang/air-itam,https://petcaremalaysia.com/ms/penang/air-itam,https://petcaremalaysia.com/zh/penang/air-itam
+https://petcaremalaysia.com/penang/butterworth,https://petcaremalaysia.com/ms/penang/butterworth,https://petcaremalaysia.com/zh/penang/butterworth
+https://petcaremalaysia.com/penang/bukit-mertajam,https://petcaremalaysia.com/ms/penang/bukit-mertajam,https://petcaremalaysia.com/zh/penang/bukit-mertajam
+https://petcaremalaysia.com/penang/perai,https://petcaremalaysia.com/ms/penang/perai,https://petcaremalaysia.com/zh/penang/perai
+https://petcaremalaysia.com/penang/kepala-batas,https://petcaremalaysia.com/ms/penang/kepala-batas,https://petcaremalaysia.com/zh/penang/kepala-batas
+https://petcaremalaysia.com/penang/nibong-tebal,https://petcaremalaysia.com/ms/penang/nibong-tebal,https://petcaremalaysia.com/zh/penang/nibong-tebal
+```
+
+**City Pages - Perak (7 cities × 3 languages = 21 URLs)**
+```csv
+https://petcaremalaysia.com/perak/ipoh,https://petcaremalaysia.com/ms/perak/ipoh,https://petcaremalaysia.com/zh/perak/ipoh
+https://petcaremalaysia.com/perak/menglembu,https://petcaremalaysia.com/ms/perak/menglembu,https://petcaremalaysia.com/zh/perak/menglembu
+https://petcaremalaysia.com/perak/tambun,https://petcaremalaysia.com/ms/perak/tambun,https://petcaremalaysia.com/zh/perak/tambun
+https://petcaremalaysia.com/perak/bercham,https://petcaremalaysia.com/ms/perak/bercham,https://petcaremalaysia.com/zh/perak/bercham
+https://petcaremalaysia.com/perak/simpang-pulai,https://petcaremalaysia.com/ms/perak/simpang-pulai,https://petcaremalaysia.com/zh/perak/simpang-pulai
+https://petcaremalaysia.com/perak/taiping,https://petcaremalaysia.com/ms/perak/taiping,https://petcaremalaysia.com/zh/perak/taiping
+https://petcaremalaysia.com/perak/kamunting,https://petcaremalaysia.com/ms/perak/kamunting,https://petcaremalaysia.com/zh/perak/kamunting
+```
+
+**City Pages - Sarawak (8 cities × 3 languages = 24 URLs)**
+```csv
+https://petcaremalaysia.com/sarawak/kuching,https://petcaremalaysia.com/ms/sarawak/kuching,https://petcaremalaysia.com/zh/sarawak/kuching
+https://petcaremalaysia.com/sarawak/petra-jaya,https://petcaremalaysia.com/ms/sarawak/petra-jaya,https://petcaremalaysia.com/zh/sarawak/petra-jaya
+https://petcaremalaysia.com/sarawak/kota-samarahan,https://petcaremalaysia.com/ms/sarawak/kota-samarahan,https://petcaremalaysia.com/zh/sarawak/kota-samarahan
+https://petcaremalaysia.com/sarawak/pending,https://petcaremalaysia.com/ms/sarawak/pending,https://petcaremalaysia.com/zh/sarawak/pending
+https://petcaremalaysia.com/sarawak/batu-kawa,https://petcaremalaysia.com/ms/sarawak/batu-kawa,https://petcaremalaysia.com/zh/sarawak/batu-kawa
+https://petcaremalaysia.com/sarawak/sibu,https://petcaremalaysia.com/ms/sarawak/sibu,https://petcaremalaysia.com/zh/sarawak/sibu
+https://petcaremalaysia.com/sarawak/mukah,https://petcaremalaysia.com/ms/sarawak/mukah,https://petcaremalaysia.com/zh/sarawak/mukah
+https://petcaremalaysia.com/sarawak/miri,https://petcaremalaysia.com/ms/sarawak/miri,https://petcaremalaysia.com/zh/sarawak/miri
+```
+
+**City Pages - Sabah (7 cities × 3 languages = 21 URLs)**
+```csv
+https://petcaremalaysia.com/sabah/kota-kinabalu,https://petcaremalaysia.com/ms/sabah/kota-kinabalu,https://petcaremalaysia.com/zh/sabah/kota-kinabalu
+https://petcaremalaysia.com/sabah/penampang,https://petcaremalaysia.com/ms/sabah/penampang,https://petcaremalaysia.com/zh/sabah/penampang
+https://petcaremalaysia.com/sabah/likas,https://petcaremalaysia.com/ms/sabah/likas,https://petcaremalaysia.com/zh/sabah/likas
+https://petcaremalaysia.com/sabah/inanam,https://petcaremalaysia.com/ms/sabah/inanam,https://petcaremalaysia.com/zh/sabah/inanam
+https://petcaremalaysia.com/sabah/tuaran,https://petcaremalaysia.com/ms/sabah/tuaran,https://petcaremalaysia.com/zh/sabah/tuaran
+https://petcaremalaysia.com/sabah/sandakan,https://petcaremalaysia.com/ms/sabah/sandakan,https://petcaremalaysia.com/zh/sabah/sandakan
+https://petcaremalaysia.com/sabah/batu-sapi,https://petcaremalaysia.com/ms/sabah/batu-sapi,https://petcaremalaysia.com/zh/sabah/batu-sapi
+```
+
+**City Pages - Melaka (5 cities × 3 languages = 15 URLs)**
+```csv
+https://petcaremalaysia.com/melaka/melaka,https://petcaremalaysia.com/ms/melaka/melaka,https://petcaremalaysia.com/zh/melaka/melaka
+https://petcaremalaysia.com/melaka/ayer-keroh,https://petcaremalaysia.com/ms/melaka/ayer-keroh,https://petcaremalaysia.com/zh/melaka/ayer-keroh
+https://petcaremalaysia.com/melaka/batu-berendam,https://petcaremalaysia.com/ms/melaka/batu-berendam,https://petcaremalaysia.com/zh/melaka/batu-berendam
+https://petcaremalaysia.com/melaka/bukit-baru,https://petcaremalaysia.com/ms/melaka/bukit-baru,https://petcaremalaysia.com/zh/melaka/bukit-baru
+https://petcaremalaysia.com/melaka/alor-gajah,https://petcaremalaysia.com/ms/melaka/alor-gajah,https://petcaremalaysia.com/zh/melaka/alor-gajah
+```
+
+**City Pages - Negeri Sembilan (4 cities × 3 languages = 12 URLs)**
+```csv
+https://petcaremalaysia.com/negeri-sembilan/seremban,https://petcaremalaysia.com/ms/negeri-sembilan/seremban,https://petcaremalaysia.com/zh/negeri-sembilan/seremban
+https://petcaremalaysia.com/negeri-sembilan/nilai,https://petcaremalaysia.com/ms/negeri-sembilan/nilai,https://petcaremalaysia.com/zh/negeri-sembilan/nilai
+https://petcaremalaysia.com/negeri-sembilan/port-dickson,https://petcaremalaysia.com/ms/negeri-sembilan/port-dickson,https://petcaremalaysia.com/zh/negeri-sembilan/port-dickson
+https://petcaremalaysia.com/negeri-sembilan/mantin,https://petcaremalaysia.com/ms/negeri-sembilan/mantin,https://petcaremalaysia.com/zh/negeri-sembilan/mantin
+```
+
+**City Pages - Pahang (4 cities × 3 languages = 12 URLs)**
+```csv
+https://petcaremalaysia.com/pahang/kuantan,https://petcaremalaysia.com/ms/pahang/kuantan,https://petcaremalaysia.com/zh/pahang/kuantan
+https://petcaremalaysia.com/pahang/indera-mahkota,https://petcaremalaysia.com/ms/pahang/indera-mahkota,https://petcaremalaysia.com/zh/pahang/indera-mahkota
+https://petcaremalaysia.com/pahang/gambang,https://petcaremalaysia.com/ms/pahang/gambang,https://petcaremalaysia.com/zh/pahang/gambang
+https://petcaremalaysia.com/pahang/beserah,https://petcaremalaysia.com/ms/pahang/beserah,https://petcaremalaysia.com/zh/pahang/beserah
+```
+
+**City Pages - Kedah (4 cities × 3 languages = 12 URLs)**
+```csv
+https://petcaremalaysia.com/kedah/sungai-petani,https://petcaremalaysia.com/ms/kedah/sungai-petani,https://petcaremalaysia.com/zh/kedah/sungai-petani
+https://petcaremalaysia.com/kedah/kuala-ketil,https://petcaremalaysia.com/ms/kedah/kuala-ketil,https://petcaremalaysia.com/zh/kedah/kuala-ketil
+https://petcaremalaysia.com/kedah/alor-setar,https://petcaremalaysia.com/ms/kedah/alor-setar,https://petcaremalaysia.com/zh/kedah/alor-setar
+https://petcaremalaysia.com/kedah/jitra,https://petcaremalaysia.com/ms/kedah/jitra,https://petcaremalaysia.com/zh/kedah/jitra
+```
+
+**City Pages - Kelantan (1 city × 3 languages = 3 URLs)**
+```csv
+https://petcaremalaysia.com/kelantan/kota-bharu,https://petcaremalaysia.com/ms/kelantan/kota-bharu,https://petcaremalaysia.com/zh/kelantan/kota-bharu
+```
+
+**City Pages - Terengganu (1 city × 3 languages = 3 URLs)**
+```csv
+https://petcaremalaysia.com/terengganu/kuala-terengganu,https://petcaremalaysia.com/ms/terengganu/kuala-terengganu,https://petcaremalaysia.com/zh/terengganu/kuala-terengganu
+```
+
+**City Pages - Perlis (2 cities × 3 languages = 6 URLs)**
+```csv
+https://petcaremalaysia.com/perlis/kangar,https://petcaremalaysia.com/ms/perlis/kangar,https://petcaremalaysia.com/zh/perlis/kangar
+https://petcaremalaysia.com/perlis/arau,https://petcaremalaysia.com/ms/perlis/arau,https://petcaremalaysia.com/zh/perlis/arau
+```
+
+**Legal Pages (English only - 3 URLs)**
+```csv
+https://petcaremalaysia.com/terms,,
+https://petcaremalaysia.com/privacy,,
+https://petcaremalaysia.com/disclaimer,,
+```
+
+### 3. Create Downloadable File
+I will create a new file `public/all-urls.csv` containing all 444 URLs in the paired CSV format above, which you can then download directly from your published site.
+
+### Summary
+- Total unique pages: 148 (excluding legal pages duplicated by language)
+- Total URLs across all languages: 444
+- Format: Paired CSV with en_url, ms_url, zh_url columns
