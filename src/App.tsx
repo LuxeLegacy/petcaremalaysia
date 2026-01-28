@@ -18,6 +18,7 @@ import BlogPostPage from "./pages/BlogPostPage";
 import QAPage from "./pages/QAPage";
 import StateQAPage from "./pages/StateQAPage";
 import AssessmentPage from "./pages/AssessmentPage";
+import AdminPage from "./pages/AdminPage";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -64,6 +65,9 @@ const App = () => (
               {/* Assessment */}
               <Route path="/assessment" element={<AssessmentPage />} />
               <Route path="/:lang/assessment" element={<AssessmentPage />} />
+              
+              {/* Admin */}
+              <Route path="/admin" element={<AdminPage />} />
               
               {/* Legal pages */}
               <Route path="/terms" element={<TermsPage />} />
