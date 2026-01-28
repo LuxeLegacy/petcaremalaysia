@@ -14,6 +14,51 @@ export type Database = {
   }
   public: {
     Tables: {
+      assessment_leads: {
+        Row: {
+          assessment_data: Json | null
+          city: string | null
+          created_at: string
+          id: string
+          pet_name: string
+          state: string | null
+          urgency_level: string | null
+          urgency_score: number | null
+          user_email: string
+          user_name: string
+          user_phone: string | null
+          zipcode: string | null
+        }
+        Insert: {
+          assessment_data?: Json | null
+          city?: string | null
+          created_at?: string
+          id?: string
+          pet_name: string
+          state?: string | null
+          urgency_level?: string | null
+          urgency_score?: number | null
+          user_email: string
+          user_name: string
+          user_phone?: string | null
+          zipcode?: string | null
+        }
+        Update: {
+          assessment_data?: Json | null
+          city?: string | null
+          created_at?: string
+          id?: string
+          pet_name?: string
+          state?: string | null
+          urgency_level?: string | null
+          urgency_score?: number | null
+          user_email?: string
+          user_name?: string
+          user_phone?: string | null
+          zipcode?: string | null
+        }
+        Relationships: []
+      }
       pet_qa_keywords: {
         Row: {
           answer: string
