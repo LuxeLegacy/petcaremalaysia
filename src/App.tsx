@@ -19,6 +19,7 @@ import QAPage from "./pages/QAPage";
 import StateQAPage from "./pages/StateQAPage";
 import AssessmentPage from "./pages/AssessmentPage";
 import AdminPage from "./pages/AdminPage";
+import EmergencyGuidePage from "./pages/EmergencyGuidePage";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -65,6 +66,10 @@ const App = () => (
               {/* Assessment */}
               <Route path="/assessment" element={<AssessmentPage />} />
               <Route path="/:lang/assessment" element={<AssessmentPage />} />
+              
+              {/* Emergency Guide */}
+              <Route path="/emergency-guide" element={<EmergencyGuidePage />} />
+              <Route path="/:lang/emergency-guide" element={<EmergencyGuidePage />} />
               
               {/* Admin */}
               <Route path="/admin" element={<AdminPage />} />
