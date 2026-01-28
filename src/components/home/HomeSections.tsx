@@ -2,7 +2,7 @@ import { Link } from 'react-router-dom';
 import { useLanguage } from '@/contexts/LanguageContext';
 import { Button } from '@/components/ui/button';
 import { hubsData } from '@/lib/cityData';
-import { MapPin, Phone, Search, ChevronRight, Clock, Heart, Shield, Scissors, CheckCircle, MessageCircleQuestion, HelpCircle } from 'lucide-react';
+import { MapPin, Phone, Search, ChevronRight, Clock, Heart, Shield, Scissors, CheckCircle, MessageCircleQuestion, HelpCircle, AlertTriangle } from 'lucide-react';
 import heroPets from '@/assets/hero-pets.jpg';
 
 export const HeroSection = () => {
@@ -33,7 +33,23 @@ export const HeroSection = () => {
             {t.hero.subheadline}
           </p>
 
-          {/* CTA Buttons */}
+          {/* Emergency Assessment CTA - Primary */}
+          <div className="animate-slide-up mb-4" style={{ animationDelay: '0.15s' }}>
+            <Link to="/assessment">
+              <Button 
+                size="lg" 
+                className="bg-destructive hover:bg-destructive/90 text-destructive-foreground shadow-elevated text-base md:text-lg font-bold gap-2 px-6 md:px-10 py-6 md:py-7 animate-pulse-soft"
+              >
+                <AlertTriangle className="h-5 w-5 md:h-6 md:w-6" />
+                Is Your Pet in Danger? Check Now — FREE
+              </Button>
+            </Link>
+            <p className="text-primary-foreground/80 text-sm mt-2 font-medium">
+              ⏱️ Every minute counts in a pet emergency. Get instant results.
+            </p>
+          </div>
+
+          {/* Secondary CTA Buttons */}
           <div className="flex flex-col sm:flex-row gap-4 justify-center animate-slide-up flex-wrap" style={{
           animationDelay: '0.2s'
         }}>
