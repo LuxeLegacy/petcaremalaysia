@@ -71,7 +71,7 @@ const WEIGHTS = {
   },
 };
 
-export function calculateUrgency(data: AssessmentData): UrgencyResult {
+export function calculateUrgency(data: AssessmentData, actions?: { critical: string[]; high: string[]; moderate: string[]; low: string[] }): UrgencyResult {
   let score = 0;
 
   // Calculate breathing score
@@ -97,92 +97,133 @@ export function calculateUrgency(data: AssessmentData): UrgencyResult {
     score += WEIGHTS.conditions[condition as keyof typeof WEIGHTS.conditions] || 0;
   });
 
+  // Default actions (English)
+  const defaultActions = {
+    critical: [
+      'Call your nearest 24-hour emergency vet IMMEDIATELY',
+      'Keep your pet calm and still during transport',
+      'Do NOT give any food, water, or medication',
+      'If bleeding, apply gentle pressure with clean cloth',
+      'Drive safely but urgently to the vet',
+    ],
+    high: [
+      'See a vet within the next 2-4 hours',
+      'Monitor your pet closely for any changes',
+      'Prepare transport and have vet contact ready',
+      'Keep your pet comfortable and calm',
+      'Note any new symptoms that develop',
+    ],
+    moderate: [
+      'Schedule a vet visit within 24 hours',
+      'Monitor symptoms closely',
+      'Ensure your pet stays hydrated',
+      'Keep a symptom diary to share with the vet',
+      'Call the vet if symptoms worsen',
+    ],
+    low: [
+      'Continue monitoring your pet',
+      'Maintain normal feeding and hydration',
+      'Schedule a routine check-up if concerned',
+      'Watch for any changes in behavior',
+      'Keep emergency vet numbers handy',
+    ],
+  };
+
+  const actionSet = actions || defaultActions;
+
   // Determine urgency level
   let level: UrgencyLevel;
   let color: string;
   let bgColor: string;
   let borderColor: string;
-  let actions: string[];
+  let resultActions: string[];
 
   if (score >= 80) {
     level = 'CRITICAL';
     color = 'text-red-700';
     bgColor = 'bg-red-50';
     borderColor = 'border-red-500';
-    actions = [
-      'Call your nearest 24-hour emergency vet IMMEDIATELY',
-      'Keep your pet calm and still during transport',
-      'Do NOT give any food, water, or medication',
-      'If bleeding, apply gentle pressure with clean cloth',
-      'Drive safely but urgently to the vet',
-    ];
+    resultActions = actionSet.critical;
   } else if (score >= 50) {
     level = 'HIGH';
     color = 'text-orange-700';
     bgColor = 'bg-orange-50';
     borderColor = 'border-orange-500';
-    actions = [
-      'See a vet within the next 2-4 hours',
-      'Monitor your pet closely for any changes',
-      'Prepare transport and have vet contact ready',
-      'Keep your pet comfortable and calm',
-      'Note any new symptoms that develop',
-    ];
+    resultActions = actionSet.high;
   } else if (score >= 25) {
     level = 'MODERATE';
     color = 'text-yellow-700';
     bgColor = 'bg-yellow-50';
     borderColor = 'border-yellow-500';
-    actions = [
-      'Schedule a vet visit within 24 hours',
-      'Monitor symptoms closely',
-      'Ensure your pet stays hydrated',
-      'Keep a symptom diary to share with the vet',
-      'Call the vet if symptoms worsen',
-    ];
+    resultActions = actionSet.moderate;
   } else {
     level = 'LOW';
     color = 'text-green-700';
     bgColor = 'bg-green-50';
     borderColor = 'border-green-500';
-    actions = [
-      'Continue monitoring your pet',
-      'Maintain normal feeding and hydration',
-      'Schedule a routine check-up if concerned',
-      'Watch for any changes in behavior',
-      'Keep emergency vet numbers handy',
-    ];
+    resultActions = actionSet.low;
   }
 
-  return { level, score, color, bgColor, borderColor, actions };
+  return { level, score, color, bgColor, borderColor, actions: resultActions };
 }
 
-// Get urgency headline based on level
+// Get urgency headline based on level - can accept translated templates
 export function getUrgencyHeadline(
   level: UrgencyLevel,
   petName: string,
-  userName: string
+  userName: string,
+  translations?: {
+    critical: { headline: string; subheadline: string };
+    high: { headline: string; subheadline: string };
+    moderate: { headline: string; subheadline: string };
+    low: { headline: string; subheadline: string };
+  }
 ): { headline: string; subheadline: string } {
+  const defaultTranslations = {
+    critical: {
+      headline: `${petName} NEEDS EMERGENCY CARE RIGHT NOW`,
+      subheadline: `${userName}, every second counts. Here's exactly what to do...`,
+    },
+    high: {
+      headline: `WARNING: ${petName} Shows Concerning Signs`,
+      subheadline: `${userName}, don't wait until it's too late. See a vet within 2 hours.`,
+    },
+    moderate: {
+      headline: `Good News, ${userName}: ${petName} Can Wait a Few Hours`,
+      subheadline: `But here's what smart pet owners do next...`,
+    },
+    low: {
+      headline: `${petName} Looks Okay For Now, ${userName}`,
+      subheadline: `But here's how to make SURE nothing gets worse...`,
+    },
+  };
+
+  const t = translations || defaultTranslations;
+
+  const replaceVariables = (text: string) => {
+    return text.replace(/{petName}/g, petName).replace(/{userName}/g, userName);
+  };
+
   switch (level) {
     case 'CRITICAL':
       return {
-        headline: `${petName} NEEDS EMERGENCY CARE RIGHT NOW`,
-        subheadline: `${userName}, every second counts. Here's exactly what to do...`,
+        headline: replaceVariables(t.critical.headline),
+        subheadline: replaceVariables(t.critical.subheadline),
       };
     case 'HIGH':
       return {
-        headline: `WARNING: ${petName} Shows Concerning Signs`,
-        subheadline: `${userName}, don't wait until it's too late. See a vet within 2 hours.`,
+        headline: replaceVariables(t.high.headline),
+        subheadline: replaceVariables(t.high.subheadline),
       };
     case 'MODERATE':
       return {
-        headline: `Good News, ${userName}: ${petName} Can Wait a Few Hours`,
-        subheadline: `But here's what smart pet owners do next...`,
+        headline: replaceVariables(t.moderate.headline),
+        subheadline: replaceVariables(t.moderate.subheadline),
       };
     case 'LOW':
       return {
-        headline: `${petName} Looks Okay For Now, ${userName}`,
-        subheadline: `But here's how to make SURE nothing gets worse...`,
+        headline: replaceVariables(t.low.headline),
+        subheadline: replaceVariables(t.low.subheadline),
       };
   }
 }

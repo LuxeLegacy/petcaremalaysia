@@ -2,6 +2,7 @@ import { Card, CardContent } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { AlertTriangle, Clock, Users, TrendingUp, Shield, CheckCircle } from 'lucide-react';
 import { getStates, getCitiesByState } from '@/lib/locationUtils';
+import { useLanguage } from '@/contexts/LanguageContext';
 import {
   Select,
   SelectContent,
@@ -25,6 +26,7 @@ export function EntryScreen({
   onCityChange,
   onStart,
 }: EntryScreenProps) {
+  const { t } = useLanguage();
   const states = getStates();
   const cities = state ? getCitiesByState(state) : [];
   const isValid = !!state && !!city;
@@ -47,21 +49,21 @@ export function EntryScreen({
       <div className="max-w-2xl text-center mb-8 space-y-4">
         <div className="inline-flex items-center gap-2 text-destructive bg-destructive/10 rounded-full py-2 px-4 animate-pulse">
           <AlertTriangle className="w-5 h-5" />
-          <span className="text-sm font-bold uppercase tracking-wide">⚠️ Warning: Time-Sensitive</span>
+          <span className="text-sm font-bold uppercase tracking-wide">{t.assessment.entry.badgeText}</span>
         </div>
         
         <h1 className="text-3xl md:text-4xl font-black text-foreground leading-tight">
-          Is Your Pet <span className="text-destructive">Dying</span> Right Now?
+          {t.assessment.entry.headline} <span className="text-destructive">{t.assessment.entry.headlineHighlight}</span>
           <br />
           <span className="text-2xl md:text-3xl font-bold text-muted-foreground">
-            Find Out in 60 Seconds — Before It's Too Late
+            {t.assessment.entry.subheadline}
           </span>
         </h1>
         
         <p className="text-lg text-muted-foreground max-w-xl mx-auto">
-          <strong className="text-foreground">FACT:</strong> 78% of pet deaths from poisoning happen because owners waited 
-          <span className="text-destructive font-semibold"> "just one more hour" </span> 
-          to see if symptoms improved.
+          <strong className="text-foreground">{t.assessment.entry.factLabel}</strong> {t.assessment.entry.factText}
+          <span className="text-destructive font-semibold"> {t.assessment.entry.factHighlight} </span>
+          {t.assessment.entry.factText.includes('to see') ? 'to see if symptoms improved.' : ''}
         </p>
       </div>
 
@@ -71,10 +73,10 @@ export function EntryScreen({
           <div className="bg-gradient-to-r from-primary/10 to-destructive/10 rounded-lg p-4 text-center space-y-1">
             <div className="flex items-center justify-center gap-2 text-primary">
               <Users className="w-5 h-5" />
-              <span className="text-2xl font-black">2,847</span>
+              <span className="text-2xl font-black">{t.assessment.entry.fomoCount}</span>
             </div>
             <p className="text-sm text-muted-foreground">
-              Malaysian pet owners used this tool <strong>this month</strong>
+              {t.assessment.entry.fomoText}
             </p>
           </div>
 
@@ -82,10 +84,10 @@ export function EntryScreen({
           <div className="text-center space-y-2">
             <div className="flex items-center justify-center gap-2 text-green-600">
               <Shield className="w-5 h-5" />
-              <span className="text-sm font-semibold uppercase">100% Free • No Registration</span>
+              <span className="text-sm font-semibold uppercase">{t.assessment.entry.freeLabel}</span>
             </div>
             <h2 className="text-xl font-bold text-foreground">
-              Instant Pet Emergency Triage
+              {t.assessment.entry.formTitle}
             </h2>
           </div>
 
@@ -93,11 +95,11 @@ export function EntryScreen({
           <form onSubmit={handleSubmit} className="space-y-4">
             <div className="space-y-2">
               <label htmlFor="state" className="text-sm font-medium text-foreground">
-                Select your state
+                {t.assessment.entry.stateLabel}
               </label>
               <Select value={state} onValueChange={handleStateChange}>
                 <SelectTrigger id="state" className="h-12 text-base">
-                  <SelectValue placeholder="Choose state..." />
+                  <SelectValue placeholder={t.assessment.entry.statePlaceholder} />
                 </SelectTrigger>
                 <SelectContent className="bg-background z-50">
                   {states.map((s) => (
@@ -111,7 +113,7 @@ export function EntryScreen({
 
             <div className="space-y-2">
               <label htmlFor="city" className="text-sm font-medium text-foreground">
-                Select your city
+                {t.assessment.entry.cityLabel}
               </label>
               <Select 
                 value={city} 
@@ -119,7 +121,7 @@ export function EntryScreen({
                 disabled={!state}
               >
                 <SelectTrigger id="city" className="h-12 text-base">
-                  <SelectValue placeholder={state ? "Choose city..." : "Select state first"} />
+                  <SelectValue placeholder={state ? t.assessment.entry.cityPlaceholder : t.assessment.entry.cityDisabled} />
                 </SelectTrigger>
                 <SelectContent className="bg-background z-50">
                   {cities.map((c) => (
@@ -133,7 +135,7 @@ export function EntryScreen({
 
             {state && city && (
               <p className="text-sm text-muted-foreground">
-                📍 Finding emergency vets near {city}, {state}...
+                {t.assessment.entry.findingVets} {city}, {state}...
               </p>
             )}
 
@@ -142,12 +144,12 @@ export function EntryScreen({
               className="w-full h-14 text-lg font-bold bg-destructive hover:bg-destructive/90 text-destructive-foreground shadow-lg"
               disabled={!isValid}
             >
-              🚨 CHECK MY PET NOW — FREE
+              {t.assessment.entry.ctaButton}
             </Button>
             
             <p className="text-xs text-center text-muted-foreground">
               <Clock className="w-3 h-3 inline mr-1" />
-              Takes only 60 seconds • Results instantly
+              {t.assessment.entry.ctaTime}
             </p>
           </form>
 
@@ -156,19 +158,19 @@ export function EntryScreen({
             <div className="flex items-start gap-2 text-sm">
               <CheckCircle className="w-4 h-4 text-green-600 mt-0.5 shrink-0" />
               <span className="text-muted-foreground">
-                <strong className="text-foreground">Based on 2.3M ER cases</strong> — Same protocols used by emergency vets
+                <strong className="text-foreground">{t.assessment.entry.trust1Bold}</strong> {t.assessment.entry.trust1Text}
               </span>
             </div>
             <div className="flex items-start gap-2 text-sm">
               <CheckCircle className="w-4 h-4 text-green-600 mt-0.5 shrink-0" />
               <span className="text-muted-foreground">
-                <strong className="text-foreground">Saves RM200-500</strong> — Know if you need emergency vet or can wait
+                <strong className="text-foreground">{t.assessment.entry.trust2Bold}</strong> {t.assessment.entry.trust2Text}
               </span>
             </div>
             <div className="flex items-start gap-2 text-sm">
               <CheckCircle className="w-4 h-4 text-green-600 mt-0.5 shrink-0" />
               <span className="text-muted-foreground">
-                <strong className="text-foreground">Instant local results</strong> — Get nearest 24-hour emergency vets
+                <strong className="text-foreground">{t.assessment.entry.trust3Bold}</strong> {t.assessment.entry.trust3Text}
               </span>
             </div>
           </div>
@@ -180,28 +182,26 @@ export function EntryScreen({
         <div className="space-y-1">
           <div className="flex items-center justify-center gap-1 text-primary">
             <TrendingUp className="w-4 h-4" />
-            <span className="text-xl font-black">94%</span>
+            <span className="text-xl font-black">{t.assessment.entry.stat1Value}</span>
           </div>
-          <p className="text-xs text-muted-foreground">Accuracy rate</p>
+          <p className="text-xs text-muted-foreground">{t.assessment.entry.stat1Label}</p>
         </div>
         <div className="space-y-1">
-          <div className="text-xl font-black text-primary">RM847</div>
-          <p className="text-xs text-muted-foreground">Avg. saved per pet</p>
+          <div className="text-xl font-black text-primary">{t.assessment.entry.stat2Value}</div>
+          <p className="text-xs text-muted-foreground">{t.assessment.entry.stat2Label}</p>
         </div>
         <div className="space-y-1">
-          <div className="text-xl font-black text-primary">23,419</div>
-          <p className="text-xs text-muted-foreground">Pets assessed</p>
+          <div className="text-xl font-black text-primary">{t.assessment.entry.stat3Value}</div>
+          <p className="text-xs text-muted-foreground">{t.assessment.entry.stat3Label}</p>
         </div>
       </div>
 
       {/* Fear-based footer */}
       <div className="max-w-xl mt-8 text-center p-4 bg-destructive/5 rounded-lg border border-destructive/20">
         <p className="text-sm text-muted-foreground">
-          <strong className="text-destructive">⚠️ Don't Make This Mistake:</strong> Last week, a dog owner in Petaling Jaya 
-          waited 4 hours thinking her Shih Tzu's vomiting was "just an upset stomach." 
-          <strong className="text-foreground"> It was chocolate poisoning. The emergency vet bill was RM4,200.</strong>
+          <strong className="text-destructive">{t.assessment.entry.warningTitle}</strong> {t.assessment.entry.warningStory}
           <br /><br />
-          <span className="text-foreground font-medium">This free assessment takes 60 seconds and could save your pet's life.</span>
+          <span className="text-foreground font-medium">{t.assessment.entry.warningConclusion}</span>
         </p>
       </div>
     </div>

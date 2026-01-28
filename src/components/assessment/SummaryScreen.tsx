@@ -4,6 +4,7 @@ import { Button } from '@/components/ui/button';
 import { Textarea } from '@/components/ui/textarea';
 import { ArrowLeft, Camera, X, Check, Upload, ImagePlus } from 'lucide-react';
 import { useIsMobile } from '@/hooks/use-mobile';
+import { useLanguage } from '@/contexts/LanguageContext';
 import { AssessmentState } from '@/hooks/useAssessment';
 
 interface SummaryScreenProps {
@@ -23,6 +24,7 @@ export function SummaryScreen({
   onBack,
   onNext,
 }: SummaryScreenProps) {
+  const { t } = useLanguage();
   const fileInputRef = useRef<HTMLInputElement>(null);
   const cameraInputRef = useRef<HTMLInputElement>(null);
   const [previews, setPreviews] = useState<string[]>([]);
@@ -50,137 +52,147 @@ export function SummaryScreen({
     setPreviews((prev) => prev.filter((_, i) => i !== index));
   };
 
-  // Label helper functions
+  // Label helper functions using translations
   const getAgeLabel = (age: string) => {
     const labels: Record<string, string> = {
-      puppy_kitten: 'Puppy/Kitten (0-1 year)',
-      young_adult: 'Young Adult (1-3 years)',
-      adult: 'Adult (3-7 years)',
-      senior: 'Senior (7+ years)',
+      puppy_kitten: t.assessment.options.age.puppyKitten,
+      young_adult: t.assessment.options.age.youngAdult,
+      adult: t.assessment.options.age.adult,
+      senior: t.assessment.options.age.senior,
     };
     return labels[age] || age;
   };
 
   const getWeightLabel = (weight: string) => {
     const labels: Record<string, string> = {
-      small: 'Small (<5kg)',
-      medium: 'Medium (5-10kg)',
-      large: 'Large (10-25kg)',
-      extra_large: 'Extra Large (25kg+)',
+      small: t.assessment.options.weight.small,
+      medium: t.assessment.options.weight.medium,
+      large: t.assessment.options.weight.large,
+      extra_large: t.assessment.options.weight.extraLarge,
     };
     return labels[weight] || weight;
   };
 
   const getFixedLabel = (fixed: string | null) => {
     const labels: Record<string, string> = {
-      yes: 'Yes',
-      no: 'No',
-      not_sure: 'Not sure',
+      yes: t.assessment.options.yes,
+      no: t.assessment.options.no,
+      not_sure: t.assessment.options.notSure,
     };
     return fixed ? labels[fixed] || fixed : '-';
   };
 
   const getConditionsLabel = (conditions: string[]) => {
     const labels: Record<string, string> = {
-      heart_disease: 'Heart disease',
-      diabetes: 'Diabetes',
-      kidney_disease: 'Kidney disease',
-      allergies: 'Allergies',
-      cancer: 'Cancer',
-      arthritis: 'Arthritis',
-      none: 'None known',
+      heart_disease: t.assessment.options.conditions.heartDisease,
+      diabetes: t.assessment.options.conditions.diabetes,
+      kidney_disease: t.assessment.options.conditions.kidneyDisease,
+      allergies: t.assessment.options.conditions.allergies,
+      cancer: t.assessment.options.conditions.cancer,
+      arthritis: t.assessment.options.conditions.arthritis,
+      none: t.assessment.options.conditions.none,
     };
     return conditions.map((c) => labels[c] || c).join(', ') || '-';
   };
 
   const getIngestionLabel = (ingestion: string) => {
     const labels: Record<string, string> = {
-      chocolate: 'Chocolate',
-      medication: 'Medication',
-      plants: 'Plants',
-      chemicals: 'Chemicals/Poison',
-      none: 'None/Unknown',
+      chocolate: t.assessment.options.ingestion.chocolate,
+      medication: t.assessment.options.ingestion.medication,
+      plants: t.assessment.options.ingestion.plants,
+      chemicals: t.assessment.options.ingestion.chemicals,
+      none: t.assessment.options.ingestion.none,
     };
     return labels[ingestion] || ingestion || '-';
   };
 
   const getEnvironmentLabel = (environment: string) => {
     const labels: Record<string, string> = {
-      indoor: 'Indoor only',
-      outdoor: 'Outdoor only',
-      both: 'Both indoor/outdoor',
+      indoor: t.assessment.options.environment.indoor,
+      outdoor: t.assessment.options.environment.outdoor,
+      both: t.assessment.options.environment.both,
     };
     return labels[environment] || environment || '-';
   };
 
   const getInsuredLabel = (insured: string | null) => {
     const labels: Record<string, string> = {
-      yes: 'Yes',
-      no: 'No',
-      not_sure: 'Not sure',
+      yes: t.assessment.options.yes,
+      no: t.assessment.options.no,
+      not_sure: t.assessment.options.notSure,
     };
     return insured ? labels[insured] || insured : '-';
   };
 
   const getSymptomLabel = (symptom: string) => {
     const labels: Record<string, string> = {
-      vomiting: 'Vomiting',
-      diarrhea: 'Diarrhea',
-      not_eating: 'Not eating',
-      limping: 'Limping/Lameness',
-      other: 'Other symptoms',
+      vomiting: t.assessment.options.symptoms.vomiting,
+      diarrhea: t.assessment.options.symptoms.diarrhea,
+      not_eating: t.assessment.options.symptoms.notEating,
+      limping: t.assessment.options.symptoms.limping,
+      other: t.assessment.options.symptoms.other,
     };
     return labels[symptom] || symptom || '-';
   };
 
   const getPainLabel = (pain: string) => {
     const labels: Record<string, string> = {
-      none: 'No visible pain',
-      mild: 'Mild discomfort',
-      moderate: 'Moderate pain',
-      severe: 'Severe pain/distress',
+      none: t.assessment.options.pain.none,
+      mild: t.assessment.options.pain.mild,
+      moderate: t.assessment.options.pain.moderate,
+      severe: t.assessment.options.pain.severe,
     };
     return labels[pain] || pain || '-';
   };
 
   const getBreathingLabel = (breathing: string) => {
     const labels: Record<string, string> = {
-      normal: 'Yes, normal',
-      rapid: 'Rapid/Shallow',
-      labored: 'Labored/Difficulty',
-      stopped: 'Not breathing',
+      normal: t.assessment.options.breathing.normal,
+      rapid: t.assessment.options.breathing.rapid,
+      labored: t.assessment.options.breathing.labored,
+      weak: t.assessment.options.breathing.weak,
     };
     return labels[breathing] || breathing || '-';
   };
 
   const getAlertnessLabel = (alertness: string) => {
     const labels: Record<string, string> = {
-      alert: 'Alert & Responsive',
-      lethargic: 'Lethargic/Weak',
-      disoriented: 'Disoriented/Confused',
-      unresponsive: 'Unresponsive',
+      alert: t.assessment.options.alertness.alert,
+      lethargic: t.assessment.options.alertness.lethargic,
+      disoriented: t.assessment.options.alertness.disoriented,
+      unresponsive: t.assessment.options.alertness.unresponsive,
     };
     return labels[alertness] || alertness || '-';
   };
 
   const getBleedingLabel = (bleeding: string) => {
     const labels: Record<string, string> = {
-      none: 'No bleeding',
-      minor: 'Minor bleeding',
-      moderate: 'Moderate bleeding',
-      severe: 'Severe/Heavy bleeding',
+      none: t.assessment.options.bleeding.none,
+      minor: t.assessment.options.bleeding.minor,
+      moderate: t.assessment.options.bleeding.moderate,
+      severe: t.assessment.options.bleeding.severe,
     };
     return labels[bleeding] || bleeding || '-';
   };
 
   const getDurationLabel = (duration: string) => {
     const labels: Record<string, string> = {
-      just_now: 'Just now (< 1 hour)',
-      today: 'Today (1-24 hours)',
-      few_days: 'Few days (1-3 days)',
-      week_plus: 'A week or more',
+      just_now: t.assessment.options.duration.justNow,
+      '1_6_hours': t.assessment.options.duration.hours1to6,
+      '6_24_hours': t.assessment.options.duration.hours6to24,
+      more_24_hours: t.assessment.options.duration.more24hours,
     };
     return labels[duration] || duration || '-';
+  };
+
+  const getPetTypeLabel = (petType: string | null) => {
+    if (!petType) return '-';
+    return petType === 'dog' ? t.assessment.options.dog : t.assessment.options.cat;
+  };
+
+  const getSexLabel = (sex: string | null) => {
+    if (!sex) return '-';
+    return sex === 'male' ? t.assessment.options.male : t.assessment.options.female;
   };
 
   return (
@@ -188,10 +200,10 @@ export function SummaryScreen({
       <CardContent className="p-6 space-y-6">
         <div className="space-y-2">
           <h2 className="text-xl font-semibold text-foreground">
-            Review & Add Details
+            {t.assessment.questions.summary}
           </h2>
           <p className="text-sm text-muted-foreground">
-            Review all information and add photos or additional details
+            {t.assessment.questions.summarySubtitle}
           </p>
         </div>
 
@@ -199,7 +211,7 @@ export function SummaryScreen({
         <div className="bg-muted/50 rounded-lg p-4 space-y-2">
           <h3 className="font-medium text-foreground flex items-center gap-2">
             <span>📍</span>
-            Location
+            {t.assessment.results.petSummary.location}
           </h3>
           <p className="text-sm">{state.city}, {state.state}</p>
         </div>
@@ -208,31 +220,31 @@ export function SummaryScreen({
         <div className="bg-muted/50 rounded-lg p-4 space-y-3">
           <h3 className="font-medium text-foreground flex items-center gap-2">
             <span>{state.petType === 'dog' ? '🐕' : '🐈'}</span>
-            Pet Profile
+            {t.assessment.results.petSummary.petType}
           </h3>
           <div className="grid grid-cols-2 gap-x-4 gap-y-2 text-sm">
             <div>
-              <span className="text-muted-foreground">Type:</span>{' '}
-              <span className="capitalize font-medium">{state.petType}</span>
+              <span className="text-muted-foreground">{t.assessment.results.petSummary.petType}:</span>{' '}
+              <span className="capitalize font-medium">{getPetTypeLabel(state.petType)}</span>
             </div>
             <div>
-              <span className="text-muted-foreground">Breed:</span>{' '}
+              <span className="text-muted-foreground">{t.assessment.results.petSummary.breed}:</span>{' '}
               <span className="font-medium">{state.breed || '-'}</span>
             </div>
             <div>
-              <span className="text-muted-foreground">Age:</span>{' '}
+              <span className="text-muted-foreground">{t.assessment.questions.age}:</span>{' '}
               <span className="font-medium">{getAgeLabel(state.age)}</span>
             </div>
             <div>
-              <span className="text-muted-foreground">Sex:</span>{' '}
-              <span className="capitalize font-medium">{state.sex || '-'}</span>
+              <span className="text-muted-foreground">{t.assessment.questions.sex}:</span>{' '}
+              <span className="capitalize font-medium">{getSexLabel(state.sex)}</span>
             </div>
             <div>
-              <span className="text-muted-foreground">Weight:</span>{' '}
+              <span className="text-muted-foreground">{t.assessment.questions.weight}:</span>{' '}
               <span className="font-medium">{getWeightLabel(state.weight)}</span>
             </div>
             <div>
-              <span className="text-muted-foreground">Spayed/Neutered:</span>{' '}
+              <span className="text-muted-foreground">{t.assessment.questions.fixed}:</span>{' '}
               <span className="font-medium">{getFixedLabel(state.fixed)}</span>
             </div>
           </div>
@@ -242,23 +254,23 @@ export function SummaryScreen({
         <div className="bg-muted/50 rounded-lg p-4 space-y-3">
           <h3 className="font-medium text-foreground flex items-center gap-2">
             <span>🩺</span>
-            Health Background
+            {t.assessment.questions.conditions}
           </h3>
           <div className="space-y-2 text-sm">
             <div>
-              <span className="text-muted-foreground">Existing Conditions:</span>{' '}
+              <span className="text-muted-foreground">{t.assessment.questions.conditions}:</span>{' '}
               <span className="font-medium">{getConditionsLabel(state.conditions)}</span>
             </div>
             <div>
-              <span className="text-muted-foreground">Recent Ingestion:</span>{' '}
+              <span className="text-muted-foreground">{t.assessment.questions.ingestion}:</span>{' '}
               <span className="font-medium">{getIngestionLabel(state.ingestion)}</span>
             </div>
             <div>
-              <span className="text-muted-foreground">Environment:</span>{' '}
+              <span className="text-muted-foreground">{t.assessment.questions.environment}:</span>{' '}
               <span className="font-medium">{getEnvironmentLabel(state.environment)}</span>
             </div>
             <div>
-              <span className="text-muted-foreground">Insurance:</span>{' '}
+              <span className="text-muted-foreground">{t.assessment.questions.insured}:</span>{' '}
               <span className="font-medium">{getInsuredLabel(state.insured)}</span>
             </div>
           </div>
@@ -268,19 +280,19 @@ export function SummaryScreen({
         <div className="bg-muted/50 rounded-lg p-4 space-y-3">
           <h3 className="font-medium text-foreground flex items-center gap-2">
             <span>⚠️</span>
-            Current Symptoms
+            {t.assessment.questions.mainSymptom}
           </h3>
           <div className="space-y-2 text-sm">
             <div>
-              <span className="text-muted-foreground">Main Symptom:</span>{' '}
+              <span className="text-muted-foreground">{t.assessment.questions.mainSymptom}:</span>{' '}
               <span className="font-medium">{getSymptomLabel(state.mainSymptom)}</span>
             </div>
             <div>
-              <span className="text-muted-foreground">Pain Level:</span>{' '}
+              <span className="text-muted-foreground">{t.assessment.questions.painLevel}:</span>{' '}
               <span className="font-medium">{getPainLabel(state.painLevel)}</span>
             </div>
             <div>
-              <span className="text-muted-foreground">Duration:</span>{' '}
+              <span className="text-muted-foreground">{t.assessment.questions.duration}:</span>{' '}
               <span className="font-medium">{getDurationLabel(state.duration)}</span>
             </div>
           </div>
@@ -290,19 +302,19 @@ export function SummaryScreen({
         <div className="bg-muted/50 rounded-lg p-4 space-y-3">
           <h3 className="font-medium text-foreground flex items-center gap-2">
             <span>💓</span>
-            Vital Signs
+            {t.assessment.questions.breathing}
           </h3>
           <div className="space-y-2 text-sm">
             <div>
-              <span className="text-muted-foreground">Breathing:</span>{' '}
+              <span className="text-muted-foreground">{t.assessment.questions.breathing}:</span>{' '}
               <span className="font-medium">{getBreathingLabel(state.breathing)}</span>
             </div>
             <div>
-              <span className="text-muted-foreground">Alertness:</span>{' '}
+              <span className="text-muted-foreground">{t.assessment.questions.alertness}:</span>{' '}
               <span className="font-medium">{getAlertnessLabel(state.alertness)}</span>
             </div>
             <div>
-              <span className="text-muted-foreground">Bleeding:</span>{' '}
+              <span className="text-muted-foreground">{t.assessment.questions.bleeding}:</span>{' '}
               <span className="font-medium">{getBleedingLabel(state.bleeding)}</span>
             </div>
           </div>
@@ -312,10 +324,10 @@ export function SummaryScreen({
         <div className="space-y-3">
           <label className="text-sm font-medium text-foreground flex items-center gap-2">
             <ImagePlus className="w-4 h-4" />
-            Upload Photos (optional, max 5)
+            {t.assessment.questions.photoLabel}
           </label>
           <p className="text-xs text-muted-foreground">
-            Add photos of your pet's condition to help the vet better understand the situation
+            {t.assessment.questions.descriptionPlaceholder}
           </p>
           
           <div className="flex flex-wrap gap-3">
@@ -381,10 +393,10 @@ export function SummaryScreen({
         {/* Description */}
         <div className="space-y-2">
           <label className="text-sm font-medium text-foreground">
-            Additional Details (optional)
+            {t.assessment.questions.descriptionLabel}
           </label>
           <Textarea
-            placeholder="Tell us more about your pet's symptoms, behavior changes, or any other concerns..."
+            placeholder={t.assessment.questions.descriptionPlaceholder}
             value={state.description}
             onChange={(e) => onDescriptionChange(e.target.value)}
             className="min-h-[100px] resize-none"
@@ -399,11 +411,11 @@ export function SummaryScreen({
             className="text-muted-foreground hover:text-foreground"
           >
             <ArrowLeft className="w-4 h-4 mr-2" />
-            Back
+            {t.assessment.navigation.back}
           </Button>
           <Button onClick={onNext} className="gap-2">
             <Check className="w-4 h-4" />
-            Continue
+            {t.assessment.navigation.continue}
           </Button>
         </div>
       </CardContent>

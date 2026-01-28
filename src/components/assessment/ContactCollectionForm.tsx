@@ -2,8 +2,9 @@ import { useState } from 'react';
 import { Card, CardContent } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
-import { ArrowLeft, ArrowRight } from 'lucide-react';
+import { ArrowLeft, ArrowRight, Loader2 } from 'lucide-react';
 import { z } from 'zod';
+import { useLanguage } from '@/contexts/LanguageContext';
 
 const contactSchema = z.object({
   userName: z.string().trim().min(1, 'Name is required').max(100, 'Name is too long'),
@@ -33,6 +34,7 @@ export function ContactCollectionForm({
   onSubmit,
   isSubmitting = false,
 }: ContactCollectionFormProps) {
+  const { t } = useLanguage();
   const [errors, setErrors] = useState<Record<string, string>>({});
   const [touched, setTouched] = useState<Record<string, boolean>>({});
 
@@ -73,10 +75,10 @@ export function ContactCollectionForm({
       <CardContent className="p-6 space-y-6">
         <div className="space-y-2">
           <h2 className="text-xl font-semibold text-foreground">
-            Almost there! 🎉
+            {t.assessment.contact.title}
           </h2>
           <p className="text-sm text-muted-foreground">
-            Enter your details to receive your personalized assessment results
+            {t.assessment.contact.subtitle}
           </p>
         </div>
 
@@ -84,12 +86,12 @@ export function ContactCollectionForm({
           {/* User Name */}
           <div className="space-y-2">
             <label htmlFor="userName" className="text-sm font-medium text-foreground">
-              Your Name <span className="text-destructive">*</span>
+              {t.assessment.contact.nameLabel} <span className="text-destructive">{t.assessment.contact.required}</span>
             </label>
             <Input
               id="userName"
               type="text"
-              placeholder="Enter your name"
+              placeholder={t.assessment.contact.namePlaceholder}
               value={userName}
               onChange={(e) => onUpdate('userName', e.target.value)}
               onBlur={() => handleBlur('userName')}
@@ -103,12 +105,12 @@ export function ContactCollectionForm({
           {/* Email */}
           <div className="space-y-2">
             <label htmlFor="userEmail" className="text-sm font-medium text-foreground">
-              Email Address <span className="text-destructive">*</span>
+              {t.assessment.contact.emailLabel} <span className="text-destructive">{t.assessment.contact.required}</span>
             </label>
             <Input
               id="userEmail"
               type="email"
-              placeholder="your@email.com"
+              placeholder={t.assessment.contact.emailPlaceholder}
               value={userEmail}
               onChange={(e) => onUpdate('userEmail', e.target.value)}
               onBlur={() => handleBlur('userEmail')}
@@ -122,12 +124,12 @@ export function ContactCollectionForm({
           {/* Phone */}
           <div className="space-y-2">
             <label htmlFor="userPhone" className="text-sm font-medium text-foreground">
-              Phone Number <span className="text-muted-foreground">(optional)</span>
+              {t.assessment.contact.phoneLabel} <span className="text-muted-foreground">{t.assessment.contact.optional}</span>
             </label>
             <Input
               id="userPhone"
               type="tel"
-              placeholder="+60 12-345 6789"
+              placeholder={t.assessment.contact.phonePlaceholder}
               value={userPhone}
               onChange={(e) => onUpdate('userPhone', e.target.value)}
               onBlur={() => handleBlur('userPhone')}
@@ -141,12 +143,12 @@ export function ContactCollectionForm({
           {/* Pet Name */}
           <div className="space-y-2">
             <label htmlFor="petName" className="text-sm font-medium text-foreground">
-              Pet's Name <span className="text-destructive">*</span>
+              {t.assessment.contact.petNameLabel} <span className="text-destructive">{t.assessment.contact.required}</span>
             </label>
             <Input
               id="petName"
               type="text"
-              placeholder="What's your pet's name?"
+              placeholder={t.assessment.contact.petNamePlaceholder}
               value={petName}
               onChange={(e) => onUpdate('petName', e.target.value)}
               onBlur={() => handleBlur('petName')}
@@ -166,17 +168,26 @@ export function ContactCollectionForm({
               className="text-muted-foreground hover:text-foreground"
             >
               <ArrowLeft className="w-4 h-4 mr-2" />
-              Back
+              {t.assessment.navigation.back}
             </Button>
             <Button type="submit" disabled={isSubmitting} className="gap-2">
-              {isSubmitting ? 'Processing...' : 'Get My Results'}
-              <ArrowRight className="w-4 h-4" />
+              {isSubmitting ? (
+                <>
+                  <Loader2 className="w-4 h-4 animate-spin" />
+                  {t.common.loading}
+                </>
+              ) : (
+                <>
+                  {t.assessment.contact.submitButton}
+                  <ArrowRight className="w-4 h-4" />
+                </>
+              )}
             </Button>
           </div>
         </form>
 
         <p className="text-xs text-center text-muted-foreground">
-          Your information is secure and will never be shared with third parties.
+          {t.assessment.contact.privacyNote}
         </p>
       </CardContent>
     </Card>

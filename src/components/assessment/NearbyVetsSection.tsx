@@ -4,6 +4,7 @@ import { Badge } from '@/components/ui/badge';
 import { Skeleton } from '@/components/ui/skeleton';
 import { MapPin, Phone, Clock, ExternalLink, Star, Globe, AlertTriangle } from 'lucide-react';
 import { useVetClinics } from '@/hooks/useVetClinics';
+import { useLanguage } from '@/contexts/LanguageContext';
 
 interface NearbyVetsSectionProps {
   city: string;
@@ -11,6 +12,7 @@ interface NearbyVetsSectionProps {
 }
 
 export function NearbyVetsSection({ city, state }: NearbyVetsSectionProps) {
+  const { t } = useLanguage();
   const { data: clinics, isLoading, error } = useVetClinics(city, state);
 
   // Sort: emergency clinics first, then by rating
@@ -54,7 +56,7 @@ export function NearbyVetsSection({ city, state }: NearbyVetsSectionProps) {
             </div>
             <div>
               <h3 className="text-lg font-bold text-foreground">
-                Emergency Vets Near You
+                {t.assessment.results.nearbyVets.title}
               </h3>
               <p className="text-sm text-muted-foreground">
                 {city}, {state}
@@ -91,7 +93,7 @@ export function NearbyVetsSection({ city, state }: NearbyVetsSectionProps) {
             </div>
             <div>
               <h3 className="text-lg font-bold text-foreground">
-                Emergency Vets Near You
+                {t.assessment.results.nearbyVets.title}
               </h3>
               <p className="text-sm text-muted-foreground">
                 {city}, {state}
@@ -117,7 +119,7 @@ export function NearbyVetsSection({ city, state }: NearbyVetsSectionProps) {
                     )}
                     {clinic.is_24_hours && (
                       <Badge className="bg-green-600 hover:bg-green-700 text-xs">
-                        24 Hours
+                        {t.assessment.results.nearbyVets.open24h}
                       </Badge>
                     )}
                   </div>
@@ -157,7 +159,7 @@ export function NearbyVetsSection({ city, state }: NearbyVetsSectionProps) {
                     onClick={() => window.open(`tel:${clinic.phone?.replace(/\s/g, '')}`, '_self')}
                   >
                     <Phone className="w-4 h-4" />
-                    Call Now
+                    {t.assessment.results.nearbyVets.callNow}
                   </Button>
                 )}
                 <Button
@@ -167,7 +169,7 @@ export function NearbyVetsSection({ city, state }: NearbyVetsSectionProps) {
                   onClick={() => window.open(`https://www.google.com/maps/search/${encodeURIComponent(clinic.address)}`, '_blank')}
                 >
                   <ExternalLink className="w-4 h-4" />
-                  Directions
+                  {t.assessment.results.nearbyVets.directions}
                 </Button>
                 {clinic.website && (
                   <Button
@@ -186,7 +188,7 @@ export function NearbyVetsSection({ city, state }: NearbyVetsSectionProps) {
         </div>
 
         <p className="text-xs text-center text-muted-foreground">
-          Always call ahead to confirm availability and operating hours
+          {t.assessment.results.nearbyVets.note}
         </p>
       </CardContent>
     </Card>
