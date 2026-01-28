@@ -18,7 +18,7 @@ import { toast } from 'sonner';
 
 export function AssessmentContainer() {
   const navigate = useNavigate();
-  const { language } = useLanguage();
+  const { language, t } = useLanguage();
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [showResults, setShowResults] = useState(false);
 
@@ -144,6 +144,152 @@ export function AssessmentContainer() {
     navigate(language === 'en' ? '/assessment' : `/${language}/assessment`);
   };
 
+  // Helper functions using translations
+  const getQuestionText = (questionId: string): string => {
+    const questions: Record<string, string> = {
+      petType: t.assessment.questions.petType,
+      breed: t.assessment.questions.breed,
+      age: t.assessment.questions.age,
+      sex: t.assessment.questions.sex,
+      fixed: t.assessment.questions.fixed,
+      weight: t.assessment.questions.weight,
+      conditions: t.assessment.questions.conditions,
+      ingestion: t.assessment.questions.ingestion,
+      environment: t.assessment.questions.environment,
+      insured: t.assessment.questions.insured,
+      mainSymptom: t.assessment.questions.mainSymptom,
+      painLevel: t.assessment.questions.painLevel,
+      breathing: t.assessment.questions.breathing,
+      alertness: t.assessment.questions.alertness,
+      bleeding: t.assessment.questions.bleeding,
+      duration: t.assessment.questions.duration,
+    };
+    return questions[questionId] || '';
+  };
+
+  const getAgeLabel = (value: string): string => {
+    const labels: Record<string, string> = {
+      puppy_kitten: t.assessment.options.age.puppyKitten,
+      young_adult: t.assessment.options.age.youngAdult,
+      adult: t.assessment.options.age.adult,
+      senior: t.assessment.options.age.senior,
+    };
+    return labels[value] || value;
+  };
+
+  const getYesNoLabel = (value: string): string => {
+    const labels: Record<string, string> = {
+      yes: t.assessment.options.yes,
+      no: t.assessment.options.no,
+      not_sure: t.assessment.options.notSure,
+    };
+    return labels[value] || value;
+  };
+
+  const getWeightLabel = (value: string): string => {
+    const labels: Record<string, string> = {
+      small: t.assessment.options.weight.small,
+      medium: t.assessment.options.weight.medium,
+      large: t.assessment.options.weight.large,
+      extra_large: t.assessment.options.weight.extraLarge,
+    };
+    return labels[value] || value;
+  };
+
+  const getConditionLabel = (value: string): string => {
+    const labels: Record<string, string> = {
+      heart_disease: t.assessment.options.conditions.heartDisease,
+      diabetes: t.assessment.options.conditions.diabetes,
+      kidney_disease: t.assessment.options.conditions.kidneyDisease,
+      allergies: t.assessment.options.conditions.allergies,
+      cancer: t.assessment.options.conditions.cancer,
+      arthritis: t.assessment.options.conditions.arthritis,
+      none: t.assessment.options.conditions.none,
+    };
+    return labels[value] || value;
+  };
+
+  const getIngestionLabel = (value: string): string => {
+    const labels: Record<string, string> = {
+      chocolate: t.assessment.options.ingestion.chocolate,
+      medication: t.assessment.options.ingestion.medication,
+      plants: t.assessment.options.ingestion.plants,
+      chemicals: t.assessment.options.ingestion.chemicals,
+      none: t.assessment.options.ingestion.none,
+    };
+    return labels[value] || value;
+  };
+
+  const getEnvironmentLabel = (value: string): string => {
+    const labels: Record<string, string> = {
+      indoor: t.assessment.options.environment.indoor,
+      outdoor: t.assessment.options.environment.outdoor,
+      both: t.assessment.options.environment.both,
+    };
+    return labels[value] || value;
+  };
+
+  const getSymptomLabel = (value: string): string => {
+    const labels: Record<string, string> = {
+      vomiting: t.assessment.options.symptoms.vomiting,
+      diarrhea: t.assessment.options.symptoms.diarrhea,
+      not_eating: t.assessment.options.symptoms.notEating,
+      limping: t.assessment.options.symptoms.limping,
+      other: t.assessment.options.symptoms.other,
+    };
+    return labels[value] || value;
+  };
+
+  const getPainLabel = (value: string): string => {
+    const labels: Record<string, string> = {
+      none: t.assessment.options.pain.none,
+      mild: t.assessment.options.pain.mild,
+      moderate: t.assessment.options.pain.moderate,
+      severe: t.assessment.options.pain.severe,
+    };
+    return labels[value] || value;
+  };
+
+  const getBreathingLabel = (value: string): string => {
+    const labels: Record<string, string> = {
+      normal: t.assessment.options.breathing.normal,
+      labored: t.assessment.options.breathing.labored,
+      rapid: t.assessment.options.breathing.rapid,
+      weak: t.assessment.options.breathing.weak,
+    };
+    return labels[value] || value;
+  };
+
+  const getAlertnessLabel = (value: string): string => {
+    const labels: Record<string, string> = {
+      alert: t.assessment.options.alertness.alert,
+      lethargic: t.assessment.options.alertness.lethargic,
+      disoriented: t.assessment.options.alertness.disoriented,
+      unresponsive: t.assessment.options.alertness.unresponsive,
+    };
+    return labels[value] || value;
+  };
+
+  const getBleedingLabel = (value: string): string => {
+    const labels: Record<string, string> = {
+      none: t.assessment.options.bleeding.none,
+      minor: t.assessment.options.bleeding.minor,
+      moderate: t.assessment.options.bleeding.moderate,
+      severe: t.assessment.options.bleeding.severe,
+    };
+    return labels[value] || value;
+  };
+
+  const getDurationLabel = (value: string): string => {
+    const labels: Record<string, string> = {
+      just_now: t.assessment.options.duration.justNow,
+      '1_6_hours': t.assessment.options.duration.hours1to6,
+      '6_24_hours': t.assessment.options.duration.hours6to24,
+      more_24_hours: t.assessment.options.duration.more24hours,
+    };
+    return labels[value] || value;
+  };
+
   // Show results page
   if (showResults && urgencyResult) {
     return (
@@ -206,7 +352,7 @@ export function AssessmentContainer() {
         return currentQuestion.options?.map((option) => (
           <OptionButton
             key={option.value}
-            label={option.value === 'dog' ? 'Dog' : 'Cat'}
+            label={option.value === 'dog' ? t.assessment.options.dog : t.assessment.options.cat}
             icon={option.icon}
             isSelected={state.petType === option.value}
             onClick={() => handleSingleSelect('petType', option.value)}
@@ -241,7 +387,7 @@ export function AssessmentContainer() {
         return currentQuestion.options?.map((option) => (
           <OptionButton
             key={option.value}
-            label={option.value === 'male' ? 'Male' : 'Female'}
+            label={option.value === 'male' ? t.assessment.options.male : t.assessment.options.female}
             icon={option.icon}
             isSelected={state.sex === option.value}
             onClick={() => handleSingleSelect('sex', option.value)}
@@ -284,7 +430,7 @@ export function AssessmentContainer() {
               disabled={state.conditions.length === 0}
               className="w-full mt-4 bg-primary text-primary-foreground py-3 rounded-lg font-medium disabled:opacity-50"
             >
-              Continue
+              {t.assessment.navigation.continue}
             </button>
           </>
         );
@@ -424,155 +570,9 @@ export function AssessmentContainer() {
           {renderQuestionContent()}
         </QuestionCard>
         <p className="text-xs text-center text-muted-foreground">
-          Powered by 2.3M ER cases + Board-certified vet protocols
+          {t.assessment.entry.trustBadge}
         </p>
       </div>
     </div>
   );
-}
-
-// Helper functions for labels
-function getQuestionText(questionId: string): string {
-  const questions: Record<string, string> = {
-    petType: 'What type of pet do you have?',
-    breed: 'What breed is your pet?',
-    age: 'How old is your pet?',
-    sex: "What is your pet's sex?",
-    fixed: 'Is your pet spayed/neutered?',
-    weight: "What is your pet's weight?",
-    conditions: 'Does your pet have any existing health conditions?',
-    ingestion: 'Has your pet recently ingested anything unusual?',
-    environment: 'Where does your pet typically stay?',
-    insured: 'Is your pet insured?',
-    mainSymptom: "What is your pet's main symptom?",
-    painLevel: 'How much pain does your pet appear to be in?',
-    breathing: 'Is your pet breathing normally?',
-    alertness: 'Is your pet alert and responsive?',
-    bleeding: 'Is there any bleeding?',
-    duration: 'How long has this been happening?',
-  };
-  return questions[questionId] || '';
-}
-
-function getAgeLabel(value: string): string {
-  const labels: Record<string, string> = {
-    puppy_kitten: 'Puppy/Kitten (0-1 year)',
-    young_adult: 'Young Adult (1-3 years)',
-    adult: 'Adult (3-7 years)',
-    senior: 'Senior (7+ years)',
-  };
-  return labels[value] || value;
-}
-
-function getYesNoLabel(value: string): string {
-  const labels: Record<string, string> = {
-    yes: 'Yes',
-    no: 'No',
-    not_sure: 'Not sure',
-  };
-  return labels[value] || value;
-}
-
-function getWeightLabel(value: string): string {
-  const labels: Record<string, string> = {
-    small: 'Small (<5kg)',
-    medium: 'Medium (5-10kg)',
-    large: 'Large (10-25kg)',
-    extra_large: 'Extra Large (25kg+)',
-  };
-  return labels[value] || value;
-}
-
-function getConditionLabel(value: string): string {
-  const labels: Record<string, string> = {
-    heart_disease: 'Heart disease',
-    diabetes: 'Diabetes',
-    kidney_disease: 'Kidney disease',
-    allergies: 'Allergies',
-    cancer: 'Cancer',
-    arthritis: 'Arthritis',
-    none: 'None known',
-  };
-  return labels[value] || value;
-}
-
-function getIngestionLabel(value: string): string {
-  const labels: Record<string, string> = {
-    chocolate: 'Chocolate',
-    medication: 'Medication',
-    plants: 'Plants',
-    chemicals: 'Chemicals/Poison',
-    none: 'None/Unknown',
-  };
-  return labels[value] || value;
-}
-
-function getEnvironmentLabel(value: string): string {
-  const labels: Record<string, string> = {
-    indoor: 'Indoor only',
-    outdoor: 'Outdoor only',
-    both: 'Both indoor/outdoor',
-  };
-  return labels[value] || value;
-}
-
-function getSymptomLabel(value: string): string {
-  const labels: Record<string, string> = {
-    vomiting: 'Vomiting',
-    diarrhea: 'Diarrhea',
-    not_eating: 'Not eating',
-    limping: 'Limping/Lameness',
-    other: 'Other symptoms',
-  };
-  return labels[value] || value;
-}
-
-function getPainLabel(value: string): string {
-  const labels: Record<string, string> = {
-    none: 'No visible pain',
-    mild: 'Mild discomfort',
-    moderate: 'Moderate pain',
-    severe: 'Severe pain/distress',
-  };
-  return labels[value] || value;
-}
-
-function getBreathingLabel(value: string): string {
-  const labels: Record<string, string> = {
-    normal: 'Yes, normal',
-    labored: 'Labored/difficult',
-    rapid: 'Very rapid',
-    weak: 'Weak/shallow',
-  };
-  return labels[value] || value;
-}
-
-function getAlertnessLabel(value: string): string {
-  const labels: Record<string, string> = {
-    alert: 'Fully alert',
-    lethargic: 'Lethargic/weak',
-    disoriented: 'Disoriented/confused',
-    unresponsive: 'Unresponsive',
-  };
-  return labels[value] || value;
-}
-
-function getBleedingLabel(value: string): string {
-  const labels: Record<string, string> = {
-    none: 'None',
-    minor: 'Minor/controlled',
-    moderate: 'Moderate',
-    severe: 'Severe/uncontrolled',
-  };
-  return labels[value] || value;
-}
-
-function getDurationLabel(value: string): string {
-  const labels: Record<string, string> = {
-    just_now: 'Just now (<30 minutes)',
-    '1_6_hours': '1-6 hours',
-    '6_24_hours': '6-24 hours',
-    more_24_hours: 'More than 24 hours',
-  };
-  return labels[value] || value;
 }

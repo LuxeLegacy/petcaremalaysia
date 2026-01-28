@@ -1,11 +1,16 @@
 import { Card, CardContent } from '@/components/ui/card';
 import { Package } from 'lucide-react';
+import { useLanguage } from '@/contexts/LanguageContext';
 
 interface AffiliateProductsSectionProps {
   petName: string;
 }
 
 export function AffiliateProductsSection({ petName }: AffiliateProductsSectionProps) {
+  const { t } = useLanguage();
+  
+  const title = t.assessment.results.affiliateProducts.title.replace('{petName}', petName.toUpperCase());
+  
   return (
     <Card className="border border-border">
       <CardContent className="p-6 space-y-4">
@@ -14,20 +19,20 @@ export function AffiliateProductsSection({ petName }: AffiliateProductsSectionPr
             <Package className="w-6 h-6 text-muted-foreground" />
           </div>
           <h3 className="text-lg font-bold text-foreground">
-            🏥 ESSENTIAL SUPPLIES FOR {petName.toUpperCase()}'S RECOVERY
+            {title}
           </h3>
         </div>
 
         <p className="text-muted-foreground">
-          Products recommended by board-certified vets to help your pet recover faster...
+          {t.assessment.results.affiliateProducts.subtitle}
         </p>
 
         <div className="bg-muted/50 rounded-lg p-8 text-center">
           <p className="text-muted-foreground font-medium">
-            Coming Soon
+            {t.assessment.results.affiliateProducts.comingSoon}
           </p>
           <p className="text-sm text-muted-foreground mt-2">
-            We're curating the best pet health products for you
+            {t.assessment.results.affiliateProducts.comingSoonSubtitle}
           </p>
         </div>
       </CardContent>
