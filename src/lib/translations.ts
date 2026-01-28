@@ -196,6 +196,9 @@ export interface Translations {
       cityLabel: string;
       cityPlaceholder: string;
       cityDisabled: string;
+      otherCity: string;
+      otherCityPlaceholder: string;
+      backToList: string;
       findingVets: string;
       ctaButton: string;
       ctaTime: string;
@@ -636,6 +639,9 @@ export const translations: Record<Language, Translations> = {
         cityLabel: 'Select your city',
         cityPlaceholder: 'Choose city...',
         cityDisabled: 'Select state first',
+        otherCity: 'Other city not listed...',
+        otherCityPlaceholder: 'Enter your city name',
+        backToList: 'Back to city list',
         findingVets: '📍 Finding emergency vets near',
         ctaButton: '🚨 CHECK MY PET NOW — FREE',
         ctaTime: 'Takes only 60 seconds • Results instantly',
@@ -1098,6 +1104,9 @@ export const translations: Record<Language, Translations> = {
         cityLabel: 'Pilih bandar anda',
         cityPlaceholder: 'Pilih bandar...',
         cityDisabled: 'Pilih negeri dahulu',
+        otherCity: 'Bandar lain tiada dalam senarai...',
+        otherCityPlaceholder: 'Masukkan nama bandar anda',
+        backToList: 'Kembali ke senarai bandar',
         findingVets: '📍 Mencari vet kecemasan berdekatan',
         ctaButton: '🚨 SEMAK HAIWAN SAYA SEKARANG — PERCUMA',
         ctaTime: 'Hanya 60 saat • Keputusan segera',
@@ -1560,6 +1569,9 @@ export const translations: Record<Language, Translations> = {
         cityLabel: '选择您的城市',
         cityPlaceholder: '选择城市...',
         cityDisabled: '请先选择州属',
+        otherCity: '其他未列出的城市...',
+        otherCityPlaceholder: '输入您的城市名称',
+        backToList: '返回城市列表',
         findingVets: '📍 正在寻找附近的紧急兽医',
         ctaButton: '🚨 立即检查我的宠物 — 免费',
         ctaTime: '仅需60秒 • 即时获得结果',

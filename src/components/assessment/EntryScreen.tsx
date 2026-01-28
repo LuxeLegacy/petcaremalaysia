@@ -1,5 +1,7 @@
+import { useState } from 'react';
 import { Card, CardContent } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
+import { Input } from '@/components/ui/input';
 import { AlertTriangle, Clock, Users, TrendingUp, Shield, CheckCircle } from 'lucide-react';
 import { getStates, getCitiesByState } from '@/lib/locationUtils';
 import { useLanguage } from '@/contexts/LanguageContext';
@@ -10,6 +12,8 @@ import {
   SelectTrigger,
   SelectValue,
 } from '@/components/ui/select';
+
+const OTHER_CITY_VALUE = '__other__';
 
 interface EntryScreenProps {
   city: string;
@@ -29,11 +33,32 @@ export function EntryScreen({
   const { t } = useLanguage();
   const states = getStates();
   const cities = state ? getCitiesByState(state) : [];
-  const isValid = !!state && !!city;
+  const [isOtherCity, setIsOtherCity] = useState(false);
+  const [customCity, setCustomCity] = useState('');
+  
+  const isValid = !!state && (isOtherCity ? !!customCity.trim() : !!city);
 
   const handleStateChange = (newState: string) => {
     onStateChange(newState);
-    onCityChange(''); // Reset city when state changes
+    onCityChange('');
+    setIsOtherCity(false);
+    setCustomCity('');
+  };
+
+  const handleCitySelect = (value: string) => {
+    if (value === OTHER_CITY_VALUE) {
+      setIsOtherCity(true);
+      onCityChange('');
+    } else {
+      setIsOtherCity(false);
+      setCustomCity('');
+      onCityChange(value);
+    }
+  };
+
+  const handleCustomCityChange = (value: string) => {
+    setCustomCity(value);
+    onCityChange(value);
   };
 
   const handleSubmit = (e: React.FormEvent) => {
@@ -115,27 +140,57 @@ export function EntryScreen({
               <label htmlFor="city" className="text-sm font-medium text-foreground">
                 {t.assessment.entry.cityLabel}
               </label>
-              <Select 
-                value={city} 
-                onValueChange={onCityChange}
-                disabled={!state}
-              >
-                <SelectTrigger id="city" className="h-12 text-base">
-                  <SelectValue placeholder={state ? t.assessment.entry.cityPlaceholder : t.assessment.entry.cityDisabled} />
-                </SelectTrigger>
-                <SelectContent className="bg-background z-50">
-                  {cities.map((c) => (
-                    <SelectItem key={c} value={c}>
-                      {c}
+              {isOtherCity ? (
+                <div className="space-y-2">
+                  <Input
+                    id="custom-city"
+                    type="text"
+                    value={customCity}
+                    onChange={(e) => handleCustomCityChange(e.target.value)}
+                    placeholder={t.assessment.entry.otherCityPlaceholder || "Enter your city name"}
+                    className="h-12 text-base"
+                    autoFocus
+                  />
+                  <Button
+                    type="button"
+                    variant="ghost"
+                    size="sm"
+                    onClick={() => {
+                      setIsOtherCity(false);
+                      setCustomCity('');
+                      onCityChange('');
+                    }}
+                    className="text-xs text-muted-foreground"
+                  >
+                    ← {t.assessment.entry.backToList || "Back to city list"}
+                  </Button>
+                </div>
+              ) : (
+                <Select 
+                  value={city} 
+                  onValueChange={handleCitySelect}
+                  disabled={!state}
+                >
+                  <SelectTrigger id="city" className="h-12 text-base">
+                    <SelectValue placeholder={state ? t.assessment.entry.cityPlaceholder : t.assessment.entry.cityDisabled} />
+                  </SelectTrigger>
+                  <SelectContent className="bg-background z-50 max-h-60">
+                    {cities.map((c) => (
+                      <SelectItem key={c} value={c}>
+                        {c}
+                      </SelectItem>
+                    ))}
+                    <SelectItem value={OTHER_CITY_VALUE} className="text-primary font-medium border-t mt-1 pt-2">
+                      {t.assessment.entry.otherCity || "Other city not listed..."}
                     </SelectItem>
-                  ))}
-                </SelectContent>
-              </Select>
+                  </SelectContent>
+                </Select>
+              )}
             </div>
 
-            {state && city && (
+            {state && (city || customCity) && (
               <p className="text-sm text-muted-foreground">
-                {t.assessment.entry.findingVets} {city}, {state}...
+                {t.assessment.entry.findingVets} {isOtherCity ? customCity : city}, {state}...
               </p>
             )}
 
