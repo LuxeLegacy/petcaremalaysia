@@ -1,5 +1,4 @@
 import { useState, useCallback } from 'react';
-import { lookupPostcode } from '@/lib/locationUtils';
 import { calculateUrgency, UrgencyResult } from '@/lib/assessmentLogic';
 import { TOTAL_STEPS } from '@/lib/assessmentData';
 
@@ -85,13 +84,12 @@ export function useAssessment() {
     setState((prev) => ({ ...prev, [field]: value }));
   }, []);
 
-  const setZipcode = useCallback((zipcode: string) => {
-    const location = lookupPostcode(zipcode);
+  const setLocation = useCallback((city: string, locationState: string) => {
     setState((prev) => ({
       ...prev,
-      zipcode,
-      city: location?.city || '',
-      state: location?.state || '',
+      city,
+      state: locationState,
+      zipcode: '', // No longer using zipcode
     }));
   }, []);
 
@@ -167,7 +165,7 @@ export function useAssessment() {
   const isStepValid = useCallback((step: number): boolean => {
     switch (step) {
       case 0:
-        return state.zipcode.length === 5 && !!state.city;
+        return !!state.city && !!state.state;
       case 1:
         return !!state.petType;
       case 2:
@@ -213,7 +211,7 @@ export function useAssessment() {
     state,
     urgencyResult,
     updateField,
-    setZipcode,
+    setLocation,
     toggleCondition,
     nextStep,
     prevStep,

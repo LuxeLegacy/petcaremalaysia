@@ -26,7 +26,7 @@ export function AssessmentContainer() {
     state,
     urgencyResult,
     updateField,
-    setZipcode,
+    setLocation,
     toggleCondition,
     nextStep,
     prevStep,
@@ -119,10 +119,10 @@ export function AssessmentContainer() {
   if (state.currentStep === 0) {
     return (
       <EntryScreen
-        zipcode={state.zipcode}
         city={state.city}
         state={state.state}
-        onZipcodeChange={setZipcode}
+        onStateChange={(newState) => setLocation('', newState)}
+        onCityChange={(newCity) => updateField('city', newCity)}
         onStart={nextStep}
       />
     );
