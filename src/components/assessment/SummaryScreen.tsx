@@ -3,6 +3,7 @@ import { Card, CardContent } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Textarea } from '@/components/ui/textarea';
 import { ArrowLeft, Camera, X, Check, Upload, ImagePlus } from 'lucide-react';
+import { useIsMobile } from '@/hooks/use-mobile';
 import { AssessmentState } from '@/hooks/useAssessment';
 
 interface SummaryScreenProps {
@@ -23,7 +24,9 @@ export function SummaryScreen({
   onNext,
 }: SummaryScreenProps) {
   const fileInputRef = useRef<HTMLInputElement>(null);
+  const cameraInputRef = useRef<HTMLInputElement>(null);
   const [previews, setPreviews] = useState<string[]>([]);
+  const isMobile = useIsMobile();
 
   const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     if (e.target.files && e.target.files.length > 0) {
@@ -337,13 +340,24 @@ export function SummaryScreen({
               </div>
             ))}
             {state.photos.length < 5 && (
-              <button
-                onClick={() => fileInputRef.current?.click()}
-                className="w-24 h-24 rounded-lg border-2 border-dashed border-border flex flex-col items-center justify-center gap-1 hover:border-primary hover:bg-primary/5 transition-colors"
-              >
-                <Upload className="w-6 h-6 text-muted-foreground" />
-                <span className="text-xs text-muted-foreground">Add Photo</span>
-              </button>
+              <div className="flex gap-2">
+                {isMobile && (
+                  <button
+                    onClick={() => cameraInputRef.current?.click()}
+                    className="w-24 h-24 rounded-lg border-2 border-dashed border-border flex flex-col items-center justify-center gap-1 hover:border-primary hover:bg-primary/5 transition-colors"
+                  >
+                    <Camera className="w-6 h-6 text-muted-foreground" />
+                    <span className="text-xs text-muted-foreground">Camera</span>
+                  </button>
+                )}
+                <button
+                  onClick={() => fileInputRef.current?.click()}
+                  className="w-24 h-24 rounded-lg border-2 border-dashed border-border flex flex-col items-center justify-center gap-1 hover:border-primary hover:bg-primary/5 transition-colors"
+                >
+                  <Upload className="w-6 h-6 text-muted-foreground" />
+                  <span className="text-xs text-muted-foreground">{isMobile ? 'Gallery' : 'Upload'}</span>
+                </button>
+              </div>
             )}
           </div>
           <input
@@ -351,6 +365,14 @@ export function SummaryScreen({
             type="file"
             accept="image/*"
             multiple
+            onChange={handleFileChange}
+            className="hidden"
+          />
+          <input
+            ref={cameraInputRef}
+            type="file"
+            accept="image/*"
+            capture="environment"
             onChange={handleFileChange}
             className="hidden"
           />
