@@ -257,3 +257,51 @@ export function isValidPostcode(postcode: string): boolean {
   const cleaned = postcode.replace(/\D/g, '');
   return cleaned.length === 5 && /^\d{5}$/.test(cleaned);
 }
+
+// Malaysian states list with proper ordering
+const MALAYSIAN_STATES = [
+  'W.P. Kuala Lumpur',
+  'Selangor',
+  'Johor',
+  'Penang',
+  'Perak',
+  'Sarawak',
+  'Sabah',
+  'Melaka',
+  'N. Sembilan',
+  'Kedah',
+  'Kelantan',
+  'Terengganu',
+  'Pahang',
+  'Perlis',
+  'Labuan',
+];
+
+// Cities data parsed from cities.csv
+const CITIES_BY_STATE: Record<string, string[]> = {
+  'W.P. Kuala Lumpur': ['Kuala Lumpur', 'Bangsar', 'Cheras', 'Kepong', 'Setapak', 'Mont Kiara', 'Brickfields', 'KLCC', 'Wangsa Maju', 'Taman Melawati'],
+  'Selangor': ['Petaling Jaya', 'Bandar Utama', 'Kota Damansara', 'Ara Damansara', 'SS2', 'Kelana Jaya', 'Tropicana', 'Taman Megah', 'Shah Alam', 'Setia Alam', 'Bukit Jelutong', 'Seksyen 7', 'Seksyen 13', 'Subang Jaya', 'USJ', 'Taipan', 'Putra Heights', 'Klang', 'Bandar Bukit Tinggi', 'Kota Kemuning', 'Meru', 'Port Klang'],
+  'Johor': ['Johor Bahru', 'Tampoi', 'Skudai', 'Permas Jaya', 'Taman Molek', 'Iskandar Puteri', 'Gelang Patah', 'Nusajaya', 'Bukit Indah', 'Batu Pahat', 'Yong Peng', 'Parit Raja', 'Muar', 'Tangkak', 'Kulai', 'Senai'],
+  'Penang': ['George Town', 'Tanjung Tokong', 'Tanjung Bungah', 'Gelugor', 'Bayan Lepas', 'Air Itam', 'Butterworth', 'Bukit Mertajam', 'Perai', 'Kepala Batas', 'Nibong Tebal'],
+  'Perak': ['Ipoh', 'Menglembu', 'Tambun', 'Bercham', 'Simpang Pulai', 'Taiping', 'Kamunting'],
+  'Sarawak': ['Kuching', 'Petra Jaya', 'Kota Samarahan', 'Pending', 'Batu Kawa', 'Sibu', 'Mukah', 'Miri'],
+  'Sabah': ['Kota Kinabalu', 'Penampang', 'Likas', 'Inanam', 'Tuaran', 'Sandakan', 'Batu Sapi'],
+  'Melaka': ['Melaka', 'Ayer Keroh', 'Batu Berendam', 'Bukit Baru', 'Alor Gajah'],
+  'N. Sembilan': ['Seremban', 'Nilai', 'Port Dickson', 'Mantin'],
+  'Kedah': ['Sungai Petani', 'Kuala Ketil', 'Alor Setar', 'Jitra'],
+  'Kelantan': ['Kota Bharu'],
+  'Terengganu': ['Kuala Terengganu'],
+  'Pahang': ['Kuantan', 'Indera Mahkota', 'Gambang', 'Beserah'],
+  'Perlis': ['Kangar', 'Arau'],
+  'Labuan': ['Labuan'],
+};
+
+// Get list of Malaysian states
+export function getStates(): string[] {
+  return MALAYSIAN_STATES;
+}
+
+// Get cities by state
+export function getCitiesByState(state: string): string[] {
+  return CITIES_BY_STATE[state] || [];
+}

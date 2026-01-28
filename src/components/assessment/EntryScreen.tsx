@@ -1,31 +1,41 @@
-import { useState } from 'react';
 import { Card, CardContent } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
-import { Input } from '@/components/ui/input';
 import { AlertTriangle } from 'lucide-react';
-import { isValidPostcode } from '@/lib/locationUtils';
+import { getStates, getCitiesByState } from '@/lib/locationUtils';
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from '@/components/ui/select';
 
 interface EntryScreenProps {
-  zipcode: string;
   city: string;
   state: string;
-  onZipcodeChange: (zipcode: string) => void;
+  onStateChange: (state: string) => void;
+  onCityChange: (city: string) => void;
   onStart: () => void;
 }
 
 export function EntryScreen({
-  zipcode,
   city,
   state,
-  onZipcodeChange,
+  onStateChange,
+  onCityChange,
   onStart,
 }: EntryScreenProps) {
-  const [touched, setTouched] = useState(false);
-  const isValid = isValidPostcode(zipcode) && !!city;
+  const states = getStates();
+  const cities = state ? getCitiesByState(state) : [];
+  const isValid = !!state && !!city;
+
+  const handleStateChange = (newState: string) => {
+    onStateChange(newState);
+    onCityChange(''); // Reset city when state changes
+  };
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    setTouched(true);
     if (isValid) {
       onStart();
     }
@@ -54,34 +64,50 @@ export function EntryScreen({
           {/* Form */}
           <form onSubmit={handleSubmit} className="space-y-4">
             <div className="space-y-2">
-              <label htmlFor="zipcode" className="text-sm font-medium text-foreground">
-                Enter your postcode
+              <label htmlFor="state" className="text-sm font-medium text-foreground">
+                Select your state
               </label>
-              <Input
-                id="zipcode"
-                type="text"
-                inputMode="numeric"
-                placeholder="e.g., 50000"
-                maxLength={5}
-                value={zipcode}
-                onChange={(e) => {
-                  const value = e.target.value.replace(/\D/g, '');
-                  onZipcodeChange(value);
-                }}
-                onBlur={() => setTouched(true)}
-                className="text-lg h-12"
-              />
-              {touched && !isValid && zipcode.length > 0 && (
-                <p className="text-sm text-destructive">
-                  Please enter a valid 5-digit Malaysian postcode
-                </p>
-              )}
-              {city && state && (
-                <p className="text-sm text-muted-foreground">
-                  📍 {city}, {state}
-                </p>
-              )}
+              <Select value={state} onValueChange={handleStateChange}>
+                <SelectTrigger id="state" className="h-12 text-base">
+                  <SelectValue placeholder="Choose state..." />
+                </SelectTrigger>
+                <SelectContent className="bg-background z-50">
+                  {states.map((s) => (
+                    <SelectItem key={s} value={s}>
+                      {s}
+                    </SelectItem>
+                  ))}
+                </SelectContent>
+              </Select>
             </div>
+
+            <div className="space-y-2">
+              <label htmlFor="city" className="text-sm font-medium text-foreground">
+                Select your city
+              </label>
+              <Select 
+                value={city} 
+                onValueChange={onCityChange}
+                disabled={!state}
+              >
+                <SelectTrigger id="city" className="h-12 text-base">
+                  <SelectValue placeholder={state ? "Choose city..." : "Select state first"} />
+                </SelectTrigger>
+                <SelectContent className="bg-background z-50">
+                  {cities.map((c) => (
+                    <SelectItem key={c} value={c}>
+                      {c}
+                    </SelectItem>
+                  ))}
+                </SelectContent>
+              </Select>
+            </div>
+
+            {state && city && (
+              <p className="text-sm text-muted-foreground">
+                📍 {city}, {state}
+              </p>
+            )}
 
             <Button
               type="submit"
