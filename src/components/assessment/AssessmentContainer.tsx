@@ -87,6 +87,48 @@ export function AssessmentContainer() {
         toast.error('Failed to save assessment. Please try again.');
       }
 
+      // Send email notification
+      try {
+        const emailResponse = await supabase.functions.invoke('send-assessment-email', {
+          body: {
+            userName: state.userName,
+            userEmail: state.userEmail,
+            userPhone: state.userPhone,
+            petName: state.petName,
+            city: state.city,
+            state: state.state,
+            petType: state.petType,
+            breed: state.breed,
+            age: state.age,
+            sex: state.sex,
+            fixed: state.fixed,
+            weight: state.weight,
+            conditions: state.conditions,
+            ingestion: state.ingestion,
+            environment: state.environment,
+            insured: state.insured,
+            mainSymptom: state.mainSymptom,
+            painLevel: state.painLevel,
+            breathing: state.breathing,
+            alertness: state.alertness,
+            bleeding: state.bleeding,
+            duration: state.duration,
+            description: state.description,
+            urgencyLevel: result.level,
+            urgencyScore: result.score,
+          },
+        });
+        
+        if (emailResponse.error) {
+          console.error('Error sending email:', emailResponse.error);
+        } else {
+          console.log('Assessment email sent successfully');
+        }
+      } catch (emailError) {
+        console.error('Email sending failed:', emailError);
+        // Don't block the flow if email fails
+      }
+
       setShowResults(true);
     } catch (error) {
       console.error('Error:', error);
