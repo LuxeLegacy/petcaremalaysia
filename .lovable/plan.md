@@ -1,81 +1,136 @@
 
-
-# Connect Emergency Vets to Real Database
+# Plan: Free Pet Emergency Guide Page and Assessment Results Integration
 
 ## Overview
+Create a dedicated page to host the comprehensive 47-page Pet Emergency Guide HTML document and link it as a "free bonus" download from the assessment results page's `OwnProductsSection` component.
 
-Currently, the "Emergency Vets Near You" section on the assessment results page displays **placeholder/fake data**. The database already contains real Malaysian vet clinics with accurate details. This plan connects the component to live data.
-
-## Current State
-
-- **Placeholder data**: Uses hardcoded template strings like `${city} Emergency Veterinary Clinic`
-- **Real data available**: Database has 12+ clinics across Shah Alam, Kuala Lumpur, Petaling Jaya, Johor Bahru, and Georgetown
-- **Hook ready**: `useVetClinics` hook exists but is not integrated into the assessment flow
-
-## Implementation
-
-### 1. Update NearbyVetsSection Component
-
-**File**: `src/components/assessment/NearbyVetsSection.tsx`
-
-Changes:
-- Import and use the existing `useVetClinics` hook
-- Add loading and empty states for better UX
-- Display real clinic data including:
-  - Actual clinic names
-  - Real addresses and phone numbers
-  - Star ratings and review counts
-  - 24-hour and emergency service badges
-  - Website links when available
-- Prioritize emergency clinics at the top of the list
-- Limit display to 3-5 clinics for readability
-
-### 2. Enhanced Display Features
-
-- **Emergency badge**: Highlight clinics marked as `is_emergency: true`
-- **24-hour indicator**: Show green badge for 24-hour clinics
-- **Star rating**: Display rating with review count
-- **Services tags**: Show available services (Emergency Care, Surgery, etc.)
-- **Website button**: Add button to open clinic website when available
-- **Fallback message**: Show helpful message when no clinics found for the user's location
-
-## Data Flow
-
-```text
-User completes assessment
-         |
-         v
-Results page loads with city/state
-         |
-         v
-useVetClinics(city, state) fetches from database
-         |
-         v
-Display real clinics sorted by rating
-         |
-         v
-User can call, get directions, or visit website
-```
-
-## What Users Will See
-
-**Before** (placeholder):
-- Fake clinic names like "Shah Alam Emergency Veterinary Clinic"
-- Fake phone numbers like "+60 3-1234 5678"
-- No ratings or real services
-
-**After** (real data):
-- Actual clinics: "Shah Alam Veterinary Hospital", "PJ Animal Medical Centre"
-- Real phone numbers: "+60 3-5510 1234"
-- Star ratings: "4.8 stars (127 reviews)"
-- Real services: "Emergency Care, Surgery, Vaccinations"
+## What This Accomplishes
+- Provides a fully accessible, web-viewable version of the Pet Emergency Guide
+- Creates a compelling CTA in the assessment results that drives users to the guide
+- Maximizes the value proposition for users who complete the assessment
+- Establishes the guide as a lead magnet for future marketing efforts
 
 ---
 
-## Technical Notes
+## Implementation Steps
 
-- The hook uses case-insensitive matching (`ilike`) for city/state lookups
-- Results are sorted by rating (highest first)
-- Emergency clinics will be prioritized in the display order
-- If no clinics found for a location, a helpful fallback message will be shown suggesting the user search manually
+### 1. Create the Emergency Guide Page Component
+**File: `src/pages/EmergencyGuidePage.tsx`**
 
+Create a new page that:
+- Renders the complete HTML guide content as a React component
+- Uses the existing site layout (Header/Footer)
+- Includes SEO metadata (title, description, canonical URL)
+- Provides a "Download PDF" button for users who want an offline version
+- Has a professional, print-ready styling matching the original document
+
+The page will convert the uploaded HTML structure into React components with:
+- Cover page with branding
+- Table of contents with anchor navigation
+- All 5 sections: Emergency First Aid, Symptoms Checklist, Poison Control, Vet Directory, and Emergency Preparedness
+- Warning boxes, call-to-action boxes, and styled tables
+- Print-optimized CSS media queries
+
+### 2. Add Route to App.tsx
+**File: `src/App.tsx`**
+
+Add routes for the guide page:
+```
+/emergency-guide
+/:lang/emergency-guide
+```
+
+### 3. Update OwnProductsSection Component
+**File: `src/components/assessment/OwnProductsSection.tsx`**
+
+Modify the existing component to:
+- Link the "Get Free Guide" button to `/emergency-guide`
+- Add visual enhancement (gift icon, urgency messaging)
+- Use direct response copywriting to maximize clicks
+
+### 4. Copy the HTML File to Public Folder (Optional PDF)
+The HTML file will be converted into a React component. If a PDF download is needed later, the file can be hosted in the public folder.
+
+---
+
+## Technical Details
+
+### Page Structure for EmergencyGuidePage
+```text
++------------------------------------------+
+|  Header (existing component)             |
++------------------------------------------+
+|  Hero Section                            |
+|  - "Free Pet Emergency Guide"            |
+|  - "47-page resource for Malaysian pets" |
+|  - Download PDF button                   |
++------------------------------------------+
+|  Table of Contents (clickable links)     |
++------------------------------------------+
+|  Section 1: Emergency First Aid          |
+|  - CPR for Dogs/Cats                     |
+|  - Choking, Bleeding, Snake Bites        |
+|  - Heatstroke, Poisoning, Bloat          |
++------------------------------------------+
+|  Section 2: Symptoms Checklist           |
+|  - Respiratory, Neurological, GI         |
+|  - Tables with checkboxes                |
++------------------------------------------+
+|  Section 3: Poison Control Reference     |
+|  - Toxic foods, plants, chemicals        |
++------------------------------------------+
+|  Section 4: 24-Hour Vet Directory        |
+|  - Clinics organized by Malaysian state  |
++------------------------------------------+
+|  Section 5: Emergency Preparedness       |
+|  - First aid kit checklist               |
+|  - Pet medical records template          |
++------------------------------------------+
+|  Footer (existing component)             |
++------------------------------------------+
+```
+
+### Files to Create
+| File | Purpose |
+|------|---------|
+| `src/pages/EmergencyGuidePage.tsx` | Main guide page with all content |
+| `src/components/guide/GuideSection.tsx` | Reusable section wrapper |
+| `src/components/guide/WarningBox.tsx` | Warning/alert box component |
+| `src/components/guide/SymptomTable.tsx` | Styled checklist table |
+
+### Files to Modify
+| File | Changes |
+|------|---------|
+| `src/App.tsx` | Add `/emergency-guide` routes |
+| `src/components/assessment/OwnProductsSection.tsx` | Link button to guide page with enhanced copy |
+
+### OwnProductsSection Updated Design
+The section will be updated with:
+- Link component wrapping the CTA button pointing to `/emergency-guide`
+- Added urgency/value messaging ("Normally RM49 - FREE for Assessment Completers")
+- Enhanced visual hierarchy with gift emoji and checkmarks
+
+---
+
+## User Flow
+```text
+1. User completes pet emergency assessment
+   ↓
+2. Results page displays urgency level + recommendations
+   ↓
+3. User sees "FREE Pet Emergency Guide" section
+   ↓
+4. Clicks "Get Free Guide" button
+   ↓
+5. Opens /emergency-guide page with full 47-page content
+   ↓
+6. User can read online or print (print-optimized CSS)
+```
+
+---
+
+## SEO Considerations
+- Page title: "Free Pet Emergency Guide | 47-Page Resource | Pet Care Malaysia"
+- Meta description: "Download our comprehensive 47-page pet emergency guide. Includes step-by-step first aid, poison control reference, and 24-hour vet directory for all Malaysian states."
+- Structured data: Article + FAQPage schema
+- Canonical URL: `/emergency-guide`
