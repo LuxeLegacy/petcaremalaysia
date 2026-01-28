@@ -1,159 +1,81 @@
 
-# Plan: Change Entry Screen from Postcode to City/State Selection
+
+# Connect Emergency Vets to Real Database
 
 ## Overview
-Replace the current postcode text input with two dropdown selectors for State and City. This provides a better UX by letting users directly select their location rather than entering a postcode.
 
-## Current Implementation
-- Entry screen asks for a 5-digit Malaysian postcode
-- `lookupPostcode()` function converts postcode to city/state
-- State stored in: `zipcode`, `city`, `state` fields
-- Validation requires valid postcode + resolved city
+Currently, the "Emergency Vets Near You" section on the assessment results page displays **placeholder/fake data**. The database already contains real Malaysian vet clinics with accurate details. This plan connects the component to live data.
 
-## Proposed Changes
+## Current State
 
-### 1. Update EntryScreen Component
-**File:** `src/components/assessment/EntryScreen.tsx`
+- **Placeholder data**: Uses hardcoded template strings like `${city} Emergency Veterinary Clinic`
+- **Real data available**: Database has 12+ clinics across Shah Alam, Kuala Lumpur, Petaling Jaya, Johor Bahru, and Georgetown
+- **Hook ready**: `useVetClinics` hook exists but is not integrated into the assessment flow
 
-Replace postcode input with:
-- **State dropdown** - List of 16 Malaysian states
-- **City dropdown** - Populated dynamically based on selected state
-- Keep the same card layout and styling
-- Remove postcode-related validation
+## Implementation
 
-UI Structure:
-```text
-┌─────────────────────────────────────────┐
-│     ⚠️ Every minute counts              │
-│                                         │
-│   Free Pet Emergency Assessment         │
-│   Get instant triage recommendations    │
-│                                         │
-│   Select your state                     │
-│   ┌───────────────────────────────┐     │
-│   │ Choose state...            ▼  │     │
-│   └───────────────────────────────┘     │
-│                                         │
-│   Select your city                      │
-│   ┌───────────────────────────────┐     │
-│   │ Choose city...             ▼  │     │
-│   └───────────────────────────────┘     │
-│                                         │
-│   [    Start Free Assessment     ]      │
-│                                         │
-│   Powered by 2.3M ER cases...           │
-└─────────────────────────────────────────┘
-```
+### 1. Update NearbyVetsSection Component
 
-### 2. Update Props Interface
-**File:** `src/components/assessment/EntryScreen.tsx`
-
-```typescript
-// Before
-interface EntryScreenProps {
-  zipcode: string;
-  city: string;
-  state: string;
-  onZipcodeChange: (zipcode: string) => void;
-  onStart: () => void;
-}
-
-// After
-interface EntryScreenProps {
-  city: string;
-  state: string;
-  onStateChange: (state: string) => void;
-  onCityChange: (city: string) => void;
-  onStart: () => void;
-}
-```
-
-### 3. Update useAssessment Hook
-**File:** `src/hooks/useAssessment.ts`
+**File**: `src/components/assessment/NearbyVetsSection.tsx`
 
 Changes:
-- Remove `setZipcode` function (no longer needed)
-- Add `setLocation(city, state)` function or allow direct field updates
-- Update `isStepValid(0)` to check `!!state.city && !!state.state` instead of postcode validation
-- Keep `zipcode` field in state but make it optional (empty string default)
+- Import and use the existing `useVetClinics` hook
+- Add loading and empty states for better UX
+- Display real clinic data including:
+  - Actual clinic names
+  - Real addresses and phone numbers
+  - Star ratings and review counts
+  - 24-hour and emergency service badges
+  - Website links when available
+- Prioritize emergency clinics at the top of the list
+- Limit display to 3-5 clinics for readability
 
-### 4. Update AssessmentContainer
-**File:** `src/components/assessment/AssessmentContainer.tsx`
+### 2. Enhanced Display Features
 
-- Update EntryScreen usage to pass new props
-- Replace `setZipcode` with `updateField('city', ...)` and `updateField('state', ...)`
+- **Emergency badge**: Highlight clinics marked as `is_emergency: true`
+- **24-hour indicator**: Show green badge for 24-hour clinics
+- **Star rating**: Display rating with review count
+- **Services tags**: Show available services (Emergency Care, Surgery, etc.)
+- **Website button**: Add button to open clinic website when available
+- **Fallback message**: Show helpful message when no clinics found for the user's location
 
-### 5. Create Location Data Helpers
-**File:** `src/lib/locationUtils.ts`
+## Data Flow
 
-Add new helper functions:
-```typescript
-// Get unique list of states from cityData
-export function getStates(): string[]
-
-// Get cities filtered by state
-export function getCitiesByState(state: string): string[]
+```text
+User completes assessment
+         |
+         v
+Results page loads with city/state
+         |
+         v
+useVetClinics(city, state) fetches from database
+         |
+         v
+Display real clinics sorted by rating
+         |
+         v
+User can call, get directions, or visit website
 ```
 
-### 6. Update Database Save (Optional)
-The `zipcode` field in `assessment_leads` table can remain nullable (already is). We'll save empty string for zipcode when using city/state selection.
+## What Users Will See
+
+**Before** (placeholder):
+- Fake clinic names like "Shah Alam Emergency Veterinary Clinic"
+- Fake phone numbers like "+60 3-1234 5678"
+- No ratings or real services
+
+**After** (real data):
+- Actual clinics: "Shah Alam Veterinary Hospital", "PJ Animal Medical Centre"
+- Real phone numbers: "+60 3-5510 1234"
+- Star ratings: "4.8 stars (127 reviews)"
+- Real services: "Emergency Care, Surgery, Vaccinations"
 
 ---
 
-## Technical Details
+## Technical Notes
 
-### States List (derived from cityData.ts)
-The 16 Malaysian states available:
-- W.P. Kuala Lumpur
-- Selangor
-- Johor
-- Penang
-- Perak
-- Sarawak
-- Sabah
-- Melaka
-- Negeri Sembilan
-- Kedah
-- Kelantan
-- Terengganu
-- Pahang
-- Perlis
-- Labuan
+- The hook uses case-insensitive matching (`ilike`) for city/state lookups
+- Results are sorted by rating (highest first)
+- Emergency clinics will be prioritized in the display order
+- If no clinics found for a location, a helpful fallback message will be shown suggesting the user search manually
 
-### Dropdown Component
-Use the existing Radix UI Select component from `@/components/ui/select` for consistent styling.
-
----
-
-## Files to Modify
-
-| File | Changes |
-|------|---------|
-| `src/components/assessment/EntryScreen.tsx` | Replace postcode input with state/city dropdowns |
-| `src/hooks/useAssessment.ts` | Update validation logic, remove postcode dependency |
-| `src/components/assessment/AssessmentContainer.tsx` | Update EntryScreen props |
-| `src/lib/locationUtils.ts` | Add `getStates()` and `getCitiesByState()` helpers |
-
----
-
-## Validation Logic
-
-**Before:**
-```typescript
-const isValid = isValidPostcode(zipcode) && !!city;
-```
-
-**After:**
-```typescript
-const isValid = !!state && !!city;
-```
-
----
-
-## Implementation Order
-
-1. Add helper functions to `locationUtils.ts`
-2. Update `EntryScreen.tsx` with new UI
-3. Update `useAssessment.ts` validation
-4. Update `AssessmentContainer.tsx` props
-5. Test the flow end-to-end
