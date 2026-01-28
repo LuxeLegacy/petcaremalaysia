@@ -175,6 +175,213 @@ export interface Translations {
     error: string;
     notFound: string;
   };
+  assessment: {
+    entry: {
+      title: string;
+      subtitle: string;
+      badge: string;
+      postcodeLabel: string;
+      postcodePlaceholder: string;
+      postcodeError: string;
+      startButton: string;
+      trustBadge: string;
+    };
+    questions: {
+      petType: string;
+      breed: string;
+      age: string;
+      sex: string;
+      fixed: string;
+      weight: string;
+      conditions: string;
+      ingestion: string;
+      environment: string;
+      insured: string;
+      mainSymptom: string;
+      painLevel: string;
+      breathing: string;
+      alertness: string;
+      bleeding: string;
+      duration: string;
+      summary: string;
+      summarySubtitle: string;
+      descriptionLabel: string;
+      descriptionPlaceholder: string;
+      photoLabel: string;
+    };
+    options: {
+      dog: string;
+      cat: string;
+      male: string;
+      female: string;
+      yes: string;
+      no: string;
+      notSure: string;
+      age: {
+        puppyKitten: string;
+        youngAdult: string;
+        adult: string;
+        senior: string;
+      };
+      weight: {
+        small: string;
+        medium: string;
+        large: string;
+        extraLarge: string;
+      };
+      conditions: {
+        heartDisease: string;
+        diabetes: string;
+        kidneyDisease: string;
+        allergies: string;
+        cancer: string;
+        arthritis: string;
+        none: string;
+      };
+      ingestion: {
+        chocolate: string;
+        medication: string;
+        plants: string;
+        chemicals: string;
+        none: string;
+      };
+      environment: {
+        indoor: string;
+        outdoor: string;
+        both: string;
+      };
+      symptoms: {
+        vomiting: string;
+        diarrhea: string;
+        notEating: string;
+        limping: string;
+        other: string;
+      };
+      pain: {
+        none: string;
+        mild: string;
+        moderate: string;
+        severe: string;
+      };
+      breathing: {
+        normal: string;
+        labored: string;
+        rapid: string;
+        weak: string;
+      };
+      alertness: {
+        alert: string;
+        lethargic: string;
+        disoriented: string;
+        unresponsive: string;
+      };
+      bleeding: {
+        none: string;
+        minor: string;
+        moderate: string;
+        severe: string;
+      };
+      duration: {
+        justNow: string;
+        hours1to6: string;
+        hours6to24: string;
+        more24hours: string;
+      };
+    };
+    contact: {
+      title: string;
+      subtitle: string;
+      nameLabel: string;
+      namePlaceholder: string;
+      emailLabel: string;
+      emailPlaceholder: string;
+      phoneLabel: string;
+      phonePlaceholder: string;
+      petNameLabel: string;
+      petNamePlaceholder: string;
+      required: string;
+      optional: string;
+      submitButton: string;
+      privacyNote: string;
+    };
+    results: {
+      critical: {
+        headline: string;
+        subheadline: string;
+      };
+      high: {
+        headline: string;
+        subheadline: string;
+      };
+      moderate: {
+        headline: string;
+        subheadline: string;
+      };
+      low: {
+        headline: string;
+        subheadline: string;
+      };
+      actions: {
+        title: string;
+        critical: string[];
+        high: string[];
+        moderate: string[];
+        low: string[];
+      };
+      petSummary: {
+        yourName: string;
+        email: string;
+        petName: string;
+        petType: string;
+        breed: string;
+        location: string;
+      };
+      insurance: {
+        title: string;
+        subtitle: string;
+        benefit1: string;
+        benefit2: string;
+        benefit3: string;
+        cta: string;
+        trustBadge: string;
+      };
+      affiliateProducts: {
+        title: string;
+        subtitle: string;
+        comingSoon: string;
+        comingSoonSubtitle: string;
+      };
+      ownProducts: {
+        title: string;
+        subtitle: string;
+        benefit1: string;
+        benefit2: string;
+        benefit3: string;
+        benefit4: string;
+        cta: string;
+        note: string;
+      };
+      nearbyVets: {
+        title: string;
+        open24h: string;
+        callNow: string;
+        directions: string;
+        note: string;
+      };
+      buttons: {
+        print: string;
+        share: string;
+        newAssessment: string;
+      };
+      disclaimer: string;
+    };
+    navigation: {
+      back: string;
+      continue: string;
+      step: string;
+      of: string;
+    };
+  };
 }
 
 export const translations: Record<Language, Translations> = {
@@ -374,6 +581,237 @@ export const translations: Record<Language, Translations> = {
       error: 'Something went wrong',
       notFound: 'Page not found',
     },
+    assessment: {
+      entry: {
+        title: 'Free Pet Emergency Assessment',
+        subtitle: 'Get instant triage recommendations from certified vet protocols',
+        badge: 'Every minute counts',
+        postcodeLabel: 'Enter your postcode',
+        postcodePlaceholder: 'e.g., 50000',
+        postcodeError: 'Please enter a valid 5-digit Malaysian postcode',
+        startButton: 'Start Free Assessment',
+        trustBadge: 'Powered by 2.3M ER cases + Board-certified vet protocols',
+      },
+      questions: {
+        petType: 'What type of pet do you have?',
+        breed: 'What breed is your pet?',
+        age: 'How old is your pet?',
+        sex: "What is your pet's sex?",
+        fixed: 'Is your pet spayed/neutered?',
+        weight: "What is your pet's weight?",
+        conditions: 'Does your pet have any existing health conditions?',
+        ingestion: 'Has your pet recently ingested anything unusual?',
+        environment: 'Where does your pet typically stay?',
+        insured: 'Is your pet insured?',
+        mainSymptom: "What is your pet's main symptom?",
+        painLevel: 'How much pain does your pet appear to be in?',
+        breathing: 'Is your pet breathing normally?',
+        alertness: 'Is your pet alert and responsive?',
+        bleeding: 'Is there any bleeding?',
+        duration: 'How long has this been happening?',
+        summary: 'Review & Add Details',
+        summarySubtitle: "Confirm your pet's information and describe what's happening",
+        descriptionLabel: 'Describe what\'s happening (optional)',
+        descriptionPlaceholder: 'Tell us more about your pet\'s symptoms, behavior changes, or any other concerns...',
+        photoLabel: 'Add photos (optional, max 5)',
+      },
+      options: {
+        dog: 'Dog',
+        cat: 'Cat',
+        male: 'Male',
+        female: 'Female',
+        yes: 'Yes',
+        no: 'No',
+        notSure: 'Not sure',
+        age: {
+          puppyKitten: 'Puppy/Kitten (0-1 year)',
+          youngAdult: 'Young Adult (1-3 years)',
+          adult: 'Adult (3-7 years)',
+          senior: 'Senior (7+ years)',
+        },
+        weight: {
+          small: 'Small (<5kg)',
+          medium: 'Medium (5-10kg)',
+          large: 'Large (10-25kg)',
+          extraLarge: 'Extra Large (25kg+)',
+        },
+        conditions: {
+          heartDisease: 'Heart disease',
+          diabetes: 'Diabetes',
+          kidneyDisease: 'Kidney disease',
+          allergies: 'Allergies',
+          cancer: 'Cancer',
+          arthritis: 'Arthritis',
+          none: 'None known',
+        },
+        ingestion: {
+          chocolate: 'Chocolate',
+          medication: 'Medication',
+          plants: 'Plants',
+          chemicals: 'Chemicals/Poison',
+          none: 'None/Unknown',
+        },
+        environment: {
+          indoor: 'Indoor only',
+          outdoor: 'Outdoor only',
+          both: 'Both indoor/outdoor',
+        },
+        symptoms: {
+          vomiting: 'Vomiting',
+          diarrhea: 'Diarrhea',
+          notEating: 'Not eating',
+          limping: 'Limping/Lameness',
+          other: 'Other symptoms',
+        },
+        pain: {
+          none: 'No visible pain',
+          mild: 'Mild discomfort',
+          moderate: 'Moderate pain',
+          severe: 'Severe pain/distress',
+        },
+        breathing: {
+          normal: 'Yes, normal',
+          labored: 'Labored/difficult',
+          rapid: 'Very rapid',
+          weak: 'Weak/shallow',
+        },
+        alertness: {
+          alert: 'Fully alert',
+          lethargic: 'Lethargic/weak',
+          disoriented: 'Disoriented/confused',
+          unresponsive: 'Unresponsive',
+        },
+        bleeding: {
+          none: 'None',
+          minor: 'Minor/controlled',
+          moderate: 'Moderate',
+          severe: 'Severe/uncontrolled',
+        },
+        duration: {
+          justNow: 'Just now (<30 minutes)',
+          hours1to6: '1-6 hours',
+          hours6to24: '6-24 hours',
+          more24hours: 'More than 24 hours',
+        },
+      },
+      contact: {
+        title: 'Almost there! 🎉',
+        subtitle: 'Enter your details to receive your personalized assessment results',
+        nameLabel: 'Your Name',
+        namePlaceholder: 'Enter your name',
+        emailLabel: 'Email Address',
+        emailPlaceholder: 'your@email.com',
+        phoneLabel: 'Phone Number',
+        phonePlaceholder: '+60 12-345 6789',
+        petNameLabel: "Pet's Name",
+        petNamePlaceholder: "What's your pet's name?",
+        required: '*',
+        optional: '(optional)',
+        submitButton: 'Get My Results',
+        privacyNote: 'Your information is secure and will never be shared with third parties.',
+      },
+      results: {
+        critical: {
+          headline: '{petName} NEEDS EMERGENCY CARE RIGHT NOW',
+          subheadline: '{userName}, every second counts. Here\'s exactly what to do...',
+        },
+        high: {
+          headline: 'WARNING: {petName} Shows Concerning Signs',
+          subheadline: "{userName}, don't wait until it's too late. See a vet within 2 hours.",
+        },
+        moderate: {
+          headline: 'Good News, {userName}: {petName} Can Wait a Few Hours',
+          subheadline: 'But here\'s what smart pet owners do next...',
+        },
+        low: {
+          headline: '{petName} Looks Okay For Now, {userName}',
+          subheadline: 'But here\'s how to make SURE nothing gets worse...',
+        },
+        actions: {
+          title: '📋 Recommended Actions',
+          critical: [
+            'Call your nearest 24-hour emergency vet IMMEDIATELY',
+            'Keep your pet calm and still during transport',
+            'Do NOT give any food, water, or medication',
+            'If bleeding, apply gentle pressure with clean cloth',
+            'Drive safely but urgently to the vet',
+          ],
+          high: [
+            'See a vet within the next 2-4 hours',
+            'Monitor your pet closely for any changes',
+            'Prepare transport and have vet contact ready',
+            'Keep your pet comfortable and calm',
+            'Note any new symptoms that develop',
+          ],
+          moderate: [
+            'Schedule a vet visit within 24 hours',
+            'Monitor symptoms closely',
+            'Ensure your pet stays hydrated',
+            'Keep a symptom diary to share with the vet',
+            'Call the vet if symptoms worsen',
+          ],
+          low: [
+            'Continue monitoring your pet',
+            'Maintain normal feeding and hydration',
+            'Schedule a routine check-up if concerned',
+            'Watch for any changes in behavior',
+            'Keep emergency vet numbers handy',
+          ],
+        },
+        petSummary: {
+          yourName: 'Your Name',
+          email: 'Email',
+          petName: "Pet's Name",
+          petType: 'Pet Type',
+          breed: 'Breed',
+          location: 'Location',
+        },
+        insurance: {
+          title: '🛡️ PROTECT {petName} FROM FUTURE EMERGENCIES',
+          subtitle: 'Most Malaysian pet owners discover pet insurance AFTER a RM3,000+ vet bill. Don\'t be one of them.',
+          benefit1: '✓ Emergency vet visits covered up to RM50,000/year',
+          benefit2: '✓ Surgery, hospitalization & medication included',
+          benefit3: '✓ Claims processed in 3-5 working days',
+          cta: 'Compare Insurance Plans',
+          trustBadge: 'Trusted by 50,000+ Malaysian pet owners',
+        },
+        affiliateProducts: {
+          title: "🏥 ESSENTIAL SUPPLIES FOR {petName}'S RECOVERY",
+          subtitle: 'Products recommended by board-certified vets...',
+          comingSoon: 'Coming Soon',
+          comingSoonSubtitle: "We're curating the best pet health products for you",
+        },
+        ownProducts: {
+          title: '📘 FREE PET EMERGENCY GUIDE',
+          subtitle: 'Download our 47-page guide every Malaysian pet owner needs.',
+          benefit1: '✓ Step-by-step first aid instructions',
+          benefit2: '✓ Common emergency symptoms checklist',
+          benefit3: '✓ 24-hour emergency vet directory by state',
+          benefit4: '✓ Poison control quick reference',
+          cta: 'Get Free Guide',
+          note: 'Instant PDF download • No spam, ever',
+        },
+        nearbyVets: {
+          title: 'Emergency Vets Near You',
+          open24h: '24 Hours',
+          callNow: 'Call Now',
+          directions: 'Directions',
+          note: 'Always call ahead to confirm availability and operating hours',
+        },
+        buttons: {
+          print: 'Print Results',
+          share: 'Share',
+          newAssessment: 'New Assessment',
+        },
+        disclaimer: 'This assessment is for informational purposes only and does not replace professional veterinary advice. Always consult a licensed veterinarian for proper diagnosis and treatment.',
+      },
+      navigation: {
+        back: 'Back',
+        continue: 'Continue',
+        step: 'Step',
+        of: 'of',
+      },
+    },
   },
   ms: {
     nav: {
@@ -571,6 +1009,237 @@ export const translations: Record<Language, Translations> = {
       error: 'Sesuatu telah berlaku',
       notFound: 'Halaman tidak dijumpai',
     },
+    assessment: {
+      entry: {
+        title: 'Penilaian Kecemasan Haiwan Percuma',
+        subtitle: 'Dapatkan cadangan triage segera daripada protokol veterinar yang disahkan',
+        badge: 'Setiap minit penting',
+        postcodeLabel: 'Masukkan poskod anda',
+        postcodePlaceholder: 'contoh: 50000',
+        postcodeError: 'Sila masukkan poskod Malaysia 5 digit yang sah',
+        startButton: 'Mulakan Penilaian Percuma',
+        trustBadge: 'Dikuasakan oleh 2.3J kes ER + Protokol veterinar yang disahkan',
+      },
+      questions: {
+        petType: 'Apakah jenis haiwan kesayangan anda?',
+        breed: 'Apakah baka haiwan kesayangan anda?',
+        age: 'Berapa umur haiwan kesayangan anda?',
+        sex: 'Apakah jantina haiwan kesayangan anda?',
+        fixed: 'Adakah haiwan anda dimandulkan?',
+        weight: 'Berapakah berat haiwan kesayangan anda?',
+        conditions: 'Adakah haiwan anda mempunyai sebarang keadaan kesihatan sedia ada?',
+        ingestion: 'Adakah haiwan anda baru-baru ini menelan sesuatu yang luar biasa?',
+        environment: 'Di mana haiwan kesayangan anda biasanya tinggal?',
+        insured: 'Adakah haiwan anda diinsuranskan?',
+        mainSymptom: 'Apakah gejala utama haiwan kesayangan anda?',
+        painLevel: 'Berapa teruk kesakitan yang dialami haiwan anda?',
+        breathing: 'Adakah haiwan anda bernafas secara normal?',
+        alertness: 'Adakah haiwan anda berjaga dan responsif?',
+        bleeding: 'Adakah terdapat sebarang pendarahan?',
+        duration: 'Berapa lama ini telah berlaku?',
+        summary: 'Semak & Tambah Butiran',
+        summarySubtitle: 'Sahkan maklumat haiwan anda dan terangkan apa yang berlaku',
+        descriptionLabel: 'Terangkan apa yang berlaku (pilihan)',
+        descriptionPlaceholder: 'Beritahu kami lebih lanjut tentang gejala, perubahan tingkah laku, atau sebarang kebimbangan lain...',
+        photoLabel: 'Tambah gambar (pilihan, maksimum 5)',
+      },
+      options: {
+        dog: 'Anjing',
+        cat: 'Kucing',
+        male: 'Jantan',
+        female: 'Betina',
+        yes: 'Ya',
+        no: 'Tidak',
+        notSure: 'Tidak pasti',
+        age: {
+          puppyKitten: 'Anak anjing/kucing (0-1 tahun)',
+          youngAdult: 'Dewasa muda (1-3 tahun)',
+          adult: 'Dewasa (3-7 tahun)',
+          senior: 'Warga emas (7+ tahun)',
+        },
+        weight: {
+          small: 'Kecil (<5kg)',
+          medium: 'Sederhana (5-10kg)',
+          large: 'Besar (10-25kg)',
+          extraLarge: 'Sangat besar (25kg+)',
+        },
+        conditions: {
+          heartDisease: 'Penyakit jantung',
+          diabetes: 'Diabetes',
+          kidneyDisease: 'Penyakit buah pinggang',
+          allergies: 'Alahan',
+          cancer: 'Kanser',
+          arthritis: 'Artritis',
+          none: 'Tiada yang diketahui',
+        },
+        ingestion: {
+          chocolate: 'Coklat',
+          medication: 'Ubat',
+          plants: 'Tumbuhan',
+          chemicals: 'Bahan kimia/Racun',
+          none: 'Tiada/Tidak diketahui',
+        },
+        environment: {
+          indoor: 'Dalam rumah sahaja',
+          outdoor: 'Luar rumah sahaja',
+          both: 'Kedua-dua dalam/luar',
+        },
+        symptoms: {
+          vomiting: 'Muntah',
+          diarrhea: 'Cirit-birit',
+          notEating: 'Tidak makan',
+          limping: 'Tempang/Kepincangan',
+          other: 'Gejala lain',
+        },
+        pain: {
+          none: 'Tiada kesakitan yang kelihatan',
+          mild: 'Ketidakselesaan ringan',
+          moderate: 'Kesakitan sederhana',
+          severe: 'Kesakitan teruk/tekanan',
+        },
+        breathing: {
+          normal: 'Ya, normal',
+          labored: 'Susah/sukar',
+          rapid: 'Sangat laju',
+          weak: 'Lemah/cetek',
+        },
+        alertness: {
+          alert: 'Sepenuhnya berjaga',
+          lethargic: 'Lesu/lemah',
+          disoriented: 'Keliru/tidak orientasi',
+          unresponsive: 'Tidak responsif',
+        },
+        bleeding: {
+          none: 'Tiada',
+          minor: 'Kecil/terkawal',
+          moderate: 'Sederhana',
+          severe: 'Teruk/tidak terkawal',
+        },
+        duration: {
+          justNow: 'Baru sahaja (<30 minit)',
+          hours1to6: '1-6 jam',
+          hours6to24: '6-24 jam',
+          more24hours: 'Lebih 24 jam',
+        },
+      },
+      contact: {
+        title: 'Hampir siap! 🎉',
+        subtitle: 'Masukkan butiran anda untuk menerima hasil penilaian peribadi',
+        nameLabel: 'Nama Anda',
+        namePlaceholder: 'Masukkan nama anda',
+        emailLabel: 'Alamat E-mel',
+        emailPlaceholder: 'anda@email.com',
+        phoneLabel: 'Nombor Telefon',
+        phonePlaceholder: '+60 12-345 6789',
+        petNameLabel: 'Nama Haiwan Kesayangan',
+        petNamePlaceholder: 'Apakah nama haiwan anda?',
+        required: '*',
+        optional: '(pilihan)',
+        submitButton: 'Dapatkan Keputusan Saya',
+        privacyNote: 'Maklumat anda selamat dan tidak akan dikongsi dengan pihak ketiga.',
+      },
+      results: {
+        critical: {
+          headline: '{petName} MEMERLUKAN RAWATAN KECEMASAN SEKARANG',
+          subheadline: '{userName}, setiap saat penting. Ini yang perlu dilakukan...',
+        },
+        high: {
+          headline: 'AMARAN: {petName} Menunjukkan Tanda-tanda Membimbangkan',
+          subheadline: '{userName}, jangan tunggu sehingga terlambat. Jumpa vet dalam 2 jam.',
+        },
+        moderate: {
+          headline: 'Berita Baik, {userName}: {petName} Boleh Tunggu Beberapa Jam',
+          subheadline: 'Tapi ini yang pemilik bijak lakukan seterusnya...',
+        },
+        low: {
+          headline: '{petName} Kelihatan Okay Buat Masa Ini, {userName}',
+          subheadline: 'Tapi ini cara MEMASTIKAN tiada yang bertambah teruk...',
+        },
+        actions: {
+          title: '📋 Tindakan Disyorkan',
+          critical: [
+            'Hubungi klinik kecemasan 24 jam terdekat SEGERA',
+            'Pastikan haiwan anda tenang semasa pengangkutan',
+            'JANGAN berikan sebarang makanan, air, atau ubat',
+            'Jika berdarah, tekan perlahan dengan kain bersih',
+            'Pandu dengan selamat tetapi segera ke vet',
+          ],
+          high: [
+            'Jumpa vet dalam 2-4 jam akan datang',
+            'Pantau haiwan anda dengan teliti untuk sebarang perubahan',
+            'Sediakan pengangkutan dan hubungan vet',
+            'Pastikan haiwan anda selesa dan tenang',
+            'Catat sebarang gejala baru yang berkembang',
+          ],
+          moderate: [
+            'Jadualkan lawatan vet dalam 24 jam',
+            'Pantau gejala dengan teliti',
+            'Pastikan haiwan anda kekal terhidrat',
+            'Simpan diari gejala untuk dikongsi dengan vet',
+            'Hubungi vet jika gejala bertambah teruk',
+          ],
+          low: [
+            'Teruskan memantau haiwan anda',
+            'Kekalkan pemakanan dan penghidratan normal',
+            'Jadualkan pemeriksaan rutin jika bimbang',
+            'Perhatikan sebarang perubahan tingkah laku',
+            'Simpan nombor vet kecemasan',
+          ],
+        },
+        petSummary: {
+          yourName: 'Nama Anda',
+          email: 'E-mel',
+          petName: 'Nama Haiwan',
+          petType: 'Jenis Haiwan',
+          breed: 'Baka',
+          location: 'Lokasi',
+        },
+        insurance: {
+          title: '🛡️ LINDUNGI {petName} DARIPADA KECEMASAN MASA DEPAN',
+          subtitle: 'Kebanyakan pemilik haiwan Malaysia menemui insurans haiwan SELEPAS bil vet RM3,000+. Jangan jadi salah seorang.',
+          benefit1: '✓ Lawatan vet kecemasan dilindungi sehingga RM50,000/tahun',
+          benefit2: '✓ Pembedahan, penghospitalan & ubat termasuk',
+          benefit3: '✓ Tuntutan diproses dalam 3-5 hari bekerja',
+          cta: 'Bandingkan Pelan Insurans',
+          trustBadge: 'Dipercayai oleh 50,000+ pemilik haiwan Malaysia',
+        },
+        affiliateProducts: {
+          title: '🏥 BEKALAN PENTING UNTUK PEMULIHAN {petName}',
+          subtitle: 'Produk yang disyorkan oleh vet yang disahkan...',
+          comingSoon: 'Akan Datang',
+          comingSoonSubtitle: 'Kami sedang memilih produk kesihatan haiwan terbaik untuk anda',
+        },
+        ownProducts: {
+          title: '📘 PANDUAN KECEMASAN HAIWAN PERCUMA',
+          subtitle: 'Muat turun panduan 47 halaman yang diperlukan setiap pemilik haiwan Malaysia.',
+          benefit1: '✓ Arahan pertolongan cemas langkah demi langkah',
+          benefit2: '✓ Senarai semak gejala kecemasan biasa',
+          benefit3: '✓ Direktori vet kecemasan 24 jam mengikut negeri',
+          benefit4: '✓ Rujukan pantas kawalan racun',
+          cta: 'Dapatkan Panduan Percuma',
+          note: 'Muat turun PDF segera • Tiada spam',
+        },
+        nearbyVets: {
+          title: 'Vet Kecemasan Berdekatan',
+          open24h: '24 Jam',
+          callNow: 'Hubungi Sekarang',
+          directions: 'Arah',
+          note: 'Sentiasa hubungi terlebih dahulu untuk mengesahkan ketersediaan dan waktu operasi',
+        },
+        buttons: {
+          print: 'Cetak Keputusan',
+          share: 'Kongsi',
+          newAssessment: 'Penilaian Baru',
+        },
+        disclaimer: 'Penilaian ini hanya untuk tujuan maklumat dan tidak menggantikan nasihat veterinar profesional. Sentiasa rujuk veterinar berlesen untuk diagnosis dan rawatan yang betul.',
+      },
+      navigation: {
+        back: 'Kembali',
+        continue: 'Teruskan',
+        step: 'Langkah',
+        of: 'daripada',
+      },
+    },
   },
   zh: {
     nav: {
@@ -767,6 +1436,237 @@ export const translations: Record<Language, Translations> = {
       loading: '加载中...',
       error: '发生错误',
       notFound: '页面未找到',
+    },
+    assessment: {
+      entry: {
+        title: '免费宠物紧急评估',
+        subtitle: '从认证兽医协议获取即时分诊建议',
+        badge: '分秒必争',
+        postcodeLabel: '输入您的邮政编码',
+        postcodePlaceholder: '例如：50000',
+        postcodeError: '请输入有效的5位马来西亚邮政编码',
+        startButton: '开始免费评估',
+        trustBadge: '基于230万急诊病例 + 认证兽医协议',
+      },
+      questions: {
+        petType: '您养的是什么类型的宠物？',
+        breed: '您的宠物是什么品种？',
+        age: '您的宠物多大了？',
+        sex: '您的宠物是什么性别？',
+        fixed: '您的宠物做过绝育手术吗？',
+        weight: '您的宠物体重是多少？',
+        conditions: '您的宠物有任何既往健康状况吗？',
+        ingestion: '您的宠物最近是否摄入了任何异常物质？',
+        environment: '您的宠物通常待在哪里？',
+        insured: '您的宠物有保险吗？',
+        mainSymptom: '您的宠物的主要症状是什么？',
+        painLevel: '您的宠物看起来有多疼痛？',
+        breathing: '您的宠物呼吸正常吗？',
+        alertness: '您的宠物警觉且有反应吗？',
+        bleeding: '有出血吗？',
+        duration: '这种情况持续多久了？',
+        summary: '查看并添加详情',
+        summarySubtitle: '确认您的宠物信息并描述正在发生的情况',
+        descriptionLabel: '描述发生的情况（可选）',
+        descriptionPlaceholder: '告诉我们更多关于您宠物的症状、行为变化或其他任何担忧...',
+        photoLabel: '添加照片（可选，最多5张）',
+      },
+      options: {
+        dog: '狗',
+        cat: '猫',
+        male: '公',
+        female: '母',
+        yes: '是',
+        no: '否',
+        notSure: '不确定',
+        age: {
+          puppyKitten: '幼犬/幼猫 (0-1岁)',
+          youngAdult: '年轻成年 (1-3岁)',
+          adult: '成年 (3-7岁)',
+          senior: '老年 (7岁以上)',
+        },
+        weight: {
+          small: '小型 (<5kg)',
+          medium: '中型 (5-10kg)',
+          large: '大型 (10-25kg)',
+          extraLarge: '超大型 (25kg+)',
+        },
+        conditions: {
+          heartDisease: '心脏病',
+          diabetes: '糖尿病',
+          kidneyDisease: '肾病',
+          allergies: '过敏',
+          cancer: '癌症',
+          arthritis: '关节炎',
+          none: '无已知病症',
+        },
+        ingestion: {
+          chocolate: '巧克力',
+          medication: '药物',
+          plants: '植物',
+          chemicals: '化学品/毒物',
+          none: '无/不知道',
+        },
+        environment: {
+          indoor: '仅室内',
+          outdoor: '仅室外',
+          both: '室内外都有',
+        },
+        symptoms: {
+          vomiting: '呕吐',
+          diarrhea: '腹泻',
+          notEating: '不吃东西',
+          limping: '跛行/瘸腿',
+          other: '其他症状',
+        },
+        pain: {
+          none: '无明显疼痛',
+          mild: '轻微不适',
+          moderate: '中度疼痛',
+          severe: '严重疼痛/痛苦',
+        },
+        breathing: {
+          normal: '是，正常',
+          labored: '费力/困难',
+          rapid: '非常急促',
+          weak: '微弱/浅浅',
+        },
+        alertness: {
+          alert: '完全清醒',
+          lethargic: '嗜睡/虚弱',
+          disoriented: '迷糊/困惑',
+          unresponsive: '无反应',
+        },
+        bleeding: {
+          none: '无',
+          minor: '轻微/可控',
+          moderate: '中度',
+          severe: '严重/无法控制',
+        },
+        duration: {
+          justNow: '刚刚 (<30分钟)',
+          hours1to6: '1-6小时',
+          hours6to24: '6-24小时',
+          more24hours: '超过24小时',
+        },
+      },
+      contact: {
+        title: '快完成了！🎉',
+        subtitle: '输入您的详细信息以接收个性化评估结果',
+        nameLabel: '您的姓名',
+        namePlaceholder: '输入您的姓名',
+        emailLabel: '电子邮箱',
+        emailPlaceholder: 'your@email.com',
+        phoneLabel: '电话号码',
+        phonePlaceholder: '+60 12-345 6789',
+        petNameLabel: '宠物名字',
+        petNamePlaceholder: '您的宠物叫什么名字？',
+        required: '*',
+        optional: '（可选）',
+        submitButton: '获取我的结果',
+        privacyNote: '您的信息是安全的，绝不会与第三方共享。',
+      },
+      results: {
+        critical: {
+          headline: '{petName} 现在需要紧急护理',
+          subheadline: '{userName}，分秒必争。这是您需要做的...',
+        },
+        high: {
+          headline: '警告：{petName} 显示令人担忧的迹象',
+          subheadline: '{userName}，不要等到为时已晚。在2小时内看兽医。',
+        },
+        moderate: {
+          headline: '好消息，{userName}：{petName} 可以再等几个小时',
+          subheadline: '但这是聪明的宠物主人接下来会做的...',
+        },
+        low: {
+          headline: '{petName} 目前看起来还好，{userName}',
+          subheadline: '但这是确保情况不会恶化的方法...',
+        },
+        actions: {
+          title: '📋 建议措施',
+          critical: [
+            '立即联系最近的24小时紧急兽医',
+            '运输途中保持宠物平静和静止',
+            '不要给任何食物、水或药物',
+            '如有出血，用干净的布轻轻按压',
+            '安全但紧急地开车去兽医处',
+          ],
+          high: [
+            '在接下来的2-4小时内去看兽医',
+            '密切监测宠物的任何变化',
+            '准备好运输工具和兽医联系方式',
+            '保持宠物舒适和平静',
+            '记录任何新出现的症状',
+          ],
+          moderate: [
+            '在24小时内预约兽医',
+            '密切监测症状',
+            '确保宠物保持水分',
+            '保留症状日记与兽医分享',
+            '如症状恶化请联系兽医',
+          ],
+          low: [
+            '继续监测您的宠物',
+            '保持正常喂食和饮水',
+            '如有担忧可预约常规检查',
+            '注意任何行为变化',
+            '保存紧急兽医电话号码',
+          ],
+        },
+        petSummary: {
+          yourName: '您的姓名',
+          email: '电子邮箱',
+          petName: '宠物名字',
+          petType: '宠物类型',
+          breed: '品种',
+          location: '位置',
+        },
+        insurance: {
+          title: '🛡️ 保护 {petName} 免受未来紧急情况',
+          subtitle: '大多数马来西亚宠物主人是在收到RM3,000+兽医账单后才发现宠物保险的。不要成为其中之一。',
+          benefit1: '✓ 紧急兽医就诊每年最高保障RM50,000',
+          benefit2: '✓ 包括手术、住院和药物',
+          benefit3: '✓ 理赔在3-5个工作日内处理',
+          cta: '比较保险计划',
+          trustBadge: '受50,000+马来西亚宠物主人信赖',
+        },
+        affiliateProducts: {
+          title: '🏥 {petName} 康复必需品',
+          subtitle: '认证兽医推荐的产品...',
+          comingSoon: '即将推出',
+          comingSoonSubtitle: '我们正在为您精选最好的宠物健康产品',
+        },
+        ownProducts: {
+          title: '📘 免费宠物紧急指南',
+          subtitle: '下载每个马来西亚宠物主人都需要的47页指南。',
+          benefit1: '✓ 分步急救说明',
+          benefit2: '✓ 常见紧急症状检查表',
+          benefit3: '✓ 按州分类的24小时紧急兽医目录',
+          benefit4: '✓ 毒物控制快速参考',
+          cta: '获取免费指南',
+          note: '即时PDF下载 • 永不发送垃圾邮件',
+        },
+        nearbyVets: {
+          title: '您附近的紧急兽医',
+          open24h: '24小时',
+          callNow: '立即拨打',
+          directions: '导航',
+          note: '请提前致电确认可用性和营业时间',
+        },
+        buttons: {
+          print: '打印结果',
+          share: '分享',
+          newAssessment: '新评估',
+        },
+        disclaimer: '此评估仅供参考，不能替代专业兽医建议。请务必咨询持牌兽医以获得正确的诊断和治疗。',
+      },
+      navigation: {
+        back: '返回',
+        continue: '继续',
+        step: '步骤',
+        of: '/',
+      },
     },
   },
 };
