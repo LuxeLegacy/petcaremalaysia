@@ -2,7 +2,7 @@ import { useState, useRef } from 'react';
 import { Card, CardContent } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Textarea } from '@/components/ui/textarea';
-import { ArrowLeft, Camera, X, Check } from 'lucide-react';
+import { ArrowLeft, Camera, X, Check, Upload, ImagePlus } from 'lucide-react';
 import { AssessmentState } from '@/hooks/useAssessment';
 
 interface SummaryScreenProps {
@@ -30,13 +30,11 @@ export function SummaryScreen({
       onAddPhotos(e.target.files);
       
       // Generate previews
-      const newPreviews: string[] = [];
       Array.from(e.target.files).forEach((file) => {
         const reader = new FileReader();
         reader.onload = (event) => {
           if (event.target?.result) {
-            newPreviews.push(event.target.result as string);
-            setPreviews([...previews, ...newPreviews]);
+            setPreviews((prev) => [...prev, event.target!.result as string]);
           }
         };
         reader.readAsDataURL(file);
@@ -46,9 +44,10 @@ export function SummaryScreen({
 
   const handleRemovePhoto = (index: number) => {
     onRemovePhoto(index);
-    setPreviews(previews.filter((_, i) => i !== index));
+    setPreviews((prev) => prev.filter((_, i) => i !== index));
   };
 
+  // Label helper functions
   const getAgeLabel = (age: string) => {
     const labels: Record<string, string> = {
       puppy_kitten: 'Puppy/Kitten (0-1 year)',
@@ -69,6 +68,118 @@ export function SummaryScreen({
     return labels[weight] || weight;
   };
 
+  const getFixedLabel = (fixed: string | null) => {
+    const labels: Record<string, string> = {
+      yes: 'Yes',
+      no: 'No',
+      not_sure: 'Not sure',
+    };
+    return fixed ? labels[fixed] || fixed : '-';
+  };
+
+  const getConditionsLabel = (conditions: string[]) => {
+    const labels: Record<string, string> = {
+      heart_disease: 'Heart disease',
+      diabetes: 'Diabetes',
+      kidney_disease: 'Kidney disease',
+      allergies: 'Allergies',
+      cancer: 'Cancer',
+      arthritis: 'Arthritis',
+      none: 'None known',
+    };
+    return conditions.map((c) => labels[c] || c).join(', ') || '-';
+  };
+
+  const getIngestionLabel = (ingestion: string) => {
+    const labels: Record<string, string> = {
+      chocolate: 'Chocolate',
+      medication: 'Medication',
+      plants: 'Plants',
+      chemicals: 'Chemicals/Poison',
+      none: 'None/Unknown',
+    };
+    return labels[ingestion] || ingestion || '-';
+  };
+
+  const getEnvironmentLabel = (environment: string) => {
+    const labels: Record<string, string> = {
+      indoor: 'Indoor only',
+      outdoor: 'Outdoor only',
+      both: 'Both indoor/outdoor',
+    };
+    return labels[environment] || environment || '-';
+  };
+
+  const getInsuredLabel = (insured: string | null) => {
+    const labels: Record<string, string> = {
+      yes: 'Yes',
+      no: 'No',
+      not_sure: 'Not sure',
+    };
+    return insured ? labels[insured] || insured : '-';
+  };
+
+  const getSymptomLabel = (symptom: string) => {
+    const labels: Record<string, string> = {
+      vomiting: 'Vomiting',
+      diarrhea: 'Diarrhea',
+      not_eating: 'Not eating',
+      limping: 'Limping/Lameness',
+      other: 'Other symptoms',
+    };
+    return labels[symptom] || symptom || '-';
+  };
+
+  const getPainLabel = (pain: string) => {
+    const labels: Record<string, string> = {
+      none: 'No visible pain',
+      mild: 'Mild discomfort',
+      moderate: 'Moderate pain',
+      severe: 'Severe pain/distress',
+    };
+    return labels[pain] || pain || '-';
+  };
+
+  const getBreathingLabel = (breathing: string) => {
+    const labels: Record<string, string> = {
+      normal: 'Yes, normal',
+      rapid: 'Rapid/Shallow',
+      labored: 'Labored/Difficulty',
+      stopped: 'Not breathing',
+    };
+    return labels[breathing] || breathing || '-';
+  };
+
+  const getAlertnessLabel = (alertness: string) => {
+    const labels: Record<string, string> = {
+      alert: 'Alert & Responsive',
+      lethargic: 'Lethargic/Weak',
+      disoriented: 'Disoriented/Confused',
+      unresponsive: 'Unresponsive',
+    };
+    return labels[alertness] || alertness || '-';
+  };
+
+  const getBleedingLabel = (bleeding: string) => {
+    const labels: Record<string, string> = {
+      none: 'No bleeding',
+      minor: 'Minor bleeding',
+      moderate: 'Moderate bleeding',
+      severe: 'Severe/Heavy bleeding',
+    };
+    return labels[bleeding] || bleeding || '-';
+  };
+
+  const getDurationLabel = (duration: string) => {
+    const labels: Record<string, string> = {
+      just_now: 'Just now (< 1 hour)',
+      today: 'Today (1-24 hours)',
+      few_days: 'Few days (1-3 days)',
+      week_plus: 'A week or more',
+    };
+    return labels[duration] || duration || '-';
+  };
+
   return (
     <Card className="w-full max-w-lg mx-auto shadow-lg border-0">
       <CardContent className="p-6 space-y-6">
@@ -77,67 +188,138 @@ export function SummaryScreen({
             Review & Add Details
           </h2>
           <p className="text-sm text-muted-foreground">
-            Confirm your pet's information and describe what's happening
+            Review all information and add photos or additional details
           </p>
         </div>
 
-        {/* Pet Summary */}
+        {/* Location */}
         <div className="bg-muted/50 rounded-lg p-4 space-y-2">
           <h3 className="font-medium text-foreground flex items-center gap-2">
-            <span>{state.petType === 'dog' ? '🐕' : '🐈'}</span>
-            Pet Summary
+            <span>📍</span>
+            Location
           </h3>
-          <div className="grid grid-cols-2 gap-2 text-sm">
+          <p className="text-sm">{state.city}, {state.state}</p>
+        </div>
+
+        {/* Pet Profile */}
+        <div className="bg-muted/50 rounded-lg p-4 space-y-3">
+          <h3 className="font-medium text-foreground flex items-center gap-2">
+            <span>{state.petType === 'dog' ? '🐕' : '🐈'}</span>
+            Pet Profile
+          </h3>
+          <div className="grid grid-cols-2 gap-x-4 gap-y-2 text-sm">
             <div>
               <span className="text-muted-foreground">Type:</span>{' '}
-              <span className="capitalize">{state.petType}</span>
+              <span className="capitalize font-medium">{state.petType}</span>
             </div>
             <div>
               <span className="text-muted-foreground">Breed:</span>{' '}
-              <span>{state.breed}</span>
+              <span className="font-medium">{state.breed || '-'}</span>
             </div>
             <div>
               <span className="text-muted-foreground">Age:</span>{' '}
-              <span>{getAgeLabel(state.age)}</span>
+              <span className="font-medium">{getAgeLabel(state.age)}</span>
             </div>
             <div>
               <span className="text-muted-foreground">Sex:</span>{' '}
-              <span className="capitalize">{state.sex}</span>
+              <span className="capitalize font-medium">{state.sex || '-'}</span>
             </div>
             <div>
               <span className="text-muted-foreground">Weight:</span>{' '}
-              <span>{getWeightLabel(state.weight)}</span>
+              <span className="font-medium">{getWeightLabel(state.weight)}</span>
             </div>
             <div>
-              <span className="text-muted-foreground">Location:</span>{' '}
-              <span>{state.city}, {state.state}</span>
+              <span className="text-muted-foreground">Spayed/Neutered:</span>{' '}
+              <span className="font-medium">{getFixedLabel(state.fixed)}</span>
             </div>
           </div>
         </div>
 
-        {/* Description */}
-        <div className="space-y-2">
-          <label className="text-sm font-medium text-foreground">
-            Describe what's happening (optional)
-          </label>
-          <Textarea
-            placeholder="Tell us more about your pet's symptoms, behavior changes, or any other concerns..."
-            value={state.description}
-            onChange={(e) => onDescriptionChange(e.target.value)}
-            className="min-h-[120px] resize-none"
-          />
+        {/* Health Background */}
+        <div className="bg-muted/50 rounded-lg p-4 space-y-3">
+          <h3 className="font-medium text-foreground flex items-center gap-2">
+            <span>🩺</span>
+            Health Background
+          </h3>
+          <div className="space-y-2 text-sm">
+            <div>
+              <span className="text-muted-foreground">Existing Conditions:</span>{' '}
+              <span className="font-medium">{getConditionsLabel(state.conditions)}</span>
+            </div>
+            <div>
+              <span className="text-muted-foreground">Recent Ingestion:</span>{' '}
+              <span className="font-medium">{getIngestionLabel(state.ingestion)}</span>
+            </div>
+            <div>
+              <span className="text-muted-foreground">Environment:</span>{' '}
+              <span className="font-medium">{getEnvironmentLabel(state.environment)}</span>
+            </div>
+            <div>
+              <span className="text-muted-foreground">Insurance:</span>{' '}
+              <span className="font-medium">{getInsuredLabel(state.insured)}</span>
+            </div>
+          </div>
+        </div>
+
+        {/* Current Symptoms */}
+        <div className="bg-muted/50 rounded-lg p-4 space-y-3">
+          <h3 className="font-medium text-foreground flex items-center gap-2">
+            <span>⚠️</span>
+            Current Symptoms
+          </h3>
+          <div className="space-y-2 text-sm">
+            <div>
+              <span className="text-muted-foreground">Main Symptom:</span>{' '}
+              <span className="font-medium">{getSymptomLabel(state.mainSymptom)}</span>
+            </div>
+            <div>
+              <span className="text-muted-foreground">Pain Level:</span>{' '}
+              <span className="font-medium">{getPainLabel(state.painLevel)}</span>
+            </div>
+            <div>
+              <span className="text-muted-foreground">Duration:</span>{' '}
+              <span className="font-medium">{getDurationLabel(state.duration)}</span>
+            </div>
+          </div>
+        </div>
+
+        {/* Vital Signs */}
+        <div className="bg-muted/50 rounded-lg p-4 space-y-3">
+          <h3 className="font-medium text-foreground flex items-center gap-2">
+            <span>💓</span>
+            Vital Signs
+          </h3>
+          <div className="space-y-2 text-sm">
+            <div>
+              <span className="text-muted-foreground">Breathing:</span>{' '}
+              <span className="font-medium">{getBreathingLabel(state.breathing)}</span>
+            </div>
+            <div>
+              <span className="text-muted-foreground">Alertness:</span>{' '}
+              <span className="font-medium">{getAlertnessLabel(state.alertness)}</span>
+            </div>
+            <div>
+              <span className="text-muted-foreground">Bleeding:</span>{' '}
+              <span className="font-medium">{getBleedingLabel(state.bleeding)}</span>
+            </div>
+          </div>
         </div>
 
         {/* Photo Upload */}
-        <div className="space-y-2">
-          <label className="text-sm font-medium text-foreground">
-            Add photos (optional, max 5)
+        <div className="space-y-3">
+          <label className="text-sm font-medium text-foreground flex items-center gap-2">
+            <ImagePlus className="w-4 h-4" />
+            Upload Photos (optional, max 5)
           </label>
-          <div className="flex flex-wrap gap-2">
+          <p className="text-xs text-muted-foreground">
+            Add photos of your pet's condition to help the vet better understand the situation
+          </p>
+          
+          <div className="flex flex-wrap gap-3">
             {state.photos.map((_, index) => (
               <div
                 key={index}
-                className="relative w-20 h-20 rounded-lg overflow-hidden bg-muted"
+                className="relative w-24 h-24 rounded-lg overflow-hidden bg-muted border border-border"
               >
                 {previews[index] && (
                   <img
@@ -148,7 +330,7 @@ export function SummaryScreen({
                 )}
                 <button
                   onClick={() => handleRemovePhoto(index)}
-                  className="absolute top-1 right-1 bg-destructive text-destructive-foreground rounded-full p-1"
+                  className="absolute top-1 right-1 bg-destructive text-destructive-foreground rounded-full p-1 shadow-md hover:bg-destructive/90 transition-colors"
                 >
                   <X className="w-3 h-3" />
                 </button>
@@ -157,9 +339,10 @@ export function SummaryScreen({
             {state.photos.length < 5 && (
               <button
                 onClick={() => fileInputRef.current?.click()}
-                className="w-20 h-20 rounded-lg border-2 border-dashed border-border flex items-center justify-center hover:border-primary hover:bg-primary/5 transition-colors"
+                className="w-24 h-24 rounded-lg border-2 border-dashed border-border flex flex-col items-center justify-center gap-1 hover:border-primary hover:bg-primary/5 transition-colors"
               >
-                <Camera className="w-6 h-6 text-muted-foreground" />
+                <Upload className="w-6 h-6 text-muted-foreground" />
+                <span className="text-xs text-muted-foreground">Add Photo</span>
               </button>
             )}
           </div>
@@ -170,6 +353,19 @@ export function SummaryScreen({
             multiple
             onChange={handleFileChange}
             className="hidden"
+          />
+        </div>
+
+        {/* Description */}
+        <div className="space-y-2">
+          <label className="text-sm font-medium text-foreground">
+            Additional Details (optional)
+          </label>
+          <Textarea
+            placeholder="Tell us more about your pet's symptoms, behavior changes, or any other concerns..."
+            value={state.description}
+            onChange={(e) => onDescriptionChange(e.target.value)}
+            className="min-h-[100px] resize-none"
           />
         </div>
 
