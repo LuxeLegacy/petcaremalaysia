@@ -24,6 +24,11 @@ export interface LeadAnalytics {
   byState: Record<string, number>;
   byCity: Record<string, number>;
   dailyTrend: { date: string; count: number }[];
+  // Guide download specific stats
+  guideDownloads: number;
+  guideDownloadsToday: number;
+  guideDownloadsThisWeek: number;
+  guideDownloadsThisMonth: number;
 }
 
 export function useAssessmentLeads() {
@@ -65,9 +70,16 @@ export function useAssessmentLeads() {
       let leadsThisWeek = 0;
       let leadsThisMonth = 0;
 
+      // Guide download specific counters
+      let guideDownloads = 0;
+      let guideDownloadsToday = 0;
+      let guideDownloadsThisWeek = 0;
+      let guideDownloadsThisMonth = 0;
+
       typedLeads.forEach((lead) => {
         const createdAt = new Date(lead.created_at);
         const dateKey = createdAt.toISOString().split('T')[0];
+        const isGuideDownload = lead.urgency_level === 'guide_download';
 
         // Count by date
         dailyCounts[dateKey] = (dailyCounts[dateKey] || 0) + 1;
@@ -76,6 +88,14 @@ export function useAssessmentLeads() {
         if (createdAt >= todayStart) leadsToday++;
         if (createdAt >= weekStart) leadsThisWeek++;
         if (createdAt >= monthStart) leadsThisMonth++;
+
+        // Guide download specific counts
+        if (isGuideDownload) {
+          guideDownloads++;
+          if (createdAt >= todayStart) guideDownloadsToday++;
+          if (createdAt >= weekStart) guideDownloadsThisWeek++;
+          if (createdAt >= monthStart) guideDownloadsThisMonth++;
+        }
 
         // By urgency
         const urgency = lead.urgency_level || 'Unknown';
@@ -111,6 +131,10 @@ export function useAssessmentLeads() {
         byState,
         byCity,
         dailyTrend,
+        guideDownloads,
+        guideDownloadsToday,
+        guideDownloadsThisWeek,
+        guideDownloadsThisMonth,
       });
     } catch (err) {
       console.error('Error fetching leads:', err);
