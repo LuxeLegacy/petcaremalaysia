@@ -1,3 +1,4 @@
+import { useState, useEffect } from 'react';
 import { Header } from '@/components/Header';
 import { Footer } from '@/components/Footer';
 import { SEOHead } from '@/components/SEOHead';
@@ -5,12 +6,26 @@ import { useLanguage } from '@/contexts/LanguageContext';
 import { GuideSection, Subsection } from '@/components/guide/GuideSection';
 import { WarningBox } from '@/components/guide/WarningBox';
 import { SymptomTable, ToxinTable, VetDirectoryTable, Checklist } from '@/components/guide/SymptomTable';
+import { GuideEmailCapture } from '@/components/guide/GuideEmailCapture';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
 import { Printer, BookOpen, ChevronRight } from 'lucide-react';
 
 export default function EmergencyGuidePage() {
   const { language } = useLanguage();
+  const [hasAccess, setHasAccess] = useState(false);
+
+  // Check if user already has access (from localStorage)
+  useEffect(() => {
+    const accessGranted = localStorage.getItem('guide_access_granted');
+    if (accessGranted === 'true') {
+      setHasAccess(true);
+    }
+  }, []);
+
+  const handleAccessGranted = () => {
+    setHasAccess(true);
+  };
 
   const tableOfContents = [
     { id: 'first-aid', label: 'Section 1: Emergency First Aid' },
@@ -23,6 +38,28 @@ export default function EmergencyGuidePage() {
   const handlePrint = () => {
     window.print();
   };
+
+  // Show email capture gate if user doesn't have access
+  if (!hasAccess) {
+    return (
+      <>
+        <SEOHead
+          title="Free Pet Emergency Guide | 47-Page Resource | Pet Care Malaysia"
+          description="Download our comprehensive 47-page pet emergency guide. Includes step-by-step first aid, poison control reference, and 24-hour vet directory for all Malaysian states."
+          path="/emergency-guide"
+          language={language}
+        />
+        
+        <div className="min-h-screen flex flex-col bg-background">
+          <Header />
+          <main className="flex-1">
+            <GuideEmailCapture onSuccess={handleAccessGranted} />
+          </main>
+          <Footer />
+        </div>
+      </>
+    );
+  }
 
   return (
     <>

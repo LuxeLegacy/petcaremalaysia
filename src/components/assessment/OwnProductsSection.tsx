@@ -74,7 +74,7 @@ export function OwnProductsSection() {
         </Link>
 
         <p className="text-xs text-center text-muted-foreground">
-          ✓ Instant access • ✓ Print-ready • ✓ No signup required
+          ✓ Instant access • ✓ Print-ready • ✓ Just enter your email
         </p>
       </CardContent>
     </Card>
