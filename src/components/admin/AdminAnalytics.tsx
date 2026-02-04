@@ -1,5 +1,5 @@
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
-import { Users, Calendar, TrendingUp, AlertTriangle } from 'lucide-react';
+import { Users, Calendar, TrendingUp, AlertTriangle, BookOpen } from 'lucide-react';
 import { LeadAnalytics } from '@/hooks/useAssessmentLeads';
 import {
   LineChart,
@@ -48,7 +48,7 @@ export function AdminAnalytics({ analytics }: AdminAnalyticsProps) {
   return (
     <div className="space-y-6">
       {/* Summary Cards */}
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-4">
         <Card>
           <CardContent className="pt-6">
             <div className="flex items-center gap-4">
@@ -100,6 +100,20 @@ export function AdminAnalytics({ analytics }: AdminAnalyticsProps) {
               <div>
                 <p className="text-sm text-muted-foreground">This Month</p>
                 <p className="text-2xl font-bold">{analytics.leadsThisMonth}</p>
+              </div>
+            </div>
+          </CardContent>
+        </Card>
+
+        <Card>
+          <CardContent className="pt-6">
+            <div className="flex items-center gap-4">
+              <div className="p-3 bg-purple-100 rounded-full">
+                <BookOpen className="w-6 h-6 text-purple-600" />
+              </div>
+              <div>
+                <p className="text-sm text-muted-foreground">Guide Downloads</p>
+                <p className="text-2xl font-bold">{analytics.guideDownloads}</p>
               </div>
             </div>
           </CardContent>

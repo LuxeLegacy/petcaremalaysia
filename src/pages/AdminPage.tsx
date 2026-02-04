@@ -3,12 +3,13 @@ import { useNavigate } from 'react-router-dom';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { Button } from '@/components/ui/button';
 import { Skeleton } from '@/components/ui/skeleton';
-import { LogOut, BarChart3, Users, RefreshCw } from 'lucide-react';
+import { LogOut, BarChart3, Users, RefreshCw, BookOpen } from 'lucide-react';
 import { useAuth } from '@/hooks/useAuth';
 import { useAssessmentLeads } from '@/hooks/useAssessmentLeads';
 import { AdminLogin } from '@/components/admin/AdminLogin';
 import { AdminAnalytics } from '@/components/admin/AdminAnalytics';
 import { AdminLeadsTable } from '@/components/admin/AdminLeadsTable';
+import { AdminGuideLeads } from '@/components/admin/AdminGuideLeads';
 import { toast } from 'sonner';
 
 export default function AdminPage() {
@@ -110,6 +111,10 @@ export default function AdminPage() {
                 <Users className="w-4 h-4" />
                 Leads
               </TabsTrigger>
+              <TabsTrigger value="guide" className="gap-2">
+                <BookOpen className="w-4 h-4" />
+                Guide Downloads
+              </TabsTrigger>
             </TabsList>
 
             <TabsContent value="analytics">
@@ -132,6 +137,14 @@ export default function AdminPage() {
                 <Skeleton className="h-96" />
               ) : (
                 <AdminLeadsTable leads={leads} />
+              )}
+            </TabsContent>
+
+            <TabsContent value="guide">
+              {leadsLoading ? (
+                <Skeleton className="h-96" />
+              ) : (
+                <AdminGuideLeads leads={leads} />
               )}
             </TabsContent>
           </Tabs>
