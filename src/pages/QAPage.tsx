@@ -5,6 +5,7 @@ import { Footer } from '@/components/Footer';
 import { SEOHead } from '@/components/SEOHead';
 import { MessageCircleQuestion, MapPin, ChevronRight } from 'lucide-react';
 import { CostCTA } from '@/components/common/CostCTA';
+import { PAAArticleListing } from '@/components/paa/PAAArticleListing';
 
 // Malaysian states with their data
 const MALAYSIAN_STATES = [
@@ -72,6 +73,9 @@ const QAPage = () => {
             <CostCTA variant={11} />
           </div>
         </section>
+
+        {/* PAA Articles Listing */}
+        <PAAArticleListing />
 
         {/* FAQ Schema for SEO */}
         <script
