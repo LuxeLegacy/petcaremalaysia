@@ -19,6 +19,11 @@ const CATEGORY_LABELS: Record<string, Record<string, string>> = {
     'pet-adoption': 'Pet Adoption',
     'veterinary-services': 'Veterinary',
     grooming: 'Grooming',
+    'vet-care': 'Vet Costs',
+    'cat-care': 'Cat Care',
+    'pet-nutrition': 'Pet Food',
+    'pet-health': 'Pet Health',
+    'pet-travel': 'Pet Travel',
   },
   ms: {
     all: 'Semua Topik',
@@ -27,6 +32,11 @@ const CATEGORY_LABELS: Record<string, Record<string, string>> = {
     'pet-adoption': 'Adopsi Haiwan',
     'veterinary-services': 'Veterinar',
     grooming: 'Dandanan',
+    'vet-care': 'Kos Veterinar',
+    'cat-care': 'Penjagaan Kucing',
+    'pet-nutrition': 'Makanan Haiwan',
+    'pet-health': 'Kesihatan Haiwan',
+    'pet-travel': 'Perjalanan Haiwan',
   },
   zh: {
     all: '所有主题',
@@ -35,6 +45,11 @@ const CATEGORY_LABELS: Record<string, Record<string, string>> = {
     'pet-adoption': '宠物领养',
     'veterinary-services': '兽医服务',
     grooming: '美容',
+    'vet-care': '兽医费用',
+    'cat-care': '猫护理',
+    'pet-nutrition': '宠物食品',
+    'pet-health': '宠物健康',
+    'pet-travel': '宠物旅行',
   },
 };
 
