@@ -1,109 +1,124 @@
 
-# Plan: Admin Page for Emergency Guide Opt-ins
+
+# Plan: PAA Article Template Components
 
 ## Overview
-Add a dedicated "Guide Downloads" tab to the existing admin dashboard that displays and manages email opt-ins from the `/emergency-guide` page. This provides separate analytics and a filtered view specifically for lead magnet conversions.
+Build 8 reusable template components that follow the master prompt's exact article structure specification. These will serve as building blocks for all 620 PAA articles, rendered under the existing `/qa` route system.
 
-## Current Situation
-- Guide opt-ins are stored in `assessment_leads` table with `urgency_level = 'guide_download'`
-- Currently mixed with assessment leads in the existing Leads table
-- No dedicated analytics for guide downloads
+## Components to Create
 
----
+### 1. DirectAnswerBox
+**File: `src/components/paa/DirectAnswerBox.tsx`**
+- Purple gradient box (linear-gradient #667eea to #764ba2) with white text
+- Renders the direct answer as the FIRST element in every article
+- Props: `answer: string`
 
-## Implementation Steps
+### 2. QuickFactsBox
+**File: `src/components/paa/QuickFactsBox.tsx`**
+- Yellow background (#fff3cd) stats card
+- Displays: Average Cost, Time Required, Difficulty Level, Professional Needed, Insurance Coverage
+- Props: `facts: { avgCost, timeRequired, difficulty, professionalNeeded, insuranceCoverage }`
 
-### 1. Create AdminGuideLeads Component
-**File: `src/components/admin/AdminGuideLeads.tsx`**
+### 3. ComparisonTable
+**File: `src/components/paa/ComparisonTable.tsx`**
+- Responsive cost comparison table
+- Columns: Option, Cost Range (RM), Time Required, Best For, Pros/Cons
+- Props: `rows: Array<{ option, costRange, timeRequired, bestFor, prosCons }>`
 
-A dedicated component to display guide download opt-ins with:
-- Summary stats: total downloads, downloads today/this week/this month
-- Searchable table with name, email, date
-- Export to CSV functionality (for email marketing tools)
-- Delete individual leads option
+### 4. LocalResources
+**File: `src/components/paa/LocalResources.tsx`**
+- Green background (#e8f5e9) section
+- Three sub-sections: Emergency Contacts, Government Resources, Animal Welfare Organizations
+- All Malaysia-specific with DVS, SPCA, PAWS links
+- Props: `resources?: { emergencyContacts, governmentResources, animalWelfare }` (defaults to standard Malaysia resources)
 
-### 2. Update AdminPage with New Tab
-**File: `src/pages/AdminPage.tsx`**
+### 5. InsuranceInfo
+**File: `src/components/paa/InsuranceInfo.tsx`**
+- Yellow background (#fff8e1) with coverage details
+- Three sub-sections: Typically Covered (green), Common Exclusions (red warning), How to File a Claim
+- Props: `covered, exclusions, claimSteps` (with sensible Malaysia defaults)
 
-Add a third tab "Guide Downloads" with:
-- BookOpen icon to distinguish from assessment leads
-- Dedicated analytics cards for guide downloads
-- Filter only `urgency_level = 'guide_download'` leads
+### 6. CitationsSection
+**File: `src/components/paa/CitationsSection.tsx`**
+- Grey background (#f5f5f5) reference list
+- Numbered citations with source, title, publication, year, optional link
+- Props: `citations: Array<{ source, title, publication, year, url? }>`
 
-### 3. Update Analytics Hook (Optional Enhancement)
-**File: `src/hooks/useAssessmentLeads.ts`**
+### 7. AuthorBox
+**File: `src/components/paa/AuthorBox.tsx`**
+- E-E-A-T compliant author card
+- Avatar (fallback initials), name, credentials, bio
+- Props: `name, credentials, bio, avatarUrl?`
 
-Add guide-specific analytics:
-- `guideDownloads` count
-- `guideDownloadsToday/Week/Month`
-- Conversion rate from assessment to guide download
+### 8. RelatedQuestions
+**File: `src/components/paa/RelatedQuestions.tsx`**
+- Shows 3-5 related PAA questions with brief answers and links
+- Props: `questions: Array<{ question, briefAnswer, slug }>`
 
-### 4. Update AdminAnalytics Component
-**File: `src/components/admin/AdminAnalytics.tsx`**
+### 9. PAAArticlePage (Master Template)
+**File: `src/components/paa/PAAArticlePage.tsx`**
+- Composes all 8 components above in the correct order
+- Accepts a single article data object and renders the full page
+- Includes all 7 schema types (FAQPage, Article, HowTo, QAPage, WebPage with Speakable, BreadcrumbList, LocalBusiness)
+- Uses existing Header/Footer/SEOHead
 
-Add a summary card showing guide download stats alongside assessment stats
+### 10. PAA Article Data Type
+**File: `src/lib/paaTypes.ts`**
+- TypeScript interfaces for article data structure
+- Matches the JSON schema from the master prompt
 
----
+## Route Integration
 
-## UI Layout
-
-```text
-Admin Dashboard Header
-+-----------+-----------+------------------+
-| Analytics |   Leads   | Guide Downloads  |  <-- New tab
-+-----------+-----------+------------------+
-
-Guide Downloads Tab Content:
-+------------------------------------------+
-| Summary Cards                            |
-| +--------+ +--------+ +--------+ +-----+ |
-| | Total  | | Today  | | Week   | |Month| |
-| | 127    | | 12     | | 45     | | 89  | |
-| +--------+ +--------+ +--------+ +-----+ |
-+------------------------------------------+
-| Search: [_______________] [Export CSV]   |
-+------------------------------------------+
-| Date       | Name      | Email           |
-|------------|-----------|-----------------|
-| 2026-02-04 | Ahmad     | ahmad@mail.com  |
-| 2026-02-03 | Siti      | siti@mail.com   |
-| ...        | ...       | ...             |
-+------------------------------------------+
+Add a new route pattern under `/qa`:
+```
+/qa/article/:slug
+/:lang/qa/article/:slug
 ```
 
----
+This keeps PAA articles under the Q&A section without touching the homepage or existing `/qa` hub.
 
-## Files to Create
-| File | Purpose |
-|------|---------|
-| `src/components/admin/AdminGuideLeads.tsx` | Guide downloads table and stats |
+**File changes:**
+- `src/App.tsx` -- add 2 new route entries
+- `src/pages/PAAArticleRouter.tsx` -- new page that maps slug to article data and renders `PAAArticlePage`
 
-## Files to Modify
-| File | Changes |
-|------|---------|
-| `src/pages/AdminPage.tsx` | Add "Guide Downloads" tab |
-| `src/hooks/useAssessmentLeads.ts` | Add guide-specific analytics |
-| `src/components/admin/AdminAnalytics.tsx` | Show guide download count in summary |
+## Files Summary
 
----
+| File | Action |
+|------|--------|
+| `src/lib/paaTypes.ts` | Create - TypeScript interfaces |
+| `src/components/paa/DirectAnswerBox.tsx` | Create |
+| `src/components/paa/QuickFactsBox.tsx` | Create |
+| `src/components/paa/ComparisonTable.tsx` | Create |
+| `src/components/paa/LocalResources.tsx` | Create |
+| `src/components/paa/InsuranceInfo.tsx` | Create |
+| `src/components/paa/CitationsSection.tsx` | Create |
+| `src/components/paa/AuthorBox.tsx` | Create |
+| `src/components/paa/RelatedQuestions.tsx` | Create |
+| `src/components/paa/PAAArticlePage.tsx` | Create - master template |
+| `src/pages/PAAArticleRouter.tsx` | Create - slug router |
+| `src/App.tsx` | Edit - add routes |
 
-## Technical Details
+## Styling
+All components will use Tailwind classes that match the master prompt's color spec:
+- Direct Answer: gradient `from-[#667eea] to-[#764ba2]`
+- Quick Facts: `bg-[#fff3cd]`
+- Local Resources: `bg-[#e8f5e9]`
+- Insurance: `bg-[#fff8e1]`
+- Exclusions warning: `bg-[#ffebee] border-l-4 border-[#c62828]`
+- Citations: `bg-[#f5f5f5]`
+- TL;DR: `bg-[#e8f4fd]`
 
-### Filtering Guide Downloads
-```typescript
-// Filter leads by urgency_level
-const guideLeads = leads.filter(lead => lead.urgency_level === 'guide_download');
-const assessmentLeads = leads.filter(lead => lead.urgency_level !== 'guide_download');
-```
+## Schema Markup (all 7 types in PAAArticlePage)
+1. FAQPage -- from relatedQuestions
+2. Article -- headline, author, dates
+3. HowTo -- from steps (when applicable)
+4. QAPage -- question + accepted answer
+5. WebPage with Speakable -- direct answer text
+6. BreadcrumbList -- Home > Q&A > Article
+7. LocalBusiness -- when location-relevant
 
-### Guide Downloads Table Columns
-- Date (formatted)
-- Name
-- Email (with copy button)
-- Source (from assessment_data.source)
-- Actions (view details)
+## No Changes To
+- Homepage (`/`)
+- Existing blog articles
+- Existing Q&A hub (`/qa`) or state pages (`/qa/:state`)
 
-### Export CSV for Email Marketing
-The export will generate a simple CSV with:
-- Name, Email, Date
-- Ready for import into Mailchimp, ConvertKit, or other email tools
