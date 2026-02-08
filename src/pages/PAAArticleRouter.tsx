@@ -3,6 +3,9 @@ import { PAAArticlePage } from '@/components/paa/PAAArticlePage';
 import NotFound from './NotFound';
 import type { PAAArticle } from '@/lib/paaTypes';
 
+// Side-effect import: registers all articles into the registry
+import '@/data/paa';
+
 // Article registry — import article data files here as they are created
 const articleRegistry: Record<string, PAAArticle> = {};
 

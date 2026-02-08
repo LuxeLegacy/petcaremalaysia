@@ -1,7 +1,7 @@
 export interface PAAQuickFacts {
   avgCost: string;
   timeRequired: string;
-  difficulty: 'Easy' | 'Medium' | 'Hard';
+  difficulty: string;
   professionalNeeded: 'Yes' | 'No' | 'Recommended';
   insuranceCoverage: string;
 }
