@@ -62,6 +62,20 @@ const qaStates = [
   'perlis',
 ];
 
+// PAA article slug groups (en, ms, zh per topic)
+const paaArticleGroups: { en: string; ms: string; zh: string }[] = [
+  { en: 'how-much-does-pet-insurance-cost-malaysia', ms: 'berapakah-kos-insurans-haiwan-peliharaan-malaysia', zh: 'ma-lai-xi-ya-chong-wu-bao-xian-fei-yong' },
+  { en: 'best-dog-breeds-malaysia-climate', ms: 'baka-anjing-terbaik-iklim-malaysia', zh: 'ma-lai-xi-ya-qi-hou-zui-jia-gou-pin-zhong' },
+  { en: 'how-to-adopt-pet-malaysia', ms: 'bagaimana-adopsi-haiwan-malaysia', zh: 'ru-he-zai-ma-lai-xi-ya-ling-yang-chong-wu' },
+  { en: 'what-vaccines-do-dogs-need-malaysia', ms: 'vaksin-yang-diperlukan-anjing-malaysia', zh: 'ma-lai-xi-ya-gou-xu-yao-shen-me-yi-miao' },
+  { en: 'how-much-does-dog-grooming-cost-malaysia', ms: 'berapakah-kos-dandanan-anjing-malaysia', zh: 'ma-lai-xi-ya-gou-mei-rong-fei-yong' },
+  { en: 'how-much-does-vet-visit-cost-malaysia', ms: 'berapakah-kos-lawatan-veterinar-malaysia', zh: 'ma-lai-xi-ya-shou-yi-fei-yong' },
+  { en: 'how-to-care-for-cats-in-malaysia', ms: 'cara-menjaga-kucing-di-malaysia', zh: 'ma-lai-xi-ya-yang-mao-zhi-nan' },
+  { en: 'best-pet-food-brands-malaysia', ms: 'jenama-makanan-haiwan-terbaik-malaysia', zh: 'ma-lai-xi-ya-zui-jia-chong-wu-shi-pin-pin-pai' },
+  { en: 'how-to-treat-fleas-on-pets-malaysia', ms: 'cara-merawat-kutu-haiwan-malaysia', zh: 'ma-lai-xi-ya-chong-wu-tiao-zao-zhi-liao' },
+  { en: 'pet-travel-requirements-malaysia', ms: 'keperluan-perjalanan-haiwan-malaysia', zh: 'ma-lai-xi-ya-chong-wu-lv-xing-yao-qiu' },
+];
+
 // Legal pages (English only)
 const legalPages = [
   { path: '/terms', priority: 0.3, changefreq: 'monthly' },
@@ -315,6 +329,45 @@ function generateSitemap(): string {
   // Q&A state pages (multilingual)
   qaStates.forEach(state => {
     urls += generateMultilingualUrl(`/qa/${state}`, 0.7, 'weekly');
+  });
+  
+  // PAA article pages (each topic has language-specific slugs with hreflang cross-links)
+  paaArticleGroups.forEach(group => {
+    const enUrl = `${BASE_URL}/qa/article/${group.en}`;
+    const msUrl = `${BASE_URL}/ms/qa/article/${group.ms}`;
+    const zhUrl = `${BASE_URL}/zh/qa/article/${group.zh}`;
+    
+    urls += `
+  <url>
+    <loc>${enUrl}</loc>
+    <lastmod>${LASTMOD}</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="${enUrl}"/>
+    <xhtml:link rel="alternate" hreflang="ms" href="${msUrl}"/>
+    <xhtml:link rel="alternate" hreflang="zh" href="${zhUrl}"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="${enUrl}"/>
+  </url>
+  <url>
+    <loc>${msUrl}</loc>
+    <lastmod>${LASTMOD}</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="${enUrl}"/>
+    <xhtml:link rel="alternate" hreflang="ms" href="${msUrl}"/>
+    <xhtml:link rel="alternate" hreflang="zh" href="${zhUrl}"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="${enUrl}"/>
+  </url>
+  <url>
+    <loc>${zhUrl}</loc>
+    <lastmod>${LASTMOD}</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="${enUrl}"/>
+    <xhtml:link rel="alternate" hreflang="ms" href="${msUrl}"/>
+    <xhtml:link rel="alternate" hreflang="zh" href="${zhUrl}"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="${enUrl}"/>
+  </url>`;
   });
   
   // City pages (multilingual)
