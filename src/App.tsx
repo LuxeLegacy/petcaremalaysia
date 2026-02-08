@@ -20,6 +20,7 @@ import StateQAPage from "./pages/StateQAPage";
 import AssessmentPage from "./pages/AssessmentPage";
 import AdminPage from "./pages/AdminPage";
 import EmergencyGuidePage from "./pages/EmergencyGuidePage";
+import PAAArticleRouter from "./pages/PAAArticleRouter";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -60,6 +61,8 @@ const App = () => (
               {/* Q&A */}
               <Route path="/qa" element={<QAPage />} />
               <Route path="/:lang/qa" element={<QAPage />} />
+              <Route path="/qa/article/:slug" element={<PAAArticleRouter />} />
+              <Route path="/:lang/qa/article/:slug" element={<PAAArticleRouter />} />
               <Route path="/qa/:state" element={<StateQAPage />} />
               <Route path="/:lang/qa/:state" element={<StateQAPage />} />
               
