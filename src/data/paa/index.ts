@@ -3,6 +3,11 @@ import { bestDogBreedsArticle } from './en-best-dog-breeds';
 import { petAdoptionArticle } from './en-pet-adoption';
 import { dogVaccinesArticle } from './en-dog-vaccines';
 import { groomingCostArticle } from './en-grooming-cost';
+import { vetVisitCostArticle } from './en-vet-visit-cost';
+import { catCareArticle } from './en-cat-care';
+import { petFoodBrandsArticle } from './en-pet-food-brands';
+import { fleaTreatmentArticle } from './en-flea-treatment';
+import { petTravelArticle } from './en-pet-travel';
 import { msPetInsuranceCostArticle } from './ms-pet-insurance-cost';
 import { msBestDogBreedsArticle } from './ms-best-dog-breeds';
 import { msPetAdoptionArticle } from './ms-pet-adoption';
@@ -21,6 +26,11 @@ const allArticles = [
   petAdoptionArticle,
   dogVaccinesArticle,
   groomingCostArticle,
+  vetVisitCostArticle,
+  catCareArticle,
+  petFoodBrandsArticle,
+  fleaTreatmentArticle,
+  petTravelArticle,
   msPetInsuranceCostArticle,
   msBestDogBreedsArticle,
   msPetAdoptionArticle,
