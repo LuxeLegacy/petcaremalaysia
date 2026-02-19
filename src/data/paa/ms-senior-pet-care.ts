@@ -1,0 +1,35 @@
+import type { PAAArticle } from '@/lib/paaTypes';
+
+export const msSeniorPetCareArticle: PAAArticle = {
+  id: 45,
+  slug: 'panduan-penjagaan-haiwan-tua-malaysia',
+  category: 'pet-care',
+  lang: 'ms',
+  title: 'Panduan Penjagaan Haiwan Tua Malaysia: Kos, Kesihatan & Tips',
+  directAnswer: 'Penjagaan haiwan peliharaan tua di Malaysia menelan kos RM500–RM2,000+ tambahan setiap tahun di luar penjagaan rutin kerana peningkatan lawatan ke doktor haiwan, ubatan, dan makanan khusus. Anjing dianggap tua pada 7–10 tahun, kucing pada 10–12 tahun.',
+  tldr: 'Haiwan tua memerlukan pemeriksaan doktor haiwan dwi-tahunan, suplemen sendi yang mungkin (RM80–RM200/bulan), dan mungkin memerlukan diet khusus (RM50–RM120/bulan tambahan). Kos kebajikan senior tahunan RM500–RM2,000 lebih daripada perbelanjaan biasa.',
+  quickFacts: { avgCost: 'RM500 – RM2,000/tahun tambahan', timeRequired: 'Berterusan', difficulty: 'Sederhana', professionalNeeded: 'Recommended', insuranceCoverage: 'Separa (berbeza mengikut polisi)' },
+  detailedAnswer: `Haiwan peliharaan tua memerlukan penjagaan veterinar yang lebih kerap dan pengurusan khusus apabila badan mereka menua. Di Malaysia, kos veterinar untuk haiwan tua secara umumnya 50–100% lebih tinggi setiap tahun berbanding haiwan dewasa disebabkan peningkatan keperluan pemantauan dan keadaan kesihatan berkaitan usia.\n\nPeningkatan kos terbesar datang dari ujian darah kebajikan dwi-tahunan (RM150–RM400 setiap panel), rujukan pakar untuk keadaan seperti penyakit buah pinggang, artritis, atau penyakit jantung (RM300–RM800 setiap lawatan pakar), dan ubatan berterusan (RM100–RM500/bulan untuk keadaan seperti artritis atau penyakit tiroid).\n\nMakanan haiwan tua yang diformulasikan untuk haiwan yang lebih tua menelan kos RM50–RM100 lebih setiap bulan berbanding makanan dewasa standard.`,
+  keyFactors: ['Umur haiwan — senior awal (7–10 tahun) vs warga tua (10+ tahun) mempunyai keperluan penjagaan yang sangat berbeza', 'Baka — anjing besar menua lebih cepat; baka gergasi senior pada 5–6 tahun', 'Keadaan sedia ada — menguruskan penyakit kronik adalah kos berterusan terbesar', 'Pemantauan diagnostik — ujian darah dwi-tahunan adalah penting tetapi menambah RM300–RM800/tahun'],
+  steps: [
+    { title: 'Tukar kepada Lawatan Doktor Haiwan Dwi-Tahunan', description: 'Haiwan tua perlu berjumpa doktor haiwan setiap 6 bulan dan bukannya setiap tahun.' },
+    { title: 'Ujian Darah Senior Tahunan', description: 'Minta panel kebajikan senior (kiraan darah lengkap, fungsi buah pinggang/hati, tiroid) pada setiap lawatan dwi-tahunan.' },
+    { title: 'Beralih kepada Diet Senior', description: 'Makanan haiwan tua mempunyai tahap protein, fosforus, dan kalori yang dilaraskan. Tanya doktor haiwan anda diet mana yang sesuai.' },
+    { title: 'Tambah Suplemen Sendi', description: 'Suplemen glukosamin, kondroitin, dan omega-3 menyokong kesihatan sendi. Mulakan ini secara proaktif.' },
+    { title: 'Ubah Suai Persekitaran Rumah', description: 'Tambah tanjakan untuk capaian perabot/kereta, tikar bukan slip, penyuap ditinggikan, dan tilam ortopedik.' },
+    { title: 'Pantau Berat Badan dan Selera Makan', description: 'Penurunan berat badan atau perubahan dalam makan, minum, atau tabiat tandas pada haiwan tua adalah tanda amaran.' },
+  ],
+  proTips: ['Insurans haiwan menjadi kritikal untuk haiwan tua — pertimbangkan untuk menginsuranskan sebelum umur 7 tahun', 'Penjagaan pergigian terutama penting untuk haiwan tua', 'Simpan diari kesihatan harian yang mencatat selera makan, pengambilan air, aktiviti, dan tabiat tandas', 'Tilam ortopedik berpanas meningkatkan keselesaan haiwan artritis dengan ketara'],
+  commonMistakes: ['Menganggap kelembapan berkaitan usia sebagai "hanya semakin tua" — banyak gejala adalah keadaan yang boleh dirawat', 'Mengekalkan lawatan tahunan dan bukannya dwi-tahunan untuk haiwan tua', 'Menukar jenama makanan dengan kerap — diet konsisten lebih penting untuk haiwan tua'],
+  costComparison: [
+    { option: 'Penjagaan Senior Asas (diet + doktor haiwan tahunan)', costRange: 'RM200–500/tahun tambahan', timeRequired: 'Berterusan', bestFor: 'Haiwan tua yang sihat', prosCons: 'Berpatutan / Mungkin terlepas penyakit awal' },
+    { option: 'Penjagaan Senior Proaktif (dwi-tahunan + ujian darah)', costRange: 'RM600–1,200/tahun', timeRequired: 'Lawatan dwi-tahunan', bestFor: 'Kebanyakan haiwan tua', prosCons: 'Pengesanan awal / Kos lebih tinggi' },
+    { option: 'Penjagaan Senior dengan Pengurusan Penyakit Kronik', costRange: 'RM1,200–3,000/tahun', timeRequired: 'Pemantauan bulanan', bestFor: 'Haiwan dengan keadaan kesihatan', prosCons: 'Hasil terbaik / Pelaburan besar' },
+  ],
+  relatedQuestions: [{ question: 'Bila haiwan dianggap tua?', briefAnswer: 'Anjing: 7–10 tahun bergantung kepada saiz (baka gergasi pada 5–6 tahun). Kucing: 10–12 tahun. Doktor haiwan anda boleh menasihati berdasarkan baka dan kesihatan haiwan anda.', slug: 'panduan-penjagaan-haiwan-tua-malaysia' }],
+  citations: [{ source: 'Persatuan Veterinar Malaysia', title: 'Garis Panduan Kesihatan Haiwan Senior', publication: 'MSAVA.org', year: '2024', url: 'https://msava.org' }],
+  author: { name: 'Dr. Sarah Lee', credentials: 'DVM, Berlesen Majlis Veterinar Malaysia', bio: 'Pakar veterinar dengan 12 tahun pengalaman klinikal di Malaysia.' },
+  seo: { metaDescription: 'Penjagaan haiwan tua di Malaysia menelan kos RM500–RM2,000+ tambahan setiap tahun. Ketahui tentang lawatan doktor haiwan dwi-tahunan, diet senior, suplemen sendi, dan pengurusan keadaan berkaitan usia.', keywords: ['penjagaan haiwan tua malaysia', 'anjing tua malaysia', 'penjagaan kucing tua', 'doktor haiwan haiwan tua malaysia'] },
+  datePublished: '2026-02-08',
+  dateModified: '2026-02-08',
+};

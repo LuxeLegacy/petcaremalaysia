@@ -1,0 +1,36 @@
+import type { PAAArticle } from '@/lib/paaTypes';
+
+export const msPetBoardingCostArticle: PAAArticle = {
+  id: 41,
+  slug: 'berapakah-kos-penginapan-haiwan-malaysia',
+  category: 'pet-care',
+  lang: 'ms',
+  title: 'Berapakah Kos Penginapan Haiwan Peliharaan di Malaysia?',
+  directAnswer: 'Kos penginapan haiwan peliharaan di Malaysia adalah RM25–RM120 semalam bergantung kepada jenis kemudahan, saiz haiwan, dan lokasi. Kandang asas bermula RM25–RM40/malam, manakala hotel haiwan mewah boleh mencecah RM80–RM120/malam.',
+  tldr: 'Kadar penginapan haiwan di Malaysia ialah RM25 (kandang asas) hingga RM120/malam (hotel mewah). Harga bergantung kepada saiz haiwan, lokasi, dan perkhidmatan yang disertakan. KL dan Selangor mempunyai kadar lebih tinggi.',
+  quickFacts: { avgCost: 'RM25 – RM120/malam', timeRequired: 'Tempahan awal diperlukan (1–4 minggu)', difficulty: 'Mudah', professionalNeeded: 'No', insuranceCoverage: 'Biasanya tidak diliputi' },
+  detailedAnswer: `Kemudahan penginapan haiwan peliharaan di Malaysia terdiri daripada kandang mudah hingga hotel haiwan mewah. Kos bergantung kepada jenis kemudahan, saiz haiwan, dan perkhidmatan yang termasuk dalam pakej.\n\nKandang asas (RM25–RM45/malam) menawarkan kandang individu atau berkongsi dengan pemberian makan dan air asas. Kemudahan penginapan pertengahan (RM45–RM80/malam) menawarkan ruang individu, senaman harian, dan kadangkala dandanan. Hotel haiwan mewah (RM80–RM120+/malam) menyediakan suite ber-aircond, akses webcam, masa bermain, dan penjagaan khusus.\n\nPenginapan kucing biasanya lebih murah berbanding anjing, purata RM30–RM70/malam. Kos penginapan anjing berbeza mengikut saiz baka — anjing besar boleh menelan kos 30–50% lebih daripada anjing kecil di kemudahan yang sama.`,
+  keyFactors: ['Jenis kemudahan — kandang asas vs hotel mewah mempunyai perbezaan harga terbesar', 'Saiz haiwan — anjing besar menelan kos 30–50% lebih daripada anjing kecil', 'Tempoh — kebanyakan kemudahan menawarkan diskaun mingguan (10–20%)', 'Lokasi — kadar KL dan Selangor 20–40% lebih tinggi', 'Perkhidmatan termasuk — dandanan, masa bermain, dan webcam menambah kos', 'Keperluan vaksinasi — kebanyakan kemudahan bereputasi memerlukan vaksin terkini'],
+  steps: [
+    { title: 'Cari Kemudahan Berdekatan', description: 'Cari penginapan haiwan berhampiran kawasan anda. Semak ulasan di Google Maps dan Facebook.' },
+    { title: 'Sahkan Keperluan Vaksinasi', description: 'Kebanyakan kemudahan bereputasi memerlukan vaksin rabies, distemper, dan parvovirus.' },
+    { title: 'Lawat Kemudahan', description: 'Sentiasa lawat secara peribadi sebelum menempah. Semak kebersihan, ruang per haiwan, dan tingkah laku staf.' },
+    { title: 'Tanya Tentang Rutin Harian', description: 'Sahkan jadual pemberian makan, masa senaman, dan waktu penyeliaan staf.' },
+    { title: 'Tempah Awal', description: 'Kemudahan popular penuh 2–4 minggu lebih awal semasa cuti sekolah dan musim perayaan.' },
+    { title: 'Bawa Barang Keperluan Haiwan', description: 'Bawa makanan, tilam, dan ubat haiwan anda sendiri. Bau biasa mengurangkan tekanan.' },
+  ],
+  proTips: ['Tempah sekurang-kurangnya 3 minggu awal semasa cuti sekolah dan musim perayaan', 'Minta percubaan menginap semalam sebelum perjalanan panjang', 'Minta kemas kini foto atau video harian — kemudahan bereputasi biasanya menawarkan ini secara percuma', 'Semak sama ada kemudahan mempunyai doktor haiwan bertugas atau berhampiran', 'Diskaun menginap lama biasa — sentiasa tanya tentang kadar mingguan atau bulanan'],
+  commonMistakes: ['Tidak melawat kemudahan secara peribadi sebelum menempah', 'Terlupa membawa rekod vaksinasi terkini pada hari pengambilan', 'Tidak bertanya tentang protokol kecemasan veterinar', 'Memilih berdasarkan harga sahaja tanpa menyemak ulasan', 'Terlupa membawa makanan yang cukup untuk tempoh penuh'],
+  costComparison: [
+    { option: 'Kandang Asas', costRange: 'RM25 – RM45/malam', timeRequired: 'Hantar/ambil hari yang sama', bestFor: 'Pemilik berjadual ketat', prosCons: 'Berpatutan / Ruang berkongsi, penjagaan asas' },
+    { option: 'Penginapan Pertengahan', costRange: 'RM45 – RM80/malam', timeRequired: 'Hari yang sama', bestFor: 'Kebanyakan pemilik haiwan', prosCons: 'Keseimbangan baik / Ciri premium terhad' },
+    { option: 'Hotel Haiwan Mewah', costRange: 'RM80 – RM120/malam', timeRequired: 'Hari yang sama', bestFor: 'Haiwan cemas atau menginap lama', prosCons: 'Keselesaan terbaik / Paling mahal' },
+    { option: 'Penjaga Haiwan di Rumah', costRange: 'RM50 – RM100/hari', timeRequired: 'Fleksibel', bestFor: 'Haiwan yang tidak suka kandang', prosCons: 'Persekitaran rumah / Kurang diawasi' },
+  ],
+  relatedQuestions: [{ question: 'Apakah penginapan haiwan terbaik di KL?', briefAnswer: 'Kemudahan bertaraf tinggi di KL termasuk Petopia, Paw Palace, dan Happy Pets Hotel. Sentiasa sahkan ulasan dan lawat secara peribadi.', slug: 'berapakah-kos-penginapan-haiwan-malaysia' }],
+  citations: [{ source: 'Jabatan Perkhidmatan Veterinar Malaysia', title: 'Piawaian Kemudahan Penjagaan Haiwan', publication: 'DVS.gov.my', year: '2024', url: 'https://www.dvs.gov.my' }],
+  author: { name: 'Dr. Sarah Lee', credentials: 'DVM, Berlesen Majlis Veterinar Malaysia', bio: 'Pakar veterinar dengan 12 tahun pengalaman klinikal di Malaysia.' },
+  seo: { metaDescription: 'Kos penginapan haiwan di Malaysia ialah RM25–RM120/malam. Bandingkan kandang, penginapan pertengahan, dan hotel haiwan mewah. Petua memilih kemudahan terbaik.', keywords: ['penginapan haiwan malaysia', 'kos boarding anjing malaysia', 'hotel haiwan kl', 'kandang kucing malaysia'] },
+  datePublished: '2026-02-08',
+  dateModified: '2026-02-08',
+};

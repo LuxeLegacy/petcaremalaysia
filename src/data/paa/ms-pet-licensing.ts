@@ -1,0 +1,35 @@
+import type { PAAArticle } from '@/lib/paaTypes';
+
+export const msPetLicensingArticle: PAAArticle = {
+  id: 49,
+  slug: 'keperluan-lesen-haiwan-malaysia',
+  category: 'dog-care',
+  lang: 'ms',
+  title: 'Keperluan Lesen Haiwan Peliharaan di Malaysia: Panduan Lesen Anjing',
+  directAnswer: 'Pelesenan anjing di Malaysia menelan kos RM10–RM50 setahun bergantung kepada pihak berkuasa tempatan (PBT) anda. Anjing mesti dilesenkan dalam masa 3 bulan selepas pemilikan. Keperluan biasanya termasuk vaksinasi rabies yang sah dan kadangkala cip mikro. Kucing umumnya tidak memerlukan lesen.',
+  tldr: 'Lesen anjing menelan kos RM10–RM50/tahun di Malaysia, diperoleh daripada majlis tempatan anda (DBKL, MBPJ, dll.). Vaksinasi rabies adalah mandatori. Sesetengah kawasan memerlukan cip mikro. Anjing yang tidak dilesenkan boleh ditangkap. Kucing tidak memerlukan lesen di kebanyakan kawasan.',
+  quickFacts: { avgCost: 'RM10 – RM50/tahun', timeRequired: '30 minit untuk memohon', difficulty: 'Mudah', professionalNeeded: 'No', insuranceCoverage: 'Tidak berkaitan' },
+  detailedAnswer: `Pelesenan anjing adalah keperluan undang-undang di kebanyakan perbandaran Malaysia dan ditadbir oleh pihak berkuasa tempatan (Pihak Berkuasa Tempatan/PBT). Keperluan khusus, yuran, dan proses berbeza mengikut kawasan.\n\nDi kawasan bandar utama:\n- DBKL (KL): RM50/tahun untuk baka campuran, RM100/tahun untuk baka tulen. Memerlukan sijil vaksinasi rabies yang sah.\n- MBPJ (Petaling Jaya): RM30–RM50/tahun. Cip mikro diperlukan.\n- MPSJ (Subang Jaya): RM30–RM50/tahun.\n\nDi negeri lain, yuran cenderung lebih rendah (RM10–RM30/tahun). Hubungi majlis tempatan khusus anda untuk kadar dan keperluan semasa.\n\nProses pelesenan biasanya memerlukan:\n1. Borang permohonan yang dilengkapkan\n2. Salinan MyKad/IC anda\n3. Sijil vaksinasi rabies semasa\n4. Sijil cip mikro (jika diperlukan oleh PBT anda)\n5. Bayaran yuran tahunan`,
+  keyFactors: ['Pihak berkuasa tempatan (PBT) — yuran dan keperluan berbeza dengan ketara antara majlis', 'Baka anjing — sesetengah PBT mengenakan yuran lebih tinggi untuk baka tertentu', 'Status vaksinasi — vaksinasi rabies yang sah diperlukan secara universal', 'Cip mikro — semakin diperlukan di kawasan bandar', 'Pembaharuan — lesen mesti diperbaharui setiap tahun; penalti dikenakan untuk pembaharuan lewat'],
+  steps: [
+    { title: 'Vaksinasi Terhadap Rabies', description: 'Pastikan anjing anda mempunyai vaksinasi rabies semasa. Dapatkan sijil dari doktor haiwan anda.' },
+    { title: 'Cip Mikro Anjing Anda', description: 'Jika diperlukan oleh pihak berkuasa tempatan anda, pasangkan cip mikro anjing anda di mana-mana klinik veterinar.' },
+    { title: 'Dapatkan Borang Permohonan', description: 'Muat turun borang dari laman web majlis tempatan anda, atau ambil secara peribadi.' },
+    { title: 'Hantar Permohonan dan Dokumen', description: 'Bawa IC, sijil vaksinasi, sijil cip mikro, borang yang dilengkapkan, dan bayaran ke pejabat majlis.' },
+    { title: 'Paparkan Tag Lesen', description: 'Pasang tag lesen pada kolar anjing anda. Simpan sijil kertas di tempat yang selamat.' },
+    { title: 'Perbaharui Setiap Tahun', description: 'Kebanyakan lesen tamat tempoh pada 31 Disember setiap tahun. Perbaharui awal untuk mengelak risiko penguatkuasaan.' },
+  ],
+  proTips: ['Semak laman web majlis tempatan anda — ramai kini menawarkan pembaharuan dalam talian yang menjimatkan perjalanan ke pejabat', 'Simpan salinan digital lesen anjing, rekod vaksinasi, dan sijil cip mikro anda', 'Jika anda berpindah ke kawasan pihak berkuasa tempatan yang berbeza, anda perlu mendaftar semula dengan PBT baharu'],
+  commonMistakes: ['Membiarkan lesen tamat tempoh — penalti dan risiko penguatkuasaan meningkat dengan ketara', 'Tidak mengemas kini pendaftaran apabila berpindah rumah', 'Berfikir vaksinasi mengecualikan anda dari pelesenan — kedua-duanya adalah keperluan berasingan'],
+  costComparison: [
+    { option: 'Lesen PBT Luar Bandar', costRange: 'RM10 – RM20/tahun', timeRequired: '30 min', bestFor: 'Pemilik anjing di pekan kecil', prosCons: 'Sangat murah / Keperluan undang-undang yang sama' },
+    { option: 'PBT Bandar (baka campuran)', costRange: 'RM30 – RM50/tahun', timeRequired: '30 min', bestFor: 'Pemilik anjing bandar', prosCons: 'Munasabah / Diperlukan undang-undang' },
+    { option: 'PBT Bandar (baka tulen)', costRange: 'RM50 – RM100/tahun', timeRequired: '30 min', bestFor: 'Pemilik anjing baka tulen', prosCons: 'Kadar lebih tinggi / Masih berpatutan' },
+  ],
+  relatedQuestions: [{ question: 'Apa yang berlaku jika anjing saya tidak dilesenkan di Malaysia?', briefAnswer: 'Anjing yang tidak dilesenkan boleh ditangkap oleh pihak berkuasa tempatan. Pemilik menghadapi denda di bawah Akta Kerajaan Tempatan 1976.', slug: 'keperluan-lesen-haiwan-malaysia' }],
+  citations: [{ source: 'Jabatan Perkhidmatan Veterinar Malaysia', title: 'Garis Panduan Pelesenan dan Pendaftaran Anjing', publication: 'DVS.gov.my', year: '2024', url: 'https://www.dvs.gov.my' }],
+  author: { name: 'Dr. Sarah Lee', credentials: 'DVM, Berlesen Majlis Veterinar Malaysia', bio: 'Pakar veterinar dengan 12 tahun pengalaman klinikal di Malaysia.' },
+  seo: { metaDescription: 'Lesen anjing di Malaysia menelan kos RM10–RM50/tahun. Ketahui tentang keperluan pihak berkuasa tempatan, vaksinasi, cip mikro, dan cara memohon lesen anjing di DBKL, MBPJ dan lain-lain.', keywords: ['lesen anjing malaysia', 'keperluan lesen haiwan malaysia', 'lesen anjing DBKL', 'lesen anjing KL'] },
+  datePublished: '2026-02-08',
+  dateModified: '2026-02-08',
+};

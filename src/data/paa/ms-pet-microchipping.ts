@@ -1,0 +1,35 @@
+import type { PAAArticle } from '@/lib/paaTypes';
+
+export const msPetMicrochippingArticle: PAAArticle = {
+  id: 43,
+  slug: 'kos-cip-mikro-haiwan-malaysia',
+  category: 'vet-care',
+  lang: 'ms',
+  title: 'Cip Mikro Haiwan Peliharaan Malaysia: Kos, Proses & Keperluan',
+  directAnswer: 'Pemasangan cip mikro haiwan di Malaysia menelan kos RM50–RM120 termasuk cip, pemasangan, dan pendaftaran. Prosedur ini mengambil masa kurang 5 minit. Cip mikro adalah mandatori untuk anjing di sesetengah negeri dan sangat disyorkan untuk semua haiwan peliharaan.',
+  tldr: 'Cip mikro menelan kos RM50–RM120 di Malaysia. Ia adalah prosedur sekali sahaja yang hampir tidak menyakitkan untuk mengenal pasti haiwan anda secara kekal. Diperlukan untuk pelesenan anjing di beberapa negeri Malaysia. Mengambil masa kurang 5 minit di mana-mana klinik veterinar.',
+  quickFacts: { avgCost: 'RM50 – RM120 (sekali sahaja)', timeRequired: '5 minit', difficulty: 'Mudah', professionalNeeded: 'Yes', insuranceCoverage: 'Kadangkala diliputi' },
+  detailedAnswer: `Cip mikro haiwan adalah bentuk pengenalpastian kekal menggunakan cip bersaiz bijian beras yang ditanam di bawah kulit di antara bahu haiwan. Di Malaysia, pemasangan cip mikro menelan kos RM50–RM120 di kebanyakan klinik veterinar, pelaburan sekali yang bertahan sepanjang hayat haiwan anda.\n\nProsedur ini melibatkan memasukkan cip mikro melalui jarum — serupa dengan vaksinasi — dan mengambil masa kurang 5 minit. Kebanyakan haiwan menunjukkan ketidakselesaan yang minimum. Anestesia tidak diperlukan.\n\nSelepas pemasangan, nombor cip haiwan anda didaftarkan dalam Pendaftaran Haiwan Malaysia (myPet) atau pangkalan data nasional lain, dikaitkan dengan maklumat hubungan anda. Jika haiwan anda hilang, mana-mana doktor haiwan atau tempat perlindungan dengan pengimbas universal boleh mengenal pasti maklumat hubungan anda.`,
+  keyFactors: ['Kos cip — berbeza mengikut jenama dan kualiti cip (cip standard ISO disyorkan)', 'Yuran pendaftaran — sesetengah klinik termasuk ini; yang lain mengenakan bayaran berasingan (RM20–RM40)', 'Lokasi klinik — klinik bandar mungkin mengenakan sedikit lebih', 'Keperluan undang-undang — semak peraturan pelesenan pihak berkuasa tempatan anda', 'Pangkalan data — pastikan pendaftaran dalam pangkalan data yang diiktiraf secara nasional'],
+  steps: [
+    { title: 'Jadualkan di Klinik Veterinar Anda', description: 'Mana-mana klinik veterinar berlesen di Malaysia boleh melakukan pemasangan cip mikro.' },
+    { title: 'Pemasangan', description: 'Doktor haiwan menggunakan jarum steril untuk menyuntik cip di bawah kulit. Mengambil masa kurang 5 minit.' },
+    { title: 'Sahkan Cip Berfungsi', description: 'Doktor haiwan akan mengimbas sejurus selepas pemasangan untuk mengesahkan cip membaca dengan betul.' },
+    { title: 'Daftarkan Maklumat Anda', description: 'Berikan nama, alamat, dan nombor hubungan anda untuk pendaftaran dalam pangkalan data nasional.' },
+    { title: 'Kemas Kini Maklumat Jika Berpindah', description: 'Jika anda menukar alamat atau nombor telefon, kemas kini pendaftaran cip dalam talian atau melalui doktor haiwan anda.' },
+    { title: 'Sertakan dalam Permohonan Lesen Anjing', description: 'Untuk pemilik anjing, bawa sijil cip mikro semasa memohon lesen anjing pihak berkuasa tempatan anda.' },
+  ],
+  proTips: ['Dapatkan cip mikro haiwan anda pada lawatan vaksinasi pertama — gabungkan kedua-duanya dalam satu perjalanan', 'Minta cip standard ISO 11784/11785 untuk keserasian antarabangsa jika anda merancang untuk mengembara dengan haiwan anda', 'Simpan salinan fizikal dan digital nombor cip mikro haiwan anda dan sijil pendaftaran', 'Lawatan tahunan ke doktor haiwan sering termasuk pengimbasan cip mikro percuma'],
+  commonMistakes: ['Menganggap cip adalah penjejak GPS — cip mikro hanya mengenal pasti, ia tidak menjejak lokasi', 'Tidak mendaftarkan cip selepas pemasangan — cip yang tidak berdaftar tidak dapat membantu anda bersatu semula dengan haiwan anda', 'Terlupa mengemas kini maklumat hubungan selepas berpindah', 'Bergantung hanya pada tag leher sebagai ganti cip mikro'],
+  costComparison: [
+    { option: 'Cip Mikro (Tanam + Daftar)', costRange: 'RM50 – RM120', timeRequired: '5 min', bestFor: 'Semua pemilik haiwan', prosCons: 'Pengenalpastian kekal / Kos sekali sahaja' },
+    { option: 'Tag ID (Leher)', costRange: 'RM5 – RM30', timeRequired: 'Segera', bestFor: 'ID tambahan', prosCons: 'Murah / Boleh hilang' },
+    { option: 'Penjejak GPS (Leher)', costRange: 'RM150 – RM400', timeRequired: 'Segera', bestFor: 'Penjejakan masa nyata', prosCons: 'Lokasi langsung / Perlukan cas/langganan' },
+  ],
+  relatedQuestions: [{ question: 'Adakah cip mikro menyakitkan untuk haiwan?', briefAnswer: 'Minimum — serupa dengan suntikan vaksinasi. Kebanyakan haiwan menunjukkan sedikit atau tiada reaksi. Anestesia tidak diperlukan.', slug: 'kos-cip-mikro-haiwan-malaysia' }],
+  citations: [{ source: 'Jabatan Perkhidmatan Veterinar Malaysia', title: 'Keperluan Pengenalpastian Haiwan', publication: 'DVS.gov.my', year: '2024', url: 'https://www.dvs.gov.my' }],
+  author: { name: 'Dr. Sarah Lee', credentials: 'DVM, Berlesen Majlis Veterinar Malaysia', bio: 'Pakar veterinar dengan 12 tahun pengalaman klinikal di Malaysia.' },
+  seo: { metaDescription: 'Cip mikro haiwan di Malaysia menelan kos RM50–RM120. Ketahui tentang prosedur, keperluan pendaftaran, dan sebab cip mikro penting untuk keselamatan haiwan anda.', keywords: ['cip mikro haiwan malaysia', 'kos microchip anjing malaysia', 'pendaftaran microchip malaysia', 'microchip kucing kl'] },
+  datePublished: '2026-02-08',
+  dateModified: '2026-02-08',
+};

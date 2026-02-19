@@ -1,0 +1,36 @@
+import type { PAAArticle } from '@/lib/paaTypes';
+
+export const msPetAllergyTreatmentArticle: PAAArticle = {
+  id: 46,
+  slug: 'kos-rawatan-alahan-haiwan-malaysia',
+  category: 'vet-care',
+  lang: 'ms',
+  title: 'Kos Rawatan Alahan Haiwan Peliharaan di Malaysia',
+  directAnswer: 'Diagnosis dan rawatan alahan haiwan di Malaysia menelan kos RM200–RM2,000 bergantung kepada keterukan. Kerja-kerja alahan awal menelan kos RM300–RM800 (termasuk ujian kulit atau ujian darah). Pengurusan berterusan dengan ubatan menelan kos RM100–RM500/bulan.',
+  tldr: 'Alahan adalah perkara biasa di iklim lembap Malaysia. Diagnosis menelan kos RM300–RM800, dan ubatan bulanan RM100–RM500. Imunoterapi (penyahpekaan) adalah rawatan jangka panjang paling berkesan pada RM2,000–RM5,000/tahun.',
+  quickFacts: { avgCost: 'RM300 – RM800 (diagnosis)', timeRequired: 'Bulan hingga tahun untuk pengurusan penuh', difficulty: 'Sederhana', professionalNeeded: 'Yes', insuranceCoverage: 'Separa (ujian alahan sering dikecualikan)' },
+  detailedAnswer: `Alahan adalah antara keadaan yang paling biasa dan menjengkelkan yang menjejaskan haiwan peliharaan di Malaysia. Iklim tropika lembap memburukkan alahan alam sekitar, menjadikannya sangat lazim berbanding negara beriklim sederhana. Alergen biasa termasuk habuk, acuan, debunga rumput, dan protein makanan (ayam, daging lembu, gandum).\n\nDiagnosis alahan bermula dengan perundingan veterinar yang betul (RM100–RM200) untuk menolak penyebab lain gatal-gatal seperti parasit, jangkitan, atau penyakit kulit. Jika alahan disyaki, ujian alahan darah (serologi IgE) menelan kos RM400–RM800 atau ujian kulit intradermal yang dilakukan oleh pakar dermatologi menelan kos RM500–RM1,200.`,
+  keyFactors: ['Jenis alahan — makanan vs alam sekitar vs alahan sentuhan memerlukan pendekatan yang berbeza', 'Keterukan — alahan bermusim ringan vs alahan teruk sepanjang tahun mempunyai kos pengurusan yang sangat berbeza', 'Pilihan rawatan — antihistamin (paling murah) vs Cytopoint/Apoquel (paling berkesan) vs imunoterapi (rawatan jangka panjang)'],
+  steps: [
+    { title: 'Perundingan Veterinar', description: 'Pemeriksaan kulit menyeluruh menolak parasit, kulat, dan penyebab bakteria gatal-gatal sebelum ujian alahan.' },
+    { title: 'Kenal Pasti Jenis Alahan', description: 'Doktor haiwan anda menentukan sama ada percubaan penghapusan makanan atau ujian alahan alam sekitar adalah sesuai.' },
+    { title: 'Ujian Alahan', description: 'Ujian IgE darah atau ujian kulit intradermal oleh pakar mengenal pasti alergen tertentu.' },
+    { title: 'Mulakan Protokol Rawatan', description: 'Pilihan termasuk antihistamin, kortikosteroid, Cytopoint, Apoquel, atau imunoterapi khusus alergen.' },
+    { title: 'Kawal Jangkitan Sekunder', description: 'Haiwan alahan sering mendapat jangkitan kulit atau telinga sekunder. Mandian ubatan biasa dan pembersihan telinga membantu.' },
+    { title: 'Elak Alergen', description: 'Kurangkan pendedahan kepada alergen yang diketahui: pengosongan debu yang kerap, penapis udara, dan mandian haiwan mingguan.' },
+  ],
+  proTips: ['Cytopoint (suntikan) lebih mudah daripada tablet harian dan bekerja lebih pantas — berbaloi dengan kos lebih tinggi untuk haiwan yang sangat gatal', 'Mandian mingguan dengan sampu ubatan mengurangkan beban alergen pada kulit dengan ketara', 'Penapis udara HEPA mengurangkan alergen udara dalam rumah ber-aircond Malaysia'],
+  commonMistakes: ['Merawat diri sendiri dengan antihistamin manusia — sesetengahnya toksik kepada haiwan; dos berbeza dengan ketara', 'Menyerah selepas satu rawatan gagal — pengurusan alahan sering memerlukan mencuba pelbagai pendekatan', 'Percubaan makanan yang tidak lengkap — menipu dengan makanan ringan atau makanan meja membatalkan keseluruhan percubaan'],
+  costComparison: [
+    { option: 'Antihistamin (bulanan)', costRange: 'RM30 – RM80/bulan', timeRequired: 'Harian', bestFor: 'Alahan bermusim ringan', prosCons: 'Sangat berpatutan / Keberkesanan terhad' },
+    { option: 'Suntikan Cytopoint', costRange: 'RM150 – RM300/suntikan', timeRequired: 'Setiap 4–8 minggu', bestFor: 'Alahan alam sekitar', prosCons: 'Sangat berkesan / Kos berulang' },
+    { option: 'Apoquel (tablet harian)', costRange: 'RM150 – RM400/bulan', timeRequired: 'Harian', bestFor: 'Alahan sepanjang tahun', prosCons: 'Sangat berkesan / Mahal jangka panjang' },
+    { option: 'Imunoterapi Alergen', costRange: 'RM2,000 – RM5,000/tahun', timeRequired: 'Suntikan mingguan selama 1 tahun', bestFor: 'Rawatan jangka panjang', prosCons: 'Boleh sembuhkan alahan / Kos awal tinggi' },
+  ],
+  relatedQuestions: [{ question: 'Apakah tanda-tanda haiwan saya mempunyai alahan?', briefAnswer: 'Gatal-gatal kronik, kulit merah/meradang, jangkitan telinga berulang, jilat tapak kaki, dan kehilangan bulu adalah tanda-tanda paling biasa.', slug: 'kos-rawatan-alahan-haiwan-malaysia' }],
+  citations: [{ source: 'Persatuan Veterinar Malaysia', title: 'Garis Panduan Dermatologi dan Alahan', publication: 'MSAVA.org', year: '2024', url: 'https://msava.org' }],
+  author: { name: 'Dr. Sarah Lee', credentials: 'DVM, Berlesen Majlis Veterinar Malaysia', bio: 'Pakar veterinar dengan 12 tahun pengalaman klinikal di Malaysia.' },
+  seo: { metaDescription: 'Rawatan alahan haiwan di Malaysia menelan kos RM100–RM500/bulan. Ketahui tentang ujian alahan, Cytopoint vs Apoquel, percubaan makanan, dan pilihan pengurusan jangka panjang.', keywords: ['rawatan alahan haiwan malaysia', 'kos alahan anjing malaysia', 'alahan kulit kucing malaysia', 'Cytopoint malaysia'] },
+  datePublished: '2026-02-08',
+  dateModified: '2026-02-08',
+};

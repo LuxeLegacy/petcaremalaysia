@@ -1,0 +1,36 @@
+import type { PAAArticle } from '@/lib/paaTypes';
+
+export const msPetSpayingNeuteringArticle: PAAArticle = {
+  id: 47,
+  slug: 'kos-pensterilan-haiwan-malaysia',
+  category: 'vet-care',
+  lang: 'ms',
+  title: 'Kos Pensterilan & Kebirinan Haiwan Peliharaan di Malaysia',
+  directAnswer: 'Pensterilan (betina) menelan kos RM200–RM700 di Malaysia. Kebirinan (jantan) menelan kos RM150–RM500. Klinik veterinar kerajaan dan organisasi kebajikan menawarkan kadar bersubsidi RM30–RM100. Harga berbeza mengikut saiz haiwan, berat, dan jenis klinik.',
+  tldr: 'Pensterilan menelan kos RM200–RM700 (betina) dan kebirinan RM150–RM500 (jantan) di Malaysia. Klinik kerajaan menawarkan kadar bersubsidi dari RM30. Pembedahan mencegah kanser, kelahiran yang tidak diingini, dan masalah tingkah laku. Pemulihan mengambil 10–14 hari.',
+  quickFacts: { avgCost: 'RM150 – RM700', timeRequired: 'Prosedur hari (discaj hari yang sama)', difficulty: 'Perlu profesional', professionalNeeded: 'Yes', insuranceCoverage: 'Kadangkala termasuk dalam pelan kebajikan' },
+  detailedAnswer: `Pensterilan dan kebirinan adalah antara keputusan penjagaan kesihatan paling penting untuk haiwan peliharaan anda di Malaysia. Di luar mencegah kelahiran yang tidak diingini, prosedur ini mengurangkan risiko kanser tertentu dengan ketara dan menghapuskan masalah tingkah laku yang dikaitkan dengan dorongan hormon.\n\nUntuk kucing betina: pensterilan menelan kos RM200–RM400 di klinik swasta. SPCA, PAWS yang dikendalikan kerajaan, dan klinik mudah alih DVS mengenakan RM30–RM80 dengan subsidi.\n\nUntuk anjing betina: pensterilan menelan kos RM300–RM700 bergantung kepada saiz dan berat anjing. Anjing besar memerlukan lebih banyak anestetik dan masa pembedahan yang lebih lama.\n\nUntuk kucing jantan: kebirinan lebih mudah (prosedur luaran) menelan kos RM150–RM250 di klinik swasta, RM30–RM60 di kemudahan bersubsidi.`,
+  keyFactors: ['Jantina haiwan — pensterilan (betina) lebih kompleks dan mahal daripada kebirinan (jantan)', 'Saiz dan berat haiwan — haiwan yang lebih besar memerlukan lebih banyak anestetik dan masa pembedahan', 'Umur haiwan — haiwan yang lebih muda dan sihat mempunyai prosedur yang lebih mudah', 'Jenis kemudahan — klinik kerajaan/NGO menawarkan subsidi; klinik swasta mengenakan kadar pasaran'],
+  steps: [
+    { title: 'Jadualkan pada 5–6 Bulan (kucing/anjing kecil)', description: 'Umur ideal adalah sebelum kitaran birahi pertama. Bincangkan masa khusus baka dengan doktor haiwan anda.' },
+    { title: 'Pemeriksaan Kesihatan Pra-Pembedahan', description: 'Doktor haiwan anda akan memeriksa haiwan anda dan mungkin mengesyorkan ujian darah pra-anestetik.' },
+    { title: 'Puaskan Haiwan Anda', description: 'Tahan makanan dan air dari tengah malam sebelum pembedahan. Ini mengurangkan risiko anestetik.' },
+    { title: 'Hantar pada Waktu Pagi', description: 'Pembedahan biasanya dilakukan pada waktu pagi. Haiwan anda pulih pada waktu petang dan pulang pada hari yang sama.' },
+    { title: 'Penjagaan Selepas Operasi', description: 'Sediakan tempat rehat yang tenang dan hangat. Gunakan kolar Elizabethan (E-collar) untuk mencegah haiwan menjilat luka.' },
+    { title: 'Lawatan Susulan', description: 'Kembali untuk pembuangan jahitan pada 10–14 hari. Jahitan yang boleh diserap mungkin tidak memerlukan ini.' },
+  ],
+  proTips: ['Semak SPCA Selangor, PAWS, dan program DVS untuk acara spay/neuter yang disubsidi atau percuma', 'Pensterilan sebelum kitaran birahi pertama menghapuskan risiko kanser payudara sebanyak 99%', 'Jangan tangguhkan kebirinan kucing jantan — kucing jantan utuh menyembur air kencing dan mengembara, meningkatkan risiko kemalangan'],
+  commonMistakes: ['Menunggu terlalu lama — melewatkan tempoh selepas kitaran birahi pertama mengurangkan manfaat pencegahan kanser', 'Menanggalkan E-collar terlalu awal — haiwan yang menjilat luka menyebabkan jangkitan', 'Tidak mengehadkan aktiviti selepas pembedahan — melompat dan berlari boleh mengganggu jahitan'],
+  costComparison: [
+    { option: 'Klinik Kerajaan/NGO (bersubsidi)', costRange: 'RM30 – RM100', timeRequired: 'Temujanji diperlukan', bestFor: 'Pemilik yang mengutamakan bajet', prosCons: 'Sangat berpatutan / Senarai menunggu' },
+    { option: 'Doktor Haiwan Swasta (kucing kebiri/steril)', costRange: 'RM150 – RM400', timeRequired: 'Hari yang sama', bestFor: 'Pemilik kucing', prosCons: 'Mudah, cepat / Kos standard' },
+    { option: 'Doktor Haiwan Swasta (anjing kecil)', costRange: 'RM250 – RM500', timeRequired: 'Hari yang sama', bestFor: 'Pemilik anjing kecil', prosCons: 'Boleh dipercayai / Kos sederhana' },
+    { option: 'Doktor Haiwan Swasta (anjing besar)', costRange: 'RM500 – RM700', timeRequired: 'Hari yang sama', bestFor: 'Pemilik anjing besar', prosCons: 'Sesuai untuk saiz / Kos lebih tinggi' },
+  ],
+  relatedQuestions: [{ question: 'Bilakah saya perlu menterilkan atau mengebiri haiwan saya?', briefAnswer: 'Kucing dan anjing kecil: 5–6 bulan. Anjing besar: 6–18 bulan bergantung kepada baka. Rujuk doktor haiwan anda untuk nasihat khusus baka.', slug: 'kos-pensterilan-haiwan-malaysia' }],
+  citations: [{ source: 'Jabatan Perkhidmatan Veterinar Malaysia', title: 'Garis Panduan Pensterilan Haiwan', publication: 'DVS.gov.my', year: '2024', url: 'https://www.dvs.gov.my' }],
+  author: { name: 'Dr. Sarah Lee', credentials: 'DVM, Berlesen Majlis Veterinar Malaysia', bio: 'Pakar veterinar dengan 12 tahun pengalaman klinikal di Malaysia.' },
+  seo: { metaDescription: 'Pensterilan haiwan menelan kos RM200–RM700 dan kebirinan RM150–RM500 di Malaysia. Pilihan bersubsidi dari RM30 tersedia. Ketahui tentang umur yang tepat dan penjagaan selepas operasi.', keywords: ['kos pensterilan haiwan malaysia', 'kebiri anjing malaysia', 'kos pensterilan kucing malaysia', 'spay neuter kl'] },
+  datePublished: '2026-02-08',
+  dateModified: '2026-02-08',
+};
