@@ -1,0 +1,35 @@
+import type { PAAArticle } from '@/lib/paaTypes';
+
+export const msPetFirstAidKitArticle: PAAArticle = {
+  id: 48,
+  slug: 'kit-pertolongan-cemas-haiwan-malaysia',
+  category: 'pet-care',
+  lang: 'ms',
+  title: 'Kit Pertolongan Cemas Haiwan Peliharaan Malaysia: Apa Yang Diperlukan',
+  directAnswer: 'Kit pertolongan cemas haiwan yang lengkap menelan kos RM80–RM250 untuk dirakit di Malaysia. Ia harus merangkumi bekalan penjagaan luka, ubatan kecemasan (dengan panduan doktor haiwan), termometer, bahan pembalutan, dan nombor hubungan kecemasan utama.',
+  tldr: 'Rakit kit pertolongan cemas haiwan untuk RM80–RM250. Item utama: gauze, pembalut, antiseptik, termometer digital, penyingkir kutu, dan hidrogen peroksida (hanya dengan panduan doktor haiwan). Simpan dengan nombor doktor haiwan anda dan alamat klinik 24 jam.',
+  quickFacts: { avgCost: 'RM80 – RM250 (persediaan sekali sahaja)', timeRequired: '30 minit untuk dirakit', difficulty: 'Mudah', professionalNeeded: 'No', insuranceCoverage: 'Tidak berkaitan' },
+  detailedAnswer: `Setiap pemilik haiwan di Malaysia harus mempunyai kit pertolongan cemas haiwan yang bersedia di rumah dan dalam kereta. Jalanraya Malaysia yang sibuk, hidupan liar tropika (ular, serangga), dan haba melampau menjadikan kecemasan haiwan lebih biasa daripada yang disangka oleh ramai pemilik.\n\nKit asas (RM80–RM120) merangkumi luka biasa, pendarahan, dan penstabilan sebelum mencapai doktor haiwan. Kit komprehensif (RM150–RM250) menambah lebih banyak item khusus dan sesuai untuk isi rumah berbilang haiwan atau haiwan yang menghabiskan masa di luar.\n\nItem penting yang perlu disertakan:\n- Pad dan gelung gauze (pelbagai saiz)\n- Pita pembalut pelekat (Elastoplast atau Vetrap)\n- Larutan antiseptik (Chlorhexidine 2% atau Betadine dicairkan 10%)\n- Termometer rektum digital (normal: 38–39.2°C untuk anjing dan kucing)\n- Alat penyingkir kutu (Tick Twister)\n- Gunting berujung tumpul dan penyepit\n- Sarung tangan pakai buang (pelbagai pasang)\n- Larutan garam (untuk membilas mata/luka)\n- Muncung atau muncung lembut (haiwan yang lembut sekalipun menggigit ketika kesakitan)\n- Kad hubungan kecemasan`,
+  keyFactors: ['Saiz haiwan — haiwan lebih besar mungkin memerlukan pembalut dan muncung yang lebih besar', 'Gaya hidup — haiwan luar/mendaki memerlukan kit yang lebih komprehensif', 'Lokasi — jika jauh dari doktor haiwan 24 jam, sertakan lebih banyak bekalan penstabilan'],
+  steps: [
+    { title: 'Kumpulkan Bekalan Teras', description: 'Beli gauze, pita pembalut, antiseptik, garam, termometer, dan gunting dari farmasi (Guardian, Watsons) atau kedai haiwan.' },
+    { title: 'Tambah Item Khusus Haiwan', description: 'Alat penyingkir kutu, muncung, dan pembalut Vetrap paling baik dibeli dari kedai haiwan.' },
+    { title: 'Sertakan Hubungan Kecemasan', description: 'Buat kad berlaminat dengan doktor haiwan biasa anda, klinik kecemasan 24 jam terdekat, nombor kecemasan DVS, dan Kawalan Racun.' },
+    { title: 'Pelajari Pertolongan Cemas Asas', description: 'Ikuti kursus pertolongan cemas haiwan atau tonton video pertolongan cemas bersijil. Mengetahui cara menggunakan kit anda sama pentingnya dengan memilikinya.' },
+    { title: 'Susun dalam Bekas Kalis Air', description: 'Simpan semua dalam bekas berlabel, kalis air. Simpan satu di rumah dan versi yang lebih kecil dalam kereta.' },
+    { title: 'Semak dan Tambah Stok Secara Berkala', description: 'Periksa kit anda setiap 6 bulan. Gantikan item yang tamat tempoh dan tambah stok bekalan yang digunakan selepas sebarang kecemasan.' },
+  ],
+  proTips: ['Ikuti kursus pertolongan cemas haiwan dari SPCA atau klinik veterinar', 'Hidrogen peroksida untuk mencetuskan muntah HANYA boleh digunakan atas arahan doktor haiwan yang jelas', 'Simpan nombor kecemasan selepas waktu doktor haiwan anda dalam telefon anda'],
+  commonMistakes: ['Menggunakan krim antiseptik manusia (Dettol, TCP) — ramai mengandungi sebatian toksik kepada haiwan', 'Mencetuskan muntah tanpa nasihat doktor haiwan — berbahaya untuk banyak racun dan bahan kaustik', 'Membiarkan bekalan tamat tempoh tanpa menambah stok'],
+  costComparison: [
+    { option: 'Kit Asas (luka + hubungan)', costRange: 'RM80 – RM120', timeRequired: '30 min untuk dirakit', bestFor: 'Haiwan dalaman', prosCons: 'Berpatutan / Liputan terhad' },
+    { option: 'Kit Komprehensif (+ ubatan)', costRange: 'RM150 – RM250', timeRequired: '1 jam untuk dirakit', bestFor: 'Haiwan luar atau rumah berbilang haiwan', prosCons: 'Bersedia untuk kebanyakan kecemasan / Kos awal lebih tinggi' },
+    { option: 'Kit Pertolongan Cemas Haiwan Siap Sedia', costRange: 'RM100 – RM200', timeRequired: 'Sedia untuk digunakan', bestFor: 'Mereka yang mengutamakan kemudahan', prosCons: 'Mudah / Mungkin kekurangan beberapa item untuk keadaan tempatan' },
+  ],
+  relatedQuestions: [{ question: 'Apa yang perlu saya lakukan jika haiwan saya diracun?', briefAnswer: 'Hubungi doktor haiwan atau klinik kecemasan terdekat dengan segera. JANGAN mencetuskan muntah tanpa arahan doktor haiwan.', slug: 'kit-pertolongan-cemas-haiwan-malaysia' }],
+  citations: [{ source: 'Persatuan Veterinar Malaysia', title: 'Garis Panduan Pertolongan Cemas Haiwan Kecemasan', publication: 'MSAVA.org', year: '2024', url: 'https://msava.org' }],
+  author: { name: 'Dr. Sarah Lee', credentials: 'DVM, Berlesen Majlis Veterinar Malaysia', bio: 'Pakar veterinar dengan 12 tahun pengalaman klinikal di Malaysia.' },
+  seo: { metaDescription: 'Bina kit pertolongan cemas haiwan di Malaysia untuk RM80–RM250. Senarai bekalan penting, tips pemasangan, dan apa yang TIDAK perlu disertakan. Bersedia untuk sebarang kecemasan haiwan.', keywords: ['kit pertolongan cemas haiwan malaysia', 'kit kecemasan anjing malaysia', 'bekalan pertolongan cemas haiwan', 'persediaan kecemasan haiwan malaysia'] },
+  datePublished: '2026-02-08',
+  dateModified: '2026-02-08',
+};

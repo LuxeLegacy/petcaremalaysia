@@ -1,0 +1,36 @@
+import type { PAAArticle } from '@/lib/paaTypes';
+
+export const msPetFriendlyHotelsArticle: PAAArticle = {
+  id: 50,
+  slug: 'hotel-mesra-haiwan-malaysia',
+  category: 'pet-travel',
+  lang: 'ms',
+  title: 'Hotel Mesra Haiwan di Malaysia: Panduan & Kos',
+  directAnswer: 'Hotel mesra haiwan di Malaysia mengenakan bayaran RM150–RM800+/malam. Kebanyakan membenarkan anjing dan kucing kecil hingga sederhana dengan deposit haiwan RM100–RM500. Pilihan yang benar-benar mesra haiwan masih terhad — tempahan awal dan pengesahan terus dengan hotel adalah penting.',
+  tldr: 'Hotel mesra haiwan menelan kos RM150–RM800+/malam di Malaysia. Yuran haiwan RM50–RM150/malam atau deposit RM100–RM500. Pilihan tertumpu di KL, Pulau Pinang, dan Langkawi. Sentiasa sahkan dasar haiwan secara terus — bukan semua senarai mesra haiwan adalah tepat.',
+  quickFacts: { avgCost: 'RM150 – RM800+/malam', timeRequired: 'Tempahan awal diperlukan', difficulty: 'Sederhana', professionalNeeded: 'No', insuranceCoverage: 'Tidak berkaitan' },
+  detailedAnswer: `Penginapan mesra haiwan di Malaysia sedang berkembang tetapi masih terhad berbanding pasaran yang lebih mesra haiwan seperti Singapura atau Eropah. Kebanyakan rangkaian hotel utama di Malaysia tidak mesra haiwan, tetapi bilangan hotel butik, hartanah Airbnb, dan chalet resort yang menerima haiwan semakin bertambah.\n\nDi Kuala Lumpur, hotel mesra haiwan merangkumi beberapa hotel butik di kawasan seperti Mont Kiara, Bangsar, dan KLCC. Jangka bayar RM200–RM600/malam dengan yuran haiwan RM50–RM150/malam atau deposit boleh dikembalikan RM200–RM500.\n\nDi Pulau Pinang, Georgetown mempunyai beberapa hotel dan rumah tumpangan warisan mesra haiwan. Langkawi mempunyai resort pantai dan vila persendirian yang menerima haiwan. Cameron Highlands mempunyai chalet dan homestay yang mengalu-alukan haiwan.\n\nKebanyakan hotel mengehadkan haiwan mengikut saiz (di bawah 10kg adalah biasa), baka (tiada baka "agresif"), dan bilangan. Kucing sering lebih diterima berbanding anjing.`,
+  keyFactors: ['Had saiz haiwan — kebanyakan hotel mengehadkan pada 10–15kg; anjing besar mempunyai sangat sedikit pilihan', 'Struktur yuran haiwan — yuran per malam vs deposit boleh dikembalikan vs termasuk dalam kadar bilik', 'Sekatan baka — baka "berbahaya" (Pit Bull, Rottweiler, Husky) sering dikecualikan', 'Bilangan haiwan — kebanyakan membenarkan 1 haiwan; sesetengah membenarkan 2', 'Lokasi — KL, Pulau Pinang, dan Langkawi mempunyai lebih banyak pilihan'],
+  steps: [
+    { title: 'Cari dengan Penapis Haiwan', description: 'Gunakan Airbnb, Booking.com, atau Agoda dengan penapis mesra haiwan. Perhatikan bahawa penapis tidak selalu tepat — pengesahan adalah penting.' },
+    { title: 'Hubungi Hartanah Secara Terus', description: 'Sentiasa hubungi untuk mengesahkan dasar haiwan, had saiz, sekatan baka, dan yuran tepat. Dapatkan pengesahan secara bertulis.' },
+    { title: 'Sediakan Dokumen Haiwan', description: 'Sesetengah hartanah premium memerlukan rekod vaksinasi. Sediakan sijil kesihatan veterinar terkini haiwan anda.' },
+    { title: 'Bawa Keperluan Asas Haiwan', description: 'Bawa makanan, mangkuk air, tilam, dan beg buangan sendiri.' },
+    { title: 'Semak Peraturan Haiwan Semasa Daftar Masuk', description: 'Fahami sebarang sekatan (tiada haiwan di atas perabot, tidak ditinggalkan sendirian dalam bilik, mesti ditali di kawasan awam).' },
+    { title: 'Jadilah Tetamu Haiwan yang Bertanggungjawab', description: 'Pastikan haiwan anda senyap, bersihkan segera selepas kemalangan, dan pertimbangkan tetamu lain.' },
+  ],
+  proTips: ['Tempah hartanah Airbnb mesra haiwan di kawasan kediaman — sering lebih luas dan lebih murah daripada hotel', 'Vila kolam renang persendirian (terutama di Langkawi dan Johor) adalah pilihan premium yang paling mesra haiwan', 'Ulasan Google Maps sering menyebut sama ada lawatan sebenar dengan haiwan berjalan lancar', 'Resort mesra haiwan di Cameron Highlands dan kawasan Genting popular untuk keluarga Malaysia yang mengembara dengan anjing'],
+  commonMistakes: ['Menganggap "mesra haiwan" di laman senarai adalah tepat tanpa menghubungi — banyak senarai sudah lapuk', 'Membawa haiwan ke hotel tanpa mengisytiharkan — boleh mengakibatkan yuran tambahan atau diminta keluar', 'Tidak membawa makanan yang cukup — jenama makanan haiwan mungkin tidak tersedia di sesetengah destinasi'],
+  costComparison: [
+    { option: 'Rumah Tumpangan Mesra Haiwan Bajet', costRange: 'RM80 – RM200/malam', timeRequired: 'Tempahan awal', bestFor: 'Pengembara bajet', prosCons: 'Berpatutan / Kemudahan asas' },
+    { option: 'Hotel/Butik Pertengahan Mesra Haiwan', costRange: 'RM200 – RM450/malam', timeRequired: 'Tempahan awal', bestFor: 'Kebanyakan pengembara haiwan', prosCons: 'Kemudahan baik / Yuran haiwan dikenakan' },
+    { option: 'Resort atau Vila Mewah', costRange: 'RM500 – RM1,500/malam', timeRequired: 'Tempahan awal', bestFor: 'Pengalaman premium', prosCons: 'Terbaik untuk haiwan / Paling mahal' },
+    { option: 'Rumah Persendirian Airbnb', costRange: 'RM150 – RM600/malam', timeRequired: 'Tempah melalui platform', bestFor: 'Fleksibiliti dan ruang', prosCons: 'Paling mesra haiwan / Berbeza sangat' },
+  ],
+  relatedQuestions: [{ question: 'Bolehkah saya mengembara dengan kereta api dengan haiwan saya di Malaysia?', briefAnswer: 'KTM tidak membenarkan haiwan di kebanyakan perkhidmatan. Pengembara udara membenarkan haiwan dalam kabin (haiwan kecil bawah 8kg) atau kargo. Kereta persendirian paling praktikal untuk perjalanan haiwan di dalam Malaysia.', slug: 'keperluan-perjalanan-haiwan-malaysia' }],
+  citations: [{ source: 'Pelancongan Malaysia', title: 'Panduan Penginapan Mesra Haiwan', publication: 'Tourism.gov.my', year: '2024', url: 'https://www.tourism.gov.my' }],
+  author: { name: 'Dr. Sarah Lee', credentials: 'DVM, Berlesen Majlis Veterinar Malaysia', bio: 'Pakar veterinar dengan 12 tahun pengalaman klinikal di Malaysia.' },
+  seo: { metaDescription: 'Hotel mesra haiwan di Malaysia menelan kos RM150–RM800+/malam. Cari penginapan mesra anjing dan kucing di KL, Pulau Pinang, dan Langkawi. Tips tempahan dan apa yang dijangkakan.', keywords: ['hotel mesra haiwan malaysia', 'hotel mesra anjing kl', 'hotel mesra kucing malaysia', 'penginapan haiwan peliharaan malaysia'] },
+  datePublished: '2026-02-08',
+  dateModified: '2026-02-08',
+};

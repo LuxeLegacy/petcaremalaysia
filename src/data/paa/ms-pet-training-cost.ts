@@ -1,0 +1,36 @@
+import type { PAAArticle } from '@/lib/paaTypes';
+
+export const msPetTrainingCostArticle: PAAArticle = {
+  id: 44,
+  slug: 'berapakah-kos-latihan-haiwan-malaysia',
+  category: 'dog-care',
+  lang: 'ms',
+  title: 'Berapakah Kos Latihan Haiwan Peliharaan di Malaysia?',
+  directAnswer: 'Latihan haiwan peliharaan di Malaysia menelan kos RM80–RM300 setiap sesi untuk latihan persendirian. Kelas ketaatan berkumpulan menelan kos RM300–RM800 untuk kursus 6–8 minggu. Program latihan kediaman menelan kos RM1,500–RM4,000 untuk 2–4 minggu.',
+  tldr: 'Kos latihan anjing RM80–RM300/sesi (persendirian) atau RM300–RM800 untuk kursus berkumpulan di Malaysia. Latihan kediaman (board & train) menelan kos RM1,500–RM4,000. Kelas anak anjing adalah pelaburan terbaik untuk pemilik anjing baru.',
+  quickFacts: { avgCost: 'RM300 – RM800 (kursus berkumpulan)', timeRequired: '6–8 minggu (berkumpulan) atau 2–4 minggu (kediaman)', difficulty: 'Sederhana', professionalNeeded: 'Recommended', insuranceCoverage: 'Tidak diliputi' },
+  detailedAnswer: `Latihan anjing profesional di Malaysia terdiri daripada kelas berkumpulan yang berpatutan hingga program kediaman intensif. Pilihan yang tepat bergantung kepada umur anjing anda, masalah tingkah laku, dan ketersediaan anda untuk mengambil bahagian.\n\nKelas anak anjing (RM300–RM600 untuk kursus 6 minggu) memfokuskan pada sosialisasi, perintah asas, dan larangan gigitan untuk anak anjing berumur 8–16 minggu.\n\nKelas ketaatan asas berkumpulan (RM400–RM800 untuk 6–8 minggu) mengajar perintah seperti heel, down, leave it, dan ingat balik dalam persekitaran berkumpulan.\n\nSesi persendirian satu lawan satu (RM100–RM300/sesi) sesuai untuk anjing dengan masalah tingkah laku tertentu seperti agresif, takut, atau menyalak berlebihan.`,
+  keyFactors: ['Format latihan — kelas berkumpulan paling berpatutan; sesi persendirian lebih mahal tetapi menangani keperluan khusus', 'Kelayakan jurulatih — jurulatih bertauliah mengenakan lebih tetapi memberikan hasil lebih baik', 'Kerumitan tingkah laku — ketaatan asas vs pemulihan agresif mempunyai julat harga yang berbeza', 'Umur anjing — anak anjing paling mudah dilatih; anjing tua dengan tabiat buruk yang kukuh memerlukan lebih banyak sesi', 'Lokasi — jurulatih KL dan Selangor mengenakan 20–30% lebih daripada negeri lain'],
+  steps: [
+    { title: 'Nilai Keperluan Anjing Anda', description: 'Kenal pasti sama ada anda memerlukan ketaatan asas, sosialisasi anak anjing, atau pengubahsuaian tingkah laku.' },
+    { title: 'Cari Jurulatih Bertauliah', description: 'Cari jurulatih yang menggunakan kaedah pengukuhan positif (berasaskan ganjaran). Semak sijil CPDT-KA atau Karen Pryor Academy.' },
+    { title: 'Hadiri Sesi Percubaan', description: 'Ramai jurulatih menawarkan sesi penilaian percuma atau bertolak ansur. Ini membantu anda menilai kaedah mereka.' },
+    { title: 'Komited kepada Program Penuh', description: 'Latihan memerlukan konsistensi. Lengkapkan kursus penuh dan berlatih setiap hari di rumah antara sesi.' },
+    { title: 'Berlatih Antara Sesi', description: 'Sesi latihan pendek 5–10 minit setiap hari di rumah lebih berkesan daripada sesi profesional mingguan sahaja.' },
+    { title: 'Kekalkan Latihan', description: 'Teruskan mengukuhkan tingkah laku yang dipelajari sepanjang hayat anjing anda.' },
+  ],
+  proTips: ['Mulakan latihan semasa peringkat anak anjing (8–16 minggu) — tingkap sosialisasi ditutup pada 16 minggu', 'Pilih jurulatih yang menggunakan pengukuhan positif sahaja — elakkan kaedah aversif (kolar kejutan, hukuman)', 'Penglibatan pemilik sama pentingnya seperti latihan anjing — hadiri semua sesi sendiri', 'Kelas berkumpulan menyediakan sosialisasi penting yang sesi persendirian tidak dapat meniru'],
+  commonMistakes: ['Mengharapkan hasil segera — perubahan tingkah laku memerlukan minggu hingga bulan latihan konsisten', 'Menggunakan kaedah berasaskan hukuman — ia mewujudkan ketakutan dan memburukkan masalah tingkah laku', 'Berhenti latihan selepas kursus berakhir — tingkah laku pudar tanpa penyelenggaraan'],
+  costComparison: [
+    { option: 'Kelas Anak Anjing Berkumpulan (6 minggu)', costRange: 'RM300 – RM600', timeRequired: '6 minggu', bestFor: 'Anak anjing 8–16 minggu', prosCons: 'Nilai terbaik / Perlukan penglibatan pemilik' },
+    { option: 'Kursus Ketaatan Berkumpulan', costRange: 'RM400 – RM800', timeRequired: '6–8 minggu', bestFor: 'Ketaatan asas', prosCons: 'Sosial, berpatutan / Perhatian individu kurang' },
+    { option: 'Sesi Persendirian (5-pak)', costRange: 'RM500 – RM1,500', timeRequired: '5 minggu', bestFor: 'Masalah tingkah laku', prosCons: 'Disasarkan / Lebih mahal' },
+    { option: 'Board & Train Kediaman', costRange: 'RM1,500 – RM4,000', timeRequired: '2–4 minggu', bestFor: 'Keperluan latihan intensif', prosCons: 'Hasil pantas / Pemilik masih perlu latihan' },
+  ],
+  relatedQuestions: [{ question: 'Pada umur berapa saya perlu mula melatih anjing saya?', briefAnswer: 'Seawal 8 minggu. Tingkap sosialisasi anak anjing (8–16 minggu) adalah tempoh pembelajaran paling kritikal.', slug: 'berapakah-kos-latihan-haiwan-malaysia' }],
+  citations: [{ source: 'Persijilan Jurulatih Anjing Profesional', title: 'Piawaian Latihan Anjing', publication: 'CCPDT.org', year: '2024', url: 'https://www.ccpdt.org' }],
+  author: { name: 'Dr. Sarah Lee', credentials: 'DVM, Berlesen Majlis Veterinar Malaysia', bio: 'Pakar veterinar dengan 12 tahun pengalaman klinikal di Malaysia.' },
+  seo: { metaDescription: 'Kos latihan anjing di Malaysia ialah RM300–RM800 untuk kursus berkumpulan atau RM80–RM300/sesi persendirian. Bandingkan kelas anak anjing, kursus ketaatan, dan program board-and-train.', keywords: ['kos latihan anjing malaysia', 'kelas latihan haiwan kl', 'latihan anak anjing malaysia', 'kursus ketaatan anjing malaysia'] },
+  datePublished: '2026-02-08',
+  dateModified: '2026-02-08',
+};
