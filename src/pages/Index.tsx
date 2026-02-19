@@ -18,6 +18,8 @@ import { FinalCtaSection } from '@/components/home/FinalCtaSection';
 import { PeopleAlsoAskSection } from '@/components/home/PeopleAlsoAskSection';
 import { BlogSection } from '@/components/home/BlogSection';
 import { CostCTA } from '@/components/common/CostCTA';
+import { PAACategoryCards } from '@/components/home/PAACategoryCards';
+import { PAASearchBar } from '@/components/home/PAASearchBar';
 import { useLanguage } from '@/contexts/LanguageContext';
 
 const Index = () => {
@@ -54,6 +56,17 @@ const Index = () => {
           {/* Section 5: Government Resources & Regulations (Citations) */}
           <GovernmentResources />
           
+          {/* PAA Search Bar */}
+          <section className="py-8 bg-background">
+            <div className="container max-w-2xl text-center">
+              <p className="text-sm text-muted-foreground mb-3 font-medium">Search 60+ pet care guides</p>
+              <PAASearchBar />
+            </div>
+          </section>
+
+          {/* PAA Category Cards */}
+          <PAACategoryCards />
+
           {/* Section 6: Services Grid */}
           <ServicesSection />
           

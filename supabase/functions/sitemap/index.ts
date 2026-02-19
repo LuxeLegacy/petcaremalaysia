@@ -74,6 +74,16 @@ const paaArticleGroups: { en: string; ms: string; zh: string }[] = [
   { en: 'best-pet-food-brands-malaysia', ms: 'jenama-makanan-haiwan-terbaik-malaysia', zh: 'ma-lai-xi-ya-zui-jia-chong-wu-shi-pin-pin-pai' },
   { en: 'how-to-treat-fleas-on-pets-malaysia', ms: 'cara-merawat-kutu-haiwan-malaysia', zh: 'ma-lai-xi-ya-chong-wu-tiao-zao-zhi-liao' },
   { en: 'pet-travel-requirements-malaysia', ms: 'keperluan-perjalanan-haiwan-malaysia', zh: 'ma-lai-xi-ya-chong-wu-lv-xing-yao-qiu' },
+  { en: 'how-much-does-pet-boarding-cost-malaysia', ms: 'berapakah-kos-penginapan-haiwan-malaysia', zh: 'ma-lai-xi-ya-chong-wu-ji-yang-fei-yong' },
+  { en: 'how-much-does-pet-dental-care-cost-malaysia', ms: 'berapakah-kos-penjagaan-gigi-haiwan-malaysia', zh: 'ma-lai-xi-ya-chong-wu-ya-chi-bao-jian-fei-yong' },
+  { en: 'pet-microchipping-malaysia', ms: 'cip-haiwan-peliharaan-malaysia', zh: 'ma-lai-xi-ya-chong-wu-zhi-ru-fei-yong' },
+  { en: 'how-much-does-dog-training-cost-malaysia', ms: 'berapakah-kos-latihan-anjing-malaysia', zh: 'ma-lai-xi-ya-gou-xun-lian-fei-yong' },
+  { en: 'senior-pet-care-malaysia', ms: 'penjagaan-haiwan-tua-malaysia', zh: 'ma-lai-xi-ya-lao-nian-chong-wu-hu-li' },
+  { en: 'pet-allergy-treatment-malaysia', ms: 'rawatan-alahan-haiwan-malaysia', zh: 'ma-lai-xi-ya-chong-wu-guo-min-zhi-liao' },
+  { en: 'pet-spaying-neutering-cost-malaysia', ms: 'kos-pembedahan-haiwan-malaysia', zh: 'ma-lai-xi-ya-chong-wu-jue-yu-fei-yong' },
+  { en: 'pet-first-aid-kit-malaysia', ms: 'kit-kecemasan-haiwan-malaysia', zh: 'ma-lai-xi-ya-chong-wu-ji-jiu-bao' },
+  { en: 'pet-licensing-requirements-malaysia', ms: 'keperluan-lesen-haiwan-malaysia', zh: 'ma-lai-xi-ya-chong-wu-zhu-ce-yao-qiu' },
+  { en: 'pet-friendly-hotels-malaysia', ms: 'hotel-mesra-haiwan-malaysia', zh: 'ma-lai-xi-ya-ke-dai-chong-wu-jiu-dian' },
 ];
 
 // Legal pages (English only)
