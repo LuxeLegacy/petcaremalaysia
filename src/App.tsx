@@ -21,6 +21,8 @@ import AssessmentPage from "./pages/AssessmentPage";
 import AdminPage from "./pages/AdminPage";
 import EmergencyGuidePage from "./pages/EmergencyGuidePage";
 import PAAArticleRouter from "./pages/PAAArticleRouter";
+import SearchPage from "./pages/SearchPage";
+import CategoryPage from "./pages/CategoryPage";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -74,6 +76,14 @@ const App = () => (
               <Route path="/emergency-guide" element={<EmergencyGuidePage />} />
               <Route path="/:lang/emergency-guide" element={<EmergencyGuidePage />} />
               
+              {/* Search */}
+              <Route path="/search" element={<SearchPage />} />
+              <Route path="/:lang/search" element={<SearchPage />} />
+
+              {/* Category */}
+              <Route path="/category/:slug" element={<CategoryPage />} />
+              <Route path="/:lang/category/:slug" element={<CategoryPage />} />
+
               {/* Admin */}
               <Route path="/admin" element={<AdminPage />} />
               
