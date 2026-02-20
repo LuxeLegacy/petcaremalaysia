@@ -49,27 +49,6 @@ export const HeroSection = () => {
             </p>
           </div>
 
-          {/* Secondary CTA Buttons */}
-          <div className="flex flex-col sm:flex-row gap-4 justify-center animate-slide-up flex-wrap" style={{
-          animationDelay: '0.2s'
-        }}>
-            <Button size="lg" className="bg-card text-primary hover:bg-card/90 shadow-elevated text-base font-bold gap-2 px-8">
-              <Search className="h-5 w-5" />
-              {t.hero.cta}
-            </Button>
-            <Button size="lg" variant="outline" className="border-primary-foreground/30 text-primary-foreground hover:bg-primary-foreground/10 text-base font-bold gap-2 bg-destructive/80 border-destructive" asChild>
-              <a href="tel:+60123456789">
-                <Phone className="h-5 w-5" />
-                {t.hero.emergencyCta}
-              </a>
-            </Button>
-            <Button size="lg" variant="outline" className="border-primary-foreground/30 text-primary-foreground hover:bg-primary-foreground/10 text-base font-bold gap-2" asChild>
-              <Link to="/qa">
-                <HelpCircle className="h-5 w-5" />
-                Ask Pet Questions
-              </Link>
-            </Button>
-          </div>
 
           {/* Trust Badge */}
           <div className="mt-8 inline-flex items-center gap-2 px-6 py-3 rounded-full bg-primary-foreground/10 text-primary-foreground text-sm font-medium animate-fade-in" style={{
