@@ -6,7 +6,7 @@ const corsHeaders = {
 };
 
 const BASE_URL = 'https://petcaremalaysia.com';
-const LASTMOD = '2026-02-08';
+const LASTMOD = '2026-02-20';
 
 // Main pages
 const mainPages = [
@@ -15,7 +15,12 @@ const mainPages = [
   { path: '/services', priority: 0.9, changefreq: 'monthly' },
   { path: '/blog', priority: 0.8, changefreq: 'weekly' },
   { path: '/qa', priority: 0.8, changefreq: 'weekly' },
+  { path: '/assessment', priority: 0.8, changefreq: 'monthly' },
+  { path: '/emergency-guide', priority: 0.8, changefreq: 'monthly' },
   { path: '/sitemap', priority: 0.3, changefreq: 'monthly' },
+  { path: '/terms', priority: 0.3, changefreq: 'monthly' },
+  { path: '/privacy', priority: 0.3, changefreq: 'monthly' },
+  { path: '/disclaimer', priority: 0.3, changefreq: 'monthly' },
 ];
 
 // Blog article slugs (must match BlogPage.tsx and BlogPostPage.tsx)
@@ -86,12 +91,7 @@ const paaArticleGroups: { en: string; ms: string; zh: string }[] = [
   { en: 'pet-friendly-hotels-malaysia', ms: 'hotel-mesra-haiwan-malaysia', zh: 'ma-lai-xi-ya-ke-dai-chong-wu-jiu-dian' },
 ];
 
-// Legal pages (English only)
-const legalPages = [
-  { path: '/terms', priority: 0.3, changefreq: 'monthly' },
-  { path: '/privacy', priority: 0.3, changefreq: 'monthly' },
-  { path: '/disclaimer', priority: 0.3, changefreq: 'monthly' },
-];
+// (Legal pages now included in mainPages as multilingual)
 
 // City data organized by state
 const cityData: Record<string, { cities: { slug: string; isHub: boolean }[] }> = {
@@ -388,10 +388,6 @@ function generateSitemap(): string {
     });
   });
   
-  // Legal pages (English only)
-  legalPages.forEach(page => {
-    urls += generateEnglishOnlyUrl(page.path, page.priority, page.changefreq);
-  });
   
   return `<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
