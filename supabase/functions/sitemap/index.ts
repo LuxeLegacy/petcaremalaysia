@@ -388,6 +388,11 @@ function generateSitemap(): string {
     });
   });
   
+  // Dog Dental Disease hub and sub-pages
+  urls += generateMultilingualUrl('/dog-dental-disease', 0.9, 'weekly');
+  const dentalSubs = ['conditions/plaque-buildup','conditions/gingivitis','conditions/periodontal-disease','conditions/tooth-root-abscess','symptoms/bad-breath','symptoms/red-gums','symptoms/swollen-gums','symptoms/bleeding-gums','symptoms/dropping-food','symptoms/pawing-at-mouth','symptoms/facial-swelling','severity/early','severity/moderate','severity/advanced','emergency-signs','when-to-see-a-vet','diagnosis/oral-exam','diagnosis/dental-probing','diagnosis/dental-x-rays','treatments/professional-cleaning','treatments/tooth-extraction','treatments/antibiotic-therapy','treatments/pain-management','treatments/preventive-dental-care','recovery/post-dental-procedure','recovery/oral-healing-timeline','recovery/monitoring-for-complications','prevention/brushing','prevention/dental-checkups','prevention/diet-and-chewing-behavior'];
+  dentalSubs.forEach(sub => { urls += generateMultilingualUrl('/dog-dental-disease/' + sub, 0.7, 'monthly'); });
+
   
   return `<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
