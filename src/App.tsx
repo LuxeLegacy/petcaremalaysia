@@ -23,6 +23,7 @@ import EmergencyGuidePage from "./pages/EmergencyGuidePage";
 import PAAArticleRouter from "./pages/PAAArticleRouter";
 import SearchPage from "./pages/SearchPage";
 import CategoryPage from "./pages/CategoryPage";
+import DogDentalRouter from "./pages/DogDentalRouter";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -83,6 +84,14 @@ const App = () => (
               {/* Category */}
               <Route path="/category/:slug" element={<CategoryPage />} />
               <Route path="/:lang/category/:slug" element={<CategoryPage />} />
+
+              {/* Dog Dental Disease Hub */}
+              <Route path="/dog-dental-disease" element={<DogDentalRouter />} />
+              <Route path="/dog-dental-disease/:category" element={<DogDentalRouter />} />
+              <Route path="/dog-dental-disease/:category/:slug" element={<DogDentalRouter />} />
+              <Route path="/:lang/dog-dental-disease" element={<DogDentalRouter />} />
+              <Route path="/:lang/dog-dental-disease/:category" element={<DogDentalRouter />} />
+              <Route path="/:lang/dog-dental-disease/:category/:slug" element={<DogDentalRouter />} />
 
               {/* Admin */}
               <Route path="/admin" element={<AdminPage />} />
