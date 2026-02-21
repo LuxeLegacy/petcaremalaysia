@@ -67,6 +67,39 @@ import { msPreventionBrushing } from './ms/prevention-brushing';
 import { msPreventionCheckups } from './ms/prevention-checkups';
 import { msPreventionDiet } from './ms/prevention-diet';
 
+// Chinese imports
+import { zhHub } from './zh/hub';
+import { zhConditionsPlaque } from './zh/conditions-plaque';
+import { zhConditionsGingivitis } from './zh/conditions-gingivitis';
+import { zhConditionsPeriodontal } from './zh/conditions-periodontal';
+import { zhConditionsAbscess } from './zh/conditions-abscess';
+import { zhSymptomsBadBreath } from './zh/symptoms-bad-breath';
+import { zhSymptomsRedGums } from './zh/symptoms-red-gums';
+import { zhSymptomsSwollenGums } from './zh/symptoms-swollen-gums';
+import { zhSymptomsBleedingGums } from './zh/symptoms-bleeding-gums';
+import { zhSymptomsDroppingFood } from './zh/symptoms-dropping-food';
+import { zhSymptomsPawingMouth } from './zh/symptoms-pawing-mouth';
+import { zhSymptomsFacialSwelling } from './zh/symptoms-facial-swelling';
+import { zhSeverityEarly } from './zh/severity-early';
+import { zhSeverityModerate } from './zh/severity-moderate';
+import { zhSeverityAdvanced } from './zh/severity-advanced';
+import { zhEmergencySigns } from './zh/emergency-signs';
+import { zhWhenToSeeVet } from './zh/when-to-see-vet';
+import { zhDiagnosisOralExam } from './zh/diagnosis-oral-exam';
+import { zhDiagnosisDentalProbing } from './zh/diagnosis-dental-probing';
+import { zhDiagnosisDentalXrays } from './zh/diagnosis-dental-xrays';
+import { zhTreatmentsProfessionalCleaning } from './zh/treatments-professional-cleaning';
+import { zhTreatmentsToothExtraction } from './zh/treatments-tooth-extraction';
+import { zhTreatmentsAntibioticTherapy } from './zh/treatments-antibiotic-therapy';
+import { zhTreatmentsPainManagement } from './zh/treatments-pain-management';
+import { zhTreatmentsPreventiveCare } from './zh/treatments-preventive-care';
+import { zhRecoveryPostProcedure } from './zh/recovery-post-procedure';
+import { zhRecoveryHealingTimeline } from './zh/recovery-healing-timeline';
+import { zhRecoveryMonitoring } from './zh/recovery-monitoring';
+import { zhPreventionBrushing } from './zh/prevention-brushing';
+import { zhPreventionCheckups } from './zh/prevention-checkups';
+import { zhPreventionDiet } from './zh/prevention-diet';
+
 // Registry of all dental pages
 const allPages: DentalPage[] = [
   // English
@@ -93,6 +126,18 @@ const allPages: DentalPage[] = [
   msTreatmentsPainManagement, msTreatmentsPreventiveCare,
   msRecoveryPostProcedure, msRecoveryHealingTimeline, msRecoveryMonitoring,
   msPreventionBrushing, msPreventionCheckups, msPreventionDiet,
+  // Chinese
+  zhHub,
+  zhConditionsPlaque, zhConditionsGingivitis, zhConditionsPeriodontal, zhConditionsAbscess,
+  zhSymptomsBadBreath, zhSymptomsRedGums, zhSymptomsSwollenGums, zhSymptomsBleedingGums,
+  zhSymptomsDroppingFood, zhSymptomsPawingMouth, zhSymptomsFacialSwelling,
+  zhSeverityEarly, zhSeverityModerate, zhSeverityAdvanced,
+  zhEmergencySigns, zhWhenToSeeVet,
+  zhDiagnosisOralExam, zhDiagnosisDentalProbing, zhDiagnosisDentalXrays,
+  zhTreatmentsProfessionalCleaning, zhTreatmentsToothExtraction, zhTreatmentsAntibioticTherapy,
+  zhTreatmentsPainManagement, zhTreatmentsPreventiveCare,
+  zhRecoveryPostProcedure, zhRecoveryHealingTimeline, zhRecoveryMonitoring,
+  zhPreventionBrushing, zhPreventionCheckups, zhPreventionDiet,
 ];
 
 // Lookup by slug and language (falls back to English)
