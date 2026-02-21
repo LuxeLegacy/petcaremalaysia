@@ -12,6 +12,7 @@ import { AuthorBox } from './AuthorBox';
 import { RelatedQuestions } from './RelatedQuestions';
 import { useLanguage } from '@/contexts/LanguageContext';
 import type { PAAArticle } from '@/lib/paaTypes';
+import { ArrowRight } from 'lucide-react';
 import {
   Breadcrumb,
   BreadcrumbList,
@@ -201,6 +202,29 @@ export const PAAArticlePage = ({ article }: PAAArticlePageProps) => {
           <div id="citations">
             <CitationsSection citations={article.citations} />
           </div>
+
+          {/* Cross-link to Dog Dental Hub for dental-related articles */}
+          {article.slug.includes('dental') && (
+            <section className="my-8 bg-muted/50 rounded-xl p-6 border border-border">
+              <h2 className="text-lg font-bold mb-2 flex items-center gap-2">
+                🦷 {language === 'zh' ? '狗牙科疾病完整指南' : language === 'ms' ? 'Panduan Lengkap Penyakit Gigi Anjing' : 'Complete Dog Dental Disease Guide'}
+              </h2>
+              <p className="text-sm text-muted-foreground mb-3">
+                {language === 'zh'
+                  ? '深入了解狗牙科疾病的症状、严重程度、诊断、治疗和预防。'
+                  : language === 'ms'
+                  ? 'Ketahui lebih lanjut tentang simptom, keterukan, diagnosis, rawatan dan pencegahan penyakit gigi anjing.'
+                  : 'Explore symptoms, severity stages, diagnosis, treatments, and prevention of canine dental disease.'}
+              </p>
+              <Link
+                to={`${langPrefix}/dog-dental-disease`}
+                className="inline-flex items-center gap-2 text-primary font-medium hover:underline"
+              >
+                {language === 'zh' ? '浏览狗牙科疾病中心' : language === 'ms' ? 'Layari Hab Pergigian Anjing' : 'Browse Dog Dental Disease Hub'}
+                <ArrowRight className="h-4 w-4" />
+              </Link>
+            </section>
+          )}
 
           {/* Author */}
           <AuthorBox author={article.author} />

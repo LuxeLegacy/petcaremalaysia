@@ -62,7 +62,8 @@ At-home preventive care (brushing your pet's teeth 3–5 times per week) is the 
   relatedQuestions: [
     { question: 'How often should I get my pet\'s teeth cleaned?', briefAnswer: 'Annually for most pets. With daily brushing, every 2–3 years may suffice. Your vet will recommend a schedule based on your pet\'s specific needs.', slug: 'how-much-does-pet-dental-care-cost-malaysia' },
     { question: 'Is dental cleaning safe for older pets?', briefAnswer: 'Pre-anesthetic blood work reduces risks. Most healthy older pets tolerate dental procedures well. Your vet will assess suitability.', slug: 'how-much-does-pet-dental-care-cost-malaysia' },
-    { question: 'What are signs my pet needs dental care?', briefAnswer: 'Bad breath, yellow/brown teeth, drooling, pawing at the mouth, or reluctance to eat are all signs of dental problems.', slug: 'how-much-does-vet-visit-cost-malaysia' },
+    { question: 'What are signs my pet needs dental care?', briefAnswer: 'Bad breath, yellow/brown teeth, drooling, pawing at the mouth, or reluctance to eat are all signs of dental problems. See our complete Dog Dental Disease Guide for detailed symptom information.', slug: 'how-much-does-vet-visit-cost-malaysia' },
+    { question: 'What is periodontal disease in dogs?', briefAnswer: 'Periodontal disease is a progressive infection of the gums and supporting structures. Over 80% of dogs over age 3 are affected. Learn about stages, diagnosis, and treatment in our Dog Dental Disease Hub.', slug: 'how-much-does-pet-dental-care-cost-malaysia' },
   ],
   citations: [
     { source: 'Malaysian Veterinary Association', title: 'Veterinary Dental Care Guidelines', publication: 'MSAVA.org', year: '2024', url: 'https://msava.org' },

@@ -231,7 +231,7 @@ const blogPosts = [
   },
 ];
 
-const categories = ['All', 'Emergency', 'Nutrition', 'Insurance', 'Health', 'Grooming'];
+const categories = ['All', 'Emergency', 'Nutrition', 'Insurance', 'Health', 'Grooming', 'Dental'];
 
 const BlogPage = () => {
   const { t, language } = useLanguage();
@@ -341,6 +341,32 @@ const BlogPage = () => {
                 </Button>
               ))}
             </div>
+          </div>
+        </section>
+
+        {/* Dog Dental Disease Hub Promo */}
+        <section className="py-8 border-b border-border">
+          <div className="container">
+            <Link to="/dog-dental-disease" className="block group">
+              <div className="bg-muted/50 rounded-xl p-6 border border-border hover:border-primary/50 transition-colors">
+                <div className="flex items-center gap-3 mb-2">
+                  <span className="text-2xl">🦷</span>
+                  <h2 className="text-lg font-bold group-hover:text-primary transition-colors">
+                    {language === 'zh' ? '狗牙科疾病完整指南' : language === 'ms' ? 'Panduan Lengkap Penyakit Gigi Anjing' : 'Dog Dental Disease: Complete Authority Guide'}
+                  </h2>
+                </div>
+                <p className="text-sm text-muted-foreground">
+                  {language === 'zh'
+                    ? '30+页专业指南：症状识别、严重程度评估、诊断方法、治疗方案和预防策略。'
+                    : language === 'ms'
+                    ? '30+ halaman panduan pakar: simptom, keterukan, diagnosis, rawatan dan pencegahan penyakit gigi anjing.'
+                    : '30+ expert pages covering symptoms, severity stages, diagnosis, treatments, recovery, and prevention.'}
+                </p>
+                <span className="inline-flex items-center gap-1 text-sm font-medium text-primary mt-2">
+                  {language === 'zh' ? '浏览指南' : language === 'ms' ? 'Layari Panduan' : 'Explore the Guide'} <ChevronRight className="h-4 w-4" />
+                </span>
+              </div>
+            </Link>
           </div>
         </section>
 

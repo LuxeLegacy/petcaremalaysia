@@ -27,7 +27,10 @@ export const msPetDentalCareArticle: PAAArticle = {
     { option: 'Penskalaan + Pencabutan', costRange: 'RM500–1,000', timeRequired: 'Separuh-sehari penuh', bestFor: 'Penyakit sederhana', prosCons: 'Menyelesaikan kesakitan / Kos lebih tinggi' },
     { option: 'Pembedahan Pergigian Pakar', costRange: 'RM800–2,000', timeRequired: 'Sehari penuh', bestFor: 'Kes lanjutan', prosCons: 'Hasil terbaik / Paling mahal' },
   ],
-  relatedQuestions: [{ question: 'Berapa kerap saya perlu membersihkan gigi haiwan saya?', briefAnswer: 'Tahunan untuk kebanyakan haiwan. Dengan memberus harian, setiap 2–3 tahun mungkin mencukupi.', slug: 'berapakah-kos-penjagaan-gigi-haiwan-malaysia' }],
+  relatedQuestions: [
+    { question: 'Berapa kerap saya perlu membersihkan gigi haiwan saya?', briefAnswer: 'Tahunan untuk kebanyakan haiwan. Dengan memberus harian, setiap 2–3 tahun mungkin mencukupi.', slug: 'berapakah-kos-penjagaan-gigi-haiwan-malaysia' },
+    { question: 'Apakah penyakit periodontal pada anjing?', briefAnswer: 'Penyakit periodontal adalah jangkitan progresif pada gusi dan struktur sokongan. Lebih 80% anjing berusia lebih 3 tahun terjejas. Ketahui lebih lanjut di Hab Penyakit Gigi Anjing kami.', slug: 'berapakah-kos-penjagaan-gigi-haiwan-malaysia' },
+  ],
   citations: [{ source: 'Persatuan Veterinar Malaysia', title: 'Garis Panduan Penjagaan Pergigian Veterinar', publication: 'MSAVA.org', year: '2024', url: 'https://msava.org' }],
   author: { name: 'Dr. Sarah Lee', credentials: 'DVM, Berlesen Majlis Veterinar Malaysia', bio: 'Pakar veterinar dengan 12 tahun pengalaman klinikal di Malaysia.' },
   seo: { metaDescription: 'Pembersihan gigi haiwan di Malaysia menelan kos RM300–RM600. Ketahui tentang kos penskalaan, pencabutan, dan cara mengekalkan kesihatan pergigian haiwan anda di rumah.', keywords: ['penjagaan gigi haiwan malaysia', 'kos bersih gigi anjing malaysia', 'penskalaan gigi kucing malaysia'] },

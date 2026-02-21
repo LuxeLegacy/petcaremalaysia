@@ -60,6 +60,7 @@ export const zhPetDentalCareArticle: PAAArticle = {
   relatedQuestions: [
     { question: '宠物牙科护理多久做一次？', briefAnswer: '每年检查一次，洁牙频率取决于宠物——定期刷牙的宠物可能每2–3年需要一次专业洁牙。', slug: 'ma-lai-xi-ya-chong-wu-ya-chi-bao-jian-fei-yong' },
     { question: '口臭意味着什么？', briefAnswer: '口臭通常表示牙周病、牙垢积累或更严重的健康问题。应立即咨询兽医。', slug: 'ma-lai-xi-ya-chong-wu-ya-chi-bao-jian-fei-yong' },
+    { question: '什么是狗的牙周病？', briefAnswer: '牙周病是牙龈和支撑结构的进行性感染。超过80%的3岁以上狗受到影响。请浏览我们的狗牙科疾病中心了解详情。', slug: 'ma-lai-xi-ya-chong-wu-ya-chi-bao-jian-fei-yong' },
   ],
   citations: [
     { source: '马来西亚兽医协会', title: '宠物牙科护理指南', publication: 'MSAVA.org', year: '2024', url: 'https://msava.org' },
