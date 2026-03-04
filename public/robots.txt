@@ -15,6 +15,8 @@ Allow: /
 
 # Sitemaps
 Sitemap: https://petcaremalaysia.com/sitemap.xml
+Sitemap: https://petcaremalaysia.com/sitemap-ms.xml
+Sitemap: https://petcaremalaysia.com/sitemap-zh.xml
 
 # Crawl-delay for polite crawling
 Crawl-delay: 1

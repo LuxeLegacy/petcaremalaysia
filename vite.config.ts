@@ -27,6 +27,18 @@ export default defineConfig(({ mode }) => ({
         secure: true,
         rewrite: () => "/functions/v1/sitemap?lang=zh",
       },
+      "/sitemap-ms.xml": {
+        target: "https://xdincsheohvgxewpfwlg.supabase.co",
+        changeOrigin: true,
+        secure: true,
+        rewrite: () => "/functions/v1/sitemap?lang=ms",
+      },
+      "/sitemap-zh.xml": {
+        target: "https://xdincsheohvgxewpfwlg.supabase.co",
+        changeOrigin: true,
+        secure: true,
+        rewrite: () => "/functions/v1/sitemap?lang=zh",
+      },
     },
   },
   plugins: [react(), mode === "development" && componentTagger()].filter(Boolean),
