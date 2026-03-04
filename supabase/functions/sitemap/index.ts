@@ -323,31 +323,77 @@ function generateEnglishOnlyUrl(path: string, priority: number, changefreq: stri
   </url>`;
 }
 
-function generateSitemap(): string {
+// Generate a single <url> block for one language variant with full hreflang cross-links
+function generateLanguageSpecificUrl(path: string, priority: number, changefreq: string, lang: 'ms' | 'zh'): string {
+  const enUrl = path === '/' ? `${BASE_URL}/` : `${BASE_URL}${path}`;
+  const msUrl = path === '/' ? `${BASE_URL}/ms` : `${BASE_URL}/ms${path}`;
+  const zhUrl = path === '/' ? `${BASE_URL}/zh` : `${BASE_URL}/zh${path}`;
+  const locUrl = lang === 'ms' ? msUrl : zhUrl;
+
+  return `
+  <url>
+    <loc>${locUrl}</loc>
+    <lastmod>${LASTMOD}</lastmod>
+    <changefreq>${changefreq}</changefreq>
+    <priority>${priority}</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="${enUrl}"/>
+    <xhtml:link rel="alternate" hreflang="ms" href="${msUrl}"/>
+    <xhtml:link rel="alternate" hreflang="zh" href="${zhUrl}"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="${enUrl}"/>
+  </url>`;
+}
+
+// Generate a single PAA <url> block for one language variant
+function generatePAALanguageSpecificUrl(group: { en: string; ms: string; zh: string }, lang: 'ms' | 'zh'): string {
+  const enUrl = `${BASE_URL}/qa/article/${group.en}`;
+  const msUrl = `${BASE_URL}/ms/qa/article/${group.ms}`;
+  const zhUrl = `${BASE_URL}/zh/qa/article/${group.zh}`;
+  const locUrl = lang === 'ms' ? msUrl : zhUrl;
+
+  return `
+  <url>
+    <loc>${locUrl}</loc>
+    <lastmod>${LASTMOD}</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="${enUrl}"/>
+    <xhtml:link rel="alternate" hreflang="ms" href="${msUrl}"/>
+    <xhtml:link rel="alternate" hreflang="zh" href="${zhUrl}"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="${enUrl}"/>
+  </url>`;
+}
+
+function generateSitemap(lang?: 'ms' | 'zh'): string {
   let urls = '';
-  
-  // Main pages (multilingual)
-  mainPages.forEach(page => {
-    urls += generateMultilingualUrl(page.path, page.priority, page.changefreq);
-  });
-  
-  // Blog articles (multilingual)
-  blogSlugs.forEach(slug => {
-    urls += generateMultilingualUrl(`/blog/${slug}`, 0.7, 'monthly');
-  });
-  
-  // Q&A state pages (multilingual)
-  qaStates.forEach(state => {
-    urls += generateMultilingualUrl(`/qa/${state}`, 0.7, 'weekly');
-  });
-  
-  // PAA article pages (each topic has language-specific slugs with hreflang cross-links)
+
+  // Helper: use language-specific or full multilingual generator
+  const addUrl = (path: string, priority: number, changefreq: string) => {
+    if (lang) {
+      urls += generateLanguageSpecificUrl(path, priority, changefreq, lang);
+    } else {
+      urls += generateMultilingualUrl(path, priority, changefreq);
+    }
+  };
+
+  // Main pages
+  mainPages.forEach(page => addUrl(page.path, page.priority, page.changefreq));
+
+  // Blog articles
+  blogSlugs.forEach(slug => addUrl(`/blog/${slug}`, 0.7, 'monthly'));
+
+  // Q&A state pages
+  qaStates.forEach(state => addUrl(`/qa/${state}`, 0.7, 'weekly'));
+
+  // PAA article pages
   paaArticleGroups.forEach(group => {
-    const enUrl = `${BASE_URL}/qa/article/${group.en}`;
-    const msUrl = `${BASE_URL}/ms/qa/article/${group.ms}`;
-    const zhUrl = `${BASE_URL}/zh/qa/article/${group.zh}`;
-    
-    urls += `
+    if (lang) {
+      urls += generatePAALanguageSpecificUrl(group, lang);
+    } else {
+      const enUrl = `${BASE_URL}/qa/article/${group.en}`;
+      const msUrl = `${BASE_URL}/ms/qa/article/${group.ms}`;
+      const zhUrl = `${BASE_URL}/zh/qa/article/${group.zh}`;
+      
+      urls += `
   <url>
     <loc>${enUrl}</loc>
     <lastmod>${LASTMOD}</lastmod>
@@ -378,22 +424,22 @@ function generateSitemap(): string {
     <xhtml:link rel="alternate" hreflang="zh" href="${zhUrl}"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="${enUrl}"/>
   </url>`;
+    }
   });
-  
-  // City pages (multilingual)
+
+  // City pages
   Object.entries(cityData).forEach(([state, data]) => {
     data.cities.forEach(city => {
       const priority = city.isHub ? 0.9 : 0.7;
-      urls += generateMultilingualUrl(`/${state}/${city.slug}`, priority, 'weekly');
+      addUrl(`/${state}/${city.slug}`, priority, 'weekly');
     });
   });
-  
-  // Dog Dental Disease hub and sub-pages
-  urls += generateMultilingualUrl('/dog-dental-disease', 0.9, 'weekly');
-  const dentalSubs = ['conditions/plaque-buildup','conditions/gingivitis','conditions/periodontal-disease','conditions/tooth-root-abscess','symptoms/bad-breath','symptoms/red-gums','symptoms/swollen-gums','symptoms/bleeding-gums','symptoms/dropping-food','symptoms/pawing-at-mouth','symptoms/facial-swelling','severity/early','severity/moderate','severity/advanced','emergency-signs','when-to-see-a-vet','diagnosis/oral-exam','diagnosis/dental-probing','diagnosis/dental-x-rays','treatments/professional-cleaning','treatments/tooth-extraction','treatments/antibiotic-therapy','treatments/pain-management','treatments/preventive-dental-care','recovery/post-dental-procedure','recovery/oral-healing-timeline','recovery/monitoring-for-complications','prevention/brushing','prevention/dental-checkups','prevention/diet-and-chewing-behavior'];
-  dentalSubs.forEach(sub => { urls += generateMultilingualUrl('/dog-dental-disease/' + sub, 0.7, 'monthly'); });
 
-  
+  // Dog Dental Disease hub and sub-pages
+  addUrl('/dog-dental-disease', 0.9, 'weekly');
+  const dentalSubs = ['conditions/plaque-buildup','conditions/gingivitis','conditions/periodontal-disease','conditions/tooth-root-abscess','symptoms/bad-breath','symptoms/red-gums','symptoms/swollen-gums','symptoms/bleeding-gums','symptoms/dropping-food','symptoms/pawing-at-mouth','symptoms/facial-swelling','severity/early','severity/moderate','severity/advanced','emergency-signs','when-to-see-a-vet','diagnosis/oral-exam','diagnosis/dental-probing','diagnosis/dental-x-rays','treatments/professional-cleaning','treatments/tooth-extraction','treatments/antibiotic-therapy','treatments/pain-management','treatments/preventive-dental-care','recovery/post-dental-procedure','recovery/oral-healing-timeline','recovery/monitoring-for-complications','prevention/brushing','prevention/dental-checkups','prevention/diet-and-chewing-behavior'];
+  dentalSubs.forEach(sub => addUrl('/dog-dental-disease/' + sub, 0.7, 'monthly'));
+
   return `<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
         xmlns:xhtml="http://www.w3.org/1999/xhtml">
@@ -408,7 +454,10 @@ serve(async (req) => {
   }
 
   try {
-    const sitemap = generateSitemap();
+    const url = new URL(req.url);
+    const langParam = url.searchParams.get('lang');
+    const lang = (langParam === 'ms' || langParam === 'zh') ? langParam : undefined;
+    const sitemap = generateSitemap(lang);
     
     return new Response(sitemap, {
       headers: {

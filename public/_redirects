@@ -1,6 +1,8 @@
 # Serve static files directly
 /robots.txt      /robots.txt     200
 /sitemap.xml     https://xdincsheohvgxewpfwlg.supabase.co/functions/v1/sitemap    200
+/ms/sitemap.xml  https://xdincsheohvgxewpfwlg.supabase.co/functions/v1/sitemap?lang=ms  200
+/zh/sitemap.xml  https://xdincsheohvgxewpfwlg.supabase.co/functions/v1/sitemap?lang=zh  200
 /favicon.ico     /favicon.ico    200
 /google*.html    /google:splat.html   200
 
