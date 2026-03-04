@@ -8,38 +8,6 @@ export default defineConfig(({ mode }) => ({
   server: {
     host: "::",
     port: 8080,
-    proxy: {
-      "/sitemap.xml": {
-        target: "https://xdincsheohvgxewpfwlg.supabase.co",
-        changeOrigin: true,
-        secure: true,
-        rewrite: () => "/functions/v1/sitemap",
-      },
-      "/ms/sitemap.xml": {
-        target: "https://xdincsheohvgxewpfwlg.supabase.co",
-        changeOrigin: true,
-        secure: true,
-        rewrite: () => "/functions/v1/sitemap?lang=ms",
-      },
-      "/zh/sitemap.xml": {
-        target: "https://xdincsheohvgxewpfwlg.supabase.co",
-        changeOrigin: true,
-        secure: true,
-        rewrite: () => "/functions/v1/sitemap?lang=zh",
-      },
-      "/sitemap-ms.xml": {
-        target: "https://xdincsheohvgxewpfwlg.supabase.co",
-        changeOrigin: true,
-        secure: true,
-        rewrite: () => "/functions/v1/sitemap?lang=ms",
-      },
-      "/sitemap-zh.xml": {
-        target: "https://xdincsheohvgxewpfwlg.supabase.co",
-        changeOrigin: true,
-        secure: true,
-        rewrite: () => "/functions/v1/sitemap?lang=zh",
-      },
-    },
   },
   plugins: [react(), mode === "development" && componentTagger()].filter(Boolean),
   resolve: {
