@@ -1,29 +1,28 @@
 
 
-## Plan: Generate Language-Specific Sitemaps
+## Problem
 
-### What needs to happen
+The `_redirects` rules for `/ms/sitemap.xml` and `/zh/sitemap.xml` are being overridden by the SPA catch-all `/* /index.html 200`. The root-level `/sitemap.xml` works because it matches before the catch-all, but the nested `/ms/` paths do not.
 
-Currently `/sitemap.xml` serves one combined sitemap with all 3 languages. We need `/ms/sitemap.xml` and `/zh/sitemap.xml` to serve sitemaps containing only Malay or Chinese URLs respectively.
+## Fix
 
-### Changes
+Move the language-specific sitemaps to root-level paths that reliably match before the catch-all:
 
-**1. Edge function: `supabase/functions/sitemap/index.ts`**
-- Parse a `lang` query parameter from the request URL
-- When `lang=ms`: generate sitemap with only `/ms/...` URLs (still include hreflang cross-links to en/zh)
-- When `lang=zh`: generate sitemap with only `/zh/...` URLs (still include hreflang cross-links)
-- When no lang param (default): keep current behavior (all URLs)
-- Add a new helper `generateLanguageSpecificUrl()` that outputs a single `<url>` block for only the requested language variant, but retains all hreflang alternate links
+**1. `public/_redirects`** -- Replace nested paths with root-level ones:
+```
+/sitemap-ms.xml  https://xdincsheohvgxewpfwlg.supabase.co/functions/v1/sitemap?lang=ms  200
+/sitemap-zh.xml  https://xdincsheohvgxewpfwlg.supabase.co/functions/v1/sitemap?lang=zh  200
+```
+Keep the existing `/ms/sitemap.xml` rules as well (in case the platform starts supporting them), but add these as primary paths.
 
-**2. Redirects: `public/_redirects`**
-- Add two new redirect rules before the SPA catch-all:
-  ```
-  /ms/sitemap.xml  https://xdincsheohvgxewpfwlg.supabase.co/functions/v1/sitemap?lang=ms  200
-  /zh/sitemap.xml  https://xdincsheohvgxewpfwlg.supabase.co/functions/v1/sitemap?lang=zh  200
-  ```
+**2. `vite.config.ts`** -- Add matching dev proxy entries for `/sitemap-ms.xml` and `/sitemap-zh.xml`.
 
-**3. Vite proxy: `vite.config.ts`**
-- Add dev proxy entries for `/ms/sitemap.xml` and `/zh/sitemap.xml` pointing to the edge function with the lang query param
+**3. `public/robots.txt`** -- Add sitemap declarations pointing to the new working URLs:
+```
+Sitemap: https://petcaremalaysia.com/sitemap.xml
+Sitemap: https://petcaremalaysia.com/sitemap-ms.xml
+Sitemap: https://petcaremalaysia.com/sitemap-zh.xml
+```
 
-No database changes needed. The edge function will be auto-deployed.
+No edge function changes needed -- the existing `?lang=ms` and `?lang=zh` parameters already work.
 
