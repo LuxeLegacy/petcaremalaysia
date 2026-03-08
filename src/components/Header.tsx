@@ -1,4 +1,5 @@
 import { Link, useLocation, useNavigate } from 'react-router-dom';
+import logo from '@/assets/logo.png';
 import { useLanguage } from '@/contexts/LanguageContext';
 import { Button } from '@/components/ui/button';
 import { 
@@ -56,12 +57,7 @@ export const Header = () => {
       <div className="container flex h-16 items-center justify-between">
         {/* Logo */}
         <Link to="/" className="flex items-center gap-2">
-          <div className="flex h-9 w-9 items-center justify-center rounded-xl bg-primary">
-            <span className="text-lg font-bold text-primary-foreground">🐾</span>
-          </div>
-          <span className="text-xl font-bold text-foreground">
-            PetCare<span className="text-primary">MY</span>
-          </span>
+          <img src={logo} alt="PetCare Malaysia" className="h-10 w-auto" />
         </Link>
 
         {/* Desktop Navigation */}

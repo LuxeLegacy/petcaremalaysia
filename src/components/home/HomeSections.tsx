@@ -213,9 +213,9 @@ export const EmergencyBanner = () => {
             </div>
           </div>
           <Button size="lg" className="bg-destructive-foreground text-destructive hover:bg-destructive-foreground/90 font-semibold" asChild>
-            <a href="tel:+60123456789">
+            <a href="https://wa.me/601156959227" target="_blank" rel="noopener noreferrer">
               <Phone className="h-4 w-4 mr-2" />
-              +60 12-345 6789
+              WhatsApp: +60 11-5695 9227
             </a>
           </Button>
         </div>

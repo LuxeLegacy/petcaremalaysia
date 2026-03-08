@@ -1,30 +1,39 @@
 
 
-## Changes
+## Problem
 
-### 1. Add logo image to Header and Footer
-- Copy uploaded image to `src/assets/logo.png`
-- **Header**: Replace the emoji+text logo with an `<img>` tag using the uploaded logo, sized ~40px height
-- **Footer**: Same replacement
+Two issues:
 
-### 2. Set as favicon
-- Copy uploaded image to `public/favicon.png` (overwrite existing)
-- `index.html` already references `/favicon.png?v=2`, so bump to `?v=3` to bust cache
+1. **`_redirects` proxy rules to external URLs are ignored.** The hosting platform serves the SPA catch-all for `/sitemap-ms.xml` and `/sitemap-zh.xml` because there are no physical files at those paths. The main `/sitemap.xml` works only because `public/sitemap.xml` exists as a static file.
 
-### 3. Hero section Malaysia flag colors
-Malaysia flag: dark blue (`#010066`), red (`#CC0001`), yellow (`#FC0`), white. Current hero gradient is green (`hsl(145 45% 35%)` to `hsl(160 40% 40%)`).
+2. **Edge function not serving filtered content.** Even if the proxy worked, the deployed edge function still returns all 3 languages for `?lang=ms`. The updated code may not have been deployed.
 
-- Change `--gradient-hero` in light mode to a blue-to-red gradient inspired by Malaysia flag: `linear-gradient(135deg, hsl(220 80% 25%) 0%, hsl(0 85% 40%) 100%)`
-- Dark mode: `linear-gradient(135deg, hsl(220 80% 15%) 0%, hsl(0 80% 30%) 100%)`
-- Add a yellow/gold accent to the hero trust badge or CTA area via Tailwind classes
+## Fix
 
-### 4. Replace phone number with WhatsApp
-Replace all instances of `+60 12-345 6789` / `tel:+60123456789` with WhatsApp link to `+60 11-5695 9227`:
-- **Footer** (line 109-114): Change `href="tel:..."` to `href="https://wa.me/60115695927"`, update display text
-- **HomeSections.tsx EmergencyBanner** (line 216-219): Same change
-- **CityPageContent.tsx** (line 60): Update display number
-- **CitySchemaMarkup.tsx** (lines 50, 92): Update telephone fields
-- **translations.ts** placeholders (lines 779, 1244, 1709): Keep as placeholder format, no change needed (these are form placeholders, not the actual contact number)
+Generate static `public/sitemap-ms.xml` and `public/sitemap-zh.xml` files, mirroring how `public/sitemap.xml` already works. The sitemap content is deterministic (hardcoded URLs and dates), so static files are the correct approach.
 
-**Files to modify**: `src/assets/logo.png` (new), `public/favicon.png` (overwrite), `index.html`, `src/index.css`, `src/components/Header.tsx`, `src/components/Footer.tsx`, `src/components/home/HomeSections.tsx`, `src/components/city/CityPageContent.tsx`, `src/components/city/CitySchemaMarkup.tsx`
+### Steps
+
+**1. Redeploy the edge function** to ensure the `lang` parameter filtering works correctly. Then call it with `?lang=ms` and `?lang=zh` to verify correct filtered output.
+
+**2. Create `public/sitemap-ms.xml`** -- A static XML file containing only Malay (`/ms/...`) URLs with full hreflang cross-links. Generated from the edge function output once it's working, or built directly from the same URL list used in the edge function.
+
+**3. Create `public/sitemap-zh.xml`** -- Same approach for Chinese (`/zh/...`) URLs.
+
+**4. Clean up `_redirects`** -- Remove the non-functional proxy rules for sitemap files since we're using static files instead. Keep only:
+```
+/robots.txt      /robots.txt     200
+/favicon.ico     /favicon.ico    200
+/google*.html    /google:splat.html   200
+/*    /index.html   200
+```
+
+**5. Clean up `vite.config.ts`** -- Remove all sitemap proxy entries since they're no longer needed.
+
+### Technical Detail
+
+Each language sitemap will contain ~168 `<url>` entries (one per page), each with the language-specific `<loc>` and full trilingual `<xhtml:link>` hreflang annotations. The structure mirrors the existing `public/sitemap.xml` but filtered to one language's URLs only.
+
+**Files to modify:** `public/sitemap-ms.xml` (new), `public/sitemap-zh.xml` (new), `public/_redirects`, `vite.config.ts`
+**Edge function:** redeploy `supabase/functions/sitemap/index.ts`
 

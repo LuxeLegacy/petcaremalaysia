@@ -1,4 +1,5 @@
 import { Link } from 'react-router-dom';
+import logo from '@/assets/logo.png';
 import { useLanguage } from '@/contexts/LanguageContext';
 import { hubsData } from '@/lib/cityData';
 import { MessageCircleQuestion, BookOpen } from 'lucide-react';
@@ -15,12 +16,7 @@ export const Footer = () => {
           {/* Brand */}
           <div className="space-y-4">
             <Link to="/" className="flex items-center gap-2">
-              <div className="flex h-9 w-9 items-center justify-center rounded-xl bg-primary">
-                <span className="text-lg">🐾</span>
-              </div>
-              <span className="text-xl font-bold text-foreground">
-                PetCare<span className="text-primary">MY</span>
-              </span>
+              <img src={logo} alt="PetCare Malaysia" className="h-10 w-auto" />
             </Link>
             <p className="text-sm text-muted-foreground max-w-xs">
               Malaysia's trusted resource for pet care services. Find vets, emergency care, grooming, and more near you.
@@ -107,13 +103,15 @@ export const Footer = () => {
             <div className="mt-6 space-y-3">
               <h4 className="font-medium text-sm">{t.nav.emergency}</h4>
               <a 
-                href="tel:+60123456789" 
+                href="https://wa.me/601156959227" 
+                target="_blank"
+                rel="noopener noreferrer"
                 className="flex items-center gap-2 text-destructive font-semibold hover:underline"
               >
-                📞 +60 12-345 6789
+                📱 WhatsApp: +60 11-5695 9227
               </a>
               <p className="text-xs text-muted-foreground">
-                24/7 Emergency Hotline
+                24/7 Emergency WhatsApp
               </p>
             </div>
           </div>
