@@ -276,8 +276,8 @@ export const PetEmergencyGuide = () => {
             <div key={i} className="bg-card border border-border p-6 rounded-xl">
               <h3 className="font-bold text-lg mb-2">{emergency.emoji} {emergency.title}</h3>
               <p className="text-sm text-muted-foreground mb-2">{emergency.desc}</p>
-              <p className="text-sm"><strong>{content.signsLabel || "Signs:"}</strong> {emergency.signs}</p>
-              <p className="text-sm"><strong>{content.actionLabel || "Action:"}</strong> {emergency.action}</p>
+              <p className="text-sm"><strong>Signs:</strong> {emergency.signs}</p>
+              <p className="text-sm"><strong>Action:</strong> {emergency.action}</p>
             </div>
           ))}
         </div>
