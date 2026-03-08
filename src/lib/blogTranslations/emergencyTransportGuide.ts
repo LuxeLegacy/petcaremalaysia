@@ -349,10 +349,10 @@ export const getEmergencyTransportGuideContent = (language: Language) => {
       callingTitle: "提前打电话：为什么重要",
       whatToTell: "告诉急诊兽医什么",
       callScript: [
-        { label: "1. 宠物信息：", example: ""金毛猎犬，5岁，大约30公斤"" },
-        { label: "2. 紧急情况性质：", example: ""20分钟前被摩托车撞了"" },
-        { label: "3. 当前状况：", example: ""清醒但虚弱，牙龈苍白，腿部出血"" },
-        { label: "4. 预计到达时间：", example: ""15分钟后到"" }
+        { label: "1. 宠物信息：", example: "「金毛猎犬，5岁，大约30公斤」" },
+        { label: "2. 紧急情况性质：", example: "「20分钟前被摩托车撞了」" },
+        { label: "3. 当前状况：", example: "「清醒但虚弱，牙龈苍白，腿部出血」" },
+        { label: "4. 预计到达时间：", example: "「15分钟后到」" }
       ],
       whyHelpsTitle: "为什么这有帮助：",
       whyHelpsItems: ["兽医准备治疗区域和设备", "确定是否需要专家", "可能提供到达前的指示", "到达后加快治疗（无需等待）"],
