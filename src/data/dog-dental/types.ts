@@ -24,6 +24,13 @@ export interface DentalSEO {
   keywords: string[];
 }
 
+export interface DentalCitation {
+  title: string;
+  source: string;
+  url: string;
+  year: string;
+}
+
 export interface DentalPageBase {
   slug: string;
   category: DentalCategory;
@@ -36,6 +43,15 @@ export interface DentalPageBase {
   datePublished: string;
   dateModified: string;
   relatedLinks: DentalLink[];
+  // AEO/GEO enrichment fields (optional)
+  snippetForAI?: string;
+  tldr?: string[];
+  quickFacts?: { label: string; value: string }[];
+  malaysiaContext?: string;
+  statistics?: { stat: string; source: string }[];
+  costRange?: { item: string; range: string }[];
+  citations?: DentalCitation[];
+  keyTakeaways?: string[];
 }
 
 export interface DentalHubPage extends DentalPageBase {

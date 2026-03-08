@@ -5,6 +5,7 @@ import { Footer } from '@/components/Footer';
 import { DentalBreadcrumb } from './DentalBreadcrumb';
 import { InternalLinkFunnel } from './InternalLinkFunnel';
 import { DentalSchemaMarkup } from './DentalSchemaMarkup';
+import { AEOGEOSections } from './AEOGEOSections';
 import type { DentalTreatmentPage as TreatmentType } from '@/data/dog-dental/types';
 
 interface Props { data: TreatmentType; }
@@ -26,6 +27,8 @@ export const TreatmentPage = ({ data }: Props) => {
         <div className="max-w-4xl mx-auto px-4 py-8">
           <DentalBreadcrumb category="treatments" pageTitle={data.title} />
           <h1 className="text-3xl md:text-4xl font-bold text-foreground mb-6">{data.title}</h1>
+
+          <AEOGEOSections data={data} position="top" />
 
           <section className="mb-8">
             <h2 className="text-2xl font-bold mb-3">Overview</h2>
@@ -60,6 +63,8 @@ export const TreatmentPage = ({ data }: Props) => {
           </section>
 
           <InternalLinkFunnel title="Associated Conditions" links={data.associatedConditions} />
+
+          <AEOGEOSections data={data} position="bottom" />
 
           <section className="mb-8">
             <h2 className="text-2xl font-bold mb-4">FAQ</h2>

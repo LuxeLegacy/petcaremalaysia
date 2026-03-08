@@ -3,9 +3,9 @@ import { SEOHead } from '@/components/SEOHead';
 import { Header } from '@/components/Header';
 import { Footer } from '@/components/Footer';
 import { DentalBreadcrumb } from './DentalBreadcrumb';
-import { EmergencyOverride } from './EmergencyOverride';
 import { InternalLinkFunnel } from './InternalLinkFunnel';
 import { DentalSchemaMarkup } from './DentalSchemaMarkup';
+import { AEOGEOSections } from './AEOGEOSections';
 import { AlertTriangle } from 'lucide-react';
 import type { DentalEmergencyPage as EmergencyType } from '@/data/dog-dental/types';
 
@@ -27,6 +27,8 @@ export const EmergencyPage = ({ data }: Props) => {
         <div className="max-w-4xl mx-auto px-4 py-8">
           <DentalBreadcrumb category="emergency" pageTitle={data.title} />
           <h1 className="text-3xl md:text-4xl font-bold text-foreground mb-6">{data.title}</h1>
+
+          <AEOGEOSections data={data} position="top" />
 
           <section className="mb-8">
             {data.overview.split('\n\n').map((p, i) => <p key={i} className="text-muted-foreground leading-relaxed mb-3">{p}</p>)}
@@ -61,6 +63,8 @@ export const EmergencyPage = ({ data }: Props) => {
             <h2 className="text-2xl font-bold mb-3">When to See a Vet</h2>
             <p className="text-muted-foreground">{data.whenToSeeVet}</p>
           </section>
+
+          <AEOGEOSections data={data} position="bottom" />
 
           <section className="mb-8">
             <h2 className="text-2xl font-bold mb-4">FAQ</h2>

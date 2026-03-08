@@ -7,6 +7,7 @@ import { DentalBreadcrumb } from './DentalBreadcrumb';
 import { EmergencyOverride } from './EmergencyOverride';
 import { InternalLinkFunnel } from './InternalLinkFunnel';
 import { DentalSchemaMarkup } from './DentalSchemaMarkup';
+import { AEOGEOSections } from './AEOGEOSections';
 import type { DentalHubPage as HubPageType } from '@/data/dog-dental/types';
 
 interface DentalHubPageProps {
@@ -50,6 +51,8 @@ export const DentalHubPage = ({ data }: DentalHubPageProps) => {
             </Link>
           </div>
 
+          <AEOGEOSections data={data} position="top" />
+
           {/* Overview */}
           <div className="prose prose-lg max-w-none mb-8">
             {data.overview.split('\n\n').map((p, i) => (
@@ -71,6 +74,8 @@ export const DentalHubPage = ({ data }: DentalHubPageProps) => {
               </Link>
             ))}
           </div>
+
+          <AEOGEOSections data={data} position="bottom" />
 
           {/* FAQs */}
           <section className="mb-8">
