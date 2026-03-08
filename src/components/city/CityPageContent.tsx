@@ -55,9 +55,11 @@ export const CityPageContent: React.FC<CityPageContentProps> = ({ city }) => {
               <AlertTriangle className="h-5 w-5" />
               <span className="text-sm font-medium">{t.cityPage.emergencyBanner}</span>
             </div>
-            <Button variant="destructive" size="sm" className="gap-2">
-              <Phone className="h-4 w-4" />
-              {t.cityPage.callNow}: +60 12-345 6789
+            <Button variant="destructive" size="sm" className="gap-2" asChild>
+              <a href="https://wa.me/601156959227" target="_blank" rel="noopener noreferrer">
+                <Phone className="h-4 w-4" />
+                WhatsApp: +60 11-5695 9227
+              </a>
             </Button>
           </div>
         </div>

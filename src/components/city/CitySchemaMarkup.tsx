@@ -89,7 +89,7 @@ export const CitySchemaMarkup = ({ city, faqs }: CitySchemaMarkupProps) => {
     "name": `Veterinary Services in ${city.name}`,
     "description": `24/7 emergency veterinary care and regular vet services in ${city.name}. Emergency consultations from RM${metadata.avgEmergencyVetCost.min}, regular check-ups from RM${metadata.avgConsultationCost.min}.`,
     "url": `https://petcaremalaysia.com/${city.stateSlug}/${city.slug}`,
-    "telephone": "+60 12-345 6789",
+    "telephone": "+60 11-5695 9227",
     "address": {
       "@type": "PostalAddress",
       "addressLocality": city.name,

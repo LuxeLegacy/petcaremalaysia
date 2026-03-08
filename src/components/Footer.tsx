@@ -102,13 +102,15 @@ export const Footer = () => {
             <div className="mt-6 space-y-3">
               <h4 className="font-medium text-sm">{t.nav.emergency}</h4>
               <a 
-                href="tel:+60123456789" 
+                href="https://wa.me/601156959227" 
+                target="_blank"
+                rel="noopener noreferrer"
                 className="flex items-center gap-2 text-destructive font-semibold hover:underline"
               >
-                📞 +60 12-345 6789
+                📱 WhatsApp: +60 11-5695 9227
               </a>
               <p className="text-xs text-muted-foreground">
-                24/7 Emergency Hotline
+                24/7 Emergency WhatsApp
               </p>
             </div>
           </div>
