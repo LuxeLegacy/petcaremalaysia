@@ -6,7 +6,7 @@ const corsHeaders = {
 };
 
 const BASE_URL = 'https://petcaremalaysia.com';
-const LASTMOD = '2026-02-20';
+const LASTMOD = '2026-03-08';
 
 // Main pages
 const mainPages = [
