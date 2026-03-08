@@ -233,7 +233,7 @@ export const getVetDirectoryGuideContent = (language: Language) => {
         { title: "基础设施有限", desc: "只有主要城市地区（巴生谷、槟城、JB）拥有真正的24/7设施。" },
         { title: "运营成本高", desc: "24/7运营需要多个班次——许多诊所无法承受的成本。" },
         { title: "人员短缺", desc: "大约每15,000只宠物1名兽医，理想比例为每5,000只1名。" },
-        { title: "列表不明确", desc: "许多广告宣传"紧急服务"但只提供有限的时间。" },
+        { title: "列表不明确", desc: "许多广告宣传「紧急服务」但只提供有限的时间。" },
       ],
       verifiedNote: "✓ 本目录仅列出经验证的24小时设施，已确认具有全天候紧急护理能力。",
       klangValleyTitle: "巴生谷（吉隆坡和雪兰莪）- 24小时紧急兽医",
