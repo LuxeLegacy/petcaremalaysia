@@ -2,6 +2,7 @@ import { Link } from 'react-router-dom';
 import { useLanguage } from '@/contexts/LanguageContext';
 import { Calendar, Clock, ChevronRight, BookOpen } from 'lucide-react';
 import { Button } from '@/components/ui/button';
+import { getBlogListingTranslations } from '@/lib/blogTranslations/blogListingTranslations';
 
 const blogPosts = [
   {
@@ -37,16 +38,9 @@ const blogPosts = [
 ];
 
 export const BlogSection = () => {
-  const { t } = useLanguage();
+  const { t, language } = useLanguage();
 
-  const blogTranslations: Record<string, string> = {
-    post1Title: t.blog?.post1Title || 'What to Do in a Pet Emergency: A Complete Guide',
-    post1Excerpt: t.blog?.post1Excerpt || 'Learn the critical steps to take when your pet faces a medical emergency. Every second counts.',
-    post2Title: t.blog?.post2Title || 'Best Pet Food Brands Available in Malaysia',
-    post2Excerpt: t.blog?.post2Excerpt || 'A comprehensive guide to choosing the right nutrition for your dog or cat in Malaysia.',
-    post3Title: t.blog?.post3Title || 'Pet Insurance in Malaysia: Oyen vs MSIG Compared',
-    post3Excerpt: t.blog?.post3Excerpt || 'We break down the costs, coverage, and benefits of the top pet insurance providers.',
-  };
+  const blogTranslations = getBlogListingTranslations(language);
 
   return (
     <section className="py-20 bg-secondary/30" id="blog">

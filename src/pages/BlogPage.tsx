@@ -6,6 +6,7 @@ import { Button } from '@/components/ui/button';
 import { Header } from '@/components/Header';
 import { Footer } from '@/components/Footer';
 import { SEOHead } from '@/components/SEOHead';
+import { getBlogListingTranslations } from '@/lib/blogTranslations/blogListingTranslations';
 
 const blogPosts = [
   {
@@ -237,57 +238,7 @@ const BlogPage = () => {
   const { t, language } = useLanguage();
   const [selectedCategory, setSelectedCategory] = useState('All');
 
-  const blogTranslations: Record<string, string> = {
-    post1Title: t.blog?.post1Title || 'What to Do in a Pet Emergency: A Complete Guide',
-    post1Excerpt: t.blog?.post1Excerpt || 'Learn the critical steps to take when your pet faces a medical emergency. Every second counts.',
-    post2Title: t.blog?.post2Title || 'Best Pet Food Brands Available in Malaysia',
-    post2Excerpt: t.blog?.post2Excerpt || 'A comprehensive guide to choosing the right nutrition for your dog or cat in Malaysia.',
-    post3Title: t.blog?.post3Title || 'Pet Insurance in Malaysia: Oyen vs MSIG vs Etiqa Compared',
-    post3Excerpt: t.blog?.post3Excerpt || 'Compare Malaysia\'s top pet insurance providers: coverage, costs, claims process.',
-    post4Title: t.blog?.post4Title || 'Common Pet Illnesses in Malaysia and How to Prevent Them',
-    post4Excerpt: t.blog?.post4Excerpt || 'Learn about tick fever, parvovirus, skin infections in Malaysia\'s tropical climate.',
-    post5Title: t.blog?.post5Title || 'Essential Pet Grooming Tips for Malaysian Pet Owners',
-    post5Excerpt: t.blog?.post5Excerpt || 'Bathing, brushing, nail care in hot humid climate. Professional vs home grooming.',
-    post6Title: t.blog?.post6Title || 'Complete Vaccination Schedule for Dogs and Cats',
-    post6Excerpt: t.blog?.post6Excerpt || 'Core vaccines, boosters, costs RM 50-200. Protect your pet from deadly diseases.',
-    // Pillar page
-    postPillarTitle: 'Complete Guide to Pet Emergency Treatment in Malaysia (2025)',
-    postPillarExcerpt: 'Comprehensive guide: 24-hour vets, emergency symptoms, first aid, treatment costs, and insurance coverage. Everything you need to know.',
-    // Cluster articles
-    postSymptomsTitle: 'Pet Emergency Symptoms Every Malaysian Owner Must Know (2025)',
-    postSymptomsExcerpt: 'Learn the 9 critical pet emergency symptoms that require immediate vet attention. Know when to rush to 24-hour care.',
-    postDirectoryTitle: '24-Hour Veterinary Hospital Directory Malaysia 2025',
-    postDirectoryExcerpt: 'Complete verified directory of 24/7 emergency vet hospitals in KL, Selangor, Penang, JB with contacts and costs.',
-    postFirstAidTitle: 'Pet Emergency First Aid Guide for Malaysian Pet Owners',
-    postFirstAidExcerpt: 'Learn life-saving pet first aid: CPR, bleeding control, poisoning response, heatstroke treatment. Step-by-step guide.',
-    postCostsTitle: 'Pet Emergency Treatment Costs in Malaysia: Complete Price Guide 2025',
-    postCostsExcerpt: 'Detailed breakdown of emergency vet costs. Consultation fees, surgery prices, hospitalization, payment options.',
-    postPoisonsTitle: 'Common Pet Poisons in Malaysia: Prevention and Emergency Response',
-    postPoisonsExcerpt: 'Complete guide to toxic substances dangerous to Malaysian pets. Rat poison, toxic plants, foods, and emergency treatment.',
-    // Dog & Cat Emergency Guides
-    postDogEmergencyTitle: 'Complete Dog Emergency Guide Malaysia: What Every Owner Must Know',
-    postDogEmergencyExcerpt: 'Essential dog emergency guide. Recognize heatstroke, bloat, poisoning, and trauma. Find 24/7 vets, learn first aid.',
-    postCatEmergencyTitle: 'Complete Cat Emergency Guide Malaysia: Critical Care for Cat Owners',
-    postCatEmergencyExcerpt: 'Essential cat emergency guide. Recognize urinary blockage, poisoning, breathing issues. Find 24/7 vets, save your cat.',
-    // Cluster 8-11
-    postHeatstrokeTitle: 'Heatstroke in Pets Malaysia: Symptoms, Treatment & Prevention',
-    postHeatstrokeExcerpt: 'Protect your pet from Malaysia\'s deadly heat. Recognize heatstroke symptoms, perform emergency cooling, find 24/7 vets.',
-    postChokingTitle: 'Pet Choking First Aid Malaysia: Save Your Dog or Cat\'s Life',
-    postChokingExcerpt: 'Complete pet choking guide. Learn Heimlich maneuver for dogs & cats, recognize choking signs, prevent common hazards.',
-    postAccidentTitle: 'Pet Accident Protocol Malaysia: First Aid, Vet Care & Transport',
-    postAccidentExcerpt: 'Complete guide for pet accidents: road traffic, falls, dog fights, trauma. Learn emergency first aid and safe transport.',
-    postInsuranceGuideTitle: 'Pet Insurance Malaysia 2024: Best Coverage for Emergencies',
-    postInsuranceGuideExcerpt: 'Complete pet insurance guide. Compare plans, understand emergency coverage, costs RM 30-150/month. Save thousands on vet bills.',
-    // Cluster 12-15
-    postPoisoningTreatmentTitle: 'Pet Poisoning Treatment Malaysia: Emergency Vet Protocols',
-    postPoisoningTreatmentExcerpt: 'Learn what vets do for poisoned pets. Decontamination, antidotes, hospitalization costs. Get the right treatment fast.',
-    postEmergencyTransportTitle: 'How to Safely Transport an Injured Pet to the Vet',
-    postEmergencyTransportExcerpt: 'Complete guide to moving injured pets safely. Stabilization, carriers, driving tips. Don\'t make injuries worse.',
-    postPostEmergencyCareTitle: 'Post-Emergency Pet Care: Recovery and Follow-Up Guide',
-    postPostEmergencyCareExcerpt: 'What to expect after pet emergency treatment. Medications, wound care, monitoring, follow-up visits, and full recovery.',
-    postEmergencyPreventionTitle: 'Preventing Pet Emergencies: Complete Safety Guide for Malaysian Homes',
-    postEmergencyPreventionExcerpt: 'Pet-proof your home against common emergencies. Prevent poisoning, heatstroke, accidents. Create a safe environment.',
-  };
+  const blogTranslations = getBlogListingTranslations(language);
 
   const filteredPosts = selectedCategory === 'All' 
     ? blogPosts 
