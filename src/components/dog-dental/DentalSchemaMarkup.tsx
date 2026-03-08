@@ -9,7 +9,7 @@ interface DentalSchemaMarkupProps {
 export const DentalSchemaMarkup = ({ page, breadcrumbItems }: DentalSchemaMarkupProps) => {
   const baseUrl = 'https://petcaremalaysia.com';
 
-  const articleSchema = {
+  const articleSchema: Record<string, unknown> = {
     '@context': 'https://schema.org',
     '@type': 'MedicalWebPage',
     headline: page.title,
@@ -31,6 +31,25 @@ export const DentalSchemaMarkup = ({ page, breadcrumbItems }: DentalSchemaMarkup
       '@id': `${baseUrl}/dog-dental-disease`,
     },
   };
+
+  // Add Speakable schema for voice assistant extraction
+  if (page.snippetForAI) {
+    articleSchema.speakable = {
+      '@type': 'SpeakableSpecification',
+      cssSelector: ['[data-ai-snippet]', 'h1'],
+    };
+  }
+
+  // Add citation references
+  if (page.citations && page.citations.length > 0) {
+    articleSchema.citation = page.citations.map(c => ({
+      '@type': 'CreativeWork',
+      name: c.title,
+      publisher: { '@type': 'Organization', name: c.source },
+      url: c.url,
+      datePublished: c.year,
+    }));
+  }
 
   const faqSchema = page.faqs.length > 0 ? {
     '@context': 'https://schema.org',

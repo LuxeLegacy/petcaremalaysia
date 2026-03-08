@@ -6,6 +6,7 @@ import { DentalBreadcrumb } from './DentalBreadcrumb';
 import { EmergencyOverride } from './EmergencyOverride';
 import { InternalLinkFunnel } from './InternalLinkFunnel';
 import { DentalSchemaMarkup } from './DentalSchemaMarkup';
+import { AEOGEOSections } from './AEOGEOSections';
 import type { DentalConditionPage as ConditionType } from '@/data/dog-dental/types';
 
 interface Props { data: ConditionType; }
@@ -32,6 +33,8 @@ export const ConditionPage = ({ data }: Props) => {
           <h1 className="text-3xl md:text-4xl font-bold text-foreground mb-6">{data.title}</h1>
 
           {hasRedFlags && <EmergencyOverride />}
+
+          <AEOGEOSections data={data} position="top" />
 
           <section className="mb-8">
             <h2 className="text-2xl font-bold mb-3">Overview</h2>
@@ -89,6 +92,8 @@ export const ConditionPage = ({ data }: Props) => {
             <h2 className="text-2xl font-bold mb-3">When to See a Vet</h2>
             <p className="text-muted-foreground">{data.whenToSeeVet}</p>
           </section>
+
+          <AEOGEOSections data={data} position="bottom" />
 
           <section className="mb-8">
             <h2 className="text-2xl font-bold mb-4">FAQ</h2>

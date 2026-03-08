@@ -6,6 +6,7 @@ import { DentalBreadcrumb } from './DentalBreadcrumb';
 import { EmergencyOverride } from './EmergencyOverride';
 import { InternalLinkFunnel } from './InternalLinkFunnel';
 import { DentalSchemaMarkup } from './DentalSchemaMarkup';
+import { AEOGEOSections } from './AEOGEOSections';
 import type { DentalSymptomPage as SymptomType } from '@/data/dog-dental/types';
 
 interface Props { data: SymptomType; }
@@ -32,6 +33,8 @@ export const SymptomPage = ({ data }: Props) => {
           <h1 className="text-3xl md:text-4xl font-bold text-foreground mb-6">{data.title}</h1>
 
           {hasEmergency && <EmergencyOverride />}
+
+          <AEOGEOSections data={data} position="top" />
 
           <section className="mb-8">
             <h2 className="text-2xl font-bold mb-3">Overview</h2>
@@ -67,6 +70,8 @@ export const SymptomPage = ({ data }: Props) => {
           </section>
 
           <InternalLinkFunnel title="Care Pathways" links={data.carePathways} />
+
+          <AEOGEOSections data={data} position="bottom" />
 
           <section className="mb-8">
             <h2 className="text-2xl font-bold mb-4">FAQ</h2>

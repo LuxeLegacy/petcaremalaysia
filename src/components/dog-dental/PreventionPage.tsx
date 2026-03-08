@@ -5,6 +5,7 @@ import { Footer } from '@/components/Footer';
 import { DentalBreadcrumb } from './DentalBreadcrumb';
 import { InternalLinkFunnel } from './InternalLinkFunnel';
 import { DentalSchemaMarkup } from './DentalSchemaMarkup';
+import { AEOGEOSections } from './AEOGEOSections';
 import type { DentalPreventionPage as PreventionType } from '@/data/dog-dental/types';
 
 interface Props { data: PreventionType; }
@@ -26,6 +27,8 @@ export const PreventionPage = ({ data }: Props) => {
         <div className="max-w-4xl mx-auto px-4 py-8">
           <DentalBreadcrumb category="prevention" pageTitle={data.title} />
           <h1 className="text-3xl md:text-4xl font-bold text-foreground mb-6">{data.title}</h1>
+
+          <AEOGEOSections data={data} position="top" />
 
           <section className="mb-8">
             {data.overview.split('\n\n').map((p, i) => <p key={i} className="text-muted-foreground leading-relaxed mb-3">{p}</p>)}
@@ -57,6 +60,8 @@ export const PreventionPage = ({ data }: Props) => {
             <h2 className="text-2xl font-bold mb-3">Veterinary Recommendations</h2>
             <p className="text-muted-foreground">{data.vetRecommendations}</p>
           </section>
+
+          <AEOGEOSections data={data} position="bottom" />
 
           <section className="mb-8">
             <h2 className="text-2xl font-bold mb-4">FAQ</h2>
