@@ -4,6 +4,7 @@ import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/
 import { ArticleLayout, TableOfContents, TLDRBox, EmergencyAlertBox } from './ArticleLayout';
 import { RelatedArticles, InternalLink } from './ArticleLink';
 import { CostCTA } from '@/components/common/CostCTA';
+import { getVetDirectoryGuideContent } from '@/lib/blogTranslations/vetDirectoryGuide';
 
 interface VetClinic {
   name: string;
@@ -20,7 +21,7 @@ interface VetClinic {
   review?: { rating: string; text: string };
 }
 
-const ClinicCard = ({ clinic }: { clinic: VetClinic }) => (
+const ClinicCard = ({ clinic, content }: { clinic: VetClinic; content: any }) => (
   <div className="bg-card border border-border p-6 rounded-xl mb-6">
     <h3 className="font-bold text-lg mb-4 text-primary">{clinic.name}</h3>
     
@@ -49,7 +50,7 @@ const ClinicCard = ({ clinic }: { clinic: VetClinic }) => (
       </div>
       
       <div>
-        <h4 className="font-semibold text-sm text-muted-foreground mb-2">Services:</h4>
+        <h4 className="font-semibold text-sm text-muted-foreground mb-2">{content.servicesLabel}</h4>
         <ul className="text-sm space-y-1">
           {clinic.services.slice(0, 5).map((service, i) => (
             <li key={i}>• {service}</li>
@@ -59,7 +60,7 @@ const ClinicCard = ({ clinic }: { clinic: VetClinic }) => (
     </div>
 
     <div className="bg-muted/50 p-4 rounded-lg mb-4">
-      <h4 className="font-semibold text-sm mb-2">Why Choose {clinic.name.split(' ')[0]}:</h4>
+      <h4 className="font-semibold text-sm mb-2">{content.whyChoosePrefix} {clinic.name.split(' ')[0]}:</h4>
       <ul className="text-sm space-y-1">
         {clinic.whyChoose.map((reason, i) => (
           <li key={i}>✓ {reason}</li>
@@ -69,15 +70,15 @@ const ClinicCard = ({ clinic }: { clinic: VetClinic }) => (
 
     <div className="grid grid-cols-2 md:grid-cols-3 gap-3 text-sm">
       <div className="bg-primary/5 p-3 rounded-lg">
-        <div className="text-xs text-muted-foreground">Consultation</div>
+        <div className="text-xs text-muted-foreground">{content.consultationLabel}</div>
         <div className="font-semibold">{clinic.consultationFee}</div>
       </div>
       <div className="bg-primary/5 p-3 rounded-lg">
-        <div className="text-xs text-muted-foreground">Deposit</div>
+        <div className="text-xs text-muted-foreground">{content.depositLabel}</div>
         <div className="font-semibold">{clinic.deposit}</div>
       </div>
       <div className="bg-primary/5 p-3 rounded-lg">
-        <div className="text-xs text-muted-foreground">Payment</div>
+        <div className="text-xs text-muted-foreground">{content.paymentLabel}</div>
         <div className="font-semibold text-xs">{clinic.payment}</div>
       </div>
     </div>
@@ -96,12 +97,13 @@ const ClinicCard = ({ clinic }: { clinic: VetClinic }) => (
 
 export const VetDirectoryGuide = () => {
   const { language } = useLanguage();
+  const content = getVetDirectoryGuideContent(language);
 
   const structuredData = {
     "@context": "https://schema.org",
     "@type": "Article",
     "headline": "24-Hour Veterinary Hospital Malaysia: Complete Emergency Vet Directory 2025",
-    "description": "Find 24-hour emergency vet care in Malaysia. Comprehensive directory of 24/7 veterinary hospitals in KL, Selangor, Penang, JB with contact numbers, services & costs.",
+    "description": "Find 24-hour emergency vet care in Malaysia.",
     "image": "https://images.unsplash.com/photo-1628009368231-7bb7cfcb0def?w=1200&h=630&fit=crop",
     "author": { "@type": "Organization", "name": "PetCare Malaysia" },
     "publisher": { "@type": "Organization", "name": "PetCare Malaysia" },
@@ -112,45 +114,14 @@ export const VetDirectoryGuide = () => {
   const faqStructuredData = {
     "@context": "https://schema.org",
     "@type": "FAQPage",
-    "mainEntity": [
-      {
-        "@type": "Question",
-        "name": "Do I need an appointment for emergency vet?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "No. True 24-hour emergency vets accept walk-ins. However, CALLING AHEAD is strongly recommended so they can prepare and give you guidance."
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "What's the difference between on-call and 24-hour vet?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "24-hour = staff present at facility 24/7. On-call = veterinarian comes to clinic only when called, which takes 30-60 minutes. For critical emergencies, choose true 24-hour facilities."
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "Do emergency vets treat exotic pets?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "Most focus on dogs and cats. St. Angel and some others have exotic pet experience. Call ahead to confirm they can treat your species (rabbit, bird, reptile, etc.)."
-        }
-      }
-    ]
+    "mainEntity": content.faqs.slice(0, 3).map((f: any) => ({
+      "@type": "Question",
+      "name": f.q,
+      "acceptedAnswer": { "@type": "Answer", "text": f.a }
+    }))
   };
 
-  const tocItems = [
-    { id: "why-difficult", title: "Why Finding 24-Hour Care Is Difficult" },
-    { id: "klang-valley", title: "Klang Valley Emergency Vets" },
-    { id: "penang", title: "Penang Emergency Vets" },
-    { id: "johor", title: "Johor Bahru Emergency Vets" },
-    { id: "melaka", title: "Melaka Emergency Vets" },
-    { id: "before-going", title: "What to Do Before Going" },
-    { id: "cost-comparison", title: "Cost Comparison" },
-    { id: "faqs", title: "Frequently Asked Questions" },
-  ];
-
+  // Clinic data stays constant (not translated - names/addresses/phones don't change)
   const klangValleyClinics: VetClinic[] = [
     {
       name: "Animal Medical Center (AMC)",
@@ -220,72 +191,59 @@ export const VetDirectoryGuide = () => {
     }
   ];
 
+  const relatedArticleLinks = [
+    "/blog/pet-emergency-guide-malaysia",
+    "/blog/pet-emergency-transport-malaysia",
+    "/blog/pet-emergency-costs-malaysia",
+    "/blog/post-emergency-pet-care-malaysia",
+  ];
+
   return (
     <ArticleLayout
-      metaTitle="24-Hour Veterinary Hospital Malaysia: Complete Emergency Vet Directory 2025"
-      metaDescription="Find 24-hour emergency vet care in Malaysia. Comprehensive directory of 24/7 veterinary hospitals in KL, Selangor, Penang, JB with contact numbers, services & costs."
+      metaTitle={content.metaTitle}
+      metaDescription={content.metaDescription}
       path="/blog/24-hour-vet-directory-malaysia"
       language={language}
-      category="Directory"
+      category={content.category}
       categoryColor="secondary"
-      title="Complete 24-Hour Veterinary Hospital Directory Malaysia 2025"
-      date="January 1, 2025"
-      readTime="10 min read"
-      reviewedBy="Verified listings as of January 2025"
+      title={content.title}
+      date={content.date}
+      readTime={content.readTime}
+      reviewedBy={content.reviewedBy}
       heroImage="https://images.unsplash.com/photo-1628009368231-7bb7cfcb0def?w=1200&h=600&fit=crop"
-      heroImageAlt="Veterinary hospital emergency entrance at night"
-      heroImageCaption="Find verified 24-hour emergency vet care across Malaysia"
+      heroImageAlt={content.heroImageAlt}
+      heroImageCaption={content.heroImageCaption}
       structuredData={structuredData}
       faqStructuredData={faqStructuredData}
     >
       <EmergencyAlertBox
-        title="Pet Emergency Right Now?"
-        text="Call the nearest 24-hour vet from this list immediately. Don't waste time searching—every minute matters."
-        buttonText="View Emergency Symptoms"
+        title={content.emergencyTitle}
+        text={content.emergencyText}
+        buttonText={content.emergencyButton}
         buttonLink="/blog/pet-emergency-symptoms-malaysia"
       />
 
-      <TLDRBox items={[
-        "Only 15-20 true 24/7 emergency vet hospitals operate in Malaysia",
-        "Most are concentrated in Klang Valley (KL, Selangor)",
-        "Always call ahead before going—confirm availability and prepare",
-        "Emergency consultation fees: RM150-300 (vs. RM35-80 regular hours)",
-        "Keep 2-3 emergency vet contacts saved in your phone"
-      ]} />
+      <TLDRBox items={content.tldr} />
 
-      <TableOfContents items={tocItems} />
+      <TableOfContents items={content.tocItems} />
 
       {/* Why Difficult Section */}
       <section id="why-difficult" className="mb-12">
-        <h2 className="text-2xl font-bold mb-4">Why Finding 24-Hour Vet Care Is Difficult in Malaysia</h2>
+        <h2 className="text-2xl font-bold mb-4">{content.whyDifficultTitle}</h2>
         
-        <p className="text-muted-foreground mb-4">
-          When your pet faces a life-threatening emergency at 3 AM, every second counts. But in Malaysia, finding a veterinary hospital that's actually open 24 hours can be challenging and confusing. Many clinics claim "emergency services" but close at midnight.
-        </p>
+        <p className="text-muted-foreground mb-4">{content.whyDifficultP}</p>
 
         <div className="grid md:grid-cols-2 gap-4 mb-6">
-          <div className="bg-muted/50 p-4 rounded-xl">
-            <h3 className="font-semibold mb-2">Limited Infrastructure</h3>
-            <p className="text-sm text-muted-foreground">Only major urban areas (Klang Valley, Penang, JB) have true 24/7 facilities.</p>
-          </div>
-          <div className="bg-muted/50 p-4 rounded-xl">
-            <h3 className="font-semibold mb-2">High Operating Costs</h3>
-            <p className="text-sm text-muted-foreground">24/7 operations require multiple shifts—costs many clinics cannot sustain.</p>
-          </div>
-          <div className="bg-muted/50 p-4 rounded-xl">
-            <h3 className="font-semibold mb-2">Staff Shortage</h3>
-            <p className="text-sm text-muted-foreground">Approximately 1 vet per 15,000 pets vs. ideal 1 per 5,000.</p>
-          </div>
-          <div className="bg-muted/50 p-4 rounded-xl">
-            <h3 className="font-semibold mb-2">Unclear Listings</h3>
-            <p className="text-sm text-muted-foreground">Many advertise "emergency services" but only offer limited hours.</p>
-          </div>
+          {content.challenges.map((c: any, i: number) => (
+            <div key={i} className="bg-muted/50 p-4 rounded-xl">
+              <h3 className="font-semibold mb-2">{c.title}</h3>
+              <p className="text-sm text-muted-foreground">{c.desc}</p>
+            </div>
+          ))}
         </div>
 
         <div className="bg-primary/10 p-4 rounded-xl">
-          <p className="text-sm font-medium">
-            ✓ This directory lists ONLY verified 24-hour facilities with confirmed round-the-clock emergency care capabilities.
-          </p>
+          <p className="text-sm font-medium">{content.verifiedNote}</p>
         </div>
       </section>
 
@@ -293,15 +251,13 @@ export const VetDirectoryGuide = () => {
       <section id="klang-valley" className="mb-12">
         <h2 className="text-2xl font-bold mb-6 flex items-center gap-2">
           <MapPin className="h-6 w-6 text-primary" />
-          Klang Valley (Kuala Lumpur & Selangor) - 24-Hour Emergency Vets
+          {content.klangValleyTitle}
         </h2>
         
-        <p className="text-muted-foreground mb-6">
-          Klang Valley has the highest concentration of 24-hour emergency veterinary services in Malaysia:
-        </p>
+        <p className="text-muted-foreground mb-6">{content.klangValleyIntro}</p>
 
         {klangValleyClinics.map((clinic, index) => (
-          <ClinicCard key={index} clinic={clinic} />
+          <ClinicCard key={index} clinic={clinic} content={content} />
         ))}
       </section>
 
@@ -309,10 +265,10 @@ export const VetDirectoryGuide = () => {
       <section id="penang" className="mb-12">
         <h2 className="text-2xl font-bold mb-6 flex items-center gap-2">
           <MapPin className="h-6 w-6 text-primary" />
-          Penang - 24-Hour Emergency Vets
+          {content.penangTitle}
         </h2>
 
-        <ClinicCard clinic={{
+        <ClinicCard content={content} clinic={{
           name: "Gill's Veterinary Clinic",
           location: "416, Jalan Burma, Pulau Tikus, 10350 George Town, Penang",
           phone: "+604-228 8735 / +6012-498 8735 (Emergency)",
@@ -331,17 +287,17 @@ export const VetDirectoryGuide = () => {
       <section id="johor" className="mb-12">
         <h2 className="text-2xl font-bold mb-6 flex items-center gap-2">
           <MapPin className="h-6 w-6 text-primary" />
-          Johor Bahru - 24-Hour Emergency Vets
+          {content.johorTitle}
         </h2>
 
         <div className="bg-yellow-500/10 border border-yellow-500/30 p-4 rounded-xl mb-6">
           <p className="text-sm">
             <AlertTriangle className="h-4 w-4 inline mr-2 text-yellow-600" />
-            JB has limited true 24-hour facilities. For serious emergencies, consider driving to KL.
+            {content.johorWarning}
           </p>
         </div>
 
-        <ClinicCard clinic={{
+        <ClinicCard content={content} clinic={{
           name: "Pets City Veterinary Clinic",
           location: "12, Jalan Setia 5/1, Taman Setia Indah, 81100 Johor Bahru",
           phone: "+607-361 1823 / +6012-789 4567 (Emergency)",
@@ -358,10 +314,10 @@ export const VetDirectoryGuide = () => {
       <section id="melaka" className="mb-12">
         <h2 className="text-2xl font-bold mb-6 flex items-center gap-2">
           <MapPin className="h-6 w-6 text-primary" />
-          Melaka - Emergency Vet Services
+          {content.melakaTitle}
         </h2>
 
-        <ClinicCard clinic={{
+        <ClinicCard content={content} clinic={{
           name: "KimVets: Animal & Veterinary Clinic Melaka",
           location: "No. 21 & 23, Jalan Tun Ali, 75350 Melaka",
           phone: "+606-283 7998 / +6012-622 7998 (Emergency)",
@@ -377,187 +333,96 @@ export const VetDirectoryGuide = () => {
 
       {/* Before Going Section */}
       <section id="before-going" className="mb-12">
-        <h2 className="text-2xl font-bold mb-4">What to Do Before Going to Emergency Vet</h2>
+        <h2 className="text-2xl font-bold mb-4">{content.beforeGoingTitle}</h2>
 
         <div className="space-y-4">
-          <div className="bg-card border border-border p-4 rounded-xl">
-            <h3 className="font-semibold mb-2">1. CALL AHEAD (Even 30 seconds makes a difference)</h3>
-            <ul className="text-sm text-muted-foreground space-y-1">
-              <li>• Confirm they can handle your emergency</li>
-              <li>• Get first aid instructions for the drive</li>
-              <li>• Allow them to prepare treatment room</li>
-              <li>• Estimate initial costs</li>
-            </ul>
-          </div>
-
-          <div className="bg-card border border-border p-4 rounded-xl">
-            <h3 className="font-semibold mb-2">2. Gather Essential Information</h3>
-            <ul className="text-sm text-muted-foreground space-y-1">
-              <li>• Pet's medical history & current medications</li>
-              <li>• Vaccination records</li>
-              <li>• Details of the emergency (when started, what happened)</li>
-            </ul>
-          </div>
-
-          <div className="bg-card border border-border p-4 rounded-xl">
-            <h3 className="font-semibold mb-2 flex items-center gap-2">
-              <CreditCard className="h-4 w-4" />
-              3. Prepare Payment
-            </h3>
-            <ul className="text-sm text-muted-foreground space-y-1">
-              <li>• Bring RM1,000-3,000 cash minimum</li>
-              <li>• Credit cards accepted at most facilities</li>
-              <li>• Ask about payment plans (some offer)</li>
-            </ul>
-          </div>
-
-          <div className="bg-card border border-border p-4 rounded-xl">
-            <h3 className="font-semibold mb-2">4. Transport Safely</h3>
-            <ul className="text-sm text-muted-foreground space-y-1">
-              <li>• Use pet carrier or secure box</li>
-              <li>• Muzzle if needed (even friendly pets may bite when in pain)</li>
-              <li>• Have someone else drive so you can monitor pet</li>
-            </ul>
-          </div>
+          {content.beforeGoingSteps.map((step: any, i: number) => (
+            <div key={i} className="bg-card border border-border p-4 rounded-xl">
+              <h3 className="font-semibold mb-2 flex items-center gap-2">
+                {i === 2 && <CreditCard className="h-4 w-4" />}
+                {step.title}
+              </h3>
+              <ul className="text-sm text-muted-foreground space-y-1">
+                {step.items.map((item: string, j: number) => (
+                  <li key={j}>• {item}</li>
+                ))}
+              </ul>
+            </div>
+          ))}
         </div>
 
         <p className="text-muted-foreground mt-4">
-          Learn essential <InternalLink to="/blog/pet-emergency-first-aid-guide-malaysia">pet first aid techniques</InternalLink> to help stabilize your pet during transport.
+          {content.learnFirstAidText} <InternalLink to="/blog/pet-emergency-first-aid-guide-malaysia">{content.learnFirstAidLink}</InternalLink> {content.learnFirstAidAfter}
         </p>
       </section>
 
       {/* Cost Comparison Section */}
       <section id="cost-comparison" className="mb-12">
-        <h2 className="text-2xl font-bold mb-4">Cost Comparison: 24-Hour Emergency Vets in Malaysia</h2>
+        <h2 className="text-2xl font-bold mb-4">{content.costComparisonTitle}</h2>
 
         <div className="overflow-x-auto">
           <table className="w-full text-sm border border-border rounded-lg overflow-hidden">
             <thead className="bg-muted/50">
               <tr>
-                <th className="text-left p-3 font-semibold">Facility</th>
-                <th className="text-left p-3 font-semibold">Consultation</th>
-                <th className="text-left p-3 font-semibold">Deposit</th>
-                <th className="text-left p-3 font-semibold">Avg. Emergency Bill</th>
+                {content.costTableHeaders.map((h: string, i: number) => (
+                  <th key={i} className="text-left p-3 font-semibold">{h}</th>
+                ))}
               </tr>
             </thead>
             <tbody>
-              <tr className="border-t border-border">
-                <td className="p-3">AMC</td>
-                <td className="p-3">RM250-350</td>
-                <td className="p-3">RM1,000-3,000</td>
-                <td className="p-3">RM2,500-8,000</td>
-              </tr>
-              <tr className="border-t border-border bg-muted/20">
-                <td className="p-3">Gasing Vet</td>
-                <td className="p-3">RM180-280</td>
-                <td className="p-3">RM500-2,000</td>
-                <td className="p-3">RM1,800-6,000</td>
-              </tr>
-              <tr className="border-t border-border">
-                <td className="p-3">Starlight Vet</td>
-                <td className="p-3">RM200-300</td>
-                <td className="p-3">RM800-2,500</td>
-                <td className="p-3">RM2,000-7,000</td>
-              </tr>
-              <tr className="border-t border-border bg-muted/20">
-                <td className="p-3">Windsor</td>
-                <td className="p-3">RM220-320</td>
-                <td className="p-3">RM1,000-2,500</td>
-                <td className="p-3">RM2,200-7,500</td>
-              </tr>
-              <tr className="border-t border-border">
-                <td className="p-3">St. Angel</td>
-                <td className="p-3">RM150-250</td>
-                <td className="p-3">RM600-2,000</td>
-                <td className="p-3">RM1,500-5,000</td>
-              </tr>
-              <tr className="border-t border-border bg-muted/20">
-                <td className="p-3">Gill's (Penang)</td>
-                <td className="p-3">RM180-280</td>
-                <td className="p-3">RM800-2,500</td>
-                <td className="p-3">RM1,800-6,500</td>
-              </tr>
+              {content.costTableRows.map((row: string[], i: number) => (
+                <tr key={i} className={`border-t border-border ${i % 2 === 1 ? 'bg-muted/20' : ''}`}>
+                  {row.map((cell: string, j: number) => (
+                    <td key={j} className="p-3">{cell}</td>
+                  ))}
+                </tr>
+              ))}
             </tbody>
           </table>
         </div>
 
         <p className="text-sm text-muted-foreground mt-4">
-          For detailed cost breakdowns by procedure type, see our <InternalLink to="/blog/pet-emergency-costs-malaysia">complete emergency cost guide</InternalLink>.
+          {content.costDetailText} <InternalLink to="/blog/pet-emergency-costs-malaysia">{content.costDetailLink}</InternalLink>.
         </p>
       </section>
 
       {/* FAQs */}
       <section id="faqs" className="mb-12">
-        <h2 className="text-2xl font-bold mb-6">Frequently Asked Questions</h2>
+        <h2 className="text-2xl font-bold mb-6">{content.faqTitle}</h2>
         
         <Accordion type="single" collapsible className="w-full">
-          <AccordionItem value="faq-1">
-            <AccordionTrigger>Do I need an appointment for emergency vet?</AccordionTrigger>
-            <AccordionContent>
-              No. True 24-hour emergency vets accept walk-ins. However, CALLING AHEAD is strongly recommended so they can prepare and give you guidance.
-            </AccordionContent>
-          </AccordionItem>
-          <AccordionItem value="faq-2">
-            <AccordionTrigger>How do I know if a vet is really 24 hours?</AccordionTrigger>
-            <AccordionContent>
-              Call their main number at 2-3 AM and see if someone answers. This directory lists only verified 24/7 facilities with confirmed overnight staff.
-            </AccordionContent>
-          </AccordionItem>
-          <AccordionItem value="faq-3">
-            <AccordionTrigger>What if the 24-hour vet is full or can't take my pet?</AccordionTrigger>
-            <AccordionContent>
-              Have backup options. Call the second-nearest 24-hour facility. In extreme emergencies, government vet hospitals (DVS) may help, though they have limited after-hours services.
-            </AccordionContent>
-          </AccordionItem>
-          <AccordionItem value="faq-4">
-            <AccordionTrigger>What's the difference between "on-call" and "24-hour" vet?</AccordionTrigger>
-            <AccordionContent>
-              24-hour = staff present at facility 24/7. On-call = veterinarian comes to clinic only when called, which takes 30-60 minutes. For critical emergencies, choose true 24-hour facilities.
-            </AccordionContent>
-          </AccordionItem>
-          <AccordionItem value="faq-5">
-            <AccordionTrigger>Do emergency vets treat exotic pets?</AccordionTrigger>
-            <AccordionContent>
-              Most focus on dogs and cats. St. Angel and some others have exotic pet experience. Call ahead to confirm they can treat your species (rabbit, bird, reptile, etc.).
-            </AccordionContent>
-          </AccordionItem>
-          <AccordionItem value="faq-6">
-            <AccordionTrigger>Can I use pet insurance at emergency vets?</AccordionTrigger>
-            <AccordionContent>
-              Most require upfront payment then you claim reimbursement from insurance. Some work with specific insurance companies for direct billing—ask when calling.
-            </AccordionContent>
-          </AccordionItem>
+          {content.faqs.map((faq: any, i: number) => (
+            <AccordionItem key={i} value={`faq-${i + 1}`}>
+              <AccordionTrigger>{faq.q}</AccordionTrigger>
+              <AccordionContent>{faq.a}</AccordionContent>
+            </AccordionItem>
+          ))}
         </Accordion>
       </section>
 
       {/* Conclusion */}
       <section className="mb-12">
-        <h2 className="text-2xl font-bold mb-4">Be Prepared for Pet Emergencies</h2>
+        <h2 className="text-2xl font-bold mb-4">{content.conclusionTitle}</h2>
         
-        <p className="text-muted-foreground mb-4">
-          Pet emergencies happen when you least expect them—often at the worst possible times. Having this 24-hour vet directory saved and knowing which emergency facility to call can save critical minutes and potentially your pet's life.
-        </p>
+        <p className="text-muted-foreground mb-4">{content.conclusionP}</p>
 
         <div className="bg-primary/10 p-6 rounded-xl">
-          <h3 className="font-bold mb-3">Action Steps NOW (Before Emergency Happens):</h3>
+          <h3 className="font-bold mb-3">{content.actionTitle}</h3>
           <ul className="space-y-2">
-            <li>✓ Save 2-3 emergency vet contacts in your phone</li>
-            <li>✓ Know the fastest route from your home to nearest 24-hour vet</li>
-            <li>✓ Keep RM1,000-2,000 cash accessible for emergencies</li>
-            <li>✓ Bookmark this page for quick reference</li>
+            {content.actionItems.map((item: string, i: number) => (
+              <li key={i}>✓ {item}</li>
+            ))}
           </ul>
         </div>
       </section>
 
-      {/* Cost CTA before related articles */}
       <CostCTA variant={2} />
 
-      <RelatedArticles articles={[
-        { to: "/blog/pet-emergency-guide-malaysia", title: "Complete Guide to Pet Emergency Treatment in Malaysia", description: "Comprehensive pillar guide covering all aspects of pet emergencies" },
-        { to: "/blog/pet-emergency-transport-malaysia", title: "Emergency Transport Guide", description: "Safely transport your pet to the vet" },
-        { to: "/blog/pet-emergency-costs-malaysia", title: "Pet Emergency Treatment Costs Malaysia 2025", description: "Complete breakdown of emergency vet costs" },
-        { to: "/blog/post-emergency-pet-care-malaysia", title: "Post-Emergency Care Guide", description: "What to expect after emergency treatment" },
-      ]} />
+      <RelatedArticles articles={content.relatedArticles.map((a: any, i: number) => ({
+        to: relatedArticleLinks[i],
+        title: a.title,
+        description: a.description,
+      }))} />
     </ArticleLayout>
   );
 };
