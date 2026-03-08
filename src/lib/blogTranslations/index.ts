@@ -10,3 +10,7 @@ export { getHeatstrokeGuideContent } from './heatstrokeGuide';
 export { getChokingGuideContent } from './chokingGuide';
 export { getInsuranceGuideContent } from './insuranceGuide';
 export { getPoisoningTreatmentGuideContent } from './poisoningTreatmentGuide';
+export { getAccidentGuideContent } from './accidentGuide';
+export { getEmergencyPreventionGuideContent } from './emergencyPreventionGuide';
+export { getEmergencyTransportGuideContent } from './emergencyTransportGuide';
+export { getPostEmergencyCareGuideContent } from './postEmergencyCareGuide';

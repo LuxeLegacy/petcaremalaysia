@@ -440,13 +440,13 @@ export const getAccidentGuideContent = (language: Language) => {
         }
       ],
       
-      hiddenTitle: "为什么"看起来没事"在创伤后毫无意义",
+      hiddenTitle: "为什么「看起来没事」在创伤后毫无意义",
       hiddenChallenge: "关键挑战",
-      hiddenDesc: "许多严重的伤害不会立即可见。即使您的宠物外表看起来"正常"，内出血、器官损伤和脊柱损伤也可能存在。",
+      hiddenDesc: "许多严重的伤害不会立即可见。即使您的宠物外表看起来「正常」，内出血、器官损伤和脊柱损伤也可能存在。",
       stats: [
         { value: "70%", desc: "交通事故宠物有外表不可见的内伤" },
         { value: "6-12小时", desc: "内出血症状可能需要这么长时间才会出现" },
-        { value: "60分钟", desc: ""黄金时间" - 创伤生存的关键窗口" }
+        { value: "60分钟", desc: "「黄金时间」 - 创伤生存的关键窗口" }
       ],
       
       abcTitle: "ABC评估",
