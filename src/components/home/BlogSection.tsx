@@ -2,6 +2,7 @@ import { Link } from 'react-router-dom';
 import { useLanguage } from '@/contexts/LanguageContext';
 import { Calendar, Clock, ChevronRight, BookOpen } from 'lucide-react';
 import { Button } from '@/components/ui/button';
+import { getBlogListingTranslations } from '@/lib/blogTranslations/blogListingTranslations';
 
 const blogPosts = [
   {
