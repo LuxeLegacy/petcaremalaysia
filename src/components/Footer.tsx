@@ -15,12 +15,7 @@ export const Footer = () => {
           {/* Brand */}
           <div className="space-y-4">
             <Link to="/" className="flex items-center gap-2">
-              <div className="flex h-9 w-9 items-center justify-center rounded-xl bg-primary">
-                <span className="text-lg">🐾</span>
-              </div>
-              <span className="text-xl font-bold text-foreground">
-                PetCare<span className="text-primary">MY</span>
-              </span>
+              <img src="/src/assets/logo.png" alt="PetCare Malaysia" className="h-10 w-auto" />
             </Link>
             <p className="text-sm text-muted-foreground max-w-xs">
               Malaysia's trusted resource for pet care services. Find vets, emergency care, grooming, and more near you.
