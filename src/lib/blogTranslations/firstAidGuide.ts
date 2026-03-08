@@ -410,7 +410,7 @@ export const getFirstAidGuideContent = (language: Language) => {
         { step: 5, title: "运送至紧急兽医", instructions: ["运输过程中保持压力", "让别人开车", "提前致电通知紧急兽医"] }
       ],
       neverLabel: "绝不要：",
-      neverItems: ["使用止血带（除非正在大量失血致死）", "移除绷带"检查"伤口", "给止痛药", "如果大量出血不要清洁伤口——只需施加压力"],
+      neverItems: ["使用止血带（除非正在大量失血致死）", "移除绷带「检查」伤口", "给止痛药", "如果大量出血不要清洁伤口——只需施加压力"],
       minorBleedingTitle: "轻微出血：",
       minorBleedingItems: ["用生理盐水或清水清洁", "涂抹抗生素药膏", "用干净的绷带覆盖", "仍然在24小时内看兽医"],
       chokingTitle: "窒息：宠物海姆立克急救法",
