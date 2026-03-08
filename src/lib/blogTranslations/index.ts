@@ -6,3 +6,7 @@ export { getTreatmentCostsGuideContent } from './treatmentCostsGuide';
 export { getPetPoisonsGuideContent } from './petPoisonsGuide';
 export { getDogEmergencyGuideContent } from './dogEmergencyGuide';
 export { getCatEmergencyGuideContent } from './catEmergencyGuide';
+export { getHeatstrokeGuideContent } from './heatstrokeGuide';
+export { getChokingGuideContent } from './chokingGuide';
+export { getInsuranceGuideContent } from './insuranceGuide';
+export { getPoisoningTreatmentGuideContent } from './poisoningTreatmentGuide';
