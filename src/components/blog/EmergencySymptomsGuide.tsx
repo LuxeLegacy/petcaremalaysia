@@ -6,7 +6,7 @@ import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/
 import { ArticleLayout, TableOfContents, TLDRBox, EmergencyAlertBox } from './ArticleLayout';
 import { RelatedArticles, InternalLink } from './ArticleLink';
 import { CostCTA } from '@/components/common/CostCTA';
-import { getEmergencySymptomsGuideContent } from '@/lib/blogTranslations';
+import { getEmergencySymptomsGuideContent } from '@/lib/blogTranslations/emergencySymptomsGuide';
 
 export const EmergencySymptomsGuide = () => {
   const { language } = useLanguage();

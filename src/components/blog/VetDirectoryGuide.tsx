@@ -4,7 +4,7 @@ import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/
 import { ArticleLayout, TableOfContents, TLDRBox, EmergencyAlertBox } from './ArticleLayout';
 import { RelatedArticles, InternalLink } from './ArticleLink';
 import { CostCTA } from '@/components/common/CostCTA';
-import { getVetDirectoryGuideContent } from '@/lib/blogTranslations';
+import { getVetDirectoryGuideContent } from '@/lib/blogTranslations/vetDirectoryGuide';
 
 interface VetClinic {
   name: string;

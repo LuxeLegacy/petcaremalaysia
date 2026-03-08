@@ -4,7 +4,7 @@ import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/
 import { ArticleLayout, TableOfContents, TLDRBox, EmergencyAlertBox } from './ArticleLayout';
 import { RelatedArticles, InternalLink } from './ArticleLink';
 import { CostCTA } from '@/components/common/CostCTA';
-import { getFirstAidGuideContent } from '@/lib/blogTranslations';
+import { getFirstAidGuideContent } from '@/lib/blogTranslations/firstAidGuide';
 
 interface FirstAidStep {
   step: number;
