@@ -2,38 +2,63 @@
 
 ## Problem
 
-Two issues:
+All 16 blog article components (`PetEmergencyGuide.tsx`, `EmergencySymptomsGuide.tsx`, `VetDirectoryGuide.tsx`, etc.) have their content hardcoded in English. They import `useLanguage()` but never use the `language` value to switch content. Only `EmergencyPetCareGuide` and `PetFoodBrandsGuide` (defined inline in `BlogPostPage.tsx`) use the translation system via `getEmergencyGuideContent(language)` and `getNutritionGuideContent(language)`.
 
-1. **`_redirects` proxy rules to external URLs are ignored.** The hosting platform serves the SPA catch-all for `/sitemap-ms.xml` and `/sitemap-zh.xml` because there are no physical files at those paths. The main `/sitemap.xml` works only because `public/sitemap.xml` exists as a static file.
+## Scale
 
-2. **Edge function not serving filtered content.** Even if the proxy worked, the deployed edge function still returns all 3 languages for `?lang=ms`. The updated code may not have been deployed.
+- 16 blog article components, each 300-700 lines of hardcoded English text
+- Each needs full Malay (MS) and Chinese (ZH) translations
+- Total: ~8,000+ lines of content to translate across all components
+- This is approximately 50,000-80,000 words of translation work
 
-## Fix
+## Approach
 
-Generate static `public/sitemap-ms.xml` and `public/sitemap-zh.xml` files, mirroring how `public/sitemap.xml` already works. The sitemap content is deterministic (hardcoded URLs and dates), so static files are the correct approach.
+For each of the 16 articles, the work follows this pattern:
 
-### Steps
+1. **Create a translation data file** in `src/lib/blogTranslations/` (e.g., `petEmergencyGuideContent.ts`) exporting a function like `getPetEmergencyGuideContent(language)` that returns all text strings for EN/MS/ZH
+2. **Update the component** to call that function with `language` from `useLanguage()` and replace all hardcoded strings with content object properties
 
-**1. Redeploy the edge function** to ensure the `lang` parameter filtering works correctly. Then call it with `?lang=ms` and `?lang=zh` to verify correct filtered output.
+### Articles to translate (16 total):
+1. PetEmergencyGuide (pillar page)
+2. EmergencySymptomsGuide
+3. VetDirectoryGuide
+4. FirstAidGuide
+5. TreatmentCostsGuide
+6. PetPoisonsGuide
+7. DogEmergencyGuide
+8. CatEmergencyGuide
+9. HeatstrokeGuide
+10. ChokingGuide
+11. AccidentGuide
+12. InsuranceGuide
+13. PoisoningTreatmentGuide
+14. EmergencyTransportGuide
+15. PostEmergencyCareGuide
+16. EmergencyPreventionGuide
 
-**2. Create `public/sitemap-ms.xml`** -- A static XML file containing only Malay (`/ms/...`) URLs with full hreflang cross-links. Generated from the edge function output once it's working, or built directly from the same URL list used in the edge function.
-
-**3. Create `public/sitemap-zh.xml`** -- Same approach for Chinese (`/zh/...`) URLs.
-
-**4. Clean up `_redirects`** -- Remove the non-functional proxy rules for sitemap files since we're using static files instead. Keep only:
+### File structure
+```text
+src/lib/blogTranslations/
+  petEmergencyGuide.ts        (EN/MS/ZH content)
+  emergencySymptomsGuide.ts
+  vetDirectoryGuide.ts
+  firstAidGuide.ts
+  treatmentCostsGuide.ts
+  petPoisonsGuide.ts
+  dogEmergencyGuide.ts
+  catEmergencyGuide.ts
+  heatstrokeGuide.ts
+  chokingGuide.ts
+  accidentGuide.ts
+  insuranceGuide.ts
+  poisoningTreatmentGuide.ts
+  emergencyTransportGuide.ts
+  postEmergencyCareGuide.ts
+  emergencyPreventionGuide.ts
+  index.ts                    (re-exports all)
 ```
-/robots.txt      /robots.txt     200
-/favicon.ico     /favicon.ico    200
-/google*.html    /google:splat.html   200
-/*    /index.html   200
-```
 
-**5. Clean up `vite.config.ts`** -- Remove all sitemap proxy entries since they're no longer needed.
+## Important note
 
-### Technical Detail
-
-Each language sitemap will contain ~168 `<url>` entries (one per page), each with the language-specific `<loc>` and full trilingual `<xhtml:link>` hreflang annotations. The structure mirrors the existing `public/sitemap.xml` but filtered to one language's URLs only.
-
-**Files to modify:** `public/sitemap-ms.xml` (new), `public/sitemap-zh.xml` (new), `public/_redirects`, `vite.config.ts`
-**Edge function:** redeploy `supabase/functions/sitemap/index.ts`
+This is a very large task -- each article requires extracting 50-150+ distinct text strings and providing natural MS and ZH translations. Due to the volume, I recommend tackling this in batches of 3-4 articles at a time across multiple messages, starting with the highest-priority pillar page (`PetEmergencyGuide`) and the most-visited articles.
 
