@@ -146,7 +146,7 @@ const StateQACard = ({ state, language }: StateQACardProps) => {
             <MapPin className="h-6 w-6 text-primary" />
           </div>
           <span className="px-3 py-1 rounded-full bg-primary/10 text-primary text-xs font-medium">
-            {i18n.qaCount[language]}
+            {state.qaCount} Q&A
           </span>
         </div>
 
