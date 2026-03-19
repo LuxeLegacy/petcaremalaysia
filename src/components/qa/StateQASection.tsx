@@ -325,7 +325,7 @@ export const StateQASection = ({ stateSlug, stateName }: StateQASectionProps) =>
               setVisibleItems(ITEMS_PER_PAGE);
             }}
           >
-            {i18n.all[language]} ({filteredQAs.length})
+            {i18n.all[language]} ({baseFilteredQAs.length})
           </Button>
           {categories.map((cat) => {
             const count = filteredQAs.filter(q => q.category === cat).length;
