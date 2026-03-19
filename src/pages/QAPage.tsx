@@ -130,7 +130,7 @@ const QAPage = () => {
 };
 
 interface StateQACardProps {
-  state: { name: string; slug: string; hasData: boolean };
+  state: { name: string; slug: string; hasData: boolean; qaCount: string };
   language: Language;
 }
 
