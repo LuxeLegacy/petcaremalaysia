@@ -9,20 +9,20 @@ import { PAAArticleListing } from '@/components/paa/PAAArticleListing';
 import type { Language } from '@/lib/translations';
 
 const MALAYSIAN_STATES = [
-  { name: 'Selangor', slug: 'selangor', hasData: true },
-  { name: 'W.P. Kuala Lumpur', slug: 'kuala-lumpur', hasData: false },
-  { name: 'Johor', slug: 'johor', hasData: true },
-  { name: 'Penang', slug: 'penang', hasData: false },
-  { name: 'Perak', slug: 'perak', hasData: false },
-  { name: 'Negeri Sembilan', slug: 'negeri-sembilan', hasData: false },
-  { name: 'Sarawak', slug: 'sarawak', hasData: false },
-  { name: 'Sabah', slug: 'sabah', hasData: false },
-  { name: 'Melaka', slug: 'melaka', hasData: false },
-  { name: 'Kedah', slug: 'kedah', hasData: false },
-  { name: 'Pahang', slug: 'pahang', hasData: false },
-  { name: 'Kelantan', slug: 'kelantan', hasData: false },
-  { name: 'Terengganu', slug: 'terengganu', hasData: false },
-  { name: 'Perlis', slug: 'perlis', hasData: false },
+  { name: 'Selangor', slug: 'selangor', hasData: true, qaCount: '258+' },
+  { name: 'W.P. Kuala Lumpur', slug: 'kuala-lumpur', hasData: false, qaCount: '' },
+  { name: 'Johor', slug: 'johor', hasData: true, qaCount: '220+' },
+  { name: 'Penang', slug: 'penang', hasData: false, qaCount: '' },
+  { name: 'Perak', slug: 'perak', hasData: false, qaCount: '' },
+  { name: 'Negeri Sembilan', slug: 'negeri-sembilan', hasData: false, qaCount: '' },
+  { name: 'Sarawak', slug: 'sarawak', hasData: false, qaCount: '' },
+  { name: 'Sabah', slug: 'sabah', hasData: false, qaCount: '' },
+  { name: 'Melaka', slug: 'melaka', hasData: false, qaCount: '' },
+  { name: 'Kedah', slug: 'kedah', hasData: false, qaCount: '' },
+  { name: 'Pahang', slug: 'pahang', hasData: false, qaCount: '' },
+  { name: 'Kelantan', slug: 'kelantan', hasData: false, qaCount: '' },
+  { name: 'Terengganu', slug: 'terengganu', hasData: false, qaCount: '' },
+  { name: 'Perlis', slug: 'perlis', hasData: false, qaCount: '' },
 ];
 
 const i18n = {
