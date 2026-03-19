@@ -1,39 +1,25 @@
 
 
-## Problem
+# Fix: Q&A Badge Count and Category Filter Counts
 
-Two issues:
+## Two bugs identified
 
-1. **`_redirects` proxy rules to external URLs are ignored.** The hosting platform serves the SPA catch-all for `/sitemap-ms.xml` and `/sitemap-zh.xml` because there are no physical files at those paths. The main `/sitemap.xml` works only because `public/sitemap.xml` exists as a static file.
+### Bug 1: Hardcoded "145+ Q&A" badge on `/qa` hub page
+The `QAPage.tsx` `StateQACard` component displays a hardcoded `i18n.qaCount` string ("145+ Q&A") for all states with `hasData: true`. Johor has 221 Q&A entries but still shows "145+". This should show the actual count or at minimum "220+ Q&A".
 
-2. **Edge function not serving filtered content.** Even if the proxy worked, the deployed edge function still returns all 3 languages for `?lang=ms`. The updated code may not have been deployed.
+**Fix**: Update the badge text in `QAPage.tsx` to show a per-state count. Either:
+- Make it dynamic by querying counts from the database, OR
+- Update the hardcoded label to be per-state (simpler): add a `qaCount` field to each state object (e.g., Selangor: "258+", Johor: "220+").
 
-## Fix
+I recommend the per-state approach to avoid an extra database call on the hub page.
 
-Generate static `public/sitemap-ms.xml` and `public/sitemap-zh.xml` files, mirroring how `public/sitemap.xml` already works. The sitemap content is deterministic (hardcoded URLs and dates), so static files are the correct approach.
+### Bug 2: Category filter counts show 0 when a category is selected
+In `StateQASection.tsx` line 328, category counts are computed from `filteredQAs` — which already includes the category filter. So when you click "symptom-urgent", `filteredQAs` only contains symptom-urgent items, making all other category counts show 0.
 
-### Steps
+**Fix**: Create a separate `baseFilteredQAs` memo that applies only search + city filters (no category filter). Use this for computing category counts, while keeping `filteredQAs` (with category) for the actual list display.
 
-**1. Redeploy the edge function** to ensure the `lang` parameter filtering works correctly. Then call it with `?lang=ms` and `?lang=zh` to verify correct filtered output.
+## Files changed
 
-**2. Create `public/sitemap-ms.xml`** -- A static XML file containing only Malay (`/ms/...`) URLs with full hreflang cross-links. Generated from the edge function output once it's working, or built directly from the same URL list used in the edge function.
-
-**3. Create `public/sitemap-zh.xml`** -- Same approach for Chinese (`/zh/...`) URLs.
-
-**4. Clean up `_redirects`** -- Remove the non-functional proxy rules for sitemap files since we're using static files instead. Keep only:
-```
-/robots.txt      /robots.txt     200
-/favicon.ico     /favicon.ico    200
-/google*.html    /google:splat.html   200
-/*    /index.html   200
-```
-
-**5. Clean up `vite.config.ts`** -- Remove all sitemap proxy entries since they're no longer needed.
-
-### Technical Detail
-
-Each language sitemap will contain ~168 `<url>` entries (one per page), each with the language-specific `<loc>` and full trilingual `<xhtml:link>` hreflang annotations. The structure mirrors the existing `public/sitemap.xml` but filtered to one language's URLs only.
-
-**Files to modify:** `public/sitemap-ms.xml` (new), `public/sitemap-zh.xml` (new), `public/_redirects`, `vite.config.ts`
-**Edge function:** redeploy `supabase/functions/sitemap/index.ts`
+1. **`src/pages/QAPage.tsx`** — Add per-state `qaCount` to the `MALAYSIAN_STATES` array and use it in the badge.
+2. **`src/components/qa/StateQASection.tsx`** — Split filtering into `baseFilteredQAs` (search+city only) and `filteredQAs` (search+city+category). Use `baseFilteredQAs` for category button counts.
 
