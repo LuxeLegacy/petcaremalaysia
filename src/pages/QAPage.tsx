@@ -10,7 +10,7 @@ import type { Language } from '@/lib/translations';
 
 const MALAYSIAN_STATES = [
   { name: 'Selangor', slug: 'selangor', hasData: true, qaCount: '258+' },
-  { name: 'W.P. Kuala Lumpur', slug: 'kuala-lumpur', hasData: false, qaCount: '' },
+  { name: 'W.P. Kuala Lumpur', slug: 'kuala-lumpur', hasData: true, qaCount: '258+' },
   { name: 'Johor', slug: 'johor', hasData: true, qaCount: '220+' },
   { name: 'Penang', slug: 'penang', hasData: false, qaCount: '' },
   { name: 'Perak', slug: 'perak', hasData: false, qaCount: '' },
