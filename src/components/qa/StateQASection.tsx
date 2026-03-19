@@ -328,7 +328,7 @@ export const StateQASection = ({ stateSlug, stateName }: StateQASectionProps) =>
             {i18n.all[language]} ({baseFilteredQAs.length})
           </Button>
           {categories.map((cat) => {
-            const count = filteredQAs.filter(q => q.category === cat).length;
+            const count = baseFilteredQAs.filter(q => q.category === cat).length;
             return (
               <Button
                 key={cat}
