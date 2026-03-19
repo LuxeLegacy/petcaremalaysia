@@ -96,7 +96,7 @@ export const StateQASection = ({ stateSlug, stateName }: StateQASectionProps) =>
 
   const stateNameMap: Record<string, string> = useMemo(() => ({
     'selangor': 'Selangor',
-    'kuala-lumpur': 'W.P. Kuala Lumpur',
+    'kuala-lumpur': 'Kuala Lumpur',
     'johor': 'Johor',
     'penang': 'Penang',
     'perak': 'Perak',
