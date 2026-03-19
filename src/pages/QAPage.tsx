@@ -9,20 +9,20 @@ import { PAAArticleListing } from '@/components/paa/PAAArticleListing';
 import type { Language } from '@/lib/translations';
 
 const MALAYSIAN_STATES = [
-  { name: 'Selangor', slug: 'selangor', hasData: true },
-  { name: 'W.P. Kuala Lumpur', slug: 'kuala-lumpur', hasData: false },
-  { name: 'Johor', slug: 'johor', hasData: true },
-  { name: 'Penang', slug: 'penang', hasData: false },
-  { name: 'Perak', slug: 'perak', hasData: false },
-  { name: 'Negeri Sembilan', slug: 'negeri-sembilan', hasData: false },
-  { name: 'Sarawak', slug: 'sarawak', hasData: false },
-  { name: 'Sabah', slug: 'sabah', hasData: false },
-  { name: 'Melaka', slug: 'melaka', hasData: false },
-  { name: 'Kedah', slug: 'kedah', hasData: false },
-  { name: 'Pahang', slug: 'pahang', hasData: false },
-  { name: 'Kelantan', slug: 'kelantan', hasData: false },
-  { name: 'Terengganu', slug: 'terengganu', hasData: false },
-  { name: 'Perlis', slug: 'perlis', hasData: false },
+  { name: 'Selangor', slug: 'selangor', hasData: true, qaCount: '258+' },
+  { name: 'W.P. Kuala Lumpur', slug: 'kuala-lumpur', hasData: false, qaCount: '' },
+  { name: 'Johor', slug: 'johor', hasData: true, qaCount: '220+' },
+  { name: 'Penang', slug: 'penang', hasData: false, qaCount: '' },
+  { name: 'Perak', slug: 'perak', hasData: false, qaCount: '' },
+  { name: 'Negeri Sembilan', slug: 'negeri-sembilan', hasData: false, qaCount: '' },
+  { name: 'Sarawak', slug: 'sarawak', hasData: false, qaCount: '' },
+  { name: 'Sabah', slug: 'sabah', hasData: false, qaCount: '' },
+  { name: 'Melaka', slug: 'melaka', hasData: false, qaCount: '' },
+  { name: 'Kedah', slug: 'kedah', hasData: false, qaCount: '' },
+  { name: 'Pahang', slug: 'pahang', hasData: false, qaCount: '' },
+  { name: 'Kelantan', slug: 'kelantan', hasData: false, qaCount: '' },
+  { name: 'Terengganu', slug: 'terengganu', hasData: false, qaCount: '' },
+  { name: 'Perlis', slug: 'perlis', hasData: false, qaCount: '' },
 ];
 
 const i18n = {
@@ -130,7 +130,7 @@ const QAPage = () => {
 };
 
 interface StateQACardProps {
-  state: { name: string; slug: string; hasData: boolean };
+  state: { name: string; slug: string; hasData: boolean; qaCount: string };
   language: Language;
 }
 
@@ -146,7 +146,7 @@ const StateQACard = ({ state, language }: StateQACardProps) => {
             <MapPin className="h-6 w-6 text-primary" />
           </div>
           <span className="px-3 py-1 rounded-full bg-primary/10 text-primary text-xs font-medium">
-            {i18n.qaCount[language]}
+            {state.qaCount} Q&A
           </span>
         </div>
 

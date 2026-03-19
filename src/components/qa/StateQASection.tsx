@@ -173,7 +173,7 @@ export const StateQASection = ({ stateSlug, stateName }: StateQASectionProps) =>
     return Array.from(cats);
   }, [qaData]);
 
-  const filteredQAs = useMemo(() => {
+  const baseFilteredQAs = useMemo(() => {
     let filtered = qaData;
 
     if (selectedCity !== 'all') {
@@ -190,12 +190,15 @@ export const StateQASection = ({ stateSlug, stateName }: StateQASectionProps) =>
       );
     }
 
-    if (selectedCategory) {
-      filtered = filtered.filter(q => q.category === selectedCategory);
-    }
-
     return filtered;
-  }, [qaData, searchQuery, selectedCategory, selectedCity]);
+  }, [qaData, searchQuery, selectedCity]);
+
+  const filteredQAs = useMemo(() => {
+    if (selectedCategory) {
+      return baseFilteredQAs.filter(q => q.category === selectedCategory);
+    }
+    return baseFilteredQAs;
+  }, [baseFilteredQAs, selectedCategory]);
 
   const visibleQAs = filteredQAs.slice(0, visibleItems);
   const hasMore = visibleItems < filteredQAs.length;
@@ -322,10 +325,10 @@ export const StateQASection = ({ stateSlug, stateName }: StateQASectionProps) =>
               setVisibleItems(ITEMS_PER_PAGE);
             }}
           >
-            {i18n.all[language]} ({filteredQAs.length})
+            {i18n.all[language]} ({baseFilteredQAs.length})
           </Button>
           {categories.map((cat) => {
-            const count = filteredQAs.filter(q => q.category === cat).length;
+            const count = baseFilteredQAs.filter(q => q.category === cat).length;
             return (
               <Button
                 key={cat}
