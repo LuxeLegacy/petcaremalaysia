@@ -1,56 +1,39 @@
 
 
-# Plan: Replicate Selangor Q&A Data for Johor
+## Problem
 
-## Summary
+Two issues:
 
-Populate the `pet_qa_keywords` database table with Johor-specific Q&A content (mirroring the 145 state-level Selangor entries) and flip the `hasData` flag so `/qa/johor` renders the interactive Q&A section instead of the fallback.
+1. **`_redirects` proxy rules to external URLs are ignored.** The hosting platform serves the SPA catch-all for `/sitemap-ms.xml` and `/sitemap-zh.xml` because there are no physical files at those paths. The main `/sitemap.xml` works only because `public/sitemap.xml` exists as a static file.
 
-## What exists today
+2. **Edge function not serving filtered content.** Even if the proxy worked, the deployed edge function still returns all 3 languages for `?lang=ms`. The updated code may not have been deployed.
 
-- Selangor has 145 state-level Q&A rows (no `city_slug`) across 6 categories: `symptom-urgent` (72), `emergency-general` (26), `emergency-location` (14), `toxin-ingestion` (14), `cost-logistics` (10), `transport-triage` (9).
-- Selangor also has ~113 city-specific rows across 10 cities.
-- Johor has 0 rows in the database. Its page shows the fallback UI.
+## Fix
 
-## Implementation steps
+Generate static `public/sitemap-ms.xml` and `public/sitemap-zh.xml` files, mirroring how `public/sitemap.xml` already works. The sitemap content is deterministic (hardcoded URLs and dates), so static files are the correct approach.
 
-### 1. Generate and insert Johor state-level Q&A rows (~145 entries)
+### Steps
 
-Using a database migration, bulk-insert Q&A rows for `state = 'Johor'` with `city_slug = NULL`. Content will be adapted from the Selangor dataset with Johor-specific references:
+**1. Redeploy the edge function** to ensure the `lang` parameter filtering works correctly. Then call it with `?lang=ms` and `?lang=zh` to verify correct filtered output.
 
-- Replace "Selangor" with "Johor" in keywords, questions, and answers
-- Replace Selangor-specific location references (Shah Alam, PJ, etc.) with Johor equivalents (Johor Bahru, Tampoi, Skudai, Iskandar Puteri)
-- Update local context: JB-specific emergency clinics, MBJB council references, Johor DVS contacts
-- Keep same categories and priority structure
+**2. Create `public/sitemap-ms.xml`** -- A static XML file containing only Malay (`/ms/...`) URLs with full hreflang cross-links. Generated from the edge function output once it's working, or built directly from the same URL list used in the edge function.
 
-This will be done via multiple SQL INSERT statements in a single migration.
+**3. Create `public/sitemap-zh.xml`** -- Same approach for Chinese (`/zh/...`) URLs.
 
-### 2. Generate and insert Johor city-level Q&A rows (~80 entries)
-
-Insert city-specific Q&A rows for 5 key Johor cities: `johor-bahru`, `tampoi`, `skudai`, `iskandar-puteri`, `bukit-indah` — each with ~16 localized Q&As covering the same 6 categories.
-
-### 3. Update `StateQAPage.tsx` — flip `hasData` flag
-
-Change line 15 from:
+**4. Clean up `_redirects`** -- Remove the non-functional proxy rules for sitemap files since we're using static files instead. Keep only:
 ```
-'johor': { name: 'Johor', hasData: false },
-```
-to:
-```
-'johor': { name: 'Johor', hasData: true },
+/robots.txt      /robots.txt     200
+/favicon.ico     /favicon.ico    200
+/google*.html    /google:splat.html   200
+/*    /index.html   200
 ```
 
-This single change makes the page render `<StateQASection>` instead of the `<NoDataFallback>` component.
+**5. Clean up `vite.config.ts`** -- Remove all sitemap proxy entries since they're no longer needed.
 
-## Technical details
+### Technical Detail
 
-- **Database table**: `pet_qa_keywords` — columns: `keyword`, `question`, `answer`, `state`, `city_slug`, `category`, `language` (defaults to `en`), `priority`
-- **No schema changes needed** — same table structure as Selangor
-- **No new components needed** — `StateQASection` already handles any state dynamically via the `stateNameMap`
-- **City filter dropdown** will auto-populate from Johor cities in `cityData.ts` (already has JB Hub + Iskandar Hub cities)
+Each language sitemap will contain ~168 `<url>` entries (one per page), each with the language-specific `<loc>` and full trilingual `<xhtml:link>` hreflang annotations. The structure mirrors the existing `public/sitemap.xml` but filtered to one language's URLs only.
 
-## Files changed
-
-1. **Database migration** — bulk INSERT of ~225 Johor Q&A rows
-2. **`src/pages/StateQAPage.tsx`** — single line change (`hasData: true`)
+**Files to modify:** `public/sitemap-ms.xml` (new), `public/sitemap-zh.xml` (new), `public/_redirects`, `vite.config.ts`
+**Edge function:** redeploy `supabase/functions/sitemap/index.ts`
 

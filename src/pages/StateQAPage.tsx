@@ -12,7 +12,7 @@ import type { Language } from '@/lib/translations';
 const STATES_CONFIG: Record<string, { name: string; hasData: boolean }> = {
   'selangor': { name: 'Selangor', hasData: true },
   'kuala-lumpur': { name: 'W.P. Kuala Lumpur', hasData: false },
-  'johor': { name: 'Johor', hasData: false },
+  'johor': { name: 'Johor', hasData: true },
   'penang': { name: 'Penang', hasData: false },
   'perak': { name: 'Perak', hasData: false },
   'sarawak': { name: 'Sarawak', hasData: false },
