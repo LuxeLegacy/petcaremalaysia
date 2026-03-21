@@ -6,57 +6,57 @@
 
 @layer base {
   :root {
-    /* Warm pet care palette */
-    --background: 45 30% 97%;
-    --foreground: 25 20% 15%;
+    /* Light pink pet care palette */
+    --background: 350 30% 97%;
+    --foreground: 340 15% 20%;
 
     --card: 0 0% 100%;
-    --card-foreground: 25 20% 15%;
+    --card-foreground: 340 15% 20%;
 
     --popover: 0 0% 100%;
-    --popover-foreground: 25 20% 15%;
+    --popover-foreground: 340 15% 20%;
 
-    /* Warm earthy green - trust & nature */
-    --primary: 145 45% 35%;
+    /* Rose pink primary */
+    --primary: 340 55% 55%;
     --primary-foreground: 0 0% 100%;
 
-    /* Soft cream secondary */
-    --secondary: 40 35% 92%;
-    --secondary-foreground: 25 20% 20%;
+    /* Soft pink secondary */
+    --secondary: 350 30% 94%;
+    --secondary-foreground: 340 15% 25%;
 
-    --muted: 40 20% 94%;
-    --muted-foreground: 25 15% 45%;
+    --muted: 350 20% 95%;
+    --muted-foreground: 340 10% 50%;
 
-    /* Warm orange accent */
-    --accent: 28 85% 55%;
+    /* Warm coral accent */
+    --accent: 15 85% 60%;
     --accent-foreground: 0 0% 100%;
 
     /* Emergency red */
     --destructive: 0 72% 50%;
     --destructive-foreground: 0 0% 100%;
 
-    --border: 35 20% 88%;
-    --input: 35 20% 88%;
-    --ring: 145 45% 35%;
+    --border: 350 15% 90%;
+    --input: 350 15% 90%;
+    --ring: 340 55% 55%;
 
     --radius: 0.75rem;
 
     /* Custom colors */
-    --warm-cream: 45 40% 95%;
-    --sage: 145 30% 45%;
-    --terracotta: 15 70% 55%;
-    --soft-gold: 40 60% 70%;
-    --midnight: 220 25% 20%;
+    --warm-cream: 350 35% 96%;
+    --sage: 340 40% 60%;
+    --terracotta: 350 60% 60%;
+    --soft-gold: 350 45% 75%;
+    --midnight: 340 20% 25%;
     
     /* Gradients */
-    --gradient-hero: linear-gradient(135deg, hsl(220 80% 25%) 0%, hsl(0 85% 40%) 100%);
-    --gradient-warm: linear-gradient(180deg, hsl(45 30% 97%) 0%, hsl(40 35% 92%) 100%);
-    --gradient-card: linear-gradient(145deg, hsl(0 0% 100%) 0%, hsl(45 30% 98%) 100%);
+    --gradient-hero: linear-gradient(135deg, hsl(340 60% 45%) 0%, hsl(350 70% 60%) 100%);
+    --gradient-warm: linear-gradient(180deg, hsl(350 30% 97%) 0%, hsl(350 30% 94%) 100%);
+    --gradient-card: linear-gradient(145deg, hsl(0 0% 100%) 0%, hsl(350 25% 98%) 100%);
     
     /* Shadows */
-    --shadow-soft: 0 4px 20px -4px hsl(25 20% 15% / 0.08);
-    --shadow-card: 0 8px 30px -8px hsl(25 20% 15% / 0.1);
-    --shadow-elevated: 0 20px 50px -15px hsl(25 20% 15% / 0.15);
+    --shadow-soft: 0 4px 20px -4px hsl(340 15% 20% / 0.08);
+    --shadow-card: 0 8px 30px -8px hsl(340 15% 20% / 0.1);
+    --shadow-elevated: 0 20px 50px -15px hsl(340 15% 20% / 0.15);
 
     --sidebar-background: 0 0% 98%;
     --sidebar-foreground: 240 5.3% 26.1%;
