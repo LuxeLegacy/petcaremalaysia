@@ -62,7 +62,7 @@ export const HeroSection = () => {
           <div className="mt-10 flex flex-wrap justify-center gap-3 animate-fade-in" style={{
           animationDelay: '0.4s'
         }}>
-            {hubsData.slice(0, 6).map(hub => <Link key={hub.slug} to={`/${hub.stateSlug}/${hub.cities[0]?.slug || hub.slug}`} className="inline-flex items-center gap-1 px-4 py-2 rounded-full bg-primary-foreground/10 text-primary-foreground/90 text-sm font-medium hover:bg-primary-foreground/20 transition-colors">
+            {hubsData.slice(0, 6).map(hub => <Link key={hub.slug} to={`/${hub.stateSlug}/${hub.cities[0]?.slug || hub.slug}`} className="inline-flex items-center gap-1 px-4 py-2 rounded-full bg-primary/10 text-foreground/80 text-sm font-medium hover:bg-primary/20 transition-colors">
                 <MapPin className="h-3.5 w-3.5" />
                 {hub.name.replace(' Hub', '')}
               </Link>)}
