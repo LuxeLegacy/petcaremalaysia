@@ -44,7 +44,7 @@ export const HeroSection = () => {
                 Is Your Pet in Danger? Check Now — FREE
               </Button>
             </Link>
-            <p className="text-primary-foreground/80 text-sm mt-2 font-medium">
+            <p className="text-muted-foreground text-sm mt-2 font-medium">
               ⏱️ Every minute counts in a pet emergency. Get instant results.
             </p>
           </div>
