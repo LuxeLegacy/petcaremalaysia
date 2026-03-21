@@ -18,7 +18,7 @@ export const FinalCtaSection = () => {
       <div className="container relative z-10">
         <div className="max-w-3xl mx-auto text-center">
           {/* Urgency Badge */}
-          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary-foreground/20 text-primary-foreground text-sm font-medium mb-6 animate-pulse-soft">
+          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/15 text-foreground text-sm font-medium mb-6 animate-pulse-soft">
             <Clock className="h-4 w-4" />
             Every 8 Minutes Matters
           </div>
