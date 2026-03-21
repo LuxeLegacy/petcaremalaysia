@@ -41,7 +41,7 @@ export const HeroSection = () => {
                 className="bg-destructive hover:bg-destructive/90 text-destructive-foreground shadow-elevated text-base md:text-lg font-bold gap-2 px-6 md:px-10 py-6 md:py-7 animate-pulse-soft"
               >
                 <AlertTriangle className="h-5 w-5 md:h-6 md:w-6" />
-                Is Your Pet in Danger? Check Now — FREE
+                Pet Emergency? Check Now — Free
               </Button>
             </Link>
             <p className="text-muted-foreground text-sm mt-2 font-medium">
