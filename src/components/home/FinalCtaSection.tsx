@@ -50,7 +50,7 @@ export const FinalCtaSection = () => {
             <Button 
               size="lg" 
               variant="outline"
-              className="border-primary-foreground/30 text-primary-foreground hover:bg-primary-foreground/10 text-base font-semibold gap-2"
+              className="border-foreground/30 text-foreground hover:bg-primary/10 text-base font-semibold gap-2"
             >
               <Bookmark className="h-5 w-5" />
               {t.finalCta.secondaryCta}
