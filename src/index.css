@@ -28,8 +28,8 @@
     --muted-foreground: 340 10% 50%;
 
     /* Warm coral accent */
-    --accent: 15 85% 60%;
-    --accent-foreground: 0 0% 100%;
+    --accent: 15 80% 65%;
+    --accent-foreground: 15 30% 20%;
 
     /* Emergency red */
     --destructive: 0 72% 50%;
