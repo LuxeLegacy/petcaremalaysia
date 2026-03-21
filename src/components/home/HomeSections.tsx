@@ -11,13 +11,13 @@ export const HeroSection = () => {
   } = useLanguage();
   return <section className="relative overflow-hidden gradient-hero lg:py-32 py-[50px]">
       {/* Background pet image */}
-      <div className="absolute inset-0 opacity-20">
+      <div className="absolute inset-0 opacity-15">
         <img 
           src={heroPets} 
           alt="Happy dog and cat together" 
           className="w-full h-full object-cover object-center"
         />
-        <div className="absolute inset-0 bg-gradient-to-b from-primary/80 to-primary/60" />
+        <div className="absolute inset-0 bg-gradient-to-b from-white/40 to-white/20" />
       </div>
 
       <div className="container relative z-10">
