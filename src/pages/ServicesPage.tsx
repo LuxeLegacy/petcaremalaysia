@@ -84,10 +84,10 @@ const ServicesPage = () => {
           {/* Hero */}
           <section className="gradient-hero py-16">
             <div className="container">
-              <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold text-primary-foreground mb-4">
+              <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold text-foreground mb-4">
                 {t.services.title}
               </h1>
-              <p className="text-lg text-primary-foreground/90 max-w-2xl">
+              <p className="text-lg text-muted-foreground max-w-2xl">
                 Comprehensive pet care services across Malaysia. 
                 From emergency veterinary care to grooming, boarding, and adoption.
               </p>

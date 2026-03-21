@@ -200,7 +200,7 @@ export const EmergencyBanner = () => {
   const {
     t
   } = useLanguage();
-  return <section className="bg-destructive py-6">
+  return <section className="bg-destructive/90 py-6">
       <div className="container">
         <div className="flex flex-col md:flex-row items-center justify-between gap-4 text-destructive-foreground">
           <div className="flex items-center gap-3">

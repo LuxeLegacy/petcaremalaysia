@@ -71,16 +71,16 @@ const QAPage = () => {
         <section className="gradient-hero py-16 lg:py-24">
           <div className="container">
             <div className="max-w-4xl mx-auto text-center">
-              <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary-foreground/10 text-primary-foreground text-sm font-medium mb-6">
+              <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/15 text-foreground text-sm font-medium mb-6">
                 <MessageCircleQuestion className="h-4 w-4" />
                 {i18n.badge[language]}
               </div>
 
-              <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold text-primary-foreground mb-6">
+              <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold text-foreground mb-6">
                 {i18n.title[language]}
               </h1>
 
-              <p className="text-lg md:text-xl text-primary-foreground/90 max-w-2xl mx-auto">
+              <p className="text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto">
                 {i18n.subtitle[language]}
               </p>
             </div>

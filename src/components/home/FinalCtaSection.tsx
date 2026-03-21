@@ -58,17 +58,17 @@ export const FinalCtaSection = () => {
           </div>
 
           {/* Trust indicators */}
-          <div className="mt-12 flex flex-wrap justify-center gap-6 text-primary-foreground/80 text-sm">
+          <div className="mt-12 flex flex-wrap justify-center gap-6 text-muted-foreground text-sm">
             <span className="flex items-center gap-2">
-              <span className="w-2 h-2 rounded-full bg-primary-foreground animate-pulse"></span>
+              <span className="w-2 h-2 rounded-full bg-primary animate-pulse"></span>
               100+ Verified Locations
             </span>
             <span className="flex items-center gap-2">
-              <span className="w-2 h-2 rounded-full bg-primary-foreground animate-pulse"></span>
+              <span className="w-2 h-2 rounded-full bg-primary animate-pulse"></span>
               24/7 Always Available
             </span>
             <span className="flex items-center gap-2">
-              <span className="w-2 h-2 rounded-full bg-primary-foreground animate-pulse"></span>
+              <span className="w-2 h-2 rounded-full bg-primary animate-pulse"></span>
               23,000+ Pets Saved
             </span>
           </div>
