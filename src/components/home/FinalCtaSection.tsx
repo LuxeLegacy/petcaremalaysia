@@ -31,8 +31,8 @@ export const FinalCtaSection = () => {
           </p>
 
           {/* Urgency Text */}
-          <div className="bg-primary-foreground/10 rounded-xl p-4 mb-8 border border-primary-foreground/20">
-            <p className="flex items-center justify-center gap-2 text-primary-foreground font-medium">
+          <div className="bg-primary/10 rounded-xl p-4 mb-8 border border-primary/20">
+            <p className="flex items-center justify-center gap-2 text-foreground font-medium">
               <AlertCircle className="h-5 w-5" />
               {t.finalCta.urgency}
             </p>
