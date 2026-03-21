@@ -27,7 +27,7 @@ export const HeroSection = () => {
             {t.hero.headline}
           </h1>
           
-          <p className="text-lg md:text-xl text-primary-foreground/90 mb-8 animate-slide-up max-w-3xl mx-auto" style={{
+          <p className="text-lg md:text-xl text-muted-foreground mb-8 animate-slide-up max-w-3xl mx-auto" style={{
           animationDelay: '0.1s'
         }}>
             {t.hero.subheadline}
