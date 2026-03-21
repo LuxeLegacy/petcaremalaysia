@@ -122,26 +122,26 @@ const StateQAPage = () => {
             <div className="max-w-4xl mx-auto">
               <Link
                 to="/qa"
-                className="inline-flex items-center gap-2 text-primary-foreground/80 hover:text-primary-foreground text-sm mb-6 transition-colors"
+                className="inline-flex items-center gap-2 text-muted-foreground hover:text-foreground text-sm mb-6 transition-colors"
               >
                 <ChevronLeft className="h-4 w-4" />
                 {i18n.backToHub[language]}
               </Link>
 
               <div className="flex items-center gap-3 mb-4">
-                <div className="p-3 rounded-xl bg-primary-foreground/10">
-                  <MapPin className="h-6 w-6 text-primary-foreground" />
+                <div className="p-3 rounded-xl bg-primary/15">
+                  <MapPin className="h-6 w-6 text-primary" />
                 </div>
-                <span className="px-3 py-1 rounded-full bg-primary-foreground/10 text-primary-foreground text-sm font-medium">
+                <span className="px-3 py-1 rounded-full bg-primary/15 text-foreground text-sm font-medium">
                   {stateConfig.hasData ? i18n.questionsCount[language] : i18n.comingSoon[language]}
                 </span>
               </div>
 
-              <h1 className="text-3xl md:text-4xl font-bold text-primary-foreground mb-4">
+              <h1 className="text-3xl md:text-4xl font-bold text-foreground mb-4">
                 {i18n.title[language](stateConfig.name)}
               </h1>
 
-              <p className="text-lg text-primary-foreground/90 max-w-2xl">
+              <p className="text-lg text-muted-foreground max-w-2xl">
                 {i18n.subtitle[language](stateConfig.name)}
               </p>
             </div>

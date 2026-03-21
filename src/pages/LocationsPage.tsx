@@ -53,10 +53,10 @@ const LocationsPage = () => {
           {/* Hero */}
           <section className="gradient-hero py-16">
             <div className="container">
-              <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold text-primary-foreground mb-4">
+              <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold text-foreground mb-4">
                 {t.nav.locations}
               </h1>
-              <p className="text-lg text-primary-foreground/90 max-w-2xl mb-8">
+              <p className="text-lg text-muted-foreground max-w-2xl mb-8">
                 Pet care services available in 100+ locations across Malaysia. 
                 Find vets, grooming, and emergency services near you.
               </p>

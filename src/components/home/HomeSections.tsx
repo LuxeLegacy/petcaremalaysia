@@ -11,23 +11,23 @@ export const HeroSection = () => {
   } = useLanguage();
   return <section className="relative overflow-hidden gradient-hero lg:py-32 py-[50px]">
       {/* Background pet image */}
-      <div className="absolute inset-0 opacity-20">
+      <div className="absolute inset-0 opacity-15">
         <img 
           src={heroPets} 
           alt="Happy dog and cat together" 
           className="w-full h-full object-cover object-center"
         />
-        <div className="absolute inset-0 bg-gradient-to-b from-primary/80 to-primary/60" />
+        <div className="absolute inset-0 bg-gradient-to-b from-white/40 to-white/20" />
       </div>
 
       <div className="container relative z-10">
         <div className="max-w-4xl mx-auto text-center">
           {/* Pattern Interrupt Headline */}
-          <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold text-primary-foreground mb-6 animate-fade-in text-balance leading-tight">
+          <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold text-foreground mb-6 animate-fade-in text-balance leading-tight">
             {t.hero.headline}
           </h1>
           
-          <p className="text-lg md:text-xl text-primary-foreground/90 mb-8 animate-slide-up max-w-3xl mx-auto" style={{
+          <p className="text-lg md:text-xl text-muted-foreground mb-8 animate-slide-up max-w-3xl mx-auto" style={{
           animationDelay: '0.1s'
         }}>
             {t.hero.subheadline}
@@ -44,14 +44,14 @@ export const HeroSection = () => {
                 Is Your Pet in Danger? Check Now — FREE
               </Button>
             </Link>
-            <p className="text-primary-foreground/80 text-sm mt-2 font-medium">
+            <p className="text-muted-foreground text-sm mt-2 font-medium">
               ⏱️ Every minute counts in a pet emergency. Get instant results.
             </p>
           </div>
 
 
           {/* Trust Badge */}
-          <div className="mt-8 inline-flex items-center gap-2 px-6 py-3 rounded-full bg-primary-foreground/10 text-primary-foreground text-sm font-medium animate-fade-in" style={{
+          <div className="mt-8 inline-flex items-center gap-2 px-6 py-3 rounded-full bg-primary/10 text-foreground text-sm font-medium animate-fade-in" style={{
           animationDelay: '0.3s'
         }}>
             <CheckCircle className="h-4 w-4" />
@@ -62,7 +62,7 @@ export const HeroSection = () => {
           <div className="mt-10 flex flex-wrap justify-center gap-3 animate-fade-in" style={{
           animationDelay: '0.4s'
         }}>
-            {hubsData.slice(0, 6).map(hub => <Link key={hub.slug} to={`/${hub.stateSlug}/${hub.cities[0]?.slug || hub.slug}`} className="inline-flex items-center gap-1 px-4 py-2 rounded-full bg-primary-foreground/10 text-primary-foreground/90 text-sm font-medium hover:bg-primary-foreground/20 transition-colors">
+            {hubsData.slice(0, 6).map(hub => <Link key={hub.slug} to={`/${hub.stateSlug}/${hub.cities[0]?.slug || hub.slug}`} className="inline-flex items-center gap-1 px-4 py-2 rounded-full bg-primary/10 text-foreground/80 text-sm font-medium hover:bg-primary/20 transition-colors">
                 <MapPin className="h-3.5 w-3.5" />
                 {hub.name.replace(' Hub', '')}
               </Link>)}
@@ -200,7 +200,7 @@ export const EmergencyBanner = () => {
   const {
     t
   } = useLanguage();
-  return <section className="bg-destructive py-6">
+  return <section className="bg-destructive/90 py-6">
       <div className="container">
         <div className="flex flex-col md:flex-row items-center justify-between gap-4 text-destructive-foreground">
           <div className="flex items-center gap-3">
