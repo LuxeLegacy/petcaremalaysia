@@ -1,39 +1,39 @@
 
 
-## Problem
+# Light Pink Color Theme
 
-Two issues:
+Update `src/index.css` `:root` variables to a light pink palette while keeping the Malaysian identity.
 
-1. **`_redirects` proxy rules to external URLs are ignored.** The hosting platform serves the SPA catch-all for `/sitemap-ms.xml` and `/sitemap-zh.xml` because there are no physical files at those paths. The main `/sitemap.xml` works only because `public/sitemap.xml` exists as a static file.
+## Changes (`:root` block only)
 
-2. **Edge function not serving filtered content.** Even if the proxy worked, the deployed edge function still returns all 3 languages for `?lang=ms`. The updated code may not have been deployed.
+| Variable | Current | New |
+|---|---|---|
+| `--background` | `45 30% 97%` | `350 30% 97%` (pink-tinted white) |
+| `--foreground` | `25 20% 15%` | `340 15% 20%` |
+| `--card` | `0 0% 100%` | `0 0% 100%` (unchanged) |
+| `--card-foreground` | `25 20% 15%` | `340 15% 20%` |
+| `--popover-foreground` | `25 20% 15%` | `340 15% 20%` |
+| `--primary` | `145 45% 35%` | `340 55% 55%` (rose pink) |
+| `--primary-foreground` | `0 0% 100%` | unchanged |
+| `--secondary` | `40 35% 92%` | `350 30% 94%` (soft pink) |
+| `--secondary-foreground` | `25 20% 20%` | `340 15% 25%` |
+| `--muted` | `40 20% 94%` | `350 20% 95%` |
+| `--muted-foreground` | `25 15% 45%` | `340 10% 50%` |
+| `--accent` | `28 85% 55%` | `15 85% 60%` (warm coral) |
+| `--border` | `35 20% 88%` | `350 15% 90%` |
+| `--input` | `35 20% 88%` | `350 15% 90%` |
+| `--ring` | `145 45% 35%` | `340 55% 55%` |
+| `--warm-cream` | `45 40% 95%` | `350 35% 96%` |
+| `--sage` | `145 30% 45%` | `340 40% 60%` |
+| `--terracotta` | `15 70% 55%` | `350 60% 60%` |
+| `--soft-gold` | `40 60% 70%` | `350 45% 75%` |
+| `--midnight` | `220 25% 20%` | `340 20% 25%` |
+| `--gradient-hero` | dark blue→red | `hsl(340 60% 45%) → hsl(350 70% 60%)` (pink gradient) |
+| `--gradient-warm` | cream tones | `hsl(350 30% 97%) → hsl(350 30% 94%)` |
+| `--gradient-card` | white→cream | `hsl(0 0% 100%) → hsl(350 25% 98%)` |
 
-## Fix
-
-Generate static `public/sitemap-ms.xml` and `public/sitemap-zh.xml` files, mirroring how `public/sitemap.xml` already works. The sitemap content is deterministic (hardcoded URLs and dates), so static files are the correct approach.
-
-### Steps
-
-**1. Redeploy the edge function** to ensure the `lang` parameter filtering works correctly. Then call it with `?lang=ms` and `?lang=zh` to verify correct filtered output.
-
-**2. Create `public/sitemap-ms.xml`** -- A static XML file containing only Malay (`/ms/...`) URLs with full hreflang cross-links. Generated from the edge function output once it's working, or built directly from the same URL list used in the edge function.
-
-**3. Create `public/sitemap-zh.xml`** -- Same approach for Chinese (`/zh/...`) URLs.
-
-**4. Clean up `_redirects`** -- Remove the non-functional proxy rules for sitemap files since we're using static files instead. Keep only:
-```
-/robots.txt      /robots.txt     200
-/favicon.ico     /favicon.ico    200
-/google*.html    /google:splat.html   200
-/*    /index.html   200
-```
-
-**5. Clean up `vite.config.ts`** -- Remove all sitemap proxy entries since they're no longer needed.
-
-### Technical Detail
-
-Each language sitemap will contain ~168 `<url>` entries (one per page), each with the language-specific `<loc>` and full trilingual `<xhtml:link>` hreflang annotations. The structure mirrors the existing `public/sitemap.xml` but filtered to one language's URLs only.
-
-**Files to modify:** `public/sitemap-ms.xml` (new), `public/sitemap-zh.xml` (new), `public/_redirects`, `vite.config.ts`
-**Edge function:** redeploy `supabase/functions/sitemap/index.ts`
+## Scope
+- Single file: `src/index.css` — light mode `:root` only
+- Dark mode unchanged
+- No component changes needed
 
