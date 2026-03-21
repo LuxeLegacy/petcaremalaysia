@@ -23,7 +23,7 @@ export const HeroSection = () => {
       <div className="container relative z-10">
         <div className="max-w-4xl mx-auto text-center">
           {/* Pattern Interrupt Headline */}
-          <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold text-primary-foreground mb-6 animate-fade-in text-balance leading-tight">
+          <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold text-foreground mb-6 animate-fade-in text-balance leading-tight">
             {t.hero.headline}
           </h1>
           
