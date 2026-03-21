@@ -51,7 +51,7 @@ export const HeroSection = () => {
 
 
           {/* Trust Badge */}
-          <div className="mt-8 inline-flex items-center gap-2 px-6 py-3 rounded-full bg-primary-foreground/10 text-primary-foreground text-sm font-medium animate-fade-in" style={{
+          <div className="mt-8 inline-flex items-center gap-2 px-6 py-3 rounded-full bg-primary/10 text-foreground text-sm font-medium animate-fade-in" style={{
           animationDelay: '0.3s'
         }}>
             <CheckCircle className="h-4 w-4" />
