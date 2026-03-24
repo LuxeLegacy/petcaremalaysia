@@ -82,6 +82,7 @@ export const citiesData: CityData[] = [
   // Cyberjaya Hub
   { name: "Cyberjaya", hub: "Cyberjaya Hub", state: "Selangor", languages: ["EN", "BM"], slug: "cyberjaya", stateSlug: "selangor" },
   { name: "Putrajaya", hub: "Cyberjaya Hub", state: "Selangor", languages: ["BM", "EN"], slug: "putrajaya", stateSlug: "selangor" },
+  { name: "Sepang", hub: "Cyberjaya Hub", state: "Selangor", languages: ["BM", "EN"], slug: "sepang", stateSlug: "selangor" },
   
   // Ampang Hub
   { name: "Ampang Jaya", hub: "Ampang Hub", state: "Selangor", languages: ["BM", "CN"], slug: "ampang-jaya", stateSlug: "selangor" },
