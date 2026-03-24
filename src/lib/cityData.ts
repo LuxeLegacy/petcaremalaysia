@@ -260,6 +260,9 @@ export const citiesData: CityData[] = [
   { name: "Dungun", hub: "Kuala Terengganu Hub", state: "Terengganu", languages: ["BM"], slug: "dungun", stateSlug: "terengganu" },
   { name: "Marang", hub: "Kuala Terengganu Hub", state: "Terengganu", languages: ["BM"], slug: "marang", stateSlug: "terengganu" },
   { name: "Besut", hub: "Kuala Terengganu Hub", state: "Terengganu", languages: ["BM"], slug: "besut", stateSlug: "terengganu" },
+  
+  // Labuan Hub
+  { name: "Labuan", hub: "Labuan Hub", state: "W.P. Labuan", languages: ["BM", "EN"], slug: "labuan", stateSlug: "labuan" },
 ];
 
 // Generate hub data from cities
