@@ -254,6 +254,7 @@ export const citiesData: CityData[] = [
   
   // Kuala Terengganu Hub
   { name: "Kuala Terengganu", hub: "Kuala Terengganu Hub", state: "Terengganu", languages: ["BM"], slug: "kuala-terengganu", stateSlug: "terengganu" },
+  { name: "Kuala Nerus", hub: "Kuala Terengganu Hub", state: "Terengganu", languages: ["BM"], slug: "kuala-nerus", stateSlug: "terengganu" },
   { name: "Gong Badak", hub: "Kuala Terengganu Hub", state: "Terengganu", languages: ["BM"], slug: "gong-badak", stateSlug: "terengganu" },
   { name: "Kemaman", hub: "Kuala Terengganu Hub", state: "Terengganu", languages: ["BM"], slug: "kemaman", stateSlug: "terengganu" },
   { name: "Dungun", hub: "Kuala Terengganu Hub", state: "Terengganu", languages: ["BM"], slug: "dungun", stateSlug: "terengganu" },
