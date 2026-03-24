@@ -82,6 +82,7 @@ export const citiesData: CityData[] = [
   // Cyberjaya Hub
   { name: "Cyberjaya", hub: "Cyberjaya Hub", state: "Selangor", languages: ["EN", "BM"], slug: "cyberjaya", stateSlug: "selangor" },
   { name: "Putrajaya", hub: "Cyberjaya Hub", state: "Selangor", languages: ["BM", "EN"], slug: "putrajaya", stateSlug: "selangor" },
+  { name: "Sepang", hub: "Cyberjaya Hub", state: "Selangor", languages: ["BM", "EN"], slug: "sepang", stateSlug: "selangor" },
   
   // Ampang Hub
   { name: "Ampang Jaya", hub: "Ampang Hub", state: "Selangor", languages: ["BM", "CN"], slug: "ampang-jaya", stateSlug: "selangor" },
@@ -138,6 +139,7 @@ export const citiesData: CityData[] = [
   { name: "Perai", hub: "Seberang Perai Hub", state: "Penang", languages: ["CN", "BM"], slug: "perai", stateSlug: "penang" },
   { name: "Kepala Batas", hub: "Seberang Perai Hub", state: "Penang", languages: ["BM"], slug: "kepala-batas", stateSlug: "penang" },
   { name: "Nibong Tebal", hub: "Seberang Perai Hub", state: "Penang", languages: ["BM"], slug: "nibong-tebal", stateSlug: "penang" },
+  { name: "Batu Kawan", hub: "Seberang Perai Hub", state: "Penang", languages: ["CN", "BM", "EN"], slug: "batu-kawan", stateSlug: "penang" },
   
   // Ipoh Hub
   { name: "Ipoh", hub: "Ipoh Hub", state: "Perak", languages: ["CN", "BM", "EN"], slug: "ipoh", stateSlug: "perak" },
@@ -206,6 +208,8 @@ export const citiesData: CityData[] = [
   { name: "Nilai", hub: "Seremban Hub", state: "Negeri Sembilan", languages: ["BM", "EN"], slug: "nilai", stateSlug: "negeri-sembilan" },
   { name: "Port Dickson", hub: "Seremban Hub", state: "Negeri Sembilan", languages: ["EN", "BM"], slug: "port-dickson", stateSlug: "negeri-sembilan" },
   { name: "Mantin", hub: "Seremban Hub", state: "Negeri Sembilan", languages: ["BM"], slug: "mantin", stateSlug: "negeri-sembilan" },
+  { name: "Senawang", hub: "Seremban Hub", state: "Negeri Sembilan", languages: ["BM"], slug: "senawang", stateSlug: "negeri-sembilan" },
+  { name: "Sendayan", hub: "Seremban Hub", state: "Negeri Sembilan", languages: ["BM", "EN"], slug: "sendayan", stateSlug: "negeri-sembilan" },
   
   // Alor Setar Hub
   { name: "Alor Setar", hub: "Alor Setar Hub", state: "Kedah", languages: ["BM"], slug: "alor-setar", stateSlug: "kedah" },
@@ -250,11 +254,15 @@ export const citiesData: CityData[] = [
   
   // Kuala Terengganu Hub
   { name: "Kuala Terengganu", hub: "Kuala Terengganu Hub", state: "Terengganu", languages: ["BM"], slug: "kuala-terengganu", stateSlug: "terengganu" },
+  { name: "Kuala Nerus", hub: "Kuala Terengganu Hub", state: "Terengganu", languages: ["BM"], slug: "kuala-nerus", stateSlug: "terengganu" },
   { name: "Gong Badak", hub: "Kuala Terengganu Hub", state: "Terengganu", languages: ["BM"], slug: "gong-badak", stateSlug: "terengganu" },
   { name: "Kemaman", hub: "Kuala Terengganu Hub", state: "Terengganu", languages: ["BM"], slug: "kemaman", stateSlug: "terengganu" },
   { name: "Dungun", hub: "Kuala Terengganu Hub", state: "Terengganu", languages: ["BM"], slug: "dungun", stateSlug: "terengganu" },
   { name: "Marang", hub: "Kuala Terengganu Hub", state: "Terengganu", languages: ["BM"], slug: "marang", stateSlug: "terengganu" },
   { name: "Besut", hub: "Kuala Terengganu Hub", state: "Terengganu", languages: ["BM"], slug: "besut", stateSlug: "terengganu" },
+  
+  // Labuan Hub
+  { name: "Labuan", hub: "Labuan Hub", state: "W.P. Labuan", languages: ["BM", "EN"], slug: "labuan", stateSlug: "labuan" },
 ];
 
 // Generate hub data from cities
