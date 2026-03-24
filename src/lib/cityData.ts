@@ -139,6 +139,7 @@ export const citiesData: CityData[] = [
   { name: "Perai", hub: "Seberang Perai Hub", state: "Penang", languages: ["CN", "BM"], slug: "perai", stateSlug: "penang" },
   { name: "Kepala Batas", hub: "Seberang Perai Hub", state: "Penang", languages: ["BM"], slug: "kepala-batas", stateSlug: "penang" },
   { name: "Nibong Tebal", hub: "Seberang Perai Hub", state: "Penang", languages: ["BM"], slug: "nibong-tebal", stateSlug: "penang" },
+  { name: "Batu Kawan", hub: "Seberang Perai Hub", state: "Penang", languages: ["CN", "BM", "EN"], slug: "batu-kawan", stateSlug: "penang" },
   
   // Ipoh Hub
   { name: "Ipoh", hub: "Ipoh Hub", state: "Perak", languages: ["CN", "BM", "EN"], slug: "ipoh", stateSlug: "perak" },
