@@ -208,6 +208,8 @@ export const citiesData: CityData[] = [
   { name: "Nilai", hub: "Seremban Hub", state: "Negeri Sembilan", languages: ["BM", "EN"], slug: "nilai", stateSlug: "negeri-sembilan" },
   { name: "Port Dickson", hub: "Seremban Hub", state: "Negeri Sembilan", languages: ["EN", "BM"], slug: "port-dickson", stateSlug: "negeri-sembilan" },
   { name: "Mantin", hub: "Seremban Hub", state: "Negeri Sembilan", languages: ["BM"], slug: "mantin", stateSlug: "negeri-sembilan" },
+  { name: "Senawang", hub: "Seremban Hub", state: "Negeri Sembilan", languages: ["BM"], slug: "senawang", stateSlug: "negeri-sembilan" },
+  { name: "Sendayan", hub: "Seremban Hub", state: "Negeri Sembilan", languages: ["BM", "EN"], slug: "sendayan", stateSlug: "negeri-sembilan" },
   
   // Alor Setar Hub
   { name: "Alor Setar", hub: "Alor Setar Hub", state: "Kedah", languages: ["BM"], slug: "alor-setar", stateSlug: "kedah" },
