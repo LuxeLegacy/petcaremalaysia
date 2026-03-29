@@ -8,6 +8,7 @@ export interface VetClinic {
   city: string;
   state: string;
   phone: string | null;
+  email: string | null;
   services: string[] | null;
   rating: number | null;
   review_count: number | null;
