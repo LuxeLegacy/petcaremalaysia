@@ -94,6 +94,16 @@ const App = () => (
               <Route path="/:lang/dog-dental-disease/:category" element={<DogDentalRouter />} />
               <Route path="/:lang/dog-dental-disease/:category/:slug" element={<DogDentalRouter />} />
 
+              {/* Urinary Tract Disease Hub */}
+              <Route path="/urinary-tract-disease" element={<UrinaryRouter />} />
+              <Route path="/urinary-tract-disease/:a" element={<UrinaryRouter />} />
+              <Route path="/urinary-tract-disease/:a/:b" element={<UrinaryRouter />} />
+              <Route path="/urinary-tract-disease/:a/:b/:c" element={<UrinaryRouter />} />
+              <Route path="/:lang/urinary-tract-disease" element={<UrinaryRouter />} />
+              <Route path="/:lang/urinary-tract-disease/:a" element={<UrinaryRouter />} />
+              <Route path="/:lang/urinary-tract-disease/:a/:b" element={<UrinaryRouter />} />
+              <Route path="/:lang/urinary-tract-disease/:a/:b/:c" element={<UrinaryRouter />} />
+
               {/* Admin */}
               <Route path="/admin" element={<AdminPage />} />
               
