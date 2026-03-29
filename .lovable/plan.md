@@ -1,97 +1,50 @@
 
 
-# Urinary Tract Disease Hub — Phase 1 (Lean, EN Only)
+# Add PetCareMalaysia CTAs to All 20 Urinary Pages
 
-## Scope
-~20 English-only pages covering the root hub, species hubs, emergency pages, top symptoms, and top conditions. No BM/ZH translations, no diagnosis/treatment/recovery/prevention pages in this phase.
+## What
+Create a new `UrinaryCTA` component with 10 Dan Kennedy-style CTA variations linking to `https://petcaremalaysia.com/`. Place 2 CTAs on each of the 20 urinary pages — one mid-content and one near the bottom.
 
-## Pages to Build (20 EN data files)
+## New Component — `src/components/urinary/UrinaryCTA.tsx`
 
-| # | Slug | Category | Type |
-|---|------|----------|------|
-| 1 | hub | hub | Root hub |
-| 2 | cats-hub | hub | Cat species hub |
-| 3 | dogs-hub | hub | Dog species hub |
-| 4 | emergency-signs | emergency | Global emergency router |
-| 5 | cats-emergency-signs | emergency | Cat emergency signs |
-| 6 | cats-emergency-blocked-cat | emergency | Blocked cat (life-threatening) |
-| 7 | cats-when-to-see-a-vet | emergency | Cat vet urgency guide |
-| 8 | dogs-emergency-signs | emergency | Dog emergency signs |
-| 9 | dogs-emergency-cant-urinate | emergency | Dog can't urinate |
-| 10 | dogs-when-to-see-a-vet | emergency | Dog vet urgency guide |
-| 11 | cats-symptoms-blood-in-urine | symptoms | Cat |
-| 12 | cats-symptoms-straining-to-urinate | symptoms | Cat |
-| 13 | cats-symptoms-frequent-small-urinations | symptoms | Cat |
-| 14 | cats-symptoms-not-passing-urine | symptoms | Cat |
-| 15 | dogs-symptoms-blood-in-urine | symptoms | Dog |
-| 16 | dogs-symptoms-straining-to-urinate | symptoms | Dog |
-| 17 | dogs-symptoms-frequent-small-urinations | symptoms | Dog |
-| 18 | cats-conditions-feline-idiopathic-cystitis | conditions | Cat (FIC/FLUTD core) |
-| 19 | cats-conditions-urethral-obstruction | conditions | Cat (emergency condition) |
-| 20 | dogs-conditions-bacterial-cystitis-uti | conditions | Dog (most common) |
+Modeled after `CostCTA.tsx` but linking to `https://petcaremalaysia.com/` with urinary/pet-health-focused copy.
 
-## URL Structure
-```text
-/urinary-tract-disease                                    → root hub
-/urinary-tract-disease/cats                               → cat hub
-/urinary-tract-disease/dogs                               → dog hub
-/urinary-tract-disease/emergency-signs                    → global emergency
-/urinary-tract-disease/cats/emergency-signs               → cat emergency
-/urinary-tract-disease/cats/emergency-signs/blocked-cat   → blocked cat
-/urinary-tract-disease/cats/when-to-see-a-vet             → cat vet guide
-/urinary-tract-disease/cats/symptoms/blood-in-urine       → cat symptom
-/urinary-tract-disease/cats/conditions/feline-idiopathic-cystitis → cat condition
-/urinary-tract-disease/dogs/symptoms/straining-to-urinate → dog symptom
-... etc
-```
+**10 CTA variations** (Dan Kennedy style — fear, greed, FOMO, facts):
 
-## Files to Create
+1. FEAR: "Your Pet's Urinary Problem Could Turn DEADLY in Hours" / "Don't wait until it's too late. Get expert guidance now."
+2. FEAR: "WARNING: 73% of Pet Owners Miss These Urinary Emergency Signs" / "One missed sign = one dead pet. Are you paying attention?"
+3. GREED: "Save RM500–RM3,000 by Catching Urinary Issues Early" / "Early detection = cheaper treatment. Smart owners act fast."
+4. GREED: "Free Emergency Assessment That Could Save Your Pet's Life" / "No cost. No obligation. Just answers when you need them most."
+5. FOMO: "4,200+ Malaysian Pet Owners Already Used This Emergency Tool" / "They got answers in 60 seconds. Why haven't you?"
+6. FOMO: "This Free Pet Health Tool Won't Be Free Forever" / "Access it now while it's still available."
+7. FACT: "FACT: Blocked Cat Treatment Costs RM800–RM4,000 in Malaysia" / "Knowing the signs early saves your pet AND your wallet."
+8. FACT: "FACT: 1 in 4 Male Cats Will Have a Urinary Emergency" / "Is your cat next? Check symptoms now."
+9. MIXED: "Love Your Pet? Prove It. Check Their Symptoms Now." / "Real pet parents don't guess. They get answers."
+10. MIXED: "60 Seconds Could Save Your Pet's Life" / "Our free emergency checker tells you what to do next."
 
-### 1. Types — `src/data/urinary/types.ts`
-Mirrors dental types with species field added. Same interfaces: `UrinaryPageBase`, `UrinaryHubPage`, `UrinaryEmergencyPage`, `UrinarySymptomPage`, `UrinaryConditionPage`. Includes all AEO/GEO enrichment fields.
+## Component Placement (4 files edited)
 
-### 2. Data Files — `src/data/urinary/en/` (20 files)
-Each file exports a typed object with veterinary-accurate content, Malaysia context, RM cost ranges, and citations. Content generated inline following the dental pattern.
+### `UrinaryHubPageComponent.tsx`
+- CTA #1: After category cards grid (line ~57)
+- CTA #2: After FAQ section (line ~71)
 
-### 3. Registry — `src/data/urinary/index.ts`
-Imports all 20 EN files, exposes `getUrinaryPage(slug, lang)`, `getUrinaryHub(lang)`, `getUrinaryPagesByCategory()`, `getAllUrinarySlugs()`.
+### `UrinaryEmergencyPage.tsx`
+- CTA #1: After "What To Do Now" section (line ~65)
+- CTA #2: After FAQ section (line ~84)
 
-### 4. Router — `src/pages/UrinaryRouter.tsx`
-Parses `/:speciesOrStandalone?/:categoryOrSlug?/:slug?` to resolve the correct page. Handles standalone slugs (emergency-signs), species hubs (cats, dogs), and nested species/category/slug paths.
+### `UrinarySymptomPage.tsx`
+- CTA #1: After "Veterinary Evaluation" section (line ~73)
+- CTA #2: After FAQ section (line ~89)
 
-### 5. Components — `src/components/urinary/`
-Adapt from dog-dental components with minimal changes:
-- `UrinaryHubPageComponent.tsx` — species-aware hub with emergency banner
-- `UrinaryEmergencyPage.tsx` — emergency signs table with urgency levels
-- `UrinarySymptomPage.tsx` — what it indicates, red flags, care pathways
-- `UrinaryConditionPage.tsx` — signs, severity stages, when to see vet
-- `UrinaryBreadcrumb.tsx` — species-aware breadcrumb trail
-- `UrinarySchemaMarkup.tsx` — MedicalWebPage + FAQPage JSON-LD
+### `UrinaryConditionPage.tsx`
+- CTA #1: After "Recovery Expectations" section (line ~87)
+- CTA #2: After FAQ section (line ~111)
 
-Shared components reused directly: `AEOGEOSections`, `InternalLinkFunnel`, `EmergencyOverride`.
+Each CTA uses a different `variant` prop so they show distinct copy on the same page.
 
-### 6. Routes — `src/App.tsx`
-Add route entries:
-```text
-/urinary-tract-disease
-/urinary-tract-disease/:speciesOrStandalone
-/urinary-tract-disease/:species/:categoryOrSlug
-/urinary-tract-disease/:species/:category/:slug
-```
-Plus `/:lang/` prefixed variants (6 total routes).
-
-## Implementation Order
-Due to the number of files (~30), this will be implemented across multiple batches:
-1. Types + registry skeleton + router + App.tsx routes
-2. UI components (adapted from dental)
-3. EN data files batch 1: hubs + emergency pages (10 files)
-4. EN data files batch 2: symptoms + conditions (10 files)
-
-## What Is NOT Included (Phase 2+)
-- BM/ZH translations
-- Diagnosis, treatment, recovery, prevention pages
-- Cross-species directory pages (/urinary-tract-disease/symptoms, /conditions, /treatments)
-- /veterinary-care/* service path pages
-- Sitemap integration
-- Blog/PAA cross-linking
+## Technical Details
+- Component mirrors `CostCTA` structure (gradient banner, icon, animated hover)
+- Uses green/teal gradient instead of amber/orange to differentiate from surgery cost CTAs
+- Links open in same tab (internal site) unlike CostCTA which opens external
+- Variant selection: CTA #1 uses page-derived seed, CTA #2 uses seed+5 offset
 
