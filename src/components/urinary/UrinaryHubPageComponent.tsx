@@ -7,6 +7,7 @@ import { UrinaryBreadcrumb } from './UrinaryBreadcrumb';
 import { UrinarySchemaMarkup } from './UrinarySchemaMarkup';
 import { UrinaryAEOGEOSections } from './UrinaryAEOGEOSections';
 import { InternalLinkFunnel } from '@/components/dog-dental/InternalLinkFunnel';
+import { UrinaryCTA } from './UrinaryCTA';
 import type { UrinaryHubPage as HubType } from '@/data/urinary/types';
 
 interface Props { data: HubType; }
@@ -56,6 +57,8 @@ export const UrinaryHubPageComponent = ({ data }: Props) => {
             ))}
           </div>
 
+          <UrinaryCTA variant={0} />
+
           <UrinaryAEOGEOSections data={data} position="bottom" />
 
           <section className="mb-8">
@@ -69,6 +72,8 @@ export const UrinaryHubPageComponent = ({ data }: Props) => {
               ))}
             </div>
           </section>
+
+          <UrinaryCTA variant={5} />
 
           <InternalLinkFunnel title="Related Resources" links={data.relatedLinks} />
 
