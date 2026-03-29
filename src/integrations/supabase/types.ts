@@ -130,6 +130,7 @@ export type Database = {
           address: string
           city: string
           created_at: string
+          email: string | null
           id: string
           image_url: string | null
           is_24_hours: boolean | null
@@ -147,6 +148,7 @@ export type Database = {
           address: string
           city: string
           created_at?: string
+          email?: string | null
           id?: string
           image_url?: string | null
           is_24_hours?: boolean | null
@@ -164,6 +166,7 @@ export type Database = {
           address?: string
           city?: string
           created_at?: string
+          email?: string | null
           id?: string
           image_url?: string | null
           is_24_hours?: boolean | null
