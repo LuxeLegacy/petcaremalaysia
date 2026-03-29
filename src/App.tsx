@@ -24,6 +24,7 @@ import PAAArticleRouter from "./pages/PAAArticleRouter";
 import SearchPage from "./pages/SearchPage";
 import CategoryPage from "./pages/CategoryPage";
 import DogDentalRouter from "./pages/DogDentalRouter";
+import UrinaryRouter from "./pages/UrinaryRouter";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
