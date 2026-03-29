@@ -27,7 +27,9 @@ import {
   Heart, 
   Scissors, 
   ShoppingBag,
-  AlertTriangle
+  AlertTriangle,
+  Mail,
+  Globe
 } from 'lucide-react';
 
 
