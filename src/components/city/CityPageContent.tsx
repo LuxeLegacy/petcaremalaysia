@@ -237,14 +237,32 @@ export const CityPageContent: React.FC<CityPageContentProps> = ({ city }) => {
                           </span>
                         )}
                       </div>
-                      {clinic.phone && (
-                        <Button variant="outline" size="sm" className="w-full gap-2" asChild>
-                          <a href={`tel:${clinic.phone}`}>
-                            <Phone className="h-4 w-4" />
-                            {clinic.phone}
-                          </a>
-                        </Button>
-                      )}
+                      <div className="flex flex-col gap-2">
+                        {clinic.phone && (
+                          <Button variant="outline" size="sm" className="w-full gap-2" asChild>
+                            <a href={`tel:${clinic.phone}`}>
+                              <Phone className="h-4 w-4" />
+                              {clinic.phone}
+                            </a>
+                          </Button>
+                        )}
+                        {clinic.email && (
+                          <Button variant="outline" size="sm" className="w-full gap-2" asChild>
+                            <a href={`mailto:${clinic.email}`}>
+                              <Mail className="h-4 w-4" />
+                              {clinic.email}
+                            </a>
+                          </Button>
+                        )}
+                        {clinic.website && (
+                          <Button variant="outline" size="sm" className="w-full gap-2" asChild>
+                            <a href={clinic.website} target="_blank" rel="noopener noreferrer">
+                              <Globe className="h-4 w-4" />
+                              Visit Website
+                            </a>
+                          </Button>
+                        )}
+                      </div>
                     </div>
                   ))}
                 </div>
