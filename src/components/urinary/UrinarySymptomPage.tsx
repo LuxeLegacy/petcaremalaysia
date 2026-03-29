@@ -7,6 +7,7 @@ import { UrinaryEmergencyOverride } from './UrinaryEmergencyOverride';
 import { UrinarySchemaMarkup } from './UrinarySchemaMarkup';
 import { UrinaryAEOGEOSections } from './UrinaryAEOGEOSections';
 import { InternalLinkFunnel } from '@/components/dog-dental/InternalLinkFunnel';
+import { UrinaryCTA } from './UrinaryCTA';
 import type { UrinarySymptomPage as SymptomType } from '@/data/urinary/types';
 
 interface Props { data: SymptomType; }
@@ -72,6 +73,8 @@ export const UrinarySymptomPage = ({ data }: Props) => {
             <p className="text-muted-foreground">{data.vetEvaluation}</p>
           </section>
 
+          <UrinaryCTA variant={2} />
+
           <InternalLinkFunnel title="Care Pathways" links={data.carePathways} />
 
           <UrinaryAEOGEOSections data={data} position="bottom" />
@@ -87,6 +90,8 @@ export const UrinarySymptomPage = ({ data }: Props) => {
               ))}
             </div>
           </section>
+
+          <UrinaryCTA variant={7} />
 
           <InternalLinkFunnel title="Related Pages" links={data.relatedLinks} />
 

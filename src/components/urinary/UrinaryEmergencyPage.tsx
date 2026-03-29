@@ -6,6 +6,7 @@ import { UrinaryBreadcrumb } from './UrinaryBreadcrumb';
 import { UrinarySchemaMarkup } from './UrinarySchemaMarkup';
 import { UrinaryAEOGEOSections } from './UrinaryAEOGEOSections';
 import { InternalLinkFunnel } from '@/components/dog-dental/InternalLinkFunnel';
+import { UrinaryCTA } from './UrinaryCTA';
 import { AlertTriangle } from 'lucide-react';
 import type { UrinaryEmergencyPage as EmergencyType } from '@/data/urinary/types';
 
@@ -64,6 +65,8 @@ export const UrinaryEmergencyPage = ({ data }: Props) => {
             </ol>
           </section>
 
+          <UrinaryCTA variant={1} />
+
           <section className="mb-8">
             <h2 className="text-2xl font-bold mb-3">When to See a Vet</h2>
             <p className="text-muted-foreground">{data.whenToSeeVet}</p>
@@ -82,6 +85,8 @@ export const UrinaryEmergencyPage = ({ data }: Props) => {
               ))}
             </div>
           </section>
+
+          <UrinaryCTA variant={6} />
 
           <InternalLinkFunnel title="Related Pages" links={data.relatedLinks} />
 
