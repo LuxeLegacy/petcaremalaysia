@@ -1,0 +1,76 @@
+import type { UrinaryConditionPage } from '../types';
+
+export const enCatsConditionsFIC: UrinaryConditionPage = {
+  slug: 'cats-conditions-feline-idiopathic-cystitis',
+  category: 'conditions',
+  species: 'cats',
+  lang: 'en',
+  title: 'Feline Idiopathic Cystitis (FIC) — The Most Common Cause of FLUTD',
+  overview: `Feline Idiopathic Cystitis (FIC), previously known as Feline Interstitial Cystitis, is the single most common cause of lower urinary tract signs in cats, accounting for approximately 55–65% of all FLUTD cases. Despite its prevalence, the exact cause remains unknown ("idiopathic"), though it is strongly associated with stress.\n\nFIC causes painful bladder inflammation without an identifiable infectious agent. It is thought to result from a complex interaction between the nervous system, stress hormones, and the bladder lining. Indoor cats, overweight cats, and cats in multi-cat households are at higher risk.`,
+  signs: [
+    'Blood in urine (haematuria)',
+    'Frequent trips to litter box with small amounts of urine',
+    'Straining to urinate',
+    'Urinating outside the litter box',
+    'Excessive licking of genital area',
+    'Vocalising while urinating',
+    'Restlessness or hiding',
+  ],
+  severityStages: [
+    { stage: 'Mild', description: 'Slightly increased litter box visits, mild haematuria. Cat is eating and behaving normally otherwise.' },
+    { stage: 'Moderate', description: 'Frequent straining, obvious blood in urine, urinating outside litter box. Cat may be less active.' },
+    { stage: 'Severe', description: 'Intense straining, inability to produce urine (males — may indicate secondary obstruction). Requires emergency assessment.' },
+  ],
+  redFlags: [
+    'Male cat cannot urinate at all — obstruction secondary to FIC',
+    'Cat stops eating and becomes lethargic',
+    'Vomiting develops alongside urinary signs',
+    'Symptoms persist beyond 5–7 days without improvement',
+  ],
+  diagnosisOverview: 'FIC is a diagnosis of exclusion — meaning your vet rules out other causes first. Urinalysis will show blood and inflammation but no bacteria. Urine culture is negative. Imaging (X-ray/ultrasound) shows no stones. Once infection, stones, and other causes are excluded, FIC is diagnosed. This workup costs RM 300–700 in Malaysia.',
+  treatmentCategories: [
+    { label: 'Cat Urinary Hub', path: '/urinary-tract-disease/cats' },
+    { label: 'When to See a Vet', path: '/urinary-tract-disease/cats/when-to-see-a-vet' },
+  ],
+  recoveryExpectations: 'Most FIC episodes resolve within 5–7 days even without treatment, but recurrence is common (40–50% within 12 months). Treatment focuses on pain management, environmental enrichment (MEMO — Multimodal Environmental MOdification), increased water intake, and stress reduction. Prescription urinary diets may be recommended.',
+  prevention: 'Key prevention strategies include increasing water intake (wet food, water fountains), environmental enrichment (vertical spaces, scratching posts, hiding spots), maintaining clean litter boxes (1 per cat + 1 extra), reducing household stress, and using Feliway (synthetic pheromone) diffusers. These modifications significantly reduce recurrence rates.',
+  whenToSeeVet: 'See your vet within 24–48 hours for any urinary signs to establish a diagnosis. If your male cat cannot urinate at all, seek EMERGENCY care immediately — FIC can trigger secondary urethral obstruction in male cats, which is life-threatening.',
+  faqs: [
+    { question: 'Can FIC be cured?', answer: 'FIC cannot be "cured" in the traditional sense, but it can be effectively managed. Most episodes resolve on their own, but environmental modification, stress reduction, and dietary changes significantly reduce frequency and severity of recurrences.' },
+    { question: 'Is FIC the same as a UTI?', answer: 'No. FIC involves bladder inflammation WITHOUT bacterial infection. True bacterial UTIs are actually uncommon in young cats. This distinction matters because antibiotics — which treat UTIs — are not effective for FIC.' },
+    { question: 'Why is my indoor cat getting FIC?', answer: 'Indoor-only cats are actually MORE prone to FIC than outdoor cats. The restricted environment, lack of stimulation, inability to express natural behaviours, and stress from multi-cat households all contribute. Environmental enrichment is the most important management strategy.' },
+  ],
+  seo: {
+    metaTitle: 'Feline Idiopathic Cystitis (FIC) | FLUTD Guide for Malaysia',
+    metaDescription: 'FIC is the #1 cause of FLUTD in cats (55–65% of cases). Learn about stress-linked bladder inflammation in cats, symptoms, treatment, and costs in Malaysia.',
+    keywords: ['feline idiopathic cystitis', 'FIC cats', 'FLUTD treatment', 'cat bladder inflammation', 'cat stress urinary'],
+  },
+  author: { name: 'Dr. Aisha Rahman', credentials: 'DVM, MRCVS, Licensed by Malaysian Veterinary Council', bio: 'Veterinary surgeon with 15 years of clinical experience in feline internal medicine.' },
+  datePublished: '2026-03-29',
+  dateModified: '2026-03-29',
+  relatedLinks: [
+    { label: 'Urethral Obstruction', path: '/urinary-tract-disease/cats/conditions/urethral-obstruction' },
+    { label: 'Blood in Urine', path: '/urinary-tract-disease/cats/symptoms/blood-in-urine' },
+    { label: 'Cat Emergency Signs', path: '/urinary-tract-disease/cats/emergency-signs' },
+    { label: 'Cat Urinary Hub', path: '/urinary-tract-disease/cats' },
+  ],
+  snippetForAI: 'Feline Idiopathic Cystitis (FIC) is the most common cause of FLUTD, accounting for 55–65% of cases. It causes painful bladder inflammation linked to stress, without bacterial infection. Treatment focuses on environmental enrichment, stress reduction, and increased water intake. Most episodes resolve in 5–7 days but recur in 40–50% of cats within a year.',
+  costRange: [
+    { item: 'Diagnostic workup (exclusion)', range: 'RM 300–700' },
+    { item: 'Pain medication course', range: 'RM 50–150' },
+    { item: 'Prescription urinary diet (monthly)', range: 'RM 100–250' },
+    { item: 'Feliway diffuser', range: 'RM 80–150' },
+    { item: 'Follow-up urinalysis', range: 'RM 50–120' },
+  ],
+  statistics: [
+    { stat: 'FIC accounts for 55–65% of all FLUTD cases in cats under 10 years', source: 'Journal of Feline Medicine and Surgery' },
+    { stat: 'Recurrence rate: 40–50% within 12 months without environmental modification', source: 'Veterinary Clinics of North America' },
+    { stat: 'Environmental enrichment (MEMO) reduces recurrence by up to 80%', source: 'Journal of Feline Medicine and Surgery' },
+  ],
+  keyTakeaways: [
+    'FIC is NOT an infection — antibiotics are not effective',
+    'Stress is the primary trigger — environmental modification is the most important treatment',
+    'Most episodes self-resolve in 5–7 days, but vet diagnosis is needed to rule out other causes',
+    'In male cats, FIC can trigger secondary obstruction — a life-threatening emergency',
+  ],
+};
