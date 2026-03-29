@@ -1,50 +1,95 @@
 
 
-# Add PetCareMalaysia CTAs to All 20 Urinary Pages
+# Add Local Vet Clinic Data to City Pages
 
-## What
-Create a new `UrinaryCTA` component with 10 Dan Kennedy-style CTA variations linking to `https://petcaremalaysia.com/`. Place 2 CTAs on each of the 20 urinary pages — one mid-content and one near the bottom.
+## Analysis
 
-## New Component — `src/components/urinary/UrinaryCTA.tsx`
+The uploaded CSV contains **166 vet clinic records** across all Malaysian states. The existing city pages already query `vet_clinics` from the database and display them — so the main work is:
 
-Modeled after `CostCTA.tsx` but linking to `https://petcaremalaysia.com/` with urinary/pet-health-focused copy.
+1. Adding an `email` column (not in the current table)
+2. Inserting the 166 records with correct city/state mapping
+3. Updating the clinic card UI to show email and website
+4. Mapping CSV "District" values to match existing city names in `cityData.ts`
 
-**10 CTA variations** (Dan Kennedy style — fear, greed, FOMO, facts):
+### Current table columns vs what's needed
+| Have | Need to add |
+|------|-------------|
+| name, address, city, state, phone, website | **email** |
 
-1. FEAR: "Your Pet's Urinary Problem Could Turn DEADLY in Hours" / "Don't wait until it's too late. Get expert guidance now."
-2. FEAR: "WARNING: 73% of Pet Owners Miss These Urinary Emergency Signs" / "One missed sign = one dead pet. Are you paying attention?"
-3. GREED: "Save RM500–RM3,000 by Catching Urinary Issues Early" / "Early detection = cheaper treatment. Smart owners act fast."
-4. GREED: "Free Emergency Assessment That Could Save Your Pet's Life" / "No cost. No obligation. Just answers when you need them most."
-5. FOMO: "4,200+ Malaysian Pet Owners Already Used This Emergency Tool" / "They got answers in 60 seconds. Why haven't you?"
-6. FOMO: "This Free Pet Health Tool Won't Be Free Forever" / "Access it now while it's still available."
-7. FACT: "FACT: Blocked Cat Treatment Costs RM800–RM4,000 in Malaysia" / "Knowing the signs early saves your pet AND your wallet."
-8. FACT: "FACT: 1 in 4 Male Cats Will Have a Urinary Emergency" / "Is your cat next? Check symptoms now."
-9. MIXED: "Love Your Pet? Prove It. Check Their Symptoms Now." / "Real pet parents don't guess. They get answers."
-10. MIXED: "60 Seconds Could Save Your Pet's Life" / "Our free emergency checker tells you what to do next."
+### Key mapping challenge
+The CSV uses "District" (e.g., "Aman Suria", "Bangsar", "Seksyen 13") which must map to the city names used in `useVetClinics` (e.g., "Petaling Jaya", "Bangsar", "Seksyen 13"). Most map directly, some need adjustment.
 
-## Component Placement (4 files edited)
+---
 
-### `UrinaryHubPageComponent.tsx`
-- CTA #1: After category cards grid (line ~57)
-- CTA #2: After FAQ section (line ~71)
+## Phase 1: KL & Selangor (Priority)
 
-### `UrinaryEmergencyPage.tsx`
-- CTA #1: After "What To Do Now" section (line ~65)
-- CTA #2: After FAQ section (line ~84)
+**~60 clinics** across W.P. Kuala Lumpur and Selangor districts.
 
-### `UrinarySymptomPage.tsx`
-- CTA #1: After "Veterinary Evaluation" section (line ~73)
-- CTA #2: After FAQ section (line ~89)
+### Step 1 — Database changes
+- Add `email` column to `vet_clinics` table (text, nullable)
+- Insert all KL clinics (~14 records): Taman Melawati, Mont Kiara, Brickfields, Ampang, Cheras, Kepong, Setapak, Wangsa Maju, Segambut, Sentul, Sri Hartamas
+- Insert all Selangor clinics (~46 records): Shah Alam, Setia Alam, Taman Megah, Bangsar, PJ, Ara Damansara, Kelana Jaya, Subang Jaya, USJ, Puchong, Klang, Bandar Bukit Tinggi, Kota Kemuning, Kajang, Sungai Long, Seri Kembangan, Bangi, Semenyih, Rawang, Selayang, Gombak, Cyberjaya, Sepang, Ampang Jaya
 
-### `UrinaryConditionPage.tsx`
-- CTA #1: After "Recovery Expectations" section (line ~87)
-- CTA #2: After FAQ section (line ~111)
+### Step 2 — UI updates
+- Update clinic card in `CityPageContent.tsx` to show:
+  - Email (with mailto: link)
+  - Website (with external link)
+- These fields already exist in the `VetClinic` interface for website; add email to the interface
 
-Each CTA uses a different `variant` prop so they show distinct copy on the same page.
+---
+
+## Phase 2: Johor (~16 clinics)
+- JB (4), Skudai (1), Permas Jaya (2), Pasir Gudang (1), Gelang Patah (1), Batu Pahat (2), Muar (3), Kulai (1), Segamat (2)
+
+## Phase 3: Penang (~19 clinics)
+- George Town (3), Tanjung Tokong (1), Tanjung Bungah (1), Gelugor (3), Bayan Lepas/Baru (2), Air Itam (1), Jelutong (1), Butterworth (3), Bukit Mertajam (4), Perai (2), Kepala Batas (1), Nibong Tebal (1)
+
+## Phase 4: Perak (~10 clinics)
+- Ipoh (6), Menglembu (1), Taiping (3), Batu Gajah (1), Kuala Kangsar (1), Sitiawan (2), Teluk Intan (1)
+
+## Phase 5: Remaining states (~55 clinics)
+- Sarawak: Kuching (3)
+- Sabah: Kota Kinabalu (4), Penampang (3), Sandakan (2)
+- Melaka: Melaka City (4), Batu Berendam (2)
+- N. Sembilan: Seremban (5), Nilai (1), Port Dickson (1), Senawang (1)
+- Kedah: Alor Setar (1), Jitra (2), Sungai Petani (2), Langkawi (1)
+- Pahang: Kuantan (4), Beserah (1), Mentakab (1), Cameron Highlands (1), Jerantut (1)
+- Kelantan: Kota Bharu (4), Tumpat (2)
+- Terengganu: Kuala Terengganu (3), Kemaman (1), Dungun (1), Kuala Nerus (1)
+- Perlis: Kangar (1)
+- Labuan: Labuan (1)
+
+---
 
 ## Technical Details
-- Component mirrors `CostCTA` structure (gradient banner, icon, animated hover)
-- Uses green/teal gradient instead of amber/orange to differentiate from surgery cost CTAs
-- Links open in same tab (internal site) unlike CostCTA which opens external
-- Variant selection: CTA #1 uses page-derived seed, CTA #2 uses seed+5 offset
+
+### Database migration (Phase 1)
+```sql
+ALTER TABLE vet_clinics ADD COLUMN IF NOT EXISTS email text;
+
+INSERT INTO vet_clinics (name, address, city, state, phone, email, website)
+VALUES
+  ('Petcare Enterprise Sdn BHD', '9145 Jalan Bandar 4...', 'Taman Melawati', 'W.P. Kuala Lumpur', '03-4106 7515', 'petcare@tm.net.my', 'https://petcare.com.my'),
+  -- ... all KL + Selangor records
+;
+```
+
+### UI changes
+- `useVetClinics.ts`: Add `email` to `VetClinic` interface
+- `CityPageContent.tsx`: Add email and website buttons to clinic cards
+- `NearbyVetsSection.tsx`: Already shows website — add email display
+
+### District-to-city mapping notes
+- "Aman Suria" → mapped to city "Petaling Jaya" (it's a PJ neighborhood)
+- "Sungai Long" → mapped to "Kajang"
+- "Ampang Jaya" → mapped to "Ampang"
+- "Bayan Baru" → mapped to "Bayan Lepas"
+- "Jelutong" → mapped to "Gelugor" (nearest covered city)
+- "Melaka City" → mapped to "Melaka"
+- Districts that match existing city names used as-is
+
+---
+
+## Implementation order
+Start with Phase 1 (KL + Selangor) which covers the highest-traffic cities. Each subsequent phase is a single database migration inserting that state's records.
 
