@@ -26,6 +26,7 @@ import CategoryPage from "./pages/CategoryPage";
 import DogDentalRouter from "./pages/DogDentalRouter";
 import UrinaryRouter from "./pages/UrinaryRouter";
 import NotFound from "./pages/NotFound";
+import VetClinicsPage from "./pages/VetClinicsPage";
 
 const queryClient = new QueryClient();
 
@@ -41,6 +42,10 @@ const App = () => (
             <Routes>
               {/* Sitemap - must be before /:lang to avoid matching */}
               <Route path="/sitemap" element={<SitemapPage />} />
+              
+              {/* Vet Clinics Directory */}
+              <Route path="/vet-clinics" element={<VetClinicsPage />} />
+              <Route path="/:lang/vet-clinics" element={<VetClinicsPage />} />
               
               {/* Home */}
               <Route path="/" element={<Index />} />
