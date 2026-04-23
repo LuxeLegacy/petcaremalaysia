@@ -88,26 +88,23 @@ const POPULAR_SEARCHES = [
 
 const ITEMS_PER_PAGE = 10;
 
-// Lightweight list fetch — metadata only, no answer body. One soft retry for transient hiccups.
-const fetchListWithRetry = async (state: string, lang: string, attempt = 0): Promise<{ data: QAListItem[] | null; error: any }> => {
+// Lightweight list fetch via edge function — bypasses PostgREST gateway 504s.
+const fetchListViaEdge = async (
+  stateSlug: string,
+  language: string,
+): Promise<{ data: QAListItem[] | null; isFallback: boolean; error: any }> => {
   try {
-    const result = await supabase
-      .from('pet_qa_keywords')
-      .select('id, keyword, question, category, priority, city_slug')
-      .eq('state', state)
-      .eq('language', lang)
-      .order('priority', { ascending: false });
-    if (result.error && attempt === 0) {
-      await new Promise((r) => setTimeout(r, 800));
-      return fetchListWithRetry(state, lang, 1);
-    }
-    return { data: result.data as QAListItem[] | null, error: result.error };
+    const { data, error } = await supabase.functions.invoke('get-state-qa-list', {
+      body: { stateSlug, language, limit: 500, offset: 0 },
+    });
+    if (error) return { data: null, isFallback: false, error };
+    return {
+      data: (data?.data ?? []) as QAListItem[],
+      isFallback: !!data?.isFallback,
+      error: null,
+    };
   } catch (err) {
-    if (attempt === 0) {
-      await new Promise((r) => setTimeout(r, 800));
-      return fetchListWithRetry(state, lang, 1);
-    }
-    return { data: null, error: err };
+    return { data: null, isFallback: false, error: err };
   }
 };
 
