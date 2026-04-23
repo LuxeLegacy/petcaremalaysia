@@ -85,15 +85,15 @@ export const StateProfileFallback = ({ profile, language }: StateProfileFallback
       </div>
 
       {/* Top Risks */}
-      <div className="bg-amber-500/5 border border-amber-500/20 rounded-2xl p-6">
+      <div className="bg-secondary/40 border border-secondary rounded-2xl p-6">
         <h3 className="text-lg font-semibold flex items-center gap-2 mb-4">
-          <AlertTriangle className="h-5 w-5 text-amber-600" />
+          <AlertTriangle className="h-5 w-5 text-primary" />
           {i18n.topRisks[language]} {profile.name}
         </h3>
         <ul className="space-y-2">
           {profile.topRisks.map((risk, idx) => (
             <li key={idx} className="flex items-start gap-2 text-sm text-foreground/80">
-              <span className="text-amber-600 mt-1 shrink-0">•</span>
+              <span className="text-primary mt-1 shrink-0">•</span>
               <span>{risk}</span>
             </li>
           ))}

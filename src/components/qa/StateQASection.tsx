@@ -72,6 +72,36 @@ const i18n = {
     ms: 'Memaparkan S&J dalam Bahasa Inggeris. Terjemahan akan datang.',
     zh: '显示英文问答。翻译即将推出。',
   },
+  loadError: {
+    en: "We couldn't load the Q&A right now. This usually clears in a few seconds.",
+    ms: 'Kami tidak dapat memuatkan S&J sekarang. Ini biasanya pulih dalam beberapa saat.',
+    zh: '目前无法加载问答内容。通常几秒后即可恢复。',
+  },
+  retry: { en: 'Try Again', ms: 'Cuba Lagi', zh: '重试' },
+};
+
+// Fetch with timeout + 1 retry to defeat transient gateway hiccups (504s).
+const fetchWithRetry = async (state: string, lang: string, attempt = 0): Promise<{ data: any[] | null; error: any }> => {
+  const controller = new AbortController();
+  const timeout = setTimeout(() => controller.abort(), 10000);
+  try {
+    const result = await supabase
+      .from('pet_qa_keywords')
+      .select('id, keyword, question, answer, category, priority, city_slug')
+      .eq('state', state)
+      .eq('language', lang)
+      .order('priority', { ascending: false })
+      .abortSignal(controller.signal);
+    clearTimeout(timeout);
+    return result;
+  } catch (err) {
+    clearTimeout(timeout);
+    if (attempt === 0) {
+      await new Promise((r) => setTimeout(r, 800));
+      return fetchWithRetry(state, lang, 1);
+    }
+    return { data: null, error: err };
+  }
 };
 
 const POPULAR_SEARCHES = [
@@ -111,54 +141,53 @@ export const StateQASection = ({ stateSlug, stateName }: StateQASectionProps) =>
     'perlis': 'Perlis',
   }), []);
 
+  const [hasError, setHasError] = useState(false);
+  const [reloadKey, setReloadKey] = useState(0);
+
   useEffect(() => {
+    let cancelled = false;
     const fetchQAs = async () => {
       setLoading(true);
       setIsFallback(false);
+      setHasError(false);
       const stateValue = stateNameMap[stateSlug] || stateName;
 
-      const { data, error } = await supabase
-        .from('pet_qa_keywords')
-        .select('id, keyword, question, answer, category, priority, city_slug')
-        .eq('state', stateValue)
-        .eq('language', language)
-        .order('priority', { ascending: false });
+      const { data, error } = await fetchWithRetry(stateValue, language);
 
       let resultData = data;
 
       // Fallback to English if no rows for current language
       if (!error && (!data || data.length === 0) && language !== 'en') {
-        const { data: fallbackData, error: fbError } = await supabase
-          .from('pet_qa_keywords')
-          .select('id, keyword, question, answer, category, priority, city_slug')
-          .eq('state', stateValue)
-          .eq('language', 'en')
-          .order('priority', { ascending: false });
-
+        const { data: fallbackData, error: fbError } = await fetchWithRetry(stateValue, 'en');
         if (!fbError && fallbackData && fallbackData.length > 0) {
           resultData = fallbackData;
-          setIsFallback(true);
+          if (!cancelled) setIsFallback(true);
         }
       }
 
+      if (cancelled) return;
+
       if (error) {
         console.error('Error fetching Q&A:', error);
+        setHasError(true);
         setQaData([]);
       } else {
         setQaData(resultData || []);
 
         const counts: Record<string, number> = {};
-        (resultData || []).forEach(q => {
+        (resultData || []).forEach((q) => {
           if (q.city_slug) {
             counts[q.city_slug] = (counts[q.city_slug] || 0) + 1;
           }
         });
 
-        const cityCountList: CityCount[] = stateCities.map(city => ({
-          city_slug: city.slug,
-          name: city.name,
-          count: counts[city.slug] || 0
-        })).sort((a, b) => b.count - a.count);
+        const cityCountList: CityCount[] = stateCities
+          .map((city) => ({
+            city_slug: city.slug,
+            name: city.name,
+            count: counts[city.slug] || 0,
+          }))
+          .sort((a, b) => b.count - a.count);
 
         setCityCounts(cityCountList);
       }
@@ -166,7 +195,10 @@ export const StateQASection = ({ stateSlug, stateName }: StateQASectionProps) =>
     };
 
     fetchQAs();
-  }, [stateSlug, stateName, language, stateNameMap, stateCities]);
+    return () => {
+      cancelled = true;
+    };
+  }, [stateSlug, stateName, language, stateNameMap, stateCities, reloadKey]);
 
   const categories = useMemo(() => {
     const cats = new Set(qaData.map(q => q.category));
@@ -209,6 +241,17 @@ export const StateQASection = ({ stateSlug, stateName }: StateQASectionProps) =>
         {[...Array(5)].map((_, i) => (
           <Skeleton key={i} className="h-16 w-full rounded-xl" />
         ))}
+      </div>
+    );
+  }
+
+  if (hasError) {
+    return (
+      <div className="text-center py-12 bg-destructive/5 border border-destructive/20 rounded-2xl space-y-4">
+        <p className="text-foreground/80 max-w-md mx-auto">{i18n.loadError[language]}</p>
+        <Button onClick={() => setReloadKey((k) => k + 1)} variant="outline">
+          {i18n.retry[language]}
+        </Button>
       </div>
     );
   }
