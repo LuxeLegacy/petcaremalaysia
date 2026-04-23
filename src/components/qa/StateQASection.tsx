@@ -245,6 +245,17 @@ export const StateQASection = ({ stateSlug, stateName }: StateQASectionProps) =>
     );
   }
 
+  if (hasError) {
+    return (
+      <div className="text-center py-12 bg-destructive/5 border border-destructive/20 rounded-2xl space-y-4">
+        <p className="text-foreground/80 max-w-md mx-auto">{i18n.loadError[language]}</p>
+        <Button onClick={() => setReloadKey((k) => k + 1)} variant="outline">
+          {i18n.retry[language]}
+        </Button>
+      </div>
+    );
+  }
+
   if (qaData.length === 0) {
     return (
       <div className="text-center py-12 bg-muted/30 rounded-2xl">
