@@ -1,11 +1,11 @@
-import { useState, useEffect, useMemo, useCallback } from 'react';
+import { useState, useEffect, useMemo, useCallback, useRef } from 'react';
 import { useLanguage } from '@/contexts/LanguageContext';
 import { supabase } from '@/integrations/supabase/client';
 import { Input } from '@/components/ui/input';
 import { Button } from '@/components/ui/button';
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion';
 import { Skeleton } from '@/components/ui/skeleton';
-import { Search, ChevronDown, ChevronUp, MapPin, Info, Loader2 } from 'lucide-react';
+import { Search, ChevronDown, ChevronUp, MapPin, Info, Loader2, AlertCircle } from 'lucide-react';
 import { CostCTA } from '@/components/common/CostCTA';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 import { getCitiesByState } from '@/lib/cityData';
@@ -60,148 +60,243 @@ const i18n = {
   allCities: { en: 'All Cities', ms: 'Semua Bandar', zh: '所有城市' },
   all: { en: 'All', ms: 'Semua', zh: '全部' },
   showing: { en: 'Showing', ms: 'Menunjukkan', zh: '显示' },
-  of: { en: 'of', ms: 'daripada', zh: '/' },
+  loaded: { en: 'loaded so far', ms: 'dimuatkan setakat ini', zh: '已加载' },
   questions: { en: 'questions', ms: 'soalan', zh: '个问题' },
   noMatch: { en: 'No questions match your search.', ms: 'Tiada soalan sepadan dengan carian anda.', zh: '没有与您的搜索匹配的问题。' },
   noData: { en: 'No Q&A available for', ms: 'Tiada S&J tersedia untuk', zh: '暂无问答适用于' },
   yet: { en: 'yet. Check back soon!', ms: 'lagi. Sila semak semula nanti!', zh: '。请稍后再来！' },
-  showMore: { en: 'Show More', ms: 'Tunjuk Lagi', zh: '显示更多' },
+  showMore: { en: 'Load More Questions', ms: 'Muat Lagi Soalan', zh: '加载更多问题' },
   showLess: { en: 'Show Less', ms: 'Tunjuk Kurang', zh: '显示更少' },
   fallbackBanner: {
     en: 'Showing English Q&A. Translation coming soon.',
     ms: 'Memaparkan S&J dalam Bahasa Inggeris. Terjemahan akan datang.',
     zh: '显示英文问答。翻译即将推出。',
   },
-  loadError: {
-    en: 'The list is taking longer than expected. Please try again.',
-    ms: 'Senarai mengambil masa lebih lama daripada jangkaan. Sila cuba lagi.',
-    zh: '加载时间超出预期，请重试。',
+  batchError: {
+    en: "Couldn't load this batch. The other answers above are still available.",
+    ms: 'Tidak dapat memuat kelompok ini. Jawapan di atas masih tersedia.',
+    zh: '此批次加载失败。上方其他答案仍然可用。',
+  },
+  initialLoadingMessage: {
+    en: 'Loading questions...',
+    ms: 'Memuatkan soalan...',
+    zh: '正在加载问题...',
   },
   retry: { en: 'Try Again', ms: 'Cuba Lagi', zh: '重试' },
   loadingAnswer: { en: 'Loading answer...', ms: 'Memuatkan jawapan...', zh: '加载答案中...' },
+  answerError: {
+    en: 'Could not load this answer. Please try again.',
+    ms: 'Tidak dapat memuat jawapan ini. Sila cuba lagi.',
+    zh: '无法加载此答案，请重试。',
+  },
 };
 
 const POPULAR_SEARCHES = [
   'poisoning', 'seizures', 'bleeding', 'breathing', 'heatstroke',
-  'snake bite', 'vomiting', 'diarrhea', 'choking', 'burns'
+  'snake bite', 'vomiting', 'diarrhea', 'choking', 'burns',
 ];
 
+const BATCH_SIZE = 50;
 const ITEMS_PER_PAGE = 10;
+const MAX_RETRIES = 2;
 
-// Lightweight list fetch via edge function — bypasses PostgREST gateway 504s.
-const fetchListViaEdge = async (
+// Module-level cache survives navigation. Keyed by `${stateSlug}|${language}`.
+const listCache = new Map<string, { rows: QAListItem[]; nextCursor: string | null; isFallback: boolean }>();
+const answerCache = new Map<string, string>();
+
+// Fetch one batch with retry. Never throws — returns { error } instead.
+async function fetchListBatch(
   stateSlug: string,
   language: string,
-): Promise<{ data: QAListItem[] | null; isFallback: boolean; error: any }> => {
-  try {
-    const { data, error } = await supabase.functions.invoke('get-state-qa-list', {
-      body: { stateSlug, language, limit: 500, offset: 0 },
-    });
-    if (error) return { data: null, isFallback: false, error };
-    return {
-      data: (data?.data ?? []) as QAListItem[],
-      isFallback: !!data?.isFallback,
-      error: null,
-    };
-  } catch (err) {
-    return { data: null, isFallback: false, error: err };
+  afterId: string | null,
+): Promise<{
+  rows: QAListItem[];
+  nextCursor: string | null;
+  isFallback: boolean;
+  error: string | null;
+}> {
+  let lastErr: any = null;
+  for (let attempt = 0; attempt <= MAX_RETRIES; attempt++) {
+    try {
+      const { data, error } = await supabase.functions.invoke('get-state-qa-list', {
+        body: { stateSlug, language, limit: BATCH_SIZE, afterId },
+      });
+      if (error) {
+        lastErr = error;
+      } else {
+        return {
+          rows: (data?.data ?? []) as QAListItem[],
+          nextCursor: (data?.nextCursor ?? null) as string | null,
+          isFallback: !!data?.isFallback,
+          error: null,
+        };
+      }
+    } catch (err) {
+      lastErr = err;
+    }
+    // Brief backoff before retrying. Don't wait on the last attempt.
+    if (attempt < MAX_RETRIES) {
+      await new Promise((r) => setTimeout(r, 600 * (attempt + 1)));
+    }
   }
-};
+  return {
+    rows: [],
+    nextCursor: null,
+    isFallback: false,
+    error: (lastErr && (lastErr.message || String(lastErr))) || 'request failed',
+  };
+}
 
 export const StateQASection = ({ stateSlug, stateName }: StateQASectionProps) => {
   const { language } = useLanguage();
-  const [qaData, setQaData] = useState<QAListItem[]>([]);
-  const [answerCache, setAnswerCache] = useState<Record<string, string>>({});
+  const cacheKey = `${stateSlug}|${language}`;
+
+  const [qaData, setQaData] = useState<QAListItem[]>(() => listCache.get(cacheKey)?.rows ?? []);
+  const [nextCursor, setNextCursor] = useState<string | null>(
+    () => listCache.get(cacheKey)?.nextCursor ?? null,
+  );
+  const [isFallback, setIsFallback] = useState<boolean>(
+    () => listCache.get(cacheKey)?.isFallback ?? false,
+  );
+  const [answers, setAnswers] = useState<Record<string, string>>({});
+  const [answerErrors, setAnswerErrors] = useState<Record<string, boolean>>({});
   const [loadingAnswerIds, setLoadingAnswerIds] = useState<Set<string>>(new Set());
-  const [loading, setLoading] = useState(true);
+
+  // Initial load state — only true if we don't already have cached rows.
+  const [initialLoading, setInitialLoading] = useState<boolean>(
+    () => !listCache.has(cacheKey),
+  );
+  const [initialError, setInitialError] = useState<string | null>(null);
+
+  // Show-more state.
+  const [loadingMore, setLoadingMore] = useState(false);
+  const [batchError, setBatchError] = useState<string | null>(null);
+
   const [searchQuery, setSearchQuery] = useState('');
   const [selectedCategory, setSelectedCategory] = useState<string | null>(null);
   const [selectedCity, setSelectedCity] = useState<string>('all');
   const [visibleItems, setVisibleItems] = useState(ITEMS_PER_PAGE);
-  const [cityCounts, setCityCounts] = useState<CityCount[]>([]);
-  const [isFallback, setIsFallback] = useState(false);
-  const [hasError, setHasError] = useState(false);
-  const [reloadKey, setReloadKey] = useState(0);
 
   const stateCities = useMemo(() => getCitiesByState(stateSlug), [stateSlug]);
+  const reloadAttemptRef = useRef(0);
 
-  const stateNameMap: Record<string, string> = useMemo(() => ({
-    'selangor': 'Selangor',
-    'kuala-lumpur': 'Kuala Lumpur',
-    'johor': 'Johor',
-    'penang': 'Penang',
-    'perak': 'Perak',
-    'sarawak': 'Sarawak',
-    'sabah': 'Sabah',
-    'melaka': 'Melaka',
-    'kedah': 'Kedah',
-    'pahang': 'Pahang',
-    'kelantan': 'Kelantan',
-    'terengganu': 'Terengganu',
-    'negeri-sembilan': 'Negeri Sembilan',
-    'perlis': 'Perlis',
-  }), []);
+  // Helper to push cache.
+  const persistCache = useCallback(
+    (rows: QAListItem[], cursor: string | null, fb: boolean) => {
+      listCache.set(cacheKey, { rows, nextCursor: cursor, isFallback: fb });
+    },
+    [cacheKey],
+  );
 
+  // First batch load.
   useEffect(() => {
     let cancelled = false;
-    const fetchQAs = async () => {
-      setLoading(true);
-      setIsFallback(false);
-      setHasError(false);
 
-      const { data, isFallback: fb, error } = await fetchListViaEdge(stateSlug, language);
+    // If cache already has data for this state+language, skip fetching.
+    const cached = listCache.get(cacheKey);
+    if (cached && cached.rows.length > 0) {
+      setQaData(cached.rows);
+      setNextCursor(cached.nextCursor);
+      setIsFallback(cached.isFallback);
+      setInitialLoading(false);
+      setInitialError(null);
+      return;
+    }
 
+    const run = async () => {
+      setInitialLoading(true);
+      setInitialError(null);
+      const result = await fetchListBatch(stateSlug, language, null);
       if (cancelled) return;
 
-      if (error) {
-        console.error('Error fetching Q&A list:', error);
-        setHasError(true);
+      if (result.error && result.rows.length === 0) {
+        setInitialError(result.error);
         setQaData([]);
+        setNextCursor(null);
+        setIsFallback(false);
       } else {
-        if (fb) setIsFallback(true);
-        const resultData = data || [];
-        setQaData(resultData);
-        const counts: Record<string, number> = {};
-        resultData.forEach((q) => {
-          if (q.city_slug) counts[q.city_slug] = (counts[q.city_slug] || 0) + 1;
-        });
-        const cityCountList: CityCount[] = stateCities
-          .map((city) => ({
-            city_slug: city.slug,
-            name: city.name,
-            count: counts[city.slug] || 0,
-          }))
-          .sort((a, b) => b.count - a.count);
-        setCityCounts(cityCountList);
+        setQaData(result.rows);
+        setNextCursor(result.nextCursor);
+        setIsFallback(result.isFallback);
+        persistCache(result.rows, result.nextCursor, result.isFallback);
       }
-      setLoading(false);
+      setInitialLoading(false);
     };
 
-    fetchQAs();
+    run();
     return () => {
       cancelled = true;
     };
-  }, [stateSlug, stateName, language, stateNameMap, stateCities, reloadKey]);
+  }, [stateSlug, language, cacheKey, persistCache, reloadAttemptRef]);
 
-  // Lazy-load a single answer when its accordion item opens
+  const handleRetryInitial = useCallback(() => {
+    listCache.delete(cacheKey);
+    setQaData([]);
+    setNextCursor(null);
+    setInitialError(null);
+    reloadAttemptRef.current += 1;
+    // Trigger effect by toggling a state used in deps — easiest: clear cache and call directly.
+    (async () => {
+      setInitialLoading(true);
+      const result = await fetchListBatch(stateSlug, language, null);
+      if (result.error && result.rows.length === 0) {
+        setInitialError(result.error);
+      } else {
+        setQaData(result.rows);
+        setNextCursor(result.nextCursor);
+        setIsFallback(result.isFallback);
+        persistCache(result.rows, result.nextCursor, result.isFallback);
+        setInitialError(null);
+      }
+      setInitialLoading(false);
+    })();
+  }, [cacheKey, stateSlug, language, persistCache]);
+
+  // Show More — fetch next batch.
+  const loadMoreFromServer = useCallback(async () => {
+    if (!nextCursor || loadingMore) return;
+    setLoadingMore(true);
+    setBatchError(null);
+    const result = await fetchListBatch(stateSlug, language, nextCursor);
+    if (result.error && result.rows.length === 0) {
+      setBatchError(result.error);
+    } else {
+      const merged = [...qaData, ...result.rows];
+      setQaData(merged);
+      setNextCursor(result.nextCursor);
+      persistCache(merged, result.nextCursor, isFallback);
+    }
+    setLoadingMore(false);
+  }, [nextCursor, loadingMore, stateSlug, language, qaData, isFallback, persistCache]);
+
+  // Lazy-load a single answer when its accordion item opens.
   const loadAnswer = useCallback(async (id: string) => {
-    if (answerCache[id] !== undefined || loadingAnswerIds.has(id)) return;
+    if (answers[id] !== undefined) return;
+    if (answerCache.has(id)) {
+      setAnswers((prev) => ({ ...prev, [id]: answerCache.get(id)! }));
+      return;
+    }
+    if (loadingAnswerIds.has(id)) return;
+
     setLoadingAnswerIds((prev) => {
       const next = new Set(prev);
       next.add(id);
       return next;
     });
+    setAnswerErrors((prev) => ({ ...prev, [id]: false }));
+
     try {
       const { data, error } = await supabase.functions.invoke('get-qa-answer', {
         body: { id },
       });
       if (!error && data?.answer) {
-        setAnswerCache((prev) => ({ ...prev, [id]: data.answer }));
-      } else if (error) {
-        console.error('Error fetching answer:', error);
+        answerCache.set(id, data.answer);
+        setAnswers((prev) => ({ ...prev, [id]: data.answer }));
+      } else {
+        setAnswerErrors((prev) => ({ ...prev, [id]: true }));
       }
-    } catch (err) {
-      console.error('Error fetching answer:', err);
+    } catch {
+      setAnswerErrors((prev) => ({ ...prev, [id]: true }));
     } finally {
       setLoadingAnswerIds((prev) => {
         const next = new Set(prev);
@@ -209,28 +304,42 @@ export const StateQASection = ({ stateSlug, stateName }: StateQASectionProps) =>
         return next;
       });
     }
-  }, [answerCache, loadingAnswerIds]);
+  }, [answers, loadingAnswerIds]);
 
   const handleAccordionChange = useCallback((value: string) => {
     if (value) loadAnswer(value);
   }, [loadAnswer]);
 
+  const cityCounts = useMemo<CityCount[]>(() => {
+    const counts: Record<string, number> = {};
+    qaData.forEach((q) => {
+      if (q.city_slug) counts[q.city_slug] = (counts[q.city_slug] || 0) + 1;
+    });
+    return stateCities
+      .map((city) => ({
+        city_slug: city.slug,
+        name: city.name,
+        count: counts[city.slug] || 0,
+      }))
+      .sort((a, b) => b.count - a.count);
+  }, [qaData, stateCities]);
+
   const categories = useMemo(() => {
-    const cats = new Set(qaData.map(q => q.category));
+    const cats = new Set(qaData.map((q) => q.category));
     return Array.from(cats);
   }, [qaData]);
 
   const baseFilteredQAs = useMemo(() => {
     let filtered = qaData;
     if (selectedCity !== 'all') {
-      filtered = filtered.filter(q => q.city_slug === selectedCity);
+      filtered = filtered.filter((q) => q.city_slug === selectedCity);
     }
     if (searchQuery) {
       const query = searchQuery.toLowerCase();
       filtered = filtered.filter(
-        q =>
+        (q) =>
           q.question.toLowerCase().includes(query) ||
-          q.keyword.toLowerCase().includes(query)
+          q.keyword.toLowerCase().includes(query),
       );
     }
     return filtered;
@@ -238,17 +347,25 @@ export const StateQASection = ({ stateSlug, stateName }: StateQASectionProps) =>
 
   const filteredQAs = useMemo(() => {
     if (selectedCategory) {
-      return baseFilteredQAs.filter(q => q.category === selectedCategory);
+      return baseFilteredQAs.filter((q) => q.category === selectedCategory);
     }
     return baseFilteredQAs;
   }, [baseFilteredQAs, selectedCategory]);
 
   const visibleQAs = filteredQAs.slice(0, visibleItems);
-  const hasMore = visibleItems < filteredQAs.length;
+  const hasMoreLocal = visibleItems < filteredQAs.length;
+  const hasMoreServer = nextCursor !== null;
 
-  if (loading) {
+  // ---- Render ----
+
+  // Initial loading skeleton (only when we have nothing at all).
+  if (initialLoading && qaData.length === 0) {
     return (
       <div className="space-y-4">
+        <div className="flex items-center gap-2 text-sm text-muted-foreground">
+          <Loader2 className="h-4 w-4 animate-spin" />
+          {i18n.initialLoadingMessage[language]}
+        </div>
         {[...Array(5)].map((_, i) => (
           <Skeleton key={i} className="h-16 w-full rounded-xl" />
         ))}
@@ -256,17 +373,22 @@ export const StateQASection = ({ stateSlug, stateName }: StateQASectionProps) =>
     );
   }
 
-  if (hasError) {
+  // Initial fetch failed AND we have no rows — inline retry, never blanks the page.
+  if (initialError && qaData.length === 0) {
     return (
-      <div className="text-center py-12 bg-destructive/5 border border-destructive/20 rounded-2xl space-y-4">
-        <p className="text-foreground/80 max-w-md mx-auto">{i18n.loadError[language]}</p>
-        <Button onClick={() => setReloadKey((k) => k + 1)} variant="outline">
+      <div className="text-center py-10 px-6 bg-destructive/5 border border-destructive/20 rounded-2xl space-y-4">
+        <AlertCircle className="h-8 w-8 text-destructive mx-auto" />
+        <p className="text-foreground/80 max-w-md mx-auto">
+          {i18n.batchError[language]}
+        </p>
+        <Button onClick={handleRetryInitial} variant="outline">
           {i18n.retry[language]}
         </Button>
       </div>
     );
   }
 
+  // Truly empty (no error, no rows).
   if (qaData.length === 0) {
     return (
       <div className="text-center py-12 bg-muted/30 rounded-2xl">
@@ -282,7 +404,8 @@ export const StateQASection = ({ stateSlug, stateName }: StateQASectionProps) =>
     return labels ? labels[language] : cat;
   };
 
-  const getCatColor = (cat: string) => CATEGORY_COLORS[cat] || 'bg-gray-500/10 text-gray-600';
+  const getCatColor = (cat: string) =>
+    CATEGORY_COLORS[cat] || 'bg-gray-500/10 text-gray-600';
 
   return (
     <div className="space-y-6">
@@ -356,7 +479,9 @@ export const StateQASection = ({ stateSlug, stateName }: StateQASectionProps) =>
                 <SelectValue placeholder="Select city/town" />
               </SelectTrigger>
               <SelectContent className="bg-background z-50">
-                <SelectItem value="all">{i18n.allCities[language]} ({qaData.length})</SelectItem>
+                <SelectItem value="all">
+                  {i18n.allCities[language]} ({qaData.length})
+                </SelectItem>
                 {cityCounts.map((city) => (
                   <SelectItem key={city.city_slug} value={city.city_slug}>
                     {city.name} {city.count > 0 ? `(${city.count})` : ''}
@@ -369,7 +494,7 @@ export const StateQASection = ({ stateSlug, stateName }: StateQASectionProps) =>
 
         <div className="flex flex-wrap gap-2 flex-1">
           <Button
-            variant={selectedCategory === null ? "default" : "outline"}
+            variant={selectedCategory === null ? 'default' : 'outline'}
             size="sm"
             onClick={() => {
               setSelectedCategory(null);
@@ -379,11 +504,11 @@ export const StateQASection = ({ stateSlug, stateName }: StateQASectionProps) =>
             {i18n.all[language]} ({baseFilteredQAs.length})
           </Button>
           {categories.map((cat) => {
-            const count = baseFilteredQAs.filter(q => q.category === cat).length;
+            const count = baseFilteredQAs.filter((q) => q.category === cat).length;
             return (
               <Button
                 key={cat}
-                variant={selectedCategory === cat ? "default" : "outline"}
+                variant={selectedCategory === cat ? 'default' : 'outline'}
                 size="sm"
                 onClick={() => {
                   setSelectedCategory(cat);
@@ -398,7 +523,8 @@ export const StateQASection = ({ stateSlug, stateName }: StateQASectionProps) =>
       </div>
 
       <p className="text-sm text-muted-foreground">
-        {i18n.showing[language]} {visibleQAs.length} {i18n.of[language]} {filteredQAs.length} {i18n.questions[language]}
+        {i18n.showing[language]} {visibleQAs.length} / {filteredQAs.length} {i18n.questions[language]}
+        {hasMoreServer && ` (${qaData.length} ${i18n.loaded[language]})`}
       </p>
 
       {filteredQAs.length === 0 ? (
@@ -407,11 +533,17 @@ export const StateQASection = ({ stateSlug, stateName }: StateQASectionProps) =>
         </div>
       ) : (
         <>
-          <Accordion type="single" collapsible className="space-y-3" onValueChange={handleAccordionChange}>
+          <Accordion
+            type="single"
+            collapsible
+            className="space-y-3"
+            onValueChange={handleAccordionChange}
+          >
             {visibleQAs.map((qa, index) => {
               const showCTA = (index + 1) % 5 === 0 && index < visibleQAs.length - 1;
-              const answer = answerCache[qa.id];
+              const answer = answers[qa.id];
               const isLoadingAnswer = loadingAnswerIds.has(qa.id);
+              const hasAnswerError = !!answerErrors[qa.id];
               return (
                 <div key={qa.id}>
                   <AccordionItem
@@ -420,7 +552,11 @@ export const StateQASection = ({ stateSlug, stateName }: StateQASectionProps) =>
                   >
                     <AccordionTrigger className="hover:no-underline py-4">
                       <div className="flex items-start gap-3 text-left">
-                        <span className={`px-2 py-0.5 rounded-full text-xs font-medium whitespace-nowrap ${getCatColor(qa.category)}`}>
+                        <span
+                          className={`px-2 py-0.5 rounded-full text-xs font-medium whitespace-nowrap ${getCatColor(
+                            qa.category,
+                          )}`}
+                        >
                           {getCatLabel(qa.category)}
                         </span>
                         <span className="font-medium text-foreground">{qa.question}</span>
@@ -434,6 +570,19 @@ export const StateQASection = ({ stateSlug, stateName }: StateQASectionProps) =>
                           <div className="flex items-center gap-2 text-muted-foreground">
                             <Loader2 className="h-4 w-4 animate-spin" />
                             <span>{i18n.loadingAnswer[language]}</span>
+                          </div>
+                        ) : hasAnswerError ? (
+                          <div className="flex items-center gap-3">
+                            <span className="text-destructive text-sm">
+                              {i18n.answerError[language]}
+                            </span>
+                            <Button
+                              size="sm"
+                              variant="outline"
+                              onClick={() => loadAnswer(qa.id)}
+                            >
+                              {i18n.retry[language]}
+                            </Button>
                           </div>
                         ) : (
                           <Skeleton className="h-16 w-full rounded-md" />
@@ -449,14 +598,38 @@ export const StateQASection = ({ stateSlug, stateName }: StateQASectionProps) =>
 
           <CostCTA variant={visibleQAs.length % 10} />
 
-          <div className="flex justify-center gap-4 pt-4">
-            {hasMore && (
+          {batchError && (
+            <div className="flex items-center justify-between gap-3 px-4 py-3 rounded-xl bg-destructive/5 border border-destructive/20 text-sm">
+              <span className="text-foreground/80">{i18n.batchError[language]}</span>
+              <Button size="sm" variant="outline" onClick={loadMoreFromServer}>
+                {i18n.retry[language]}
+              </Button>
+            </div>
+          )}
+
+          <div className="flex flex-wrap justify-center gap-3 pt-4">
+            {hasMoreLocal && (
               <Button
                 variant="outline"
                 onClick={() => setVisibleItems((prev) => prev + ITEMS_PER_PAGE)}
                 className="gap-2"
               >
                 {i18n.showMore[language]} <ChevronDown className="h-4 w-4" />
+              </Button>
+            )}
+            {!hasMoreLocal && hasMoreServer && (
+              <Button
+                variant="outline"
+                onClick={loadMoreFromServer}
+                disabled={loadingMore}
+                className="gap-2"
+              >
+                {loadingMore ? (
+                  <Loader2 className="h-4 w-4 animate-spin" />
+                ) : (
+                  <ChevronDown className="h-4 w-4" />
+                )}
+                {i18n.showMore[language]}
               </Button>
             )}
             {visibleItems > ITEMS_PER_PAGE && (
