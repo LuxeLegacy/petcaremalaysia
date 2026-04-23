@@ -151,28 +151,61 @@ const StateQAPage = () => {
           </div>
         </section>
 
-        {/* Q&A Content */}
-        <section className="py-12">
-          <div className="container">
-            <div className="max-w-4xl mx-auto">
-              {stateConfig.hasData ? (
-                <StateQASection stateSlug={stateSlug} stateName={stateConfig.name} />
-              ) : profile ? (
+        {/* Always-on hand-written state content (renders even if DB is slow/down) */}
+        {profile && (
+          <section className="py-12 border-b border-border/50">
+            <div className="container">
+              <div className="max-w-4xl mx-auto">
                 <StateProfileFallback profile={profile} language={language} />
-              ) : (
-                <div className="text-center py-12 bg-muted/30 rounded-2xl">
-                  <p className="text-muted-foreground">
-                    Content for {stateConfig.name} coming soon.
-                  </p>
-                </div>
-              )}
+              </div>
             </div>
+          </section>
+        )}
 
-            <div className="mt-8">
-              <CostCTA variant={12} />
+        {/* Dynamic searchable Q&A — shown below the static content for states with DB coverage */}
+        {stateConfig.hasData && (
+          <section className="py-12">
+            <div className="container">
+              <div className="max-w-4xl mx-auto">
+                <h2 className="text-2xl md:text-3xl font-bold text-foreground mb-2">
+                  {language === 'ms'
+                    ? `Cari S&J Tambahan untuk ${stateConfig.name}`
+                    : language === 'zh'
+                    ? `搜索${stateConfig.name}的更多问答`
+                    : `Search More Q&A for ${stateConfig.name}`}
+                </h2>
+                <p className="text-muted-foreground mb-6">
+                  {language === 'ms'
+                    ? 'Pangkalan data soalan tempatan kami yang boleh dicari, dikemas kini setiap minggu.'
+                    : language === 'zh'
+                    ? '我们可搜索的本地问题数据库，每周更新。'
+                    : 'Our searchable database of local questions, updated weekly.'}
+                </p>
+                <StateQASection stateSlug={stateSlug} stateName={stateConfig.name} />
+              </div>
+
+              <div className="mt-8">
+                <CostCTA variant={12} />
+              </div>
             </div>
-          </div>
-        </section>
+          </section>
+        )}
+
+        {/* If no profile and no DB data, show a soft placeholder */}
+        {!profile && !stateConfig.hasData && (
+          <section className="py-12">
+            <div className="container">
+              <div className="max-w-4xl mx-auto text-center py-12 bg-muted/30 rounded-2xl">
+                <p className="text-muted-foreground">
+                  Content for {stateConfig.name} coming soon.
+                </p>
+              </div>
+              <div className="mt-8">
+                <CostCTA variant={12} />
+              </div>
+            </div>
+          </section>
+        )}
       </main>
 
       <Footer />
