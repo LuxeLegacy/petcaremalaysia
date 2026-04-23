@@ -191,20 +191,23 @@ export const StateQASection = ({ stateSlug, stateName }: StateQASectionProps) =>
       next.add(id);
       return next;
     });
-    const { data, error } = await supabase
-      .from('pet_qa_keywords')
-      .select('answer')
-      .eq('id', id)
-      .maybeSingle();
-    setLoadingAnswerIds((prev) => {
-      const next = new Set(prev);
-      next.delete(id);
-      return next;
-    });
-    if (!error && data) {
-      setAnswerCache((prev) => ({ ...prev, [id]: data.answer }));
-    } else if (error) {
-      console.error('Error fetching answer:', error);
+    try {
+      const { data, error } = await supabase.functions.invoke('get-qa-answer', {
+        body: { id },
+      });
+      if (!error && data?.answer) {
+        setAnswerCache((prev) => ({ ...prev, [id]: data.answer }));
+      } else if (error) {
+        console.error('Error fetching answer:', error);
+      }
+    } catch (err) {
+      console.error('Error fetching answer:', err);
+    } finally {
+      setLoadingAnswerIds((prev) => {
+        const next = new Set(prev);
+        next.delete(id);
+        return next;
+      });
     }
   }, [answerCache, loadingAnswerIds]);
 
