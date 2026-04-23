@@ -88,26 +88,23 @@ const POPULAR_SEARCHES = [
 
 const ITEMS_PER_PAGE = 10;
 
-// Lightweight list fetch — metadata only, no answer body. One soft retry for transient hiccups.
-const fetchListWithRetry = async (state: string, lang: string, attempt = 0): Promise<{ data: QAListItem[] | null; error: any }> => {
+// Lightweight list fetch via edge function — bypasses PostgREST gateway 504s.
+const fetchListViaEdge = async (
+  stateSlug: string,
+  language: string,
+): Promise<{ data: QAListItem[] | null; isFallback: boolean; error: any }> => {
   try {
-    const result = await supabase
-      .from('pet_qa_keywords')
-      .select('id, keyword, question, category, priority, city_slug')
-      .eq('state', state)
-      .eq('language', lang)
-      .order('priority', { ascending: false });
-    if (result.error && attempt === 0) {
-      await new Promise((r) => setTimeout(r, 800));
-      return fetchListWithRetry(state, lang, 1);
-    }
-    return { data: result.data as QAListItem[] | null, error: result.error };
+    const { data, error } = await supabase.functions.invoke('get-state-qa-list', {
+      body: { stateSlug, language, limit: 500, offset: 0 },
+    });
+    if (error) return { data: null, isFallback: false, error };
+    return {
+      data: (data?.data ?? []) as QAListItem[],
+      isFallback: !!data?.isFallback,
+      error: null,
+    };
   } catch (err) {
-    if (attempt === 0) {
-      await new Promise((r) => setTimeout(r, 800));
-      return fetchListWithRetry(state, lang, 1);
-    }
-    return { data: null, error: err };
+    return { data: null, isFallback: false, error: err };
   }
 };
 
@@ -151,18 +148,8 @@ export const StateQASection = ({ stateSlug, stateName }: StateQASectionProps) =>
       setLoading(true);
       setIsFallback(false);
       setHasError(false);
-      const stateValue = stateNameMap[stateSlug] || stateName;
 
-      const { data, error } = await fetchListWithRetry(stateValue, language);
-      let resultData = data;
-
-      if (!error && (!data || data.length === 0) && language !== 'en') {
-        const { data: fallbackData, error: fbError } = await fetchListWithRetry(stateValue, 'en');
-        if (!fbError && fallbackData && fallbackData.length > 0) {
-          resultData = fallbackData;
-          if (!cancelled) setIsFallback(true);
-        }
-      }
+      const { data, isFallback: fb, error } = await fetchListViaEdge(stateSlug, language);
 
       if (cancelled) return;
 
@@ -171,9 +158,11 @@ export const StateQASection = ({ stateSlug, stateName }: StateQASectionProps) =>
         setHasError(true);
         setQaData([]);
       } else {
-        setQaData(resultData || []);
+        if (fb) setIsFallback(true);
+        const resultData = data || [];
+        setQaData(resultData);
         const counts: Record<string, number> = {};
-        (resultData || []).forEach((q) => {
+        resultData.forEach((q) => {
           if (q.city_slug) counts[q.city_slug] = (counts[q.city_slug] || 0) + 1;
         });
         const cityCountList: CityCount[] = stateCities
@@ -202,20 +191,23 @@ export const StateQASection = ({ stateSlug, stateName }: StateQASectionProps) =>
       next.add(id);
       return next;
     });
-    const { data, error } = await supabase
-      .from('pet_qa_keywords')
-      .select('answer')
-      .eq('id', id)
-      .maybeSingle();
-    setLoadingAnswerIds((prev) => {
-      const next = new Set(prev);
-      next.delete(id);
-      return next;
-    });
-    if (!error && data) {
-      setAnswerCache((prev) => ({ ...prev, [id]: data.answer }));
-    } else if (error) {
-      console.error('Error fetching answer:', error);
+    try {
+      const { data, error } = await supabase.functions.invoke('get-qa-answer', {
+        body: { id },
+      });
+      if (!error && data?.answer) {
+        setAnswerCache((prev) => ({ ...prev, [id]: data.answer }));
+      } else if (error) {
+        console.error('Error fetching answer:', error);
+      }
+    } catch (err) {
+      console.error('Error fetching answer:', err);
+    } finally {
+      setLoadingAnswerIds((prev) => {
+        const next = new Set(prev);
+        next.delete(id);
+        return next;
+      });
     }
   }, [answerCache, loadingAnswerIds]);
 
