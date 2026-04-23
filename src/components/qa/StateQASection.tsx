@@ -148,18 +148,8 @@ export const StateQASection = ({ stateSlug, stateName }: StateQASectionProps) =>
       setLoading(true);
       setIsFallback(false);
       setHasError(false);
-      const stateValue = stateNameMap[stateSlug] || stateName;
 
-      const { data, error } = await fetchListWithRetry(stateValue, language);
-      let resultData = data;
-
-      if (!error && (!data || data.length === 0) && language !== 'en') {
-        const { data: fallbackData, error: fbError } = await fetchListWithRetry(stateValue, 'en');
-        if (!fbError && fallbackData && fallbackData.length > 0) {
-          resultData = fallbackData;
-          if (!cancelled) setIsFallback(true);
-        }
-      }
+      const { data, isFallback: fb, error } = await fetchListViaEdge(stateSlug, language);
 
       if (cancelled) return;
 
@@ -168,9 +158,11 @@ export const StateQASection = ({ stateSlug, stateName }: StateQASectionProps) =>
         setHasError(true);
         setQaData([]);
       } else {
-        setQaData(resultData || []);
+        if (fb) setIsFallback(true);
+        const resultData = data || [];
+        setQaData(resultData);
         const counts: Record<string, number> = {};
-        (resultData || []).forEach((q) => {
+        resultData.forEach((q) => {
           if (q.city_slug) counts[q.city_slug] = (counts[q.city_slug] || 0) + 1;
         });
         const cityCountList: CityCount[] = stateCities
