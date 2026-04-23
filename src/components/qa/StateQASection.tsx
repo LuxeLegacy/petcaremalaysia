@@ -72,6 +72,36 @@ const i18n = {
     ms: 'Memaparkan S&J dalam Bahasa Inggeris. Terjemahan akan datang.',
     zh: '显示英文问答。翻译即将推出。',
   },
+  loadError: {
+    en: "We couldn't load the Q&A right now. This usually clears in a few seconds.",
+    ms: 'Kami tidak dapat memuatkan S&J sekarang. Ini biasanya pulih dalam beberapa saat.',
+    zh: '目前无法加载问答内容。通常几秒后即可恢复。',
+  },
+  retry: { en: 'Try Again', ms: 'Cuba Lagi', zh: '重试' },
+};
+
+// Fetch with timeout + 1 retry to defeat transient gateway hiccups (504s).
+const fetchWithRetry = async (state: string, lang: string, attempt = 0): Promise<{ data: any[] | null; error: any }> => {
+  const controller = new AbortController();
+  const timeout = setTimeout(() => controller.abort(), 10000);
+  try {
+    const result = await supabase
+      .from('pet_qa_keywords')
+      .select('id, keyword, question, answer, category, priority, city_slug')
+      .eq('state', state)
+      .eq('language', lang)
+      .order('priority', { ascending: false })
+      .abortSignal(controller.signal);
+    clearTimeout(timeout);
+    return result;
+  } catch (err) {
+    clearTimeout(timeout);
+    if (attempt === 0) {
+      await new Promise((r) => setTimeout(r, 800));
+      return fetchWithRetry(state, lang, 1);
+    }
+    return { data: null, error: err };
+  }
 };
 
 const POPULAR_SEARCHES = [
