@@ -141,54 +141,53 @@ export const StateQASection = ({ stateSlug, stateName }: StateQASectionProps) =>
     'perlis': 'Perlis',
   }), []);
 
+  const [hasError, setHasError] = useState(false);
+  const [reloadKey, setReloadKey] = useState(0);
+
   useEffect(() => {
+    let cancelled = false;
     const fetchQAs = async () => {
       setLoading(true);
       setIsFallback(false);
+      setHasError(false);
       const stateValue = stateNameMap[stateSlug] || stateName;
 
-      const { data, error } = await supabase
-        .from('pet_qa_keywords')
-        .select('id, keyword, question, answer, category, priority, city_slug')
-        .eq('state', stateValue)
-        .eq('language', language)
-        .order('priority', { ascending: false });
+      const { data, error } = await fetchWithRetry(stateValue, language);
 
       let resultData = data;
 
       // Fallback to English if no rows for current language
       if (!error && (!data || data.length === 0) && language !== 'en') {
-        const { data: fallbackData, error: fbError } = await supabase
-          .from('pet_qa_keywords')
-          .select('id, keyword, question, answer, category, priority, city_slug')
-          .eq('state', stateValue)
-          .eq('language', 'en')
-          .order('priority', { ascending: false });
-
+        const { data: fallbackData, error: fbError } = await fetchWithRetry(stateValue, 'en');
         if (!fbError && fallbackData && fallbackData.length > 0) {
           resultData = fallbackData;
-          setIsFallback(true);
+          if (!cancelled) setIsFallback(true);
         }
       }
 
+      if (cancelled) return;
+
       if (error) {
         console.error('Error fetching Q&A:', error);
+        setHasError(true);
         setQaData([]);
       } else {
         setQaData(resultData || []);
 
         const counts: Record<string, number> = {};
-        (resultData || []).forEach(q => {
+        (resultData || []).forEach((q) => {
           if (q.city_slug) {
             counts[q.city_slug] = (counts[q.city_slug] || 0) + 1;
           }
         });
 
-        const cityCountList: CityCount[] = stateCities.map(city => ({
-          city_slug: city.slug,
-          name: city.name,
-          count: counts[city.slug] || 0
-        })).sort((a, b) => b.count - a.count);
+        const cityCountList: CityCount[] = stateCities
+          .map((city) => ({
+            city_slug: city.slug,
+            name: city.name,
+            count: counts[city.slug] || 0,
+          }))
+          .sort((a, b) => b.count - a.count);
 
         setCityCounts(cityCountList);
       }
@@ -196,7 +195,10 @@ export const StateQASection = ({ stateSlug, stateName }: StateQASectionProps) =>
     };
 
     fetchQAs();
-  }, [stateSlug, stateName, language, stateNameMap, stateCities]);
+    return () => {
+      cancelled = true;
+    };
+  }, [stateSlug, stateName, language, stateNameMap, stateCities, reloadKey]);
 
   const categories = useMemo(() => {
     const cats = new Set(qaData.map(q => q.category));
