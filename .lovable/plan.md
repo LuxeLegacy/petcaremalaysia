@@ -1,72 +1,72 @@
 
 
-# Honest Assessment + Real Fix Path
+# Rebuild `/qa/selangor`, `/qa/kuala-lumpur`, `/qa/johor` from scratch
 
-## Confidence Level: Low (with code-only fixes), High (with infra fix)
+## Why the current pages fail
 
-I've spent multiple rounds optimizing the **frontend code** (lightweight fetch, lazy answers, removed AbortController, added retries) — but the network logs prove the problem is **not in the code**.
+The edge function `get-state-qa-list` is now returning `500 upstream request timeout` even though the underlying query runs in under 1 ms with the right index. The bottleneck is the connection path between the edge runtime and Postgres under load — not the SQL, not the index, not the frontend code we already optimized.
 
-## The Hard Evidence
+Pulling 220–258 rows in a single request keeps tripping that timeout, even with lightweight columns. The fix is to stop relying on “one big request” entirely.
 
-Direct database test just now:
-```
-Query: SELECT id, keyword, question, category, priority, city_slug
-       FROM pet_qa_keywords
-       WHERE state = 'Kuala Lumpur' AND language = 'en'
-       ORDER BY priority DESC;
+## What I’ll build
 
-Execution Time: 0.893 ms
-Index used: idx_pet_qa_state_lang_priority ✓
-Rows: 258
-```
+A **balanced, content-first state page** with a **resilient dynamic Q&A** below it. The page never looks empty, even if the database is slow.
 
-Yet your browser is receiving:
-```
-Status: 504 — upstream request timeout
-```
+### Page structure (top → bottom)
 
-A 0.9ms query cannot legitimately produce a 504 unless the **backend instance itself** is overloaded or the **Supabase REST gateway (PostgREST)** is queuing/dropping requests.
+1. **Hero** — state name, badge, breadcrumb back to `/qa`.
+2. **State snapshot** — capital, climate, registered clinic count, consultation price range, top local risks. Hand-written per state, always renders.
+3. **Local emergency contacts** — DVS state office, SPCA, 999. Always renders.
+4. **Local case study** — short hand-written narrative tied to that state. Always renders.
+5. **Searchable Q&A module** (the rebuilt dynamic part):
+   - Search bar + popular search chips
+   - City filter + category filter
+   - Accordion list, lazy-loaded answers
+6. **CostCTA** (existing direct-response component).
+7. **Explore other states** link.
 
-## Why More Code Changes Won't Help
+If the database fails or is slow, sections 1–4 + 6–7 still render normally. Only the Q&A module shows its own loading/retry state.
 
-I could keep adding pagination, server-side functions, edge-function wrappers — but **none of that addresses an instance that can't serve a sub-millisecond query**. We'd be polishing a car that has no engine.
+### New resilient fetch strategy for the Q&A module
 
-## The Real Fix (2 Steps)
+Instead of fetching all rows at once, the new approach uses **small keyset-paginated batches**:
 
-### Step 1 — Required: Upgrade Lovable Cloud Instance
-The backend is hitting compute/connection-pool limits. You need to:
+- Initial load: request first **50 rows only**, ordered by `priority DESC, id ASC`.
+- “Show More” button: fetches the next 50 using `id > lastId` (keyset pagination — no `OFFSET`, much faster and stable).
+- Each batch has its own short retry (2 attempts) and clean error UI; a failed batch does not blank the page or wipe what already loaded.
+- Answers continue to be **lazy-loaded by id** when the user opens an accordion item.
+- Add a small **client-side cache keyed by `state+language`** so navigating away and back is instant and avoids re-hitting the gateway.
 
-1. Open your project → **Backend** (Lovable Cloud) → **Advanced settings**
-2. Click **Upgrade instance** to a larger size
-3. Wait ~3–5 minutes for infrastructure to resize
-4. Retest `/qa/selangor`, `/qa/kuala-lumpur`, `/qa/johor`
+### Edge functions
 
-Docs: https://docs.lovable.dev/features/cloud#advanced-settings-upgrade-instance
+- Replace `get-state-qa-list` with a simpler version that:
+  - Accepts `stateSlug`, `language`, `limit` (default 50, max 100), `afterId` (keyset cursor).
+  - Returns at most 50 lightweight rows (`id, keyword, question, category, priority, city_slug`) plus a `nextCursor`.
+  - Adds an internal 8-second timeout and returns a clean JSON error instead of dragging until the gateway 504s.
+  - Keeps state-name normalization (`kuala-lumpur` → `Kuala Lumpur` / `W.P. Kuala Lumpur`) and EN fallback for `ms`/`zh`.
+- Keep `get-qa-answer` as-is (already minimal: one row by id).
 
-This is the single change most likely to actually fix the 504s. Without it, no code change I make will work reliably.
+### State pages get hand-written content too
 
-### Step 2 — Defensive: Backend Edge Function Wrapper
-Once the instance is healthy, I'll add a small edge function `get-state-qa-list` that:
-- Accepts `state`, `language`, `limit`, `offset`
-- Runs the query server-side with a connection from the function pool (not the public REST gateway)
-- Returns paginated results
-- Handles state-name normalization + EN fallback in one place
+Add `STATE_PROFILES` entries for `selangor`, `kuala-lumpur`, `johor` (currently only the 11 fallback states have these). This is what guarantees the page is never empty, gives us the unique SEO content above the Q&A, and removes the duplicate-content risk that originally started this thread.
 
-This bypasses the PostgREST gateway path that's currently 504-ing, giving us a more resilient route even under future load spikes.
+### Routing & SEO
 
-## What I Need From You
+- Keep the existing routes; `StateQAPage` always shows the new content sections, and now also shows `StateQASection` underneath when `STATES_CONFIG[slug].hasData` is true.
+- `buildSEO` already produces unique titles/descriptions per state from `STATE_PROFILES` — it will now apply to all 14 states, including the three rebuilt ones.
 
-**Please upgrade the Lovable Cloud instance first.** If after the upgrade the pages still 504, then it's a deeper infrastructure issue and we should escalate to Lovable support — not keep rewriting client code.
+### Files I’ll change
 
-Once you confirm the upgrade is complete, I'll implement Step 2 (the edge function wrapper) as durable insurance.
+- **Update**: `src/pages/StateQAPage.tsx` — render state profile sections **above** `StateQASection`, not as an either/or.
+- **Rewrite**: `src/components/qa/StateQASection.tsx` — keyset pagination, per-batch retry, in-memory cache, never shows a full-page error if first batch fails (shows inline retry inside the module instead).
+- **Update**: `supabase/functions/get-state-qa-list/index.ts` — keyset pagination, hard 8s internal timeout, smaller payload contract.
+- **Update**: `src/data/qa/stateProfiles.ts` — add Selangor, Kuala Lumpur, Johor profiles (intro, contacts, top risks, case study, 6 local Q&As each, trilingual).
+- No DB schema changes needed; the existing index `idx_pet_qa_state_lang_priority` already supports the new query.
 
-## Files I'll Touch (After Upgrade Confirmed)
-- **New**: `supabase/functions/get-state-qa-list/index.ts` — paginated, normalized read
-- **New**: `supabase/functions/get-qa-answer/index.ts` — single-answer fetch by id
-- **Modify**: `src/components/qa/StateQASection.tsx` — call edge functions instead of PostgREST direct
-- **Modify**: `supabase/config.toml` — register the two new functions with `verify_jwt = false`
+## What this fixes
 
-## Honest Outcome Forecast
-- If you upgrade the instance → **High confidence** (~90%) the pages load.
-- If you don't upgrade and I only change code → **Low confidence** (~25%). We've already done the meaningful code optimizations and they didn't help.
+- `/qa/selangor`, `/qa/kuala-lumpur`, `/qa/johor` always render meaningful, unique state content immediately — no more empty pages.
+- The dynamic Q&A loads in small, fast batches that fit well under the gateway’s timeout window, dramatically reducing the 504/500 failure rate.
+- Even if the Q&A module fails, the rest of the page still ranks and converts.
+- All 14 state pages now have the same unique-content backbone, eliminating the duplicate-content concern across the hub.
 
