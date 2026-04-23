@@ -1,21 +1,21 @@
-import { useState, useEffect, useMemo } from 'react';
+import { useState, useEffect, useMemo, useCallback } from 'react';
 import { useLanguage } from '@/contexts/LanguageContext';
 import { supabase } from '@/integrations/supabase/client';
 import { Input } from '@/components/ui/input';
 import { Button } from '@/components/ui/button';
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion';
 import { Skeleton } from '@/components/ui/skeleton';
-import { Search, ChevronDown, ChevronUp, MapPin, Info } from 'lucide-react';
+import { Search, ChevronDown, ChevronUp, MapPin, Info, Loader2 } from 'lucide-react';
 import { CostCTA } from '@/components/common/CostCTA';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 import { getCitiesByState } from '@/lib/cityData';
 import type { Language } from '@/lib/translations';
 
-interface QAKeyword {
+// Lightweight row (no `answer` — fetched lazily)
+interface QAListItem {
   id: string;
   keyword: string;
   question: string;
-  answer: string;
   category: string;
   priority: number | null;
   city_slug: string | null;
@@ -73,35 +73,12 @@ const i18n = {
     zh: '显示英文问答。翻译即将推出。',
   },
   loadError: {
-    en: "We couldn't load the Q&A right now. This usually clears in a few seconds.",
-    ms: 'Kami tidak dapat memuatkan S&J sekarang. Ini biasanya pulih dalam beberapa saat.',
-    zh: '目前无法加载问答内容。通常几秒后即可恢复。',
+    en: 'The list is taking longer than expected. Please try again.',
+    ms: 'Senarai mengambil masa lebih lama daripada jangkaan. Sila cuba lagi.',
+    zh: '加载时间超出预期，请重试。',
   },
   retry: { en: 'Try Again', ms: 'Cuba Lagi', zh: '重试' },
-};
-
-// Fetch with timeout + 1 retry to defeat transient gateway hiccups (504s).
-const fetchWithRetry = async (state: string, lang: string, attempt = 0): Promise<{ data: any[] | null; error: any }> => {
-  const controller = new AbortController();
-  const timeout = setTimeout(() => controller.abort(), 10000);
-  try {
-    const result = await supabase
-      .from('pet_qa_keywords')
-      .select('id, keyword, question, answer, category, priority, city_slug')
-      .eq('state', state)
-      .eq('language', lang)
-      .order('priority', { ascending: false })
-      .abortSignal(controller.signal);
-    clearTimeout(timeout);
-    return result;
-  } catch (err) {
-    clearTimeout(timeout);
-    if (attempt === 0) {
-      await new Promise((r) => setTimeout(r, 800));
-      return fetchWithRetry(state, lang, 1);
-    }
-    return { data: null, error: err };
-  }
+  loadingAnswer: { en: 'Loading answer...', ms: 'Memuatkan jawapan...', zh: '加载答案中...' },
 };
 
 const POPULAR_SEARCHES = [
@@ -111,9 +88,34 @@ const POPULAR_SEARCHES = [
 
 const ITEMS_PER_PAGE = 10;
 
+// Lightweight list fetch — metadata only, no answer body. One soft retry for transient hiccups.
+const fetchListWithRetry = async (state: string, lang: string, attempt = 0): Promise<{ data: QAListItem[] | null; error: any }> => {
+  try {
+    const result = await supabase
+      .from('pet_qa_keywords')
+      .select('id, keyword, question, category, priority, city_slug')
+      .eq('state', state)
+      .eq('language', lang)
+      .order('priority', { ascending: false });
+    if (result.error && attempt === 0) {
+      await new Promise((r) => setTimeout(r, 800));
+      return fetchListWithRetry(state, lang, 1);
+    }
+    return { data: result.data as QAListItem[] | null, error: result.error };
+  } catch (err) {
+    if (attempt === 0) {
+      await new Promise((r) => setTimeout(r, 800));
+      return fetchListWithRetry(state, lang, 1);
+    }
+    return { data: null, error: err };
+  }
+};
+
 export const StateQASection = ({ stateSlug, stateName }: StateQASectionProps) => {
   const { language } = useLanguage();
-  const [qaData, setQaData] = useState<QAKeyword[]>([]);
+  const [qaData, setQaData] = useState<QAListItem[]>([]);
+  const [answerCache, setAnswerCache] = useState<Record<string, string>>({});
+  const [loadingAnswerIds, setLoadingAnswerIds] = useState<Set<string>>(new Set());
   const [loading, setLoading] = useState(true);
   const [searchQuery, setSearchQuery] = useState('');
   const [selectedCategory, setSelectedCategory] = useState<string | null>(null);
@@ -121,6 +123,8 @@ export const StateQASection = ({ stateSlug, stateName }: StateQASectionProps) =>
   const [visibleItems, setVisibleItems] = useState(ITEMS_PER_PAGE);
   const [cityCounts, setCityCounts] = useState<CityCount[]>([]);
   const [isFallback, setIsFallback] = useState(false);
+  const [hasError, setHasError] = useState(false);
+  const [reloadKey, setReloadKey] = useState(0);
 
   const stateCities = useMemo(() => getCitiesByState(stateSlug), [stateSlug]);
 
@@ -141,9 +145,6 @@ export const StateQASection = ({ stateSlug, stateName }: StateQASectionProps) =>
     'perlis': 'Perlis',
   }), []);
 
-  const [hasError, setHasError] = useState(false);
-  const [reloadKey, setReloadKey] = useState(0);
-
   useEffect(() => {
     let cancelled = false;
     const fetchQAs = async () => {
@@ -152,13 +153,11 @@ export const StateQASection = ({ stateSlug, stateName }: StateQASectionProps) =>
       setHasError(false);
       const stateValue = stateNameMap[stateSlug] || stateName;
 
-      const { data, error } = await fetchWithRetry(stateValue, language);
-
+      const { data, error } = await fetchListWithRetry(stateValue, language);
       let resultData = data;
 
-      // Fallback to English if no rows for current language
       if (!error && (!data || data.length === 0) && language !== 'en') {
-        const { data: fallbackData, error: fbError } = await fetchWithRetry(stateValue, 'en');
+        const { data: fallbackData, error: fbError } = await fetchListWithRetry(stateValue, 'en');
         if (!fbError && fallbackData && fallbackData.length > 0) {
           resultData = fallbackData;
           if (!cancelled) setIsFallback(true);
@@ -168,19 +167,15 @@ export const StateQASection = ({ stateSlug, stateName }: StateQASectionProps) =>
       if (cancelled) return;
 
       if (error) {
-        console.error('Error fetching Q&A:', error);
+        console.error('Error fetching Q&A list:', error);
         setHasError(true);
         setQaData([]);
       } else {
         setQaData(resultData || []);
-
         const counts: Record<string, number> = {};
         (resultData || []).forEach((q) => {
-          if (q.city_slug) {
-            counts[q.city_slug] = (counts[q.city_slug] || 0) + 1;
-          }
+          if (q.city_slug) counts[q.city_slug] = (counts[q.city_slug] || 0) + 1;
         });
-
         const cityCountList: CityCount[] = stateCities
           .map((city) => ({
             city_slug: city.slug,
@@ -188,7 +183,6 @@ export const StateQASection = ({ stateSlug, stateName }: StateQASectionProps) =>
             count: counts[city.slug] || 0,
           }))
           .sort((a, b) => b.count - a.count);
-
         setCityCounts(cityCountList);
       }
       setLoading(false);
@@ -200,6 +194,35 @@ export const StateQASection = ({ stateSlug, stateName }: StateQASectionProps) =>
     };
   }, [stateSlug, stateName, language, stateNameMap, stateCities, reloadKey]);
 
+  // Lazy-load a single answer when its accordion item opens
+  const loadAnswer = useCallback(async (id: string) => {
+    if (answerCache[id] !== undefined || loadingAnswerIds.has(id)) return;
+    setLoadingAnswerIds((prev) => {
+      const next = new Set(prev);
+      next.add(id);
+      return next;
+    });
+    const { data, error } = await supabase
+      .from('pet_qa_keywords')
+      .select('answer')
+      .eq('id', id)
+      .maybeSingle();
+    setLoadingAnswerIds((prev) => {
+      const next = new Set(prev);
+      next.delete(id);
+      return next;
+    });
+    if (!error && data) {
+      setAnswerCache((prev) => ({ ...prev, [id]: data.answer }));
+    } else if (error) {
+      console.error('Error fetching answer:', error);
+    }
+  }, [answerCache, loadingAnswerIds]);
+
+  const handleAccordionChange = useCallback((value: string) => {
+    if (value) loadAnswer(value);
+  }, [loadAnswer]);
+
   const categories = useMemo(() => {
     const cats = new Set(qaData.map(q => q.category));
     return Array.from(cats);
@@ -207,21 +230,17 @@ export const StateQASection = ({ stateSlug, stateName }: StateQASectionProps) =>
 
   const baseFilteredQAs = useMemo(() => {
     let filtered = qaData;
-
     if (selectedCity !== 'all') {
       filtered = filtered.filter(q => q.city_slug === selectedCity);
     }
-
     if (searchQuery) {
       const query = searchQuery.toLowerCase();
       filtered = filtered.filter(
         q =>
           q.question.toLowerCase().includes(query) ||
-          q.answer.toLowerCase().includes(query) ||
           q.keyword.toLowerCase().includes(query)
       );
     }
-
     return filtered;
   }, [qaData, searchQuery, selectedCity]);
 
@@ -275,7 +294,6 @@ export const StateQASection = ({ stateSlug, stateName }: StateQASectionProps) =>
 
   return (
     <div className="space-y-6">
-      {/* Fallback Banner */}
       {isFallback && (
         <div className="flex items-center gap-3 px-4 py-3 rounded-xl bg-accent/50 border border-accent text-sm text-accent-foreground">
           <Info className="h-4 w-4 shrink-0" />
@@ -283,7 +301,6 @@ export const StateQASection = ({ stateSlug, stateName }: StateQASectionProps) =>
         </div>
       )}
 
-      {/* Search Bar */}
       <div className="bg-card border border-border/50 rounded-2xl p-4 sm:p-6 shadow-sm">
         <div className="relative">
           <Search className="absolute left-4 top-1/2 -translate-y-1/2 h-5 w-5 text-primary" />
@@ -332,7 +349,6 @@ export const StateQASection = ({ stateSlug, stateName }: StateQASectionProps) =>
         </div>
       </div>
 
-      {/* Filters Row */}
       <div className="flex flex-col sm:flex-row gap-4">
         {cityCounts.length > 0 && (
           <div className="flex items-center gap-2">
@@ -389,21 +405,21 @@ export const StateQASection = ({ stateSlug, stateName }: StateQASectionProps) =>
         </div>
       </div>
 
-      {/* Results count */}
       <p className="text-sm text-muted-foreground">
         {i18n.showing[language]} {visibleQAs.length} {i18n.of[language]} {filteredQAs.length} {i18n.questions[language]}
       </p>
 
-      {/* Q&A Accordion */}
       {filteredQAs.length === 0 ? (
         <div className="text-center py-8 bg-muted/30 rounded-xl">
           <p className="text-muted-foreground">{i18n.noMatch[language]}</p>
         </div>
       ) : (
         <>
-          <Accordion type="single" collapsible className="space-y-3">
+          <Accordion type="single" collapsible className="space-y-3" onValueChange={handleAccordionChange}>
             {visibleQAs.map((qa, index) => {
               const showCTA = (index + 1) % 5 === 0 && index < visibleQAs.length - 1;
+              const answer = answerCache[qa.id];
+              const isLoadingAnswer = loadingAnswerIds.has(qa.id);
               return (
                 <div key={qa.id}>
                   <AccordionItem
@@ -420,7 +436,16 @@ export const StateQASection = ({ stateSlug, stateName }: StateQASectionProps) =>
                     </AccordionTrigger>
                     <AccordionContent className="pb-4 pt-0">
                       <div className="prose prose-sm max-w-none text-muted-foreground pl-[70px]">
-                        {qa.answer}
+                        {answer ? (
+                          answer
+                        ) : isLoadingAnswer ? (
+                          <div className="flex items-center gap-2 text-muted-foreground">
+                            <Loader2 className="h-4 w-4 animate-spin" />
+                            <span>{i18n.loadingAnswer[language]}</span>
+                          </div>
+                        ) : (
+                          <Skeleton className="h-16 w-full rounded-md" />
+                        )}
                       </div>
                     </AccordionContent>
                   </AccordionItem>
