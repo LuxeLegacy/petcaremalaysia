@@ -5,3 +5,9 @@ verify_jwt = false
 
 [functions.ask-pet-question]
 verify_jwt = false
+
+[functions.get-state-qa-list]
+verify_jwt = false
+
+[functions.get-qa-answer]
+verify_jwt = false
