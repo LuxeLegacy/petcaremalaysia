@@ -129,11 +129,30 @@ const POPULAR_SEARCHES = [
 ];
 
 const BATCH_SIZE = 50;
+const INITIAL_BATCH_SIZE = 20;
 const ITEMS_PER_PAGE = 10;
 const MAX_RETRIES = 2;
+const LIST_TIMEOUT_MS = 6000;
+const ANSWER_TIMEOUT_MS = 5000;
 
 const listCache = new Map<string, ListCacheEntry>();
 const answerCache = new Map<string, string>();
+
+function withTimeout<T>(promise: PromiseLike<T>, ms: number, label = 'request'): Promise<T> {
+  return new Promise<T>((resolve, reject) => {
+    const timer = setTimeout(() => reject(new Error(`${label} timed out after ${ms}ms`)), ms);
+    Promise.resolve(promise).then(
+      (value) => {
+        clearTimeout(timer);
+        resolve(value);
+      },
+      (err) => {
+        clearTimeout(timer);
+        reject(err);
+      },
+    );
+  });
+}
 
 async function fetchListBatch(
   stateSlug: string,
@@ -148,17 +167,19 @@ async function fetchListBatch(
 }> {
   const stateCandidates = STATE_NAME_MAP[stateSlug] || [stateSlug];
 
+  const batchSize = offset === 0 ? INITIAL_BATCH_SIZE : BATCH_SIZE;
+
   const runQuery = async (lang: string) => {
-    const { data, error } = await supabase
+    const queryPromise = supabase
       .from('pet_qa_keywords')
       .select('id, keyword, question, category, priority, city_slug')
       .in('state', stateCandidates)
       .eq('language', lang)
       .order('priority', { ascending: false })
       .order('id', { ascending: true })
-      .range(offset, offset + BATCH_SIZE - 1);
+      .range(offset, offset + batchSize - 1);
 
-    return { data, error };
+    return withTimeout(queryPromise, LIST_TIMEOUT_MS, 'pet_qa_keywords list');
   };
 
   let lastErr: unknown = null;
@@ -178,7 +199,7 @@ async function fetchListBatch(
             const rows = (fallback.data ?? []) as QAListItem[];
             return {
               rows,
-              nextOffset: rows.length === BATCH_SIZE ? offset + BATCH_SIZE : null,
+              nextOffset: rows.length === batchSize ? offset + batchSize : null,
               isFallback: rows.length > 0,
               effectiveLanguage: rows.length > 0 ? 'en' : language,
               error: null,
@@ -187,7 +208,7 @@ async function fetchListBatch(
         } else {
           return {
             rows: primaryRows,
-            nextOffset: primaryRows.length === BATCH_SIZE ? offset + BATCH_SIZE : null,
+            nextOffset: primaryRows.length === batchSize ? offset + batchSize : null,
             isFallback: false,
             effectiveLanguage: language,
             error: null,
@@ -340,11 +361,12 @@ export const StateQASection = ({ stateSlug, stateName }: StateQASectionProps) =>
       setAnswerErrors((prev) => ({ ...prev, [id]: false }));
 
       try {
-        const { data, error } = await supabase
+        const answerPromise = supabase
           .from('pet_qa_keywords')
           .select('answer')
           .eq('id', id)
           .maybeSingle();
+        const { data, error } = await withTimeout(answerPromise, ANSWER_TIMEOUT_MS, 'pet_qa_keywords answer');
 
         if (!error && data?.answer) {
           answerCache.set(id, data.answer);
