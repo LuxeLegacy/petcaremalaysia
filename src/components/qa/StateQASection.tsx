@@ -165,21 +165,18 @@ async function fetchListBatch(
   effectiveLanguage: string;
   error: string | null;
 }> {
-  const stateCandidates = STATE_NAME_MAP[stateSlug] || [stateSlug];
-
   const batchSize = offset === 0 ? INITIAL_BATCH_SIZE : BATCH_SIZE;
 
   const runQuery = async (lang: string) => {
-    const queryPromise = supabase
-      .from('pet_qa_keywords')
-      .select('id, keyword, question, category, priority, city_slug')
-      .in('state', stateCandidates)
-      .eq('language', lang)
-      .order('priority', { ascending: false })
-      .order('id', { ascending: true })
-      .range(offset, offset + batchSize - 1);
+    const responsePromise = supabase.functions.invoke('get-state-qa-list', {
+      body: {
+        stateSlug,
+        language: lang,
+        limit: batchSize,
+      },
+    });
 
-    return withTimeout(queryPromise, LIST_TIMEOUT_MS, 'pet_qa_keywords list');
+    return withTimeout(responsePromise, LIST_TIMEOUT_MS, 'state Q&A list');
   };
 
   let lastErr: unknown = null;
@@ -190,27 +187,23 @@ async function fetchListBatch(
       if (primary.error) {
         lastErr = primary.error;
       } else {
-        const primaryRows = (primary.data ?? []) as QAListItem[];
-        if (offset === 0 && primaryRows.length === 0 && language !== 'en') {
-          const fallback = await runQuery('en');
-          if (fallback.error) {
-            lastErr = fallback.error;
-          } else {
-            const rows = (fallback.data ?? []) as QAListItem[];
-            return {
-              rows,
-              nextOffset: rows.length === batchSize ? offset + batchSize : null,
-              isFallback: rows.length > 0,
-              effectiveLanguage: rows.length > 0 ? 'en' : language,
-              error: null,
-            };
-          }
+        const payload = primary.data as {
+          data?: QAListItem[];
+          nextCursor?: string | null;
+          isFallback?: boolean;
+          language?: string;
+          error?: string;
+        } | null;
+
+        if (payload?.error) {
+          lastErr = new Error(payload.error);
         } else {
+          const primaryRows = payload?.data ?? [];
           return {
             rows: primaryRows,
             nextOffset: primaryRows.length === batchSize ? offset + batchSize : null,
-            isFallback: false,
-            effectiveLanguage: language,
+            isFallback: payload?.isFallback ?? false,
+            effectiveLanguage: payload?.language ?? language,
             error: null,
           };
         }
@@ -361,12 +354,10 @@ export const StateQASection = ({ stateSlug, stateName }: StateQASectionProps) =>
       setAnswerErrors((prev) => ({ ...prev, [id]: false }));
 
       try {
-        const answerPromise = supabase
-          .from('pet_qa_keywords')
-          .select('answer')
-          .eq('id', id)
-          .maybeSingle();
-        const { data, error } = await withTimeout(answerPromise, ANSWER_TIMEOUT_MS, 'pet_qa_keywords answer');
+        const answerPromise = supabase.functions.invoke('get-qa-answer', {
+          body: { id },
+        });
+        const { data, error } = await withTimeout(answerPromise, ANSWER_TIMEOUT_MS, 'state Q&A answer');
 
         if (!error && data?.answer) {
           answerCache.set(id, data.answer);
