@@ -129,11 +129,30 @@ const POPULAR_SEARCHES = [
 ];
 
 const BATCH_SIZE = 50;
+const INITIAL_BATCH_SIZE = 20;
 const ITEMS_PER_PAGE = 10;
 const MAX_RETRIES = 2;
+const LIST_TIMEOUT_MS = 6000;
+const ANSWER_TIMEOUT_MS = 5000;
 
 const listCache = new Map<string, ListCacheEntry>();
 const answerCache = new Map<string, string>();
+
+function withTimeout<T>(promise: PromiseLike<T>, ms: number, label = 'request'): Promise<T> {
+  return new Promise<T>((resolve, reject) => {
+    const timer = setTimeout(() => reject(new Error(`${label} timed out after ${ms}ms`)), ms);
+    Promise.resolve(promise).then(
+      (value) => {
+        clearTimeout(timer);
+        resolve(value);
+      },
+      (err) => {
+        clearTimeout(timer);
+        reject(err);
+      },
+    );
+  });
+}
 
 async function fetchListBatch(
   stateSlug: string,
