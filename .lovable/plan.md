@@ -1,22 +1,53 @@
 
 
-# Remove "Coming Soon" state cards on /qa
+# Fix perpetual "Loading questions…" on `/qa/selangor`, `/qa/kuala-lumpur`, `/qa/johor`
 
-All 14 Malaysian states now have content (either DB-backed Q&A or hand-written `STATE_PROFILES` fallback content via `StateProfileFallback`). The "Coming Soon" visual treatment on the `/qa` hub is no longer accurate.
+## What's actually happening
 
-## What changes
+The Q&A list query fires from the browser to PostgREST and **never resolves** — no error, no data, just hangs. The current code only retries on a thrown error or returned error object, so a hung promise stays hung and the spinner never goes away.
 
-**File: `src/pages/QAPage.tsx`**
+I confirmed:
+- DB has the data (258 rows for KL, 220+ for Selangor/Johor).
+- The exact query the frontend runs returns in milliseconds via service role.
+- RLS policy `Public read access for pet QA` is `USING (true)` on the public role — so anon access is allowed.
+- The issue is the same Lovable Cloud connection-layer instability that previously made the edge function time out.
 
-1. Set `hasData: true` for all 14 states in the `MALAYSIAN_STATES` array, since every state slug now resolves to a real content page.
-2. Replace the empty `qaCount` strings with appropriate per-state badge labels:
-   - DB-backed states (Selangor, Kuala Lumpur, Johor) keep their existing `258+` / `220+` Q&A counts.
-   - The other 11 states get a localized **"Local Guide"** badge (EN: `Local Guide`, MS: `Panduan Tempatan`, ZH: `本地指南`) — accurate since their pages render the `StateProfileFallback` with DVS contacts, top risks, and clinic counts.
-3. Remove the entire "Coming Soon" branch of `StateQACard` (the dashed-border card variant). Every card now uses the active card style with hover, MapPin icon in the primary color, and a "View Q&A / View Guide" CTA.
-4. Drop the now-unused `comingSoon` and `qaForSoon` entries from the `i18n` object.
-5. Tweak the description copy for non-DB states so it reads as a confident local guide (e.g. EN: `Local emergency vet contacts and pet care guide for {state}`) instead of the current "questions specific to" phrasing, which only fits DB states.
+So the bug is: **no client-side timeout on the supabase query**, so when the network request hangs, the UI never recovers.
 
-## Result
+## Fix
 
-The `/qa` grid shows 14 uniformly active state cards. No dashed borders, no "Coming Soon" badges, no muted "will be available soon" copy. Three states show their Q&A count badge; the other eleven show a "Local Guide" badge. Every card is clickable and lands on a populated page.
+### 1. Add a hard client-side timeout to every list batch fetch
+
+Wrap each `supabase.from('pet_qa_keywords').select(...)` call in a `Promise.race` against a 6-second timer. If the timer wins, throw a timeout error so the existing retry loop kicks in. After all retries fail, surface the inline retry UI (which already exists) instead of an infinite spinner.
+
+### 2. Same timeout on the lazy answer fetch
+
+Apply the same `Promise.race` to `loadAnswer(id)` so opening an accordion item can't hang forever either; on timeout, set the answer-error state (already wired up).
+
+### 3. Fall back to a smaller initial batch on first attempt
+
+For the very first batch only, request **20 rows** instead of 50. Smaller payload = lower chance of tripping the gateway's flaky path. Subsequent "Load more" batches stay at 50. Once 20 rows render, the page is no longer "empty/loading" even if the connection is degraded.
+
+### 4. Drop two unused indexes the request may be implicitly favoring poorly
+
+(Skipped — DB plan is already sub-millisecond. No schema changes.)
+
+### 5. Clear the stale module-level cache when retrying
+
+`handleRetryInitial` already deletes the cache key. Confirmed working — no change needed there, just keeping it.
+
+## Files changed
+
+- **`src/components/qa/StateQASection.tsx`** — only file touched.
+  - Add `withTimeout<T>(promise, ms)` helper.
+  - Wrap the supabase `runQuery` call inside `fetchListBatch` with `withTimeout(..., 6000)`.
+  - First-call batch size = 20; subsequent = 50 (introduce `INITIAL_BATCH_SIZE = 20`, keep `BATCH_SIZE = 50`).
+  - Wrap the lazy `loadAnswer` supabase call with `withTimeout(..., 5000)`.
+  - On total failure, the existing `initialError` UI with **Try Again** button shows instead of the perpetual spinner.
+
+## What the user will see after the fix
+
+- If the gateway responds normally: 20 questions appear in ≤6 s; "Load More" pulls 50 more at a time.
+- If the gateway hangs: after ~18 s (3 attempts × 6 s) the spinner is replaced with a clean "Couldn't load this batch — Try Again" card.
+- The hand-written state profile content above the Q&A keeps rendering instantly in every case, so the page is never visually blank.
 
