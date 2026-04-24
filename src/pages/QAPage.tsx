@@ -8,21 +8,30 @@ import { CostCTA } from '@/components/common/CostCTA';
 import { PAAArticleListing } from '@/components/paa/PAAArticleListing';
 import type { Language } from '@/lib/translations';
 
-const MALAYSIAN_STATES = [
-  { name: 'Selangor', slug: 'selangor', hasData: true, qaCount: '258+' },
-  { name: 'W.P. Kuala Lumpur', slug: 'kuala-lumpur', hasData: true, qaCount: '258+' },
-  { name: 'Johor', slug: 'johor', hasData: true, qaCount: '220+' },
-  { name: 'Penang', slug: 'penang', hasData: false, qaCount: '' },
-  { name: 'Perak', slug: 'perak', hasData: false, qaCount: '' },
-  { name: 'Negeri Sembilan', slug: 'negeri-sembilan', hasData: false, qaCount: '' },
-  { name: 'Sarawak', slug: 'sarawak', hasData: false, qaCount: '' },
-  { name: 'Sabah', slug: 'sabah', hasData: false, qaCount: '' },
-  { name: 'Melaka', slug: 'melaka', hasData: false, qaCount: '' },
-  { name: 'Kedah', slug: 'kedah', hasData: false, qaCount: '' },
-  { name: 'Pahang', slug: 'pahang', hasData: false, qaCount: '' },
-  { name: 'Kelantan', slug: 'kelantan', hasData: false, qaCount: '' },
-  { name: 'Terengganu', slug: 'terengganu', hasData: false, qaCount: '' },
-  { name: 'Perlis', slug: 'perlis', hasData: false, qaCount: '' },
+type StateBadgeKind = 'qa' | 'guide';
+
+interface StateEntry {
+  name: string;
+  slug: string;
+  badgeKind: StateBadgeKind;
+  qaCount?: string;
+}
+
+const MALAYSIAN_STATES: StateEntry[] = [
+  { name: 'Selangor', slug: 'selangor', badgeKind: 'qa', qaCount: '258+' },
+  { name: 'W.P. Kuala Lumpur', slug: 'kuala-lumpur', badgeKind: 'qa', qaCount: '258+' },
+  { name: 'Johor', slug: 'johor', badgeKind: 'qa', qaCount: '220+' },
+  { name: 'Penang', slug: 'penang', badgeKind: 'guide' },
+  { name: 'Perak', slug: 'perak', badgeKind: 'guide' },
+  { name: 'Negeri Sembilan', slug: 'negeri-sembilan', badgeKind: 'guide' },
+  { name: 'Sarawak', slug: 'sarawak', badgeKind: 'guide' },
+  { name: 'Sabah', slug: 'sabah', badgeKind: 'guide' },
+  { name: 'Melaka', slug: 'melaka', badgeKind: 'guide' },
+  { name: 'Kedah', slug: 'kedah', badgeKind: 'guide' },
+  { name: 'Pahang', slug: 'pahang', badgeKind: 'guide' },
+  { name: 'Kelantan', slug: 'kelantan', badgeKind: 'guide' },
+  { name: 'Terengganu', slug: 'terengganu', badgeKind: 'guide' },
+  { name: 'Perlis', slug: 'perlis', badgeKind: 'guide' },
 ];
 
 const i18n = {
@@ -33,18 +42,18 @@ const i18n = {
     ms: 'Dapatkan jawapan segera kepada soalan kecemasan dan penjagaan haiwan. Nasihat pakar disusun mengikut negeri di seluruh Malaysia.',
     zh: '获取常见宠物急症和护理问题的即时答案。专家建议按马来西亚各州整理。',
   },
-  qaCount: { en: '145+ Q&A', ms: '145+ S&J', zh: '145+ 问答' },
-  comingSoon: { en: 'Coming Soon', ms: 'Akan Datang', zh: '即将推出' },
+  localGuide: { en: 'Local Guide', ms: 'Panduan Tempatan', zh: '本地指南' },
   viewQA: { en: 'View Q&A', ms: 'Lihat S&J', zh: '查看问答' },
+  viewGuide: { en: 'View Guide', ms: 'Lihat Panduan', zh: '查看指南' },
   petQAFor: {
     en: (s: string) => `Pet emergency and care questions specific to ${s}`,
     ms: (s: string) => `Soalan kecemasan dan penjagaan haiwan khusus untuk ${s}`,
     zh: (s: string) => `${s}专属宠物急症和护理问题`,
   },
-  qaForSoon: {
-    en: (s: string) => `Q&A for ${s} will be available soon`,
-    ms: (s: string) => `S&J untuk ${s} akan tersedia tidak lama lagi`,
-    zh: (s: string) => `${s}的问答即将推出`,
+  petGuideFor: {
+    en: (s: string) => `Local emergency vet contacts and pet care guide for ${s}`,
+    ms: (s: string) => `Kenalan vet kecemasan tempatan dan panduan penjagaan haiwan untuk ${s}`,
+    zh: (s: string) => `${s}本地急诊兽医联系方式与宠物护理指南`,
   },
   seoTitle: { en: 'Pet Emergency Q&A - Malaysia | PetCareMY', ms: 'Soalan & Jawapan Kecemasan Haiwan - Malaysia | PetCareMY', zh: '宠物急症问答 - 马来西亚 | PetCareMY' },
   seoDesc: {
@@ -115,7 +124,7 @@ const QAPage = () => {
                   "name": "Where can I find pet emergency Q&A in Malaysia?",
                   "acceptedAnswer": {
                     "@type": "Answer",
-                    "text": "PetCareMY provides pet emergency Q&A for all major states in Malaysia including Selangor, Kuala Lumpur, Penang, Johor, and more. Currently, Selangor has 145+ questions available."
+                    "text": "PetCareMY provides pet emergency Q&A and local guides for all 14 states in Malaysia including Selangor, Kuala Lumpur, Penang, Johor, and more."
                   }
                 }
               ]
@@ -130,62 +139,41 @@ const QAPage = () => {
 };
 
 interface StateQACardProps {
-  state: { name: string; slug: string; hasData: boolean; qaCount: string };
+  state: StateEntry;
   language: Language;
 }
 
 const StateQACard = ({ state, language }: StateQACardProps) => {
-  if (state.hasData) {
-    return (
-      <Link
-        to={`/qa/${state.slug}`}
-        className="group p-6 rounded-2xl bg-card shadow-card hover:shadow-elevated transition-all duration-300 hover:-translate-y-1 border border-border/50"
-      >
-        <div className="flex items-start justify-between mb-4">
-          <div className="p-3 rounded-xl bg-primary/10">
-            <MapPin className="h-6 w-6 text-primary" />
-          </div>
-          <span className="px-3 py-1 rounded-full bg-primary/10 text-primary text-xs font-medium">
-            {state.qaCount} Q&A
-          </span>
-        </div>
-
-        <h2 className="text-xl font-semibold mb-2 group-hover:text-primary transition-colors">
-          {state.name}
-        </h2>
-
-        <p className="text-sm text-muted-foreground mb-4">
-          {i18n.petQAFor[language](state.name)}
-        </p>
-
-        <div className="flex items-center text-sm font-medium text-primary">
-          {i18n.viewQA[language]} <ChevronRight className="h-4 w-4 ml-1 group-hover:translate-x-1 transition-transform" />
-        </div>
-      </Link>
-    );
-  }
+  const isQA = state.badgeKind === 'qa';
+  const badgeLabel = isQA ? `${state.qaCount} Q&A` : i18n.localGuide[language];
+  const description = isQA ? i18n.petQAFor[language](state.name) : i18n.petGuideFor[language](state.name);
+  const ctaLabel = isQA ? i18n.viewQA[language] : i18n.viewGuide[language];
 
   return (
     <Link
       to={`/qa/${state.slug}`}
-      className="group p-6 rounded-2xl bg-card/50 border border-dashed border-border hover:border-primary/30 hover:bg-card transition-all duration-300"
+      className="group p-6 rounded-2xl bg-card shadow-card hover:shadow-elevated transition-all duration-300 hover:-translate-y-1 border border-border/50"
     >
       <div className="flex items-start justify-between mb-4">
-        <div className="p-3 rounded-xl bg-muted">
-          <MapPin className="h-6 w-6 text-muted-foreground" />
+        <div className="p-3 rounded-xl bg-primary/10">
+          <MapPin className="h-6 w-6 text-primary" />
         </div>
-        <span className="px-3 py-1 rounded-full bg-muted text-muted-foreground text-xs font-medium">
-          {i18n.comingSoon[language]}
+        <span className="px-3 py-1 rounded-full bg-primary/10 text-primary text-xs font-medium">
+          {badgeLabel}
         </span>
       </div>
 
-      <h2 className="text-xl font-semibold mb-2 text-muted-foreground group-hover:text-foreground transition-colors">
+      <h2 className="text-xl font-semibold mb-2 group-hover:text-primary transition-colors">
         {state.name}
       </h2>
 
-      <p className="text-sm text-muted-foreground/70">
-        {i18n.qaForSoon[language](state.name)}
+      <p className="text-sm text-muted-foreground mb-4">
+        {description}
       </p>
+
+      <div className="flex items-center text-sm font-medium text-primary">
+        {ctaLabel} <ChevronRight className="h-4 w-4 ml-1 group-hover:translate-x-1 transition-transform" />
+      </div>
     </Link>
   );
 };
