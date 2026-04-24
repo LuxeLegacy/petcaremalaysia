@@ -361,11 +361,12 @@ export const StateQASection = ({ stateSlug, stateName }: StateQASectionProps) =>
       setAnswerErrors((prev) => ({ ...prev, [id]: false }));
 
       try {
-        const { data, error } = await supabase
+        const answerPromise = supabase
           .from('pet_qa_keywords')
           .select('answer')
           .eq('id', id)
           .maybeSingle();
+        const { data, error } = await withTimeout(answerPromise, ANSWER_TIMEOUT_MS, 'pet_qa_keywords answer');
 
         if (!error && data?.answer) {
           answerCache.set(id, data.answer);
