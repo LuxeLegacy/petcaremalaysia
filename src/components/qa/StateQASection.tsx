@@ -39,8 +39,6 @@ interface ListCacheEntry {
   effectiveLanguage: string;
 }
 
-const STATIC_QA_STATE_SLUGS = new Set(['selangor', 'kuala-lumpur', 'johor']);
-
 const CATEGORY_LABELS: Record<string, Record<Language, string>> = {
   emergency: { en: 'Emergency', ms: 'Kecemasan', zh: '紧急' },
   symptoms: { en: 'Symptoms', ms: 'Gejala', zh: '症状' },
