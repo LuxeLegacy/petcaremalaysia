@@ -10,6 +10,7 @@ import { CostCTA } from '@/components/common/CostCTA';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 import { getCitiesByState } from '@/lib/cityData';
 import type { Language } from '@/lib/translations';
+import { STATIC_STATE_QA_BY_SLUG, type StaticStateQAItem } from '@/data/qa/states';
 
 interface QAListItem {
   id: string;
@@ -37,6 +38,8 @@ interface ListCacheEntry {
   isFallback: boolean;
   effectiveLanguage: string;
 }
+
+const STATIC_QA_STATE_SLUGS = new Set(['selangor', 'kuala-lumpur', 'johor']);
 
 const CATEGORY_LABELS: Record<string, Record<Language, string>> = {
   emergency: { en: 'Emergency', ms: 'Kecemasan', zh: '紧急' },
@@ -165,6 +168,31 @@ async function fetchListBatch(
   effectiveLanguage: string;
   error: string | null;
 }> {
+  const staticRows = STATIC_STATE_QA_BY_SLUG[stateSlug];
+  if (staticRows && language === 'en') {
+    const batchSize = offset === 0 ? INITIAL_BATCH_SIZE : BATCH_SIZE;
+    const rows = (staticRows.slice(offset, offset + batchSize) as StaticStateQAItem[]).map(({ answer, ...item }) => item);
+    return {
+      rows,
+      nextOffset: offset + batchSize < staticRows.length ? offset + batchSize : null,
+      isFallback: false,
+      effectiveLanguage: 'en',
+      error: null,
+    };
+  }
+
+  if (staticRows && language !== 'en') {
+    const batchSize = offset === 0 ? INITIAL_BATCH_SIZE : BATCH_SIZE;
+    const rows = (staticRows.slice(offset, offset + batchSize) as StaticStateQAItem[]).map(({ answer, ...item }) => item);
+    return {
+      rows,
+      nextOffset: offset + batchSize < staticRows.length ? offset + batchSize : null,
+      isFallback: true,
+      effectiveLanguage: 'en',
+      error: null,
+    };
+  }
+
   const batchSize = offset === 0 ? INITIAL_BATCH_SIZE : BATCH_SIZE;
 
   const runQuery = async (lang: string) => {
@@ -344,6 +372,15 @@ export const StateQASection = ({ stateSlug, stateName }: StateQASectionProps) =>
         setAnswers((prev) => ({ ...prev, [id]: answerCache.get(id)! }));
         return;
       }
+
+      const staticRows = STATIC_STATE_QA_BY_SLUG[stateSlug];
+      const staticMatch = staticRows?.find((item) => item.id === id);
+      if (staticMatch?.answer) {
+        answerCache.set(id, staticMatch.answer);
+        setAnswers((prev) => ({ ...prev, [id]: staticMatch.answer }));
+        return;
+      }
+
       if (loadingAnswerIds.has(id)) return;
 
       setLoadingAnswerIds((prev) => {
@@ -375,7 +412,7 @@ export const StateQASection = ({ stateSlug, stateName }: StateQASectionProps) =>
         });
       }
     },
-    [answers, loadingAnswerIds],
+    [answers, loadingAnswerIds, stateSlug],
   );
 
   const handleAccordionChange = useCallback(
