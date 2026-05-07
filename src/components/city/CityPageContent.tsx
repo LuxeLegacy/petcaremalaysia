@@ -13,6 +13,7 @@ import { CityStatisticsSection } from './CityStatisticsSection';
 import { CityInsuranceSection } from './CityInsuranceSection';
 import { CityGovernmentSection } from './CityGovernmentSection';
 import { CityFAQSection } from './CityFAQSection';
+import { CityMapEmbed } from './CityMapEmbed';
 import { CityFinalCtaSection } from './CityFinalCtaSection';
 import { CityPAASection } from './CityPAASection';
 import { YourQuestionsAnsweredSection } from './YourQuestionsAnsweredSection';
@@ -299,6 +300,9 @@ export const CityPageContent: React.FC<CityPageContentProps> = ({ city }) => {
 
       {/* Government Resources Section */}
       <CityGovernmentSection city={city} />
+
+      {/* Embedded Google Map — vets near me */}
+      <CityMapEmbed city={city} />
 
       {/* FAQ Section with unique city-specific questions */}
       <CityFAQSection city={city} />

@@ -10,6 +10,8 @@ import { InsuranceInfo } from './InsuranceInfo';
 import { CitationsSection } from './CitationsSection';
 import { AuthorBox } from './AuthorBox';
 import { RelatedQuestions } from './RelatedQuestions';
+import { QuickAnswerBox } from '@/components/common/QuickAnswerBox';
+import { VetDisclaimer } from '@/components/common/VetDisclaimer';
 import { useLanguage } from '@/contexts/LanguageContext';
 import type { PAAArticle } from '@/lib/paaTypes';
 import { ArrowRight } from 'lucide-react';
@@ -78,6 +80,7 @@ export const PAAArticlePage = ({ article }: PAAArticlePageProps) => {
 
           {/* Direct Answer (FIRST) */}
           <DirectAnswerBox answer={article.directAnswer} />
+          <QuickAnswerBox answer={article.directAnswer} />
 
           {/* TL;DR */}
           <div className="bg-[#e8f4fd] rounded-lg p-5 my-6">
@@ -228,6 +231,9 @@ export const PAAArticlePage = ({ article }: PAAArticlePageProps) => {
 
           {/* Author */}
           <AuthorBox author={article.author} />
+
+          {/* Vet Disclaimer */}
+          <VetDisclaimer />
         </article>
       </main>
 

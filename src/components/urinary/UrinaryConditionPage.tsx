@@ -8,6 +8,9 @@ import { UrinarySchemaMarkup } from './UrinarySchemaMarkup';
 import { UrinaryAEOGEOSections } from './UrinaryAEOGEOSections';
 import { InternalLinkFunnel } from '@/components/dog-dental/InternalLinkFunnel';
 import { UrinaryCTA } from './UrinaryCTA';
+import { QuickAnswerBox } from '@/components/common/QuickAnswerBox';
+import { VetDisclaimer } from '@/components/common/VetDisclaimer';
+import { MalaysiaCostTable } from '@/components/common/MalaysiaCostTable';
 import type { UrinaryConditionPage as ConditionType } from '@/data/urinary/types';
 
 interface Props { data: ConditionType; }
@@ -117,11 +120,15 @@ export const UrinaryConditionPage = ({ data }: Props) => {
 
           <InternalLinkFunnel title="Related Pages" links={data.relatedLinks} />
 
+          <MalaysiaCostTable tableKey="urinary-workup" />
+
           <div className="bg-card border border-border rounded-xl p-5 mt-8">
             <h3 className="font-bold">Reviewed by {data.author.name}</h3>
             <p className="text-sm text-muted-foreground">{data.author.credentials}</p>
             <p className="text-xs text-muted-foreground mt-2">Last updated: {data.dateModified}</p>
           </div>
+
+          <VetDisclaimer />
         </div>
       </main>
       <Footer />

@@ -7,6 +7,8 @@ import { EmergencyOverride } from './EmergencyOverride';
 import { InternalLinkFunnel } from './InternalLinkFunnel';
 import { DentalSchemaMarkup } from './DentalSchemaMarkup';
 import { AEOGEOSections } from './AEOGEOSections';
+import { QuickAnswerBox } from '@/components/common/QuickAnswerBox';
+import { VetDisclaimer } from '@/components/common/VetDisclaimer';
 import type { DentalConditionPage as ConditionType } from '@/data/dog-dental/types';
 
 interface Props { data: ConditionType; }
@@ -33,6 +35,8 @@ export const ConditionPage = ({ data }: Props) => {
           <h1 className="text-3xl md:text-4xl font-bold text-foreground mb-6">{data.title}</h1>
 
           {hasRedFlags && <EmergencyOverride />}
+
+          <QuickAnswerBox answer={data.snippetForAI} />
 
           <AEOGEOSections data={data} position="top" />
 
@@ -114,6 +118,8 @@ export const ConditionPage = ({ data }: Props) => {
             <p className="text-sm text-muted-foreground">{data.author.credentials}</p>
             <p className="text-xs text-muted-foreground mt-2">Last updated: {data.dateModified}</p>
           </div>
+
+          <VetDisclaimer />
         </div>
       </main>
       <Footer />

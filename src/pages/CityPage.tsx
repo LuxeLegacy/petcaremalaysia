@@ -44,8 +44,11 @@ const CityPage = () => {
 
   const metadata = getCityMetadata(city.slug);
   const faqs = generateCityFAQs(city, language);
-  const title = `Pet Care ${city.name} — 24/7 Vets, Grooming, Emergency RM${metadata.avgEmergencyVetCost.min}+ | PetCare Malaysia`;
-  const description = `Find vets in ${city.name}, ${city.state}. Emergency care RM${metadata.avgEmergencyVetCost.min}-${metadata.avgEmergencyVetCost.max}, consultations RM${metadata.avgConsultationCost.min}+. ${metadata.petRisks[0]} is common here. ${metadata.nearestMajorCity ? `${metadata.distanceToHub} to 24/7 vet.` : 'Multiple 24/7 clinics available.'}`;
+  const nearMe = language === 'ms' ? 'Vet Berdekatan Saya' : language === 'zh' ? '附近兽医' : 'Vets Near Me';
+  const title = language === 'zh'
+    ? `${city.name}${nearMe} — 24/7急诊护理 RM${metadata.avgEmergencyVetCost.min}+ | PetCareMY`
+    : `${nearMe} in ${city.name} — 24/7 Emergency RM${metadata.avgEmergencyVetCost.min}+ | PetCareMY`;
+  const description = `Find vets near you in ${city.name}, ${city.state}. Emergency care RM${metadata.avgEmergencyVetCost.min}-${metadata.avgEmergencyVetCost.max}, consultations RM${metadata.avgConsultationCost.min}+. ${metadata.petRisks[0]} is common here. ${metadata.nearestMajorCity ? `${metadata.distanceToHub} to 24/7 vet.` : 'Multiple 24/7 clinics available.'}`;
 
   return (
     <>
