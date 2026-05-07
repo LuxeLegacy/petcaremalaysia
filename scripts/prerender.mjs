@@ -220,25 +220,46 @@ function ogLocaleFor(lang) {
   return lang === 'zh' ? 'zh_CN' : lang === 'ms' ? 'ms_MY' : 'en_MY';
 }
 
+function buildBreadcrumb(pathRel, h1) {
+  const items = [{ '@type': 'ListItem', position: 1, name: 'Home', item: SITE + '/' }];
+  if (pathRel) {
+    const parts = pathRel.split('/').filter(Boolean);
+    let acc = '';
+    parts.forEach((seg, i) => {
+      acc += '/' + seg;
+      const name = i === parts.length - 1 ? h1 : seg.replace(/-/g, ' ').replace(/\b\w/g, (c) => c.toUpperCase());
+      items.push({ '@type': 'ListItem', position: i + 2, name, item: SITE + acc });
+    });
+  }
+  return { '@context': 'https://schema.org', '@type': 'BreadcrumbList', itemListElement: items };
+}
+
+function buildOrganization() {
+  return {
+    '@context': 'https://schema.org', '@type': 'Organization',
+    name: 'PetCare Malaysia', url: SITE, logo: SITE + '/logo.png',
+    sameAs: ['https://facebook.com/petcaremalaysia', 'https://instagram.com/petcaremalaysia'],
+  };
+}
+
 function renderPage({ pathRel, lang, title, description, h1, intro, links, jsonLd }) {
   const alternates = LANGS.map((l) => [l, `${SITE}${localizedPath(l, pathRel)}`]);
   const canonical = `${SITE}${localizedPath(lang, pathRel)}`;
   const head = buildHead({ title, description, canonical, alternates, ogLocale: ogLocaleFor(lang) });
   const body = buildBodySnippet({ h1, intro, links });
-  const jsonLdHtml = jsonLd ? `<script type="application/ld+json">${JSON.stringify(jsonLd)}</script>` : '';
+  const schemas = [buildBreadcrumb(pathRel, h1)];
+  if (Array.isArray(jsonLd)) schemas.push(...jsonLd);
+  else if (jsonLd) schemas.push(jsonLd);
+  const jsonLdHtml = schemas.map((s) => `<script type="application/ld+json">${JSON.stringify(s)}</script>`).join('\n    ');
 
   let html = template;
-  // Replace lang attr
   html = html.replace(/<html lang="[^"]*">/, `<html lang="${lang}">`);
-  // Strip existing title/description/canonical/og/twitter/alternate tags so per-route ones win
   html = html.replace(/<title>[\s\S]*?<\/title>/, '');
   html = html.replace(/<meta\s+name="(?:title|description|keywords)"[^>]*>/g, '');
   html = html.replace(/<meta\s+property="(?:og:[^"]+|twitter:[^"]+)"[^>]*>/g, '');
   html = html.replace(/<link\s+rel="canonical"[^>]*>/g, '');
   html = html.replace(/<link\s+rel="alternate"[^>]*hreflang="[^"]*"[^>]*>/g, '');
-  // Inject head tags right before </head>
   html = html.replace('</head>', `    ${head}\n    ${jsonLdHtml}\n  </head>`);
-  // Inject body snippet inside the root div
   html = html.replace('<div id="root"></div>', `<div id="root">${body}</div>`);
   return html;
 }
