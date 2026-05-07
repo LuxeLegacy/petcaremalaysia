@@ -505,19 +505,19 @@ const cities = extractCities();
 for (const c of cities) {
   for (const lang of LANGS) {
     const titles = {
-      en: `Pet Care ${c.name} — 24/7 Vets, Clinics & Emergency Services`,
-      ms: `Penjagaan Haiwan ${c.name} — Vet 24/7, Klinik & Kecemasan`,
-      zh: `${c.name}宠物护理 — 24/7兽医、诊所与急诊服务`,
+      en: `Vets Near Me in ${c.name} — 24/7 Emergency Vet & Clinics`,
+      ms: `Vet Berdekatan Saya di ${c.name} — Vet Kecemasan 24/7 & Klinik`,
+      zh: `${c.name}附近兽医 — 24/7急诊兽医与诊所`,
     };
     const descs = {
-      en: `Find verified vets, clinics, and 24/7 emergency pet services in ${c.name}, ${c.state}. Local vet costs, contacts, and clinic ratings.`,
-      ms: `Cari vet, klinik, dan perkhidmatan haiwan kecemasan 24/7 di ${c.name}, ${c.state}. Kos vet tempatan dan kenalan.`,
-      zh: `在${c.name}（${c.state}）寻找验证兽医、诊所和24/7紧急宠物服务。本地兽医费用、联系方式与诊所评级。`,
+      en: `Find verified vets near you in ${c.name}, ${c.state}. 24/7 emergency clinics, local vet costs in RM, contacts, and clinic ratings.`,
+      ms: `Cari vet berdekatan anda di ${c.name}, ${c.state}. Klinik kecemasan 24/7, kos vet tempatan dalam RM, kenalan dan penilaian klinik.`,
+      zh: `在${c.name}（${c.state}）附近寻找经过验证的兽医。24/7急诊诊所、本地兽医费用（RM）、联系方式与诊所评级。`,
     };
     const h1s = {
-      en: `Pet care services in ${c.name}, ${c.state}`,
-      ms: `Perkhidmatan haiwan di ${c.name}, ${c.state}`,
-      zh: `${c.name}（${c.state}）宠物护理服务`,
+      en: `Vets near me in ${c.name}, ${c.state}`,
+      ms: `Vet berdekatan saya di ${c.name}, ${c.state}`,
+      zh: `${c.name}（${c.state}）附近兽医`,
     };
     const vetCare = buildVeterinaryCareCity(c, lang, descs[lang]);
     const cityFaq = buildFAQPage(cityFAQs(c, lang));
