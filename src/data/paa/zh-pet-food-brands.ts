@@ -7,8 +7,8 @@ export const zhPetFoodBrandsArticle: PAAArticle = {
   lang: 'zh',
   title: '马来西亚最佳宠物食品品牌有哪些？',
   directAnswer:
-    '马来西亚最佳宠物食品品牌包括Royal Canin（RM80–RM280/袋）、Hill\'s Science Diet（RM90–RM300）、Orijen（RM180–RM350）、Acana（RM150–RM280），以及本地知名品牌Pedigree（RM30–RM90）和Whiskas（RM25–RM70）。高级无谷选项如Taste of the Wild（RM120–RM230）日益受欢迎。',
-  tldr: '高级品牌（Royal Canin、Hill\'s、Orijen）每袋RM150–RM350但营养更好。中端品牌（Taste of the Wild、Acana）RM120–RM280。经济品牌（Pedigree、Whiskas）RM25–RM90。务必检查AAFCO或FEDIAF认证，避免添加过多填料的品牌。',
+    '马来西亚最佳宠物食品品牌包括皇家（RM80–RM280）、希尔思（RM90–RM300）、Orijen（RM180–RM350）和Acana（RM150–RM280）。中档品牌如Taste of the Wild（RM120–RM230）。经济型宝路和伟嘉每袋RM25–RM90。请确认包装上有AAFCO认证。',
+  tldr: '马来西亚顶级宠物食品：皇家、希尔思、Orijen、Acana（RM80–RM350）。中档Taste of the Wild RM120–RM230。经济型宝路与伟嘉RM25–RM90。包装须有AAFCO或FEDIAF认证。',
   quickFacts: {
     avgCost: 'RM25 – RM350 每袋',
     timeRequired: '10分钟（研究）',

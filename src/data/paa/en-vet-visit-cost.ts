@@ -7,8 +7,8 @@ export const vetVisitCostArticle: PAAArticle = {
   lang: 'en',
   title: 'How Much Does a Vet Visit Cost in Malaysia?',
   directAnswer:
-    'A standard vet consultation in Malaysia costs RM30 to RM80 for a basic check-up. Emergency visits range from RM150 to RM500, while specialist consultations can reach RM200 to RM400. Additional costs for blood tests, X-rays, or medication are charged separately.',
-  tldr: 'Basic vet consultations cost RM30–RM80. Emergency and after-hours visits cost significantly more (RM150–RM500). Blood work adds RM80–RM250, X-rays RM100–RM300. Government vet clinics (JPV) offer subsidised rates starting from RM5–RM20 per visit.',
+    'A standard vet consultation in Malaysia costs RM30–RM80 at private clinics. Emergency or after-hours visits cost RM150–RM500, and specialist consultations RM200–RM400. Diagnostics like blood work (RM80–RM250) and X-rays (RM100–RM300) are charged separately. Government DVS clinics offer subsidised rates of RM5–RM20.',
+  tldr: 'Vet visit cost Malaysia: RM30–RM80 private consultation, RM150–RM500 emergency, RM200–RM400 specialist. Blood work adds RM80–RM250, X-rays RM100–RM300. Government DVS clinics charge RM5–RM20. Always ask for an itemised quote before treatment.',
   quickFacts: {
     avgCost: 'RM30 – RM500 per visit',
     timeRequired: '30–90 minutes',

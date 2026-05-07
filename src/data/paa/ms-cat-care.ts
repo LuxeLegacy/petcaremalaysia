@@ -7,8 +7,8 @@ export const msCatCareArticle: PAAArticle = {
   lang: 'ms',
   title: 'Bagaimana Menjaga Kucing di Malaysia? Panduan Lengkap',
   directAnswer:
-    'Menjaga kucing di Malaysia memerlukan perhatian terhadap iklim tropika, pemakanan yang betul, vaksinasi berkala (FVRCP + rabies), keselamatan dalaman, dan pencegahan parasit. Kos bulanan purata RM150–RM400 termasuk makanan, pasir kucing, dan penjagaan kesihatan asas.',
-  tldr: 'Keperluan penjagaan kucing Malaysia: makanan berkualiti (RM80–RM200/bulan), vaksinasi tahunan (RM80–RM200), pencegahan kutu bulanan (RM30–RM60), mandulkan (RM150–RM400 sekali), dan pastikan kucing di dalam rumah atau kawasan terlindung.',
+    'Penjagaan kucing di Malaysia berharga RM150 hingga RM400 sebulan. Asasnya termasuk makanan berkualiti (RM80–RM200), pencegahan kutu bulanan (RM30–RM60), vaksin FVRCP dan rabies tahunan (RM80–RM200), serta kasi atau steril sekali sahaja (RM150–RM400). Pastikan kucing di dalam rumah untuk mengelakkan trafik dan penyakit kucing liar.',
+  tldr: 'Penjagaan kucing Malaysia: RM150–RM400 sebulan. Belanjakan untuk makanan premium, pencegahan kutu bulanan, vaksin FVRCP dan rabies tahunan, serta kasi sekali sahaja. Kucing dalam rumah mengelakkan kemalangan dan penyakit kucing liar dalam iklim tropika.',
   quickFacts: {
     avgCost: 'RM150 – RM400/bulan',
     timeRequired: '30–60 minit sehari',

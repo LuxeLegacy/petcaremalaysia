@@ -7,8 +7,8 @@ export const petFriendlyHotelsArticle: PAAArticle = {
   lang: 'en',
   title: 'Pet-Friendly Hotels in Malaysia: Guide & Costs',
   directAnswer:
-    'Pet-friendly hotels in Malaysia charge RM150–RM800+/night. Most allow small to medium dogs and cats with a pet deposit of RM100–RM500. Truly pet-friendly options remain limited — advance booking and direct confirmation with the hotel is essential.',
-  tldr: 'Pet-friendly hotels cost RM150–RM800+/night in Malaysia. Pet fees run RM50–RM150/night or RM100–RM500 deposit. Options are concentrated in KL, Penang, and Langkawi. Always confirm pet policies directly — not all pet-friendly listings are accurate.',
+    'Pet-friendly hotels in Malaysia charge RM150–RM800+ per night. Most accept small to medium dogs and cats and require a pet deposit of RM100–RM500, or a nightly pet fee of RM50–RM150. Truly pet-welcoming options are concentrated in KL, Penang, and Langkawi. Always confirm the policy directly.',
+  tldr: 'Pet-friendly hotels Malaysia: RM150–RM800+/night. Pet fees RM50–RM150/night or RM100–RM500 deposit. Best options in KL, Penang and Langkawi. Always confirm pet policy directly with the hotel — online listings can be outdated.',
   quickFacts: {
     avgCost: 'RM150 – RM800+/night',
     timeRequired: 'Advance booking required',

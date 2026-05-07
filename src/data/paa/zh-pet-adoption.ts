@@ -7,8 +7,8 @@ export const zhPetAdoptionArticle: PAAArticle = {
   lang: 'zh',
   title: '如何在马来西亚领养宠物？',
   directAnswer:
-    '在马来西亚领养宠物，可以访问SPCA雪兰莪、PAWS马来西亚等注册收容所，或浏览PetFinder.my。领养费用为RM50至RM200，通常包括疫苗接种、绝育和植入芯片。整个流程包括家访评估，约需1–2周完成。',
-  tldr: '马来西亚宠物领养费用实惠（RM50–RM200），包含疫苗接种和绝育。主要收容所包括SPCA、PAWS以及PetFinder.my在线平台。需经过审核流程和家访。领养比从宠物店购买更经济实惠且更有道德。',
+    '在马来西亚领养宠物，可前往SPCA雪兰莪、PAWS等注册收容所，或浏览PetFinder.my。领养费RM50–RM200，通常已包含疫苗、绝育和植入晶片。整个流程约需1–2周，并包含家访和面试。',
+  tldr: '马来西亚宠物领养费RM50–RM200，含疫苗、绝育与晶片。可通过SPCA、PAWS或PetFinder.my申请。需家访并等待1–2周。比宠物店更便宜且更人道。',
   quickFacts: {
     avgCost: 'RM50 – RM200（领养费）',
     timeRequired: '1–2周',

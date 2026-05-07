@@ -7,8 +7,8 @@ export const catCareArticle: PAAArticle = {
   lang: 'en',
   title: 'How to Care for Cats in Malaysia? Complete Guide',
   directAnswer:
-    'Caring for cats in Malaysia requires attention to the tropical climate, proper nutrition, regular vaccinations (FVRCP + rabies), indoor safety, and parasite prevention. Monthly costs average RM150–RM400 including food, litter, and basic healthcare. Spaying/neutering is strongly recommended and costs RM150–RM400.',
-  tldr: 'Malaysian cat care essentials: quality food (RM80–RM200/month), annual vaccinations (RM80–RM200), monthly flea/tick prevention (RM30–RM60), spay/neuter (RM150–RM400 one-time), and keeping cats indoors or in secured areas to protect from traffic and stray animal diseases.',
+    'Caring for a cat in Malaysia costs RM150 to RM400 per month. Essentials include quality food (RM80–RM200), monthly flea/tick prevention (RM30–RM60), annual FVRCP and rabies vaccines (RM80–RM200), and one-time spay or neuter (RM150–RM400). Keep cats indoors to avoid traffic and stray-borne disease.',
+  tldr: 'Cat care in Malaysia costs RM150–RM400 per month. Budget for premium food, monthly flea prevention, annual FVRCP plus rabies vaccines, and one-time spay or neuter. Indoor housing prevents traffic injury and stray-borne disease in tropical conditions.',
   quickFacts: {
     avgCost: 'RM150 – RM400/month',
     timeRequired: '30–60 minutes daily',

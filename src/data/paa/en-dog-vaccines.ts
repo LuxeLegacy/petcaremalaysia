@@ -7,8 +7,8 @@ export const dogVaccinesArticle: PAAArticle = {
   lang: 'en',
   title: 'What Vaccines Do Dogs Need in Malaysia?',
   directAnswer:
-    'Dogs in Malaysia need core vaccines including DHPP (Distemper, Hepatitis, Parvovirus, Parainfluenza) starting at 6–8 weeks with boosters at 10–12 and 14–16 weeks, plus mandatory annual rabies vaccination. Non-core vaccines like Leptospirosis and Kennel Cough are also strongly recommended.',
-  tldr: 'Puppies need 3 rounds of DHPP vaccines at 6–8, 10–12, and 14–16 weeks, plus rabies at 12–16 weeks. Annual boosters are required. Total puppy vaccination costs RM200–RM500. Rabies is mandatory by law in Malaysia. Leptospirosis is highly recommended due to tropical climate.',
+    'Dogs in Malaysia need core vaccines: DHPP at 6–8, 10–12, and 14–16 weeks, plus rabies at 12–16 weeks, with annual boosters thereafter. Non-core Leptospirosis and Kennel Cough vaccines are strongly recommended due to the tropical climate. A full puppy vaccine course costs RM200–RM500.',
+  tldr: 'Malaysian puppies need three DHPP doses (6–8, 10–12, 14–16 weeks) plus rabies at 12–16 weeks. Annual boosters required by law. Total puppy course: RM200–RM500. Add Leptospirosis and Kennel Cough for tropical-climate protection.',
   quickFacts: {
     avgCost: 'RM200 – RM500 (puppy series)',
     timeRequired: '3 vet visits over 8–10 weeks',

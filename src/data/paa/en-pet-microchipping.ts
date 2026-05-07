@@ -7,8 +7,8 @@ export const petMicrochippingArticle: PAAArticle = {
   lang: 'en',
   title: 'Pet Microchipping in Malaysia: Cost, Process & Requirements',
   directAnswer:
-    'Pet microchipping in Malaysia costs RM50–RM120 including the chip, implantation, and registration. The procedure takes under 5 minutes. Microchipping is mandatory for dogs in some states and strongly recommended for all pets.',
-  tldr: 'Microchipping costs RM50–RM120 in Malaysia. It\'s a one-time, nearly painless procedure that permanently identifies your pet. Required for dog licensing in several Malaysian states. Takes less than 5 minutes at any vet clinic.',
+    'Pet microchipping in Malaysia costs RM50–RM120, including the chip, implantation, and database registration. The procedure takes under 5 minutes at any vet clinic and is nearly painless. Microchipping is now mandatory for dog licensing in several states and is strongly recommended for all cats and dogs.',
+  tldr: 'Malaysia pet microchipping: RM50–RM120 one-time fee covering chip, implant, and registration. Takes under 5 minutes at any vet. Mandatory for dog licensing in several states. Always update your contact details if you move home.',
   quickFacts: {
     avgCost: 'RM50 – RM120 (one-time)',
     timeRequired: '5 minutes',

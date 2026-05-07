@@ -7,8 +7,8 @@ export const petAdoptionArticle: PAAArticle = {
   lang: 'en',
   title: 'How to Adopt a Pet in Malaysia?',
   directAnswer:
-    'To adopt a pet in Malaysia, visit registered shelters like SPCA Selangor, PAWS Malaysia, or browse PetFinder.my. Adoption fees range from RM50 to RM200 and typically include vaccination, sterilization, and microchipping. The process takes 1–2 weeks including a home assessment.',
-  tldr: 'Pet adoption in Malaysia is affordable (RM50–RM200) and includes vaccinations and sterilization. Major shelters include SPCA, PAWS, and online platforms like PetFinder.my. Expect a screening process with home checks. Adopting is cheaper and more ethical than buying from pet shops.',
+    'To adopt a pet in Malaysia, visit registered shelters such as SPCA Selangor, PAWS, or browse PetFinder.my. Adoption fees are RM50–RM200 and usually include vaccination, sterilisation, and microchipping. The full process takes 1–2 weeks and includes a home check and adoption interview.',
+  tldr: 'Pet adoption in Malaysia costs RM50–RM200 and includes vaccines, sterilisation and microchip. Apply via SPCA, PAWS, or PetFinder.my. Expect a home check and 1–2 week wait. Adoption is cheaper and more ethical than pet shops.',
   quickFacts: {
     avgCost: 'RM50 – RM200 (adoption fee)',
     timeRequired: '1–2 weeks',

@@ -7,8 +7,8 @@ export const petSpayingNeuteringArticle: PAAArticle = {
   lang: 'en',
   title: 'Pet Spaying & Neutering Cost in Malaysia',
   directAnswer:
-    'Spaying (female) costs RM200–RM700 in Malaysia. Neutering (male) costs RM150–RM500. Government veterinary clinics and welfare organizations offer subsidized rates of RM30–RM100. Prices vary by pet size, weight, and clinic type.',
-  tldr: 'Spaying costs RM200–RM700 (female) and neutering RM150–RM500 (male) in Malaysia. Government clinics offer subsidized rates from RM30. Surgery prevents cancer, unwanted litters, and behavioral problems. Recovery takes 10–14 days.',
+    'Spaying a female pet in Malaysia costs RM200–RM700 and neutering a male costs RM150–RM500. Subsidised rates of RM30–RM100 are offered by government clinics (DVS) and welfare groups like SPCA. Surgery prevents cancers, unwanted litters, and behavioural problems. Recovery typically takes 10–14 days.',
+  tldr: 'Spay/neuter Malaysia: RM200–RM700 (female) and RM150–RM500 (male). Subsidised programs from RM30 at DVS and SPCA. Surgery prevents cancers, unwanted litters, and behaviour problems. Recovery takes 10–14 days. Best done before first heat.',
   quickFacts: {
     avgCost: 'RM150 – RM700',
     timeRequired: 'Day procedure (discharge same day)',

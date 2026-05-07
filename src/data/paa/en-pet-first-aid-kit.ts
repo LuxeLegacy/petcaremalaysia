@@ -7,8 +7,8 @@ export const petFirstAidKitArticle: PAAArticle = {
   lang: 'en',
   title: 'Pet Emergency First Aid Kit Malaysia: What You Need',
   directAnswer:
-    'A complete pet emergency first aid kit costs RM80–RM250 to assemble in Malaysia. It should include wound care supplies, emergency medications (with vet guidance), thermometer, bandaging materials, and key emergency contact numbers.',
-  tldr: 'Assemble a pet first aid kit for RM80–RM250. Key items: gauze, bandages, antiseptic, digital thermometer, tick remover, and hydrogen peroxide (only with vet guidance). Store with your vet\'s number and 24-hour clinic address.',
+    'A complete pet first aid kit in Malaysia costs RM80–RM250 to assemble. Essentials include sterile gauze, self-adhering bandages, antiseptic, a digital thermometer, blunt-tip scissors, tick remover, and saline solution. Add your vet\'s number and the nearest 24-hour emergency clinic address inside the kit.',
+  tldr: 'Pet first aid kit Malaysia: RM80–RM250. Pack gauze, bandages, antiseptic, digital thermometer, scissors, tick remover, and saline. Always include your vet\'s number and 24-hour clinic address. Replace expired items every 6 months.',
   quickFacts: {
     avgCost: 'RM80 – RM250 (one-time setup)',
     timeRequired: '30 minutes to assemble',

@@ -7,8 +7,8 @@ export const msPetTravelArticle: PAAArticle = {
   lang: 'ms',
   title: 'Apakah Keperluan Perjalanan Haiwan Peliharaan di Malaysia?',
   directAnswer:
-    'Perjalanan dengan haiwan peliharaan ke/dari Malaysia memerlukan permit import/eksport sah daripada JPV (RM50–RM200), vaksinasi rabies (sekurang-kurangnya 30 hari sebelum perjalanan), implantasi mikrocip, sijil kesihatan daripada doktor haiwan berlesen, dan pembawa yang diluluskan syarikat penerbangan. Keseluruhan proses mengambil 4–8 minggu dan berharga RM500–RM3,000.',
-  tldr: 'Perjalanan haiwan dari Malaysia melibatkan permit JPV (RM50–RM200), vaksinasi rabies + ujian titer, mikrocip, sijil kesihatan veterinar, dan tempahan penerbangan. Mulakan persediaan 8–12 minggu sebelum perjalanan. Kos antara RM500 untuk perjalanan domestik hingga RM3,000+ untuk antarabangsa. Ejen pemindahan haiwan mengenakan RM2,000–RM8,000.',
+    'Membawa haiwan peliharaan keluar dari Malaysia memerlukan permit DVS (RM50–RM200), vaksin rabies sah sekurang-kurangnya 30 hari sebelum, microchip, sijil kesihatan veterinar, dan kotak pembawa diluluskan syarikat penerbangan. Jumlah kos RM500–RM3,000. Mulakan persiapan 8–12 minggu sebelum berlepas.',
+  tldr: 'Perjalanan haiwan dari Malaysia: perlu permit DVS (RM50–RM200), vaksin rabies, microchip, sijil kesihatan veterinar, dan kotak pembawa IATA. Jumlah RM500–RM3,000. Ejen relokasi caj RM2,000–RM8,000. Mula 8–12 minggu lebih awal.',
   quickFacts: {
     avgCost: 'RM500 – RM3,000+ (DIY)',
     timeRequired: '4–12 minggu persediaan',

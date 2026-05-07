@@ -7,8 +7,8 @@ export const bestDogBreedsArticle: PAAArticle = {
   lang: 'en',
   title: 'What Are the Best Dog Breeds for Malaysia Climate?',
   directAnswer:
-    'The best dog breeds for Malaysia\'s tropical climate include the Malaysian Mixed Breed (Kampung dog), Shih Tzu, Miniature Schnauzer, Poodle, and Beagle. These breeds tolerate heat and humidity well due to their smaller size, shorter coats, or natural adaptation to warm climates.',
-  tldr: 'Choose breeds with shorter coats, smaller bodies, and heat tolerance for Malaysia\'s hot, humid weather. Avoid heavy-coated breeds like Huskies and Saint Bernards. Mixed breeds (Kampung dogs) are naturally the best adapted. Indoor air-conditioned environments expand your options.',
+    'The best dog breeds for Malaysia are the Malaysian Mixed Breed (Kampung dog), Shih Tzu, Miniature Schnauzer, Poodle, and Beagle. These breeds handle the tropical heat and humidity well thanks to small size, short coats, or local adaptation. Avoid heavy double-coated breeds like Huskies and Saint Bernards.',
+  tldr: 'Best Malaysia dog breeds: Kampung dog, Shih Tzu, Mini Schnauzer, Poodle, Beagle. Pick small bodies and short coats for tropical heat. Avoid Huskies and Saint Bernards. Air-conditioned homes expand your safe options.',
   quickFacts: {
     avgCost: 'RM500 – RM8,000 (purchase)',
     timeRequired: '2–4 weeks (research + finding breeder)',

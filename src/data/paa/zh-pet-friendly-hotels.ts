@@ -7,8 +7,8 @@ export const zhPetFriendlyHotelsArticle: PAAArticle = {
   lang: 'zh',
   title: '马来西亚有哪些可以带宠物的酒店？',
   directAnswer:
-    '马来西亚多家酒店欢迎宠物入住，包括吉隆坡的Ritz-Carlton、槟城的Eastern & Oriental Hotel及全国多家精品酒店。宠物附加费通常为RM50–RM200/晚。AirBnb也提供大量宠物友好选项，通常比酒店更灵活，价格更实惠。',
-  tldr: '马来西亚宠物友好酒店：宠物附加费RM50–RM200/晚。主要城市（吉隆坡、槟城、新山）选择最多。AirBnb通常是性价比更高的宠物友好住宿选择。提前联系酒店确认政策。',
+    '马来西亚宠物友善酒店每晚收费RM150–RM800+。大多数接受中小型犬猫，需缴付RM100–RM500押金或每晚RM50–RM150宠物费。真正友善的选择集中在吉隆坡、槟城和兰卡威。请直接与酒店确认政策。',
+  tldr: '马来西亚宠物友善酒店：每晚RM150–RM800+。宠物费每晚RM50–RM150或押金RM100–RM500。吉隆坡、槟城、兰卡威选择最多。务必直接与酒店确认，网上信息可能过时。',
   quickFacts: {
     avgCost: 'RM50 – RM200/晚（宠物附加费）',
     timeRequired: '预订时需提前确认',

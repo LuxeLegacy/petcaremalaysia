@@ -7,8 +7,8 @@ export const zhFleaTreatmentArticle: PAAArticle = {
   lang: 'zh',
   title: '如何在马来西亚治疗和预防宠物跳蚤？',
   directAnswer:
-    '马来西亚跳蚤治疗每月RM30–RM80用于Frontline或Revolution等滴剂预防。口服治疗（NexGard、Bravecto）RM50–RM120。在马来西亚热带气候中跳蚤全年繁殖，因此全年预防至关重要。严重感染可能需要专业灭虫（RM200–RM500）。',
-  tldr: '马来西亚温暖潮湿的气候意味着全年跳蚤风险。每月滴剂治疗（RM30–RM80）或口服咀嚼片（RM50–RM120）必不可少。同时治疗家中所有宠物，并处理家居环境（清洗、吸尘、喷雾）以有效控制。',
+    '马来西亚跳蚤防治费用：滴剂（如Frontline或Revolution）每月RM30–RM80，口服咀嚼片（如NexGard或Bravecto）每月RM50–RM120。热带气候下必须全年防治。家居严重感染需另付RM200–RM500进行专业除虫。',
+  tldr: '马来西亚跳蚤防治：滴剂每月RM30–RM80，口服咀嚼片每月RM50–RM120。所有宠物同时治疗并清洁居家。热带气候需全年预防，跳蚤全年繁殖。',
   quickFacts: {
     avgCost: 'RM30 – RM120/月（预防）',
     timeRequired: '5分钟（应用）',

@@ -7,8 +7,8 @@ export const petTrainingCostArticle: PAAArticle = {
   lang: 'en',
   title: 'How Much Does Pet Training Cost in Malaysia?',
   directAnswer:
-    'Pet training in Malaysia costs RM80–RM300 per session for private training. Group obedience classes cost RM300–RM800 for a 6–8 week course. Residential training programs run RM1,500–RM4,000 for 2–4 weeks.',
-  tldr: 'Dog training costs RM80–RM300/session (private) or RM300–RM800 for group courses in Malaysia. Residential training (board & train) costs RM1,500–RM4,000. Puppy classes are the best investment for new dog owners.',
+    'Dog training in Malaysia costs RM80–RM300 per private session. Group obedience classes cost RM300–RM800 for a 6–8 week course, while residential \'board and train\' programs run RM1,500–RM4,000 for 2–4 weeks. Puppy socialisation classes are the most cost-effective investment for new dog owners.',
+  tldr: 'Malaysia dog training: RM80–RM300 per private session, RM300–RM800 for 6–8 week group classes, RM1,500–RM4,000 residential. Puppy classes give the best return on investment. Always verify trainer certification before signing up.',
   quickFacts: {
     avgCost: 'RM300 – RM800 (group course)',
     timeRequired: '6–8 weeks (group) or 2–4 weeks (residential)',

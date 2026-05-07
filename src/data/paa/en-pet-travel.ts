@@ -7,8 +7,8 @@ export const petTravelArticle: PAAArticle = {
   lang: 'en',
   title: 'What Are the Pet Travel Requirements in Malaysia?',
   directAnswer:
-    'Travelling with pets to/from Malaysia requires a valid import/export permit from DVS (RM50–RM200), rabies vaccination (at least 30 days before travel), microchip implantation, health certificate from a licensed vet, and airline-approved carrier. The entire process takes 4–8 weeks and costs RM500–RM3,000 depending on destination and airline.',
-  tldr: 'Pet travel from Malaysia involves DVS permits (RM50–RM200), rabies vaccination + titre test, microchip, vet health certificate, and airline booking. Start preparations 8–12 weeks before travel. Costs range from RM500 for domestic travel to RM3,000+ for international. Pet relocation agents charge RM2,000–RM8,000 for full service.',
+    'Travelling with a pet from Malaysia requires a DVS import/export permit (RM50–RM200), valid rabies vaccination at least 30 days prior, microchip, vet health certificate, and an airline-approved carrier. Total cost is RM500–RM3,000 depending on destination. Begin preparations 8–12 weeks before travel.',
+  tldr: 'Pet travel from Malaysia: needs DVS permit (RM50–RM200), rabies vaccine, microchip, vet health certificate, and IATA-approved crate. Total RM500–RM3,000. Pet relocation agents charge RM2,000–RM8,000. Start the process 8–12 weeks early.',
   quickFacts: {
     avgCost: 'RM500 – RM3,000+ (DIY)',
     timeRequired: '4–12 weeks preparation',

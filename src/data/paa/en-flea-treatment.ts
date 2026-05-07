@@ -7,8 +7,8 @@ export const fleaTreatmentArticle: PAAArticle = {
   lang: 'en',
   title: 'How to Treat and Prevent Fleas on Pets in Malaysia?',
   directAnswer:
-    'Flea treatment in Malaysia costs RM30–RM80 per month for spot-on preventatives like Frontline or Revolution. Oral treatments (NexGard, Bravecto) cost RM50–RM120. Year-round prevention is essential in Malaysia\'s tropical climate where fleas breed continuously. Severe infestations may require professional pest control (RM200–RM500) in addition to pet treatment.',
-  tldr: 'Malaysia\'s warm, humid climate means year-round flea risk. Monthly spot-on treatments (RM30–RM80) or oral chewables (RM50–RM120) are essential. Treat ALL pets in the household simultaneously and address the home environment (washing, vacuuming, sprays) for effective control.',
+    'Flea treatment in Malaysia costs RM30–RM80 per month for spot-on products like Frontline or Revolution, or RM50–RM120 for oral chewables such as NexGard or Bravecto. Year-round prevention is mandatory in the tropical climate. Severe home infestations may need RM200–RM500 in additional pest control.',
+  tldr: 'Malaysia flea treatment: RM30–RM80/month for spot-ons (Frontline, Revolution) or RM50–RM120 for oral chewables (NexGard, Bravecto). Treat all pets together and clean the home. Year-round prevention is essential in the tropical climate.',
   quickFacts: {
     avgCost: 'RM30 – RM120/month (prevention)',
     timeRequired: '5 minutes (application)',

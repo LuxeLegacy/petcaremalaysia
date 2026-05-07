@@ -7,8 +7,8 @@ export const msPetInsuranceCostArticle: PAAArticle = {
   lang: 'ms',
   title: 'Berapakah Kos Insurans Haiwan Peliharaan di Malaysia?',
   directAnswer:
-    'Insurans haiwan peliharaan di Malaysia biasanya berharga RM95 hingga RM300 sebulan bergantung kepada jenis perlindungan, umur haiwan, baka, dan keadaan kesihatan. Pelan kemalangan asas bermula sekitar RM95/bulan, manakala pelan komprehensif yang meliputi penyakit, kemalangan, dan kesejahteraan boleh mencecah RM300/bulan atau lebih.',
-  tldr: 'Kos insurans haiwan bergantung kepada pelbagai faktor. Perlindungan kemalangan asas bermula pada RM95/bulan, manakala pelan komprehensif mencecah RM300/bulan. Harga meningkat untuk haiwan yang lebih tua dan baka tertentu. Oyen dan MSIG adalah penyedia paling popular di Malaysia.',
+    'Insurans haiwan peliharaan di Malaysia berharga RM95–RM300 sebulan. Pelan asas kemalangan sahaja bermula RM95, manakala pelan komprehensif yang melindungi penyakit, pembedahan, dan kesihatan mencecah RM300+. Premium meningkat dengan usia haiwan. Oyen dan MSIG ialah penyedia paling popular di Malaysia.',
+  tldr: 'Insurans haiwan Malaysia: RM95–RM300 sebulan. Pelan kemalangan sahaja dari RM95, pelan komprehensif dari RM200. Premium naik mengikut usia dan baka. Penyedia utama: Oyen dan MSIG. Daftarkan haiwan semasa muda dan sihat.',
   quickFacts: {
     avgCost: 'RM95 – RM300/bulan',
     timeRequired: '15–30 minit (permohonan)',
