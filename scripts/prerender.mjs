@@ -189,19 +189,31 @@ function buildHead({ title, description, canonical, alternates, ogLocale }) {
   const altTags = alternates
     .map(([lang, href]) => `<link rel="alternate" hreflang="${lang}" href="${href}" />`)
     .join('\n    ');
+  const OG_LOCALES = { en: 'en_MY', ms: 'ms_MY', zh: 'zh_CN' };
+  const altLocaleTags = Object.entries(OG_LOCALES)
+    .filter(([, v]) => v !== ogLocale)
+    .map(([, v]) => `<meta property="og:locale:alternate" content="${v}" />`)
+    .join('\n    ');
+  const ogImage = `${SITE}/og-image.png`;
   return `<title>${escapeHtml(title)}</title>
     <meta name="title" content="${escapeHtml(title)}" />
     <meta name="description" content="${escapeHtml(description)}" />
     <link rel="canonical" href="${canonical}" />
     <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="PetCare Malaysia" />
     <meta property="og:url" content="${canonical}" />
     <meta property="og:title" content="${escapeHtml(title)}" />
     <meta property="og:description" content="${escapeHtml(description)}" />
+    <meta property="og:image" content="${ogImage}" />
     <meta property="og:locale" content="${ogLocale}" />
-    <meta property="twitter:card" content="summary_large_image" />
-    <meta property="twitter:url" content="${canonical}" />
-    <meta property="twitter:title" content="${escapeHtml(title)}" />
-    <meta property="twitter:description" content="${escapeHtml(description)}" />
+    ${altLocaleTags}
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:site" content="@petcaremalaysia" />
+    <meta name="twitter:creator" content="@petcaremalaysia" />
+    <meta name="twitter:url" content="${canonical}" />
+    <meta name="twitter:title" content="${escapeHtml(title)}" />
+    <meta name="twitter:description" content="${escapeHtml(description)}" />
+    <meta name="twitter:image" content="${ogImage}" />
     ${altTags}
     <link rel="alternate" hreflang="x-default" href="${alternates[0][1]}" />`;
 }
