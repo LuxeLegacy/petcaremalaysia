@@ -30,6 +30,13 @@ const LanguageProviderInner: React.FC<{ children: ReactNode }> = ({ children }) 
     }
   }, [location.pathname]);
 
+  // Keep <html lang> in sync with the active language for SEO/accessibility
+  useEffect(() => {
+    if (typeof document !== 'undefined') {
+      document.documentElement.lang = language;
+    }
+  }, [language]);
+
   const handleSetLanguage = (lang: Language) => {
     setLanguage(lang);
     localStorage.setItem('preferred-language', lang);
