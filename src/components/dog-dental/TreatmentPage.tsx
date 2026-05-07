@@ -6,6 +6,9 @@ import { DentalBreadcrumb } from './DentalBreadcrumb';
 import { InternalLinkFunnel } from './InternalLinkFunnel';
 import { DentalSchemaMarkup } from './DentalSchemaMarkup';
 import { AEOGEOSections } from './AEOGEOSections';
+import { QuickAnswerBox } from '@/components/common/QuickAnswerBox';
+import { VetDisclaimer } from '@/components/common/VetDisclaimer';
+import { MalaysiaCostTable } from '@/components/common/MalaysiaCostTable';
 import type { DentalTreatmentPage as TreatmentType } from '@/data/dog-dental/types';
 
 interface Props { data: TreatmentType; }
@@ -28,7 +31,11 @@ export const TreatmentPage = ({ data }: Props) => {
           <DentalBreadcrumb category="treatments" pageTitle={data.title} />
           <h1 className="text-3xl md:text-4xl font-bold text-foreground mb-6">{data.title}</h1>
 
+          <QuickAnswerBox answer={(data as any).snippetForAI || data.overview.split('\n\n')[0]} />
+
           <AEOGEOSections data={data} position="top" />
+
+          <MalaysiaCostTable tableKey="dental-cleaning" />
 
           <section className="mb-8">
             <h2 className="text-2xl font-bold mb-3">Overview</h2>
@@ -85,6 +92,8 @@ export const TreatmentPage = ({ data }: Props) => {
             <p className="text-sm text-muted-foreground">{data.author.credentials}</p>
             <p className="text-xs text-muted-foreground mt-2">Last updated: {data.dateModified}</p>
           </div>
+
+          <VetDisclaimer />
         </div>
       </main>
       <Footer />
