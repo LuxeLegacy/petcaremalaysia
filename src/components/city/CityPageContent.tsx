@@ -301,6 +301,9 @@ export const CityPageContent: React.FC<CityPageContentProps> = ({ city }) => {
       {/* Government Resources Section */}
       <CityGovernmentSection city={city} />
 
+      {/* Embedded Google Map — vets near me */}
+      <CityMapEmbed city={city} />
+
       {/* FAQ Section with unique city-specific questions */}
       <CityFAQSection city={city} />
 
