@@ -1,48 +1,50 @@
-# Bundle Size & Caching Fix
+# Fix 2 Broken Q&A Articles (404)
 
-## Goal
-Cut the 4MB JS bundle to small per-route chunks and enable browser/CDN caching.
+## Root cause
 
-## Changes
+Both indexed URLs reference Q&A article slugs that don't match what the app/prerender produces:
 
-### 1. Route-level code splitting (`src/App.tsx`)
-Convert all 22 page imports to `React.lazy()` and wrap `<Routes>` in `<Suspense>` with a lightweight fallback. Keep `Index` (homepage) eagerly loaded so the LCP route stays instant; lazy-load everything else (CityPage, BlogPage, BlogPostPage, QAPage, StateQAPage, AssessmentPage, AdminPage, EmergencyGuidePage, PAAArticleRouter, SearchPage, CategoryPage, DogDentalRouter, UrinaryRouter, NotFound, VetClinicsPage, LocationsPage, ServicesPage, SitemapPage, TermsPage, PrivacyPage, DisclaimerPage).
+1. **`/qa/article/what-vaccines-do-dogs-need-malaysia`** — Sitemaps and `all-urls.csv` use this slug, but the actual article (`src/data/paa/en-dog-vaccines.ts`) is registered as `what-vaccines-dogs-need-malaysia` (no "do"). Two related PAA articles also internally link to the wrong slug.
 
-Result: each route ships its own ~50-200KB chunk instead of one 4MB blob.
+2. **`/qa/article/how-to-adopt-pet-malaysia`** — The article exists in `en-pet-adoption.ts` with matching slug and is registered. The 404 is most likely a stale prerender / cached build artifact. We will re-verify after the build.
 
-### 2. Manual vendor chunks (`vite.config.ts`)
-Add `build.rollupOptions.output.manualChunks` to split big libs into long-cacheable chunks:
-- `react-vendor`: react, react-dom, react-router-dom
-- `ui-vendor`: all `@radix-ui/*`, lucide-react, cmdk, sonner, vaul
-- `query-vendor`: @tanstack/react-query, react-helmet-async
-- `form-vendor`: react-hook-form, @hookform/resolvers, zod
-- `chart-vendor`: recharts (heavy — only loads on pages that import it)
-- `supabase-vendor`: @supabase/supabase-js
-- `date-vendor`: date-fns, react-day-picker
+## Fix strategy: restore canonical content (preferred over 301)
 
-Also set `build.chunkSizeWarningLimit: 600` and `build.cssCodeSplit: true`.
+Restore the indexed URLs so they 200 with their full article content. This preserves accumulated SEO signals.
 
-### 3. Long-term caching headers (`public/_headers`)
-Lovable hosting honors a Netlify-style `_headers` file. Add:
+### 1. Align the dog-vaccines slug to match the indexed URL
 
-```text
-/assets/*
-  Cache-Control: public, max-age=31536000, immutable
+Update the article slug from `what-vaccines-dogs-need-malaysia` → `what-vaccines-do-dogs-need-malaysia` (match what Google has indexed and what's in sitemaps).
 
-/*.html
-  Cache-Control: public, max-age=0, must-revalidate
+Files to edit:
+- `src/data/paa/en-dog-vaccines.ts` — change `slug` field
+- `src/data/paa/en-best-dog-breeds.ts` — fix internal `relatedQuestions` link
+- `src/data/paa/en-pet-adoption.ts` — fix internal `relatedQuestions` link
 
-/
-  Cache-Control: public, max-age=0, must-revalidate
-```
+(The MS and ZH variants of dog-vaccines use their own translated slugs; sitemap-ms.xml and sitemap-zh.xml use `vaksin-yang-diperlukan-anjing-malaysia` and `ma-lai-xi-ya-gou-xu-yao-shen-me-yi-miao` respectively — verify those match `ms-dog-vaccines.ts` and `zh-dog-vaccines.ts`.)
 
-Vite emits hashed filenames into `/assets/`, so 1-year immutable caching is safe. HTML stays revalidated so prerendered title/canonical/JSON-LD updates ship instantly.
+### 2. Belt-and-suspenders 301 redirect for the old slug
 
-### 4. Verification
-- Run `npm run build` and confirm no single chunk > 600KB.
-- Confirm `dist/_headers` exists in output (files in `public/` are copied verbatim).
-- Spot-check `dist/index.html` still references hashed `/assets/*.js` files.
+Add a client-side redirect inside `PAAArticleRouter.tsx`: if the requested slug is `what-vaccines-dogs-need-malaysia` (the old one), `Navigate replace` to `/qa/article/what-vaccines-do-dogs-need-malaysia`. This catches any external backlinks still using the old slug.
+
+### 3. Re-verify the adoption URL
+
+After the next prerender run, confirm `dist/qa/article/how-to-adopt-pet-malaysia/index.html` exists and contains the article HTML + Article JSON-LD. If it's still missing, the issue is in `extractPaaSlugs()` or `writeRoute()`. In that case, add a small console log + targeted fix so the file is emitted.
+
+### 4. Update sitemaps and CSVs only if needed
+
+Sitemaps already point at `what-vaccines-do-dogs-need-malaysia`, which after fix #1 will be the live slug — no sitemap change required. `public/all-urls.csv` already matches.
 
 ## Out of scope
-- No changes to page component logic, routing structure, or prerender script.
-- No removal of dependencies (could be a follow-up if recharts/embla aren't actually used everywhere).
+
+- No content rewriting, no design changes.
+- No changes to MS/ZH article files unless slug mismatch is found during verification.
+- No changes to the Supabase sitemap edge function unless it emits a wrong slug.
+
+## Verification checklist
+
+- `bun run build` succeeds.
+- `dist/qa/article/what-vaccines-do-dogs-need-malaysia/index.html` exists with Article JSON-LD.
+- `dist/qa/article/how-to-adopt-pet-malaysia/index.html` exists with Article JSON-LD.
+- Visiting `/qa/article/what-vaccines-dogs-need-malaysia` (old slug) in the SPA redirects to the new slug.
+- No TypeScript errors from internal `relatedQuestions` slug changes.
