@@ -231,6 +231,9 @@ export const PAAArticlePage = ({ article }: PAAArticlePageProps) => {
 
           {/* Author */}
           <AuthorBox author={article.author} />
+
+          {/* Vet Disclaimer */}
+          <VetDisclaimer />
         </article>
       </main>
 
