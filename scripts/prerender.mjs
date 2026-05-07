@@ -499,6 +499,16 @@ for (const p of blogPosts) {
       ms: `Panduan ${p.category.toLowerCase()} haiwan untuk pemilik di Malaysia: ${pretty.toLowerCase()}. Nasihat disemak vet, kos dalam RM, dan arahan langkah demi langkah.`,
       zh: `为马来西亚宠物主人提供的${p.category}指南：${pretty}。兽医审核的建议、马币费用与分步说明。`,
     };
+    const articleSchema = {
+      '@context': 'https://schema.org', '@type': 'Article',
+      headline: pretty, description: descs[lang],
+      url: `${SITE}${localizedPath(lang, `/blog/${p.slug}`)}`,
+      author: { '@type': 'Organization', name: 'PetCare Malaysia' },
+      publisher: { '@type': 'Organization', name: 'PetCare Malaysia', logo: { '@type': 'ImageObject', url: `${SITE}/logo.png` } },
+      mainEntityOfPage: `${SITE}${localizedPath(lang, `/blog/${p.slug}`)}`,
+      inLanguage: lang,
+      articleSection: p.category,
+    };
     const html = renderPage({
       pathRel: `/blog/${p.slug}`,
       lang,
@@ -506,6 +516,7 @@ for (const p of blogPosts) {
       description: descs[lang],
       h1: pretty,
       intro: descs[lang],
+      jsonLd: [articleSchema],
     });
     writeRoute(`/blog/${p.slug}`, lang, html);
     count++;
