@@ -65,7 +65,7 @@ export const BlogSection = () => {
               className="group bg-card rounded-2xl overflow-hidden shadow-card hover:shadow-elevated transition-all duration-300 hover:-translate-y-1"
             >
               <div className="relative overflow-hidden aspect-[16/10]">
-                <img
+                <img loading="lazy" decoding="async"
                   src={post.image}
                   alt={blogTranslations[post.titleKey]}
                   className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
