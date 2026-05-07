@@ -452,6 +452,12 @@ for (const slug of urinarySlugs) {
       ms: `Panduan untuk ${prettyLabel.toLowerCase()} pada ${speciesLabel.ms.toLowerCase()}: tanda amaran, bila perlu jumpa vet, dan rawatan di Malaysia.`,
       zh: `${speciesLabel.zh}${prettyLabel}指南：警示信号、何时送医以及马来西亚治疗方法。`,
     };
+    const urinaryMedical = {
+      '@context': 'https://schema.org', '@type': 'MedicalWebPage',
+      name: titles[lang], description: descs[lang],
+      url: `${SITE}${localizedPath(lang, pathRel)}`,
+      about: { '@type': 'MedicalCondition', name: `${speciesLabel.en} ${prettyLabel}` },
+    };
     const html = renderPage({
       pathRel,
       lang,
@@ -459,6 +465,7 @@ for (const slug of urinarySlugs) {
       description: descs[lang],
       h1: titles[lang].split(' | ')[0],
       intro: descs[lang],
+      jsonLd: [urinaryMedical],
     });
     writeRoute(pathRel, lang, html);
     count++;
