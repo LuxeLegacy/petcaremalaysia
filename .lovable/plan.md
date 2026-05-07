@@ -1,53 +1,43 @@
+# Close remaining prerender gaps for unique titles
 
+The prerender script already writes 786 per-route HTML files with unique `<title>`, meta description, canonical, hreflang, OG tags, H1, and intro snippet. Four route groups still ship the default homepage `<title>` because they aren't enumerated in the script. This plan adds them and fixes one slug bug.
 
-# Fix perpetual "Loading questions…" on `/qa/selangor`, `/qa/kuala-lumpur`, `/qa/johor`
+## What gets added
 
-## What's actually happening
+Update `scripts/prerender.mjs` to additionally render:
 
-The Q&A list query fires from the browser to PostgREST and **never resolves** — no error, no data, just hangs. The current code only retries on a thrown error or returned error object, so a hung promise stays hung and the spinner never goes away.
+1. **Blog posts** — 22 slugs from `src/pages/BlogPage.tsx` × 3 languages = 66 pages. Path: `/blog/:slug`. Title pattern: `{Article Title} — Pet Emergency Guide Malaysia | PetCareMY`. Description pulled from the existing post metadata in BlogPage.tsx.
+2. **PAA category hubs** — 12 categories × 3 languages = 36 pages. Path: `/category/:slug`. Categories extracted from `src/data/paa/*.ts` (the `category` field on each article).
+3. **Legal pages** — `/terms`, `/privacy`, `/disclaimer`. English only (legal pages are not localised today). 3 pages.
+4. **Search page** — `/search`. English only. 1 page.
 
-I confirmed:
-- DB has the data (258 rows for KL, 220+ for Selangor/Johor).
-- The exact query the frontend runs returns in milliseconds via service role.
-- RLS policy `Public read access for pet QA` is `USING (true)` on the public role — so anon access is allowed.
-- The issue is the same Lovable Cloud connection-layer instability that previously made the edge function time out.
+Net add: ~106 additional prerendered HTML files. New total: ~892.
 
-So the bug is: **no client-side timeout on the supabase query**, so when the network request hangs, the UI never recovers.
+## Bug fix
 
-## Fix
+Urinary standalone `emergency-signs.ts` (no species prefix) currently writes to `/urinary-tract-disease/emergency/signs/index.html` because the parser splits on the first dash. Fix the urinary loop to special-case standalone slugs (no `cats-`/`dogs-` prefix) and route them to `/urinary-tract-disease/{slug}` directly.
 
-### 1. Add a hard client-side timeout to every list batch fetch
+## Title patterns (direct response style)
 
-Wrap each `supabase.from('pet_qa_keywords').select(...)` call in a `Promise.race` against a 6-second timer. If the timer wins, throw a timeout error so the existing retry loop kicks in. After all retries fail, surface the inline retry UI (which already exists) instead of an infinite spinner.
+- **Blog posts**: use the existing post `title` + `| PetCareMY` suffix; description from the post's existing `excerpt` field.
+- **Categories**: `{Category Name} — Pet Care Guides Malaysia | PetCareMY` / `Panduan Penjagaan Haiwan {Category} | PetCareMY` / `{Category}马来西亚宠物护理指南 | PetCareMY`.
+- **Legal**: `Terms of Service | PetCare Malaysia`, `Privacy Policy | PetCare Malaysia`, `Disclaimer | PetCare Malaysia`.
+- **Search**: `Search Pet Care Guides — PetCare Malaysia`.
 
-### 2. Same timeout on the lazy answer fetch
+All retain the existing hreflang trio, canonical, OG tags, and an off-screen H1 + intro snippet for crawlers.
 
-Apply the same `Promise.race` to `loadAnswer(id)` so opening an accordion item can't hang forever either; on timeout, set the answer-error state (already wired up).
+## Files touched
 
-### 3. Fall back to a smaller initial batch on first attempt
+- `scripts/prerender.mjs` — add blog/category/legal/search loops, fix urinary standalone slug routing.
 
-For the very first batch only, request **20 rows** instead of 50. Smaller payload = lower chance of tripping the gateway's flaky path. Subsequent "Load more" batches stay at 50. Once 20 rows render, the page is no longer "empty/loading" even if the connection is degraded.
+No source code changes, no React changes, no new dependencies. Build pipeline already runs the script automatically (`npm run build`).
 
-### 4. Drop two unused indexes the request may be implicitly favoring poorly
+## Verification
 
-(Skipped — DB plan is already sub-millisecond. No schema changes.)
+After implementation: run `npm run build`, then spot-check titles on:
+- `dist/blog/pet-emergency-guide-malaysia/index.html`
+- `dist/category/emergency/index.html`
+- `dist/terms/index.html`
+- `dist/urinary-tract-disease/emergency-signs/index.html` (bug fix)
 
-### 5. Clear the stale module-level cache when retrying
-
-`handleRetryInitial` already deletes the cache key. Confirmed working — no change needed there, just keeping it.
-
-## Files changed
-
-- **`src/components/qa/StateQASection.tsx`** — only file touched.
-  - Add `withTimeout<T>(promise, ms)` helper.
-  - Wrap the supabase `runQuery` call inside `fetchListBatch` with `withTimeout(..., 6000)`.
-  - First-call batch size = 20; subsequent = 50 (introduce `INITIAL_BATCH_SIZE = 20`, keep `BATCH_SIZE = 50`).
-  - Wrap the lazy `loadAnswer` supabase call with `withTimeout(..., 5000)`.
-  - On total failure, the existing `initialError` UI with **Try Again** button shows instead of the perpetual spinner.
-
-## What the user will see after the fix
-
-- If the gateway responds normally: 20 questions appear in ≤6 s; "Load More" pulls 50 more at a time.
-- If the gateway hangs: after ~18 s (3 attempts × 6 s) the spinner is replaced with a clean "Couldn't load this batch — Try Again" card.
-- The hand-written state profile content above the Q&A keeps rendering instantly in every case, so the page is never visually blank.
-
+Each should show a unique `<title>` instead of the homepage default.
