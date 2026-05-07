@@ -7,8 +7,8 @@ export const zhVetVisitCostArticle: PAAArticle = {
   lang: 'zh',
   title: '马来西亚兽医诊所费用是多少？',
   directAnswer:
-    '马来西亚标准兽医咨询费用为RM30至RM80（基本检查）。紧急就诊费用RM150至RM500，专科咨询可达RM200至RM400。血液检查、X光或药物另行收费。',
-  tldr: '基本咨询费RM30–RM80。紧急和非工作时间就诊费用更高（RM150–RM500）。血液检查RM80–RM250，X光RM100–RM300。政府兽医诊所（JPV）提供补贴价格，从RM5–RM20起。',
+    '马来西亚私人兽医诊所标准咨询费RM30–RM80。紧急或非工作时间就诊RM150–RM500，专科咨询RM200–RM400。血液检查（RM80–RM250）和X光（RM100–RM300）另行收费。政府DVS兽医诊所提供补贴价RM5–RM20。',
+  tldr: '马来西亚兽医费用：私人咨询RM30–RM80，紧急RM150–RM500，专科RM200–RM400。血检RM80–RM250，X光RM100–RM300。政府DVS诊所RM5–RM20。治疗前请索取详细报价。',
   quickFacts: {
     avgCost: 'RM30 – RM500 每次就诊',
     timeRequired: '30–90分钟',

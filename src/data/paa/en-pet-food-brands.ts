@@ -7,8 +7,8 @@ export const petFoodBrandsArticle: PAAArticle = {
   lang: 'en',
   title: 'What Are the Best Pet Food Brands in Malaysia?',
   directAnswer:
-    'The best pet food brands widely available in Malaysia include Royal Canin (RM80–RM280/bag), Hill\'s Science Diet (RM90–RM300), Orijen (RM180–RM350), Acana (RM150–RM280), and locally trusted brands like Pedigree (RM30–RM90) and Whiskas (RM25–RM70). Premium grain-free options like Taste of the Wild (RM120–RM230) are increasingly popular.',
-  tldr: 'Premium brands (Royal Canin, Hill\'s, Orijen) cost RM150–RM350 per bag but offer better nutrition. Mid-range brands (Taste of the Wild, Acana) cost RM120–RM280. Budget brands (Pedigree, Whiskas) cost RM25–RM90. Always check AAFCO or FEDIAF certification and avoid brands with excessive fillers.',
+    'The best pet food brands available in Malaysia are Royal Canin (RM80–RM280), Hill\'s Science Diet (RM90–RM300), Orijen (RM180–RM350), and Acana (RM150–RM280). Mid-range options include Taste of the Wild (RM120–RM230). Budget-friendly Pedigree and Whiskas cost RM25–RM90 per bag. Always check AAFCO certification.',
+  tldr: 'Top Malaysia pet food brands: Royal Canin, Hill\'s Science Diet, Orijen, Acana (RM80–RM350). Mid-range Taste of the Wild RM120–RM230. Budget Pedigree/Whiskas RM25–RM90. Always look for AAFCO or FEDIAF certification on the bag.',
   quickFacts: {
     avgCost: 'RM25 – RM350 per bag',
     timeRequired: '10 minutes (research)',

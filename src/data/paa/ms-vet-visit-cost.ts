@@ -7,8 +7,8 @@ export const msVetVisitCostArticle: PAAArticle = {
   lang: 'ms',
   title: 'Berapakah Kos Lawatan Veterinar di Malaysia?',
   directAnswer:
-    'Konsultasi veterinar standard di Malaysia berharga RM30 hingga RM80 untuk pemeriksaan asas. Lawatan kecemasan antara RM150 hingga RM500, manakala konsultasi pakar boleh mencecah RM200 hingga RM400. Kos tambahan untuk ujian darah, X-ray, atau ubat dikenakan secara berasingan.',
-  tldr: 'Konsultasi asas berharga RM30–RM80. Lawatan kecemasan dan luar waktu jauh lebih mahal (RM150–RM500). Ujian darah RM80–RM250, X-ray RM100–RM300. Klinik veterinar kerajaan (JPV) menawarkan kadar bersubsidi bermula RM5–RM20 setiap lawatan.',
+    'Konsultasi veterinar standard di Malaysia berharga RM30–RM80 di klinik swasta. Lawatan kecemasan atau luar waktu RM150–RM500, dan konsultasi pakar RM200–RM400. Ujian seperti darah (RM80–RM250) dan X-ray (RM100–RM300) dicaj berasingan. Klinik kerajaan DVS menawarkan kadar bersubsidi RM5–RM20.',
+  tldr: 'Kos lawatan veterinar Malaysia: RM30–RM80 konsultasi swasta, RM150–RM500 kecemasan, RM200–RM400 pakar. Ujian darah RM80–RM250, X-ray RM100–RM300. Klinik kerajaan DVS RM5–RM20. Sentiasa minta sebut harga terperinci sebelum rawatan.',
   quickFacts: {
     avgCost: 'RM30 – RM500 setiap lawatan',
     timeRequired: '30–90 minit',

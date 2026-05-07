@@ -7,8 +7,8 @@ export const groomingCostArticle: PAAArticle = {
   lang: 'en',
   title: 'How Much Does Dog Grooming Cost in Malaysia?',
   directAnswer:
-    'Dog grooming in Malaysia costs RM50 to RM200 per session depending on breed size, coat type, and services included. Basic grooming (bath, nail trim, ear cleaning) starts at RM50 for small dogs, while full grooming with haircut for large breeds can reach RM200 or more.',
-  tldr: 'Small dog grooming starts at RM50, medium dogs RM80–RM120, and large dogs RM120–RM200. Full grooming includes bath, blow-dry, nail trimming, ear cleaning, and haircut. Mobile grooming costs 20–30% more. Grooming every 4–8 weeks is recommended for most breeds.',
+    'Dog grooming in Malaysia costs RM50–RM200 per session. Small dogs start at RM50, medium dogs cost RM80–RM120, and large breeds reach RM120–RM200. Full grooming covers bath, blow-dry, nail trim, ear cleaning, and haircut. Mobile grooming is 20–30% more. Most dogs need grooming every 4–8 weeks.',
+  tldr: 'Malaysia dog grooming: RM50–RM200 per session. Small dogs from RM50, medium RM80–RM120, large RM120–RM200. Mobile grooming costs 20–30% more. Schedule every 4–8 weeks for most breeds. Includes bath, nails, ears, and haircut.',
   quickFacts: {
     avgCost: 'RM50 – RM200/session',
     timeRequired: '1–3 hours per session',

@@ -7,8 +7,8 @@ export const petDentalCareArticle: PAAArticle = {
   lang: 'en',
   title: 'How Much Does Pet Dental Care Cost in Malaysia?',
   directAnswer:
-    'Pet dental cleaning in Malaysia costs RM200–RM800 depending on the severity and whether anesthesia is required. A routine dental scaling under anesthesia typically costs RM300–RM600. Tooth extraction adds RM50–RM200 per tooth.',
-  tldr: 'Pet dental cleaning costs RM200–RM800 in Malaysia. Anesthesia is required for proper scaling. Tooth extractions cost RM50–RM200 each. Regular brushing at home can reduce the need for professional cleaning.',
+    'Pet dental cleaning in Malaysia costs RM200–RM800. Routine scaling under general anaesthesia is RM300–RM600, while tooth extractions add RM50–RM200 per tooth. Severe periodontal cases can exceed RM1,000. Daily home brushing reduces the need for professional cleaning and prevents costly disease.',
+  tldr: 'Pet dental cleaning Malaysia: RM200–RM800. Scaling under anaesthesia RM300–RM600, extractions RM50–RM200 per tooth. Severe periodontal disease can exceed RM1,000. Brush at home daily and book a vet check yearly to prevent escalation.',
   quickFacts: {
     avgCost: 'RM300 – RM600 (scaling)',
     timeRequired: 'Half day (with anesthesia)',

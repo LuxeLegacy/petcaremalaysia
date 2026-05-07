@@ -7,8 +7,8 @@ export const msFleaTreatmentArticle: PAAArticle = {
   lang: 'ms',
   title: 'Bagaimana Merawat dan Mencegah Kutu pada Haiwan di Malaysia?',
   directAnswer:
-    'Rawatan kutu di Malaysia berharga RM30–RM80 sebulan untuk pencegahan titisan seperti Frontline atau Revolution. Rawatan oral (NexGard, Bravecto) berharga RM50–RM120. Pencegahan sepanjang tahun adalah penting dalam iklim tropika Malaysia di mana kutu membiak berterusan.',
-  tldr: 'Iklim hangat dan lembap Malaysia bermakna risiko kutu sepanjang tahun. Rawatan titisan bulanan (RM30–RM80) atau tablet kunyah oral (RM50–RM120) adalah penting. Rawat SEMUA haiwan dalam rumah serentak dan tangani persekitaran rumah untuk kawalan berkesan.',
+    'Rawatan kutu di Malaysia berharga RM30–RM80 sebulan untuk produk titisan seperti Frontline atau Revolution, atau RM50–RM120 untuk tablet kunyah seperti NexGard atau Bravecto. Pencegahan sepanjang tahun adalah wajib dalam iklim tropika. Serangan teruk di rumah memerlukan kawalan perosak tambahan RM200–RM500.',
+  tldr: 'Rawatan kutu Malaysia: RM30–RM80 sebulan untuk titisan, atau RM50–RM120 untuk tablet kunyah. Rawat semua haiwan peliharaan serentak dan bersihkan rumah. Pencegahan sepanjang tahun penting kerana iklim tropika menggalakkan pembiakan kutu.',
   quickFacts: {
     avgCost: 'RM30 – RM120/bulan (pencegahan)',
     timeRequired: '5 minit (sapuan)',

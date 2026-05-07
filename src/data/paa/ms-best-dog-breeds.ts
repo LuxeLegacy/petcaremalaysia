@@ -7,8 +7,8 @@ export const msBestDogBreedsArticle: PAAArticle = {
   lang: 'ms',
   title: 'Apakah Baka Anjing Terbaik untuk Iklim Malaysia?',
   directAnswer:
-    'Baka anjing terbaik untuk iklim tropika Malaysia termasuk Anjing Campuran Malaysia (anjing kampung), Shih Tzu, Miniature Schnauzer, Pudel, dan Beagle. Baka-baka ini tahan panas dan kelembapan dengan baik disebabkan saiz lebih kecil, bulu lebih pendek, atau penyesuaian semula jadi kepada iklim panas.',
-  tldr: 'Pilih baka dengan bulu pendek, badan lebih kecil, dan toleransi haba untuk cuaca panas dan lembap Malaysia. Elakkan baka berbulu tebal seperti Husky dan Saint Bernard. Baka campuran (anjing kampung) paling sesuai secara semula jadi. Persekitaran berpenyaman udara memperluaskan pilihan anda.',
+    'Baka anjing terbaik untuk Malaysia ialah Anjing Kampung, Shih Tzu, Miniature Schnauzer, Poodle, dan Beagle. Baka ini sesuai dengan iklim tropika kerana saiz kecil, bulu pendek, atau adaptasi tempatan. Elakkan baka berbulu tebal seperti Husky dan Saint Bernard yang tidak tahan haba dan kelembapan Malaysia.',
+  tldr: 'Baka anjing terbaik Malaysia: Anjing Kampung, Shih Tzu, Mini Schnauzer, Poodle, Beagle. Pilih badan kecil dan bulu pendek untuk haba tropika. Elakkan Husky dan Saint Bernard. Rumah berhawa dingin meluaskan pilihan anda.',
   quickFacts: {
     avgCost: 'RM500 – RM8,000 (pembelian)',
     timeRequired: '2–4 minggu (kajian + cari penternak)',

@@ -7,8 +7,8 @@ export const msGroomingCostArticle: PAAArticle = {
   lang: 'ms',
   title: 'Berapakah Kos Dandanan Anjing di Malaysia?',
   directAnswer:
-    'Dandanan anjing di Malaysia berharga RM50 hingga RM200 setiap sesi bergantung kepada saiz baka, jenis bulu, dan perkhidmatan yang disertakan. Dandanan asas (mandi, potong kuku, bersihkan telinga) bermula pada RM50 untuk anjing kecil, manakala dandanan penuh dengan potongan rambut untuk baka besar boleh mencecah RM200 atau lebih.',
-  tldr: 'Dandanan anjing kecil bermula pada RM50, anjing sederhana RM80–RM120, dan anjing besar RM120–RM200. Dandanan penuh termasuk mandi, tiup kering, potong kuku, bersihkan telinga, dan potongan rambut. Dandanan mudah alih berharga 20–30% lebih mahal. Dandanan setiap 4–8 minggu disyorkan untuk kebanyakan baka.',
+    'Dandanan anjing di Malaysia berharga RM50–RM200 setiap sesi. Anjing kecil bermula RM50, sederhana RM80–RM120, besar RM120–RM200. Dandanan lengkap merangkumi mandi, keringkan, potong kuku, cuci telinga, dan potong bulu. Dandanan bergerak 20–30% lebih mahal. Kebanyakan anjing perlu dandan setiap 4–8 minggu.',
+  tldr: 'Dandanan anjing Malaysia: RM50–RM200 sesesi. Kecil dari RM50, sederhana RM80–RM120, besar RM120–RM200. Dandanan bergerak 20–30% lebih mahal. Jadualkan setiap 4–8 minggu. Termasuk mandi, kuku, telinga dan potong bulu.',
   quickFacts: {
     avgCost: 'RM50 – RM200/sesi',
     timeRequired: '1–3 jam setiap sesi',

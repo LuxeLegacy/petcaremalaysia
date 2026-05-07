@@ -7,8 +7,8 @@ export const msDogVaccinesArticle: PAAArticle = {
   lang: 'ms',
   title: 'Apakah Vaksin yang Diperlukan Anjing di Malaysia?',
   directAnswer:
-    'Anjing di Malaysia memerlukan vaksin teras termasuk DHPP (Distemper, Hepatitis, Parvovirus, Parainfluenza) bermula pada umur 6–8 minggu dengan penggalak pada 10–12 dan 14–16 minggu, serta vaksinasi rabies tahunan yang diwajibkan. Vaksin bukan teras seperti Leptospirosis dan Batuk Kennel juga amat disyorkan.',
-  tldr: 'Anak anjing memerlukan 3 pusingan vaksin DHPP pada 6–8, 10–12, dan 14–16 minggu, serta rabies pada 12–16 minggu. Penggalak tahunan diperlukan. Jumlah kos vaksinasi anak anjing RM200–RM500. Rabies diwajibkan oleh undang-undang di Malaysia. Leptospirosis amat disyorkan kerana iklim tropika.',
+    'Anjing di Malaysia memerlukan vaksin teras: DHPP pada usia 6–8, 10–12, dan 14–16 minggu, ditambah vaksin rabies pada 12–16 minggu, dan suntikan ulangan tahunan. Vaksin Leptospirosis dan Kennel Cough sangat digalakkan kerana iklim tropika. Kos lengkap vaksin anak anjing ialah RM200–RM500.',
+  tldr: 'Anak anjing Malaysia perlu tiga dos DHPP (6–8, 10–12, 14–16 minggu) ditambah rabies pada 12–16 minggu. Suntikan ulangan tahunan diwajibkan undang-undang. Jumlah kos: RM200–RM500. Tambah Leptospirosis dan Kennel Cough untuk perlindungan tropika.',
   quickFacts: {
     avgCost: 'RM200 – RM500 (siri anak anjing)',
     timeRequired: '3 lawatan vet dalam 8–10 minggu',

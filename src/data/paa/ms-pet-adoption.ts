@@ -7,8 +7,8 @@ export const msPetAdoptionArticle: PAAArticle = {
   lang: 'ms',
   title: 'Bagaimana untuk Mengadopsi Haiwan Peliharaan di Malaysia?',
   directAnswer:
-    'Untuk mengadopsi haiwan peliharaan di Malaysia, lawati pusat perlindungan berdaftar seperti SPCA Selangor, PAWS Malaysia, atau layari PetFinder.my. Yuran adopsi antara RM50 hingga RM200 dan biasanya termasuk vaksinasi, pensterilan, dan pemasangan mikrocip. Proses ini mengambil masa 1–2 minggu termasuk penilaian rumah.',
-  tldr: 'Adopsi haiwan di Malaysia berpatutan (RM50–RM200) dan termasuk vaksinasi serta pensterilan. Pusat perlindungan utama termasuk SPCA, PAWS, dan platform dalam talian seperti PetFinder.my. Jangkakan proses saringan dengan pemeriksaan rumah. Mengadopsi lebih murah dan lebih beretika berbanding membeli dari kedai haiwan.',
+    'Untuk mengambil haiwan peliharaan di Malaysia, lawati pusat perlindungan seperti SPCA Selangor, PAWS, atau PetFinder.my. Yuran pengambilan RM50–RM200 termasuk vaksin, pensterilan, dan microchip. Proses mengambil masa 1–2 minggu termasuk pemeriksaan rumah dan temu duga.',
+  tldr: 'Pengambilan haiwan Malaysia berharga RM50–RM200 termasuk vaksin, pensterilan dan microchip. Mohon melalui SPCA, PAWS atau PetFinder.my. Pemeriksaan rumah diperlukan dan proses ambil 1–2 minggu. Lebih murah dan beretika daripada kedai haiwan.',
   quickFacts: {
     avgCost: 'RM50 – RM200 (yuran adopsi)',
     timeRequired: '1–2 minggu',

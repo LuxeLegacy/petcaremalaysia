@@ -7,8 +7,8 @@ export const petAllergyTreatmentArticle: PAAArticle = {
   lang: 'en',
   title: 'Pet Allergy Treatment Cost in Malaysia',
   directAnswer:
-    'Pet allergy diagnosis and treatment in Malaysia costs RM200–RM2,000 depending on severity. Initial allergy work-up costs RM300–RM800 (including skin tests or blood tests). Ongoing management with medications costs RM100–RM500/month.',
-  tldr: 'Pet allergies are common in Malaysia\'s humid climate. Diagnosis costs RM300–RM800, and monthly medication runs RM100–RM500. Immunotherapy (desensitization) is the most effective long-term treatment at RM2,000–RM5,000/year.',
+    'Pet allergy treatment in Malaysia costs RM200–RM2,000 depending on severity. Initial diagnosis with skin or blood tests runs RM300–RM800. Monthly medication management costs RM100–RM500. Long-term immunotherapy desensitisation is the most effective option at RM2,000–RM5,000 per year.',
+  tldr: 'Pet allergy costs in Malaysia: RM300–RM800 to diagnose, RM100–RM500 monthly for medication. Immunotherapy gives the best long-term results at RM2,000–RM5,000 yearly. Allergies are common because of the humid tropical climate.',
   quickFacts: {
     avgCost: 'RM300 – RM800 (diagnosis)',
     timeRequired: 'Months to years for full management',

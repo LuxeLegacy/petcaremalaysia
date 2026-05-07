@@ -7,8 +7,8 @@ export const seniorPetCareArticle: PAAArticle = {
   lang: 'en',
   title: 'Senior Pet Care Guide Malaysia: Costs, Health & Tips',
   directAnswer:
-    'Senior pet care in Malaysia costs RM500–RM2,000+ annually beyond routine care due to increased vet visits, medications, and specialized food. Dogs are considered senior at 7–10 years (depending on breed), cats at 10–12 years.',
-  tldr: 'Senior pets need bi-annual vet check-ups, possible joint supplements (RM80–RM200/month), and may require special diets (RM50–RM120/month extra). Annual senior wellness costs run RM500–RM2,000 above regular expenses.',
+    'Senior pet care in Malaysia costs RM500–RM2,000+ per year on top of routine expenses. Dogs are senior at 7–10 years and cats at 10–12 years. Bi-annual vet check-ups, joint supplements (RM80–RM200/month), special diets (RM50–RM120 extra), and chronic medications drive the higher cost.',
+  tldr: 'Senior pet care Malaysia: RM500–RM2,000+ extra per year. Dogs senior at 7–10 years, cats at 10–12. Plan bi-annual check-ups, joint supplements (RM80–RM200/month) and possible special diets. Catch arthritis and kidney issues early.',
   quickFacts: {
     avgCost: 'RM500 – RM2,000/year additional',
     timeRequired: 'Ongoing',

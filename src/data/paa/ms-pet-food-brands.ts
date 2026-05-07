@@ -7,8 +7,8 @@ export const msPetFoodBrandsArticle: PAAArticle = {
   lang: 'ms',
   title: 'Apakah Jenama Makanan Haiwan Peliharaan Terbaik di Malaysia?',
   directAnswer:
-    'Jenama makanan haiwan terbaik di Malaysia termasuk Royal Canin (RM80–RM280/beg), Hill\'s Science Diet (RM90–RM300), Orijen (RM180–RM350), Acana (RM150–RM280), dan jenama dipercayai tempatan seperti Pedigree (RM30–RM90) dan Whiskas (RM25–RM70). Pilihan tanpa bijirin premium seperti Taste of the Wild (RM120–RM230) semakin popular.',
-  tldr: 'Jenama premium (Royal Canin, Hill\'s, Orijen) berharga RM150–RM350 setiap beg tetapi menawarkan nutrisi lebih baik. Jenama sederhana (Taste of the Wild, Acana) RM120–RM280. Jenama jimat (Pedigree, Whiskas) RM25–RM90. Sentiasa semak pensijilan AAFCO atau FEDIAF.',
+    'Jenama makanan haiwan peliharaan terbaik di Malaysia ialah Royal Canin (RM80–RM280), Hill\'s Science Diet (RM90–RM300), Orijen (RM180–RM350), dan Acana (RM150–RM280). Pilihan sederhana termasuk Taste of the Wild (RM120–RM230). Pedigree dan Whiskas berharga RM25–RM90. Sentiasa semak pensijilan AAFCO.',
+  tldr: 'Jenama makanan haiwan Malaysia terbaik: Royal Canin, Hill\'s, Orijen, Acana (RM80–RM350). Sederhana Taste of the Wild RM120–RM230. Bajet Pedigree/Whiskas RM25–RM90. Cari pensijilan AAFCO atau FEDIAF pada bungkusan.',
   quickFacts: {
     avgCost: 'RM25 – RM350 setiap beg',
     timeRequired: '10 minit (kajian)',

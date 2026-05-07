@@ -7,8 +7,8 @@ export const petBoardingCostArticle: PAAArticle = {
   lang: 'en',
   title: 'How Much Does Pet Boarding Cost in Malaysia?',
   directAnswer:
-    'Pet boarding in Malaysia costs RM25–RM120 per night depending on the type of facility, pet size, and location. Basic kennel boarding starts at RM25–RM40/night, while luxury pet hotels with individual suites and 24-hour care can reach RM80–RM120/night.',
-  tldr: 'Pet boarding rates in Malaysia range from RM25 (basic kennel) to RM120/night (luxury hotel). Prices vary by pet size, location, and services included. KL and Selangor have higher rates than other states.',
+    'Pet boarding in Malaysia costs RM25–RM120 per night. Basic kennel boarding is RM25–RM40, mid-range pet hotels are RM50–RM80, and luxury suites with 24-hour care reach RM80–RM120. Rates depend on pet size, location, and services. KL and Selangor charge the highest prices.',
+  tldr: 'Pet boarding Malaysia: RM25–RM120 per night. Basic kennel RM25–RM40, mid-range RM50–RM80, luxury RM80–RM120. KL and Selangor are most expensive. Book early during school holidays and Hari Raya for best availability.',
   quickFacts: {
     avgCost: 'RM25 – RM120/night',
     timeRequired: 'Advance booking required (1–4 weeks)',

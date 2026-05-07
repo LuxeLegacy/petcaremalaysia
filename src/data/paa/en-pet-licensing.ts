@@ -7,8 +7,8 @@ export const petLicensingArticle: PAAArticle = {
   lang: 'en',
   title: 'Pet Licensing Requirements in Malaysia: Dog License Guide',
   directAnswer:
-    'Dog licensing in Malaysia costs RM10–RM50 annually depending on your local authority (PBT). Dogs must be licensed within 3 months of ownership. Requirements typically include valid rabies vaccination and sometimes microchipping. Cats generally do not require a license.',
-  tldr: 'Dog licenses cost RM10–RM50/year in Malaysia, obtained from your local council (DBKL, MBPJ, etc.). Rabies vaccination is mandatory. Some areas require microchipping. Unlicensed dogs can be impounded. Cats don\'t need licenses in most areas.',
+    'Dog licensing in Malaysia costs RM10–RM50 per year, paid to your local council (PBT) such as DBKL or MBPJ. Dogs must be licensed within 3 months of ownership. Valid rabies vaccination is mandatory, and some councils also require microchipping. Cats generally do not need a licence in Malaysia.',
+  tldr: 'Malaysia dog licence: RM10–RM50/year from your local council (DBKL, MBPJ). License within 3 months. Rabies vaccine mandatory; some areas need microchip. Unlicensed dogs can be impounded. Cats do not need a licence in most areas.',
   quickFacts: {
     avgCost: 'RM10 – RM50/year',
     timeRequired: '30 minutes to apply',

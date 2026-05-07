@@ -7,8 +7,8 @@ export const petInsuranceCostArticle: PAAArticle = {
   lang: 'en',
   title: 'How Much Does Pet Insurance Cost in Malaysia?',
   directAnswer:
-    'Pet insurance in Malaysia typically costs RM95 to RM300 per month depending on coverage type, pet age, breed, and health conditions. Basic accident-only plans start around RM95/month, while comprehensive plans covering illness, accidents, and wellness can reach RM300/month or more.',
-  tldr: 'Pet insurance costs vary based on multiple factors. Basic accident coverage starts at RM95/month, while comprehensive plans reach RM300/month. Prices increase for older pets and certain breeds. Oyen and MSIG are the most popular providers in Malaysia.',
+    'Pet insurance in Malaysia costs RM95–RM300 per month. Basic accident-only plans start at RM95, while comprehensive plans covering illness, surgery, and wellness reach RM300+. Premiums rise with pet age and breed risk. Oyen and MSIG are the most popular Malaysian providers; PetCo and Bjak compare plans across insurers.',
+  tldr: 'Malaysia pet insurance: RM95–RM300/month. Accident-only plans from RM95, comprehensive from RM200. Premiums rise with age and breed. Top providers: Oyen and MSIG. Pre-existing conditions are excluded — enrol pets while still young and healthy.',
   quickFacts: {
     avgCost: 'RM95 – RM300/month',
     timeRequired: '15–30 minutes (application)',
