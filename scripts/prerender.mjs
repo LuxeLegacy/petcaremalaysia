@@ -603,6 +603,7 @@ for (const a of paaArticles) {
     description: home.d.en,
     h1: home.h1.en,
     intro: home.d.en,
+    jsonLd: [buildOrganization()],
   });
   fs.writeFileSync(tmplPath, html, 'utf8');
 }
