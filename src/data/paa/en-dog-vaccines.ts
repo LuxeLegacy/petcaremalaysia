@@ -2,7 +2,7 @@ import type { PAAArticle } from '@/lib/paaTypes';
 
 export const dogVaccinesArticle: PAAArticle = {
   id: 4,
-  slug: 'what-vaccines-dogs-need-malaysia',
+  slug: 'what-vaccines-do-dogs-need-malaysia',
   category: 'veterinary-services',
   lang: 'en',
   title: 'What Vaccines Do Dogs Need in Malaysia?',

@@ -68,7 +68,7 @@ Local Considerations: Malaysian Housing and Development Board (DBKL/local counci
   relatedQuestions: [
     { question: 'How to adopt a pet in Malaysia?', briefAnswer: 'Visit SPCA, PAWS, or PetFinder.my. Adoption fees range from RM50–RM200 and typically include vaccination and sterilization.', slug: 'how-to-adopt-pet-malaysia' },
     { question: 'Do I need a dog license in Malaysia?', briefAnswer: 'Yes, most Malaysian states require annual dog licensing through your local council, costing RM10–RM50 per year.', slug: 'dog-license-malaysia' },
-    { question: 'What vaccines do dogs need in Malaysia?', briefAnswer: 'Dogs need core vaccines (DHPP) at 6-8 weeks, boosters at 10-12 and 14-16 weeks, plus annual rabies vaccination.', slug: 'what-vaccines-dogs-need-malaysia' },
+    { question: 'What vaccines do dogs need in Malaysia?', briefAnswer: 'Dogs need core vaccines (DHPP) at 6-8 weeks, boosters at 10-12 and 14-16 weeks, plus annual rabies vaccination.', slug: 'what-vaccines-do-dogs-need-malaysia' },
   ],
   citations: [
     { source: 'Department of Veterinary Services Malaysia', title: 'Guidelines on Pet Ownership', publication: 'DVS.gov.my', year: '2024', url: 'https://www.dvs.gov.my' },

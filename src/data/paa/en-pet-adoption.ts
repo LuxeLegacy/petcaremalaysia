@@ -68,7 +68,7 @@ Requirements: Adopters generally need to be at least 21 years old, show valid ID
   relatedQuestions: [
     { question: 'How much does pet insurance cost in Malaysia?', briefAnswer: 'Pet insurance costs RM95–RM300/month depending on coverage type, pet age, and breed.', slug: 'how-much-does-pet-insurance-cost-malaysia' },
     { question: 'What are the best dog breeds for Malaysia climate?', briefAnswer: 'Shih Tzu, Poodle, Beagle, and Malaysian Mixed Breeds are best suited for the tropical heat.', slug: 'best-dog-breeds-malaysia-climate' },
-    { question: 'What vaccines do dogs need in Malaysia?', briefAnswer: 'Dogs need DHPP core vaccines at 6-8 weeks with boosters, plus annual rabies vaccination.', slug: 'what-vaccines-dogs-need-malaysia' },
+    { question: 'What vaccines do dogs need in Malaysia?', briefAnswer: 'Dogs need DHPP core vaccines at 6-8 weeks with boosters, plus annual rabies vaccination.', slug: 'what-vaccines-do-dogs-need-malaysia' },
   ],
   citations: [
     { source: 'SPCA Selangor', title: 'Adoption Process & Fees', publication: 'SPCA.org.my', year: '2024', url: 'https://www.spca.org.my' },
