@@ -280,6 +280,7 @@ let count = 0;
 // Static routes
 for (const r of STATIC_ROUTES) {
   for (const lang of LANGS) {
+    const extra = r.p === '' ? [buildOrganization()] : [];
     const html = renderPage({
       pathRel: r.p,
       lang,
@@ -287,6 +288,7 @@ for (const r of STATIC_ROUTES) {
       description: r.d[lang],
       h1: r.h1[lang],
       intro: r.d[lang],
+      jsonLd: extra,
     });
     writeRoute(r.p, lang, html);
     count++;
@@ -311,6 +313,14 @@ for (const [slug, name] of STATES) {
       ms: `S&J kecemasan haiwan ${name}`,
       zh: `${name}宠物急症问答`,
     };
+    const faqSchema = {
+      '@context': 'https://schema.org', '@type': 'FAQPage',
+      mainEntity: [{
+        '@type': 'Question',
+        name: lang === 'en' ? `What should I do in a pet emergency in ${name}?` : lang === 'ms' ? `Apa perlu saya lakukan dalam kecemasan haiwan di ${name}?` : `${name}发生宠物急症时该怎么办？`,
+        acceptedAnswer: { '@type': 'Answer', text: descs[lang] },
+      }],
+    };
     const html = renderPage({
       pathRel: `/qa/${slug}`,
       lang,
@@ -318,6 +328,7 @@ for (const [slug, name] of STATES) {
       description: descs[lang],
       h1: h1s[lang],
       intro: descs[lang],
+      jsonLd: [faqSchema],
     });
     writeRoute(`/qa/${slug}`, lang, html);
     count++;
@@ -343,6 +354,16 @@ for (const c of cities) {
       ms: `Perkhidmatan haiwan di ${c.name}, ${c.state}`,
       zh: `${c.name}（${c.state}）宠物护理服务`,
     };
+    const localBiz = {
+      '@context': 'https://schema.org', '@type': 'LocalBusiness',
+      '@id': `${SITE}/${c.stateSlug}/${c.slug}#localbusiness`,
+      name: `PetCare Malaysia — ${c.name}`,
+      description: descs[lang],
+      url: `${SITE}${localizedPath(lang, `/${c.stateSlug}/${c.slug}`)}`,
+      areaServed: { '@type': 'City', name: c.name, containedInPlace: { '@type': 'AdministrativeArea', name: c.state } },
+      address: { '@type': 'PostalAddress', addressLocality: c.name, addressRegion: c.state, addressCountry: 'MY' },
+      priceRange: 'RM',
+    };
     const html = renderPage({
       pathRel: `/${c.stateSlug}/${c.slug}`,
       lang,
@@ -350,6 +371,7 @@ for (const c of cities) {
       description: descs[lang],
       h1: h1s[lang],
       intro: descs[lang],
+      jsonLd: [localBiz],
     });
     writeRoute(`/${c.stateSlug}/${c.slug}`, lang, html);
     count++;
