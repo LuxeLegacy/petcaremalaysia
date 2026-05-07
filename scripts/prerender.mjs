@@ -507,16 +507,8 @@ for (const c of cities) {
       ms: `Perkhidmatan haiwan di ${c.name}, ${c.state}`,
       zh: `${c.name}（${c.state}）宠物护理服务`,
     };
-    const localBiz = {
-      '@context': 'https://schema.org', '@type': 'LocalBusiness',
-      '@id': `${SITE}/${c.stateSlug}/${c.slug}#localbusiness`,
-      name: `PetCare Malaysia — ${c.name}`,
-      description: descs[lang],
-      url: `${SITE}${localizedPath(lang, `/${c.stateSlug}/${c.slug}`)}`,
-      areaServed: { '@type': 'City', name: c.name, containedInPlace: { '@type': 'AdministrativeArea', name: c.state } },
-      address: { '@type': 'PostalAddress', addressLocality: c.name, addressRegion: c.state, addressCountry: 'MY' },
-      priceRange: 'RM',
-    };
+    const vetCare = buildVeterinaryCareCity(c, lang, descs[lang]);
+    const cityFaq = buildFAQPage(cityFAQs(c, lang));
     const html = renderPage({
       pathRel: `/${c.stateSlug}/${c.slug}`,
       lang,
@@ -524,7 +516,7 @@ for (const c of cities) {
       description: descs[lang],
       h1: h1s[lang],
       intro: descs[lang],
-      jsonLd: [localBiz],
+      jsonLd: [vetCare, cityFaq],
     });
     writeRoute(`/${c.stateSlug}/${c.slug}`, lang, html);
     count++;
