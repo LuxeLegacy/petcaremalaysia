@@ -234,6 +234,141 @@ function buildBreadcrumb(pathRel, h1) {
   return { '@context': 'https://schema.org', '@type': 'BreadcrumbList', itemListElement: items };
 }
 
+function buildFAQPage(qas) {
+  return {
+    '@context': 'https://schema.org', '@type': 'FAQPage',
+    mainEntity: qas.map((qa) => ({
+      '@type': 'Question',
+      name: qa.q,
+      acceptedAnswer: { '@type': 'Answer', text: qa.a },
+    })),
+  };
+}
+
+function buildVeterinaryCareCity(c, lang, descLang) {
+  return {
+    '@context': 'https://schema.org', '@type': 'VeterinaryCare',
+    '@id': `${SITE}/${c.stateSlug}/${c.slug}#veterinarycare`,
+    name: `PetCare Malaysia — ${c.name}`,
+    description: descLang,
+    url: `${SITE}${localizedPath(lang, `/${c.stateSlug}/${c.slug}`)}`,
+    areaServed: { '@type': 'City', name: c.name, containedInPlace: { '@type': 'AdministrativeArea', name: c.state } },
+    address: { '@type': 'PostalAddress', addressLocality: c.name, addressRegion: c.state, addressCountry: 'MY' },
+    priceRange: 'RM',
+    medicalSpecialty: 'VeterinaryCare',
+  };
+}
+
+function buildHowTo({ name, description, url, steps, totalTime }) {
+  return {
+    '@context': 'https://schema.org', '@type': 'HowTo',
+    name,
+    description: `${description} Educational only — always consult a licensed Malaysian vet.`,
+    url,
+    ...(totalTime ? { totalTime } : {}),
+    step: steps.map((s, i) => ({
+      '@type': 'HowToStep',
+      position: i + 1,
+      name: s.name,
+      text: s.text,
+      ...(s.url ? { url: s.url } : {}),
+    })),
+  };
+}
+
+function cityFAQs(c, lang) {
+  if (lang === 'ms') return [
+    { q: `Di mana saya boleh cari vet kecemasan 24 jam di ${c.name}?`, a: `Gunakan direktori PetCareMY untuk menyenaraikan klinik vet kecemasan 24/7 yang disahkan di ${c.name}, ${c.state}, dengan nombor telefon dan waktu operasi.` },
+    { q: `Berapakah purata kos lawatan vet di ${c.name}?`, a: `Konsultasi vet di ${c.name} biasanya RM30–RM80, manakala lawatan kecemasan boleh mencecah RM150–RM500 bergantung pada rawatan.` },
+    { q: `Bila saya perlu bawa haiwan saya ke vet kecemasan di ${c.name}?`, a: `Bawa segera jika haiwan anda muntah berulang, gusi pucat, sukar bernafas, kejang, atau tidak bermaya. Hubungi klinik dahulu jika boleh.` },
+    { q: `Adakah PetCareMY mengesahkan klinik vet di ${c.name}?`, a: `Ya. Setiap klinik yang disenaraikan untuk ${c.name} disemak terhadap pendaftaran DVS Malaysia dan ulasan awam.` },
+    { q: `Adakah insurans haiwan diperlukan di ${c.name}?`, a: `Insurans tidak wajib tetapi bermula dari RM25/bulan dan boleh menampung kos kecemasan ribuan ringgit di klinik ${c.name}.` },
+    { q: `Bagaimana saya menggunakan alat penilaian kecemasan PetCareMY?`, a: `Jawab 17 soalan ringkas (kira-kira 90 saat) untuk skor kecemasan dan vet terdekat yang disyorkan di ${c.name}.` },
+  ];
+  if (lang === 'zh') return [
+    { q: `我在${c.name}哪里可以找到24小时紧急兽医？`, a: `使用PetCareMY目录可查看${c.name}（${c.state}）经过验证的24/7急诊兽医诊所，附电话和营业时间。` },
+    { q: `${c.name}看兽医平均费用是多少？`, a: `${c.name}的兽医咨询通常为RM30–RM80，急诊就诊根据治疗可能达RM150–RM500。` },
+    { q: `我应该什么时候带宠物去${c.name}的急诊兽医？`, a: `如果出现反复呕吐、牙龈苍白、呼吸困难、抽搐或精神萎靡，请立即就医。如可能请先致电诊所。` },
+    { q: `PetCareMY是否核实${c.name}的兽医诊所？`, a: `是。${c.name}列出的每家诊所均依据马来西亚兽医局（DVS）注册和公开评价进行核查。` },
+    { q: `在${c.name}需要购买宠物保险吗？`, a: `保险并非强制，但每月仅RM25起，可覆盖${c.name}诊所数千令吉的急诊费用。` },
+    { q: `如何使用PetCareMY的急症评估工具？`, a: `回答17个简短问题（约90秒），即可获得紧急程度评分以及${c.name}附近推荐的兽医。` },
+  ];
+  return [
+    { q: `Where can I find a 24-hour emergency vet in ${c.name}?`, a: `Use the PetCareMY directory to view verified 24/7 emergency vet clinics in ${c.name}, ${c.state}, with phone numbers and operating hours.` },
+    { q: `How much does a vet visit cost in ${c.name}?`, a: `Vet consultations in ${c.name} typically cost RM30–RM80, while emergency visits can reach RM150–RM500 depending on treatment.` },
+    { q: `When should I take my pet to an emergency vet in ${c.name}?`, a: `Go immediately if your pet is vomiting repeatedly, has pale gums, trouble breathing, seizures, or is unresponsive. Phone the clinic first if possible.` },
+    { q: `Does PetCareMY verify vet clinics in ${c.name}?`, a: `Yes. Every clinic listed for ${c.name} is checked against Malaysia's DVS registration and public reviews.` },
+    { q: `Is pet insurance necessary in ${c.name}?`, a: `Insurance is not mandatory but starts from RM25/month and can cover thousands of ringgit in emergency costs at ${c.name} clinics.` },
+    { q: `How do I use the PetCareMY emergency assessment tool?`, a: `Answer 17 short questions (about 90 seconds) to get an urgency score and nearest recommended vets in ${c.name}.` },
+  ];
+}
+
+function qaHubFAQs(lang) {
+  if (lang === 'ms') return [
+    { q: 'Bagaimana PetCareMY menjawab soalan haiwan saya?', a: 'Soalan dijawab oleh AI yang dilatih pada panduan vet Malaysia dan disemak oleh vet berkelayakan untuk topik perubatan.' },
+    { q: 'Adakah perkhidmatan S&J ini percuma?', a: 'Ya. Soal-jawab kecemasan, kos vet dan panduan penjagaan haiwan adalah percuma di semua 14 negeri Malaysia.' },
+    { q: 'Boleh saya tanya tentang dos ubat haiwan?', a: 'Tidak. Atas sebab keselamatan, kami tidak memberi dos ubat — sila rujuk vet berlesen di Malaysia.' },
+    { q: 'Bagaimana saya tahu bila ini kecemasan vet sebenar?', a: 'Gunakan alat penilaian kecemasan 90 saat kami atau hubungi vet 24/7 terdekat dengan segera.' },
+  ];
+  if (lang === 'zh') return [
+    { q: 'PetCareMY如何回答我的宠物问题？', a: '问题由经过马来西亚兽医指南训练的AI回答，医疗主题由合格兽医审核。' },
+    { q: '问答服务是免费的吗？', a: '是的。马来西亚14个州的急症问答、兽医费用和宠物护理指南均免费提供。' },
+    { q: '我可以询问宠物药物剂量吗？', a: '不可以。出于安全考虑，我们不提供药物剂量——请咨询马来西亚持牌兽医。' },
+    { q: '如何判断这是真正的兽医急症？', a: '使用我们的90秒急症评估工具或立即联系最近的24/7兽医。' },
+  ];
+  return [
+    { q: 'How does PetCareMY answer my pet questions?', a: 'Questions are answered by AI trained on Malaysian veterinary guidelines and reviewed by qualified vets for medical topics.' },
+    { q: 'Is the Q&A service free?', a: 'Yes. Emergency Q&A, vet costs and pet care guides are free across all 14 Malaysian states.' },
+    { q: 'Can I ask about pet medication dosages?', a: 'No. For safety reasons we do not provide dosages — please consult a licensed Malaysian vet.' },
+    { q: 'How do I know if this is a real vet emergency?', a: 'Use our 90-second emergency assessment tool or contact your nearest 24/7 vet immediately.' },
+  ];
+}
+
+function assessmentHowToSteps(lang) {
+  if (lang === 'ms') return [
+    { name: 'Perhatikan gejala', text: 'Senaraikan tanda-tanda yang anda nampak: muntah, lemah, gusi pucat, sukar bernafas atau kejang.' },
+    { name: 'Periksa tanda vital', text: 'Semak nafas, denyut nadi dan kesedaran haiwan anda dengan tenang.' },
+    { name: 'Jawab 17 soalan triage', text: 'Gunakan alat percuma 90 saat untuk menilai tahap kecemasan haiwan anda.' },
+    { name: 'Dapatkan skor & vet terdekat', text: 'Terima skor kecemasan dan senarai vet 24/7 terdekat yang disahkan di kawasan anda.' },
+    { name: 'Hubungi klinik vet', text: 'Hubungi klinik dahulu, terangkan gejala, dan ikut arahan pengangkutan selamat.' },
+  ];
+  if (lang === 'zh') return [
+    { name: '观察症状', text: '记录所见症状：呕吐、虚弱、牙龈苍白、呼吸困难或抽搐。' },
+    { name: '检查生命体征', text: '冷静地检查宠物的呼吸、脉搏和意识状态。' },
+    { name: '回答17个分诊问题', text: '使用免费的90秒工具评估宠物的紧急程度。' },
+    { name: '获取评分和最近兽医', text: '获得紧急评分和您所在地区经过验证的24/7兽医名单。' },
+    { name: '联系兽医诊所', text: '先致电诊所，说明症状，并按照安全运输指示操作。' },
+  ];
+  return [
+    { name: 'Observe the symptoms', text: 'List the signs you see: vomiting, weakness, pale gums, breathing trouble, or seizures.' },
+    { name: 'Check vital signs', text: 'Calmly check your pet\'s breathing, pulse, and level of consciousness.' },
+    { name: 'Answer 17 triage questions', text: 'Use the free 90-second tool to assess your pet\'s emergency level.' },
+    { name: 'Get an urgency score & nearest vets', text: 'Receive an urgency score and a list of verified 24/7 vets near your location.' },
+    { name: 'Contact the vet clinic', text: 'Phone the clinic first, describe the symptoms, and follow safe-transport instructions.' },
+  ];
+}
+
+function guideHowToSteps(lang) {
+  if (lang === 'ms') return [
+    { name: 'Tenang & nilai keadaan', text: 'Pastikan tempat selamat. Perhatikan tanda kritikal: pernafasan, kesedaran, pendarahan.' },
+    { name: 'Kenal pasti tanda merah', text: 'Gusi pucat/biru, kejang, muntah berulang, atau trauma memerlukan vet segera.' },
+    { name: 'Hubungi vet 24/7', text: 'Hubungi klinik kecemasan terdekat dan terangkan gejala dengan jelas.' },
+    { name: 'Pengangkutan selamat', text: 'Gunakan pembawa atau tuala. Sokong leher dan elakkan pergerakan tidak perlu.' },
+  ];
+  if (lang === 'zh') return [
+    { name: '保持冷静并评估', text: '确保环境安全。检查关键体征：呼吸、意识、出血。' },
+    { name: '识别红色警报症状', text: '牙龈苍白/发紫、抽搐、反复呕吐或外伤需立即就医。' },
+    { name: '联系24/7兽医', text: '致电最近的急诊诊所并清楚说明症状。' },
+    { name: '安全运输', text: '使用宠物笼或毛巾。支撑颈部，避免不必要的移动。' },
+  ];
+  return [
+    { name: 'Stay calm and assess', text: 'Make the area safe. Check critical signs: breathing, consciousness, bleeding.' },
+    { name: 'Identify red-flag symptoms', text: 'Pale or blue gums, seizures, repeated vomiting, or trauma need immediate vet care.' },
+    { name: 'Call a 24/7 vet', text: 'Phone the nearest emergency clinic and describe symptoms clearly.' },
+    { name: 'Transport safely', text: 'Use a carrier or towel. Support the neck and avoid unnecessary movement.' },
+  ];
+}
+
 function buildOrganization() {
   return {
     '@context': 'https://schema.org', '@type': 'Organization',
