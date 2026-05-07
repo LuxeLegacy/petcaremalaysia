@@ -416,6 +416,24 @@ let count = 0;
 for (const r of STATIC_ROUTES) {
   for (const lang of LANGS) {
     const extra = r.p === '' ? [buildOrganization()] : [];
+    if (r.p === '/qa') {
+      extra.push(buildFAQPage(qaHubFAQs(lang)));
+    } else if (r.p === '/assessment') {
+      extra.push(buildHowTo({
+        name: r.h1[lang],
+        description: r.d[lang],
+        url: `${SITE}${localizedPath(lang, r.p)}`,
+        steps: assessmentHowToSteps(lang),
+        totalTime: 'PT90S',
+      }));
+    } else if (r.p === '/emergency-guide') {
+      extra.push(buildHowTo({
+        name: r.h1[lang],
+        description: r.d[lang],
+        url: `${SITE}${localizedPath(lang, r.p)}`,
+        steps: guideHowToSteps(lang),
+      }));
+    }
     const html = renderPage({
       pathRel: r.p,
       lang,
