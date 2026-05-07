@@ -570,6 +570,15 @@ const paaArticles = extractPaaSlugs();
 for (const a of paaArticles) {
   for (const lang of LANGS) {
     const pathRel = `/qa/article/${a.slug}`;
+    const paaArticleSchema = {
+      '@context': 'https://schema.org', '@type': 'Article',
+      headline: a.title, description: a.description || a.title,
+      url: `${SITE}${localizedPath(lang, pathRel)}`,
+      author: { '@type': 'Organization', name: 'PetCare Malaysia' },
+      publisher: { '@type': 'Organization', name: 'PetCare Malaysia', logo: { '@type': 'ImageObject', url: `${SITE}/logo.png` } },
+      mainEntityOfPage: `${SITE}${localizedPath(lang, pathRel)}`,
+      inLanguage: lang,
+    };
     const html = renderPage({
       pathRel,
       lang,
@@ -577,6 +586,7 @@ for (const a of paaArticles) {
       description: a.description || a.title,
       h1: a.title,
       intro: a.description,
+      jsonLd: [paaArticleSchema],
     });
     writeRoute(pathRel, lang, html);
     count++;
