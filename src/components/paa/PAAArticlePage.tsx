@@ -80,6 +80,7 @@ export const PAAArticlePage = ({ article }: PAAArticlePageProps) => {
 
           {/* Direct Answer (FIRST) */}
           <DirectAnswerBox answer={article.directAnswer} />
+          <QuickAnswerBox answer={article.directAnswer} />
 
           {/* TL;DR */}
           <div className="bg-[#e8f4fd] rounded-lg p-5 my-6">
