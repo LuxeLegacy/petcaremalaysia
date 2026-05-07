@@ -220,25 +220,46 @@ function ogLocaleFor(lang) {
   return lang === 'zh' ? 'zh_CN' : lang === 'ms' ? 'ms_MY' : 'en_MY';
 }
 
+function buildBreadcrumb(pathRel, h1) {
+  const items = [{ '@type': 'ListItem', position: 1, name: 'Home', item: SITE + '/' }];
+  if (pathRel) {
+    const parts = pathRel.split('/').filter(Boolean);
+    let acc = '';
+    parts.forEach((seg, i) => {
+      acc += '/' + seg;
+      const name = i === parts.length - 1 ? h1 : seg.replace(/-/g, ' ').replace(/\b\w/g, (c) => c.toUpperCase());
+      items.push({ '@type': 'ListItem', position: i + 2, name, item: SITE + acc });
+    });
+  }
+  return { '@context': 'https://schema.org', '@type': 'BreadcrumbList', itemListElement: items };
+}
+
+function buildOrganization() {
+  return {
+    '@context': 'https://schema.org', '@type': 'Organization',
+    name: 'PetCare Malaysia', url: SITE, logo: SITE + '/logo.png',
+    sameAs: ['https://facebook.com/petcaremalaysia', 'https://instagram.com/petcaremalaysia'],
+  };
+}
+
 function renderPage({ pathRel, lang, title, description, h1, intro, links, jsonLd }) {
   const alternates = LANGS.map((l) => [l, `${SITE}${localizedPath(l, pathRel)}`]);
   const canonical = `${SITE}${localizedPath(lang, pathRel)}`;
   const head = buildHead({ title, description, canonical, alternates, ogLocale: ogLocaleFor(lang) });
   const body = buildBodySnippet({ h1, intro, links });
-  const jsonLdHtml = jsonLd ? `<script type="application/ld+json">${JSON.stringify(jsonLd)}</script>` : '';
+  const schemas = [buildBreadcrumb(pathRel, h1)];
+  if (Array.isArray(jsonLd)) schemas.push(...jsonLd);
+  else if (jsonLd) schemas.push(jsonLd);
+  const jsonLdHtml = schemas.map((s) => `<script type="application/ld+json">${JSON.stringify(s)}</script>`).join('\n    ');
 
   let html = template;
-  // Replace lang attr
   html = html.replace(/<html lang="[^"]*">/, `<html lang="${lang}">`);
-  // Strip existing title/description/canonical/og/twitter/alternate tags so per-route ones win
   html = html.replace(/<title>[\s\S]*?<\/title>/, '');
   html = html.replace(/<meta\s+name="(?:title|description|keywords)"[^>]*>/g, '');
   html = html.replace(/<meta\s+property="(?:og:[^"]+|twitter:[^"]+)"[^>]*>/g, '');
   html = html.replace(/<link\s+rel="canonical"[^>]*>/g, '');
   html = html.replace(/<link\s+rel="alternate"[^>]*hreflang="[^"]*"[^>]*>/g, '');
-  // Inject head tags right before </head>
   html = html.replace('</head>', `    ${head}\n    ${jsonLdHtml}\n  </head>`);
-  // Inject body snippet inside the root div
   html = html.replace('<div id="root"></div>', `<div id="root">${body}</div>`);
   return html;
 }
@@ -259,6 +280,7 @@ let count = 0;
 // Static routes
 for (const r of STATIC_ROUTES) {
   for (const lang of LANGS) {
+    const extra = r.p === '' ? [buildOrganization()] : [];
     const html = renderPage({
       pathRel: r.p,
       lang,
@@ -266,6 +288,7 @@ for (const r of STATIC_ROUTES) {
       description: r.d[lang],
       h1: r.h1[lang],
       intro: r.d[lang],
+      jsonLd: extra,
     });
     writeRoute(r.p, lang, html);
     count++;
@@ -290,6 +313,14 @@ for (const [slug, name] of STATES) {
       ms: `S&J kecemasan haiwan ${name}`,
       zh: `${name}宠物急症问答`,
     };
+    const faqSchema = {
+      '@context': 'https://schema.org', '@type': 'FAQPage',
+      mainEntity: [{
+        '@type': 'Question',
+        name: lang === 'en' ? `What should I do in a pet emergency in ${name}?` : lang === 'ms' ? `Apa perlu saya lakukan dalam kecemasan haiwan di ${name}?` : `${name}发生宠物急症时该怎么办？`,
+        acceptedAnswer: { '@type': 'Answer', text: descs[lang] },
+      }],
+    };
     const html = renderPage({
       pathRel: `/qa/${slug}`,
       lang,
@@ -297,6 +328,7 @@ for (const [slug, name] of STATES) {
       description: descs[lang],
       h1: h1s[lang],
       intro: descs[lang],
+      jsonLd: [faqSchema],
     });
     writeRoute(`/qa/${slug}`, lang, html);
     count++;
@@ -322,6 +354,16 @@ for (const c of cities) {
       ms: `Perkhidmatan haiwan di ${c.name}, ${c.state}`,
       zh: `${c.name}（${c.state}）宠物护理服务`,
     };
+    const localBiz = {
+      '@context': 'https://schema.org', '@type': 'LocalBusiness',
+      '@id': `${SITE}/${c.stateSlug}/${c.slug}#localbusiness`,
+      name: `PetCare Malaysia — ${c.name}`,
+      description: descs[lang],
+      url: `${SITE}${localizedPath(lang, `/${c.stateSlug}/${c.slug}`)}`,
+      areaServed: { '@type': 'City', name: c.name, containedInPlace: { '@type': 'AdministrativeArea', name: c.state } },
+      address: { '@type': 'PostalAddress', addressLocality: c.name, addressRegion: c.state, addressCountry: 'MY' },
+      priceRange: 'RM',
+    };
     const html = renderPage({
       pathRel: `/${c.stateSlug}/${c.slug}`,
       lang,
@@ -329,6 +371,7 @@ for (const c of cities) {
       description: descs[lang],
       h1: h1s[lang],
       intro: descs[lang],
+      jsonLd: [localBiz],
     });
     writeRoute(`/${c.stateSlug}/${c.slug}`, lang, html);
     count++;
@@ -357,6 +400,13 @@ for (const slug of dentalSlugs) {
       ms: `Panduan disemak vet untuk ${pretty.toLowerCase()} pada anjing: punca, tanda amaran, pilihan rawatan, dan pencegahan di Malaysia.`,
       zh: `兽医审核的狗${pretty}指南：原因、警示症状、治疗方案以及马来西亚的预防方法。`,
     };
+    const medicalSchema = {
+      '@context': 'https://schema.org', '@type': 'MedicalWebPage',
+      name: titles[lang], description: descs[lang],
+      url: `${SITE}${localizedPath(lang, pathRel)}`,
+      about: { '@type': 'MedicalCondition', name: pretty },
+      audience: { '@type': 'PeopleAudience', name: 'Pet owners in Malaysia' },
+    };
     const html = renderPage({
       pathRel,
       lang,
@@ -364,6 +414,7 @@ for (const slug of dentalSlugs) {
       description: descs[lang],
       h1: titles[lang].split(' | ')[0],
       intro: descs[lang],
+      jsonLd: [medicalSchema],
     });
     writeRoute(pathRel, lang, html);
     count++;
@@ -401,6 +452,12 @@ for (const slug of urinarySlugs) {
       ms: `Panduan untuk ${prettyLabel.toLowerCase()} pada ${speciesLabel.ms.toLowerCase()}: tanda amaran, bila perlu jumpa vet, dan rawatan di Malaysia.`,
       zh: `${speciesLabel.zh}${prettyLabel}指南：警示信号、何时送医以及马来西亚治疗方法。`,
     };
+    const urinaryMedical = {
+      '@context': 'https://schema.org', '@type': 'MedicalWebPage',
+      name: titles[lang], description: descs[lang],
+      url: `${SITE}${localizedPath(lang, pathRel)}`,
+      about: { '@type': 'MedicalCondition', name: `${speciesLabel.en} ${prettyLabel}` },
+    };
     const html = renderPage({
       pathRel,
       lang,
@@ -408,6 +465,7 @@ for (const slug of urinarySlugs) {
       description: descs[lang],
       h1: titles[lang].split(' | ')[0],
       intro: descs[lang],
+      jsonLd: [urinaryMedical],
     });
     writeRoute(pathRel, lang, html);
     count++;
@@ -441,6 +499,16 @@ for (const p of blogPosts) {
       ms: `Panduan ${p.category.toLowerCase()} haiwan untuk pemilik di Malaysia: ${pretty.toLowerCase()}. Nasihat disemak vet, kos dalam RM, dan arahan langkah demi langkah.`,
       zh: `为马来西亚宠物主人提供的${p.category}指南：${pretty}。兽医审核的建议、马币费用与分步说明。`,
     };
+    const articleSchema = {
+      '@context': 'https://schema.org', '@type': 'Article',
+      headline: pretty, description: descs[lang],
+      url: `${SITE}${localizedPath(lang, `/blog/${p.slug}`)}`,
+      author: { '@type': 'Organization', name: 'PetCare Malaysia' },
+      publisher: { '@type': 'Organization', name: 'PetCare Malaysia', logo: { '@type': 'ImageObject', url: `${SITE}/logo.png` } },
+      mainEntityOfPage: `${SITE}${localizedPath(lang, `/blog/${p.slug}`)}`,
+      inLanguage: lang,
+      articleSection: p.category,
+    };
     const html = renderPage({
       pathRel: `/blog/${p.slug}`,
       lang,
@@ -448,6 +516,7 @@ for (const p of blogPosts) {
       description: descs[lang],
       h1: pretty,
       intro: descs[lang],
+      jsonLd: [articleSchema],
     });
     writeRoute(`/blog/${p.slug}`, lang, html);
     count++;
@@ -501,6 +570,15 @@ const paaArticles = extractPaaSlugs();
 for (const a of paaArticles) {
   for (const lang of LANGS) {
     const pathRel = `/qa/article/${a.slug}`;
+    const paaArticleSchema = {
+      '@context': 'https://schema.org', '@type': 'Article',
+      headline: a.title, description: a.description || a.title,
+      url: `${SITE}${localizedPath(lang, pathRel)}`,
+      author: { '@type': 'Organization', name: 'PetCare Malaysia' },
+      publisher: { '@type': 'Organization', name: 'PetCare Malaysia', logo: { '@type': 'ImageObject', url: `${SITE}/logo.png` } },
+      mainEntityOfPage: `${SITE}${localizedPath(lang, pathRel)}`,
+      inLanguage: lang,
+    };
     const html = renderPage({
       pathRel,
       lang,
@@ -508,6 +586,7 @@ for (const a of paaArticles) {
       description: a.description || a.title,
       h1: a.title,
       intro: a.description,
+      jsonLd: [paaArticleSchema],
     });
     writeRoute(pathRel, lang, html);
     count++;
@@ -524,6 +603,7 @@ for (const a of paaArticles) {
     description: home.d.en,
     h1: home.h1.en,
     intro: home.d.en,
+    jsonLd: [buildOrganization()],
   });
   fs.writeFileSync(tmplPath, html, 'utf8');
 }
