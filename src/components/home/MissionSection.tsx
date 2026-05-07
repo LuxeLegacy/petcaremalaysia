@@ -23,7 +23,7 @@ export const MissionSection = () => {
           {/* Story Card with Image */}
           <div className="grid md:grid-cols-2 gap-8 items-center mb-12">
             <div className="rounded-3xl overflow-hidden shadow-elevated">
-              <img 
+              <img loading="lazy" decoding="async" 
                 src={happyPets} 
                 alt="Happy pets playing together" 
                 className="w-full h-64 md:h-80 object-cover"

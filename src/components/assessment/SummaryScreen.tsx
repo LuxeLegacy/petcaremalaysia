@@ -337,7 +337,7 @@ export function SummaryScreen({
                 className="relative w-24 h-24 rounded-lg overflow-hidden bg-muted border border-border"
               >
                 {previews[index] && (
-                  <img
+                  <img loading="lazy" decoding="async"
                     src={previews[index]}
                     alt={`Photo ${index + 1}`}
                     className="w-full h-full object-cover"

@@ -118,7 +118,7 @@ export const ArticleLayout = ({
 
           {/* Featured Image */}
           <figure className="mb-10">
-            <img
+            <img loading="lazy" decoding="async"
               src={heroImage}
               alt={heroImageAlt}
               className="w-full h-auto rounded-2xl shadow-lg"

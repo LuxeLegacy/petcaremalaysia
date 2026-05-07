@@ -133,7 +133,7 @@ const EmergencyPetCareGuide = () => {
 
           {/* Featured Image */}
           <figure className="mb-10">
-            <img 
+            <img loading="lazy" decoding="async" 
               src="https://images.unsplash.com/photo-1587300003388-59208cc962cb?w=1200&h=600&fit=crop" 
               alt={content.heroImageAlt}
               className="w-full h-auto rounded-2xl shadow-lg" 
@@ -813,7 +813,7 @@ const PetFoodBrandsGuide = () => {
 
           {/* Featured Image */}
           <figure className="mb-10">
-            <img 
+            <img loading="lazy" decoding="async" 
               src="https://images.unsplash.com/photo-1548199973-03cce0bbc87b?w=1200&h=600&fit=crop" 
               alt={content.heroImageAlt}
               className="w-full h-auto rounded-2xl shadow-lg" 
