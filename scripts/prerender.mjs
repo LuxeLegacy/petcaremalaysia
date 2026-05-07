@@ -1,0 +1,438 @@
+#!/usr/bin/env node
+/**
+ * Postbuild prerender: writes per-route index.html files into dist/ with
+ * unique <title>, meta description, canonical, hreflang, OG tags, JSON-LD,
+ * and a body snippet (H1 + intro). React's createRoot().render() replaces
+ * the snippet on mount, so users still get the SPA — but bots and AI
+ * crawlers see real per-page HTML.
+ *
+ * Run after `vite build`.
+ */
+import fs from 'node:fs';
+import path from 'node:path';
+import { fileURLToPath } from 'node:url';
+
+const __dirname = path.dirname(fileURLToPath(import.meta.url));
+const root = path.resolve(__dirname, '..');
+const distDir = path.join(root, 'dist');
+const tmplPath = path.join(distDir, 'index.html');
+
+if (!fs.existsSync(tmplPath)) {
+  console.error('[prerender] dist/index.html missing — did `vite build` run?');
+  process.exit(1);
+}
+
+const template = fs.readFileSync(tmplPath, 'utf8');
+const SITE = 'https://petcaremalaysia.com';
+
+// ---------- Data extraction (regex-parse TS source; no TS imports needed) ----------
+
+function extractCities() {
+  const src = fs.readFileSync(path.join(root, 'src/lib/cityData.ts'), 'utf8');
+  const re = /\{\s*name:\s*"([^"]+)"\s*,\s*hub:\s*"[^"]+"\s*,\s*state:\s*"([^"]+)"\s*,[^}]*slug:\s*"([^"]+)"\s*,\s*stateSlug:\s*"([^"]+)"\s*\}/g;
+  const cities = [];
+  let m;
+  while ((m = re.exec(src)) !== null) {
+    cities.push({ name: m[1], state: m[2], slug: m[3], stateSlug: m[4] });
+  }
+  return cities;
+}
+
+function listSlugs(dir) {
+  if (!fs.existsSync(dir)) return [];
+  return fs.readdirSync(dir)
+    .filter((f) => f.endsWith('.ts') && f !== 'hub.ts')
+    .map((f) => f.replace(/\.ts$/, ''));
+}
+
+function extractPaaSlugs() {
+  const dir = path.join(root, 'src/data/paa');
+  const articles = [];
+  for (const file of fs.readdirSync(dir)) {
+    if (!file.startsWith('en-') || !file.endsWith('.ts')) continue;
+    const src = fs.readFileSync(path.join(dir, file), 'utf8');
+    const slugMatch = src.match(/slug:\s*['"]([^'"]+)['"]/);
+    const titleMatch = src.match(/title:\s*['"]([^'"]+)['"]/);
+    const metaTitleMatch = src.match(/metaTitle:\s*['"]([^'"]+)['"]/);
+    const metaDescMatch = src.match(/metaDescription:\s*['"]([^'"]+)['"]/);
+    if (slugMatch) {
+      articles.push({
+        slug: slugMatch[1],
+        title: metaTitleMatch?.[1] || titleMatch?.[1] || slugMatch[1],
+        description: metaDescMatch?.[1] || '',
+      });
+    }
+  }
+  return articles;
+}
+
+// ---------- Route definitions ----------
+
+const STATES = [
+  ['selangor', 'Selangor'], ['kuala-lumpur', 'W.P. Kuala Lumpur'], ['johor', 'Johor'],
+  ['penang', 'Penang'], ['perak', 'Perak'], ['sarawak', 'Sarawak'], ['sabah', 'Sabah'],
+  ['melaka', 'Melaka'], ['kedah', 'Kedah'], ['pahang', 'Pahang'], ['kelantan', 'Kelantan'],
+  ['terengganu', 'Terengganu'], ['negeri-sembilan', 'Negeri Sembilan'], ['perlis', 'Perlis'],
+];
+
+const LANGS = ['en', 'ms', 'zh'];
+
+const STATIC_ROUTES = [
+  { p: '', t: {
+    en: 'PetCare Malaysia — 24/7 Emergency Vets, Clinics & Pet Services',
+    ms: 'PetCare Malaysia — Vet Kecemasan 24/7, Klinik & Perkhidmatan Haiwan',
+    zh: 'PetCare Malaysia — 24/7紧急兽医、诊所与宠物服务',
+  }, d: {
+    en: 'Find verified 24/7 emergency vets, clinics, grooming and pet services across Malaysia. Trusted by 23,000+ pet owners. Pet insurance from RM25/month.',
+    ms: 'Cari vet kecemasan 24/7, klinik, dandanan dan perkhidmatan haiwan di seluruh Malaysia. Dipercayai oleh 23,000+ pemilik haiwan.',
+    zh: '在马来西亚寻找经过验证的24/7紧急兽医、诊所、美容和宠物服务。23,000+宠物主人信赖。',
+  }, h1: {
+    en: 'Pet emergency? Find a 24/7 vet near you in Malaysia',
+    ms: 'Kecemasan haiwan? Cari vet 24/7 berdekatan di Malaysia',
+    zh: '宠物急症？在马来西亚附近寻找24/7兽医',
+  }},
+  { p: '/locations', t: {
+    en: 'Pet Care Locations Malaysia — 100+ Cities Covered',
+    ms: 'Lokasi Penjagaan Haiwan Malaysia — Lebih 100 Bandar',
+    zh: '马来西亚宠物护理地点 — 覆盖100+城市',
+  }, d: {
+    en: 'Browse pet care services across 100+ Malaysian cities. Find local vets, clinics, and emergency care in your area.',
+    ms: 'Layari perkhidmatan penjagaan haiwan di lebih 100 bandar Malaysia. Cari vet, klinik, dan rawatan kecemasan tempatan.',
+    zh: '浏览100+马来西亚城市的宠物护理服务。寻找您所在地区的本地兽医和急诊。',
+  }, h1: { en: 'Pet care locations across Malaysia', ms: 'Lokasi penjagaan haiwan di Malaysia', zh: '马来西亚各地宠物护理地点' } },
+  { p: '/services', t: {
+    en: 'Pet Services Malaysia — Vets, Grooming, Boarding, Insurance',
+    ms: 'Perkhidmatan Haiwan Malaysia — Vet, Dandanan, Asrama, Insurans',
+    zh: '马来西亚宠物服务 — 兽医、美容、寄养、保险',
+  }, d: {
+    en: 'Complete directory of pet services in Malaysia: emergency vets, grooming, boarding, training, pet food, and insurance providers.',
+    ms: 'Direktori lengkap perkhidmatan haiwan di Malaysia: vet kecemasan, dandanan, asrama, latihan, makanan, dan penyedia insurans.',
+    zh: '马来西亚宠物服务完整目录：紧急兽医、美容、寄养、训练、宠物食品和保险提供商。',
+  }, h1: { en: 'Pet services across Malaysia', ms: 'Perkhidmatan haiwan di Malaysia', zh: '马来西亚宠物服务' } },
+  { p: '/blog', t: {
+    en: 'Pet Care Blog Malaysia — Emergency Guides, Health Tips, Costs',
+    ms: 'Blog Penjagaan Haiwan Malaysia — Panduan Kecemasan, Tip Kesihatan',
+    zh: '马来西亚宠物护理博客 — 急救指南、健康贴士、费用',
+  }, d: {
+    en: 'Expert pet care guides for Malaysian pet owners. Emergency protocols, vet costs (RM), insurance breakdowns, and step-by-step first aid.',
+    ms: 'Panduan penjagaan haiwan untuk pemilik di Malaysia. Protokol kecemasan, kos vet (RM), insurans, dan pertolongan cemas.',
+    zh: '为马来西亚宠物主人提供的专家护理指南。急救协议、兽医费用（RM）、保险分析和分步急救。',
+  }, h1: { en: 'Pet care blog & emergency guides', ms: 'Blog & panduan kecemasan haiwan', zh: '宠物护理博客与急救指南' } },
+  { p: '/qa', t: {
+    en: 'Pet Care Q&A Malaysia — Ask a Vet, Emergency Answers',
+    ms: 'S&J Penjagaan Haiwan Malaysia — Tanya Vet, Jawapan Kecemasan',
+    zh: '马来西亚宠物问答 — 询问兽医、急症答案',
+  }, d: {
+    en: 'Get instant answers to pet emergency and care questions across all 14 Malaysian states. AI-powered Q&A reviewed by qualified vets.',
+    ms: 'Dapatkan jawapan segera untuk soalan kecemasan haiwan di 14 negeri Malaysia. S&J berkuasa AI disemak oleh vet berkelayakan.',
+    zh: '在马来西亚14个州属获取宠物急症与护理问题的即时答案。由合格兽医审核的AI问答。',
+  }, h1: { en: 'Pet care Q&A — All 14 Malaysian states', ms: 'S&J penjagaan haiwan — 14 negeri Malaysia', zh: '宠物护理问答 — 马来西亚14州' } },
+  { p: '/assessment', t: {
+    en: 'Free Pet Emergency Assessment — Triage in 90 Seconds',
+    ms: 'Penilaian Kecemasan Haiwan Percuma — Triage 90 Saat',
+    zh: '免费宠物急症评估 — 90秒分诊',
+  }, d: {
+    en: 'Free 90-second triage tool. Answer 17 questions, get instant urgency score and nearest verified emergency vets in Malaysia.',
+    ms: 'Alat triage percuma 90 saat. Jawab 17 soalan, dapatkan skor kecemasan dan vet kecemasan terdekat di Malaysia.',
+    zh: '免费90秒分诊工具。回答17个问题，获得即时紧急程度评分和马来西亚最近的验证急诊兽医。',
+  }, h1: { en: 'Pet emergency assessment — Free, 90 seconds', ms: 'Penilaian kecemasan haiwan — Percuma, 90 saat', zh: '宠物急症评估 — 免费，90秒' } },
+  { p: '/emergency-guide', t: {
+    en: 'Pet Emergency Guide Malaysia — 47-Page Free Download',
+    ms: 'Panduan Kecemasan Haiwan Malaysia — Muat Turun 47 Halaman',
+    zh: '马来西亚宠物急救指南 — 47页免费下载',
+  }, d: {
+    en: 'Free 47-page pet emergency guide for Malaysian pet owners. Symptoms, first aid, when to rush to the vet, and toxin reference.',
+    ms: 'Panduan kecemasan haiwan 47 halaman percuma untuk pemilik di Malaysia. Gejala, pertolongan cemas, dan rujukan toksin.',
+    zh: '为马来西亚宠物主人提供的47页免费宠物急救指南。症状、急救、何时送医和毒素参考。',
+  }, h1: { en: 'Pet emergency guide — Free 47-page download', ms: 'Panduan kecemasan haiwan — 47 halaman percuma', zh: '宠物急救指南 — 47页免费下载' } },
+  { p: '/vet-clinics', t: {
+    en: 'Verified Vet Clinics Directory Malaysia — 24/7 Emergency',
+    ms: 'Direktori Klinik Vet Disahkan Malaysia — Kecemasan 24/7',
+    zh: '马来西亚验证兽医诊所目录 — 24/7急诊',
+  }, d: {
+    en: 'Directory of verified vet clinics in Malaysia with emergency hours, ratings, contact details, and locations across all states.',
+    ms: 'Direktori klinik vet disahkan di Malaysia dengan waktu kecemasan, penilaian, dan lokasi di semua negeri.',
+    zh: '马来西亚验证兽医诊所目录，包含急诊时间、评级、联系方式和所有州属的位置。',
+  }, h1: { en: 'Verified vet clinics across Malaysia', ms: 'Klinik vet disahkan di Malaysia', zh: '马来西亚验证兽医诊所' } },
+  { p: '/dog-dental-disease', t: {
+    en: 'Dog Dental Disease Guide Malaysia — Symptoms, Costs, Treatment',
+    ms: 'Panduan Penyakit Gigi Anjing Malaysia — Gejala, Kos, Rawatan',
+    zh: '马来西亚狗牙科疾病指南 — 症状、费用、治疗',
+  }, d: {
+    en: 'Complete guide to dog dental disease in Malaysia: symptoms, severity stages, treatment costs (RM), and prevention. Reviewed by vets.',
+    ms: 'Panduan lengkap penyakit gigi anjing di Malaysia: gejala, peringkat keparahan, kos rawatan (RM), dan pencegahan.',
+    zh: '马来西亚狗牙科疾病完整指南：症状、严重阶段、治疗费用（RM）和预防。',
+  }, h1: { en: 'Dog dental disease — Complete Malaysia guide', ms: 'Penyakit gigi anjing — Panduan lengkap Malaysia', zh: '狗牙科疾病 — 马来西亚完整指南' } },
+  { p: '/urinary-tract-disease', t: {
+    en: 'Pet Urinary Tract Disease Malaysia — Cats & Dogs Guide',
+    ms: 'Penyakit Saluran Kencing Haiwan Malaysia — Panduan Kucing & Anjing',
+    zh: '马来西亚宠物泌尿道疾病 — 猫狗指南',
+  }, d: {
+    en: 'Urinary tract disease in cats and dogs: emergency signs (blocked cat), symptoms, conditions, and when to see a vet in Malaysia.',
+    ms: 'Penyakit saluran kencing kucing dan anjing: tanda kecemasan, gejala, dan bila perlu jumpa vet di Malaysia.',
+    zh: '猫狗泌尿道疾病：紧急迹象（猫尿道堵塞）、症状、病况以及马来西亚何时就医。',
+  }, h1: { en: 'Pet urinary tract disease — Cats & dogs', ms: 'Penyakit saluran kencing haiwan — Kucing & anjing', zh: '宠物泌尿道疾病 — 猫与狗' } },
+];
+
+// ---------- Helpers ----------
+
+function localizedPath(lang, p) {
+  if (lang === 'en') return p === '' ? '/' : p;
+  return `/${lang}${p}`;
+}
+
+function escapeHtml(s) {
+  return String(s).replace(/[&<>"']/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
+}
+
+function buildHead({ title, description, canonical, alternates, ogLocale }) {
+  const altTags = alternates
+    .map(([lang, href]) => `<link rel="alternate" hreflang="${lang}" href="${href}" />`)
+    .join('\n    ');
+  return `<title>${escapeHtml(title)}</title>
+    <meta name="title" content="${escapeHtml(title)}" />
+    <meta name="description" content="${escapeHtml(description)}" />
+    <link rel="canonical" href="${canonical}" />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="${canonical}" />
+    <meta property="og:title" content="${escapeHtml(title)}" />
+    <meta property="og:description" content="${escapeHtml(description)}" />
+    <meta property="og:locale" content="${ogLocale}" />
+    <meta property="twitter:card" content="summary_large_image" />
+    <meta property="twitter:url" content="${canonical}" />
+    <meta property="twitter:title" content="${escapeHtml(title)}" />
+    <meta property="twitter:description" content="${escapeHtml(description)}" />
+    ${altTags}
+    <link rel="alternate" hreflang="x-default" href="${alternates[0][1]}" />`;
+}
+
+function buildBodySnippet({ h1, intro, links }) {
+  // Visible to crawlers; replaced by React on mount (createRoot().render()).
+  const linkHtml = (links || []).map((l) => `<li><a href="${l.href}">${escapeHtml(l.label)}</a></li>`).join('');
+  return `<div data-prerender="true" style="position:absolute;left:-9999px;top:auto;width:1px;height:1px;overflow:hidden;">
+      <h1>${escapeHtml(h1)}</h1>
+      ${intro ? `<p>${escapeHtml(intro)}</p>` : ''}
+      ${linkHtml ? `<nav><ul>${linkHtml}</ul></nav>` : ''}
+    </div>`;
+}
+
+function ogLocaleFor(lang) {
+  return lang === 'zh' ? 'zh_CN' : lang === 'ms' ? 'ms_MY' : 'en_MY';
+}
+
+function renderPage({ pathRel, lang, title, description, h1, intro, links, jsonLd }) {
+  const alternates = LANGS.map((l) => [l, `${SITE}${localizedPath(l, pathRel)}`]);
+  const canonical = `${SITE}${localizedPath(lang, pathRel)}`;
+  const head = buildHead({ title, description, canonical, alternates, ogLocale: ogLocaleFor(lang) });
+  const body = buildBodySnippet({ h1, intro, links });
+  const jsonLdHtml = jsonLd ? `<script type="application/ld+json">${JSON.stringify(jsonLd)}</script>` : '';
+
+  let html = template;
+  // Replace lang attr
+  html = html.replace(/<html lang="[^"]*">/, `<html lang="${lang}">`);
+  // Strip existing title/description/canonical/og/twitter/alternate tags so per-route ones win
+  html = html.replace(/<title>[\s\S]*?<\/title>/, '');
+  html = html.replace(/<meta\s+name="(?:title|description|keywords)"[^>]*>/g, '');
+  html = html.replace(/<meta\s+property="(?:og:[^"]+|twitter:[^"]+)"[^>]*>/g, '');
+  html = html.replace(/<link\s+rel="canonical"[^>]*>/g, '');
+  html = html.replace(/<link\s+rel="alternate"[^>]*hreflang="[^"]*"[^>]*>/g, '');
+  // Inject head tags right before </head>
+  html = html.replace('</head>', `    ${head}\n    ${jsonLdHtml}\n  </head>`);
+  // Inject body snippet inside the root div
+  html = html.replace('<div id="root"></div>', `<div id="root">${body}</div>`);
+  return html;
+}
+
+function writeRoute(pathRel, lang, html) {
+  const localized = localizedPath(lang, pathRel);
+  // Skip the english root — it already exists as index.html and is overwritten last
+  const cleanPath = localized.replace(/^\/+/, '');
+  const outDir = cleanPath === '' ? distDir : path.join(distDir, cleanPath);
+  fs.mkdirSync(outDir, { recursive: true });
+  fs.writeFileSync(path.join(outDir, 'index.html'), html, 'utf8');
+}
+
+// ---------- Render ----------
+
+let count = 0;
+
+// Static routes
+for (const r of STATIC_ROUTES) {
+  for (const lang of LANGS) {
+    const html = renderPage({
+      pathRel: r.p,
+      lang,
+      title: r.t[lang],
+      description: r.d[lang],
+      h1: r.h1[lang],
+      intro: r.d[lang],
+    });
+    writeRoute(r.p, lang, html);
+    count++;
+  }
+}
+
+// State Q&A pages
+for (const [slug, name] of STATES) {
+  for (const lang of LANGS) {
+    const titles = {
+      en: `Pet Emergency Q&A for ${name} | PetCareMY`,
+      ms: `S&J Kecemasan Haiwan untuk ${name} | PetCareMY`,
+      zh: `${name}宠物急症问答 | PetCareMY`,
+    };
+    const descs = {
+      en: `Get answers to pet emergency and care questions in ${name}, Malaysia. Local DVS contacts, vet costs, and expert advice.`,
+      ms: `Dapatkan jawapan untuk soalan kecemasan haiwan di ${name}, Malaysia. Kenalan DVS tempatan, kos vet, dan nasihat pakar.`,
+      zh: `获取${name}（马来西亚）宠物急症与护理问题的答案。本地兽医局联系、兽医费用与专家建议。`,
+    };
+    const h1s = {
+      en: `${name} pet emergency Q&A`,
+      ms: `S&J kecemasan haiwan ${name}`,
+      zh: `${name}宠物急症问答`,
+    };
+    const html = renderPage({
+      pathRel: `/qa/${slug}`,
+      lang,
+      title: titles[lang],
+      description: descs[lang],
+      h1: h1s[lang],
+      intro: descs[lang],
+    });
+    writeRoute(`/qa/${slug}`, lang, html);
+    count++;
+  }
+}
+
+// City pages
+const cities = extractCities();
+for (const c of cities) {
+  for (const lang of LANGS) {
+    const titles = {
+      en: `Pet Care ${c.name} — 24/7 Vets, Clinics & Emergency Services`,
+      ms: `Penjagaan Haiwan ${c.name} — Vet 24/7, Klinik & Kecemasan`,
+      zh: `${c.name}宠物护理 — 24/7兽医、诊所与急诊服务`,
+    };
+    const descs = {
+      en: `Find verified vets, clinics, and 24/7 emergency pet services in ${c.name}, ${c.state}. Local vet costs, contacts, and clinic ratings.`,
+      ms: `Cari vet, klinik, dan perkhidmatan haiwan kecemasan 24/7 di ${c.name}, ${c.state}. Kos vet tempatan dan kenalan.`,
+      zh: `在${c.name}（${c.state}）寻找验证兽医、诊所和24/7紧急宠物服务。本地兽医费用、联系方式与诊所评级。`,
+    };
+    const h1s = {
+      en: `Pet care services in ${c.name}, ${c.state}`,
+      ms: `Perkhidmatan haiwan di ${c.name}, ${c.state}`,
+      zh: `${c.name}（${c.state}）宠物护理服务`,
+    };
+    const html = renderPage({
+      pathRel: `/${c.stateSlug}/${c.slug}`,
+      lang,
+      title: titles[lang],
+      description: descs[lang],
+      h1: h1s[lang],
+      intro: descs[lang],
+    });
+    writeRoute(`/${c.stateSlug}/${c.slug}`, lang, html);
+    count++;
+  }
+}
+
+// Dog dental sub-pages
+const dentalSlugs = listSlugs(path.join(root, 'src/data/dog-dental/en'));
+for (const slug of dentalSlugs) {
+  // category from prefix
+  const cat = slug.split('-')[0];
+  const isStandalone = slug === 'emergency-signs' || slug === 'when-to-see-vet';
+  const pathRel = isStandalone
+    ? `/dog-dental-disease/${slug}`
+    : `/dog-dental-disease/${cat === 'conditions' ? 'conditions' : cat === 'symptoms' ? 'symptoms' : cat === 'treatments' ? 'treatments' : cat === 'severity' ? 'severity' : cat === 'diagnosis' ? 'diagnosis' : cat === 'recovery' ? 'recovery' : cat === 'prevention' ? 'prevention' : cat}/${slug.replace(/^[^-]+-/, '')}`;
+
+  for (const lang of LANGS) {
+    const pretty = slug.replace(/-/g, ' ').replace(/\b\w/g, (c) => c.toUpperCase());
+    const titles = {
+      en: `${pretty} in Dogs — Causes, Signs & Treatment | PetCareMY`,
+      ms: `${pretty} pada Anjing — Punca, Tanda & Rawatan | PetCareMY`,
+      zh: `狗${pretty} — 原因、症状与治疗 | PetCareMY`,
+    };
+    const descs = {
+      en: `Vet-reviewed guide to ${pretty.toLowerCase()} in dogs: causes, warning signs, treatment options, and prevention in Malaysia.`,
+      ms: `Panduan disemak vet untuk ${pretty.toLowerCase()} pada anjing: punca, tanda amaran, pilihan rawatan, dan pencegahan di Malaysia.`,
+      zh: `兽医审核的狗${pretty}指南：原因、警示症状、治疗方案以及马来西亚的预防方法。`,
+    };
+    const html = renderPage({
+      pathRel,
+      lang,
+      title: titles[lang],
+      description: descs[lang],
+      h1: titles[lang].split(' | ')[0],
+      intro: descs[lang],
+    });
+    writeRoute(pathRel, lang, html);
+    count++;
+  }
+}
+
+// Urinary sub-pages
+const urinarySlugs = listSlugs(path.join(root, 'src/data/urinary/en'));
+for (const slug of urinarySlugs) {
+  // urinary slug structure: species-category-slug or species-hub
+  const parts = slug.split('-');
+  const species = parts[0]; // cats|dogs
+  const sub = parts.slice(1).join('-');
+  const pathRel = sub === 'hub' ? `/urinary-tract-disease/${species}` : `/urinary-tract-disease/${species}/${sub}`;
+  for (const lang of LANGS) {
+    const pretty = sub.replace(/-/g, ' ').replace(/\b\w/g, (c) => c.toUpperCase());
+    const titles = {
+      en: `${species === 'cats' ? 'Cat' : 'Dog'} ${pretty} — Symptoms & Care | PetCareMY`,
+      ms: `${species === 'cats' ? 'Kucing' : 'Anjing'} ${pretty} — Gejala & Penjagaan | PetCareMY`,
+      zh: `${species === 'cats' ? '猫' : '狗'}${pretty} — 症状与护理 | PetCareMY`,
+    };
+    const descs = {
+      en: `Guide to ${pretty.toLowerCase()} in ${species}: warning signs, when to rush to the vet, and treatment in Malaysia.`,
+      ms: `Panduan untuk ${pretty.toLowerCase()} pada ${species === 'cats' ? 'kucing' : 'anjing'}: tanda amaran, bila perlu jumpa vet, dan rawatan di Malaysia.`,
+      zh: `${species === 'cats' ? '猫' : '狗'}${pretty}指南：警示信号、何时送医以及马来西亚治疗方法。`,
+    };
+    const html = renderPage({
+      pathRel,
+      lang,
+      title: titles[lang],
+      description: descs[lang],
+      h1: titles[lang].split(' | ')[0],
+      intro: descs[lang],
+    });
+    writeRoute(pathRel, lang, html);
+    count++;
+  }
+}
+
+// PAA articles
+const paaArticles = extractPaaSlugs();
+for (const a of paaArticles) {
+  for (const lang of LANGS) {
+    const pathRel = `/qa/article/${a.slug}`;
+    const html = renderPage({
+      pathRel,
+      lang,
+      title: a.title,
+      description: a.description || a.title,
+      h1: a.title,
+      intro: a.description,
+    });
+    writeRoute(pathRel, lang, html);
+    count++;
+  }
+}
+
+// Overwrite root index.html (English homepage) with the prerendered version
+{
+  const home = STATIC_ROUTES[0];
+  const html = renderPage({
+    pathRel: '',
+    lang: 'en',
+    title: home.t.en,
+    description: home.d.en,
+    h1: home.h1.en,
+    intro: home.d.en,
+  });
+  fs.writeFileSync(tmplPath, html, 'utf8');
+}
+
+console.log(`[prerender] wrote ${count} per-route HTML files`);
