@@ -400,6 +400,13 @@ for (const slug of dentalSlugs) {
       ms: `Panduan disemak vet untuk ${pretty.toLowerCase()} pada anjing: punca, tanda amaran, pilihan rawatan, dan pencegahan di Malaysia.`,
       zh: `兽医审核的狗${pretty}指南：原因、警示症状、治疗方案以及马来西亚的预防方法。`,
     };
+    const medicalSchema = {
+      '@context': 'https://schema.org', '@type': 'MedicalWebPage',
+      name: titles[lang], description: descs[lang],
+      url: `${SITE}${localizedPath(lang, pathRel)}`,
+      about: { '@type': 'MedicalCondition', name: pretty },
+      audience: { '@type': 'PeopleAudience', name: 'Pet owners in Malaysia' },
+    };
     const html = renderPage({
       pathRel,
       lang,
@@ -407,6 +414,7 @@ for (const slug of dentalSlugs) {
       description: descs[lang],
       h1: titles[lang].split(' | ')[0],
       intro: descs[lang],
+      jsonLd: [medicalSchema],
     });
     writeRoute(pathRel, lang, html);
     count++;
