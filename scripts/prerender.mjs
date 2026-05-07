@@ -403,7 +403,7 @@ function renderPage({ pathRel, lang, title, description, h1, intro, links, jsonL
   html = html.replace(/<html lang="[^"]*">/, `<html lang="${lang}">`);
   html = html.replace(/<title>[\s\S]*?<\/title>/, '');
   html = html.replace(/<meta\s+name="(?:title|description|keywords)"[^>]*>/g, '');
-  html = html.replace(/<meta\s+property="(?:og:[^"]+|twitter:[^"]+)"[^>]*>/g, '');
+  html = html.replace(/<meta\s+(?:property|name)="(?:og:[^"]+|twitter:[^"]+)"[^>]*>/g, '');
   html = html.replace(/<link\s+rel="canonical"[^>]*>/g, '');
   html = html.replace(/<link\s+rel="alternate"[^>]*hreflang="[^"]*"[^>]*>/g, '');
   html = html.replace('</head>', `    ${head}\n    ${jsonLdHtml}\n  </head>`);
