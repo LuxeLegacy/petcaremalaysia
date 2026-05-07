@@ -1,50 +1,38 @@
-# Fix 2 Broken Q&A Articles (404)
+## Problem
 
-## Root cause
+`index.html` ships with `<html lang="en">`. The prerender script correctly rewrites it to `lang="ms"` / `lang="zh"` for prerendered MS/ZH routes, and `SEOHead` updates it via Helmet on pages that mount it. But:
 
-Both indexed URLs reference Q&A article slugs that don't match what the app/prerender produces:
+1. Not every page renders `SEOHead` (e.g. several routers/landing pages rely on the default).
+2. After client-side navigation between languages (e.g. user switches EN → MS via the language switcher), `document.documentElement.lang` is never updated.
+3. Any non-prerendered SPA fallback under `/ms/*` or `/zh/*` keeps `lang="en"`.
 
-1. **`/qa/article/what-vaccines-do-dogs-need-malaysia`** — Sitemaps and `all-urls.csv` use this slug, but the actual article (`src/data/paa/en-dog-vaccines.ts`) is registered as `what-vaccines-dogs-need-malaysia` (no "do"). Two related PAA articles also internally link to the wrong slug.
+## Fix
 
-2. **`/qa/article/how-to-adopt-pet-malaysia`** — The article exists in `en-pet-adoption.ts` with matching slug and is registered. The 404 is most likely a stale prerender / cached build artifact. We will re-verify after the build.
+Single source of truth for the runtime `<html lang>`: update it from `LanguageContext` whenever the detected language changes.
 
-## Fix strategy: restore canonical content (preferred over 301)
+### Change 1 — `src/contexts/LanguageContext.tsx`
+In `LanguageProviderInner`, add an effect that syncs the attribute:
 
-Restore the indexed URLs so they 200 with their full article content. This preserves accumulated SEO signals.
+```ts
+useEffect(() => {
+  document.documentElement.lang = language;
+}, [language]);
+```
 
-### 1. Align the dog-vaccines slug to match the indexed URL
+This guarantees `<html lang>` matches `/ms/` → `ms` and `/zh/` → `zh` on every route, including SPA fallback and post-navigation changes, and `en` on `/` or `/en`.
 
-Update the article slug from `what-vaccines-dogs-need-malaysia` → `what-vaccines-do-dogs-need-malaysia` (match what Google has indexed and what's in sitemaps).
+### Change 2 — verify prerender (no code change expected)
+`scripts/prerender.mjs` line 256 already does `html.replace(/<html lang="[^"]*">/, …)` per language. Confirm all MS/ZH route loops pass `lang` correctly (they do — `LANGS = ['en','ms','zh']`). No change needed.
 
-Files to edit:
-- `src/data/paa/en-dog-vaccines.ts` — change `slug` field
-- `src/data/paa/en-best-dog-breeds.ts` — fix internal `relatedQuestions` link
-- `src/data/paa/en-pet-adoption.ts` — fix internal `relatedQuestions` link
+### Out of scope
+- `SEOHead` already sets `<html lang>` via Helmet; leave as-is — it stays consistent with the context update.
+- Hreflang tags and canonicals already correct.
 
-(The MS and ZH variants of dog-vaccines use their own translated slugs; sitemap-ms.xml and sitemap-zh.xml use `vaksin-yang-diperlukan-anjing-malaysia` and `ma-lai-xi-ya-gou-xu-yao-shen-me-yi-miao` respectively — verify those match `ms-dog-vaccines.ts` and `zh-dog-vaccines.ts`.)
+## Verification
 
-### 2. Belt-and-suspenders 301 redirect for the old slug
-
-Add a client-side redirect inside `PAAArticleRouter.tsx`: if the requested slug is `what-vaccines-dogs-need-malaysia` (the old one), `Navigate replace` to `/qa/article/what-vaccines-do-dogs-need-malaysia`. This catches any external backlinks still using the old slug.
-
-### 3. Re-verify the adoption URL
-
-After the next prerender run, confirm `dist/qa/article/how-to-adopt-pet-malaysia/index.html` exists and contains the article HTML + Article JSON-LD. If it's still missing, the issue is in `extractPaaSlugs()` or `writeRoute()`. In that case, add a small console log + targeted fix so the file is emitted.
-
-### 4. Update sitemaps and CSVs only if needed
-
-Sitemaps already point at `what-vaccines-do-dogs-need-malaysia`, which after fix #1 will be the live slug — no sitemap change required. `public/all-urls.csv` already matches.
-
-## Out of scope
-
-- No content rewriting, no design changes.
-- No changes to MS/ZH article files unless slug mismatch is found during verification.
-- No changes to the Supabase sitemap edge function unless it emits a wrong slug.
-
-## Verification checklist
-
-- `bun run build` succeeds.
-- `dist/qa/article/what-vaccines-do-dogs-need-malaysia/index.html` exists with Article JSON-LD.
-- `dist/qa/article/how-to-adopt-pet-malaysia/index.html` exists with Article JSON-LD.
-- Visiting `/qa/article/what-vaccines-dogs-need-malaysia` (old slug) in the SPA redirects to the new slug.
-- No TypeScript errors from internal `relatedQuestions` slug changes.
+1. Build and inspect a few prerendered files:
+   - `dist/ms/index.html` → `<html lang="ms">`
+   - `dist/zh/selangor/kajang/index.html` → `<html lang="zh">`
+   - `dist/index.html` → `<html lang="en">`
+2. In preview, navigate `/` → `/ms` via the language switcher and confirm `document.documentElement.lang` flips to `ms` (DevTools).
+3. Hard-load `/zh/blog` (SPA fallback) and confirm `lang="zh"` after hydration.
