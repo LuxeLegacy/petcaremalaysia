@@ -10,6 +10,8 @@ import { InsuranceInfo } from './InsuranceInfo';
 import { CitationsSection } from './CitationsSection';
 import { AuthorBox } from './AuthorBox';
 import { RelatedQuestions } from './RelatedQuestions';
+import { QuickAnswerBox } from '@/components/common/QuickAnswerBox';
+import { VetDisclaimer } from '@/components/common/VetDisclaimer';
 import { useLanguage } from '@/contexts/LanguageContext';
 import type { PAAArticle } from '@/lib/paaTypes';
 import { ArrowRight } from 'lucide-react';
