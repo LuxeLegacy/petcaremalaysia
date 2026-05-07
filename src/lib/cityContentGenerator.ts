@@ -363,7 +363,9 @@ export const generateCityFAQs = (city: CityData, language: Language): GeneratedF
       
       // General FAQs
       { question: `What are common pet health risks in ${city.name}?`, answer: `Pet owners in ${city.name} should watch for: ${metadata.petRisks.slice(0, 3).join(', ')}. The ${metadata.climate} climate also contributes to skin issues and heatstroke. Regular vet check-ups (every 6 months) help catch problems early.`, category: 'general' },
-      { question: `What vaccinations does my pet need in ${city.name}?`, answer: `Pets in ${city.name} need: Dogs — DHPP (distemper, hepatitis, parvovirus, parainfluenza) and rabies. Cats — FVRCP and rabies. Puppies/kittens need 3 rounds starting at 6-8 weeks. Annual boosters cost RM60-RM150 at local vets.`, category: 'general' }
+      { question: `What vaccinations does my pet need in ${city.name}?`, answer: `Pets in ${city.name} need: Dogs — DHPP (distemper, hepatitis, parvovirus, parainfluenza) and rabies. Cats — FVRCP and rabies. Puppies/kittens need 3 rounds starting at 6-8 weeks. Annual boosters cost RM60-RM150 at local vets.`, category: 'general' },
+      { question: `Do I need pet insurance in ${city.name}?`, answer: `Pet insurance in ${city.name} is not legally required, but plans starting from RM25/month can cover 50–80% of emergency bills (RM${metadata.avgEmergencyVetCost.min}–RM${metadata.avgEmergencyVetCost.max}). Without insurance, one major emergency can exceed RM5,000 at private clinics.`, category: 'cost' },
+      { question: `How fast can I get to a 24/7 vet from ${city.name}?`, answer: `From most addresses in ${city.name}, the nearest 24/7 vet is reachable within 10–25 minutes by car. ${metadata.nearestMajorCity ? `${metadata.distanceToHub} to the nearest major emergency hub in ${metadata.nearestMajorCity}.` : ''} Save the WhatsApp +60 11-5695 9227 number for fastest help.`, category: 'emergency' }
     ],
     ms: [
       // Emergency FAQs
@@ -384,7 +386,11 @@ export const generateCityFAQs = (city: CityData, language: Language): GeneratedF
       
       // General FAQs
       { question: `Apakah risiko kesihatan haiwan yang biasa di ${city.name}?`, answer: `Pemilik haiwan di ${city.name} perlu berhati-hati dengan: ${metadata.petRisks.slice(0, 3).join(', ')}. Iklim ${metadata.climate} juga menyumbang kepada masalah kulit dan haba melampau.`, category: 'general' },
-      { question: `Apakah vaksinasi yang diperlukan untuk haiwan saya di ${city.name}?`, answer: `Haiwan di ${city.name} memerlukan: Anjing — DHPP dan rabies. Kucing — FVRCP dan rabies. Anak anjing/kucing memerlukan 3 suntikan bermula pada 6-8 minggu. Suntikan tahunan berharga RM60-RM150.`, category: 'general' }
+      { question: `Apakah vaksinasi yang diperlukan untuk haiwan saya di ${city.name}?`, answer: `Haiwan di ${city.name} memerlukan: Anjing — DHPP dan rabies. Kucing — FVRCP dan rabies. Anak anjing/kucing memerlukan 3 suntikan bermula pada 6-8 minggu. Suntikan tahunan berharga RM60-RM150.`, category: 'general' },
+      { question: `Berapa banyak kos pembedahan haiwan di ${city.name}?`, answer: `Pembedahan haiwan di ${city.name} berbeza-beza: pensterilan RM200-RM600, pembersihan gigi RM300-RM800, pembedahan kecemasan RM1,000-RM8,000+. Insurans haiwan boleh menampung 50-80%.`, category: 'cost' },
+      { question: `Adakah mikrochip haiwan wajib di ${city.name}?`, answer: `Ya, di bawah Akta Kebajikan Haiwan 2015, semua anjing di ${city.name} mesti dimikrochip. Kos RM50-RM100. Lebih 70% haiwan yang hilang berjaya ditemui semula melalui mikrochip.`, category: 'government' },
+      { question: `Adakah saya perlu insurans haiwan di ${city.name}?`, answer: `Insurans haiwan tidak wajib di sisi undang-undang, tetapi pelan dari RM25/bulan boleh menampung 50–80% bil kecemasan (RM${metadata.avgEmergencyVetCost.min}–RM${metadata.avgEmergencyVetCost.max}). Tanpa insurans, satu kecemasan besar boleh melebihi RM5,000.`, category: 'cost' },
+      { question: `Berapa cepat saya boleh sampai ke vet 24/7 dari ${city.name}?`, answer: `Dari kebanyakan alamat di ${city.name}, vet 24/7 terdekat boleh dicapai dalam 10–25 minit memandu. Simpan WhatsApp +60 11-5695 9227 untuk bantuan terpantas.`, category: 'emergency' }
     ],
     zh: [
       // Emergency FAQs
@@ -405,7 +411,11 @@ export const generateCityFAQs = (city: CityData, language: Language): GeneratedF
       
       // General FAQs
       { question: `${city.name}常见的宠物健康风险有哪些？`, answer: `${city.name}的宠物主人应注意：${metadata.petRisks.slice(0, 3).join('、')}。${metadata.climate}气候也会导致皮肤问题和中暑。`, category: 'general' },
-      { question: `我的宠物在${city.name}需要什么疫苗？`, answer: `${city.name}的宠物需要：狗 — DHPP和狂犬病。猫 — FVRCP和狂犬病。幼犬/幼猫从6-8周开始需要3轮接种。年度加强针费用为RM60-RM150。`, category: 'general' }
+      { question: `我的宠物在${city.name}需要什么疫苗？`, answer: `${city.name}的宠物需要：狗 — DHPP和狂犬病。猫 — FVRCP和狂犬病。幼犬/幼猫从6-8周开始需要3轮接种。年度加强针费用为RM60-RM150。`, category: 'general' },
+      { question: `${city.name}的宠物手术费用是多少？`, answer: `${city.name}的宠物手术费用差异很大：绝育RM200-RM600、洁牙RM300-RM800、急诊手术RM1,000-RM8,000+。宠物保险可覆盖50-80%。`, category: 'cost' },
+      { question: `${city.name}强制要求宠物植入芯片吗？`, answer: `是的，根据《2015年动物福利法》，${city.name}所有狗只必须植入芯片。费用RM50-RM100。超过70%走失的宠物通过芯片重新找回。`, category: 'government' },
+      { question: `我在${city.name}需要购买宠物保险吗？`, answer: `${city.name}的宠物保险并非强制，但每月仅RM25起的方案可覆盖50–80%的急诊费用（RM${metadata.avgEmergencyVetCost.min}–RM${metadata.avgEmergencyVetCost.max}）。没有保险，一次重大急诊可能超过RM5,000。`, category: 'cost' },
+      { question: `从${city.name}到24/7兽医多快能到达？`, answer: `从${city.name}的大多数地址，最近的24/7兽医通常可在10–25分钟车程内到达。请保存WhatsApp +60 11-5695 9227以获取最快帮助。`, category: 'emergency' }
     ]
   };
   
