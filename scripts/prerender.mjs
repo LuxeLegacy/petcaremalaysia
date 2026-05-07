@@ -373,22 +373,33 @@ for (const slug of dentalSlugs) {
 // Urinary sub-pages
 const urinarySlugs = listSlugs(path.join(root, 'src/data/urinary/en'));
 for (const slug of urinarySlugs) {
-  // urinary slug structure: species-category-slug or species-hub
+  // urinary slug structure: species-category-slug | species-hub | standalone (e.g. emergency-signs)
   const parts = slug.split('-');
-  const species = parts[0]; // cats|dogs
-  const sub = parts.slice(1).join('-');
-  const pathRel = sub === 'hub' ? `/urinary-tract-disease/${species}` : `/urinary-tract-disease/${species}/${sub}`;
+  const species = parts[0]; // cats|dogs|<standalone first word>
+  const isSpeciesPrefixed = species === 'cats' || species === 'dogs';
+  let pathRel;
+  let prettyLabel;
+  if (!isSpeciesPrefixed) {
+    pathRel = `/urinary-tract-disease/${slug}`;
+    prettyLabel = slug.replace(/-/g, ' ').replace(/\b\w/g, (c) => c.toUpperCase());
+  } else {
+    const sub = parts.slice(1).join('-');
+    pathRel = sub === 'hub' ? `/urinary-tract-disease/${species}` : `/urinary-tract-disease/${species}/${sub}`;
+    prettyLabel = sub.replace(/-/g, ' ').replace(/\b\w/g, (c) => c.toUpperCase());
+  }
   for (const lang of LANGS) {
-    const pretty = sub.replace(/-/g, ' ').replace(/\b\w/g, (c) => c.toUpperCase());
+    const speciesLabel = isSpeciesPrefixed
+      ? { en: species === 'cats' ? 'Cat' : 'Dog', ms: species === 'cats' ? 'Kucing' : 'Anjing', zh: species === 'cats' ? '猫' : '狗' }
+      : { en: 'Pet', ms: 'Haiwan', zh: '宠物' };
     const titles = {
-      en: `${species === 'cats' ? 'Cat' : 'Dog'} ${pretty} — Symptoms & Care | PetCareMY`,
-      ms: `${species === 'cats' ? 'Kucing' : 'Anjing'} ${pretty} — Gejala & Penjagaan | PetCareMY`,
-      zh: `${species === 'cats' ? '猫' : '狗'}${pretty} — 症状与护理 | PetCareMY`,
+      en: `${speciesLabel.en} ${prettyLabel} — Symptoms & Care | PetCareMY`,
+      ms: `${speciesLabel.ms} ${prettyLabel} — Gejala & Penjagaan | PetCareMY`,
+      zh: `${speciesLabel.zh}${prettyLabel} — 症状与护理 | PetCareMY`,
     };
     const descs = {
-      en: `Guide to ${pretty.toLowerCase()} in ${species}: warning signs, when to rush to the vet, and treatment in Malaysia.`,
-      ms: `Panduan untuk ${pretty.toLowerCase()} pada ${species === 'cats' ? 'kucing' : 'anjing'}: tanda amaran, bila perlu jumpa vet, dan rawatan di Malaysia.`,
-      zh: `${species === 'cats' ? '猫' : '狗'}${pretty}指南：警示信号、何时送医以及马来西亚治疗方法。`,
+      en: `Guide to ${prettyLabel.toLowerCase()} in ${speciesLabel.en.toLowerCase()}s: warning signs, when to rush to the vet, and treatment in Malaysia.`,
+      ms: `Panduan untuk ${prettyLabel.toLowerCase()} pada ${speciesLabel.ms.toLowerCase()}: tanda amaran, bila perlu jumpa vet, dan rawatan di Malaysia.`,
+      zh: `${speciesLabel.zh}${prettyLabel}指南：警示信号、何时送医以及马来西亚治疗方法。`,
     };
     const html = renderPage({
       pathRel,
@@ -402,6 +413,88 @@ for (const slug of urinarySlugs) {
     count++;
   }
 }
+
+// Blog posts
+function extractBlogPosts() {
+  const src = fs.readFileSync(path.join(root, 'src/pages/BlogPage.tsx'), 'utf8');
+  const re = /\{\s*id:\s*\d+\s*,\s*slug:\s*'([^']+)'[\s\S]*?category:\s*'([^']+)'[\s\S]*?titleKey:\s*'([^']+)'[\s\S]*?excerptKey:\s*'([^']+)'/g;
+  const out = [];
+  let m;
+  while ((m = re.exec(src)) !== null) {
+    out.push({ slug: m[1], category: m[2], titleKey: m[3] });
+  }
+  return out;
+}
+
+const blogPosts = extractBlogPosts();
+for (const p of blogPosts) {
+  // Generate a readable title from the slug
+  const pretty = p.slug.replace(/-/g, ' ').replace(/\b\w/g, (c) => c.toUpperCase()).replace(/Malaysia/i, 'Malaysia');
+  for (const lang of LANGS) {
+    const titles = {
+      en: `${pretty} — Pet ${p.category} Guide | PetCareMY`,
+      ms: `${pretty} — Panduan ${p.category} Haiwan | PetCareMY`,
+      zh: `${pretty} — 马来西亚宠物${p.category}指南 | PetCareMY`,
+    };
+    const descs = {
+      en: `Expert pet ${p.category.toLowerCase()} guide for Malaysian pet owners: ${pretty.toLowerCase()}. Vet-reviewed advice, costs in RM, and step-by-step instructions.`,
+      ms: `Panduan ${p.category.toLowerCase()} haiwan untuk pemilik di Malaysia: ${pretty.toLowerCase()}. Nasihat disemak vet, kos dalam RM, dan arahan langkah demi langkah.`,
+      zh: `为马来西亚宠物主人提供的${p.category}指南：${pretty}。兽医审核的建议、马币费用与分步说明。`,
+    };
+    const html = renderPage({
+      pathRel: `/blog/${p.slug}`,
+      lang,
+      title: titles[lang],
+      description: descs[lang],
+      h1: pretty,
+      intro: descs[lang],
+    });
+    writeRoute(`/blog/${p.slug}`, lang, html);
+    count++;
+  }
+}
+
+// PAA category pages
+const PAA_CATEGORIES = ['cat-care','dog-care','grooming','pet-adoption','pet-care','pet-health','pet-insurance','pet-nutrition','pet-travel','vet-care','veterinary-services'];
+for (const slug of PAA_CATEGORIES) {
+  const pretty = slug.replace(/-/g, ' ').replace(/\b\w/g, (c) => c.toUpperCase());
+  for (const lang of LANGS) {
+    const titles = {
+      en: `${pretty} — Pet Care Guides Malaysia | PetCareMY`,
+      ms: `${pretty} — Panduan Penjagaan Haiwan Malaysia | PetCareMY`,
+      zh: `${pretty} — 马来西亚宠物护理指南 | PetCareMY`,
+    };
+    const descs = {
+      en: `Browse expert ${pretty.toLowerCase()} guides for Malaysian pet owners. Vet-reviewed articles on costs, symptoms, treatment, and care.`,
+      ms: `Layari panduan ${pretty.toLowerCase()} pakar untuk pemilik haiwan di Malaysia. Artikel disemak vet tentang kos, gejala, rawatan, dan penjagaan.`,
+      zh: `浏览为马来西亚宠物主人提供的${pretty}专家指南。兽医审核的费用、症状、治疗与护理文章。`,
+    };
+    const html = renderPage({
+      pathRel: `/category/${slug}`,
+      lang,
+      title: titles[lang],
+      description: descs[lang],
+      h1: titles[lang].split(' | ')[0],
+      intro: descs[lang],
+    });
+    writeRoute(`/category/${slug}`, lang, html);
+    count++;
+  }
+}
+
+// Legal + search (English only)
+const SINGLE_PAGES = [
+  { p: '/terms', t: 'Terms of Service | PetCare Malaysia', d: 'Terms of service for PetCare Malaysia. Read the terms governing use of our pet care directory and emergency assessment tools.', h1: 'Terms of Service' },
+  { p: '/privacy', t: 'Privacy Policy | PetCare Malaysia', d: 'How PetCare Malaysia collects, uses, and protects your personal data when you use our pet emergency assessment and directory.', h1: 'Privacy Policy' },
+  { p: '/disclaimer', t: 'Medical Disclaimer | PetCare Malaysia', d: 'PetCare Malaysia provides general pet care information, not veterinary advice. Always consult a licensed vet for medical decisions.', h1: 'Medical Disclaimer' },
+  { p: '/search', t: 'Search Pet Care Guides — PetCare Malaysia', d: 'Search 60+ pet care guides, emergency protocols, vet directories, and Q&A across all 14 Malaysian states.', h1: 'Search pet care guides' },
+];
+for (const sp of SINGLE_PAGES) {
+  const html = renderPage({ pathRel: sp.p, lang: 'en', title: sp.t, description: sp.d, h1: sp.h1, intro: sp.d });
+  writeRoute(sp.p, 'en', html);
+  count++;
+}
+
 
 // PAA articles
 const paaArticles = extractPaaSlugs();
