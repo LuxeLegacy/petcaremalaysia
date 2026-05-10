@@ -36,12 +36,12 @@ export default defineConfig(({ mode }) => ({
             id.includes("class-variance-authority") ||
             id.includes("tailwind-merge") ||
             id.includes("clsx") ||
+            id.includes("@tanstack/react-query") ||
+            id.includes("react-helmet-async") ||
             id.includes("recharts") ||
             id.match(/node_modules\/d3-/)
           )
             return "react-vendor";
-          if (id.includes("@tanstack/react-query") || id.includes("react-helmet-async"))
-            return "query-vendor";
           if (
             id.includes("react-hook-form") ||
             id.includes("@hookform") ||
