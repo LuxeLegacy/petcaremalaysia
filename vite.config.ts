@@ -35,7 +35,9 @@ export default defineConfig(({ mode }) => ({
             id.includes("vaul") ||
             id.includes("class-variance-authority") ||
             id.includes("tailwind-merge") ||
-            id.includes("clsx")
+            id.includes("clsx") ||
+            id.includes("recharts") ||
+            id.match(/node_modules\/d3-/)
           )
             return "react-vendor";
           if (id.includes("@tanstack/react-query") || id.includes("react-helmet-async"))
@@ -46,7 +48,6 @@ export default defineConfig(({ mode }) => ({
             id.includes("zod")
           )
             return "form-vendor";
-          if (id.includes("recharts") || id.includes("d3-")) return "chart-vendor";
           if (id.includes("@supabase")) return "supabase-vendor";
           if (id.includes("date-fns") || id.includes("react-day-picker"))
             return "date-vendor";
