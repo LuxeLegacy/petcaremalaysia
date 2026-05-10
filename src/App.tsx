@@ -11,6 +11,7 @@ import Index from "./pages/Index";
 const CityPage = lazy(() => import("./pages/CityPage"));
 const LocationsPage = lazy(() => import("./pages/LocationsPage"));
 const ServicesPage = lazy(() => import("./pages/ServicesPage"));
+const ServiceDetailPage = lazy(() => import("./pages/ServiceDetailPage"));
 const SitemapPage = lazy(() => import("./pages/SitemapPage"));
 const TermsPage = lazy(() => import("./pages/TermsPage"));
 const PrivacyPage = lazy(() => import("./pages/PrivacyPage"));
@@ -59,6 +60,8 @@ const App = () => (
 
                 <Route path="/services" element={<ServicesPage />} />
                 <Route path="/:lang/services" element={<ServicesPage />} />
+                <Route path="/services/:slug" element={<ServiceDetailPage />} />
+                <Route path="/:lang/services/:slug" element={<ServiceDetailPage />} />
 
                 <Route path="/blog" element={<BlogPage />} />
                 <Route path="/:lang/blog" element={<BlogPage />} />
