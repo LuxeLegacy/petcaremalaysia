@@ -1,33 +1,33 @@
-## Diagnosis
+## Confidence
+High — about 85%.
 
-Production is now serving the updated bundle with no `ui-vendor` chunk, so the previous `React.forwardRef` Radix issue is gone.
-
-The remaining production crash is:
+We now have a specific live production crash instead of a vague blank-page symptom:
 
 ```text
-ReferenceError: Cannot access 'S' before initialization
-at /assets/chart-vendor-DFrgaF6_.js
+TypeError: Cannot read properties of undefined (reading 'createContext')
+at /assets/query-vendor-B4lW4nDh.js
 ```
 
-That bundle contains Recharts code calling `S.forwardRef`, meaning the separate `chart-vendor` chunk is still evaluating React-dependent code before its React binding is initialized.
+That strongly suggests the same class of issue as the previous crashes: React-dependent libraries are still being split into a separate manual chunk and evaluating before the React chunk is fully initialized.
 
-## Fix Plan
+## What’s happening
+- The earlier `forwardRef` crash was one chunk-order problem.
+- The later `chart-vendor` crash was another chunk-order problem.
+- The current live crash is now in `query-vendor`, which contains `@tanstack/react-query` and `react-helmet-async`.
+- Both rely on React context APIs during module evaluation, so keeping them outside the React vendor chunk can still break production even if local preview works.
 
-1. **Update Vite chunking**
-   - Edit `vite.config.ts` only.
-   - Move `recharts` and `d3-*` into the existing `react-vendor` group instead of returning `chart-vendor`.
-   - Remove the separate `chart-vendor` manual chunk rule so all chart modules that touch React evaluate with React.
+## Plan
+1. Update `vite.config.ts` so `@tanstack/react-query` and `react-helmet-async` are bundled into `react-vendor` instead of `query-vendor`.
+2. Remove the separate `query-vendor` manual chunk rule entirely to avoid another React initialization race.
+3. Re-verify the live site loads without the `createContext` error and check that the homepage visibly renders.
+4. If another chunk still fails, continue collapsing only React-eval-sensitive libraries into `react-vendor` until production stabilizes.
 
-2. **Keep scope tight**
-   - No homepage layout changes.
-   - No content, SEO, schema, prerender, routing, or backend changes.
-   - No package upgrades.
+## Technical details
+This is a production bundling problem, not a homepage-content problem, routing problem, or backend problem.
 
-3. **Validate after implementation**
-   - Confirm production-style chunks no longer include `chart-vendor` as a separate React-dependent preload.
-   - Open the site and confirm the console no longer shows `Cannot access 'S' before initialization`.
-   - Sample the homepage after the change to verify it renders visibly.
+The likely safe rule is:
+- keep libraries that touch React at module-eval time in `react-vendor`
+- only split libraries that do not require React initialization ordering
 
-## Deploy Note
-
-This is a frontend build config change. After implementation, click **Update** in the Publish dialog to push the rebuilt bundle to `https://petcaremalaysia.com/`.
+## Expected outcome
+If this diagnosis is correct, the blank page should clear once the frontend is rebuilt and the published site is updated.
