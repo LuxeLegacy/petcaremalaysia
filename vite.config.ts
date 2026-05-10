@@ -22,10 +22,13 @@ export default defineConfig(({ mode }) => ({
       output: {
         manualChunks(id) {
           if (!id.includes("node_modules")) return;
-          if (id.includes("react-router")) return "react-vendor";
-          if (id.match(/node_modules\/(react|react-dom|scheduler)\//)) return "react-vendor";
-          if (id.includes("@radix-ui")) return "ui-vendor";
+          // Anything that touches React at module-eval time MUST live in the same chunk as React.
+          // Splitting Radix/lucide/etc. into a separate chunk causes `React.forwardRef` to be
+          // undefined when that chunk evaluates before react-vendor.
           if (
+            id.match(/node_modules\/(react|react-dom|scheduler|react-is)\//) ||
+            id.includes("react-router") ||
+            id.includes("@radix-ui") ||
             id.includes("lucide-react") ||
             id.includes("cmdk") ||
             id.includes("sonner") ||
@@ -34,7 +37,7 @@ export default defineConfig(({ mode }) => ({
             id.includes("tailwind-merge") ||
             id.includes("clsx")
           )
-            return "ui-vendor";
+            return "react-vendor";
           if (id.includes("@tanstack/react-query") || id.includes("react-helmet-async"))
             return "query-vendor";
           if (
