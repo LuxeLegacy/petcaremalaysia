@@ -1,33 +1,40 @@
-## Confidence
-High — about 85%.
+# Fix blank /services/* pages
 
-We now have a specific live production crash instead of a vague blank-page symptom:
+## Root cause
 
-```text
-TypeError: Cannot read properties of undefined (reading 'createContext')
-at /assets/query-vendor-B4lW4nDh.js
-```
+The `/services` hub on `ServicesPage.tsx` links to 7 sub-routes (`/services/emergency`, `/services/vet`, `/services/grooming`, `/services/boarding`, `/services/adoption`, `/services/insurance`, `/services/nutrition`), and the Footer + HomeSections also link to them. **None of these routes exist in `src/App.tsx`** — the only services route is `/services` itself. Every `/services/<slug>` URL therefore falls through to the `*` catch-all and renders `NotFound`, which appears blank-ish to users.
 
-That strongly suggests the same class of issue as the previous crashes: React-dependent libraries are still being split into a separate manual chunk and evaluating before the React chunk is fully initialized.
-
-## What’s happening
-- The earlier `forwardRef` crash was one chunk-order problem.
-- The later `chart-vendor` crash was another chunk-order problem.
-- The current live crash is now in `query-vendor`, which contains `@tanstack/react-query` and `react-helmet-async`.
-- Both rely on React context APIs during module evaluation, so keeping them outside the React vendor chunk can still break production even if local preview works.
+This is unrelated to the earlier vendor-chunk crash; it is a missing-routes problem.
 
 ## Plan
-1. Update `vite.config.ts` so `@tanstack/react-query` and `react-helmet-async` are bundled into `react-vendor` instead of `query-vendor`.
-2. Remove the separate `query-vendor` manual chunk rule entirely to avoid another React initialization race.
-3. Re-verify the live site loads without the `createContext` error and check that the homepage visibly renders.
-4. If another chunk still fails, continue collapsing only React-eval-sensitive libraries into `react-vendor` until production stabilizes.
+
+1. Create one reusable page component `src/pages/ServiceDetailPage.tsx` that:
+   - Reads `:slug` from the URL.
+   - Looks up content (title, hero copy, full description, icon, color, related links) from a new data file `src/lib/serviceDetails.ts` keyed by slug, with EN / MS / ZH text.
+   - Renders Header, SEOHead (with proper title/description/canonical per language), a hero, a content section in direct-response style (problem → consequence → solution → CTA), an internal-link funnel to related hubs already on the site (Vet Clinics directory, Assessment tool, Emergency Guide, Insurance section, Blog), and the existing `PeopleAlsoAskSection`.
+   - Returns `<NotFound />` for unknown slugs.
+
+2. Add the 7 slugs in `serviceDetails.ts`: `emergency`, `vet`, `grooming`, `boarding`, `adoption`, `insurance`, `nutrition`. Copy follows the project's Dan Kennedy / Gary Halbert direct-response rules (fear, greed, FOMO, Malaysian RM facts) and the medical-safety constraint (no DIY/dosing for emergency and vet pages).
+
+3. Register routes in `src/App.tsx` (lazy-loaded, like other pages):
+   ```
+   /services/:slug
+   /:lang/services/:slug
+   ```
+   Placed before the catch-all `*` route.
+
+4. Add the new URLs to the static sitemaps (`public/sitemap-urls.csv`, `public/all-urls.csv`, `public/sitemap-ms.xml`, `public/sitemap-zh.xml`) so they get indexed.
+
+5. Verify on the live preview that `/services/emergency`, `/services/vet`, `/services/grooming`, `/ms/services/emergency`, `/zh/services/emergency` all render content (not the blank NotFound), and that header/footer links work.
 
 ## Technical details
-This is a production bundling problem, not a homepage-content problem, routing problem, or backend problem.
 
-The likely safe rule is:
-- keep libraries that touch React at module-eval time in `react-vendor`
-- only split libraries that do not require React initialization ordering
+- Reuse existing components (`Header`, `Footer`, `SEOHead`, `PeopleAlsoAskSection`, `CostCTA`, `MalaysiaCostTable` where relevant) — no new UI primitives.
+- Insurance page links to existing `InsuranceSection` content; Emergency page links to `/assessment` and `/emergency-guide`; Vet page links to `/vet-clinics`; Nutrition / Grooming / Boarding / Adoption pages link to the city directory and blog posts.
+- All copy localized in EN, MS, ZH using corner brackets 「」 for ZH quotes.
+- Single consolidated FAQPage schema per page (≤6 Q&As) per project rules.
+- No homepage changes. No backend or DB changes.
 
 ## Expected outcome
-If this diagnosis is correct, the blank page should clear once the frontend is rebuilt and the published site is updated.
+
+All `/services/<slug>` URLs render full direct-response landing pages in the active language instead of blank NotFound, and existing footer/home/services-hub links work end to end.
