@@ -6002,4 +6002,74 @@
     <xhtml:link rel="alternate" hreflang="zh" href="https://petcaremalaysia.com/zh/dog-dental-disease/prevention/diet-and-chewing-behavior"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://petcaremalaysia.com/dog-dental-disease/prevention/diet-and-chewing-behavior"/>
   </url>
+  <url>
+    <loc>https://petcaremalaysia.com/services/emergency</loc>
+    <lastmod>2026-05-11</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://petcaremalaysia.com/services/emergency"/>
+    <xhtml:link rel="alternate" hreflang="ms" href="https://petcaremalaysia.com/ms/services/emergency"/>
+    <xhtml:link rel="alternate" hreflang="zh" href="https://petcaremalaysia.com/zh/services/emergency"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://petcaremalaysia.com/services/emergency"/>
+  </url>
+  <url>
+    <loc>https://petcaremalaysia.com/services/vet</loc>
+    <lastmod>2026-05-11</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://petcaremalaysia.com/services/vet"/>
+    <xhtml:link rel="alternate" hreflang="ms" href="https://petcaremalaysia.com/ms/services/vet"/>
+    <xhtml:link rel="alternate" hreflang="zh" href="https://petcaremalaysia.com/zh/services/vet"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://petcaremalaysia.com/services/vet"/>
+  </url>
+  <url>
+    <loc>https://petcaremalaysia.com/services/grooming</loc>
+    <lastmod>2026-05-11</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://petcaremalaysia.com/services/grooming"/>
+    <xhtml:link rel="alternate" hreflang="ms" href="https://petcaremalaysia.com/ms/services/grooming"/>
+    <xhtml:link rel="alternate" hreflang="zh" href="https://petcaremalaysia.com/zh/services/grooming"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://petcaremalaysia.com/services/grooming"/>
+  </url>
+  <url>
+    <loc>https://petcaremalaysia.com/services/boarding</loc>
+    <lastmod>2026-05-11</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://petcaremalaysia.com/services/boarding"/>
+    <xhtml:link rel="alternate" hreflang="ms" href="https://petcaremalaysia.com/ms/services/boarding"/>
+    <xhtml:link rel="alternate" hreflang="zh" href="https://petcaremalaysia.com/zh/services/boarding"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://petcaremalaysia.com/services/boarding"/>
+  </url>
+  <url>
+    <loc>https://petcaremalaysia.com/services/adoption</loc>
+    <lastmod>2026-05-11</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://petcaremalaysia.com/services/adoption"/>
+    <xhtml:link rel="alternate" hreflang="ms" href="https://petcaremalaysia.com/ms/services/adoption"/>
+    <xhtml:link rel="alternate" hreflang="zh" href="https://petcaremalaysia.com/zh/services/adoption"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://petcaremalaysia.com/services/adoption"/>
+  </url>
+  <url>
+    <loc>https://petcaremalaysia.com/services/insurance</loc>
+    <lastmod>2026-05-11</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://petcaremalaysia.com/services/insurance"/>
+    <xhtml:link rel="alternate" hreflang="ms" href="https://petcaremalaysia.com/ms/services/insurance"/>
+    <xhtml:link rel="alternate" hreflang="zh" href="https://petcaremalaysia.com/zh/services/insurance"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://petcaremalaysia.com/services/insurance"/>
+  </url>
+  <url>
+    <loc>https://petcaremalaysia.com/services/nutrition</loc>
+    <lastmod>2026-05-11</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://petcaremalaysia.com/services/nutrition"/>
+    <xhtml:link rel="alternate" hreflang="ms" href="https://petcaremalaysia.com/ms/services/nutrition"/>
+    <xhtml:link rel="alternate" hreflang="zh" href="https://petcaremalaysia.com/zh/services/nutrition"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://petcaremalaysia.com/services/nutrition"/>
+  </url>
 </urlset>
