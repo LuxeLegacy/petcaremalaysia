@@ -860,9 +860,8 @@ const msEmergency = msMakeArticle(enEmergency, {
 // CHINESE PAGES (Simplified, 「」 quotes)
 // ============================================================
 
-const zhMakeArticle = (en: AuthorityPage, overrides: Partial<AuthorityPage>): AuthorityPage => ({
-  ...en, lang: 'zh', author: AUTHOR_ZH, relatedLinks: RELATED_ZH, ...overrides,
-});
+const zhMakeArticle = (en: AuthorityPage, overrides: Partial<AuthorityPage>): AuthorityPage =>
+  ({ ...en, lang: 'zh', author: AUTHOR_ZH, relatedLinks: RELATED_ZH, ...overrides } as AuthorityPage);
 
 const zhHub: AuthorityPage = {
   ...enHub, lang: 'zh', author: AUTHOR_ZH, relatedLinks: RELATED_ZH,
