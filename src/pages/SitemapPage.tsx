@@ -153,28 +153,28 @@ const SitemapPage = () => {
           <div className="grid grid-cols-2 gap-4 mb-8">
             <div className="bg-white/10 backdrop-blur-sm rounded-xl p-5 border border-white/20 text-center">
               <div className="text-3xl font-bold text-white">{sitemapData.length}</div>
-              <div className="text-white/80 text-sm mt-1">Total URLs</div>
+              <div className="text-white/90 text-sm mt-1">Total URLs</div>
             </div>
             <div className="bg-white/10 backdrop-blur-sm rounded-xl p-5 border border-white/20 text-center">
               <div className="text-3xl font-bold text-white">2025-01-01</div>
-              <div className="text-white/80 text-sm mt-1">Last Updated</div>
+              <div className="text-white/90 text-sm mt-1">Last Updated</div>
             </div>
           </div>
 
           {/* Search */}
           <div className="relative mb-6">
-            <Search className="absolute left-4 top-1/2 transform -translate-y-1/2 text-white/60 h-5 w-5" />
+            <Search className="absolute left-4 top-1/2 transform -translate-y-1/2 text-white/85 h-5 w-5" />
             <Input
               type="text"
               placeholder="Search URLs..."
               value={searchQuery}
               onChange={(e) => handleSearch(e.target.value)}
-              className="pl-12 bg-white/10 border-white/20 text-white placeholder:text-white/50 h-12 rounded-xl"
+              className="pl-12 bg-white/10 border-white/20 text-white placeholder:text-white/90 h-12 rounded-xl"
             />
           </div>
 
           {/* Pagination Info */}
-          <div className="flex items-center justify-between mb-4 text-white/80 text-sm">
+          <div className="flex items-center justify-between mb-4 text-white/90 text-sm">
             <span>
               Showing {startIndex + 1}-{Math.min(startIndex + ITEMS_PER_PAGE, filteredData.length)} of {filteredData.length} URLs
             </span>
@@ -263,7 +263,7 @@ const SitemapPage = () => {
                   .map((page, idx, arr) => (
                     <span key={page} className="flex items-center">
                       {idx > 0 && arr[idx - 1] !== page - 1 && (
-                        <span className="text-white/60 px-2">...</span>
+                        <span className="text-white/85 px-2">...</span>
                       )}
                       <Button
                         variant={currentPage === page ? "default" : "outline"}
@@ -294,7 +294,7 @@ const SitemapPage = () => {
           )}
 
           {/* Footer */}
-          <div className="text-center mt-8 text-white/60 text-sm">
+          <div className="text-center mt-8 text-white/85 text-sm">
             <p>For the raw XML version, search engines can access: <code className="bg-white/10 px-2 py-1 rounded">/sitemap.xml</code></p>
           </div>
         </div>
