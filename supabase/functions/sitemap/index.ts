@@ -13,6 +13,8 @@ const mainPages = [
   { path: '/', priority: 1.0, changefreq: 'weekly' },
   { path: '/locations', priority: 0.9, changefreq: 'monthly' },
   { path: '/services', priority: 0.9, changefreq: 'monthly' },
+  { path: '/vet-clinics', priority: 0.8, changefreq: 'weekly' },
+  { path: '/search', priority: 0.5, changefreq: 'monthly' },
   { path: '/blog', priority: 0.8, changefreq: 'weekly' },
   { path: '/qa', priority: 0.8, changefreq: 'weekly' },
   { path: '/assessment', priority: 0.8, changefreq: 'monthly' },
