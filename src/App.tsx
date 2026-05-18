@@ -27,6 +27,9 @@ const PAAArticleRouter = lazy(() => import("./pages/PAAArticleRouter"));
 const SearchPage = lazy(() => import("./pages/SearchPage"));
 const CategoryPage = lazy(() => import("./pages/CategoryPage"));
 const DogDentalRouter = lazy(() => import("./pages/DogDentalRouter"));
+const DogSkinRouter = lazy(() => import("./pages/DogSkinRouter"));
+const DogVomitingRouter = lazy(() => import("./pages/DogVomitingRouter"));
+const CatDentalRouter = lazy(() => import("./pages/CatDentalRouter"));
 const UrinaryRouter = lazy(() => import("./pages/UrinaryRouter"));
 const NotFound = lazy(() => import("./pages/NotFound"));
 const VetClinicsPage = lazy(() => import("./pages/VetClinicsPage"));
@@ -93,6 +96,27 @@ const App = () => (
                 <Route path="/:lang/dog-dental-disease" element={<DogDentalRouter />} />
                 <Route path="/:lang/dog-dental-disease/:category" element={<DogDentalRouter />} />
                 <Route path="/:lang/dog-dental-disease/:category/:slug" element={<DogDentalRouter />} />
+
+                <Route path="/dog-skin-problems" element={<DogSkinRouter />} />
+                <Route path="/dog-skin-problems/:category" element={<DogSkinRouter />} />
+                <Route path="/dog-skin-problems/:category/:slug" element={<DogSkinRouter />} />
+                <Route path="/:lang/dog-skin-problems" element={<DogSkinRouter />} />
+                <Route path="/:lang/dog-skin-problems/:category" element={<DogSkinRouter />} />
+                <Route path="/:lang/dog-skin-problems/:category/:slug" element={<DogSkinRouter />} />
+
+                <Route path="/dog-vomiting-diarrhea" element={<DogVomitingRouter />} />
+                <Route path="/dog-vomiting-diarrhea/:category" element={<DogVomitingRouter />} />
+                <Route path="/dog-vomiting-diarrhea/:category/:slug" element={<DogVomitingRouter />} />
+                <Route path="/:lang/dog-vomiting-diarrhea" element={<DogVomitingRouter />} />
+                <Route path="/:lang/dog-vomiting-diarrhea/:category" element={<DogVomitingRouter />} />
+                <Route path="/:lang/dog-vomiting-diarrhea/:category/:slug" element={<DogVomitingRouter />} />
+
+                <Route path="/cat-dental-disease" element={<CatDentalRouter />} />
+                <Route path="/cat-dental-disease/:category" element={<CatDentalRouter />} />
+                <Route path="/cat-dental-disease/:category/:slug" element={<CatDentalRouter />} />
+                <Route path="/:lang/cat-dental-disease" element={<CatDentalRouter />} />
+                <Route path="/:lang/cat-dental-disease/:category" element={<CatDentalRouter />} />
+                <Route path="/:lang/cat-dental-disease/:category/:slug" element={<CatDentalRouter />} />
 
                 <Route path="/urinary-tract-disease" element={<UrinaryRouter />} />
                 <Route path="/urinary-tract-disease/:a" element={<UrinaryRouter />} />
