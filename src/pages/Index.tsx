@@ -27,12 +27,25 @@ const Index = () => {
 
   return (
     <>
-      <SEOHead
-        title="PetCare Malaysia — 24/7 Emergency Vets, Clinics & Pet Services | Find Help Now"
-        description="Your pet could die tonight without emergency care. Find verified 24/7 vets in KL, PJ, Shah Alam & 100+ locations. 23,000+ pet owners trust us. Pet insurance from RM25/month."
-        path="/"
-        language={language}
-      />
+      {(() => {
+        const meta = {
+          en: {
+            title: 'PetCare Malaysia — 24/7 Emergency Vets & Clinics',
+            description: 'Find verified 24/7 emergency vets, clinics, grooming and pet insurance across KL, PJ, Shah Alam and 100+ Malaysian locations.',
+          },
+          ms: {
+            title: 'PetCare Malaysia — Vet Kecemasan 24/7 & Klinik',
+            description: 'Cari vet kecemasan 24/7, klinik, dandanan dan insurans haiwan peliharaan di KL, PJ, Shah Alam dan 100+ lokasi di Malaysia.',
+          },
+          zh: {
+            title: 'PetCare Malaysia — 24小时紧急兽医与诊所',
+            description: '在吉隆坡、八打灵再也、莎阿南及马来西亚100多个地点，寻找经过验证的24小时紧急兽医、诊所、美容与宠物保险。',
+          },
+        }[language];
+        return (
+          <SEOHead title={meta.title} description={meta.description} path="/" language={language} />
+        );
+      })()}
       
       <div className="min-h-screen flex flex-col">
         <Header />
