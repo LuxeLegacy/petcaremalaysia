@@ -8,6 +8,7 @@ import { Button } from '@/components/ui/button';
 import { Skeleton } from '@/components/ui/skeleton';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 import { Phone, MapPin, Star, Mail, Globe, AlertTriangle, Search } from 'lucide-react';
+import { Helmet } from 'react-helmet-async';
 
 const VetClinicsPage = () => {
   const { language } = useLanguage();
@@ -40,6 +41,39 @@ const VetClinicsPage = () => {
     setSelectedCity('all');
   };
 
+  const itemListSchema = useMemo(() => ({
+    '@context': 'https://schema.org',
+    '@type': 'ItemList',
+    name: 'Vet Clinics in Malaysia',
+    numberOfItems: filteredClinics.length,
+    itemListElement: filteredClinics.slice(0, 100).map((c, i) => ({
+      '@type': 'ListItem',
+      position: i + 1,
+      item: {
+        '@type': 'VeterinaryCare',
+        '@id': `https://petcaremalaysia.com/vet-clinics#${c.id}`,
+        name: c.name,
+        address: {
+          '@type': 'PostalAddress',
+          streetAddress: c.address,
+          addressLocality: c.city,
+          addressRegion: c.state,
+          addressCountry: 'MY',
+        },
+        ...(c.phone ? { telephone: c.phone } : {}),
+        ...(c.email ? { email: c.email } : {}),
+        ...(c.website ? { url: c.website } : {}),
+        ...(c.rating ? {
+          aggregateRating: {
+            '@type': 'AggregateRating',
+            ratingValue: c.rating,
+            reviewCount: c.review_count || 1,
+          },
+        } : {}),
+      },
+    })),
+  }), [filteredClinics]);
+
   return (
     <>
       <SEOHead
@@ -48,6 +82,9 @@ const VetClinicsPage = () => {
         path="/vet-clinics"
         language={language}
       />
+      <Helmet>
+        <script type="application/ld+json">{JSON.stringify(itemListSchema)}</script>
+      </Helmet>
       <div className="min-h-screen flex flex-col">
         <Header />
         <main className="flex-1">
