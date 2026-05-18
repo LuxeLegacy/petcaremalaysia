@@ -8,6 +8,7 @@ import { Button } from '@/components/ui/button';
 import { Skeleton } from '@/components/ui/skeleton';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 import { Phone, MapPin, Star, Mail, Globe, AlertTriangle, Search } from 'lucide-react';
+import { Helmet } from 'react-helmet-async';
 
 const VetClinicsPage = () => {
   const { language } = useLanguage();
