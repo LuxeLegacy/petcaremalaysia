@@ -663,9 +663,8 @@ Panduan ini menerangkan beza antara hot-spot dan jangkitan yis, kenapa kudis ada
 };
 
 // Compact MS articles (mirror EN structure, translated essentials)
-const msMakeArticle = (en: AuthorityPage, overrides: Partial<AuthorityPage>): AuthorityPage => ({
-  ...en, lang: 'ms', author: AUTHOR_MS, relatedLinks: RELATED_MS, ...overrides,
-});
+const msMakeArticle = (en: AuthorityPage, overrides: Partial<AuthorityPage>): AuthorityPage =>
+  ({ ...en, lang: 'ms', author: AUTHOR_MS, relatedLinks: RELATED_MS, ...overrides } as AuthorityPage);
 
 const msHotSpots = msMakeArticle(enHotSpots, {
   title: 'Hot-Spot pada Anjing (Dermatitis Lembap Akut)',
