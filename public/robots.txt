@@ -19,8 +19,8 @@ Sitemap: https://petcaremalaysia.com/sitemap-ms.xml
 Sitemap: https://petcaremalaysia.com/sitemap-zh.xml
 
 # LLM / AI crawler machine-readable index
-# https://petcaremalaysia.com/llms.txt
-# https://petcaremalaysia.com/llm-index.json
+# JSON index: https://petcaremalaysia.com/llm-index.json
+# Text index:  https://petcaremalaysia.com/llms.txt
 
 # Crawl-delay for polite crawling
 Crawl-delay: 1
