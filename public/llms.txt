@@ -56,4 +56,6 @@ PetCare Malaysia helps pet owners find verified veterinary clinics, emergency ca
 - [Sitemap (EN)](/sitemap.xml)
 - [Sitemap (MS)](/sitemap-ms.xml)
 - [Sitemap (ZH)](/sitemap-zh.xml)
+- [LLM Hub Index (JSON)](/llm-index.json): Machine-readable index of all authority hubs + trilingual sub-page URLs for LLM crawlers.
+- [Robots](/robots.txt)
 - [Robots](/robots.txt)
