@@ -2092,4 +2092,94 @@
     <xhtml:link rel="alternate" hreflang="zh" href="https://petcaremalaysia.com/zh/search"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://petcaremalaysia.com/search"/>
   </url>
+  <url>
+    <loc>https://petcaremalaysia.com/ms/cat-dental-disease</loc>
+    <lastmod>2026-06-06</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://petcaremalaysia.com/cat-dental-disease"/>
+    <xhtml:link rel="alternate" hreflang="ms" href="https://petcaremalaysia.com/ms/cat-dental-disease"/>
+    <xhtml:link rel="alternate" hreflang="zh" href="https://petcaremalaysia.com/zh/cat-dental-disease"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://petcaremalaysia.com/cat-dental-disease"/>
+  </url>
+  <url>
+    <loc>https://petcaremalaysia.com/ms/cat-dental-disease/conditions/gingivitis</loc>
+    <lastmod>2026-06-06</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://petcaremalaysia.com/cat-dental-disease/conditions/gingivitis"/>
+    <xhtml:link rel="alternate" hreflang="ms" href="https://petcaremalaysia.com/ms/cat-dental-disease/conditions/gingivitis"/>
+    <xhtml:link rel="alternate" hreflang="zh" href="https://petcaremalaysia.com/zh/cat-dental-disease/conditions/gingivitis"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://petcaremalaysia.com/cat-dental-disease/conditions/gingivitis"/>
+  </url>
+  <url>
+    <loc>https://petcaremalaysia.com/ms/cat-dental-disease/conditions/tooth-resorption</loc>
+    <lastmod>2026-06-06</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://petcaremalaysia.com/cat-dental-disease/conditions/tooth-resorption"/>
+    <xhtml:link rel="alternate" hreflang="ms" href="https://petcaremalaysia.com/ms/cat-dental-disease/conditions/tooth-resorption"/>
+    <xhtml:link rel="alternate" hreflang="zh" href="https://petcaremalaysia.com/zh/cat-dental-disease/conditions/tooth-resorption"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://petcaremalaysia.com/cat-dental-disease/conditions/tooth-resorption"/>
+  </url>
+  <url>
+    <loc>https://petcaremalaysia.com/ms/cat-dental-disease/conditions/stomatitis</loc>
+    <lastmod>2026-06-06</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://petcaremalaysia.com/cat-dental-disease/conditions/stomatitis"/>
+    <xhtml:link rel="alternate" hreflang="ms" href="https://petcaremalaysia.com/ms/cat-dental-disease/conditions/stomatitis"/>
+    <xhtml:link rel="alternate" hreflang="zh" href="https://petcaremalaysia.com/zh/cat-dental-disease/conditions/stomatitis"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://petcaremalaysia.com/cat-dental-disease/conditions/stomatitis"/>
+  </url>
+  <url>
+    <loc>https://petcaremalaysia.com/ms/cat-dental-disease/conditions/tooth-fracture</loc>
+    <lastmod>2026-06-06</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://petcaremalaysia.com/cat-dental-disease/conditions/tooth-fracture"/>
+    <xhtml:link rel="alternate" hreflang="ms" href="https://petcaremalaysia.com/ms/cat-dental-disease/conditions/tooth-fracture"/>
+    <xhtml:link rel="alternate" hreflang="zh" href="https://petcaremalaysia.com/zh/cat-dental-disease/conditions/tooth-fracture"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://petcaremalaysia.com/cat-dental-disease/conditions/tooth-fracture"/>
+  </url>
+  <url>
+    <loc>https://petcaremalaysia.com/ms/cat-dental-disease/symptoms/bad-breath</loc>
+    <lastmod>2026-06-06</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://petcaremalaysia.com/cat-dental-disease/symptoms/bad-breath"/>
+    <xhtml:link rel="alternate" hreflang="ms" href="https://petcaremalaysia.com/ms/cat-dental-disease/symptoms/bad-breath"/>
+    <xhtml:link rel="alternate" hreflang="zh" href="https://petcaremalaysia.com/zh/cat-dental-disease/symptoms/bad-breath"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://petcaremalaysia.com/cat-dental-disease/symptoms/bad-breath"/>
+  </url>
+  <url>
+    <loc>https://petcaremalaysia.com/ms/cat-dental-disease/treatments/dental-cleaning</loc>
+    <lastmod>2026-06-06</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://petcaremalaysia.com/cat-dental-disease/treatments/dental-cleaning"/>
+    <xhtml:link rel="alternate" hreflang="ms" href="https://petcaremalaysia.com/ms/cat-dental-disease/treatments/dental-cleaning"/>
+    <xhtml:link rel="alternate" hreflang="zh" href="https://petcaremalaysia.com/zh/cat-dental-disease/treatments/dental-cleaning"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://petcaremalaysia.com/cat-dental-disease/treatments/dental-cleaning"/>
+  </url>
+  <url>
+    <loc>https://petcaremalaysia.com/ms/cat-dental-disease/prevention/home-care</loc>
+    <lastmod>2026-06-06</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://petcaremalaysia.com/cat-dental-disease/prevention/home-care"/>
+    <xhtml:link rel="alternate" hreflang="ms" href="https://petcaremalaysia.com/ms/cat-dental-disease/prevention/home-care"/>
+    <xhtml:link rel="alternate" hreflang="zh" href="https://petcaremalaysia.com/zh/cat-dental-disease/prevention/home-care"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://petcaremalaysia.com/cat-dental-disease/prevention/home-care"/>
+  </url>
+  <url>
+    <loc>https://petcaremalaysia.com/ms/cat-dental-disease/emergency-signs</loc>
+    <lastmod>2026-06-06</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://petcaremalaysia.com/cat-dental-disease/emergency-signs"/>
+    <xhtml:link rel="alternate" hreflang="ms" href="https://petcaremalaysia.com/ms/cat-dental-disease/emergency-signs"/>
+    <xhtml:link rel="alternate" hreflang="zh" href="https://petcaremalaysia.com/zh/cat-dental-disease/emergency-signs"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://petcaremalaysia.com/cat-dental-disease/emergency-signs"/>
+  </url>
 </urlset>
