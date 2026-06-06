@@ -45,6 +45,12 @@ const i18n = {
   localGuide: { en: 'Local Guide', ms: 'Panduan Tempatan', zh: '本地指南' },
   viewQA: { en: 'View Q&A', ms: 'Lihat S&J', zh: '查看问答' },
   viewGuide: { en: 'View Guide', ms: 'Lihat Panduan', zh: '查看指南' },
+  hubsTitle: { en: 'Authority Care Hubs', ms: 'Hab Penjagaan Pakar', zh: '权威护理中心' },
+  hubsSubtitle: {
+    en: 'Deep-dive trilingual guides covering symptoms, diagnosis, treatment, and Malaysian costs.',
+    ms: 'Panduan mendalam tiga bahasa: gejala, diagnosis, rawatan, dan kos di Malaysia.',
+    zh: '深入的三语指南，涵盖症状、诊断、治疗及马来西亚费用。',
+  },
   petQAFor: {
     en: (s: string) => `Pet emergency and care questions specific to ${s}`,
     ms: (s: string) => `Soalan kecemasan dan penjagaan haiwan khusus untuk ${s}`,
@@ -62,6 +68,52 @@ const i18n = {
     zh: '获取马来西亚150+宠物急症和护理问题的即时答案。',
   },
 };
+
+interface AuthorityHubEntry {
+  path: string;
+  title: { en: string; ms: string; zh: string };
+  desc: { en: string; ms: string; zh: string };
+}
+
+const AUTHORITY_HUBS: AuthorityHubEntry[] = [
+  {
+    path: '/cat-dental-disease',
+    title: { en: 'Cat Dental Disease', ms: 'Penyakit Gigi Kucing', zh: '猫牙科疾病' },
+    desc: {
+      en: 'Gingivitis, FORL, stomatitis. Scaling RM350–RM800, extractions RM1,200–RM3,500.',
+      ms: 'Gingivitis, FORL, stomatitis. Penskalaan RM350–RM800, pencabutan RM1,200–RM3,500.',
+      zh: '牙龈炎、FORL、口炎。洗牙RM350–RM800，拔牙RM1,200–RM3,500。',
+    },
+  },
+  {
+    path: '/dog-dental-disease',
+    title: { en: 'Dog Dental Disease', ms: 'Penyakit Gigi Anjing', zh: '狗牙科疾病' },
+    desc: {
+      en: 'Periodontal disease affects 80%+ of dogs over age 3. Symptoms, costs, prevention.',
+      ms: 'Penyakit periodontal menjejaskan 80%+ anjing berusia 3+ tahun. Gejala, kos, pencegahan.',
+      zh: '牙周病影响超过80%的3岁以上狗只。症状、费用、预防。',
+    },
+  },
+  {
+    path: '/dog-skin-problems',
+    title: { en: 'Dog Skin Problems', ms: 'Masalah Kulit Anjing', zh: '狗皮肤问题' },
+    desc: {
+      en: 'Hot spots, allergies, mange, fungal infections in Malaysian humidity.',
+      ms: 'Bintik panas, alahan, kudis, jangkitan kulat dalam kelembapan Malaysia.',
+      zh: '马来西亚潮湿气候下的热斑、过敏、疥癣、真菌感染。',
+    },
+  },
+  {
+    path: '/dog-vomiting-diarrhea',
+    title: { en: 'Dog Vomiting & Diarrhea', ms: 'Muntah & Cirit Anjing', zh: '狗呕吐与腹泻' },
+    desc: {
+      en: 'When to wait, when to rush. Causes, home care limits, and red-flag symptoms.',
+      ms: 'Bila tunggu, bila bergegas. Punca, had penjagaan rumah, dan gejala bahaya.',
+      zh: '何时等待，何时紧急就医。病因、家庭护理极限及危险信号。',
+    },
+  },
+];
+
 
 const QAPage = () => {
   const { language } = useLanguage();
