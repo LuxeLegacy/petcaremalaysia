@@ -1,0 +1,454 @@
+{
+  "$schema": "https://petcaremalaysia.com/llm-index.schema.json",
+  "name": "PetCare Malaysia — LLM Authority Hub Index",
+  "description": "Machine-readable index of trilingual authority hubs and sub-pages for LLM crawlers and retrieval systems.",
+  "generated": "2026-06-06",
+  "site": "https://petcaremalaysia.com",
+  "languages": [
+    "en",
+    "ms",
+    "zh"
+  ],
+  "contact": {
+    "whatsapp": "+60 11-5695 9227",
+    "email": "soyoungplus18@gmail.com"
+  },
+  "hubs": [
+    {
+      "key": "cat-dental",
+      "basePath": "/cat-dental-disease",
+      "titles": {
+        "en": "Cat Dental Disease",
+        "ms": "Penyakit Pergigian Kucing",
+        "zh": "猫牙科疾病"
+      },
+      "descriptions": {
+        "en": "Feline gingivitis, tooth resorption (FORL), stomatitis, fractures, cleaning costs.",
+        "ms": "Radang gusi kucing, resorpsi gigi (FORL), stomatitis, patah gigi, kos cucian.",
+        "zh": "猫牙龈炎、牙吸收(FORL)、口炎、牙齿断裂、洗牙费用。"
+      },
+      "urls": {
+        "en": "https://petcaremalaysia.com/cat-dental-disease",
+        "ms": "https://petcaremalaysia.com/ms/cat-dental-disease",
+        "zh": "https://petcaremalaysia.com/zh/cat-dental-disease"
+      },
+      "pageCount": 9,
+      "pages": [
+        {
+          "slug": "gingivitis",
+          "category": "conditions",
+          "titles": {
+            "en": "Cat Gingivitis & Periodontal Disease",
+            "ms": "Gingivitis & Penyakit Periodontal Kucing",
+            "zh": "猫牙龈炎与牙周病"
+          },
+          "urls": {
+            "en": "https://petcaremalaysia.com/cat-dental-disease/conditions/gingivitis",
+            "ms": "https://petcaremalaysia.com/ms/cat-dental-disease/conditions/gingivitis",
+            "zh": "https://petcaremalaysia.com/zh/cat-dental-disease/conditions/gingivitis"
+          },
+          "snippet": "Feline gingivitis is inflammation of the gums caused by plaque bacteria, the starting point of periodontal disease. Symptoms include red gum line, bad breath, and bleeding when eating. Early gingivitis is reversible with professional scaling and home brushing; advanced periodontal disease requires extractions. Treatment cost in Malaysia: RM350–RM1,500 depending on severity."
+        },
+        {
+          "slug": "tooth-resorption",
+          "category": "conditions",
+          "titles": {
+            "en": "Feline Tooth Resorption (FORL): The Hidden Painful Disease",
+            "ms": "Resorpsi Gigi Felin (FORL): Penyakit Tersembunyi yang Menyakitkan",
+            "zh": "猫牙齿吸收（FORL）：隐藏的疼痛疾病"
+          },
+          "urls": {
+            "en": "https://petcaremalaysia.com/cat-dental-disease/conditions/tooth-resorption",
+            "ms": "https://petcaremalaysia.com/ms/cat-dental-disease/conditions/tooth-resorption",
+            "zh": "https://petcaremalaysia.com/zh/cat-dental-disease/conditions/tooth-resorption"
+          },
+          "snippet": "Feline tooth resorption (FORL or TR) is a painful condition where the cat's own body breaks down tooth structure, starting at the root. It affects 30–60% of cats over 5 years old. Cats hide the pain remarkably well. Dental X-rays under anaesthesia are required for diagnosis — the lesion is often invisible above the gum. Treatment is extraction of affected teeth. Cost in Malaysia: RM150–RM450 per extraction."
+        },
+        {
+          "slug": "stomatitis",
+          "category": "conditions",
+          "titles": {
+            "en": "Feline Stomatitis: When Full-Mouth Extraction Is the Cure",
+            "ms": "Stomatitis Felin: Bila Cabut Semua Gigi Adalah Penyembuh",
+            "zh": "猫口炎：全口拔牙是治愈方法"
+          },
+          "urls": {
+            "en": "https://petcaremalaysia.com/cat-dental-disease/conditions/stomatitis",
+            "ms": "https://petcaremalaysia.com/ms/cat-dental-disease/conditions/stomatitis",
+            "zh": "https://petcaremalaysia.com/zh/cat-dental-disease/conditions/stomatitis"
+          },
+          "snippet": "Feline chronic gingivostomatitis (FCGS) is a severe immune-mediated inflammation of the entire mouth. Cats have extreme oral pain, drool, refuse food, and may bleed from the mouth. Medical management is rarely enough; full-mouth or near-full-mouth extraction cures or significantly improves about 80% of cats. Treatment cost in Malaysia: RM2,000–RM4,500."
+        },
+        {
+          "slug": "tooth-fracture",
+          "category": "conditions",
+          "titles": {
+            "en": "Cat Tooth Fracture: When the Pulp Is Exposed",
+            "ms": "Patah Gigi Kucing: Bila Pulpa Terdedah",
+            "zh": "猫牙折：当牙髓暴露时"
+          },
+          "urls": {
+            "en": "https://petcaremalaysia.com/cat-dental-disease/conditions/tooth-fracture",
+            "ms": "https://petcaremalaysia.com/ms/cat-dental-disease/conditions/tooth-fracture",
+            "zh": "https://petcaremalaysia.com/zh/cat-dental-disease/conditions/tooth-fracture"
+          },
+          "snippet": "Cat tooth fractures most often involve the canine (fang) teeth, broken from fights, falls, or chewing hard objects. If the pulp (pink/dark spot) is exposed, the tooth is painful and will become infected — extraction or root canal is required. Cost in Malaysia: RM150–RM450 for extraction."
+        },
+        {
+          "slug": "bad-breath",
+          "category": "symptoms",
+          "titles": {
+            "en": "Bad Breath in Cats (Halitosis): Almost Never \"Just Their Food\"",
+            "ms": "Bau Mulut Kucing (Halitosis): Hampir Tidak Pernah \"Hanya Makanan\"",
+            "zh": "猫口臭（口腔异味）：几乎从来不只是「食物问题」"
+          },
+          "urls": {
+            "en": "https://petcaremalaysia.com/cat-dental-disease/symptoms/bad-breath",
+            "ms": "https://petcaremalaysia.com/ms/cat-dental-disease/symptoms/bad-breath",
+            "zh": "https://petcaremalaysia.com/zh/cat-dental-disease/symptoms/bad-breath"
+          },
+          "snippet": "Bad breath in cats is almost always a sign of dental disease — gingivitis, periodontal disease, tooth resorption, or stomatitis. Less commonly, it can signal kidney disease (ammonia smell) or diabetes (sweet/fruity smell). Cat breath should be neutral; any noticeable odour deserves a vet exam. Dental treatment cost in Malaysia: RM350–RM4,500."
+        },
+        {
+          "slug": "dental-cleaning",
+          "category": "treatments",
+          "titles": {
+            "en": "Cat Dental Cleaning: What Happens Under Anaesthesia",
+            "ms": "Pembersihan Gigi Kucing: Apa Berlaku Di Bawah Bius",
+            "zh": "猫洁牙：麻醉下发生什么"
+          },
+          "urls": {
+            "en": "https://petcaremalaysia.com/cat-dental-disease/treatments/dental-cleaning",
+            "ms": "https://petcaremalaysia.com/ms/cat-dental-disease/treatments/dental-cleaning",
+            "zh": "https://petcaremalaysia.com/zh/cat-dental-disease/treatments/dental-cleaning"
+          },
+          "snippet": "Professional cat dental cleaning requires general anaesthesia and includes pre-anaesthetic bloodwork, full mouth dental X-rays, ultrasonic scaling above and below the gum line, polishing, fluoride application, and extractions of unsalvageable teeth. Total cost in Malaysia: RM350–RM800 for basic cleaning, plus RM150–RM450 per extraction."
+        },
+        {
+          "slug": "home-care",
+          "category": "prevention",
+          "titles": {
+            "en": "Home Dental Care for Cats: Brushing, Diet & What Works",
+            "ms": "Penjagaan Gigi Kucing di Rumah: Berus, Diet & Apa Berfungsi",
+            "zh": "猫家庭牙科护理：刷牙、饮食与有效方法"
+          },
+          "urls": {
+            "en": "https://petcaremalaysia.com/cat-dental-disease/prevention/home-care",
+            "ms": "https://petcaremalaysia.com/ms/cat-dental-disease/prevention/home-care",
+            "zh": "https://petcaremalaysia.com/zh/cat-dental-disease/prevention/home-care"
+          },
+          "snippet": "Effective home dental care for cats includes daily tooth brushing with cat-specific enzymatic toothpaste, VOHC-accepted dental diet kibble, water additives, and dental treats. Brushing is the gold standard. Never use human toothpaste — fluoride is toxic to cats. Start home care gradually from kittenhood for best acceptance."
+        },
+        {
+          "slug": "emergency-signs",
+          "category": null,
+          "titles": {
+            "en": "Cat Dental Emergency Signs: When to See the Vet Today",
+            "ms": "Tanda Kecemasan Pergigian Kucing: Bila Ke Vet Hari Ini",
+            "zh": "猫牙科急症信号：何时今天就医"
+          },
+          "urls": {
+            "en": "https://petcaremalaysia.com/cat-dental-disease/emergency-signs",
+            "ms": "https://petcaremalaysia.com/ms/cat-dental-disease/emergency-signs",
+            "zh": "https://petcaremalaysia.com/zh/cat-dental-disease/emergency-signs"
+          },
+          "snippet": "Cat dental emergency signs include: refusal to eat >24 hours (risk of fatal hepatic lipidosis), severe drooling (especially with blood), visible facial swelling, fractured tooth with exposed pulp, bleeding from the mouth, and pawing at the face. Cats hide pain — by the time owners notice, disease is advanced. WhatsApp +60 11-5695 9227 for triage."
+        }
+      ]
+    },
+    {
+      "key": "dog-skin",
+      "basePath": "/dog-skin-problems",
+      "titles": {
+        "en": "Dog Skin Problems",
+        "ms": "Masalah Kulit Anjing",
+        "zh": "狗皮肤问题"
+      },
+      "descriptions": {
+        "en": "Hot spots, mange, ringworm, allergies, yeast infections in Malaysian humidity.",
+        "ms": "Hot spot, kudis, kurap, alahan, jangkitan yis dalam kelembapan Malaysia.",
+        "zh": "马来西亚湿热气候下的热点、疥螨、癣、过敏、酵母菌感染。"
+      },
+      "urls": {
+        "en": "https://petcaremalaysia.com/dog-skin-problems",
+        "ms": "https://petcaremalaysia.com/ms/dog-skin-problems",
+        "zh": "https://petcaremalaysia.com/zh/dog-skin-problems"
+      },
+      "pageCount": 9,
+      "pages": [
+        {
+          "slug": "hot-spots",
+          "category": "conditions",
+          "titles": {
+            "en": "Hot-Spots in Dogs (Acute Moist Dermatitis)",
+            "ms": "Hot-Spot pada Anjing (Dermatitis Lembap Akut)",
+            "zh": "狗热点（急性湿性皮炎）"
+          },
+          "urls": {
+            "en": "https://petcaremalaysia.com/dog-skin-problems/conditions/hot-spots",
+            "ms": "https://petcaremalaysia.com/ms/dog-skin-problems/conditions/hot-spots",
+            "zh": "https://petcaremalaysia.com/zh/dog-skin-problems/conditions/hot-spots"
+          },
+          "snippet": "A hot-spot is a fast-spreading, red, moist, painful patch of skin caused by self-trauma — usually from itching, licking, or biting. In Malaysian humidity, hot-spots can double in size within 24 hours. Treatment requires clipping the hair, cleaning, prescription antibiotics or antifungals, and stopping the self-trauma with an e-collar."
+        },
+        {
+          "slug": "mange",
+          "category": "conditions",
+          "titles": {
+            "en": "Mange in Dogs: Sarcoptic vs. Demodectic",
+            "ms": "Kudis pada Anjing: Sarcoptic vs Demodectic",
+            "zh": "狗疥癣：疥螨与蠕形螨"
+          },
+          "urls": {
+            "en": "https://petcaremalaysia.com/dog-skin-problems/conditions/mange",
+            "ms": "https://petcaremalaysia.com/ms/dog-skin-problems/conditions/mange",
+            "zh": "https://petcaremalaysia.com/zh/dog-skin-problems/conditions/mange"
+          },
+          "snippet": "Mange is a skin disease caused by microscopic mites. The two main types in Malaysian dogs are sarcoptic mange (highly contagious, can transmit to humans, causes intense itching) and demodectic mange (not contagious, caused by Demodex mites that overgrow when immunity drops). Diagnosis requires a skin scraping; treatment is highly effective with modern prescription parasiticides."
+        },
+        {
+          "slug": "ringworm",
+          "category": "conditions",
+          "titles": {
+            "en": "Ringworm in Dogs (Dermatophytosis)",
+            "ms": "Kurap pada Anjing (Dermatophytosis)",
+            "zh": "狗皮癣菌病（钱癣）"
+          },
+          "urls": {
+            "en": "https://petcaremalaysia.com/dog-skin-problems/conditions/ringworm",
+            "ms": "https://petcaremalaysia.com/ms/dog-skin-problems/conditions/ringworm",
+            "zh": "https://petcaremalaysia.com/zh/dog-skin-problems/conditions/ringworm"
+          },
+          "snippet": "Ringworm is a fungal skin infection — not a worm. It is caused by dermatophyte fungi (most often Microsporum canis), appears as circular hair-loss patches, and is contagious to other pets and humans. Diagnosis requires a fungal culture or PCR test; treatment combines oral antifungals and topical lime-sulphur or miconazole-chlorhexidine washes for 4–8 weeks."
+        },
+        {
+          "slug": "allergic-dermatitis",
+          "category": "conditions",
+          "titles": {
+            "en": "Allergic Dermatitis in Dogs (Flea, Food, Atopic)",
+            "ms": "Dermatitis Alergi pada Anjing (Kutu, Makanan, Atopik)",
+            "zh": "狗过敏性皮炎（跳蚤、食物、特应性）"
+          },
+          "urls": {
+            "en": "https://petcaremalaysia.com/dog-skin-problems/conditions/allergic-dermatitis",
+            "ms": "https://petcaremalaysia.com/ms/dog-skin-problems/conditions/allergic-dermatitis",
+            "zh": "https://petcaremalaysia.com/zh/dog-skin-problems/conditions/allergic-dermatitis"
+          },
+          "snippet": "Allergic dermatitis in dogs has three main causes: flea allergy dermatitis (FAD), cutaneous adverse food reaction (food allergy), and canine atopic dermatitis (environmental allergies). In Malaysia, flea allergy is the most common. Workup involves strict flea control, an elimination diet trial, and intradermal or serology testing for atopy. Treatments range from monthly Cytopoint® injections to daily Apoquel® tablets and lifelong allergen avoidance."
+        },
+        {
+          "slug": "yeast-infection",
+          "category": "conditions",
+          "titles": {
+            "en": "Yeast Infection (Malassezia) in Dogs",
+            "ms": "Jangkitan Yis (Malassezia) pada Anjing",
+            "zh": "狗酵母感染（马拉色菌）"
+          },
+          "urls": {
+            "en": "https://petcaremalaysia.com/dog-skin-problems/conditions/yeast-infection",
+            "ms": "https://petcaremalaysia.com/ms/dog-skin-problems/conditions/yeast-infection",
+            "zh": "https://petcaremalaysia.com/zh/dog-skin-problems/conditions/yeast-infection"
+          },
+          "snippet": "A yeast infection (Malassezia dermatitis) is an overgrowth of the Malassezia pachydermatis yeast that normally lives on dog skin in small numbers. In Malaysia's humidity it overgrows in skin folds, ears, paws and the underside. Signs include a musty smell, greasy or scaly skin, brown ear wax, and intense itch. Diagnosis is by skin cytology; treatment uses medicated chlorhexidine-miconazole shampoo plus oral antifungals if generalised."
+        },
+        {
+          "slug": "itching",
+          "category": "symptoms",
+          "titles": {
+            "en": "Dog Itching & Scratching: When to Worry",
+            "ms": "Anjing Gatal & Menggaru: Bila Perlu Risau",
+            "zh": "狗瘙痒与抓挠：何时担心"
+          },
+          "urls": {
+            "en": "https://petcaremalaysia.com/dog-skin-problems/symptoms/itching",
+            "ms": "https://petcaremalaysia.com/ms/dog-skin-problems/symptoms/itching",
+            "zh": "https://petcaremalaysia.com/zh/dog-skin-problems/symptoms/itching"
+          },
+          "snippet": "Occasional scratching is normal in dogs. Itching becomes a medical issue when it disturbs sleep, breaks the skin, focuses on one area, or persists for more than 2 weeks. In Malaysia the top causes are fleas, atopic dermatitis, food allergy, yeast or bacterial infection. Persistent itching always warrants a veterinary skin scraping and cytology — never use human anti-itch creams without veterinary guidance."
+        },
+        {
+          "slug": "hair-loss",
+          "category": "symptoms",
+          "titles": {
+            "en": "Hair Loss (Alopecia) in Dogs",
+            "ms": "Keguguran Bulu (Alopecia) pada Anjing",
+            "zh": "狗脱毛（秃毛症）"
+          },
+          "urls": {
+            "en": "https://petcaremalaysia.com/dog-skin-problems/symptoms/hair-loss",
+            "ms": "https://petcaremalaysia.com/ms/dog-skin-problems/symptoms/hair-loss",
+            "zh": "https://petcaremalaysia.com/zh/dog-skin-problems/symptoms/hair-loss"
+          },
+          "snippet": "Hair loss in dogs can be patchy, symmetrical, or generalised. Patchy alopecia usually points to ringworm, mange, or hot-spots. Symmetrical hair loss on the flanks or trunk often signals hormonal disease (hypothyroidism, Cushing's). Generalised thinning may reflect nutritional, parasitic, or autoimmune disease. All persistent hair loss requires veterinary workup including skin scraping, fungal culture, and possibly blood hormone testing."
+        },
+        {
+          "slug": "emergency-signs",
+          "category": null,
+          "titles": {
+            "en": "Dog Skin Emergencies: When to Go to the Vet Now",
+            "ms": "Kecemasan Kulit Anjing: Bila Perlu ke Vet Sekarang",
+            "zh": "狗皮肤紧急情况：何时立即就医"
+          },
+          "urls": {
+            "en": "https://petcaremalaysia.com/dog-skin-problems/emergency-signs",
+            "ms": "https://petcaremalaysia.com/ms/dog-skin-problems/emergency-signs",
+            "zh": "https://petcaremalaysia.com/zh/dog-skin-problems/emergency-signs"
+          },
+          "snippet": "Skin emergencies in dogs include severe allergic reactions (anaphylaxis), rapidly spreading hot-spots, deep wounds, bee or hornet stings with facial swelling, snake or scorpion bites, and any skin infection accompanied by fever or lethargy. In Malaysia, these need immediate veterinary attention — not a wait-and-see approach. WhatsApp +60 11-5695 9227 for our pet helpline, or use our Emergency Guide to find the nearest 24-hour vet."
+        }
+      ]
+    },
+    {
+      "key": "dog-vomiting",
+      "basePath": "/dog-vomiting-diarrhea",
+      "titles": {
+        "en": "Dog Vomiting & Diarrhea",
+        "ms": "Anjing Muntah & Cirit-Birit",
+        "zh": "狗呕吐与腹泻"
+      },
+      "descriptions": {
+        "en": "When to wait vs rush — causes, home-care limits, red-flag symptoms.",
+        "ms": "Bila tunggu vs segera — punca, had penjagaan rumah, simptom amaran.",
+        "zh": "何时观察何时急诊——原因、家庭护理限度、红旗症状。"
+      },
+      "urls": {
+        "en": "https://petcaremalaysia.com/dog-vomiting-diarrhea",
+        "ms": "https://petcaremalaysia.com/ms/dog-vomiting-diarrhea",
+        "zh": "https://petcaremalaysia.com/zh/dog-vomiting-diarrhea"
+      },
+      "pageCount": 7,
+      "pages": [
+        {
+          "slug": "acute-vomiting",
+          "category": "conditions",
+          "titles": {
+            "en": "Acute Vomiting in Dogs: Causes, Triage & When to Worry",
+            "ms": "Muntah Akut pada Anjing: Punca, Triaj & Bila Perlu Risau",
+            "zh": "狗急性呕吐：原因、分诊与何时担心"
+          },
+          "urls": {
+            "en": "https://petcaremalaysia.com/dog-vomiting-diarrhea/conditions/acute-vomiting",
+            "ms": "https://petcaremalaysia.com/ms/dog-vomiting-diarrhea/conditions/acute-vomiting",
+            "zh": "https://petcaremalaysia.com/zh/dog-vomiting-diarrhea/conditions/acute-vomiting"
+          },
+          "snippet": "Acute vomiting in dogs (less than 7 days duration) is most often caused by dietary indiscretion, parasites, viral infection, or toxin ingestion. A single vomit in a bright, alert adult dog can be monitored at home for 12 hours with food withheld. Repeated vomiting (>3 episodes in 12 hours), blood, lethargy, abdominal pain, or any vomiting in a puppy requires same-day veterinary care."
+        },
+        {
+          "slug": "acute-diarrhea",
+          "category": "conditions",
+          "titles": {
+            "en": "Acute Diarrhea in Dogs: Causes, Home Care & Red Flags",
+            "ms": "Cirit-Birit Akut pada Anjing: Punca, Penjagaan Rumah & Tanda Bahaya",
+            "zh": "狗急性腹泻：原因、家庭护理与危险信号"
+          },
+          "urls": {
+            "en": "https://petcaremalaysia.com/dog-vomiting-diarrhea/conditions/acute-diarrhea",
+            "ms": "https://petcaremalaysia.com/ms/dog-vomiting-diarrhea/conditions/acute-diarrhea",
+            "zh": "https://petcaremalaysia.com/zh/dog-vomiting-diarrhea/conditions/acute-diarrhea"
+          },
+          "snippet": "Acute diarrhea (less than 14 days) in dogs is usually caused by dietary indiscretion, parasites, sudden food change, stress, or viral/bacterial infection. Mild cases in adult dogs may respond to 24 hours of bland diet and probiotics. Diarrhea with blood, mucus, lethargy, vomiting, or in puppies requires same-day vet care."
+        },
+        {
+          "slug": "parvovirus",
+          "category": "conditions",
+          "titles": {
+            "en": "Canine Parvovirus in Malaysia: Symptoms, Treatment & Survival",
+            "ms": "Parvovirus Anjing di Malaysia: Gejala, Rawatan & Kelangsungan",
+            "zh": "马来西亚犬细小病毒：症状、治疗与生存"
+          },
+          "urls": {
+            "en": "https://petcaremalaysia.com/dog-vomiting-diarrhea/conditions/parvovirus",
+            "ms": "https://petcaremalaysia.com/ms/dog-vomiting-diarrhea/conditions/parvovirus",
+            "zh": "https://petcaremalaysia.com/zh/dog-vomiting-diarrhea/conditions/parvovirus"
+          },
+          "snippet": "Canine parvovirus (CPV) is a highly contagious viral disease causing severe vomiting and bloody diarrhea, primarily in unvaccinated puppies. Mortality untreated exceeds 90%; with prompt hospitalised IV fluid treatment, survival exceeds 70%. The complete puppy vaccination series (3 doses, 6–16 weeks of age) is the only reliable prevention. Treatment in Malaysia costs RM1,500–RM5,000."
+        },
+        {
+          "slug": "foreign-body",
+          "category": "conditions",
+          "titles": {
+            "en": "Foreign Body Ingestion in Dogs: When Surgery Is Needed",
+            "ms": "Anjing Telan Benda Asing: Bila Pembedahan Diperlukan",
+            "zh": "狗异物吞咽：何时需要手术"
+          },
+          "urls": {
+            "en": "https://petcaremalaysia.com/dog-vomiting-diarrhea/conditions/foreign-body",
+            "ms": "https://petcaremalaysia.com/ms/dog-vomiting-diarrhea/conditions/foreign-body",
+            "zh": "https://petcaremalaysia.com/zh/dog-vomiting-diarrhea/conditions/foreign-body"
+          },
+          "snippet": "Foreign body ingestion in dogs (swallowing toys, bones, fabric, sticks, or string) is a common surgical emergency. Signs include sudden persistent vomiting, refusal to eat, painful abdomen, and absent stool. Diagnosis is by X-ray or ultrasound. Linear foreign bodies (string, thread) are especially dangerous and can saw through the intestine. Surgery cost in Malaysia: RM2,500–RM8,000."
+        },
+        {
+          "slug": "pancreatitis",
+          "category": "conditions",
+          "titles": {
+            "en": "Pancreatitis in Dogs: After Fatty Meals & Festive Leftovers",
+            "ms": "Pankreatitis pada Anjing: Selepas Makanan Berlemak & Sisa Perayaan",
+            "zh": "狗胰腺炎：在油腻餐食和节日剩饭之后"
+          },
+          "urls": {
+            "en": "https://petcaremalaysia.com/dog-vomiting-diarrhea/conditions/pancreatitis",
+            "ms": "https://petcaremalaysia.com/ms/dog-vomiting-diarrhea/conditions/pancreatitis",
+            "zh": "https://petcaremalaysia.com/zh/dog-vomiting-diarrhea/conditions/pancreatitis"
+          },
+          "snippet": "Canine pancreatitis is acute inflammation of the pancreas, most often triggered by a fatty meal, table scraps, or chronic obesity. Signs include vomiting, abdominal pain (hunched posture, \"prayer position\"), refusal to eat, and lethargy. In Malaysia, festive seasons (CNY, Hari Raya, Deepavali) cause spikes in pancreatitis cases. Diagnosis is by SpecPL/cPL blood test and ultrasound. Treatment requires hospitalisation; cost ranges RM1,500–RM4,500."
+        },
+        {
+          "slug": "emergency-signs",
+          "category": null,
+          "titles": {
+            "en": "GI Emergency Signs in Dogs: When to Rush to the Vet",
+            "ms": "Tanda Kecemasan GI Anjing: Bila Bawa Terus ke Vet",
+            "zh": "狗肠胃紧急信号：何时立即就医"
+          },
+          "urls": {
+            "en": "https://petcaremalaysia.com/dog-vomiting-diarrhea/emergency-signs",
+            "ms": "https://petcaremalaysia.com/ms/dog-vomiting-diarrhea/emergency-signs",
+            "zh": "https://petcaremalaysia.com/zh/dog-vomiting-diarrhea/emergency-signs"
+          },
+          "snippet": "Gastrointestinal red flags in dogs requiring immediate vet care include: repeated vomiting that won't stop, vomiting in puppies, bloody vomit or diarrhea, distended hard abdomen (possible bloat/GDV), collapse, pale gums, \"prayer position\" of pain, and suspected toxin or foreign body ingestion. Bloat (GDV) is fatal within hours without surgery. WhatsApp +60 11-5695 9227."
+        }
+      ]
+    },
+    {
+      "key": "dog-dental-disease",
+      "basePath": "/dog-dental-disease",
+      "titles": {
+        "en": "Dog Dental Disease",
+        "ms": "Penyakit Pergigian Anjing",
+        "zh": "狗牙科疾病"
+      },
+      "descriptions": {
+        "en": "93-page authority section on canine dental conditions, costs and treatment options.",
+        "ms": "Bahagian autoriti 93-halaman tentang penyakit pergigian anjing.",
+        "zh": "93页关于犬类牙科疾病的权威专区。"
+      },
+      "urls": {
+        "en": "https://petcaremalaysia.com/dog-dental-disease",
+        "ms": "https://petcaremalaysia.com/ms/dog-dental-disease",
+        "zh": "https://petcaremalaysia.com/zh/dog-dental-disease"
+      },
+      "note": "See sitemap.xml for the full list of sub-pages."
+    },
+    {
+      "key": "urinary-tract-disease",
+      "basePath": "/urinary-tract-disease",
+      "titles": {
+        "en": "Urinary Tract Diseases",
+        "ms": "Penyakit Saluran Kencing",
+        "zh": "泌尿道疾病"
+      },
+      "descriptions": {
+        "en": "Species-aware hub on FLUTD, UTI, stones and kidney disease in cats and dogs.",
+        "ms": "Hub mengikut spesies untuk FLUTD, UTI, batu dan penyakit buah pinggang.",
+        "zh": "针对猫狗的FLUTD、尿路感染、结石与肾病主题中心。"
+      },
+      "urls": {
+        "en": "https://petcaremalaysia.com/urinary-tract-disease",
+        "ms": "https://petcaremalaysia.com/ms/urinary-tract-disease",
+        "zh": "https://petcaremalaysia.com/zh/urinary-tract-disease"
+      },
+      "note": "See sitemap.xml for the full list of sub-pages."
+    }
+  ]
+}
