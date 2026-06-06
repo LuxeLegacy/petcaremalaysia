@@ -2,7 +2,7 @@
 
 > Malaysia's trusted directory for 24/7 emergency vets, clinics, grooming, boarding, pet insurance and pet care guides across 169+ Malaysian cities. Trilingual content (English, Bahasa Malaysia, 简体中文).
 
-PetCare Malaysia helps pet owners find verified veterinary clinics, emergency care, and pet services nationwide. The site includes a free Pet Emergency Assessment tool (17-step triage), authority hubs on dog dental and urinary tract diseases, and a centralized Q&A hub answering common pet care questions with Malaysian context (RM costs, local DVS regulations, council bylaws).
+PetCare Malaysia helps pet owners find verified veterinary clinics, emergency care, and pet services nationwide. The site includes a free Pet Emergency Assessment tool (17-step triage), authority hubs on dog dental, cat dental, dog skin, dog vomiting/diarrhea, and urinary tract diseases, and a centralized Q&A hub answering common pet care questions with Malaysian context (RM costs, local DVS regulations, council bylaws).
 
 ## Core Pages
 
