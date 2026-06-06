@@ -19,8 +19,19 @@ PetCare Malaysia helps pet owners find verified veterinary clinics, emergency ca
 
 ## Authority Hubs
 
-- [Dog Dental Hub](/dog-dental): 93-page authority section on canine dental conditions, costs and treatment options.
-- [Urinary Tract Diseases](/urinary-tract): Species-aware (cat/dog) hub on FLUTD, UTI, stones and kidney disease.
+- [Dog Dental Hub](/dog-dental-disease): 93-page authority section on canine dental conditions, costs and treatment options. Also: [MS](/ms/dog-dental-disease) · [ZH](/zh/dog-dental-disease)
+- [Cat Dental Hub](/cat-dental-disease): Trilingual guide to feline gingivitis, tooth resorption (FORL), stomatitis, fractures and cleaning costs (RM350–RM3,500). Also: [MS](/ms/cat-dental-disease) · [ZH](/zh/cat-dental-disease)
+  - [Gingivitis in Cats](/cat-dental-disease/conditions/gingivitis)
+  - [Feline Tooth Resorption (FORL)](/cat-dental-disease/conditions/tooth-resorption)
+  - [Feline Stomatitis](/cat-dental-disease/conditions/stomatitis)
+  - [Tooth Fractures in Cats](/cat-dental-disease/conditions/tooth-fracture)
+  - [Bad Breath in Cats](/cat-dental-disease/symptoms/bad-breath)
+  - [Professional Dental Cleaning for Cats](/cat-dental-disease/treatments/dental-cleaning)
+  - [Cat Dental Home Care](/cat-dental-disease/prevention/home-care)
+  - [Cat Dental Emergency Signs](/cat-dental-disease/emergency-signs)
+- [Dog Skin Problems](/dog-skin-problems): Hot spots, allergies, mange and fungal infections in Malaysian humidity. Also: [MS](/ms/dog-skin-problems) · [ZH](/zh/dog-skin-problems)
+- [Dog Vomiting & Diarrhea](/dog-vomiting-diarrhea): When to wait vs rush — causes, home-care limits and red-flag symptoms. Also: [MS](/ms/dog-vomiting-diarrhea) · [ZH](/zh/dog-vomiting-diarrhea)
+- [Urinary Tract Diseases](/urinary-tract-disease): Species-aware (cat/dog) hub on FLUTD, UTI, stones and kidney disease.
 - [Pet Insurance](/pet-insurance): Compare pet insurance providers and coverage in Malaysia.
 
 ## Languages
