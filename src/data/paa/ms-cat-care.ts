@@ -69,6 +69,7 @@ Pasir dan Kebersihan: Pasir kucing berkualiti berharga RM30–RM80 sebulan. Cedo
     { question: 'Berapakah kos insurans haiwan di Malaysia?', briefAnswer: 'Insurans haiwan berharga RM95–RM300/bulan. Insurans kucing biasanya lebih murah.', slug: 'berapakah-kos-insurans-haiwan-malaysia' },
     { question: 'Bagaimana untuk adopsi haiwan di Malaysia?', briefAnswer: 'Adopsi dari SPCA, PAWS, atau PetFinder.my. Yuran adopsi RM50–RM300 biasanya termasuk vaksinasi awal.', slug: 'bagaimana-adopsi-haiwan-malaysia' },
     { question: 'Berapakah kos lawatan veterinar di Malaysia?', briefAnswer: 'Konsultasi asas RM30–RM80. Klinik JPV kerajaan dari RM5.', slug: 'berapakah-kos-lawatan-veterinar-malaysia' },
+    { question: 'Apakah penyakit gigi kucing dan kosnya di Malaysia?', briefAnswer: 'Gingivitis, FORL (resorpsi gigi), dan stomatitis menjejaskan ~70% kucing berusia 3+ tahun. Penskalaan RM350–RM800; pencabutan berbilang RM1,200–RM3,500. Lihat hub Penyakit Gigi Kucing kami untuk panduan penuh.', slug: 'cat-dental-disease-hub', path: '/cat-dental-disease' },
   ],
   localResources: {
     emergencyContacts: [
