@@ -6091,5 +6091,10 @@
     <xhtml:link rel="alternate" hreflang="ms" href="https://petcaremalaysia.com/ms/search"/>
     <xhtml:link rel="alternate" hreflang="zh" href="https://petcaremalaysia.com/zh/search"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://petcaremalaysia.com/search"/>
+  <url>
+    <loc>https://petcaremalaysia.com/llm-index.json</loc>
+    <lastmod>2026-06-06</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
   </url>
 </urlset>
