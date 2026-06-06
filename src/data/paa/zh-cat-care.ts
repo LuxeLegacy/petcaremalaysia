@@ -71,6 +71,7 @@ export const zhCatCareArticle: PAAArticle = {
     { question: '马来西亚宠物保险费用是多少？', briefAnswer: '宠物保险每月RM95–RM300。猫保险通常比狗保险便宜。', slug: 'ma-lai-xi-ya-chong-wu-bao-xian-fei-yong' },
     { question: '如何在马来西亚领养宠物？', briefAnswer: '从SPCA、PAWS或PetFinder.my领养。领养费RM50–RM300，通常包含初次疫苗接种。', slug: 'ru-he-zai-ma-lai-xi-ya-ling-yang-chong-wu' },
     { question: '马来西亚兽医诊所费用是多少？', briefAnswer: '基本咨询RM30–RM80。政府JPV诊所从RM5起。', slug: 'ma-lai-xi-ya-shou-yi-fei-yong' },
+    { question: '猫的牙科疾病有哪些？马来西亚费用多少？', briefAnswer: '牙龈炎、FORL（牙齿吸收）和口炎影响约70%的3岁以上猫咪。洗牙RM350–RM800；多颗拔牙RM1,200–RM3,500。请浏览我们的猫牙科疾病中心获取完整指南。', slug: 'cat-dental-disease-hub', path: '/cat-dental-disease' },
   ],
   localResources: {
     emergencyContacts: [
