@@ -29,7 +29,8 @@ export const msPetDentalCareArticle: PAAArticle = {
   ],
   relatedQuestions: [
     { question: 'Berapa kerap saya perlu membersihkan gigi haiwan saya?', briefAnswer: 'Tahunan untuk kebanyakan haiwan. Dengan memberus harian, setiap 2–3 tahun mungkin mencukupi.', slug: 'berapakah-kos-penjagaan-gigi-haiwan-malaysia' },
-    { question: 'Apakah penyakit periodontal pada anjing?', briefAnswer: 'Penyakit periodontal adalah jangkitan progresif pada gusi dan struktur sokongan. Lebih 80% anjing berusia lebih 3 tahun terjejas. Ketahui lebih lanjut di Hab Penyakit Gigi Anjing kami.', slug: 'berapakah-kos-penjagaan-gigi-haiwan-malaysia' },
+    { question: 'Apakah penyakit periodontal pada anjing?', briefAnswer: 'Penyakit periodontal adalah jangkitan progresif pada gusi dan struktur sokongan. Lebih 80% anjing berusia lebih 3 tahun terjejas. Ketahui lebih lanjut di Hab Penyakit Gigi Anjing kami.', slug: 'dog-dental-disease-hub', path: '/dog-dental-disease' },
+    { question: 'Apakah penyakit gigi kucing yang paling biasa?', briefAnswer: 'Gingivitis, resorpsi gigi (FORL), dan stomatitis menjejaskan sehingga 70% kucing dewasa. Lihat Hab Penyakit Gigi Kucing kami untuk gejala, kos, dan rawatan di Malaysia.', slug: 'cat-dental-disease-hub', path: '/cat-dental-disease' },
   ],
   citations: [{ source: 'Persatuan Veterinar Malaysia', title: 'Garis Panduan Penjagaan Pergigian Veterinar', publication: 'MSAVA.org', year: '2024', url: 'https://msava.org' }],
   author: { name: 'Dr. Sarah Lee', credentials: 'DVM, Berlesen Majlis Veterinar Malaysia', bio: 'Pakar veterinar dengan 12 tahun pengalaman klinikal di Malaysia.' },

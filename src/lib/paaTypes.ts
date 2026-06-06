@@ -51,6 +51,8 @@ export interface PAARelatedQuestion {
   question: string;
   briefAnswer: string;
   slug: string;
+  /** Optional full path override (e.g. "/cat-dental-disease"). When set, link uses this instead of `/qa/article/{slug}`. */
+  path?: string;
 }
 
 export interface PAAStep {

@@ -18,7 +18,7 @@ export const RelatedQuestions = ({ questions, langPrefix = '' }: RelatedQuestion
         {questions.map((q, i) => (
           <Link
             key={i}
-            to={`${langPrefix}/qa/article/${q.slug}`}
+            to={q.path ? `${langPrefix}${q.path}` : `${langPrefix}/qa/article/${q.slug}`}
             className="block rounded-lg border border-border p-4 hover:bg-accent/50 transition-colors"
           >
             <p className="font-semibold text-primary mb-1">{q.question}</p>
