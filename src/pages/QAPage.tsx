@@ -162,6 +162,38 @@ const QAPage = () => {
           </div>
         </section>
 
+        <section className="py-12 bg-muted/30">
+          <div className="container">
+            <div className="max-w-3xl mx-auto text-center mb-10">
+              <h2 className="text-2xl md:text-3xl font-bold text-foreground mb-3">
+                {i18n.hubsTitle[language]}
+              </h2>
+              <p className="text-muted-foreground">{i18n.hubsSubtitle[language]}</p>
+            </div>
+            <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
+              {AUTHORITY_HUBS.map((hub) => {
+                const prefix = language === 'en' ? '' : `/${language}`;
+                return (
+                  <Link
+                    key={hub.path}
+                    to={`${prefix}${hub.path}`}
+                    className="group p-5 rounded-2xl bg-card shadow-card hover:shadow-elevated transition-all duration-300 hover:-translate-y-1 border border-border/50"
+                  >
+                    <h3 className="text-lg font-semibold mb-2 group-hover:text-primary transition-colors">
+                      {hub.title[language]}
+                    </h3>
+                    <p className="text-sm text-muted-foreground mb-3">{hub.desc[language]}</p>
+                    <div className="flex items-center text-sm font-medium text-primary">
+                      {i18n.viewGuide[language]} <ChevronRight className="h-4 w-4 ml-1 group-hover:translate-x-1 transition-transform" />
+                    </div>
+                  </Link>
+                );
+              })}
+            </div>
+          </div>
+        </section>
+
+
         <PAAArticleListing />
 
         <script
