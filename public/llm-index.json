@@ -18,14 +18,9 @@
       "key": "cat-dental",
       "basePath": "/cat-dental-disease",
       "titles": {
-        "en": "Cat Dental Disease",
-        "ms": "Penyakit Pergigian Kucing",
-        "zh": "猫牙科疾病"
-      },
-      "descriptions": {
-        "en": "Feline gingivitis, tooth resorption (FORL), stomatitis, fractures, cleaning costs.",
-        "ms": "Radang gusi kucing, resorpsi gigi (FORL), stomatitis, patah gigi, kos cucian.",
-        "zh": "猫牙龈炎、牙吸收(FORL)、口炎、牙齿断裂、洗牙费用。"
+        "en": "Cat Dental Disease in Malaysia: Gingivitis, Tooth Resorption & FORL",
+        "ms": "Penyakit Pergigian Kucing di Malaysia: Gingivitis, Resorpsi Gigi & FORL",
+        "zh": "马来西亚猫牙科疾病：牙龈炎、牙齿吸收与FORL"
       },
       "urls": {
         "en": "https://petcaremalaysia.com/cat-dental-disease",
@@ -47,7 +42,7 @@
             "ms": "https://petcaremalaysia.com/ms/cat-dental-disease/conditions/gingivitis",
             "zh": "https://petcaremalaysia.com/zh/cat-dental-disease/conditions/gingivitis"
           },
-          "snippet": "Feline gingivitis is inflammation of the gums caused by plaque bacteria, the starting point of periodontal disease. Symptoms include red gum line, bad breath, and bleeding when eating. Early gingivitis is reversible with professional scaling and home brushing; advanced periodontal disease requires extractions. Treatment cost in Malaysia: RM350–RM1,500 depending on severity."
+          "snippet": ""
         },
         {
           "slug": "tooth-resorption",
@@ -62,7 +57,7 @@
             "ms": "https://petcaremalaysia.com/ms/cat-dental-disease/conditions/tooth-resorption",
             "zh": "https://petcaremalaysia.com/zh/cat-dental-disease/conditions/tooth-resorption"
           },
-          "snippet": "Feline tooth resorption (FORL or TR) is a painful condition where the cat's own body breaks down tooth structure, starting at the root. It affects 30–60% of cats over 5 years old. Cats hide the pain remarkably well. Dental X-rays under anaesthesia are required for diagnosis — the lesion is often invisible above the gum. Treatment is extraction of affected teeth. Cost in Malaysia: RM150–RM450 per extraction."
+          "snippet": ""
         },
         {
           "slug": "stomatitis",
@@ -77,7 +72,7 @@
             "ms": "https://petcaremalaysia.com/ms/cat-dental-disease/conditions/stomatitis",
             "zh": "https://petcaremalaysia.com/zh/cat-dental-disease/conditions/stomatitis"
           },
-          "snippet": "Feline chronic gingivostomatitis (FCGS) is a severe immune-mediated inflammation of the entire mouth. Cats have extreme oral pain, drool, refuse food, and may bleed from the mouth. Medical management is rarely enough; full-mouth or near-full-mouth extraction cures or significantly improves about 80% of cats. Treatment cost in Malaysia: RM2,000–RM4,500."
+          "snippet": ""
         },
         {
           "slug": "tooth-fracture",
@@ -92,7 +87,7 @@
             "ms": "https://petcaremalaysia.com/ms/cat-dental-disease/conditions/tooth-fracture",
             "zh": "https://petcaremalaysia.com/zh/cat-dental-disease/conditions/tooth-fracture"
           },
-          "snippet": "Cat tooth fractures most often involve the canine (fang) teeth, broken from fights, falls, or chewing hard objects. If the pulp (pink/dark spot) is exposed, the tooth is painful and will become infected — extraction or root canal is required. Cost in Malaysia: RM150–RM450 for extraction."
+          "snippet": ""
         },
         {
           "slug": "bad-breath",
@@ -107,7 +102,7 @@
             "ms": "https://petcaremalaysia.com/ms/cat-dental-disease/symptoms/bad-breath",
             "zh": "https://petcaremalaysia.com/zh/cat-dental-disease/symptoms/bad-breath"
           },
-          "snippet": "Bad breath in cats is almost always a sign of dental disease — gingivitis, periodontal disease, tooth resorption, or stomatitis. Less commonly, it can signal kidney disease (ammonia smell) or diabetes (sweet/fruity smell). Cat breath should be neutral; any noticeable odour deserves a vet exam. Dental treatment cost in Malaysia: RM350–RM4,500."
+          "snippet": ""
         },
         {
           "slug": "dental-cleaning",
@@ -122,7 +117,7 @@
             "ms": "https://petcaremalaysia.com/ms/cat-dental-disease/treatments/dental-cleaning",
             "zh": "https://petcaremalaysia.com/zh/cat-dental-disease/treatments/dental-cleaning"
           },
-          "snippet": "Professional cat dental cleaning requires general anaesthesia and includes pre-anaesthetic bloodwork, full mouth dental X-rays, ultrasonic scaling above and below the gum line, polishing, fluoride application, and extractions of unsalvageable teeth. Total cost in Malaysia: RM350–RM800 for basic cleaning, plus RM150–RM450 per extraction."
+          "snippet": ""
         },
         {
           "slug": "home-care",
@@ -137,7 +132,7 @@
             "ms": "https://petcaremalaysia.com/ms/cat-dental-disease/prevention/home-care",
             "zh": "https://petcaremalaysia.com/zh/cat-dental-disease/prevention/home-care"
           },
-          "snippet": "Effective home dental care for cats includes daily tooth brushing with cat-specific enzymatic toothpaste, VOHC-accepted dental diet kibble, water additives, and dental treats. Brushing is the gold standard. Never use human toothpaste — fluoride is toxic to cats. Start home care gradually from kittenhood for best acceptance."
+          "snippet": ""
         },
         {
           "slug": "emergency-signs",
@@ -152,7 +147,7 @@
             "ms": "https://petcaremalaysia.com/ms/cat-dental-disease/emergency-signs",
             "zh": "https://petcaremalaysia.com/zh/cat-dental-disease/emergency-signs"
           },
-          "snippet": "Cat dental emergency signs include: refusal to eat >24 hours (risk of fatal hepatic lipidosis), severe drooling (especially with blood), visible facial swelling, fractured tooth with exposed pulp, bleeding from the mouth, and pawing at the face. Cats hide pain — by the time owners notice, disease is advanced. WhatsApp +60 11-5695 9227 for triage."
+          "snippet": ""
         }
       ]
     },
@@ -160,14 +155,9 @@
       "key": "dog-skin",
       "basePath": "/dog-skin-problems",
       "titles": {
-        "en": "Dog Skin Problems",
-        "ms": "Masalah Kulit Anjing",
-        "zh": "狗皮肤问题"
-      },
-      "descriptions": {
-        "en": "Hot spots, mange, ringworm, allergies, yeast infections in Malaysian humidity.",
-        "ms": "Hot spot, kudis, kurap, alahan, jangkitan yis dalam kelembapan Malaysia.",
-        "zh": "马来西亚湿热气候下的热点、疥螨、癣、过敏、酵母菌感染。"
+        "en": "Dog Skin Problems in Malaysia: Itching, Hot-Spots, Mange & More",
+        "ms": "Masalah Kulit Anjing di Malaysia: Gatal, Hot-Spot, Kudis & Lain-Lain",
+        "zh": "马来西亚狗皮肤问题：瘙痒、热点、疥癣全攻略"
       },
       "urls": {
         "en": "https://petcaremalaysia.com/dog-skin-problems",
@@ -189,7 +179,7 @@
             "ms": "https://petcaremalaysia.com/ms/dog-skin-problems/conditions/hot-spots",
             "zh": "https://petcaremalaysia.com/zh/dog-skin-problems/conditions/hot-spots"
           },
-          "snippet": "A hot-spot is a fast-spreading, red, moist, painful patch of skin caused by self-trauma — usually from itching, licking, or biting. In Malaysian humidity, hot-spots can double in size within 24 hours. Treatment requires clipping the hair, cleaning, prescription antibiotics or antifungals, and stopping the self-trauma with an e-collar."
+          "snippet": ""
         },
         {
           "slug": "mange",
@@ -204,7 +194,7 @@
             "ms": "https://petcaremalaysia.com/ms/dog-skin-problems/conditions/mange",
             "zh": "https://petcaremalaysia.com/zh/dog-skin-problems/conditions/mange"
           },
-          "snippet": "Mange is a skin disease caused by microscopic mites. The two main types in Malaysian dogs are sarcoptic mange (highly contagious, can transmit to humans, causes intense itching) and demodectic mange (not contagious, caused by Demodex mites that overgrow when immunity drops). Diagnosis requires a skin scraping; treatment is highly effective with modern prescription parasiticides."
+          "snippet": ""
         },
         {
           "slug": "ringworm",
@@ -219,7 +209,7 @@
             "ms": "https://petcaremalaysia.com/ms/dog-skin-problems/conditions/ringworm",
             "zh": "https://petcaremalaysia.com/zh/dog-skin-problems/conditions/ringworm"
           },
-          "snippet": "Ringworm is a fungal skin infection — not a worm. It is caused by dermatophyte fungi (most often Microsporum canis), appears as circular hair-loss patches, and is contagious to other pets and humans. Diagnosis requires a fungal culture or PCR test; treatment combines oral antifungals and topical lime-sulphur or miconazole-chlorhexidine washes for 4–8 weeks."
+          "snippet": ""
         },
         {
           "slug": "allergic-dermatitis",
@@ -234,7 +224,7 @@
             "ms": "https://petcaremalaysia.com/ms/dog-skin-problems/conditions/allergic-dermatitis",
             "zh": "https://petcaremalaysia.com/zh/dog-skin-problems/conditions/allergic-dermatitis"
           },
-          "snippet": "Allergic dermatitis in dogs has three main causes: flea allergy dermatitis (FAD), cutaneous adverse food reaction (food allergy), and canine atopic dermatitis (environmental allergies). In Malaysia, flea allergy is the most common. Workup involves strict flea control, an elimination diet trial, and intradermal or serology testing for atopy. Treatments range from monthly Cytopoint® injections to daily Apoquel® tablets and lifelong allergen avoidance."
+          "snippet": ""
         },
         {
           "slug": "yeast-infection",
@@ -249,7 +239,7 @@
             "ms": "https://petcaremalaysia.com/ms/dog-skin-problems/conditions/yeast-infection",
             "zh": "https://petcaremalaysia.com/zh/dog-skin-problems/conditions/yeast-infection"
           },
-          "snippet": "A yeast infection (Malassezia dermatitis) is an overgrowth of the Malassezia pachydermatis yeast that normally lives on dog skin in small numbers. In Malaysia's humidity it overgrows in skin folds, ears, paws and the underside. Signs include a musty smell, greasy or scaly skin, brown ear wax, and intense itch. Diagnosis is by skin cytology; treatment uses medicated chlorhexidine-miconazole shampoo plus oral antifungals if generalised."
+          "snippet": ""
         },
         {
           "slug": "itching",
@@ -264,7 +254,7 @@
             "ms": "https://petcaremalaysia.com/ms/dog-skin-problems/symptoms/itching",
             "zh": "https://petcaremalaysia.com/zh/dog-skin-problems/symptoms/itching"
           },
-          "snippet": "Occasional scratching is normal in dogs. Itching becomes a medical issue when it disturbs sleep, breaks the skin, focuses on one area, or persists for more than 2 weeks. In Malaysia the top causes are fleas, atopic dermatitis, food allergy, yeast or bacterial infection. Persistent itching always warrants a veterinary skin scraping and cytology — never use human anti-itch creams without veterinary guidance."
+          "snippet": ""
         },
         {
           "slug": "hair-loss",
@@ -279,7 +269,7 @@
             "ms": "https://petcaremalaysia.com/ms/dog-skin-problems/symptoms/hair-loss",
             "zh": "https://petcaremalaysia.com/zh/dog-skin-problems/symptoms/hair-loss"
           },
-          "snippet": "Hair loss in dogs can be patchy, symmetrical, or generalised. Patchy alopecia usually points to ringworm, mange, or hot-spots. Symmetrical hair loss on the flanks or trunk often signals hormonal disease (hypothyroidism, Cushing's). Generalised thinning may reflect nutritional, parasitic, or autoimmune disease. All persistent hair loss requires veterinary workup including skin scraping, fungal culture, and possibly blood hormone testing."
+          "snippet": ""
         },
         {
           "slug": "emergency-signs",
@@ -294,7 +284,7 @@
             "ms": "https://petcaremalaysia.com/ms/dog-skin-problems/emergency-signs",
             "zh": "https://petcaremalaysia.com/zh/dog-skin-problems/emergency-signs"
           },
-          "snippet": "Skin emergencies in dogs include severe allergic reactions (anaphylaxis), rapidly spreading hot-spots, deep wounds, bee or hornet stings with facial swelling, snake or scorpion bites, and any skin infection accompanied by fever or lethargy. In Malaysia, these need immediate veterinary attention — not a wait-and-see approach. WhatsApp +60 11-5695 9227 for our pet helpline, or use our Emergency Guide to find the nearest 24-hour vet."
+          "snippet": ""
         }
       ]
     },
@@ -302,14 +292,9 @@
       "key": "dog-vomiting",
       "basePath": "/dog-vomiting-diarrhea",
       "titles": {
-        "en": "Dog Vomiting & Diarrhea",
-        "ms": "Anjing Muntah & Cirit-Birit",
-        "zh": "狗呕吐与腹泻"
-      },
-      "descriptions": {
-        "en": "When to wait vs rush — causes, home-care limits, red-flag symptoms.",
-        "ms": "Bila tunggu vs segera — punca, had penjagaan rumah, simptom amaran.",
-        "zh": "何时观察何时急诊——原因、家庭护理限度、红旗症状。"
+        "en": "Dog Vomiting & Diarrhea in Malaysia: Causes, Costs & Red Flags",
+        "ms": "Anjing Muntah & Cirit-Birit di Malaysia: Punca, Kos & Tanda Bahaya",
+        "zh": "马来西亚狗呕吐与腹泻：原因、费用与危险信号"
       },
       "urls": {
         "en": "https://petcaremalaysia.com/dog-vomiting-diarrhea",
@@ -331,7 +316,7 @@
             "ms": "https://petcaremalaysia.com/ms/dog-vomiting-diarrhea/conditions/acute-vomiting",
             "zh": "https://petcaremalaysia.com/zh/dog-vomiting-diarrhea/conditions/acute-vomiting"
           },
-          "snippet": "Acute vomiting in dogs (less than 7 days duration) is most often caused by dietary indiscretion, parasites, viral infection, or toxin ingestion. A single vomit in a bright, alert adult dog can be monitored at home for 12 hours with food withheld. Repeated vomiting (>3 episodes in 12 hours), blood, lethargy, abdominal pain, or any vomiting in a puppy requires same-day veterinary care."
+          "snippet": ""
         },
         {
           "slug": "acute-diarrhea",
@@ -346,7 +331,7 @@
             "ms": "https://petcaremalaysia.com/ms/dog-vomiting-diarrhea/conditions/acute-diarrhea",
             "zh": "https://petcaremalaysia.com/zh/dog-vomiting-diarrhea/conditions/acute-diarrhea"
           },
-          "snippet": "Acute diarrhea (less than 14 days) in dogs is usually caused by dietary indiscretion, parasites, sudden food change, stress, or viral/bacterial infection. Mild cases in adult dogs may respond to 24 hours of bland diet and probiotics. Diarrhea with blood, mucus, lethargy, vomiting, or in puppies requires same-day vet care."
+          "snippet": ""
         },
         {
           "slug": "parvovirus",
@@ -361,7 +346,7 @@
             "ms": "https://petcaremalaysia.com/ms/dog-vomiting-diarrhea/conditions/parvovirus",
             "zh": "https://petcaremalaysia.com/zh/dog-vomiting-diarrhea/conditions/parvovirus"
           },
-          "snippet": "Canine parvovirus (CPV) is a highly contagious viral disease causing severe vomiting and bloody diarrhea, primarily in unvaccinated puppies. Mortality untreated exceeds 90%; with prompt hospitalised IV fluid treatment, survival exceeds 70%. The complete puppy vaccination series (3 doses, 6–16 weeks of age) is the only reliable prevention. Treatment in Malaysia costs RM1,500–RM5,000."
+          "snippet": ""
         },
         {
           "slug": "foreign-body",
@@ -376,7 +361,7 @@
             "ms": "https://petcaremalaysia.com/ms/dog-vomiting-diarrhea/conditions/foreign-body",
             "zh": "https://petcaremalaysia.com/zh/dog-vomiting-diarrhea/conditions/foreign-body"
           },
-          "snippet": "Foreign body ingestion in dogs (swallowing toys, bones, fabric, sticks, or string) is a common surgical emergency. Signs include sudden persistent vomiting, refusal to eat, painful abdomen, and absent stool. Diagnosis is by X-ray or ultrasound. Linear foreign bodies (string, thread) are especially dangerous and can saw through the intestine. Surgery cost in Malaysia: RM2,500–RM8,000."
+          "snippet": ""
         },
         {
           "slug": "pancreatitis",
@@ -391,7 +376,7 @@
             "ms": "https://petcaremalaysia.com/ms/dog-vomiting-diarrhea/conditions/pancreatitis",
             "zh": "https://petcaremalaysia.com/zh/dog-vomiting-diarrhea/conditions/pancreatitis"
           },
-          "snippet": "Canine pancreatitis is acute inflammation of the pancreas, most often triggered by a fatty meal, table scraps, or chronic obesity. Signs include vomiting, abdominal pain (hunched posture, \"prayer position\"), refusal to eat, and lethargy. In Malaysia, festive seasons (CNY, Hari Raya, Deepavali) cause spikes in pancreatitis cases. Diagnosis is by SpecPL/cPL blood test and ultrasound. Treatment requires hospitalisation; cost ranges RM1,500–RM4,500."
+          "snippet": ""
         },
         {
           "slug": "emergency-signs",
@@ -406,49 +391,778 @@
             "ms": "https://petcaremalaysia.com/ms/dog-vomiting-diarrhea/emergency-signs",
             "zh": "https://petcaremalaysia.com/zh/dog-vomiting-diarrhea/emergency-signs"
           },
-          "snippet": "Gastrointestinal red flags in dogs requiring immediate vet care include: repeated vomiting that won't stop, vomiting in puppies, bloody vomit or diarrhea, distended hard abdomen (possible bloat/GDV), collapse, pale gums, \"prayer position\" of pain, and suspected toxin or foreign body ingestion. Bloat (GDV) is fatal within hours without surgery. WhatsApp +60 11-5695 9227."
+          "snippet": ""
         }
       ]
     },
     {
-      "key": "dog-dental-disease",
+      "key": "dog-dental",
       "basePath": "/dog-dental-disease",
       "titles": {
-        "en": "Dog Dental Disease",
-        "ms": "Penyakit Pergigian Anjing",
-        "zh": "狗牙科疾病"
-      },
-      "descriptions": {
-        "en": "93-page authority section on canine dental conditions, costs and treatment options.",
-        "ms": "Bahagian autoriti 93-halaman tentang penyakit pergigian anjing.",
-        "zh": "93页关于犬类牙科疾病的权威专区。"
+        "en": "Dog Dental Disease: Complete Guide to Canine Oral Health",
+        "ms": "Penyakit Gigi Anjing: Panduan Lengkap Kesihatan Mulut Anjing",
+        "zh": "犬牙科疾病：犬口腔健康完整指南"
       },
       "urls": {
         "en": "https://petcaremalaysia.com/dog-dental-disease",
         "ms": "https://petcaremalaysia.com/ms/dog-dental-disease",
         "zh": "https://petcaremalaysia.com/zh/dog-dental-disease"
       },
-      "note": "See sitemap.xml for the full list of sub-pages."
+      "pageCount": 31,
+      "pages": [
+        {
+          "slug": "plaque-buildup",
+          "category": "conditions",
+          "titles": {
+            "en": "Plaque Buildup in Dogs: Causes, Signs & What to Do",
+            "ms": "Pengumpulan Plak pada Anjing: Punca, Tanda & Tindakan",
+            "zh": "狗牙菌斑积累：原因、征兆及应对方法"
+          },
+          "urls": {
+            "en": "https://petcaremalaysia.com/dog-dental-disease/conditions/plaque-buildup",
+            "ms": "https://petcaremalaysia.com/ms/dog-dental-disease/conditions/plaque-buildup",
+            "zh": "https://petcaremalaysia.com/zh/dog-dental-disease/conditions/plaque-buildup"
+          },
+          "snippet": ""
+        },
+        {
+          "slug": "gingivitis",
+          "category": "conditions",
+          "titles": {
+            "en": "Gingivitis in Dogs: Early Gum Disease Signs & Treatment",
+            "ms": "Gingivitis pada Anjing: Tanda Penyakit Gusi Awal & Rawatan",
+            "zh": "犬牙龈炎：早期牙龈病征兆和治疗"
+          },
+          "urls": {
+            "en": "https://petcaremalaysia.com/dog-dental-disease/conditions/gingivitis",
+            "ms": "https://petcaremalaysia.com/ms/dog-dental-disease/conditions/gingivitis",
+            "zh": "https://petcaremalaysia.com/zh/dog-dental-disease/conditions/gingivitis"
+          },
+          "snippet": ""
+        },
+        {
+          "slug": "periodontal-disease",
+          "category": "conditions",
+          "titles": {
+            "en": "Periodontal Disease in Dogs: Stages, Signs & Treatment Options",
+            "ms": "Penyakit Periodontal pada Anjing: Peringkat, Tanda & Pilihan Rawatan",
+            "zh": "犬牙周病：分期、征兆和治疗选择"
+          },
+          "urls": {
+            "en": "https://petcaremalaysia.com/dog-dental-disease/conditions/periodontal-disease",
+            "ms": "https://petcaremalaysia.com/ms/dog-dental-disease/conditions/periodontal-disease",
+            "zh": "https://petcaremalaysia.com/zh/dog-dental-disease/conditions/periodontal-disease"
+          },
+          "snippet": ""
+        },
+        {
+          "slug": "tooth-root-abscess",
+          "category": "conditions",
+          "titles": {
+            "en": "Tooth Root Abscess in Dogs: Signs, Urgency & Treatment",
+            "ms": "Abses Akar Gigi pada Anjing: Tanda, Kedaruratan & Rawatan",
+            "zh": "犬牙根脓肿：征兆、紧急程度和治疗"
+          },
+          "urls": {
+            "en": "https://petcaremalaysia.com/dog-dental-disease/conditions/tooth-root-abscess",
+            "ms": "https://petcaremalaysia.com/ms/dog-dental-disease/conditions/tooth-root-abscess",
+            "zh": "https://petcaremalaysia.com/zh/dog-dental-disease/conditions/tooth-root-abscess"
+          },
+          "snippet": ""
+        },
+        {
+          "slug": "bad-breath",
+          "category": "symptoms",
+          "titles": {
+            "en": "Bad Breath in Dogs: What Halitosis May Indicate",
+            "ms": "Nafas Berbau pada Anjing: Apa yang Halitosis Mungkin Petunjukkan",
+            "zh": "狗口臭：口腔恶臭可能意味着什么"
+          },
+          "urls": {
+            "en": "https://petcaremalaysia.com/dog-dental-disease/symptoms/bad-breath",
+            "ms": "https://petcaremalaysia.com/ms/dog-dental-disease/symptoms/bad-breath",
+            "zh": "https://petcaremalaysia.com/zh/dog-dental-disease/symptoms/bad-breath"
+          },
+          "snippet": ""
+        },
+        {
+          "slug": "red-gums",
+          "category": "symptoms",
+          "titles": {
+            "en": "Red Gums in Dogs: What Gum Inflammation Means",
+            "ms": "Gusi Merah pada Anjing: Maksud Keradangan Gusi",
+            "zh": "狗牙龈发红：牙龈炎症的含义"
+          },
+          "urls": {
+            "en": "https://petcaremalaysia.com/dog-dental-disease/symptoms/red-gums",
+            "ms": "https://petcaremalaysia.com/ms/dog-dental-disease/symptoms/red-gums",
+            "zh": "https://petcaremalaysia.com/zh/dog-dental-disease/symptoms/red-gums"
+          },
+          "snippet": ""
+        },
+        {
+          "slug": "swollen-gums",
+          "category": "symptoms",
+          "titles": {
+            "en": "Swollen Gums in Dogs: Causes & When to Worry",
+            "ms": "Gusi Bengkak pada Anjing: Punca & Bila Perlu Bimbang",
+            "zh": "狗牙龈肿胀：原因及何时担心"
+          },
+          "urls": {
+            "en": "https://petcaremalaysia.com/dog-dental-disease/symptoms/swollen-gums",
+            "ms": "https://petcaremalaysia.com/ms/dog-dental-disease/symptoms/swollen-gums",
+            "zh": "https://petcaremalaysia.com/zh/dog-dental-disease/symptoms/swollen-gums"
+          },
+          "snippet": ""
+        },
+        {
+          "slug": "bleeding-gums",
+          "category": "symptoms",
+          "titles": {
+            "en": "Bleeding Gums in Dogs: Causes & What to Do",
+            "ms": "Gusi Berdarah pada Anjing: Punca & Tindakan",
+            "zh": "狗牙龈出血：原因及应对方法"
+          },
+          "urls": {
+            "en": "https://petcaremalaysia.com/dog-dental-disease/symptoms/bleeding-gums",
+            "ms": "https://petcaremalaysia.com/ms/dog-dental-disease/symptoms/bleeding-gums",
+            "zh": "https://petcaremalaysia.com/zh/dog-dental-disease/symptoms/bleeding-gums"
+          },
+          "snippet": ""
+        },
+        {
+          "slug": "dropping-food",
+          "category": "symptoms",
+          "titles": {
+            "en": "Dog Dropping Food While Eating: Dental Pain Signs",
+            "ms": "Anjing Menjatuhkan Makanan Semasa Makan: Tanda Kesakitan Gigi",
+            "zh": "狗进食时掉食：牙科疼痛征兆"
+          },
+          "urls": {
+            "en": "https://petcaremalaysia.com/dog-dental-disease/symptoms/dropping-food",
+            "ms": "https://petcaremalaysia.com/ms/dog-dental-disease/symptoms/dropping-food",
+            "zh": "https://petcaremalaysia.com/zh/dog-dental-disease/symptoms/dropping-food"
+          },
+          "snippet": ""
+        },
+        {
+          "slug": "pawing-at-mouth",
+          "category": "symptoms",
+          "titles": {
+            "en": "Dog Pawing at Mouth: Causes & When to Worry",
+            "ms": "Anjing Mengais Mulut: Punca & Bila Perlu Bimbang",
+            "zh": "狗用爪子抓嘴：原因及何时担心"
+          },
+          "urls": {
+            "en": "https://petcaremalaysia.com/dog-dental-disease/symptoms/pawing-at-mouth",
+            "ms": "https://petcaremalaysia.com/ms/dog-dental-disease/symptoms/pawing-at-mouth",
+            "zh": "https://petcaremalaysia.com/zh/dog-dental-disease/symptoms/pawing-at-mouth"
+          },
+          "snippet": ""
+        },
+        {
+          "slug": "facial-swelling",
+          "category": "symptoms",
+          "titles": {
+            "en": "Facial Swelling in Dogs: Dental Emergency Warning",
+            "ms": "Bengkak Muka pada Anjing: Amaran Kecemasan Gigi",
+            "zh": "狗面部肿胀：牙科紧急警告"
+          },
+          "urls": {
+            "en": "https://petcaremalaysia.com/dog-dental-disease/symptoms/facial-swelling",
+            "ms": "https://petcaremalaysia.com/ms/dog-dental-disease/symptoms/facial-swelling",
+            "zh": "https://petcaremalaysia.com/zh/dog-dental-disease/symptoms/facial-swelling"
+          },
+          "snippet": ""
+        },
+        {
+          "slug": "early",
+          "category": "severity",
+          "titles": {
+            "en": "Early Stage Dog Dental Disease: Plaque & Mild Gingivitis",
+            "ms": "Penyakit Gigi Anjing Peringkat Awal: Plak & Gingivitis Ringan",
+            "zh": "犬早期牙科疾病：牙菌斑和轻度牙龈炎"
+          },
+          "urls": {
+            "en": "https://petcaremalaysia.com/dog-dental-disease/severity/early",
+            "ms": "https://petcaremalaysia.com/ms/dog-dental-disease/severity/early",
+            "zh": "https://petcaremalaysia.com/zh/dog-dental-disease/severity/early"
+          },
+          "snippet": ""
+        },
+        {
+          "slug": "moderate",
+          "category": "severity",
+          "titles": {
+            "en": "Moderate Dog Dental Disease: Periodontal Progression",
+            "ms": "Penyakit Gigi Anjing Sederhana: Periodontitis Peringkat 2–3",
+            "zh": "犬中期牙科疾病：牙周病进展"
+          },
+          "urls": {
+            "en": "https://petcaremalaysia.com/dog-dental-disease/severity/moderate",
+            "ms": "https://petcaremalaysia.com/ms/dog-dental-disease/severity/moderate",
+            "zh": "https://petcaremalaysia.com/zh/dog-dental-disease/severity/moderate"
+          },
+          "snippet": ""
+        },
+        {
+          "slug": "advanced",
+          "category": "severity",
+          "titles": {
+            "en": "Advanced Dog Dental Disease: Stage 4 Periodontal Disease",
+            "ms": "Penyakit Gigi Anjing Lanjutan: Periodontitis Peringkat 4",
+            "zh": "犬晚期牙科疾病：第4期牙周病"
+          },
+          "urls": {
+            "en": "https://petcaremalaysia.com/dog-dental-disease/severity/advanced",
+            "ms": "https://petcaremalaysia.com/ms/dog-dental-disease/severity/advanced",
+            "zh": "https://petcaremalaysia.com/zh/dog-dental-disease/severity/advanced"
+          },
+          "snippet": ""
+        },
+        {
+          "slug": "emergency-signs",
+          "category": "emergency",
+          "titles": {
+            "en": "Dog Dental Emergency Signs: When to Seek Immediate Care",
+            "ms": "Tanda Kecemasan Gigi Anjing: Bila Perlu Dapatkan Rawatan Segera",
+            "zh": "犬牙科紧急征兆：何时寻求立即护理"
+          },
+          "urls": {
+            "en": "https://petcaremalaysia.com/dog-dental-disease/emergency-signs",
+            "ms": "https://petcaremalaysia.com/ms/dog-dental-disease/emergency-signs",
+            "zh": "https://petcaremalaysia.com/zh/dog-dental-disease/emergency-signs"
+          },
+          "snippet": ""
+        },
+        {
+          "slug": "when-to-see-a-vet",
+          "category": "emergency",
+          "titles": {
+            "en": "When to See a Vet for Dog Dental Problems",
+            "ms": "Bila Perlu Jumpa Doktor Haiwan untuk Masalah Gigi Anjing",
+            "zh": "犬牙科问题何时看兽医"
+          },
+          "urls": {
+            "en": "https://petcaremalaysia.com/dog-dental-disease/when-to-see-a-vet",
+            "ms": "https://petcaremalaysia.com/ms/dog-dental-disease/when-to-see-a-vet",
+            "zh": "https://petcaremalaysia.com/zh/dog-dental-disease/when-to-see-a-vet"
+          },
+          "snippet": ""
+        },
+        {
+          "slug": "oral-exam",
+          "category": "diagnosis",
+          "titles": {
+            "en": "Veterinary Oral Exam for Dogs: What to Expect",
+            "ms": "Pemeriksaan Mulut Veterinar untuk Anjing: Apa yang Dijangkakan",
+            "zh": "犬兽医口腔检查：预期情况"
+          },
+          "urls": {
+            "en": "https://petcaremalaysia.com/dog-dental-disease/diagnosis/oral-exam",
+            "ms": "https://petcaremalaysia.com/ms/dog-dental-disease/diagnosis/oral-exam",
+            "zh": "https://petcaremalaysia.com/zh/dog-dental-disease/diagnosis/oral-exam"
+          },
+          "snippet": ""
+        },
+        {
+          "slug": "dental-probing",
+          "category": "diagnosis",
+          "titles": {
+            "en": "Dental Probing in Dogs: Measuring Gum Disease",
+            "ms": "Probing Gigi pada Anjing: Mengukur Penyakit Gusi",
+            "zh": "犬牙科探针检查：测量牙龈病"
+          },
+          "urls": {
+            "en": "https://petcaremalaysia.com/dog-dental-disease/diagnosis/dental-probing",
+            "ms": "https://petcaremalaysia.com/ms/dog-dental-disease/diagnosis/dental-probing",
+            "zh": "https://petcaremalaysia.com/zh/dog-dental-disease/diagnosis/dental-probing"
+          },
+          "snippet": ""
+        },
+        {
+          "slug": "dental-x-rays",
+          "category": "diagnosis",
+          "titles": {
+            "en": "Dental X-Rays for Dogs: Seeing Below the Gum Line",
+            "ms": "X-Ray Gigi untuk Anjing: Melihat Di Bawah Garisan Gusi",
+            "zh": "犬牙科X光：查看牙龈线以下"
+          },
+          "urls": {
+            "en": "https://petcaremalaysia.com/dog-dental-disease/diagnosis/dental-x-rays",
+            "ms": "https://petcaremalaysia.com/ms/dog-dental-disease/diagnosis/dental-x-rays",
+            "zh": "https://petcaremalaysia.com/zh/dog-dental-disease/diagnosis/dental-x-rays"
+          },
+          "snippet": ""
+        },
+        {
+          "slug": "professional-cleaning",
+          "category": "treatments",
+          "titles": {
+            "en": "Professional Dental Cleaning for Dogs: What It Involves",
+            "ms": "Pembersihan Gigi Profesional untuk Anjing: Apa yang Terlibat",
+            "zh": "犬专业洁牙：涉及内容"
+          },
+          "urls": {
+            "en": "https://petcaremalaysia.com/dog-dental-disease/treatments/professional-cleaning",
+            "ms": "https://petcaremalaysia.com/ms/dog-dental-disease/treatments/professional-cleaning",
+            "zh": "https://petcaremalaysia.com/zh/dog-dental-disease/treatments/professional-cleaning"
+          },
+          "snippet": ""
+        },
+        {
+          "slug": "tooth-extraction",
+          "category": "treatments",
+          "titles": {
+            "en": "Tooth Extraction in Dogs: When & Why It's Needed",
+            "ms": "Pencabutan Gigi pada Anjing: Bila & Mengapa Ia Diperlukan",
+            "zh": "犬拔牙：何时需要及原因"
+          },
+          "urls": {
+            "en": "https://petcaremalaysia.com/dog-dental-disease/treatments/tooth-extraction",
+            "ms": "https://petcaremalaysia.com/ms/dog-dental-disease/treatments/tooth-extraction",
+            "zh": "https://petcaremalaysia.com/zh/dog-dental-disease/treatments/tooth-extraction"
+          },
+          "snippet": ""
+        },
+        {
+          "slug": "antibiotic-therapy",
+          "category": "treatments",
+          "titles": {
+            "en": "Antibiotic Therapy for Dog Dental Infections: Overview",
+            "ms": "Terapi Antibiotik untuk Jangkitan Gigi Anjing: Gambaran Keseluruhan",
+            "zh": "犬牙科感染抗生素治疗：概述"
+          },
+          "urls": {
+            "en": "https://petcaremalaysia.com/dog-dental-disease/treatments/antibiotic-therapy",
+            "ms": "https://petcaremalaysia.com/ms/dog-dental-disease/treatments/antibiotic-therapy",
+            "zh": "https://petcaremalaysia.com/zh/dog-dental-disease/treatments/antibiotic-therapy"
+          },
+          "snippet": ""
+        },
+        {
+          "slug": "pain-management",
+          "category": "treatments",
+          "titles": {
+            "en": "Pain Management for Dog Dental Disease: What to Know",
+            "ms": "Pengurusan Kesakitan untuk Penyakit Gigi Anjing: Apa yang Perlu Diketahui",
+            "zh": "犬牙科疾病疼痛管理：须知事项"
+          },
+          "urls": {
+            "en": "https://petcaremalaysia.com/dog-dental-disease/treatments/pain-management",
+            "ms": "https://petcaremalaysia.com/ms/dog-dental-disease/treatments/pain-management",
+            "zh": "https://petcaremalaysia.com/zh/dog-dental-disease/treatments/pain-management"
+          },
+          "snippet": ""
+        },
+        {
+          "slug": "preventive-dental-care",
+          "category": "treatments",
+          "titles": {
+            "en": "Preventive Dental Care for Dogs: Professional Overview",
+            "ms": "Penjagaan Gigi Pencegahan untuk Anjing: Gambaran Profesional",
+            "zh": "犬预防性牙科护理：专业概述"
+          },
+          "urls": {
+            "en": "https://petcaremalaysia.com/dog-dental-disease/treatments/preventive-dental-care",
+            "ms": "https://petcaremalaysia.com/ms/dog-dental-disease/treatments/preventive-dental-care",
+            "zh": "https://petcaremalaysia.com/zh/dog-dental-disease/treatments/preventive-dental-care"
+          },
+          "snippet": ""
+        },
+        {
+          "slug": "post-dental-procedure",
+          "category": "recovery",
+          "titles": {
+            "en": "Post-Dental Procedure Recovery for Dogs: What to Expect",
+            "ms": "Pemulihan Selepas Prosedur Gigi untuk Anjing: Apa yang Dijangkakan",
+            "zh": "犬牙科手术后恢复：预期情况"
+          },
+          "urls": {
+            "en": "https://petcaremalaysia.com/dog-dental-disease/recovery/post-dental-procedure",
+            "ms": "https://petcaremalaysia.com/ms/dog-dental-disease/recovery/post-dental-procedure",
+            "zh": "https://petcaremalaysia.com/zh/dog-dental-disease/recovery/post-dental-procedure"
+          },
+          "snippet": ""
+        },
+        {
+          "slug": "oral-healing-timeline",
+          "category": "recovery",
+          "titles": {
+            "en": "Dog Oral Healing Timeline After Dental Procedures",
+            "ms": "Garis Masa Penyembuhan Mulut Anjing Selepas Prosedur Gigi",
+            "zh": "犬牙科手术后口腔愈合时间表"
+          },
+          "urls": {
+            "en": "https://petcaremalaysia.com/dog-dental-disease/recovery/oral-healing-timeline",
+            "ms": "https://petcaremalaysia.com/ms/dog-dental-disease/recovery/oral-healing-timeline",
+            "zh": "https://petcaremalaysia.com/zh/dog-dental-disease/recovery/oral-healing-timeline"
+          },
+          "snippet": ""
+        },
+        {
+          "slug": "monitoring-for-complications",
+          "category": "recovery",
+          "titles": {
+            "en": "Monitoring for Complications After Dog Dental Surgery",
+            "ms": "Pemantauan Komplikasi Selepas Pembedahan Gigi Anjing",
+            "zh": "犬牙科手术后并发症监测"
+          },
+          "urls": {
+            "en": "https://petcaremalaysia.com/dog-dental-disease/recovery/monitoring-for-complications",
+            "ms": "https://petcaremalaysia.com/ms/dog-dental-disease/recovery/monitoring-for-complications",
+            "zh": "https://petcaremalaysia.com/zh/dog-dental-disease/recovery/monitoring-for-complications"
+          },
+          "snippet": ""
+        },
+        {
+          "slug": "brushing",
+          "category": "prevention",
+          "titles": {
+            "en": "Brushing Your Dog's Teeth: The #1 Prevention Method",
+            "ms": "Memberus Gigi Anjing Anda: Kaedah Pencegahan #1",
+            "zh": "给狗刷牙：第一预防方法"
+          },
+          "urls": {
+            "en": "https://petcaremalaysia.com/dog-dental-disease/prevention/brushing",
+            "ms": "https://petcaremalaysia.com/ms/dog-dental-disease/prevention/brushing",
+            "zh": "https://petcaremalaysia.com/zh/dog-dental-disease/prevention/brushing"
+          },
+          "snippet": ""
+        },
+        {
+          "slug": "dental-checkups",
+          "category": "prevention",
+          "titles": {
+            "en": "Regular Dental Checkups for Dogs: Why They Matter",
+            "ms": "Pemeriksaan Gigi Rutin untuk Anjing: Mengapa Ia Penting",
+            "zh": "犬定期牙科检查：为什么重要"
+          },
+          "urls": {
+            "en": "https://petcaremalaysia.com/dog-dental-disease/prevention/dental-checkups",
+            "ms": "https://petcaremalaysia.com/ms/dog-dental-disease/prevention/dental-checkups",
+            "zh": "https://petcaremalaysia.com/zh/dog-dental-disease/prevention/dental-checkups"
+          },
+          "snippet": ""
+        },
+        {
+          "slug": "diet-and-chewing-behavior",
+          "category": "prevention",
+          "titles": {
+            "en": "Diet & Chewing for Dog Dental Health",
+            "ms": "Diet & Kunyahan untuk Kesihatan Gigi Anjing",
+            "zh": "饮食与咀嚼行为对犬牙科健康的影响"
+          },
+          "urls": {
+            "en": "https://petcaremalaysia.com/dog-dental-disease/prevention/diet-and-chewing-behavior",
+            "ms": "https://petcaremalaysia.com/ms/dog-dental-disease/prevention/diet-and-chewing-behavior",
+            "zh": "https://petcaremalaysia.com/zh/dog-dental-disease/prevention/diet-and-chewing-behavior"
+          },
+          "snippet": ""
+        }
+      ]
     },
     {
-      "key": "urinary-tract-disease",
+      "key": "urinary",
       "basePath": "/urinary-tract-disease",
       "titles": {
-        "en": "Urinary Tract Diseases",
-        "ms": "Penyakit Saluran Kencing",
-        "zh": "泌尿道疾病"
-      },
-      "descriptions": {
-        "en": "Species-aware hub on FLUTD, UTI, stones and kidney disease in cats and dogs.",
-        "ms": "Hub mengikut spesies untuk FLUTD, UTI, batu dan penyakit buah pinggang.",
-        "zh": "针对猫狗的FLUTD、尿路感染、结石与肾病主题中心。"
+        "en": "Urinary Tract Disease in Cats & Dogs — Complete Guide for Malaysian Pet Owners",
+        "ms": "Urinary Tract Disease in Cats & Dogs — Complete Guide for Malaysian Pet Owners",
+        "zh": "Urinary Tract Disease in Cats & Dogs — Complete Guide for Malaysian Pet Owners"
       },
       "urls": {
         "en": "https://petcaremalaysia.com/urinary-tract-disease",
         "ms": "https://petcaremalaysia.com/ms/urinary-tract-disease",
         "zh": "https://petcaremalaysia.com/zh/urinary-tract-disease"
       },
-      "note": "See sitemap.xml for the full list of sub-pages."
+      "pageCount": 20,
+      "pages": [
+        {
+          "slug": "cats-hub",
+          "category": "hub",
+          "titles": {
+            "en": "Cat Urinary Tract Disease — FLUTD, Obstruction & UTI Guide for Malaysia",
+            "ms": "Cat Urinary Tract Disease — FLUTD, Obstruction & UTI Guide for Malaysia",
+            "zh": "Cat Urinary Tract Disease — FLUTD, Obstruction & UTI Guide for Malaysia"
+          },
+          "urls": {
+            "en": "https://petcaremalaysia.com/urinary-tract-disease/cats",
+            "ms": "https://petcaremalaysia.com/ms/urinary-tract-disease/cats",
+            "zh": "https://petcaremalaysia.com/zh/urinary-tract-disease/cats"
+          },
+          "snippet": ""
+        },
+        {
+          "slug": "dogs-hub",
+          "category": "hub",
+          "titles": {
+            "en": "Dog Urinary Tract Disease — UTI, Bladder Stones & Incontinence Guide for Malaysia",
+            "ms": "Dog Urinary Tract Disease — UTI, Bladder Stones & Incontinence Guide for Malaysia",
+            "zh": "Dog Urinary Tract Disease — UTI, Bladder Stones & Incontinence Guide for Malaysia"
+          },
+          "urls": {
+            "en": "https://petcaremalaysia.com/urinary-tract-disease/dogs",
+            "ms": "https://petcaremalaysia.com/ms/urinary-tract-disease/dogs",
+            "zh": "https://petcaremalaysia.com/zh/urinary-tract-disease/dogs"
+          },
+          "snippet": ""
+        },
+        {
+          "slug": "emergency-signs",
+          "category": "emergency",
+          "titles": {
+            "en": "Urinary Emergency Signs in Cats & Dogs — When to Seek Immediate Care",
+            "ms": "Urinary Emergency Signs in Cats & Dogs — When to Seek Immediate Care",
+            "zh": "Urinary Emergency Signs in Cats & Dogs — When to Seek Immediate Care"
+          },
+          "urls": {
+            "en": "https://petcaremalaysia.com/urinary-tract-disease/emergency-signs",
+            "ms": "https://petcaremalaysia.com/ms/urinary-tract-disease/emergency-signs",
+            "zh": "https://petcaremalaysia.com/zh/urinary-tract-disease/emergency-signs"
+          },
+          "snippet": ""
+        },
+        {
+          "slug": "cats-emergency-signs",
+          "category": "emergency",
+          "titles": {
+            "en": "Cat Urinary Emergency Signs — When Your Cat Needs Immediate Vet Care",
+            "ms": "Cat Urinary Emergency Signs — When Your Cat Needs Immediate Vet Care",
+            "zh": "Cat Urinary Emergency Signs — When Your Cat Needs Immediate Vet Care"
+          },
+          "urls": {
+            "en": "https://petcaremalaysia.com/urinary-tract-disease/cats/emergency-signs",
+            "ms": "https://petcaremalaysia.com/ms/urinary-tract-disease/cats/emergency-signs",
+            "zh": "https://petcaremalaysia.com/zh/urinary-tract-disease/cats/emergency-signs"
+          },
+          "snippet": ""
+        },
+        {
+          "slug": "cats-emergency-blocked-cat",
+          "category": "emergency",
+          "titles": {
+            "en": "Blocked Cat Emergency — Urethral Obstruction in Cats (Life-Threatening)",
+            "ms": "Blocked Cat Emergency — Urethral Obstruction in Cats (Life-Threatening)",
+            "zh": "Blocked Cat Emergency — Urethral Obstruction in Cats (Life-Threatening)"
+          },
+          "urls": {
+            "en": "https://petcaremalaysia.com/urinary-tract-disease/cats/emergency-signs/blocked-cat",
+            "ms": "https://petcaremalaysia.com/ms/urinary-tract-disease/cats/emergency-signs/blocked-cat",
+            "zh": "https://petcaremalaysia.com/zh/urinary-tract-disease/cats/emergency-signs/blocked-cat"
+          },
+          "snippet": ""
+        },
+        {
+          "slug": "cats-when-to-see-a-vet",
+          "category": "emergency",
+          "titles": {
+            "en": "When to See a Vet for Cat Urinary Problems — Urgency Guide",
+            "ms": "When to See a Vet for Cat Urinary Problems — Urgency Guide",
+            "zh": "When to See a Vet for Cat Urinary Problems — Urgency Guide"
+          },
+          "urls": {
+            "en": "https://petcaremalaysia.com/urinary-tract-disease/cats/when-to-see-a-vet",
+            "ms": "https://petcaremalaysia.com/ms/urinary-tract-disease/cats/when-to-see-a-vet",
+            "zh": "https://petcaremalaysia.com/zh/urinary-tract-disease/cats/when-to-see-a-vet"
+          },
+          "snippet": ""
+        },
+        {
+          "slug": "dogs-emergency-signs",
+          "category": "emergency",
+          "titles": {
+            "en": "Dog Urinary Emergency Signs — When Your Dog Needs Urgent Vet Care",
+            "ms": "Dog Urinary Emergency Signs — When Your Dog Needs Urgent Vet Care",
+            "zh": "Dog Urinary Emergency Signs — When Your Dog Needs Urgent Vet Care"
+          },
+          "urls": {
+            "en": "https://petcaremalaysia.com/urinary-tract-disease/dogs/emergency-signs",
+            "ms": "https://petcaremalaysia.com/ms/urinary-tract-disease/dogs/emergency-signs",
+            "zh": "https://petcaremalaysia.com/zh/urinary-tract-disease/dogs/emergency-signs"
+          },
+          "snippet": ""
+        },
+        {
+          "slug": "dogs-emergency-cant-urinate",
+          "category": "emergency",
+          "titles": {
+            "en": "Dog Can't Urinate — Emergency Guide for Urethral Obstruction in Dogs",
+            "ms": "Dog Can't Urinate — Emergency Guide for Urethral Obstruction in Dogs",
+            "zh": "Dog Can't Urinate — Emergency Guide for Urethral Obstruction in Dogs"
+          },
+          "urls": {
+            "en": "https://petcaremalaysia.com/urinary-tract-disease/dogs/emergency-signs/cant-urinate",
+            "ms": "https://petcaremalaysia.com/ms/urinary-tract-disease/dogs/emergency-signs/cant-urinate",
+            "zh": "https://petcaremalaysia.com/zh/urinary-tract-disease/dogs/emergency-signs/cant-urinate"
+          },
+          "snippet": ""
+        },
+        {
+          "slug": "dogs-when-to-see-a-vet",
+          "category": "emergency",
+          "titles": {
+            "en": "When to See a Vet for Dog Urinary Problems — Urgency Guide",
+            "ms": "When to See a Vet for Dog Urinary Problems — Urgency Guide",
+            "zh": "When to See a Vet for Dog Urinary Problems — Urgency Guide"
+          },
+          "urls": {
+            "en": "https://petcaremalaysia.com/urinary-tract-disease/dogs/when-to-see-a-vet",
+            "ms": "https://petcaremalaysia.com/ms/urinary-tract-disease/dogs/when-to-see-a-vet",
+            "zh": "https://petcaremalaysia.com/zh/urinary-tract-disease/dogs/when-to-see-a-vet"
+          },
+          "snippet": ""
+        },
+        {
+          "slug": "cats-symptoms-blood-in-urine",
+          "category": "symptoms",
+          "titles": {
+            "en": "Blood in Cat Urine (Haematuria) — Causes, Urgency & What to Do",
+            "ms": "Blood in Cat Urine (Haematuria) — Causes, Urgency & What to Do",
+            "zh": "Blood in Cat Urine (Haematuria) — Causes, Urgency & What to Do"
+          },
+          "urls": {
+            "en": "https://petcaremalaysia.com/urinary-tract-disease/cats/symptoms/blood-in-urine",
+            "ms": "https://petcaremalaysia.com/ms/urinary-tract-disease/cats/symptoms/blood-in-urine",
+            "zh": "https://petcaremalaysia.com/zh/urinary-tract-disease/cats/symptoms/blood-in-urine"
+          },
+          "snippet": ""
+        },
+        {
+          "slug": "cats-symptoms-straining-to-urinate",
+          "category": "symptoms",
+          "titles": {
+            "en": "Cat Straining to Urinate (Dysuria) — Causes, Emergency Signs & What to Do",
+            "ms": "Cat Straining to Urinate (Dysuria) — Causes, Emergency Signs & What to Do",
+            "zh": "Cat Straining to Urinate (Dysuria) — Causes, Emergency Signs & What to Do"
+          },
+          "urls": {
+            "en": "https://petcaremalaysia.com/urinary-tract-disease/cats/symptoms/straining-to-urinate",
+            "ms": "https://petcaremalaysia.com/ms/urinary-tract-disease/cats/symptoms/straining-to-urinate",
+            "zh": "https://petcaremalaysia.com/zh/urinary-tract-disease/cats/symptoms/straining-to-urinate"
+          },
+          "snippet": ""
+        },
+        {
+          "slug": "cats-symptoms-frequent-small-urinations",
+          "category": "symptoms",
+          "titles": {
+            "en": "Cat Urinating Frequently in Small Amounts (Pollakiuria) — Causes & Guide",
+            "ms": "Cat Urinating Frequently in Small Amounts (Pollakiuria) — Causes & Guide",
+            "zh": "Cat Urinating Frequently in Small Amounts (Pollakiuria) — Causes & Guide"
+          },
+          "urls": {
+            "en": "https://petcaremalaysia.com/urinary-tract-disease/cats/symptoms/frequent-small-urinations",
+            "ms": "https://petcaremalaysia.com/ms/urinary-tract-disease/cats/symptoms/frequent-small-urinations",
+            "zh": "https://petcaremalaysia.com/zh/urinary-tract-disease/cats/symptoms/frequent-small-urinations"
+          },
+          "snippet": ""
+        },
+        {
+          "slug": "cats-symptoms-not-passing-urine",
+          "category": "symptoms",
+          "titles": {
+            "en": "Cat Not Passing Urine — Emergency Guide for Urinary Obstruction Signs",
+            "ms": "Cat Not Passing Urine — Emergency Guide for Urinary Obstruction Signs",
+            "zh": "Cat Not Passing Urine — Emergency Guide for Urinary Obstruction Signs"
+          },
+          "urls": {
+            "en": "https://petcaremalaysia.com/urinary-tract-disease/cats/symptoms/not-passing-urine",
+            "ms": "https://petcaremalaysia.com/ms/urinary-tract-disease/cats/symptoms/not-passing-urine",
+            "zh": "https://petcaremalaysia.com/zh/urinary-tract-disease/cats/symptoms/not-passing-urine"
+          },
+          "snippet": ""
+        },
+        {
+          "slug": "dogs-symptoms-blood-in-urine",
+          "category": "symptoms",
+          "titles": {
+            "en": "Blood in Dog Urine (Haematuria) — Causes, Urgency & What to Do",
+            "ms": "Blood in Dog Urine (Haematuria) — Causes, Urgency & What to Do",
+            "zh": "Blood in Dog Urine (Haematuria) — Causes, Urgency & What to Do"
+          },
+          "urls": {
+            "en": "https://petcaremalaysia.com/urinary-tract-disease/dogs/symptoms/blood-in-urine",
+            "ms": "https://petcaremalaysia.com/ms/urinary-tract-disease/dogs/symptoms/blood-in-urine",
+            "zh": "https://petcaremalaysia.com/zh/urinary-tract-disease/dogs/symptoms/blood-in-urine"
+          },
+          "snippet": ""
+        },
+        {
+          "slug": "dogs-symptoms-straining-to-urinate",
+          "category": "symptoms",
+          "titles": {
+            "en": "Dog Straining to Urinate (Dysuria) — Causes, Urgency & When to Act",
+            "ms": "Dog Straining to Urinate (Dysuria) — Causes, Urgency & When to Act",
+            "zh": "Dog Straining to Urinate (Dysuria) — Causes, Urgency & When to Act"
+          },
+          "urls": {
+            "en": "https://petcaremalaysia.com/urinary-tract-disease/dogs/symptoms/straining-to-urinate",
+            "ms": "https://petcaremalaysia.com/ms/urinary-tract-disease/dogs/symptoms/straining-to-urinate",
+            "zh": "https://petcaremalaysia.com/zh/urinary-tract-disease/dogs/symptoms/straining-to-urinate"
+          },
+          "snippet": ""
+        },
+        {
+          "slug": "dogs-symptoms-frequent-small-urinations",
+          "category": "symptoms",
+          "titles": {
+            "en": "Dog Urinating Frequently in Small Amounts — Causes & When to Worry",
+            "ms": "Dog Urinating Frequently in Small Amounts — Causes & When to Worry",
+            "zh": "Dog Urinating Frequently in Small Amounts — Causes & When to Worry"
+          },
+          "urls": {
+            "en": "https://petcaremalaysia.com/urinary-tract-disease/dogs/symptoms/frequent-small-urinations",
+            "ms": "https://petcaremalaysia.com/ms/urinary-tract-disease/dogs/symptoms/frequent-small-urinations",
+            "zh": "https://petcaremalaysia.com/zh/urinary-tract-disease/dogs/symptoms/frequent-small-urinations"
+          },
+          "snippet": ""
+        },
+        {
+          "slug": "cats-conditions-feline-idiopathic-cystitis",
+          "category": "conditions",
+          "titles": {
+            "en": "Feline Idiopathic Cystitis (FIC) — The Most Common Cause of FLUTD",
+            "ms": "Feline Idiopathic Cystitis (FIC) — The Most Common Cause of FLUTD",
+            "zh": "Feline Idiopathic Cystitis (FIC) — The Most Common Cause of FLUTD"
+          },
+          "urls": {
+            "en": "https://petcaremalaysia.com/urinary-tract-disease/cats/conditions/feline-idiopathic-cystitis",
+            "ms": "https://petcaremalaysia.com/ms/urinary-tract-disease/cats/conditions/feline-idiopathic-cystitis",
+            "zh": "https://petcaremalaysia.com/zh/urinary-tract-disease/cats/conditions/feline-idiopathic-cystitis"
+          },
+          "snippet": ""
+        },
+        {
+          "slug": "cats-conditions-urethral-obstruction",
+          "category": "conditions",
+          "titles": {
+            "en": "Urethral Obstruction in Cats — Causes, Treatment & Emergency Guide",
+            "ms": "Urethral Obstruction in Cats — Causes, Treatment & Emergency Guide",
+            "zh": "Urethral Obstruction in Cats — Causes, Treatment & Emergency Guide"
+          },
+          "urls": {
+            "en": "https://petcaremalaysia.com/urinary-tract-disease/cats/conditions/urethral-obstruction",
+            "ms": "https://petcaremalaysia.com/ms/urinary-tract-disease/cats/conditions/urethral-obstruction",
+            "zh": "https://petcaremalaysia.com/zh/urinary-tract-disease/cats/conditions/urethral-obstruction"
+          },
+          "snippet": ""
+        },
+        {
+          "slug": "dogs-conditions-bacterial-cystitis-uti",
+          "category": "conditions",
+          "titles": {
+            "en": "Bacterial Cystitis (UTI) in Dogs — Causes, Treatment & Costs in Malaysia",
+            "ms": "Bacterial Cystitis (UTI) in Dogs — Causes, Treatment & Costs in Malaysia",
+            "zh": "Bacterial Cystitis (UTI) in Dogs — Causes, Treatment & Costs in Malaysia"
+          },
+          "urls": {
+            "en": "https://petcaremalaysia.com/urinary-tract-disease/dogs/conditions/bacterial-cystitis-uti",
+            "ms": "https://petcaremalaysia.com/ms/urinary-tract-disease/dogs/conditions/bacterial-cystitis-uti",
+            "zh": "https://petcaremalaysia.com/zh/urinary-tract-disease/dogs/conditions/bacterial-cystitis-uti"
+          },
+          "snippet": ""
+        }
+      ]
     }
   ]
 }
