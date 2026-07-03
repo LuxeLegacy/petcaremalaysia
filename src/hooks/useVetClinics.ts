@@ -18,19 +18,48 @@ export interface VetClinic {
   image_url: string | null;
 }
 
+// Race the Supabase query against a hard timeout so a slow / 503-ing Data API
+// can't leave the results page spinning indefinitely.
+const withTimeout = <T,>(promise: PromiseLike<T>, ms: number): Promise<T> =>
+  new Promise((resolve, reject) => {
+    const timer = setTimeout(
+      () => reject(new Error(`vet_clinics request timed out after ${ms}ms`)),
+      ms,
+    );
+    Promise.resolve(promise).then(
+      (value) => {
+        clearTimeout(timer);
+        resolve(value);
+      },
+      (err) => {
+        clearTimeout(timer);
+        reject(err);
+      },
+    );
+  });
+
 export const useVetClinics = (city: string, state: string) => {
   return useQuery({
     queryKey: ['vet-clinics', city, state],
     queryFn: async () => {
-      const { data, error } = await supabase
-        .from('vet_clinics')
-        .select('*')
-        .ilike('city', city)
-        .ilike('state', state)
-        .order('rating', { ascending: false, nullsFirst: false });
+      const { data, error } = await withTimeout(
+        supabase
+          .from('vet_clinics')
+          .select('*')
+          .ilike('city', city)
+          .ilike('state', state)
+          .order('rating', { ascending: false, nullsFirst: false }),
+        8000,
+      );
 
       if (error) throw error;
       return data as VetClinic[];
     },
+    // Fail fast instead of retrying for ~90s if the Data API is unreachable.
+    retry: 1,
+    retryDelay: 1000,
+    staleTime: 5 * 60 * 1000,
+    gcTime: 10 * 60 * 1000,
+    refetchOnWindowFocus: false,
   });
 };
